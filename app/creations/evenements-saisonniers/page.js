@@ -1,0 +1,219 @@
+'use client'
+
+import Navbar from '../../../components/Navbar'
+import Footer from '../../../components/Footer'
+import { evenements } from './evenementsData'
+
+export default function EvenementsSaisonniers() {
+  return (
+    <>
+      <Navbar />
+
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+
+        {/* Header */}
+        <div
+          className="sais-header"
+          style={{
+            background: 'var(--bg-secondary)',
+            padding: '100px 72px 80px',
+            textAlign: 'center',
+          }}
+        >
+          <p style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '11px',
+            fontWeight: 500,
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+            color: 'var(--accent)',
+            marginBottom: '24px',
+          }}>
+            Nos Créations
+          </p>
+          <h1 style={{
+            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontSize: 'clamp(32px, 5vw, 68px)',
+            fontWeight: 400,
+            lineHeight: 1.05,
+            letterSpacing: '-0.01em',
+            color: 'var(--text-primary)',
+            marginBottom: '28px',
+          }}>
+            Événements Saisonniers
+          </h1>
+          <p style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '15px',
+            lineHeight: 1.75,
+            color: 'var(--text-secondary)',
+            maxWidth: '560px',
+            margin: '0 auto',
+          }}>
+            Galette des Rois, Chandeleur, Halloween, Noël... Chaque moment de l'année a ses produits, ses codes, ses attentions. On s'en occupe.
+          </p>
+        </div>
+
+        {/* Grille événements */}
+        <div
+          className="sais-grid"
+          style={{
+            maxWidth: '1440px',
+            margin: '0 auto',
+            padding: '64px 72px 120px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '10px',
+          }}
+        >
+          {evenements.map((ev, i) => (
+            <a
+              key={i}
+              href={`/creations/evenements-saisonniers/${ev.slug}`}
+              className="sais-card"
+              style={{
+                background: 'var(--bg-secondary)',
+                textDecoration: 'none',
+                display: 'block',
+                transition: 'opacity 0.25s ease',
+              }}
+            >
+              <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
+                <img
+                  src={ev.img}
+                  alt={ev.nom}
+                  className="sais-img"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transition: 'transform 0.6s ease',
+                  }}
+                />
+              </div>
+
+              <div style={{ padding: '24px 24px 32px' }}>
+                <p style={{
+                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent)',
+                  marginBottom: '8px',
+                }}>
+                  {ev.mois}
+                </p>
+                <h3 style={{
+                  fontFamily: "'Baskerville Display PT', Georgia, serif",
+                  fontSize: '22px',
+                  fontWeight: 400,
+                  color: 'var(--text-primary)',
+                  marginBottom: '12px',
+                  lineHeight: 1.2,
+                }}>
+                  {ev.nom}
+                </h3>
+                <p style={{
+                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontSize: '13px',
+                  lineHeight: 1.7,
+                  color: 'var(--text-secondary)',
+                  marginBottom: '18px',
+                }}>
+                  {ev.descCourt}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                  {ev.tags.map((tag, j) => (
+                    <span key={j} style={{
+                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontSize: '9px',
+                      fontWeight: 500,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid rgba(17,17,17,0.15)',
+                      padding: '4px 8px',
+                    }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p style={{
+                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent)',
+                }}>
+                  Voir l'événement →
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div
+          className="sais-cta"
+          style={{
+            borderTop: '1px solid rgba(17,17,17,0.08)',
+            padding: '48px 72px',
+            textAlign: 'center',
+          }}
+        >
+          <p style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '14px',
+            color: 'var(--text-secondary)',
+            marginBottom: '24px',
+          }}>
+            Vous préparez un événement saisonnier pour votre entreprise ?
+          </p>
+          <a
+            href="/devis"
+            style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '11px',
+              fontWeight: 500,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: '#FFFFFF',
+              background: 'var(--accent)',
+              padding: '14px 32px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              textDecoration: 'none',
+              transition: 'opacity 0.3s ease',
+            }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+          >
+            Demander un devis →
+          </a>
+        </div>
+
+      </main>
+
+      <style suppressHydrationWarning>{`
+        .sais-card:hover .sais-img { transform: scale(1.04); }
+        .sais-card:hover { opacity: 0.96; }
+        @media (max-width: 768px) {
+          .sais-header { padding: 60px 24px 48px !important; }
+          .sais-grid { grid-template-columns: 1fr !important; padding: 40px 24px 80px !important; }
+          .sais-cta { padding: 40px 24px !important; }
+        }
+        @media (max-width: 1024px) and (min-width: 769px) {
+          .sais-header { padding: 80px 40px 60px !important; }
+          .sais-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 48px 40px 80px !important; }
+          .sais-cta { padding: 40px 40px !important; }
+        }
+      `}</style>
+
+      <Footer />
+    </>
+  )
+}

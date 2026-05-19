@@ -1,0 +1,86 @@
+'use client'
+
+const logos = [
+  { name: 'Le Monde',         src: '/logos/lemonde.svg' },
+  { name: 'SNCF',             src: '/logos/sncf.png' },
+  { name: 'DS Automobiles',   src: '/logos/ds.png', height: '52px' },
+  { name: 'Carglass',         src: '/logos/carglass.svg' },
+  { name: 'Wella Company',    src: '/logos/wella.jpg' },
+  { name: 'Coyote',           src: '/logos/coyote.png' },
+  { name: 'TotalEnergies',    src: '/logos/totalenergies.png' },
+  { name: 'Talan',            src: '/logos/talan.png' },
+  { name: 'SIA',              src: '/logos/sia.png', height: '68px' },
+  { name: 'Ringover',         src: '/logos/ringover.png', height: '68px' },
+]
+
+// On duplique pour le défilement infini
+const track = [...logos, ...logos, ...logos]
+
+export default function LogosSection() {
+  return (
+    <section
+      style={{
+        background: 'var(--bg-primary)',
+        padding: '28px 0',
+        borderBottom: '1px solid rgba(17,17,17,0.06)',
+        overflow: 'hidden',
+      }}
+    >
+      <p style={{
+        fontFamily: "'Neue Montreal', sans-serif",
+        fontSize: '11px',
+        fontWeight: 500,
+        letterSpacing: '0.18em',
+        textTransform: 'uppercase',
+        color: 'rgba(17,17,17,0.38)',
+        textAlign: 'center',
+        marginBottom: '24px',
+      }}>
+        Ils nous font confiance
+      </p>
+
+      <div
+        style={{
+          display: 'flex',
+          width: 'max-content',
+          animation: 'marquee 22s linear infinite',
+        }}
+      >
+        {track.map((logo, i) => (
+          <div
+            key={i}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0 64px',
+              flexShrink: 0,
+            }}
+          >
+            <img
+              src={logo.src}
+              alt={logo.name}
+              style={{
+                height: logo.height || '36px',
+                width: 'auto',
+                maxWidth: '150px',
+                objectFit: 'contain',
+                filter: 'grayscale(1)',
+                mixBlendMode: 'multiply',
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      <style suppressHydrationWarning>{`
+        @keyframes marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(calc(-100% / 3)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          [style*="marquee"] { animation: none; }
+        }
+      `}</style>
+    </section>
+  )
+}
