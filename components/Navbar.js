@@ -6,6 +6,7 @@ import { useCart } from '../context/CartContext'
 const dropdowns = {
   creations: [
     { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
+    { label: 'Coffrets & Cadeaux', href: '/creations/coffrets-cadeaux' },
     { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
     { label: 'Plateaux Repas', href: '/creations/plateaux-repas' },
     { label: 'Boissons', href: '/creations/boissons' },
@@ -14,6 +15,7 @@ const dropdowns = {
   univers: [
     { label: 'Notre Maison', href: '/univers/notre-maison' },
     { label: 'Nos Artisans', href: '/univers/nos-artisans' },
+    { label: 'Nos Engagements', href: '/univers/nos-engagements' },
   ],
 }
 
@@ -50,11 +52,68 @@ export default function Navbar() {
 
   return (
     <>
+      {/* ── Bandeau deadline ── */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 101,
+        height: 'var(--banner-h)',
+        background: '#111111',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '24px',
+      }}>
+        {/* Texte desktop */}
+        <p className="nav-banner-text" style={{
+          fontFamily: "'Neue Montreal', sans-serif",
+          fontSize: '10px',
+          fontWeight: 500,
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.75)',
+          whiteSpace: 'nowrap',
+        }}>
+          <span style={{ color: 'var(--accent)' }}>●</span>
+          {' '}Commandez jusqu'à la veille avant 14h — Livraison dès 6h30 · Paris & Île-de-France
+        </p>
+        {/* Texte mobile */}
+        <p className="nav-banner-short" style={{
+          display: 'none',
+          fontFamily: "'Neue Montreal', sans-serif",
+          fontSize: '9px',
+          fontWeight: 500,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.75)',
+          textAlign: 'center',
+        }}>
+          <span style={{ color: 'var(--accent)' }}>●</span>
+          {' '}Commandez avant 14h — Livraison dès 6h30
+        </p>
+        <a href="/creations/petits-dejeuners-et-pauses" className="nav-banner-text" style={{
+          fontFamily: "'Neue Montreal', sans-serif",
+          fontSize: '9px',
+          fontWeight: 500,
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: 'var(--accent)',
+          borderBottom: '1px solid rgba(224,161,38,0.4)',
+          paddingBottom: '1px',
+          whiteSpace: 'nowrap',
+          flexShrink: 0,
+        }}>
+          Commander →
+        </a>
+      </div>
+
       <nav
         className={scrolled ? 'nav-bar' : 'nav-bar nav-bar-hero'}
         style={{
           position: 'fixed',
-          top: 0,
+          top: 'var(--banner-h)',
           left: 0,
           right: 0,
           zIndex: 100,
@@ -518,6 +577,8 @@ export default function Navbar() {
           .nav-hamburger { display: flex !important; }
           .nav-logo-hero { top: 48px !important; transform: translateX(-50%) !important; }
           .nav-bar-hero .nav-hamburger { align-self: flex-start; margin-top: 22px; }
+          .nav-banner-text { display: none !important; }
+          .nav-banner-short { display: flex !important; }
         }
         @media (min-width: 769px) {
           .nav-hamburger { display: none !important; }

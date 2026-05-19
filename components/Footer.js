@@ -52,6 +52,7 @@ export default function Footer() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
                   { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
+                  { label: 'Coffrets & Cadeaux', href: '/creations/coffrets-cadeaux' },
                   { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
                   { label: 'Plateaux Repas', href: '/creations/plateaux-repas' },
                   { label: 'Événements Saisonniers', href: '/creations/evenements-saisonniers' },
@@ -71,6 +72,7 @@ export default function Footer() {
                 {[
                   { label: 'Notre Maison', href: '/univers/notre-maison' },
                   { label: 'Nos Artisans', href: '/univers/nos-artisans' },
+                  { label: 'Nos Engagements', href: '/univers/nos-engagements' },
                   { label: 'Le Journal', href: '/journal' },
                 ].map(l => (
                   <a key={l.label} href={l.href} style={linkStyle}
@@ -88,11 +90,14 @@ export default function Footer() {
                 {[
                   { label: 'Contact', href: '/contact' },
                   { label: 'Demande de devis', href: '/devis' },
+                  { label: 'Télécharger le catalogue', href: '/catalogue-lecrin.pdf', download: true },
                 ].map(l => (
-                  <a key={l.label} href={l.href} style={linkStyle}
+                  <a key={l.label} href={l.href}
+                    {...(l.download ? { download: true, target: '_blank' } : {})}
+                    style={{ ...linkStyle, ...(l.download ? { color: 'var(--accent)', fontWeight: 500 } : {}) }}
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                  >{l.label}</a>
+                    onMouseLeave={e => e.currentTarget.style.color = l.download ? 'var(--accent)' : 'var(--text-secondary)'}
+                  >{l.download ? '↓ ' : ''}{l.label}</a>
                 ))}
               </div>
             </div>

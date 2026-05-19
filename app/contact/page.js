@@ -126,7 +126,7 @@ export default function Contact() {
     <>
       <Navbar />
 
-      <main style={{ background: 'var(--bg-secondary)', height: '100vh', paddingTop: '72px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ background: 'var(--bg-secondary)', height: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
         <div
           className="contact-wrap"
           style={{

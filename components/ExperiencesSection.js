@@ -7,7 +7,7 @@ export default function ExperiencesSection() {
       style={{
         background: 'var(--bg-secondary)',
         height: '100vh',
-        paddingTop: '72px',
+        paddingTop: 'var(--header-h)',
         display: 'flex',
         alignItems: 'center',
         padding: '72px 40px 0 clamp(80px, 8vw, 140px)',

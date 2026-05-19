@@ -44,7 +44,7 @@ export default function LegalTemplate({ title, category = 'Informations légales
   return (
     <>
       <Navbar />
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* Header */}
         <div

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { useCart } from '../context/CartContext'
-import { PRODUCTS } from '../lib/productsData'
+import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
@@ -50,7 +50,7 @@ export default function ProductsPageTemplate({
     <>
       <Navbar />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* ── Hero ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
@@ -242,9 +242,31 @@ function ProductCard({ product }) {
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '4px' }}>
           {product.name}
         </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '14px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: product.dietary?.length ? '8px' : '14px' }}>
           {product.label}
         </p>
+        {/* Tags allergènes/régimes */}
+        {product.dietary?.length > 0 && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '10px' }}>
+            {product.dietary.map(tag => {
+              const style = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
+              return (
+                <span key={tag} style={{
+                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontSize: '8px',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: style.color,
+                  background: style.bg,
+                  padding: '3px 6px',
+                }}>
+                  {tag}
+                </span>
+              )
+            })}
+          </div>
+        )}
 
         {canOrder ? (
           <div>

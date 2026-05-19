@@ -20,7 +20,7 @@ function ConfirmationContent() {
       style={{
         background: '#FFFFFF',
         minHeight: '100vh',
-        paddingTop: '72px',
+        paddingTop: 'var(--header-h)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -130,7 +130,7 @@ export default function CommandeConfirmee() {
     <>
       <Navbar />
       <Suspense fallback={
-        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="spinner" />
         </main>
       }>

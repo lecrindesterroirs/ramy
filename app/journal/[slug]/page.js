@@ -15,7 +15,7 @@ export default function ArticlePage() {
     <>
       <Navbar />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* ── Hero image ── */}
         <div style={{ width: '100%', maxHeight: '520px', overflow: 'hidden' }}>

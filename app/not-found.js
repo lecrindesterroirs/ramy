@@ -11,7 +11,7 @@ export default function NotFound() {
       <main style={{
         background: '#FFFFFF',
         minHeight: '100vh',
-        paddingTop: '72px',
+        paddingTop: 'var(--header-h)',
         display: 'flex',
         flexDirection: 'column',
       }}>

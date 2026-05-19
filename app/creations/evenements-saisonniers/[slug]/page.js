@@ -13,7 +13,7 @@ export default function EvenementDetail() {
     return (
       <>
         <Navbar />
-        <main style={{ paddingTop: '72px', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <main style={{ paddingTop: 'var(--header-h)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)' }}>
             Événement non trouvé.
           </p>
@@ -27,7 +27,7 @@ export default function EvenementDetail() {
     <>
       <Navbar />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* Header */}
         <div

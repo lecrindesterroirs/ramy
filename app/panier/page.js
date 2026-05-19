@@ -88,7 +88,7 @@ export default function Panier() {
     return (
       <>
         <Navbar />
-        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '120px 24px' }}>
+        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '120px 24px' }}>
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(17,17,17,0.2)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '24px' }}>
             <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -114,7 +114,7 @@ export default function Panier() {
     return (
       <>
         <Navbar />
-        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '120px 24px' }}>
+        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '120px 24px' }}>
           <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(224,161,38,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '28px' }}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20,6 9,17 4,12"/>
@@ -140,7 +140,7 @@ export default function Panier() {
     return (
       <>
         <Navbar />
-        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ textAlign: 'center' }}>
             <div className="spinner" />
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', marginTop: '24px' }}>
@@ -182,7 +182,7 @@ export default function Panier() {
     <>
       <Navbar />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* Header */}
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 40px' }}>

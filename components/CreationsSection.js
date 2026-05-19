@@ -78,7 +78,7 @@ export default function CreationsSection() {
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        paddingTop: '72px',
+        paddingTop: 'var(--header-h)',
       }}
     >
 

@@ -43,6 +43,16 @@
   --text-primary: #111111;
   --text-secondary: #6E675F;
   --accent: #E0A126;
+  --banner-h: 36px;
+  --nav-h: 72px;
+  --header-h: 108px; /* banner + nav */
+}
+
+@media (max-width: 768px) {
+  :root {
+    --banner-h: 40px;
+    --header-h: 112px;
+  }
 }
 
 html {

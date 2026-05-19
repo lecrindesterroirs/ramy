@@ -23,7 +23,7 @@ export default function NotrePhilosophie() {
     <>
       <Navbar />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: '72px' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* ── Hero ── */}
         <div

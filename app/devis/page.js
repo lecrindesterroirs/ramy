@@ -430,7 +430,7 @@ export default function Contact() {
     <>
       <Navbar />
 
-      <main className="devis-main" style={{ background: '#FFFFFF', height: '100vh', paddingTop: '72px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+      <main className="devis-main" style={{ background: '#FFFFFF', height: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
         {submitStatus === 'success' ? (
           /* ── Success screen ── */

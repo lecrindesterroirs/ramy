@@ -7,7 +7,7 @@ export default function TestimonialsSection() {
       style={{
         background: 'var(--bg-secondary)',
         height: '100vh',
-        paddingTop: '72px',
+        paddingTop: 'var(--header-h)',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
