@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 const args = [
   {
     num: '01',
@@ -19,6 +21,10 @@ const args = [
 ]
 
 export default function SelectionSection() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
+
   return (
     <section className="selection-section" style={{ background: 'var(--bg-secondary)', padding: '120px 0' }}>
       <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px' }}>
@@ -103,9 +109,9 @@ export default function SelectionSection() {
             {/* Séparateur */}
             <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.10)', marginBottom: '48px' }} />
 
-            {/* 3 arguments */}
+            {/* 3 arguments — desktop */}
             <div
-              className="selection-args"
+              className="selection-args-desktop"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -120,57 +126,75 @@ export default function SelectionSection() {
                     paddingLeft: i > 0 ? '20px' : '0',
                   }}
                 >
-                  <p
-                    style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '12px',
-                      letterSpacing: '0.14em',
-                      color: 'var(--accent)',
-                      marginBottom: '14px',
-                    }}
-                  >
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.14em', color: 'var(--accent)', marginBottom: '14px' }}>
                     {item.num}
                   </p>
-                  <p
-                    style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '11px',
-                      fontWeight: 500,
-                      letterSpacing: '0.12em',
-                      textTransform: 'uppercase',
-                      color: '#151515',
-                      marginBottom: '10px',
-                      lineHeight: 1.5,
-                    }}
-                  >
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '10px', lineHeight: 1.5 }}>
                     {item.title}
                   </p>
-                  <p
-                    style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '13px',
-                      lineHeight: 1.65,
-                      color: 'rgba(17,17,17,0.58)',
-                    }}
-                  >
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.65, color: 'rgba(17,17,17,0.58)' }}>
                     {item.body}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
 
+            {/* 3 arguments — mobile accordion */}
+            <div className="selection-args-mobile">
+              {args.map((item, i) => (
+                <div
+                  key={item.num}
+                  style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}
+                >
+                  <button
+                    onClick={() => toggle(i)}
+                    style={{
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '16px 0',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.14em', color: 'var(--accent)' }}>
+                        {item.num}
+                      </span>
+                      <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
+                        {item.title}
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '18px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', display: 'inline-block' }}>
+                      ›
+                    </span>
+                  </button>
+                  {openIndex === i && (
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)', paddingBottom: '16px' }}>
+                      {item.body}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
+          </div>
 
         </div>
       </div>
 
       <style suppressHydrationWarning>{`
+        .selection-args-mobile { display: none; }
         @media (max-width: 768px) {
-          .selection-section { padding: 64px 0 !important; }
+          .selection-section { padding: 48px 0 8px !important; }
           .selection-section > div { padding: 0 24px !important; }
           .selection-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
           .selection-img { height: 300px !important; }
-          .selection-args { grid-template-columns: 1fr !important; }
+          .selection-args-desktop { display: none !important; }
+          .selection-args-mobile { display: block !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .selection-section > div { padding: 0 40px !important; }

@@ -82,7 +82,7 @@ export default function Footer() {
             </div>
 
             {/* Entreprise */}
-            <div>
+            <div className="footer-col-entreprise">
               <span style={colTitleStyle}>Entreprise</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
@@ -98,7 +98,7 @@ export default function Footer() {
             </div>
 
             {/* Nous contacter */}
-            <div>
+            <div className="footer-col-contact">
               <span style={colTitleStyle}>Nous contacter</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <a href="tel:+33760169620" style={linkStyle}
@@ -161,9 +161,11 @@ export default function Footer() {
           .footer-main { padding: 60px 24px 48px !important; }
           .footer-grid { flex-direction: column !important; gap: 40px !important; }
           .footer-grid > div:first-child { width: 100% !important; }
-          .footer-cols { flex-direction: column !important; gap: 32px !important; }
-          .footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; padding: 20px 24px !important; }
-          .footer-bottom > div:first-child { flex-wrap: wrap !important; gap: 12px 20px !important; }
+          .footer-cols { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 32px 48px !important; }
+          .footer-col-contact { order: 3 !important; }
+          .footer-col-entreprise { order: 4 !important; }
+          .footer-bottom { flex-direction: column !important; align-items: center !important; gap: 16px !important; padding: 20px 24px !important; }
+          .footer-bottom > div:first-child { flex-wrap: wrap !important; gap: 12px 20px !important; justify-content: center !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .footer-main { padding: 60px 40px 48px !important; }

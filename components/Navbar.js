@@ -28,6 +28,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileExpanded, setMobileExpanded] = useState(null)
   const closeTimer = useRef(null)
 
   useEffect(() => {
@@ -301,7 +302,116 @@ export default function Navbar() {
         >
           {/* Liens */}
           <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '320px', marginTop: '8px' }}>
-            {allLinks.map(({ label, href }) => (
+
+            {/* Nos Créations — avec sous-menu */}
+            <div style={{ width: '100%', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
+              <button
+                onClick={() => setMobileExpanded(mobileExpanded === 'creations' ? null : 'creations')}
+                style={{
+                  fontFamily: "'Baskerville Display PT', Georgia, serif",
+                  fontSize: '26px',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em',
+                  color: '#111111',
+                  textAlign: 'center',
+                  padding: '18px 0',
+                  width: '100%',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                }}
+              >
+                Nos Créations
+                <span style={{ fontSize: '16px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: mobileExpanded === 'creations' ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>›</span>
+              </button>
+              {mobileExpanded === 'creations' && (
+                <div style={{ paddingBottom: '12px' }}>
+                  {dropdowns.creations.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '13px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(17,17,17,0.65)',
+                        padding: '10px 0',
+                        display: 'block',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* L'Univers — avec sous-menu */}
+            <div style={{ width: '100%', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
+              <button
+                onClick={() => setMobileExpanded(mobileExpanded === 'univers' ? null : 'univers')}
+                style={{
+                  fontFamily: "'Baskerville Display PT', Georgia, serif",
+                  fontSize: '26px',
+                  fontWeight: 400,
+                  letterSpacing: '0.01em',
+                  color: '#111111',
+                  textAlign: 'center',
+                  padding: '18px 0',
+                  width: '100%',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                }}
+              >
+                L'Univers
+                <span style={{ fontSize: '16px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>›</span>
+              </button>
+              {mobileExpanded === 'univers' && (
+                <div style={{ paddingBottom: '12px' }}>
+                  {dropdowns.univers.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '13px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(17,17,17,0.65)',
+                        padding: '10px 0',
+                        display: 'block',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Le Journal, Contact */}
+            {[
+              { label: 'Le Journal', href: '/journal' },
+              { label: 'Contact', href: '/contact' },
+            ].map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
@@ -317,6 +427,7 @@ export default function Navbar() {
                   borderBottom: '1px solid rgba(17,17,17,0.06)',
                   width: '100%',
                   display: 'block',
+                  textDecoration: 'none',
                 }}
               >
                 {label}

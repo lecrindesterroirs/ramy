@@ -66,7 +66,7 @@ export default function CTASection() {
 
       <style suppressHydrationWarning>{`
         @media (max-width: 768px) {
-          .cta-section { padding: 60px 24px !important; }
+          .cta-section { padding: 0 24px 96px !important; }
           .cta-yellow-box { padding: 40px 24px !important; width: 100% !important; box-sizing: border-box !important; }
           .cta-yellow-box h2 { font-size: clamp(28px, 7vw, 44px) !important; }
           .cta-yellow-box p br { display: none; }

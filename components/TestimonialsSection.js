@@ -168,8 +168,8 @@ export default function TestimonialsSection() {
 
       <style suppressHydrationWarning>{`
         @media (max-width: 768px) {
-          .testimonials-section { height: auto !important; overflow: visible !important; padding-bottom: 64px; }
-          .testimonials-inner { padding: 40px 24px 40px !important; flex: unset !important; min-height: unset !important; }
+          .testimonials-section { height: auto !important; overflow: visible !important; padding-top: 8px !important; padding-bottom: 64px; }
+          .testimonials-inner { padding: 12px 24px 40px !important; flex: unset !important; min-height: unset !important; }
           .testimonials-grid { grid-template-columns: 1fr !important; flex: unset !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {

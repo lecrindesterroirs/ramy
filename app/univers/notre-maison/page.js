@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 
@@ -58,6 +59,9 @@ const etapes = [
 ]
 
 export default function NotreMaison() {
+  const [openEtape, setOpenEtape] = useState(null)
+  const toggleEtape = (i) => setOpenEtape(openEtape === i ? null : i)
+
   return (
     <>
       <Navbar />
@@ -321,7 +325,47 @@ export default function NotreMaison() {
                 }}>
                   {e.num}
                 </p>
-                <h3 style={{
+
+                {/* Titre + chevron mobile */}
+                <button
+                  className="etape-toggle"
+                  onClick={() => toggleEtape(i)}
+                  style={{
+                    display: 'none',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    marginBottom: '0',
+                    width: '100%',
+                    textAlign: 'left',
+                  }}
+                >
+                  <h3 style={{
+                    fontFamily: "'Baskerville Display PT', Georgia, serif",
+                    fontSize: 'clamp(22px, 5vw, 30px)',
+                    fontWeight: 400,
+                    color: 'var(--text-primary)',
+                    lineHeight: 1.15,
+                    margin: 0,
+                  }}>
+                    {e.titre}
+                  </h3>
+                  <span style={{
+                    fontSize: '22px',
+                    color: 'var(--accent)',
+                    transition: 'transform 0.25s ease',
+                    transform: openEtape === i ? 'rotate(90deg)' : 'rotate(0deg)',
+                    display: 'inline-block',
+                    marginLeft: '12px',
+                    flexShrink: 0,
+                  }}>›</span>
+                </button>
+
+                {/* Titre desktop */}
+                <h3 className="etape-titre-desktop" style={{
                   fontFamily: "'Baskerville Display PT', Georgia, serif",
                   fontSize: 'clamp(24px, 2.5vw, 36px)',
                   fontWeight: 400,
@@ -331,17 +375,21 @@ export default function NotreMaison() {
                 }}>
                   {e.titre}
                 </h3>
-                {e.desc.map((para, j) => (
-                  <p key={j} style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '15px',
-                    lineHeight: 1.8,
-                    color: 'var(--text-secondary)',
-                    marginBottom: j < e.desc.length - 1 ? '16px' : 0,
-                  }}>
-                    {para}
-                  </p>
-                ))}
+
+                {/* Description — toujours visible desktop, toggle mobile */}
+                <div className={`etape-desc${openEtape === i ? ' etape-desc-open' : ''}`}>
+                  {e.desc.map((para, j) => (
+                    <p key={j} style={{
+                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontSize: '15px',
+                      lineHeight: 1.8,
+                      color: 'var(--text-secondary)',
+                      marginBottom: j < e.desc.length - 1 ? '16px' : 0,
+                    }}>
+                      {para}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -378,7 +426,11 @@ export default function NotreMaison() {
           .univ-intro { padding: 60px 24px 40px !important; }
           .univ-etape { grid-template-columns: 1fr !important; direction: ltr !important; }
           .univ-etape > div:first-child img { height: 280px !important; }
-          .univ-etape > div:last-child { padding: 40px 24px !important; }
+          .univ-etape > div:last-child { padding: 32px 14px !important; }
+          .etape-toggle { display: flex !important; margin-bottom: 0 !important; }
+          .etape-titre-desktop { display: none !important; }
+          .etape-desc { display: none; margin-top: 16px; }
+          .etape-desc-open { display: block !important; }
           .univ-closing { padding: 0 24px 80px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {

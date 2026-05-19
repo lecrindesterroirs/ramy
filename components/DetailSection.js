@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 const args = [
   {
     num: '01.',
@@ -19,6 +21,10 @@ const args = [
 ]
 
 export default function DetailSection() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
+
   return (
     <section className="detail-section" style={{ background: 'var(--bg-secondary)', padding: '80px 0 0' }}>
       <div className="detail-inner" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px' }}>
@@ -68,79 +74,21 @@ export default function DetailSection() {
               padding: '0 0 0 64px',
             }}
           >
-            {/* Label + trait */}
-            <p
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: 'var(--accent)',
-                marginBottom: '10px',
-              }}
-            >
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>
               Notre Signature
             </p>
-            <span
-              style={{
-                width: '32px',
-                height: '1px',
-                background: 'var(--accent)',
-                display: 'block',
-                marginBottom: '32px',
-              }}
-            />
-
-            {/* Titre */}
-            <h2
-              style={{
-                fontFamily: "'Baskerville Display PT', Georgia, serif",
-                fontSize: 'clamp(42px, 4.8vw, 72px)',
-                lineHeight: 1.0,
-                letterSpacing: '-0.01em',
-                fontWeight: 400,
-                color: '#FFFFFF',
-                marginBottom: '24px',
-              }}
-            >
+            <span style={{ width: '32px', height: '1px', background: 'var(--accent)', display: 'block', marginBottom: '32px' }} />
+            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(42px, 4.8vw, 72px)', lineHeight: 1.0, letterSpacing: '-0.01em', fontWeight: 400, color: '#FFFFFF', marginBottom: '24px' }}>
               Le détail<br />
               fait la différence.
             </h2>
-
-            {/* Corps */}
-            <p
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '14px',
-                lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.75)',
-                maxWidth: '360px',
-                marginBottom: '40px',
-              }}
-            >
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'rgba(255,255,255,0.75)', maxWidth: '360px', marginBottom: '40px' }}>
               La différence se joue dans les détails.<br />
               Toujours.
             </p>
-
-            {/* CTA */}
             <a
               href="/univers/notre-maison"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '12px',
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '10px',
-                fontWeight: 500,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: '#FFFFFF',
-                borderBottom: '1px solid rgba(255,255,255,0.45)',
-                paddingBottom: '4px',
-                width: 'fit-content',
-                transition: 'opacity 0.3s ease',
-                              }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#FFFFFF', borderBottom: '1px solid rgba(255,255,255,0.45)', paddingBottom: '4px', width: 'fit-content', transition: 'opacity 0.3s ease' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.6'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
@@ -149,9 +97,9 @@ export default function DetailSection() {
           </div>
         </div>
 
-        {/* ── 3 arguments bas ── */}
+        {/* ── 3 arguments bas — desktop ── */}
         <div
-          className="reveal detail-args"
+          className="reveal detail-args-desktop"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -167,40 +115,57 @@ export default function DetailSection() {
                 paddingRight: i < 2 ? '48px' : '0',
               }}
             >
-              <p
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '12px',
-                  letterSpacing: '0.14em',
-                  color: 'var(--accent)',
-                  marginBottom: '16px',
-                }}
-              >
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.14em', color: 'var(--accent)', marginBottom: '16px' }}>
                 {item.num}
               </p>
-              <p
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  color: '#151515',
-                  marginBottom: '12px',
-                }}
-              >
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '12px' }}>
                 {item.title}
               </p>
-              <p
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '13px',
-                  lineHeight: 1.7,
-                  color: 'rgba(17,17,17,0.58)',
-                }}
-              >
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)' }}>
                 {item.body}
               </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ── 3 arguments bas — mobile accordion ── */}
+        <div className="detail-args-mobile" style={{ padding: '32px 24px 32px' }}>
+          {args.map((item, i) => (
+            <div
+              key={item.num}
+              style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}
+            >
+              <button
+                onClick={() => toggle(i)}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '16px 0',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.14em', color: 'var(--accent)' }}>
+                    {item.num}
+                  </span>
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
+                    {item.title}
+                  </span>
+                </div>
+                <span style={{ fontSize: '18px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', display: 'inline-block' }}>
+                  ›
+                </span>
+              </button>
+              {openIndex === i && (
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)', paddingBottom: '16px' }}>
+                  {item.body}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -208,6 +173,7 @@ export default function DetailSection() {
       </div>
 
       <style suppressHydrationWarning>{`
+        .detail-args-mobile { display: none; }
         @media (max-width: 768px) {
           .detail-section { padding: 48px 0 0 !important; }
           .detail-inner { padding: 0 !important; }
@@ -220,11 +186,8 @@ export default function DetailSection() {
             background: #1a1a1a;
             justify-content: flex-start !important;
           }
-          .detail-args {
-            grid-template-columns: 1fr !important;
-            padding: 40px 24px 60px !important;
-            gap: 32px;
-          }
+          .detail-args-desktop { display: none !important; }
+          .detail-args-mobile { display: block !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .detail-inner { padding: 0 40px !important; }
