@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { useCart } from '../context/CartContext'
+import { PRODUCTS } from '../lib/productsData'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
@@ -207,19 +209,103 @@ export default function ProductsPageTemplate({
 
 function ProductCard({ product }) {
   const [hovered, setHovered] = useState(false)
+  const [added, setAdded] = useState(false)
+  const { addItem } = useCart()
+
+  // Match product to structured data by name+label to get the id and price
+  const structured = PRODUCTS.find(p => p.name === product.name && p.label === product.label)
+  const canOrder = !!structured
+
+  const handleAdd = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (!structured) return
+    addItem(structured)
+    setAdded(true)
+    setTimeout(() => setAdded(false), 1800)
+  }
+
   return (
-    <a href="#" style={{ display: 'block', textDecoration: 'none' }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF' }}>
-        <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }} />
+    <div
+      style={{ display: 'block', textDecoration: 'none', cursor: 'default' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF', position: 'relative' }}>
+        <img
+          src={product.img}
+          alt={product.name}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
+        />
       </div>
-      <div style={{ padding: '16px 4px 28px' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '5px' }}>
+      <div style={{ padding: '14px 4px 8px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '4px' }}>
           {product.name}
         </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '12px' }}>
           {product.label}
         </p>
+        {canOrder ? (
+          <button
+            onClick={handleAdd}
+            style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: added ? '#FFFFFF' : 'var(--accent)',
+              background: added ? 'var(--accent)' : 'transparent',
+              border: '1px solid var(--accent)',
+              padding: '8px 14px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              transition: 'all 0.2s ease',
+              width: '100%',
+              justifyContent: 'center',
+            }}
+          >
+            {added ? (
+              <>
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="2,6 5,9 10,3"/>
+                </svg>
+                Ajouté
+              </>
+            ) : (
+              <>
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                  <line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/>
+                </svg>
+                Ajouter au panier
+              </>
+            )}
+          </button>
+        ) : (
+          <a
+            href="/devis"
+            style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'rgba(17,17,17,0.45)',
+              border: '1px solid rgba(17,17,17,0.15)',
+              padding: '8px 14px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              textDecoration: 'none',
+              justifyContent: 'center',
+            }}
+          >
+            Sur devis →
+          </a>
+        )}
       </div>
-    </a>
+    </div>
   )
 }

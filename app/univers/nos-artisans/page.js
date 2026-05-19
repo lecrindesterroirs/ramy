@@ -3,62 +3,77 @@
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 
-const artisans = [
+const categories = [
   {
-    nom: 'Mado Paris',
-    specialite: 'Madeleines',
-    description: "Les madeleines Mado Paris sont notre produit signature. Moelleuses, dorées, reconnaissables au premier goût. Un incontournable de nos petits-déjeuners d'entreprise.",
-    tags: ['Fabrication artisanale', 'Produit signature', 'Paris'],
-    img: '/creations-1.png',
+    titre: 'Boulangerie & Viennoiseries',
+    artisans: [
+      {
+        nom: 'Maison Marques',
+        specialite: 'Viennoiseries',
+        description: "On travaille avec Maison Marques depuis le début. Référencée Gault & Millau, leurs viennoiseries sont confectionnées chaque matin avec des farines françaises rigoureusement sélectionnées. C'est le genre de partenaire qui ne déçoit jamais — régulier, précis, toujours bon.",
+        tags: ['Gault & Millau', 'Fabrication quotidienne', 'Île-de-France'],
+        img: '/creations-2.png',
+      },
+      {
+        nom: "D'un Passage à l'Autre",
+        specialite: 'Boulangerie · Cakes & Crêpes',
+        description: "Une boulangerie artisanale boulonnaise que peu de gens connaissent et qu'on est fiers de faire découvrir. Deux adresses rue Galliéni et rue Paul Bert à Boulogne, dont une gamme certifiée bio. Leurs cakes et crêpes apportent une vraie touche maison à nos prestations.",
+        tags: ['Boulogne-Billancourt', 'Gamme bio certifiée', 'Fait maison'],
+        img: '/buffet.webp',
+      },
+    ],
   },
   {
-    nom: 'Maison Marques',
-    specialite: 'Viennoiseries',
-    description: "Mini-viennoiseries confectionnées chaque matin avec des farines françaises sélectionnées. Un classique du petit-déjeuner, toujours régulier, toujours bon.",
-    tags: ['Farines françaises', 'Fabrication quotidienne', 'Île-de-France'],
-    img: '/creations-2.png',
+    titre: 'Pâtisserie',
+    artisans: [
+      {
+        nom: 'Mado Paris',
+        specialite: 'Madeleines',
+        description: "Les madeleines Mado Paris sont notre produit signature. Fabriquées dans leur laboratoire parisien avec des ingrédients biologiques français, sans huile de palme. Moelleuses, dorées, reconnaissables au premier goût — nos clients les reconnaissent avant même de lire l'étiquette.",
+        tags: ['Ingrédients biologiques', 'Sans huile de palme', 'Paris'],
+        img: '/creations-1.png',
+      },
+      {
+        nom: 'Laura Todd',
+        specialite: 'Cookies',
+        description: "Installés à Paris depuis 1985, pionniers du cookie en France. Leur recette, primée à Chicago en 1933, est produite chaque jour dans leur laboratoire du 18e. Les cookies Laura Todd disparaissent toujours en premier sur nos plateaux. Une adresse qu'on garde précieusement.",
+        tags: ['Paris depuis 1985', 'Recette signature', 'Production quotidienne'],
+        img: '/creations-featured.webp',
+      },
+      {
+        nom: 'Pierre Morel',
+        specialite: 'Macarons',
+        description: "Formé auprès d'un Meilleur Ouvrier de France, Pierre Morel fabrique depuis 2013 dans son laboratoire artisanal. Meringue italienne signature, zéro arôme artificiel, ganaches au chocolat pur origine 64%. Des macarons d'une précision et d'une régularité rarissimes.",
+        tags: ['Meringue italienne', 'Formé par un MOF', 'Chocolat pur origine'],
+        img: '/selection-chef.png',
+      },
+    ],
   },
   {
-    nom: 'Pierre Morel',
-    specialite: 'Macarons',
-    description: "Des macarons précis, aux saveurs nettes et bien définies. Pierre Morel livre une pâtisserie qui tient ses promesses à chaque dégustation.",
-    tags: ['Pâtisserie française', 'Saveurs nettes', 'Fait maison'],
-    img: '/selection-chef.png',
-  },
-  {
-    nom: 'Laura Todd',
-    specialite: 'Cookies',
-    description: "Les cookies Laura Todd sont devenus une référence à Paris. Croustillants dehors, fondants dedans. Ils disparaissent toujours en premier sur nos plateaux.",
-    tags: ['Référence parisienne', 'Recette signature', 'Fait maison'],
-    img: '/creations-featured.webp',
-  },
-  {
-    nom: 'Alain Milliat',
-    specialite: 'Jus & Nectars',
-    description: "La référence française des jus et nectars premium. Des fruits entiers, aucun ajout, une intensité de goût rare. Un choix qui change tout à l'heure du petit-déjeuner.",
-    tags: ['Fruits entiers', 'Sans ajout', 'Premium'],
-    img: '/pause-orange.webp',
-  },
-  {
-    nom: 'Les Vergers de Plaisirs',
-    specialite: 'Jus de fruits frais',
-    description: "Des jus pressés avec des fruits soigneusement sélectionnés. Une fraîcheur naturelle et une générosité de goût qui s'intègrent parfaitement dans nos prestations.",
-    tags: ['Fruits frais', 'Pressé à froid', 'Naturel'],
-    img: '/buffet-sale.webp',
-  },
-  {
-    nom: 'Dammann Frères',
-    specialite: 'Thés & Infusions',
-    description: "Maison de thé parisienne avec plus de trois siècles d'histoire. Des assemblages précis, des arômes définis, une constance de qualité adaptée aux pauses en entreprise.",
-    tags: ['Maison parisienne', 'Assemblages précis', 'Grande maison'],
-    img: '/cocktail.webp',
-  },
-  {
-    nom: "D'un Passage à l'Autre",
-    specialite: 'Boulangerie · Cakes & Crêpes',
-    description: "Une boulangerie artisanale boulonnaise qui travaille chaque jour avec des produits frais. Leurs cakes et crêpes apportent une vraie touche maison à nos prestations.",
-    tags: ['Artisan local', 'Boulogne-Billancourt', 'Fait maison'],
-    img: '/buffet.webp',
+    titre: 'Boissons',
+    artisans: [
+      {
+        nom: 'Alain Milliat',
+        specialite: 'Jus & Nectars',
+        description: "Fondée en 1997 à Valence, dans la Drôme. 38 références, fruits entiers, aucun sucre ajouté, aucun additif. La moitié des fruits vient de producteurs français. Quand on pose un jus Alain Milliat sur une table, les gens le remarquent. C'est ça, un produit qui se justifie seul.",
+        tags: ['Fruits entiers', 'Sans sucre ajouté', 'Drôme · 1997'],
+        img: '/pause-orange.webp',
+      },
+      {
+        nom: 'Les Vergers de Plaisirs',
+        specialite: 'Jus de pomme artisanal',
+        description: "Verger familial planté en 1982 à Plaisir, dans les Yvelines. 10 variétés de pommes sélectionnées pour le goût. Leur jus de pomme artisanal, sans aucun ajout, est l'un de nos produits les plus appréciés en pause. Local, direct, sans intermédiaire.",
+        tags: ['Verger depuis 1982', 'Yvelines', 'Sans ajout'],
+        img: '/buffet-sale.webp',
+      },
+      {
+        nom: 'Dammann Frères',
+        specialite: 'Thés & Infusions',
+        description: "Privilège royal accordé par Louis XIV en 1692. Boutique historique place des Vosges, Paris. Inventeurs du thé aromatisé moderne. Dammann Frères, c'est le choix qu'on fait quand on veut que la pause thé soit aussi soignée que le reste de la prestation.",
+        tags: ['Depuis 1692', 'Place des Vosges', 'Grande maison'],
+        img: '/cocktail.webp',
+      },
+    ],
   },
 ]
 
@@ -112,98 +127,119 @@ export default function NosArtisans() {
           </p>
         </div>
 
-        {/* ── Grille artisans ── */}
-        <div
-          className="artisans-grid"
-          style={{
-            maxWidth: '1440px',
-            margin: '0 auto',
-            padding: '64px 72px 120px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '10px',
-          }}
-        >
-          {artisans.map((a, i) => (
-            <div key={i} style={{ background: 'var(--bg-secondary)' }}>
+        {/* ── Catégories ── */}
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px 120px' }}>
+          {categories.map((cat, ci) => (
+            <div key={ci} style={{ marginBottom: ci < categories.length - 1 ? '96px' : 0 }}>
 
-              {/* Photo */}
-              <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
-                <img
-                  src={a.img}
-                  alt={a.nom}
-                  className="artisan-img"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transition: 'transform 0.6s ease',
-                  }}
-                />
-              </div>
-
-              {/* Cercle portrait */}
-              <div style={{ position: 'relative', height: 0 }}>
-                <img
-                  src={a.img}
-                  alt={a.nom}
-                  className="artisan-avatar"
-                />
-              </div>
-
-              {/* Contenu */}
-              <div style={{ padding: '28px 24px 36px' }}>
-                <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent)',
-                  marginBottom: '8px',
-                }}>
-                  {a.specialite}
-                </p>
-                <h3 style={{
+              {/* Titre catégorie */}
+              <div style={{ marginBottom: '40px' }}>
+                <h2 style={{
                   fontFamily: "'Baskerville Display PT', Georgia, serif",
-                  fontSize: '22px',
+                  fontSize: 'clamp(28px, 3vw, 44px)',
                   fontWeight: 400,
+                  letterSpacing: '-0.01em',
                   color: 'var(--text-primary)',
-                  marginBottom: '12px',
-                  lineHeight: 1.2,
+                  marginBottom: '16px',
+                  lineHeight: 1,
                 }}>
-                  {a.nom}
-                </h3>
-                <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '13px',
-                  lineHeight: 1.7,
-                  color: 'var(--text-secondary)',
-                  marginBottom: '20px',
-                }}>
-                  {a.description}
-                </p>
-
-                {/* Tags */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                  {a.tags.map((tag, j) => (
-                    <span key={j} style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '9px',
-                      fontWeight: 500,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: 'var(--text-secondary)',
-                      border: '1px solid rgba(17,17,17,0.15)',
-                      padding: '4px 8px',
-                    }}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  {cat.titre}
+                </h2>
+                <div style={{ width: '40px', height: '2px', background: 'var(--accent)' }} />
               </div>
 
+              {/* Grille 2 colonnes */}
+              <div
+                className="artisans-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '10px',
+                }}
+              >
+                {cat.artisans.map((a, i) => (
+                  <div key={i} style={{ background: 'var(--bg-secondary)' }}>
+
+                    {/* Photo */}
+                    <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+                      <img
+                        src={a.img}
+                        alt={a.nom}
+                        className="artisan-img"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          display: 'block',
+                          transition: 'transform 0.6s ease',
+                        }}
+                      />
+                    </div>
+
+                    {/* Cercle portrait */}
+                    <div style={{ position: 'relative', height: 0 }}>
+                      <img
+                        src={a.img}
+                        alt={a.nom}
+                        className="artisan-avatar"
+                      />
+                    </div>
+
+                    {/* Contenu */}
+                    <div className="artisan-card-body" style={{ padding: '36px 32px 40px' }}>
+                      <p style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '10px',
+                        fontWeight: 500,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: 'var(--accent)',
+                        marginBottom: '8px',
+                      }}>
+                        {a.specialite}
+                      </p>
+                      <h3 className="artisan-card-title" style={{
+                        fontFamily: "'Baskerville Display PT', Georgia, serif",
+                        fontSize: '26px',
+                        fontWeight: 400,
+                        color: 'var(--text-primary)',
+                        marginBottom: '16px',
+                        lineHeight: 1.2,
+                      }}>
+                        {a.nom}
+                      </h3>
+                      <p className="artisan-card-desc" style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '14px',
+                        lineHeight: 1.75,
+                        color: 'var(--text-secondary)',
+                        marginBottom: '24px',
+                      }}>
+                        {a.description}
+                      </p>
+
+                      {/* Tags */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                        {a.tags.map((tag, j) => (
+                          <span key={j} style={{
+                            fontFamily: "'Neue Montreal', sans-serif",
+                            fontSize: '9px',
+                            fontWeight: 500,
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
+                            color: 'var(--text-secondary)',
+                            border: '1px solid rgba(17,17,17,0.15)',
+                            padding: '4px 8px',
+                          }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -250,7 +286,7 @@ export default function NosArtisans() {
         .artisan-avatar {
           position: absolute;
           top: -28px;
-          left: 16px;
+          left: 20px;
           width: 56px;
           height: 56px;
           border-radius: 50% !important;
@@ -262,13 +298,15 @@ export default function NosArtisans() {
         }
         @media (max-width: 768px) {
           .artisans-header { padding: 60px 24px 48px !important; }
-          .artisans-grid { grid-template-columns: 1fr !important; padding: 40px 24px 80px !important; }
+          .artisans-grid { grid-template-columns: 1fr !important; }
           .artisans-cta { padding: 32px 24px !important; }
           .artisans-cta p { flex-direction: column; gap: 12px; }
+          .artisan-card-title { font-size: 18px !important; }
+          .artisan-card-desc { font-size: 12px !important; }
+          .artisan-card-body { padding: 28px 20px 32px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .artisans-header { padding: 80px 40px 60px !important; }
-          .artisans-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 48px 40px 80px !important; }
           .artisans-cta { padding: 32px 40px !important; }
         }
       `}</style>

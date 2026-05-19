@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useCart } from '../context/CartContext'
 
 const dropdowns = {
   creations: [
@@ -30,6 +31,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const closeTimer = useRef(null)
+  const { totalItems } = useCart()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -203,6 +205,50 @@ export default function Navbar() {
 
         {/* Right nav */}
         <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+
+          {/* Panier */}
+          <a
+            href="/panier"
+            aria-label="Mon panier"
+            style={{
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              color: '#111111',
+              textDecoration: 'none',
+              transition: 'color 0.3s ease',
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+            onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            {totalItems > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-7px',
+                right: '-9px',
+                background: 'var(--accent)',
+                color: '#FFFFFF',
+                fontSize: '9px',
+                fontWeight: 600,
+                fontFamily: "'Neue Montreal', sans-serif",
+                width: '16px',
+                height: '16px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                lineHeight: 1,
+              }}>
+                {totalItems > 9 ? '9+' : totalItems}
+              </span>
+            )}
+          </a>
+
           <a
             href="/contact"
             style={{
