@@ -116,7 +116,7 @@ export default function Footer() {
                   style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >63 bis rue de Sèvres, 92100 Boulogne-Billancourt</a>
+                >63 bis rue de Sèvres,<br />92100 Boulogne-Billancourt</a>
               <span style={{ ...linkStyle, cursor: 'default' }}>Toute Île-de-France</span>
               </div>
             </div>
