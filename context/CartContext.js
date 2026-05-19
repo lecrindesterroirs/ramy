@@ -1,13 +1,15 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useRef } from 'react'
 
 const CartContext = createContext(null)
 
 export function CartProvider({ children }) {
   const [items, setItems] = useState([])
+  // Évite d'écraser le localStorage avec [] au premier rendu
+  const isFirstRender = useRef(true)
 
-  // Persist cart in localStorage
+  // Lecture depuis localStorage au montage
   useEffect(() => {
     try {
       const saved = localStorage.getItem('lecrin-cart')
@@ -15,7 +17,12 @@ export function CartProvider({ children }) {
     } catch {}
   }, [])
 
+  // Écriture dans localStorage — sauf au tout premier rendu
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     try {
       localStorage.setItem('lecrin-cart', JSON.stringify(items))
     } catch {}

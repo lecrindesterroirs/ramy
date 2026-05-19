@@ -210,79 +210,98 @@ export default function ProductsPageTemplate({
 function ProductCard({ product }) {
   const [hovered, setHovered] = useState(false)
   const [added, setAdded] = useState(false)
+  const [qty, setQty] = useState(1)
   const { addItem } = useCart()
 
-  // Match product to structured data by name+label to get the id and price
-  const structured = PRODUCTS.find(p => p.name === product.name && p.label === product.label)
-  const canOrder = !!structured
+  // Un produit est commandable s'il a un prix et un id
+  const canOrder = !!product.price && !!product.id
 
-  const handleAdd = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (!structured) return
-    addItem(structured)
+  const handleAdd = () => {
+    if (!canOrder) return
+    addItem(product, qty)
     setAdded(true)
+    setQty(1)
     setTimeout(() => setAdded(false), 1800)
   }
 
   return (
     <div
-      style={{ display: 'block', textDecoration: 'none', cursor: 'default' }}
+      style={{ cursor: 'default' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF', position: 'relative' }}>
+      <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF' }}>
         <img
           src={product.img}
           alt={product.name}
           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
         />
       </div>
-      <div style={{ padding: '14px 4px 8px' }}>
+
+      <div style={{ padding: '14px 4px 10px' }}>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '4px' }}>
           {product.name}
         </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '12px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '14px' }}>
           {product.label}
         </p>
+
         {canOrder ? (
-          <button
-            onClick={handleAdd}
-            style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: added ? '#FFFFFF' : 'var(--accent)',
-              background: added ? 'var(--accent)' : 'transparent',
-              border: '1px solid var(--accent)',
-              padding: '8px 14px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              transition: 'all 0.2s ease',
-              width: '100%',
-              justifyContent: 'center',
-            }}
-          >
-            {added ? (
-              <>
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="2,6 5,9 10,3"/>
-                </svg>
-                Ajouté
-              </>
-            ) : (
-              <>
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-                  <line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/>
-                </svg>
-                Ajouter au panier
-              </>
-            )}
-          </button>
+          <div>
+            {/* Sélecteur quantité */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0', border: '1px solid rgba(17,17,17,0.12)', marginBottom: '8px', width: 'fit-content' }}>
+              <button
+                onClick={() => setQty(q => Math.max(1, q - 1))}
+                style={{ width: '30px', height: '30px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
+              >−</button>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-primary)', minWidth: '24px', textAlign: 'center' }}>
+                {qty}
+              </span>
+              <button
+                onClick={() => setQty(q => q + 1)}
+                style={{ width: '30px', height: '30px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
+              >+</button>
+            </div>
+
+            {/* Bouton ajouter */}
+            <button
+              onClick={handleAdd}
+              style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '10px',
+                fontWeight: 500,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: added ? '#FFFFFF' : 'var(--accent)',
+                background: added ? 'var(--accent)' : 'transparent',
+                border: '1px solid var(--accent)',
+                padding: '8px 14px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.2s ease',
+                width: '100%',
+                justifyContent: 'center',
+              }}
+            >
+              {added ? (
+                <>
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="2,6 5,9 10,3"/>
+                  </svg>
+                  Ajouté !
+                </>
+              ) : (
+                <>
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/>
+                  </svg>
+                  Ajouter au panier
+                </>
+              )}
+            </button>
+          </div>
         ) : (
           <a
             href="/devis"
