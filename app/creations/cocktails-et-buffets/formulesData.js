@@ -1,6 +1,8 @@
 export const FORMULES = [
+  /* ── COCKTAILS ─────────────────────────────────────────────────── */
   {
     slug: 'cocktail-sucre',
+    type: 'cocktail',
     nom: 'Cocktail Sucré',
     pieces: '8 pièces / pers.',
     prix: 'À partir de 22 € HT / pers.',
@@ -18,6 +20,7 @@ export const FORMULES = [
       'Brochette de fruits frais',
       'Tartelette fruits rouges',
     ],
+    categories: null,
     ideal: 'Goûters premium, conférences, pauses collaborateurs, accueil clients.',
     img: '/prod-chouquettes.webp',
     badge: null,
@@ -38,6 +41,7 @@ export const FORMULES = [
   },
   {
     slug: 'cocktail-dejeunatoire',
+    type: 'cocktail',
     nom: 'Cocktail Déjeunatoire',
     pieces: '12 pièces / pers.',
     detail: '9 salées · 3 sucrées',
@@ -61,6 +65,7 @@ export const FORMULES = [
       'Verrine citron & lemon curd',
       'Brochette de fruits frais',
     ],
+    categories: null,
     ideal: 'Le format corporate premium par excellence : léger, élégant et facile à déguster debout.',
     img: '/buffet.webp',
     badge: 'Le plus demandé',
@@ -81,6 +86,7 @@ export const FORMULES = [
   },
   {
     slug: 'cocktail-dinatoire',
+    type: 'cocktail',
     nom: 'Cocktail Dînatoire',
     pieces: '18 pièces / pers.',
     detail: '14 salées · 4 sucrées',
@@ -110,6 +116,7 @@ export const FORMULES = [
       'Panna cotta vanille fruits rouges',
       'Tartelette citron',
     ],
+    categories: null,
     ideal: 'Un cocktail élégant, généreux et visuellement fort, pensé pour marquer les esprits.',
     img: '/cocktail.webp',
     badge: null,
@@ -130,6 +137,7 @@ export const FORMULES = [
   },
   {
     slug: 'signature-lecrin',
+    type: 'cocktail',
     nom: "Signature L'Écrin",
     pieces: '22 pièces / pers.',
     detail: '16 salées · 6 sucrées',
@@ -163,6 +171,7 @@ export const FORMULES = [
       'Verrine citron & lemon curd',
       'Fruits frais premium',
     ],
+    categories: null,
     ideal: 'Lancements produits, réceptions VIP, événements presse, soirées de prestige.',
     img: '/buffet-sale.webp',
     badge: 'Prestige',
@@ -179,6 +188,251 @@ export const FORMULES = [
 
       <h2>Organisation et délais</h2>
       <p>En raison de la complexité des préparations, nous recommandons de commander la Signature L'Écrin <strong>au minimum 5 jours à l'avance</strong>. Un échange préalable avec notre équipe permet d'affiner la composition selon vos contraintes alimentaires et vos préférences. Devis personnalisé sous 24h.</p>
+    `,
+  },
+
+  /* ── BUFFETS À PARTAGER ─────────────────────────────────────────── */
+  {
+    slug: 'buffet-mediterraneen',
+    type: 'buffet',
+    nom: 'Buffet Méditerranéen Signature',
+    pieces: null,
+    prix: 'À partir de 36 € HT / pers.',
+    prixNum: 36,
+    descCourt: "Grandes focaccias, salades fraîches et pièces gourmandes — un buffet généreux dans l'ADN méditerranéen de la maison.",
+    desc: "Un buffet généreux et ensoleillé, composé de grandes pièces à partager, de salades fraîches et de pièces gourmandes artisanales. L'ADN méditerranéen de la maison dans toute son expression.",
+    salees: [],
+    sucrees: [],
+    categories: [
+      {
+        label: 'Grandes pièces à partager',
+        items: [
+          'Grande focaccia burrata & pesto verde',
+          'Focaccia stracciatella pistache',
+          'Pain artisanal & huile d\'olive premium',
+        ],
+      },
+      {
+        label: 'Salades fraîches',
+        items: [
+          'Salade d\'artichaut, basilic & tomates confites',
+          'Salade de pousses d\'épinard & crumble parmesan',
+          'Salade d\'asperges vertes & sésame noir',
+        ],
+      },
+      {
+        label: 'Pièces gourmandes',
+        items: [
+          'Wrap poulet rôti parmesan',
+          'Navettes saumon citronné',
+          'Mini sandwichs focaccia',
+        ],
+      },
+      {
+        label: 'Buffet sucré',
+        items: [
+          'Madeleines signature',
+          'Verrines citron & lemon curd',
+          'Fruits frais découpés',
+        ],
+      },
+    ],
+    ideal: 'Déjeuners d\'équipe, séminaires, réceptions clients en journée.',
+    img: '/buffet.webp',
+    badge: null,
+    seoTitle: 'Buffet méditerranéen traiteur Paris — grandes pièces à partager livrées en Île-de-France',
+    seoArticle: `
+      <h2>Le Buffet Méditerranéen Signature : généreux, premium, artisanal</h2>
+      <p>Le <strong>Buffet Méditerranéen Signature</strong> est la traduction directe de l'ADN de L'Écrin Traiteur : des produits beaux, des saveurs franches, une générosité assumée. Grandes focaccias burrata & pesto, salades fraîches, pièces gourmandes — tout est pensé pour que le buffet soit aussi beau à regarder qu'agréable à déguster.</p>
+
+      <h2>Le format buffet : pourquoi ça change tout</h2>
+      <p>Un buffet à partager crée une dynamique différente du cocktail dînatoire. Les convives s'approprient l'espace, reviennent se servir, échangent autour des plats. C'est un format naturellement convivial, parfait pour les <strong>déjeuners d'équipe</strong>, les journées de séminaire ou les réceptions clients en journée.</p>
+
+      <h2>Une composition pensée pour impressionner</h2>
+      <p>Les grandes focaccias garnies constituent la pièce centrale du buffet — elles sont visuellement fortes et gustativement généreuses. Les salades fraîches apportent la légèreté et la couleur. Les pièces gourmandes (wraps, navettes, mini sandwichs) assurent la satiété. Les douceurs finales — madeleines, verrines citron, fruits frais — concluent sur une note artisanale.</p>
+
+      <h2>Commander votre buffet méditerranéen à Paris</h2>
+      <p>Livraison dès <strong>6h30</strong>, partout en Île-de-France. Commandez au minimum <strong>48h à l'avance</strong>. Facturation entreprise avec TVA disponible. Devis personnalisé sous 24h.</p>
+    `,
+  },
+  {
+    slug: 'buffet-garden-party',
+    type: 'buffet',
+    nom: 'Buffet Garden Party',
+    pieces: null,
+    prix: 'À partir de 44 € HT / pers.',
+    prixNum: 44,
+    descCourt: "Tables fraîches et végétales, grandes pièces généreuses et sélection sucrée signature — le buffet le plus élégant visuellement.",
+    desc: "Un buffet frais, végétal et visuellement fort. Burrata entière, salades d'avocat, houmous, macarons signature — conçu pour créer un moment à la fois beau et délicieux.",
+    salees: [],
+    sucrees: [],
+    categories: [
+      {
+        label: 'Tables fraîches & végétales',
+        items: [
+          'Burrata entière & tomates anciennes',
+          'Salade d\'avocat au citron confit',
+          'Légumes grillés aux herbes fraîches',
+          'Houmous citronné & crème de poivrons',
+        ],
+      },
+      {
+        label: 'Grandes pièces',
+        items: [
+          'Focaccia truffe & mozzarella',
+          'Wrap avocat feta',
+          'Club sandwich poulet rôti',
+          'Mini bagels saumon fumé',
+        ],
+      },
+      {
+        label: 'Sélection sucrée',
+        items: [
+          'Panna cotta vanille fruits rouges',
+          'Macarons signature',
+          'Tartelettes fruits rouges',
+          'Corbeilles de fruits frais',
+        ],
+      },
+    ],
+    ideal: 'Événements en terrasse, garden parties d\'entreprise, lancements de produit en extérieur.',
+    img: '/prod-brochettes.webp',
+    badge: 'Coup de cœur',
+    seoTitle: 'Buffet garden party traiteur Paris — burrata, focaccias & macarons livrés en Île-de-France',
+    seoArticle: `
+      <h2>Le Buffet Garden Party : le buffet le plus beau de notre carte</h2>
+      <p>Le <strong>Buffet Garden Party</strong> est notre formule la plus visuellement réussie. Burrata entière posée sur tomates anciennes, légumes grillés aux herbes, houmous citronné, grandes focaccias, macarons signature : l'ensemble forme une table à la fois généreuse, colorée et élégante. Exactement ce qu'on attend d'un traiteur haut de gamme parisien.</p>
+
+      <h2>Un format pensé pour les événements en extérieur</h2>
+      <p>Garden parties d'entreprise, lancements de produit en terrasse, réceptions estivales : le Buffet Garden Party s'adapte naturellement à tous les espaces. Les produits frais et les couleurs franches créent une ambiance immédiatement séduisante. Vos invités n'auront pas besoin qu'on leur explique que c'est bon — ils le voient.</p>
+
+      <h2>Composition équilibrée entre fraîcheur et gourmandise</h2>
+      <p>La table végétale — burrata, avocat, légumes grillés, houmous — pose les bases d'un buffet léger et généreux. Les grandes pièces (focaccia truffe & mozzarella, club sandwich poulet, mini bagels saumon) assurent la satiété. La sélection sucrée — panna cotta, macarons signature, corbeilles de fruits — conclut avec l'élégance artisanale de la maison.</p>
+
+      <h2>Organisation et livraison</h2>
+      <p>Livraison dans vos locaux ou en espace extérieur, partout en Île-de-France. Commandez <strong>48h à l'avance</strong> pour garantir la composition complète. Pour les événements de plus de 30 personnes, anticipez 72h. Devis personnalisé sous 24h.</p>
+    `,
+  },
+  {
+    slug: 'buffet-italian-table',
+    type: 'buffet',
+    nom: 'Buffet Italian Table',
+    pieces: null,
+    prix: 'À partir de 48 € HT / pers.',
+    prixNum: 48,
+    descCourt: "Grandes pièces italiennes, planches antipasti, salades maison et douceurs — une table d'inspiration Riviera, élégante et généreuse.",
+    desc: "Une table d'inspiration italienne : grandes focaccias garnies, planches antipasti, salades maison et douceurs signature. Le chic de la Riviera dans vos bureaux parisiens.",
+    salees: [],
+    sucrees: [],
+    categories: [
+      {
+        label: 'Grandes pièces italiennes',
+        items: [
+          'Focaccia pesto & burrata',
+          'Focaccia tomates confites stracciatella',
+          'Grandes planches antipasti',
+        ],
+      },
+      {
+        label: 'Salades maison',
+        items: [
+          'Salade artichaut parmesan',
+          'Salade méditerranéenne aux herbes fraîches',
+          'Salade de légumes grillés basilic',
+        ],
+      },
+      {
+        label: 'Pièces premium',
+        items: [
+          'Mini buns poulet effiloché',
+          'Sandwichs focaccia saumon',
+          'Wraps parmesan & légumes grillés',
+        ],
+      },
+      {
+        label: 'Douceurs',
+        items: [
+          'Tiramisu en verrine',
+          'Verrines citron lemon curd',
+          'Madeleines signature',
+          'Fruits découpés premium',
+        ],
+      },
+    ],
+    ideal: 'Déjeuners de direction, réceptions clients élégantes, séminaires résidentiels.',
+    img: '/section-reception.webp',
+    badge: null,
+    seoTitle: 'Buffet traiteur italien Paris — focaccias, antipasti & tiramisu livrés en Île-de-France',
+    seoArticle: `
+      <h2>Le Buffet Italian Table : la Riviera dans vos bureaux</h2>
+      <p>Le <strong>Buffet Italian Table</strong> s'inspire des grandes tablées italiennes — généreuses, conviviales, visuellement fortes. Grandes focaccias pesto & burrata, planches antipasti, salades maison, tiramisu en verrine : l'ensemble évoque le déjeuner sous les pins, tout en restant parfaitement adapté aux exigences d'un événement d'entreprise parisien.</p>
+
+      <h2>L'Italie comme prétexte à l'excellence</h2>
+      <p>Focaccia, burrata, stracciatella, parmesan affiné, basilic frais : les produits italiens permettent de composer des assiettes belles et généreuses sans jamais tomber dans le cliché. Ici, chaque pièce est travaillée avec les exigences artisanales de la maison — les saveurs sont franches, les présentations soignées.</p>
+
+      <h2>Pour quels événements ?</h2>
+      <p>Déjeuners de direction, réceptions clients élégantes, séminaires résidentiels avec déjeuner : le Buffet Italian Table est le choix idéal quand vous voulez une table qui impose le respect sans la rigidité d'un repas assis. Le tiramisu en verrine, en particulier, crée toujours un moment.</p>
+
+      <h2>Commande et livraison</h2>
+      <p>Livraison partout en Île-de-France, dès <strong>6h30</strong>. Commandez au minimum <strong>48h à l'avance</strong>. Pour les réceptions de direction de plus de 20 personnes, nous recommandons 72h de délai. Devis personnalisé sous 24h.</p>
+    `,
+  },
+  {
+    slug: 'grand-buffet-signature',
+    type: 'buffet',
+    nom: "Grand Buffet Signature L'Écrin",
+    pieces: null,
+    prix: 'À partir de 75 € HT / pers.',
+    prixNum: 75,
+    descCourt: "Grandes tables scénographiées, sélection sucrée signature, saumon gravlax, desserts raffinés — une expérience événementielle haut de gamme.",
+    desc: "La formule buffet la plus ambitieuse de la maison. Grandes tables scénographiées, saumon gravlax, fruits frais premium, sélection de desserts raffinés — pensée pour les événements qui ne souffrent aucune concession.",
+    salees: [],
+    sucrees: [],
+    categories: [
+      {
+        label: 'Grandes tables scénographiées',
+        items: [
+          'Burrata entière & antipasti',
+          'Grandes focaccias garnies',
+          'Salades artisanales de saison',
+          'Tartinades maison',
+        ],
+      },
+      {
+        label: 'Sélection premium',
+        items: [
+          'Sélection de sandwichs premium',
+          'Saumon gravlax & herbes fraîches',
+          'Fruits frais premium',
+        ],
+      },
+      {
+        label: 'Sélection sucrée signature',
+        items: [
+          "Madeleines fleur d'oranger",
+          'Panna cotta vanille',
+          'Macarons artisanaux',
+          'Tartelettes fruits rouges',
+          'Verrines citron & lemon curd',
+        ],
+      },
+    ],
+    ideal: 'Réceptions VIP, inaugurations, soirées de prestige, événements presse.',
+    img: '/img-reception.webp',
+    badge: 'Prestige',
+    seoTitle: "Grand Buffet Signature L'Écrin — traiteur prestige Paris grandes tables événementielles",
+    seoArticle: `
+      <h2>Le Grand Buffet Signature : une expérience, pas juste un buffet</h2>
+      <p>Le <strong>Grand Buffet Signature L'Écrin</strong> est notre format le plus ambitieux. Ce n'est pas un buffet au sens classique du terme — c'est une scénographie culinaire. Grandes tables garnies, burrata entière, saumon gravlax, sélection de desserts raffinés : chaque élément est pensé pour contribuer à une impression d'ensemble forte et mémorable.</p>
+
+      <h2>La mise en scène comme partie intégrante de la prestation</h2>
+      <p>Dans un Grand Buffet Signature, la présentation est aussi importante que le goût. Les grandes focaccias garnies, les planches de fruits frais premium, les verrines alignées forment une table qui impressionne avant même qu'on y goûte. C'est ce que vos invités voient en entrant dans la pièce. C'est ce qui ancre l'événement dans leur mémoire.</p>
+
+      <h2>Pour les occasions qui ne tolèrent pas l'ordinaire</h2>
+      <p>Réceptions VIP, inaugurations, soirées de prestige, événements presse, dîners de direction : le Grand Buffet Signature s'adresse aux entreprises pour qui la qualité du traiteur est un signal fort envoyé à leurs invités. La sélection sucrée signature — madeleines fleur d'oranger, macarons artisanaux, panna cotta vanille, tartelettes fruits rouges — conclu l'expérience avec la même exigence que son ouverture.</p>
+
+      <h2>Organisation et accompagnement</h2>
+      <p>En raison de la complexité de la mise en place, nous recommandons de contacter notre équipe <strong>au minimum 5 jours à l'avance</strong>. Un échange préalable permet d'adapter la scénographie à votre espace et à vos contraintes. Devis personnalisé sous 24h.</p>
     `,
   },
 ]

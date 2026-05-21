@@ -91,16 +91,50 @@ export default function FormulePage() {
               {formule.desc}
             </p>
 
-            {/* Composition */}
-            <div className="formule-pieces" style={{ display: 'grid', gridTemplateColumns: formule.salees.length > 0 ? '1fr 1fr' : '1fr', gap: '24px', marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>
+            {/* Composition — buffet (categories) ou cocktail (salées/sucrées) */}
+            {formule.categories ? (
+              <div style={{ marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>
+                {formule.categories.map((cat, ci) => (
+                  <div key={ci} style={{ marginBottom: ci < formule.categories.length - 1 ? '20px' : 0 }}>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
+                      {cat.label}
+                    </p>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                      {cat.items.map((item, i) => (
+                        <li key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
+                          <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px', fontSize: '10px' }}>–</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="formule-pieces" style={{ display: 'grid', gridTemplateColumns: formule.salees.length > 0 ? '1fr 1fr' : '1fr', gap: '24px', marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>
 
-              {formule.salees.length > 0 && (
+                {formule.salees.length > 0 && (
+                  <div>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '12px' }}>
+                      Pièces salées
+                    </p>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      {formule.salees.map((item, i) => (
+                        <li key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
+                          <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px', fontSize: '10px' }}>–</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '12px' }}>
-                    Pièces salées
+                    Pièces sucrées
                   </p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    {formule.salees.map((item, i) => (
+                    {formule.sucrees.map((item, i) => (
                       <li key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
                         <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px', fontSize: '10px' }}>–</span>
                         {item}
@@ -108,22 +142,8 @@ export default function FormulePage() {
                     ))}
                   </ul>
                 </div>
-              )}
-
-              <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '12px' }}>
-                  Pièces sucrées
-                </p>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  {formule.sucrees.map((item, i) => (
-                    <li key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
-                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px', fontSize: '10px' }}>–</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
+            )}
 
             {/* Format idéal */}
             <div style={{ background: 'var(--bg-secondary)', padding: '16px 20px', marginBottom: '28px' }}>

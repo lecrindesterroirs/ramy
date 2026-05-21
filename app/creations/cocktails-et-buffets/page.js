@@ -4,6 +4,9 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { FORMULES } from './formulesData'
 
+const COCKTAILS = FORMULES.filter(f => f.type === 'cocktail')
+const BUFFETS   = FORMULES.filter(f => f.type === 'buffet')
+
 const SEO_ARTICLE = `
   <h2>Traiteur cocktails et buffets d'entreprise à Paris</h2>
   <p>Le <strong>cocktail d'entreprise</strong> est le format événementiel le plus polyvalent. Plus détendu qu'un repas assis, plus généreux qu'un simple buffet : c'est l'événement qui favorise les échanges naturels entre collaborateurs, clients et partenaires. L'Écrin Traiteur livre vos cocktails et buffets à Paris et en Île-de-France, dès 6h30.</p>
@@ -14,6 +17,60 @@ const SEO_ARTICLE = `
   <h2>Organiser votre cocktail d'entreprise à Paris</h2>
   <p>Commandez au minimum <strong>48 à 72h à l'avance</strong>. L'Écrin Traiteur livre dans vos locaux, chez un partenaire ou dans un espace événementiel, partout en Île-de-France. Facturation entreprise avec TVA disponible. Devis personnalisé sous 24h.</p>
 `
+
+function FormulaCard({ f }) {
+  return (
+    <a
+      href={`/creations/cocktails-et-buffets/${f.slug}`}
+      className="formule-card"
+      style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', textDecoration: 'none', transition: 'opacity 0.25s ease' }}
+    >
+      {/* Image */}
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
+        <img src={f.img} alt={f.nom}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+          className="formule-img"
+        />
+        {f.badge && (
+          <span style={{ position: 'absolute', top: '16px', left: '16px', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
+            {f.badge}
+          </span>
+        )}
+      </div>
+
+      {/* Contenu */}
+      <div style={{ padding: '32px 36px 36px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <div style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+          <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(20px, 2vw, 28px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.1 }}>
+            {f.nom}
+          </h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '8px' }}>
+            {f.pieces && (
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent)', letterSpacing: '0.04em' }}>
+                {f.pieces}
+              </span>
+            )}
+            {f.detail && (
+              <>
+                <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>—</span>
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.45)' }}>{f.detail}</span>
+              </>
+            )}
+          </div>
+          <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)' }}>
+            {f.prix}
+          </p>
+        </div>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '24px', flex: 1 }}>
+          {f.descCourt}
+        </p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+          Voir la formule →
+        </p>
+      </div>
+    </a>
+  )
+}
 
 export default function CocktailsEtBuffets() {
   return (
@@ -42,79 +99,38 @@ export default function CocktailsEtBuffets() {
           </div>
         </div>
 
-        {/* Intro */}
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px 0' }}>
+        {/* ── Section Cocktails ── */}
+        <div className="section-intro" style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px 0' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
-            Nos formules
+            Cocktails
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '16px' }}>
-            Quatre formules, une seule exigence.
+            Quatre formules cocktail, une seule exigence.
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '560px' }}>
-            De la pause sucrée premium au cocktail dînatoire de prestige — chaque formule est composée de pièces artisanales, livrées prêtes à servir à Paris et en Île-de-France.
+            De la pause sucrée premium au cocktail dînatoire de prestige — pièces artisanales, livrées prêtes à servir.
           </p>
         </div>
 
-        {/* Grille des formules */}
-        <div className="formules-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 96px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
-          {FORMULES.map((f) => (
-            <a
-              key={f.slug}
-              href={`/creations/cocktails-et-buffets/${f.slug}`}
-              className="formule-card"
-              style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', textDecoration: 'none', transition: 'opacity 0.25s ease' }}
-            >
-              {/* Image */}
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
-                <img src={f.img} alt={f.nom}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
-                  className="formule-img"
-                />
-                {f.badge && (
-                  <span style={{ position: 'absolute', top: '16px', left: '16px', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
-                    {f.badge}
-                  </span>
-                )}
-              </div>
+        <div className="formules-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+          {COCKTAILS.map((f) => <FormulaCard key={f.slug} f={f} />)}
+        </div>
 
-              {/* Contenu */}
-              <div style={{ padding: '32px 36px 36px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+        {/* ── Section Buffets ── */}
+        <div className="section-intro" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px 0' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+            Buffets à partager
+          </p>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '16px' }}>
+            Des tables qui imposent le respect.
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '560px' }}>
+            Grandes focaccias, salades fraîches, pièces à partager — des buffets scénographiés pour les événements qui ne souffrent aucune concession.
+          </p>
+        </div>
 
-                {/* Nom + pièces + prix */}
-                <div style={{ marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-                  <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2vw, 30px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.1 }}>
-                    {f.nom}
-                  </h3>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '8px' }}>
-                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent)', letterSpacing: '0.04em' }}>
-                      {f.pieces}
-                    </span>
-                    {f.detail && (
-                      <>
-                        <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>—</span>
-                        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.45)' }}>
-                          {f.detail}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)' }}>
-                    {f.prix}
-                  </p>
-                </div>
-
-                {/* Description courte */}
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '24px', flex: 1 }}>
-                  {f.descCourt}
-                </p>
-
-                {/* CTA */}
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
-                  Voir la formule →
-                </p>
-              </div>
-            </a>
-          ))}
+        <div className="formules-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 96px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+          {BUFFETS.map((f) => <FormulaCard key={f.slug} f={f} />)}
         </div>
 
         {/* CTA devis */}
