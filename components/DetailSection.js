@@ -115,9 +115,6 @@ export default function DetailSection() {
                 paddingRight: i < 2 ? '48px' : '0',
               }}
             >
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.14em', color: 'var(--accent)', marginBottom: '16px' }}>
-                {item.num}
-              </p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '12px' }}>
                 {item.title}
               </p>
@@ -150,9 +147,6 @@ export default function DetailSection() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.14em', color: 'var(--accent)' }}>
-                    {item.num}
-                  </span>
                   <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
                     {item.title}
                   </span>

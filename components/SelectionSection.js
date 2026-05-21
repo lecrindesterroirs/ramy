@@ -113,7 +113,6 @@ export default function SelectionSection() {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '12px',
-                alignItems: 'end',
               }}
             >
               {args.map((item, i) => (
@@ -121,7 +120,7 @@ export default function SelectionSection() {
                   key={item.num}
                   style={{
                     background: '#FFFFFF',
-                    padding: `${24 + (2 - i) * 28}px 20px 24px`,
+                    padding: '20px 20px 20px',
                   }}
                 >
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '10px', lineHeight: 1.5 }}>
