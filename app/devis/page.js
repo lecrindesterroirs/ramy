@@ -318,7 +318,7 @@ function Step2({ data, setData, showErrors }) {
 
 // ── Step 3 ────────────────────────────────────────────────────────────────────
 
-function Step3({ data, setData }) {
+function Step3({ data, setData, onEdit }) {
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
 
   const prestationLabel = prestations.find(p => p.id === data.prestation)?.titre || '—'
@@ -384,7 +384,7 @@ function Step3({ data, setData }) {
         </div>
         <button
           type="button"
-          onClick={() => {}}
+          onClick={onEdit}
           style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid rgba(17,17,17,0.07)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '14px 0 0', outline: 'none', display: 'block', textDecoration: 'underline', textUnderlineOffset: '3px' }}
         >
           Modifier les informations
@@ -472,7 +472,7 @@ export default function Contact() {
             <div style={{ flex: 1, paddingBottom: '56px', paddingTop: '32px', overflowY: 'auto' }}>
               {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
               {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
-              {step === 3 && <Step3 data={data} setData={setData} />}
+              {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
             </div>
 
             {/* Bottom nav bar */}
