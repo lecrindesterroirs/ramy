@@ -12,7 +12,8 @@ const categories = [
         specialite: 'Viennoiseries',
         description: "On travaille avec Maison Marques depuis le début. Référencée Gault & Millau, leurs viennoiseries sont confectionnées chaque matin avec des farines françaises rigoureusement sélectionnées. C'est le genre de partenaire qui ne déçoit jamais — régulier, précis, toujours bon.",
         tags: ['Gault & Millau', 'Fabrication quotidienne', 'Île-de-France'],
-        img: '/creations-2.png',
+        img: '/maison-marques.avif',
+        avatar: '/carlos-marques.avif',
       },
       {
         nom: "D'un Passage à l'Autre",
