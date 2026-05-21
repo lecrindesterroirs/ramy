@@ -284,7 +284,7 @@ function Step2({ data, setData }) {
           <div>
             <label style={labelStyle}>Ville</label>
             <div style={{ position: 'relative' }}>
-              <input value={data.ville} onChange={e => set('ville', e.target.value)} placeholder="Ex : Paris, Lyon, Bordeaux..." style={fieldStyle} />
+              <input value={data.ville} onChange={e => set('ville', e.target.value)} placeholder="Ex : Paris, Suresnes, Boulogne..." style={fieldStyle} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
           </div>
