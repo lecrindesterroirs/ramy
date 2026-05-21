@@ -134,7 +134,7 @@ export default function FAQSection() {
                           fontSize: 'clamp(15px, 1.4vw, 18px)', fontWeight: 400,
                           color: 'var(--text-primary)', letterSpacing: '0.005em', lineHeight: 1.3,
                         }}>
-                          {item.question}
+                          {item.question.replace(/ \?/g, ' ?')}
                         </span>
                         <span style={{
                           fontFamily: "'Neue Montreal', sans-serif",
