@@ -8,7 +8,7 @@ const etapes = [
     num: '01',
     titre: 'Écoute & Conception',
     desc: "Chaque prestation commence par une conversation. Nous prenons le temps de comprendre vos besoins, vos envies, vos contraintes, pour concevoir une proposition sur-mesure.",
-    img: '/img-reception.webp',
+    img: '/petit-dejeuner-ds.jpg',
   },
   {
     num: '02',

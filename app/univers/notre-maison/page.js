@@ -27,7 +27,7 @@ const etapes = [
       "Chaque prestation débute par une compréhension attentive de vos besoins et du moment que vous souhaitez créer.",
       "Formats, produits, contraintes alimentaires, horaires ou demandes spécifiques : nous concevons des prestations sur mesure, pensées pour s'adapter naturellement à chaque entreprise.",
     ],
-    img: '/img-reception.webp',
+    img: '/petit-dejeuner-ds.jpg',
   },
   {
     num: '02',
