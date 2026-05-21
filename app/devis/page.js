@@ -161,38 +161,45 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step, goTo }) {
   const steps = ['Prestation', 'Votre projet', 'Vos coordonnées']
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '72px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
+    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, padding: '72px 16px 0' }}>
       {steps.map((label, i) => {
         const idx = i + 1
         const clickable = idx < step
-        const active = idx === step
-        const done = idx < step
         return (
-          <div key={i} style={{ display: 'flex', alignItems: 'center', flex: i < steps.length - 1 ? '1' : '0' }}>
-            <span
+          <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
+            <div
               onClick={() => clickable && goTo(idx)}
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '13px',
-                fontWeight: 400,
-                letterSpacing: '0.08em',
-                color: active ? '#E0A126' : done ? 'rgba(17,17,17,0.35)' : 'rgba(17,17,17,0.28)',
-                cursor: clickable ? 'pointer' : 'default',
-                transition: 'color 0.3s ease',
-                flexShrink: 0,
-                userSelect: 'none',
-              }}
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', cursor: clickable ? 'pointer' : 'default' }}
             >
-              {String(idx).padStart(2, '0')}
-            </span>
-            {i < steps.length - 1 && (
               <div style={{
-                flex: 1,
-                height: '1px',
-                background: done ? 'rgba(17,17,17,0.2)' : 'rgba(17,17,17,0.12)',
-                margin: '0 20px',
-                transition: 'background 0.4s ease',
-              }} />
+                width: '28px', height: '28px', borderRadius: '50%',
+                background: idx <= step ? '#E0A126' : 'transparent',
+                border: `1px solid ${idx <= step ? '#E0A126' : 'rgba(17,17,17,0.18)'}`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'all 0.4s ease', flexShrink: 0,
+              }}>
+                {idx < step ? (
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5"><polyline points="20,6 9,17 4,12"/></svg>
+                ) : (
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, color: idx === step ? '#FFFFFF' : 'rgba(17,17,17,0.35)' }}>{idx}</span>
+                )}
+              </div>
+              <span className="progress-label" style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '10px',
+                fontWeight: idx === step ? 500 : 400,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: idx === step ? 'var(--text-primary)' : clickable ? 'rgba(17,17,17,0.55)' : 'rgba(17,17,17,0.35)',
+                transition: 'color 0.3s ease',
+                whiteSpace: 'nowrap',
+                textDecoration: clickable ? 'underline' : 'none',
+                textUnderlineOffset: '3px',
+                textDecorationColor: 'rgba(17,17,17,0.2)',
+              }}>{label}</span>
+            </div>
+            {i < steps.length - 1 && (
+              <div className="progress-line" style={{ width: '80px', height: '1px', background: idx < step ? '#E0A126' : 'rgba(17,17,17,0.12)', margin: '0 12px 22px', transition: 'background 0.4s ease', flexShrink: 0 }} />
             )}
           </div>
         )
@@ -512,15 +519,30 @@ export default function Contact() {
                     Erreur d'envoi. Réessayez ou appelez-nous.
                   </p>
                 )}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)' }}>
-                    Étape {step} / 3
-                  </span>
-                  <div style={{ display: 'flex', gap: '4px' }}>
-                    {[1,2,3].map(i => (
-                      <div key={i} style={{ width: i === step ? '24px' : '6px', height: '3px', background: i <= step ? '#E0A126' : 'rgba(17,17,17,0.12)', borderRadius: '2px', transition: 'all 0.4s ease' }} />
-                    ))}
-                  </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  {[1,2,3].map(i => (
+                    <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
+                      <span style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '11px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        color: i === step ? '#E0A126' : 'rgba(17,17,17,0.28)',
+                        transition: 'color 0.3s ease',
+                      }}>
+                        {String(i).padStart(2, '0')}
+                      </span>
+                      {i < 3 && (
+                        <div style={{
+                          width: '32px',
+                          height: '1px',
+                          background: i < step ? 'rgba(17,17,17,0.2)' : 'rgba(17,17,17,0.1)',
+                          margin: '0 8px',
+                          transition: 'background 0.4s ease',
+                        }} />
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
 
