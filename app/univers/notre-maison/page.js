@@ -54,7 +54,7 @@ const etapes = [
       "Une expérience premium ne repose pas uniquement sur le produit, mais aussi sur la précision de son exécution. C'est pourquoi chaque livreur fait pleinement partie de nos équipes et de l'expérience que nous proposons.",
       "Présents dès 6h30, nous assurons des livraisons ponctuelles, soignées et pensées pour s'intégrer naturellement au rythme des entreprises.",
     ],
-    img: '/buffet.webp',
+    img: '/livraison-installation.webp',
   },
 ]
 
