@@ -1,24 +1,7 @@
 'use client'
 
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
-
-const fallback = [
-  { name: 'Jus de Pomme',                  label: '1 litre — 9,50€',   img: '/bois-jus-pomme.webp' },
-  { name: "Jus d'Orange",                  label: '1 litre — 9,50€',   img: '/bois-jus-orange.webp' },
-  { name: "Jus d'Abricot",                 label: '1 litre — 10,50€',  img: '/bois-jus-abricot.webp' },
-  { name: 'Jus de Pêche',                  label: '1 litre — 10,50€',  img: '/bois-jus-peche.webp' },
-  { name: 'Jus de Fraise',                 label: '1 litre — 10,50€',  img: '/bois-jus-fraise.webp' },
-  { name: "Jus d'Orange Pressé Minute",    label: '1 litre — 9,90€',   img: '/bois-jus-orange-presse.webp' },
-  { name: 'Jus de Pomme du Verger',        label: '1 litre — 9,50€',   img: '/bois-jus-verger.webp' },
-  { name: 'Jus de Pomme-Framboise',        label: '1 litre — 9,50€',   img: '/bois-jus-framboise.webp' },
-  { name: 'Citronnade Gingembre JOMO',     label: '1 litre — 9,50€',   img: '/bois-citronnade.webp' },
-  { name: 'Thermos de Café Bio',           label: '1 litre — 19,50€',  img: '/bois-thermos-cafe.webp' },
-  { name: 'Thermos de Thé Dammann Frères', label: '1 litre — 19,50€',  img: '/bois-thermos-cafe.webp' },
-  { name: 'Thermos de Chocolat Chaud',     label: '1 litre — 19,50€',  img: '/bois-thermos-cafe.webp' },
-  { name: 'Evian',                         label: '75 cl — 4,80€',     img: '/bois-evian-75.webp' },
-  { name: 'Badoit',                        label: '75 cl — 4,80€',     img: '/bois-badoit.webp' },
-  { name: 'Evian',                         label: '33 cl — 3,80€',     img: '/bois-evian-33.webp' },
-]
+import { BOISSONS } from '../../../lib/boissonsData'
 
 const SEO_ARTICLE = `
   <h2>Boissons artisanales pour vos événements d'entreprise à Paris</h2>
@@ -42,7 +25,8 @@ export default function Boissons() {
       heroSubtitle="Jus Alain Milliat, thés Dammann Frères, cafés et eaux. Des boissons choisies pour leur qualité."
       breadcrumb="Nos Créations — Boissons"
       categorieSlug="boissons"
-      fallbackProducts={fallback}
+      fallbackProducts={BOISSONS}
+      basePath="/creations/boissons"
       seoArticle={SEO_ARTICLE}
     />
   )

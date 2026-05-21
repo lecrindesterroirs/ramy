@@ -30,6 +30,7 @@ export default function ProductsPageTemplate({
   categorieSlug,
   fallbackProducts,
   seoArticle,
+  basePath,
 }) {
   const [sortOpen, setSortOpen]     = useState(false)
   const [sortLabel, setSortLabel]   = useState('En vedette')
@@ -145,7 +146,7 @@ export default function ProductsPageTemplate({
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
           {products.map((p, i) => (
-            <ProductCard key={p.id || i} product={p} />
+            <ProductCard key={p.id || i} product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
           ))}
         </div>
 
@@ -287,11 +288,11 @@ export default function ProductsPageTemplate({
   )
 }
 
-function ProductCard({ product }) {
+function ProductCard({ product, basePath }) {
   const [hovered, setHovered] = useState(false)
 
   const href = product.id
-    ? `/creations/petits-dejeuners-et-pauses/${product.id}`
+    ? `${basePath}/${product.id}`
     : '/devis'
 
   return (

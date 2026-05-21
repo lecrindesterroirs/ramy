@@ -1,13 +1,7 @@
 'use client'
 
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
-
-const fallback = [
-  { name: 'Plateau Méditerranéen', label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-  { name: 'Plateau Riviera',      label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-  { name: 'Plateau Signature',    label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-  { name: 'Plateau Toscane',      label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-]
+import { PLATEAUX_REPAS } from '../../../lib/plateauxRepasData'
 
 const SEO_ARTICLE = `
   <h2>Plateaux repas d'entreprise à Paris — livrés pour votre déjeuner de travail</h2>
@@ -32,7 +26,8 @@ export default function PlateauxRepas() {
       heroSubtitle="Des plateaux équilibrés et généreux pour vos déjeuners d'équipe et réunions."
       breadcrumb="Nos Créations — Plateaux Repas"
       categorieSlug="plateaux-repas"
-      fallbackProducts={fallback}
+      fallbackProducts={PLATEAUX_REPAS}
+      basePath="/creations/plateaux-repas"
       seoArticle={SEO_ARTICLE}
     />
   )
