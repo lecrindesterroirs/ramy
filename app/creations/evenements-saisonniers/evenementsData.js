@@ -46,7 +46,7 @@ export const evenements = [
     mois: 'Février',
     nom: 'Chandeleur',
     tags: ['Pauses gourmandes', 'Goûters'],
-    img: '/creations-2.png',
+    img: '/prod-crepes.webp',
     descCourt: "Crêpes maison avec toppings, confitures Alain Milliat. Stand crêpe sur place sur demande.",
     desc: "Des crêpes maison avec tous les toppings. Généreuses, à partager, sans chichi. Et pour les équipes qui veulent vivre le moment en live, on peut installer un stand crêpe directement dans vos locaux. Un vrai moment, pas juste un goûter.",
     produits: [
@@ -88,7 +88,7 @@ export const evenements = [
     mois: '8 Mars',
     nom: 'Journée des Femmes',
     tags: ['Petits-déjeuners', 'Pauses gourmandes', 'Goûters'],
-    img: '/creations-2.png',
+    img: '/section-reception.webp',
     descCourt: "Madeleines roses personnalisées, pâtisseries fines, jus Alain Milliat et thé Dammann Frères.",
     desc: "Une attention sincère pour vos équipes féminines. Pas un buffet générique. Des madeleines roses personnalisées, des pâtisseries fines, une mise en scène soignée. Simple, élégant, et qui veut vraiment dire quelque chose.",
     produits: [
@@ -129,7 +129,7 @@ export const evenements = [
     mois: 'Mars / Avril',
     nom: 'Pâques',
     tags: ['Petits-déjeuners', 'Pauses gourmandes'],
-    img: '/creations-featured.webp',
+    img: '/prod-macarons.webp',
     descCourt: "Chocolats artisanaux, viennoiseries de saison, jus de fruits. Une pause sucrée pour fêter le printemps.",
     desc: "Chocolats artisanaux, viennoiseries de saison, jus de fruits. Une pause sucrée pour célébrer le printemps avec vos équipes avant les congés. Une présentation printanière soignée pour marquer le moment sans en faire trop.",
     produits: [
@@ -170,7 +170,7 @@ export const evenements = [
     mois: 'Juin',
     nom: "Fête de fin d'année",
     tags: ['Cocktails & Buffets', 'Plateaux Repas'],
-    img: '/cocktail.webp',
+    img: '/buffet.webp',
     descCourt: "Cocktail dînatoire, buffet généreux ou plateau repas estival. Pour clôturer la saison avec élégance.",
     desc: "Le moment pour clôturer une saison avec une vraie table. Cocktail dînatoire, buffet généreux ou plateau repas estival. Une formule à la hauteur de l'année que vos équipes viennent de passer. Avant les congés d'été.",
     produits: [
@@ -212,7 +212,7 @@ export const evenements = [
     mois: 'Septembre',
     nom: 'Rentrée',
     tags: ['Petits-déjeuners', 'Réunions'],
-    img: '/creations-1.png',
+    img: '/prod-viennoiseries.webp',
     descCourt: "Plaque chocolat personnalisée, viennoiseries boulangers partenaires, café et thé.",
     desc: "Un retour au bureau qui donne le bon ton. Plaque chocolat personnalisée avec le message de bienvenue, viennoiseries du boulanger, café. Une façon de dire que l'année qui commence compte. Un geste simple qui crée une vraie atmosphère.",
     produits: [
@@ -253,7 +253,7 @@ export const evenements = [
     mois: 'Octobre',
     nom: 'Octobre Rose',
     tags: ['Goûters', 'Pauses gourmandes'],
-    img: '/creations-3.png',
+    img: '/mado-pistache-framboise.png',
     descCourt: "Madeleines roses personnalisées, plateau macarons et cakes roses, ruban sur les emballages.",
     desc: "Un goûter pour sensibiliser vos équipes au dépistage du cancer du sein. Plateau full rose et rouge, madeleines personnalisées, ruban sur les emballages. Un geste simple, mais concret. Un moment de partage autour d'une cause qui compte.",
     produits: [
@@ -294,7 +294,7 @@ export const evenements = [
     mois: 'Octobre',
     nom: 'Halloween',
     tags: ['Goûters', 'Pauses gourmandes'],
-    img: '/creations-4.png',
+    img: '/prod-cookies.webp',
     descCourt: "Madeleines orange personnalisées, cookies Laura Todd décorés, bonbons et décors saisonniers.",
     desc: "Un goûter festif qui sort vraiment de l'ordinaire. Madeleines orange personnalisées, décors saisonniers, bonbons. Vos équipes se souviendront que c'est vous qui avez organisé ça. Un moment décalé, bien exécuté.",
     produits: [
@@ -335,7 +335,7 @@ export const evenements = [
     mois: 'Décembre',
     nom: 'Noël',
     tags: ['Petits-déjeuners', 'Cocktails & Buffets', 'Pauses gourmandes'],
-    img: '/buffet.webp',
+    img: '/buffet-sale.webp',
     descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud Dammann Frères.",
     desc: "La prestation la plus attendue de l'année. Menu de fête complet avec les grands classiques de saison. Foie gras, saumon fumé, bûche artisanale, chocolats chauds, viennoiseries de Noël. Un buffet festif ou un plateau repas selon votre format et votre effectif.",
     produits: [
