@@ -84,7 +84,7 @@ const categories = [
         specialite: 'Thés & Infusions',
         description: "Privilège royal accordé par Louis XIV en 1692. Boutique historique place des Vosges, Paris. Inventeurs du thé aromatisé moderne. Dammann Frères, c'est le choix qu'on fait quand on veut que la pause thé soit aussi soignée que le reste de la prestation.",
         tags: ['Depuis 1692', 'Place des Vosges', 'Grande maison'],
-        img: '/cocktail.webp',
+        img: '/the-dammann.jpg',
       },
     ],
   },
