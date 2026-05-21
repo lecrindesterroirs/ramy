@@ -345,19 +345,19 @@ function Step3({ data, setData, onEdit }) {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div>
-            <label style={labelStyle}>Nom complet</label>
+            <label style={labelStyle}>Nom complet <span style={{ color: '#E0A126' }}>*</span></label>
             <input value={data.nom} onChange={e => set('nom', e.target.value)} placeholder="Ex : Marie Dupont" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Société</label>
+            <label style={labelStyle}>Société <span style={{ color: '#E0A126' }}>*</span></label>
             <input value={data.societe} onChange={e => set('societe', e.target.value)} placeholder="Ex : Entreprise SAS" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Email professionnel</label>
+            <label style={labelStyle}>Email professionnel <span style={{ color: '#E0A126' }}>*</span></label>
             <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="Ex : marie@entreprise.com" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Téléphone</label>
+            <label style={labelStyle}>Téléphone <span style={{ color: '#E0A126' }}>*</span></label>
             <input value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" style={fieldStyle} required />
           </div>
         </div>
