@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { articles } from '../../../lib/journalData'
+import { PRODUCTS } from '../../../lib/productsData'
 
 export default function ArticlePage() {
   const { slug } = useParams()
@@ -131,6 +132,65 @@ export default function ArticlePage() {
             </a>
           </div>
 
+          {/* Produits recommandés */}
+          {article.relatedProducts?.length > 0 && (() => {
+            const prods = article.relatedProducts.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
+            if (!prods.length) return null
+            return (
+              <div style={{ marginTop: '56px', paddingTop: '48px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+                <p style={{
+                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 500,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent)',
+                  marginBottom: '8px',
+                }}>
+                  Nos produits
+                </p>
+                <p style={{
+                  fontFamily: "'Baskerville Display PT', Georgia, serif",
+                  fontSize: 'clamp(18px, 2.2vw, 26px)',
+                  fontWeight: 400,
+                  color: 'var(--text-primary)',
+                  marginBottom: '28px',
+                  lineHeight: 1.2,
+                }}>
+                  Commandez directement
+                </p>
+                <div className="article-products-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(prods.length, 3)}, 1fr)`, gap: '2px' }}>
+                  {prods.map(product => (
+                    <a
+                      key={product.id}
+                      href={`/creations/petits-dejeuners-et-pauses/${product.id}`}
+                      style={{ background: 'var(--bg-secondary)', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}
+                      onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
+                      onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
+                    >
+                      {product.img && (
+                        <div style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
+                          <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        </div>
+                      )}
+                      <div style={{ padding: '16px 18px 20px' }}>
+                        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
+                          {product.name}
+                        </p>
+                        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-secondary)', marginBottom: '12px' }}>
+                          {product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                        </p>
+                        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                          Commander →
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )
+          })()}
+
           {/* Retour */}
           <div style={{ marginTop: '56px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
             <a
@@ -197,10 +257,124 @@ export default function ArticlePage() {
           font-style: italic;
           color: var(--text-secondary);
         }
+        .article-body table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 32px 0;
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px;
+        }
+        .article-body th {
+          background: var(--bg-secondary);
+          color: var(--text-primary);
+          font-weight: 500;
+          text-align: left;
+          padding: 12px 16px;
+          border-bottom: 2px solid var(--accent);
+          letter-spacing: 0.03em;
+          font-size: 11px;
+          text-transform: uppercase;
+        }
+        .article-body td {
+          padding: 12px 16px;
+          border-bottom: 1px solid rgba(17,17,17,0.07);
+          color: var(--text-secondary);
+          line-height: 1.55;
+          vertical-align: top;
+        }
+        .article-body tr:last-child td { border-bottom: none; }
+        .article-body tr:nth-child(even) td { background: rgba(17,17,17,0.015); }
+        .article-body td strong { color: var(--accent); font-weight: 500; }
+        .article-body .faq-block details {
+          border-bottom: 1px solid rgba(17,17,17,0.08);
+          padding: 14px 0;
+        }
+        .article-body .faq-block details:first-child { border-top: 1px solid rgba(17,17,17,0.08); }
+        .article-body .faq-block summary {
+          cursor: pointer;
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 14px;
+          color: var(--text-primary);
+          list-style: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .article-body .faq-block summary::after {
+          content: '+';
+          font-size: 18px;
+          color: var(--accent);
+          flex-shrink: 0;
+          margin-left: 12px;
+        }
+        .article-body .faq-block details[open] summary::after { content: '−'; }
+        .article-body .faq-block details p {
+          margin-top: 10px;
+          margin-bottom: 0;
+          font-size: 14px;
+          line-height: 1.7;
+        }
+        .article-products-grid a { transition: background 0.2s ease; }
         @media (max-width: 768px) {
           .article-page-content { padding: 48px 24px 80px !important; }
+          .article-body table { font-size: 12px; }
+          .article-body th, .article-body td { padding: 10px 10px; }
+          .article-products-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 600px) {
+          .article-products-grid { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
+
+      {article.faq?.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            'mainEntity': article.faq.map(({ q, a }) => ({
+              '@type': 'Question',
+              'name': q,
+              'acceptedAnswer': { '@type': 'Answer', 'text': a },
+            })),
+          }) }}
+        />
+      )}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          'headline': article.titre,
+          'description': article.extrait,
+          'datePublished': article.isoDate || article.date,
+          'author': {
+            '@type': 'Organization',
+            'name': "L'Écrin Traiteur",
+            'url': 'https://www.lecrindesterroirs.fr',
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': "L'Écrin Traiteur",
+            'url': 'https://www.lecrindesterroirs.fr',
+          },
+          'image': article.img,
+          'url': `https://www.lecrindesterroirs.fr/journal/${article.slug}`,
+          'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': `https://www.lecrindesterroirs.fr/journal/${article.slug}`,
+          },
+          'breadcrumb': {
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+              { '@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': 'https://www.lecrindesterroirs.fr' },
+              { '@type': 'ListItem', 'position': 2, 'name': 'Journal', 'item': 'https://www.lecrindesterroirs.fr/journal' },
+              { '@type': 'ListItem', 'position': 3, 'name': article.titre, 'item': `https://www.lecrindesterroirs.fr/journal/${article.slug}` },
+            ],
+          },
+        }) }}
+      />
 
       <Footer />
     </>

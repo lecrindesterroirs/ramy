@@ -11,47 +11,49 @@ export default function EvenementsSaisonniers() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
-        {/* Header */}
-        <div
-          className="sais-header"
-          style={{
-            background: 'var(--bg-secondary)',
-            padding: '100px 72px 80px',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: '24px',
-          }}>
-            Nos Créations
-          </p>
-          <h1 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
-            fontSize: 'clamp(32px, 5vw, 68px)',
-            fontWeight: 400,
-            lineHeight: 1.05,
-            letterSpacing: '-0.01em',
-            color: 'var(--text-primary)',
-            marginBottom: '28px',
-          }}>
-            Événements Saisonniers
-          </h1>
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '15px',
-            lineHeight: 1.75,
-            color: 'var(--text-secondary)',
-            maxWidth: '560px',
-            margin: '0 auto',
-          }}>
-            Galette des Rois, Chandeleur, Halloween, Noël... Chaque moment de l'année a ses produits, ses codes, ses attentions. On s'en occupe.
-          </p>
+        {/* Hero */}
+        <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
+            <img
+              src="/creations-featured.webp"
+              alt="Événements Saisonniers — L'Écrin Traiteur"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
+              <p style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '11px',
+                fontWeight: 400,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.65)',
+                marginBottom: '16px',
+              }}>
+                Nos Créations — Événements Saisonniers
+              </p>
+              <h1 style={{
+                fontFamily: "'Baskerville Display PT', Georgia, serif",
+                fontSize: 'clamp(32px, 4vw, 58px)',
+                fontWeight: 400,
+                lineHeight: 1.05,
+                letterSpacing: '-0.01em',
+                color: '#FFFFFF',
+                marginBottom: '20px',
+              }}>
+                Événements Saisonniers
+              </h1>
+              <p style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '14px',
+                lineHeight: 1.65,
+                color: 'rgba(255,255,255,0.72)',
+                maxWidth: '340px',
+              }}>
+                Galette des Rois, Chandeleur, Halloween, Noël... Chaque moment de l'année a ses produits, ses codes, ses attentions.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Grille événements */}

@@ -16,7 +16,7 @@ const logos = [
 // On duplique pour le défilement infini
 const track = [...logos, ...logos, ...logos]
 
-export default function LogosSection() {
+export default function LogosSection({ subtitle, style: extraStyle }) {
   return (
     <section
       style={{
@@ -24,6 +24,7 @@ export default function LogosSection() {
         padding: '28px 0',
         borderBottom: '1px solid rgba(17,17,17,0.06)',
         overflow: 'hidden',
+        ...extraStyle,
       }}
     >
       <p style={{
@@ -34,10 +35,25 @@ export default function LogosSection() {
         textTransform: 'uppercase',
         color: 'rgba(17,17,17,0.38)',
         textAlign: 'center',
-        marginBottom: '24px',
+        marginBottom: subtitle ? '10px' : '24px',
       }}>
         Ils nous font confiance
       </p>
+
+      {subtitle && (
+        <p style={{
+          fontFamily: "'Baskerville Display PT', Georgia, serif",
+          fontSize: 'clamp(20px, 2vw, 28px)',
+          fontWeight: 400,
+          color: 'var(--text-primary)',
+          textAlign: 'center',
+          marginBottom: '32px',
+          letterSpacing: '-0.005em',
+          lineHeight: 1.2,
+        }}>
+          {subtitle}
+        </p>
+      )}
 
       <div
         style={{

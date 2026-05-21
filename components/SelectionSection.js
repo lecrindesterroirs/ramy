@@ -46,7 +46,7 @@ export default function SelectionSection() {
           >
             <img
               className="selection-img"
-              src="/creations-featured.webp"
+              src="/selection-artisans.jpg"
               alt="L'art de la sélection — L'Écrin Traiteur"
               style={{
                 width: '100%',

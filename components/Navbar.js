@@ -1,14 +1,12 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useCart } from '../context/CartContext'
 
 const dropdowns = {
   creations: [
     { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-    { label: 'Coffrets & Cadeaux', href: '/creations/coffrets-cadeaux' },
-    { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
     { label: 'Plateaux Repas', href: '/creations/plateaux-repas' },
+    { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
     { label: 'Boissons', href: '/creations/boissons' },
     { label: 'Événements Saisonniers', href: '/creations/evenements-saisonniers' },
   ],
@@ -16,6 +14,13 @@ const dropdowns = {
     { label: 'Notre Maison', href: '/univers/notre-maison' },
     { label: 'Nos Artisans', href: '/univers/nos-artisans' },
     { label: 'Nos Engagements', href: '/univers/nos-engagements' },
+    { type: 'separator', label: 'Pour vos événements' },
+    { label: 'CODIR, COMEX & Direction', href: '/occasions/petit-dejeuner-codir' },
+    { label: 'Séminaires d\'entreprise', href: '/occasions/seminaire-entreprise' },
+    { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
+    { label: 'Journées de formation', href: '/occasions/journee-formation' },
+    { label: 'Team Building & Cohésion', href: '/occasions/team-building' },
+    { label: 'Goûter d\'entreprise', href: '/occasions/gouter-entreprise' },
   ],
 }
 
@@ -27,13 +32,12 @@ const allLinks = [
 
 ]
 
-export default function Navbar() {
+export default function Navbar({ showBanner = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const closeTimer = useRef(null)
-  const { totalItems } = useCart()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -52,68 +56,47 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Bandeau deadline ── */}
-      <div style={{
+      {/* ── Bandeau défilant (page produit uniquement) ── */}
+      {showBanner && <div style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 101,
         height: 'var(--banner-h)',
-        background: '#111111',
+        background: 'var(--accent)',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: '24px',
+        overflow: 'hidden',
       }}>
-        {/* Texte desktop */}
-        <p className="nav-banner-text" style={{
+        <div className="banner-sole" style={{
           fontFamily: "'Neue Montreal', sans-serif",
           fontSize: '10px',
           fontWeight: 500,
           letterSpacing: '0.16em',
           textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.75)',
+          color: '#FFFFFF',
           whiteSpace: 'nowrap',
+          position: 'absolute',
         }}>
-          <span style={{ color: 'var(--accent)' }}>●</span>
-          {' '}Commandez jusqu'à la veille avant 14h — Livraison dès 6h30 · Paris & Île-de-France
-        </p>
-        {/* Texte mobile */}
-        <p className="nav-banner-short" style={{
-          display: 'none',
-          fontFamily: "'Neue Montreal', sans-serif",
-          fontSize: '9px',
-          fontWeight: 500,
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.75)',
-          textAlign: 'center',
-        }}>
-          <span style={{ color: 'var(--accent)' }}>●</span>
-          {' '}Commandez avant 14h — Livraison dès 6h30
-        </p>
-        <a href="/creations/petits-dejeuners-et-pauses" className="nav-banner-text" style={{
-          fontFamily: "'Neue Montreal', sans-serif",
-          fontSize: '9px',
-          fontWeight: 500,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          color: 'var(--accent)',
-          borderBottom: '1px solid rgba(224,161,38,0.4)',
-          paddingBottom: '1px',
-          whiteSpace: 'nowrap',
-          flexShrink: 0,
-        }}>
-          Commander →
-        </a>
-      </div>
+          Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Paris & Île-de-France
+        </div>
+        <style suppressHydrationWarning>{`
+          .banner-sole {
+            animation: bannerOne 38s linear infinite;
+          }
+          @keyframes bannerOne {
+            0%   { transform: translateX(110vw); }
+            100% { transform: translateX(-110vw); }
+          }
+        `}</style>
+      </div>}
 
       <nav
         className={scrolled ? 'nav-bar' : 'nav-bar nav-bar-hero'}
         style={{
           position: 'fixed',
-          top: 'var(--banner-h)',
+          top: showBanner ? 'var(--banner-h)' : 0,
           left: 0,
           right: 0,
           zIndex: 100,
@@ -172,27 +155,46 @@ export default function Navbar() {
                     animation: 'dropdownReveal 0.25s ease',
                   }}
                 >
-                  {dropdowns[key].map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '12px',
-                        fontWeight: 400,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: '#111111',
-                        padding: '9px 0',
-                        display: 'block',
-                        transition: 'color 0.2s ease',
-                      }}
-                      onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-                      onMouseLeave={e => e.target.style.color = '#111111'}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {dropdowns[key].map((item, idx) => {
+                    if (item.type === 'separator') {
+                      return (
+                        <div key={idx} style={{ marginTop: '14px', marginBottom: '8px', paddingTop: '14px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+                          <p style={{
+                            fontFamily: "'Neue Montreal', sans-serif",
+                            fontSize: '9px',
+                            fontWeight: 600,
+                            letterSpacing: '0.18em',
+                            textTransform: 'uppercase',
+                            color: 'rgba(17,17,17,0.3)',
+                            marginBottom: '4px',
+                          }}>
+                            {item.label}
+                          </p>
+                        </div>
+                      )
+                    }
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        style={{
+                          fontFamily: "'Neue Montreal', sans-serif",
+                          fontSize: '12px',
+                          fontWeight: 400,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          color: '#111111',
+                          padding: '9px 0',
+                          display: 'block',
+                          transition: 'color 0.2s ease',
+                        }}
+                        onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+                        onMouseLeave={e => e.target.style.color = '#111111'}
+                      >
+                        {item.label}
+                      </a>
+                    )
+                  })}
                 </div>
               )}
             </div>
@@ -265,48 +267,6 @@ export default function Navbar() {
         {/* Right nav */}
         <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
 
-          {/* Panier */}
-          <a
-            href="/panier"
-            aria-label="Mon panier"
-            style={{
-              position: 'relative',
-              display: 'flex',
-              alignItems: 'center',
-              color: '#111111',
-              textDecoration: 'none',
-              transition: 'color 0.3s ease',
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-            onMouseLeave={e => e.currentTarget.style.color = '#111111'}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 01-8 0"/>
-            </svg>
-            {totalItems > 0 && (
-              <span style={{
-                position: 'absolute',
-                top: '-7px',
-                right: '-9px',
-                background: 'var(--accent)',
-                color: '#FFFFFF',
-                fontSize: '9px',
-                fontWeight: 600,
-                fontFamily: "'Neue Montreal', sans-serif",
-                width: '16px',
-                height: '16px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                lineHeight: 1,
-              }}>
-                {totalItems > 9 ? '9+' : totalItems}
-              </span>
-            )}
-          </a>
 
           <a
             href="/contact"
@@ -487,27 +447,47 @@ export default function Navbar() {
               </button>
               {mobileExpanded === 'univers' && (
                 <div style={{ paddingBottom: '12px' }}>
-                  {dropdowns.univers.map(item => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
-                      style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '13px',
-                        fontWeight: 400,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(17,17,17,0.65)',
-                        padding: '10px 0',
-                        display: 'block',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {dropdowns.univers.map((item, idx) => {
+                    if (item.type === 'separator') {
+                      return (
+                        <p key={idx} style={{
+                          fontFamily: "'Neue Montreal', sans-serif",
+                          fontSize: '9px',
+                          fontWeight: 600,
+                          letterSpacing: '0.18em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(17,17,17,0.3)',
+                          textAlign: 'center',
+                          padding: '12px 0 4px',
+                          borderTop: '1px solid rgba(17,17,17,0.06)',
+                          marginTop: '8px',
+                        }}>
+                          {item.label}
+                        </p>
+                      )
+                    }
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                        style={{
+                          fontFamily: "'Neue Montreal', sans-serif",
+                          fontSize: '13px',
+                          fontWeight: 400,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(17,17,17,0.65)',
+                          padding: '10px 0',
+                          display: 'block',
+                          textAlign: 'center',
+                          textDecoration: 'none',
+                        }}
+                      >
+                        {item.label}
+                      </a>
+                    )
+                  })}
                 </div>
               )}
             </div>

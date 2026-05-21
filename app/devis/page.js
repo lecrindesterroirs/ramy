@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import LogosSection from '../../components/LogosSection'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -213,9 +214,9 @@ function Step1({ data, setData, onSelect }) {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
           Quel type de prestation souhaitez-vous organiser ?
-        </h1>
+        </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
           Sélectionnez l'expérience qui correspond le mieux à votre événement.
         </p>
@@ -257,9 +258,9 @@ function Step2({ data, setData }) {
   return (
     <div className="step2-inner" style={{ maxWidth: '680px', margin: '0 auto', padding: '0 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
           Parlez-nous de votre projet
-        </h1>
+        </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
           Ces informations nous permettent de vous proposer le devis le plus adapté à vos besoins.
         </p>
@@ -331,9 +332,9 @@ function Step3({ data, setData }) {
 
       {/* Left — coordonnées */}
       <div>
-        <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '8px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '8px' }}>
           Vos coordonnées
-        </h1>
+        </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px' }}>
           Afin de vous recontacter rapidement et de vous envoyer une proposition personnalisée.
         </p>
@@ -438,9 +439,9 @@ export default function Contact() {
             <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(224,161,38,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0A126" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
             </div>
-            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, margin: 0 }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, margin: 0 }}>
               Demande bien reçue.
-            </h1>
+            </h2>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.75, maxWidth: '360px', margin: 0 }}>
               Merci pour votre confiance. Nous vous recontactons sous 24h avec une proposition personnalisée.
             </p>
@@ -572,6 +573,11 @@ export default function Contact() {
           </form>
         )}
       </main>
+
+      <LogosSection
+        subtitle="Et pourquoi pas vous ?"
+        style={{ paddingBottom: '56px' }}
+      />
 
       <Footer />
 

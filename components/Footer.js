@@ -34,8 +34,10 @@ export default function Footer() {
           <div style={{ flexShrink: 0, width: '200px' }}>
             <a href="/" style={{ textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '24px' }}>
               <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '90px', width: 'auto', display: 'block', marginBottom: '6px' }} />
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, letterSpacing: '0.12em', color: '#111111', lineHeight: 1 }}>L'ÉCRIN</span>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#111111', marginTop: '4px' }}>TRAITEUR</span>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, letterSpacing: '0.12em', color: '#111111', lineHeight: 1 }}>L'ÉCRIN</span>
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#111111', marginTop: '4px' }}>TRAITEUR</span>
+              </div>
             </a>
             <div style={{ width: '28px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '14px', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '200px' }}>
@@ -52,9 +54,10 @@ export default function Footer() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
                   { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-                  { label: 'Coffrets & Cadeaux', href: '/creations/coffrets-cadeaux' },
-                  { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
                   { label: 'Plateaux Repas', href: '/creations/plateaux-repas' },
+                  { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
+                  { label: 'Boissons', href: '/creations/boissons' },
+                  { label: 'Coffrets & Cadeaux', href: '/creations/coffrets-cadeaux' },
                   { label: 'Événements Saisonniers', href: '/creations/evenements-saisonniers' },
                 ].map(l => (
                   <a key={l.label} href={l.href} style={linkStyle}
@@ -90,14 +93,12 @@ export default function Footer() {
                 {[
                   { label: 'Contact', href: '/contact' },
                   { label: 'Demande de devis', href: '/devis' },
-                  { label: 'Télécharger le catalogue', href: '/catalogue-lecrin.pdf', download: true },
                 ].map(l => (
                   <a key={l.label} href={l.href}
-                    {...(l.download ? { download: true, target: '_blank' } : {})}
-                    style={{ ...linkStyle, ...(l.download ? { color: 'var(--accent)', fontWeight: 500 } : {}) }}
+                    style={linkStyle}
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                    onMouseLeave={e => e.currentTarget.style.color = l.download ? 'var(--accent)' : 'var(--text-secondary)'}
-                  >{l.download ? '↓ ' : ''}{l.label}</a>
+                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
+                  >{l.label}</a>
                 ))}
               </div>
             </div>

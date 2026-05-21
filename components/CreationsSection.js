@@ -11,6 +11,7 @@ const creations = [
     label: 'Petits-Déjeuners',
     credit: "L'Écrin Traiteur",
     img: '/creations-1.png',
+    imgPosition: 'center 75%',
     href: '/creations/petits-dejeuners-et-pauses',
   },
   {
@@ -29,6 +30,7 @@ const creations = [
     label: 'Plateaux Repas',
     credit: "L'Écrin Traiteur",
     img: '/creations-4.png',
+    imgPosition: 'center bottom',
     href: '/creations/plateaux-repas',
   },
 ]
@@ -46,7 +48,7 @@ function Card({ item }) {
         <img
           src={item.img}
           alt={item.label}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: item.imgPosition || 'center center', display: 'block', transition: 'transform 0.6s ease' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0) 52%)' }} />
         <div style={{ position: 'absolute', bottom: '22px', left: '22px', right: '22px' }}>

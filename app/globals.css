@@ -12,6 +12,14 @@
 }
 
 @font-face {
+  font-family: 'Baskerville Display PT';
+  src: url('/fonts/BaskervilleDisplayPT.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Neue Montreal';
   src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
   font-weight: 400;
@@ -24,6 +32,30 @@
   src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('/fonts/PPEditorialNew-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Fragment Glare';
+  src: url('/fonts/PPFragment-GlareRegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -45,13 +77,13 @@
   --accent: #E0A126;
   --banner-h: 36px;
   --nav-h: 72px;
-  --header-h: 108px; /* banner + nav */
+  --header-h: 72px; /* nav seule — toutes pages sauf produit */
 }
 
 @media (max-width: 768px) {
   :root {
     --banner-h: 40px;
-    --header-h: 112px;
+    --header-h: 72px;
   }
 }
 

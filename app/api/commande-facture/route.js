@@ -13,9 +13,23 @@ export async function POST(req) {
     const formatPrice = (n) =>
       n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '€'
 
+    const formatComposition = (comp) => {
+      if (!comp) return ''
+      if (comp.mode === 'flavors') {
+        return `<div style="margin-top:4px;font-size:11px;color:#888;font-style:italic;">Saveurs : ${comp.selected.join(', ')}</div>`
+      }
+      const lines = Object.entries(comp.quantities)
+        .filter(([, n]) => n > 0)
+        .map(([id, n]) => `${n} × ${id.replace(/-/g, ' ')}`)
+        .join(' · ')
+      return lines ? `<div style="margin-top:4px;font-size:11px;color:#888;font-style:italic;">${lines}</div>` : ''
+    }
+
     const itemsRows = items.map(item =>
       `<tr style="border-bottom:1px solid #f0ebe2;">
-        <td style="padding:10px 16px;font-family:'Helvetica Neue',sans-serif;font-size:13px;color:#111;">${item.name}</td>
+        <td style="padding:10px 16px;font-family:'Helvetica Neue',sans-serif;font-size:13px;color:#111;">
+          ${item.name}${formatComposition(item.composition)}
+        </td>
         <td style="padding:10px 16px;font-family:'Helvetica Neue',sans-serif;font-size:13px;color:#555;">${item.qty}</td>
         <td style="padding:10px 16px;font-family:'Helvetica Neue',sans-serif;font-size:13px;color:#555;text-align:center;">${item.quantity}</td>
         <td style="padding:10px 16px;font-family:'Helvetica Neue',sans-serif;font-size:13px;color:#111;text-align:right;">${formatPrice(item.price * item.quantity)}</td>
@@ -57,7 +71,7 @@ export async function POST(req) {
               <p style="font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#E0A126;margin:0 0 12px;">Livraison</p>
               <p style="font-size:13px;color:#111;margin:0 0 4px;">${customer.adresse}</p>
               <p style="font-size:13px;color:#555;margin:0 0 4px;">${customer.codepostal} ${customer.ville}</p>
-              <p style="font-size:13px;color:#555;margin:0 0 4px;">📅 ${dateStr}${customer.heure ? ' à ' + customer.heure : ''}</p>
+              <p style="font-size:13px;color:#555;margin:0 0 4px;">${dateStr}${customer.heure ? ' à ' + customer.heure : ''}</p>
               ${customer.notes ? `<p style="font-size:12px;color:#888;margin:8px 0 0;font-style:italic;">${customer.notes}</p>` : ''}
             </div>
 

@@ -28,15 +28,17 @@ export function CartProvider({ children }) {
     } catch {}
   }, [items])
 
-  const addItem = (product, quantity = 1) => {
+  const addItem = (product, quantity = 1, composition = null) => {
     setItems(prev => {
       const existing = prev.find(i => i.id === product.id)
       if (existing) {
         return prev.map(i =>
-          i.id === product.id ? { ...i, quantity: i.quantity + quantity } : i
+          i.id === product.id
+            ? { ...i, quantity: i.quantity + quantity, ...(composition !== null ? { composition } : {}) }
+            : i
         )
       }
-      return [...prev, { ...product, quantity }]
+      return [...prev, { ...product, quantity, ...(composition !== null ? { composition } : {}) }]
     })
   }
 

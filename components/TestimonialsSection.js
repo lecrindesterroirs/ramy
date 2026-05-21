@@ -1,6 +1,57 @@
 'use client'
 
+import { OCCASIONS } from '../lib/occasionsData'
+
+// Collect all testimonials from occasionsData + 2 additional static ones
+const STATIC_TESTIMONIALS = [
+  {
+    quote: "Tout s'est très bien passé. On m'a dit beaucoup de bien des galettes ! Merci pour la prestation.",
+    author: "L. Gautereau",
+    role: "Chargée de communication",
+    company: "SNCF",
+  },
+  {
+    quote: "Je tenais à vous féliciter car je n'ai que des avis positifs sur la prestation ! C'était excellent.",
+    author: "A. Brousse",
+    role: "Assistante de direction générale",
+    company: "Coyote",
+  },
+]
+
+function getTestimonials() {
+  const fromOccasions = OCCASIONS
+    .filter(o => o.testimonial)
+    .map(o => o.testimonial)
+  return [...fromOccasions, ...STATIC_TESTIMONIALS]
+}
+
 export default function TestimonialsSection() {
+  const testimonials = getTestimonials()
+  const [featured, ...rest] = testimonials
+  const shown = rest.slice(0, 2)
+
+  // JSON-LD Review schema
+  const reviewSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: "L'Écrin Traiteur",
+    url: 'https://www.lecrindesterroirs.fr',
+    review: testimonials.map(t => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: t.author,
+        jobTitle: `${t.role}, ${t.company}`,
+      },
+      reviewBody: t.quote,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5',
+      },
+    })),
+  }
+
   return (
     <section
       className="testimonials-section"
@@ -14,6 +65,11 @@ export default function TestimonialsSection() {
         boxSizing: 'border-box',
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+      />
+
       <div
         className="testimonials-inner"
         style={{
@@ -85,7 +141,7 @@ export default function TestimonialsSection() {
           }}
         >
 
-          {/* Grande carte gauche */}
+          {/* Grande carte gauche — testimonial vedette */}
           <div
             style={{
               border: '1px solid rgba(17,17,17,0.10)',
@@ -120,25 +176,22 @@ export default function TestimonialsSection() {
                   fontStyle: 'italic',
                 }}
               >
-                "Les madeleines sont très bonnes, grand choix de parfums, viennoiseries, jus… très bien. Et le service a été au top."
+                &ldquo;{featured.quote}&rdquo;
               </blockquote>
             </div>
             <div>
               <span className="accent-line" style={{ marginBottom: '16px' }} />
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)' }}>
-                Anaïs Launoy · Office Manager · Vittaliance
+                {featured.author} · {featured.role} · {featured.company}
               </p>
             </div>
           </div>
 
           {/* Deux petites cartes droite */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', minHeight: 0 }}>
-            {[
-              { quote: '"Tout s\'est très bien passé. On m\'a dit beaucoup de bien des galettes ! Merci pour la prestation."', role: 'L. Gautereau · Chargée de communication · SNCF' },
-              { quote: '"Je tenais à vous féliciter car je n\'ai que des avis positifs sur la prestation ! C\'était excellent."', role: 'A. Brousse · Assistante de direction générale · Coyote' },
-            ].map((t) => (
+            {shown.map((t) => (
               <div
-                key={t.role}
+                key={`${t.author}-${t.company}`}
                 style={{
                   border: '1px solid rgba(17,17,17,0.10)',
                   padding: '28px 36px',
@@ -152,12 +205,14 @@ export default function TestimonialsSection() {
                 <div>
                   <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '28px', lineHeight: 1, color: 'var(--accent)', display: 'block', marginBottom: '12px' }}>❝❝</span>
                   <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(14px, 1.4vw, 18px)', fontWeight: 400, lineHeight: 1.35, color: 'var(--text-primary)', fontStyle: 'italic', marginBottom: '16px' }}>
-                    {t.quote}
+                    &ldquo;{t.quote}&rdquo;
                   </blockquote>
                 </div>
                 <div>
                   <span className="accent-line" style={{ marginBottom: '12px' }} />
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)' }}>{t.role}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)' }}>
+                    {t.author} · {t.role} · {t.company}
+                  </p>
                 </div>
               </div>
             ))}

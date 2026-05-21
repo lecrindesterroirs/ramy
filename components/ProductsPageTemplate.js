@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import { useCart } from '../context/CartContext'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
@@ -24,11 +23,13 @@ const sortProducts = (list, sortLabel) => {
 
 export default function ProductsPageTemplate({
   heroImg,
+  heroImgPosition,
   heroTitle,
   heroSubtitle,
   breadcrumb,
   categorieSlug,
   fallbackProducts,
+  seoArticle,
 }) {
   const [sortOpen, setSortOpen]     = useState(false)
   const [sortLabel, setSortLabel]   = useState('En vedette')
@@ -48,9 +49,9 @@ export default function ProductsPageTemplate({
 
   return (
     <>
-      <Navbar />
+      <Navbar showBanner={true} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
         {/* ── Hero ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
@@ -58,7 +59,7 @@ export default function ProductsPageTemplate({
             <img
               src={heroImg}
               alt={heroTitle}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: heroImgPosition || 'center', display: 'block' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
@@ -76,39 +77,69 @@ export default function ProductsPageTemplate({
         </div>
 
         {/* ── Barre filtre ── */}
-        <div className="products-filter-bar" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-          <button style={{ display: 'flex', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0 }}>
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-              <rect y="0" width="16" height="1.5" fill="#111"/>
-              <rect y="5" width="12" height="1.5" fill="#111"/>
-              <rect y="10" width="8" height="1.5" fill="#111"/>
-            </svg>
-            Filtrer et trier
-          </button>
+        <div className="products-filter-bar" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          {/* Raccourcis catégories */}
+          <div className="filter-cats" style={{ display: 'flex', alignItems: 'center', gap: '0' }}>
+            {[
+              { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
+              { label: 'Plateaux repas',             href: '/creations/plateaux-repas' },
+              { label: 'Cocktails & Buffets',        href: '/creations/cocktails-et-buffets' },
+              { label: 'Coffrets cadeaux',           href: '/creations/coffrets-cadeaux' },
+            ].map(cat => {
+              const active = typeof window !== 'undefined' && window.location.pathname === cat.href
+              return (
+                <a
+                  key={cat.href}
+                  href={cat.href}
+                  style={{
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '11px',
+                    fontWeight: active ? 500 : 400,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: active ? 'var(--text-primary)' : 'rgba(17,17,17,0.42)',
+                    textDecoration: 'none',
+                    padding: '20px 18px',
+                    borderBottom: active ? '2px solid var(--text-primary)' : '2px solid transparent',
+                    transition: 'color 0.2s ease, border-color 0.2s ease',
+                    whiteSpace: 'nowrap',
+                    display: 'inline-block',
+                  }}
+                  onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'rgba(17,17,17,0.2)' } }}
+                  onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(17,17,17,0.42)'; e.currentTarget.style.borderBottomColor = 'transparent' } }}
+                >
+                  {cat.label}
+                </a>
+              )
+            })}
+          </div>
+
+          {/* Tri + compteur */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '28px', flexShrink: 0 }}>
             <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setSortOpen(!sortOpen)}
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0 }}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', outline: 'none' }}
               >
                 {sortLabel}
-                <span style={{ fontSize: '10px', opacity: 0.6 }}>▾</span>
+                <span style={{ fontSize: '9px', opacity: 0.5 }}>▾</span>
               </button>
               {sortOpen && (
                 <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.08)', padding: '8px 0', minWidth: '180px', boxShadow: '0 16px 32px rgba(17,17,17,0.06)', zIndex: 10 }}>
                   {sorts.map(s => (
-                    <button key={s} onClick={() => { setSortLabel(s); setSortOpen(false) }} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '10px 20px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.06em', color: s === sortLabel ? 'var(--accent)' : 'var(--text-primary)', background: 'none', border: 'none' }}>
+                    <button key={s} onClick={() => { setSortLabel(s); setSortOpen(false) }} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '10px 20px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.06em', color: s === sortLabel ? 'var(--accent)' : 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}>
                       {s}
                     </button>
                   ))}
                 </div>
               )}
             </div>
-            <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 400, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)' }}>
+            <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)' }}>
               {products.length} produit{products.length > 1 ? 's' : ''}
             </span>
           </div>
+
         </div>
 
         {/* ── Grille produits ── */}
@@ -185,18 +216,67 @@ export default function ProductsPageTemplate({
 
       </section>
 
+      {/* ── Article SEO catégorie ── */}
+      {seoArticle && (
+        <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+          <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 88px' }}>
+            <div
+              className="cat-seo-body"
+              dangerouslySetInnerHTML={{ __html: seoArticle }}
+            />
+          </div>
+        </section>
+      )}
+
       <style suppressHydrationWarning>{`
+        .cat-seo-body p {
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 15px;
+          line-height: 1.8;
+          color: var(--text-secondary);
+          margin-bottom: 20px;
+        }
+        .cat-seo-body h2 {
+          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-size: 26px;
+          font-weight: 400;
+          color: var(--text-primary);
+          margin: 40px 0 16px;
+        }
+        .cat-seo-body h2:first-child { margin-top: 0; }
+        .cat-seo-body ul {
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 15px;
+          line-height: 1.8;
+          color: var(--text-secondary);
+          padding-left: 24px;
+          margin-bottom: 20px;
+        }
+        .cat-seo-body strong {
+          color: var(--text-primary);
+          font-weight: 500;
+        }
+        .cat-seo-body a {
+          color: var(--accent);
+          text-decoration: none;
+          border-bottom: 1px solid var(--accent);
+        }
+        .cat-seo-body a:hover { opacity: 0.75; }
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
           .page-hero { height: 50vh !important; min-height: 300px !important; }
           .page-hero-text { padding: 0 24px !important; }
-          .products-filter-bar { padding: 20px 24px !important; }
+          .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
+          .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
+          .filter-cats::-webkit-scrollbar { display: none; }
           .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 2px !important; }
           .prods-args { grid-template-columns: 1fr 1fr !important; padding: 0 24px 60px !important; }
+          .cat-seo-body { padding: 0 !important; }
+          .cat-seo-body h2 { font-size: 22px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .page-hero-wrapper { padding: 24px 40px 0 !important; }
-          .products-filter-bar { padding: 24px 40px !important; }
+          .products-filter-bar { padding: 0 40px !important; }
           .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 40px 40px 100px !important; }
           .prods-args { padding: 0 40px 60px !important; }
         }
@@ -209,45 +289,42 @@ export default function ProductsPageTemplate({
 
 function ProductCard({ product }) {
   const [hovered, setHovered] = useState(false)
-  const [added, setAdded] = useState(false)
-  const [qty, setQty] = useState(1)
-  const { addItem } = useCart()
 
-  // Un produit est commandable s'il a un prix et un id
-  const canOrder = !!product.price && !!product.id
-
-  const handleAdd = () => {
-    if (!canOrder) return
-    addItem(product, qty)
-    setAdded(true)
-    setQty(1)
-    setTimeout(() => setAdded(false), 1800)
-  }
+  const href = product.id
+    ? `/creations/petits-dejeuners-et-pauses/${product.id}`
+    : '/devis'
 
   return (
     <div
-      style={{ cursor: 'default' }}
+      style={{ cursor: 'pointer' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF' }}>
-        <img
-          src={product.img}
-          alt={product.name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
-        />
-      </div>
+      {/* Image cliquable */}
+      <a href={href} style={{ display: 'block', textDecoration: 'none' }}>
+        <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF' }}>
+          <img
+            src={product.img}
+            alt={product.name}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
+          />
+        </div>
+      </a>
 
       <div style={{ padding: '14px 4px 10px' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '4px' }}>
-          {product.name}
-        </p>
+        {/* Nom cliquable */}
+        <a href={href} style={{ textDecoration: 'none' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '4px', transition: 'color 0.25s ease' }}>
+            {product.name}
+          </p>
+        </a>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: product.dietary?.length ? '8px' : '14px' }}>
           {product.label}
         </p>
-        {/* Tags allergènes/régimes */}
+
+        {/* Tags régimes */}
         {product.dietary?.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '10px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '12px' }}>
             {product.dietary.map(tag => {
               const style = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
               return (
@@ -268,84 +345,28 @@ function ProductCard({ product }) {
           </div>
         )}
 
-        {canOrder ? (
-          <div>
-            {/* Sélecteur quantité */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0', border: '1px solid rgba(17,17,17,0.12)', marginBottom: '8px', width: 'fit-content' }}>
-              <button
-                onClick={() => setQty(q => Math.max(1, q - 1))}
-                style={{ width: '30px', height: '30px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
-              >−</button>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-primary)', minWidth: '24px', textAlign: 'center' }}>
-                {qty}
-              </span>
-              <button
-                onClick={() => setQty(q => q + 1)}
-                style={{ width: '30px', height: '30px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-primary)', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
-              >+</button>
-            </div>
-
-            {/* Bouton ajouter */}
-            <button
-              onClick={handleAdd}
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '10px',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: added ? '#FFFFFF' : 'var(--accent)',
-                background: added ? 'var(--accent)' : 'transparent',
-                border: '1px solid var(--accent)',
-                padding: '8px 14px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                transition: 'all 0.2s ease',
-                width: '100%',
-                justifyContent: 'center',
-              }}
-            >
-              {added ? (
-                <>
-                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="2,6 5,9 10,3"/>
-                  </svg>
-                  Ajouté !
-                </>
-              ) : (
-                <>
-                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/>
-                  </svg>
-                  Ajouter au panier
-                </>
-              )}
-            </button>
-          </div>
-        ) : (
-          <a
-            href="/devis"
-            style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'rgba(17,17,17,0.45)',
-              border: '1px solid rgba(17,17,17,0.15)',
-              padding: '8px 14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              textDecoration: 'none',
-              justifyContent: 'center',
-            }}
-          >
-            Sur devis →
-          </a>
-        )}
+        {/* CTA → Voir la fiche */}
+        <a
+          href={href}
+          style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '10px',
+            fontWeight: 500,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: hovered ? 'var(--accent)' : 'rgba(17,17,17,0.45)',
+            border: `1px solid ${hovered ? 'var(--accent)' : 'rgba(17,17,17,0.15)'}`,
+            padding: '8px 14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            textDecoration: 'none',
+            justifyContent: 'center',
+            transition: 'all 0.25s ease',
+          }}
+        >
+          Voir le produit →
+        </a>
       </div>
     </div>
   )

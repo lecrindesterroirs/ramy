@@ -21,15 +21,15 @@ const engagements = [
   {
     num: '03',
     titre: 'Circuit court quand ça sert le produit',
-    desc: "Nous choisissons des producteurs locaux quand la proximité améliore réellement le produit — pas comme argument marketing. Le verger des Yvelines pour le jus de pomme parce qu'il est meilleur frais et local. La boulangerie de Boulogne parce qu'elle fait ses cakes chaque matin.",
-    details: ['Les Vergers de Plaisir · Yvelines', "D'un Passage à l'Autre · Boulogne-Billancourt", 'Pierre Morel · Laboratoire artisanal francilien', 'Maison Marques · Île-de-France'],
+    desc: "Nous choisissons des producteurs locaux quand la proximité améliore réellement le produit — pas comme argument marketing. Le verger des Yvelines pour le jus de pomme, La Ferme de Viltain à Jouy-en-Josas pour ses yaourts au lait de leur troupeau de 350 vaches à 17 km de Paris. La boulangerie de Boulogne parce qu'elle fait ses cakes chaque matin.",
+    details: ['Les Vergers de Plaisir · Yvelines', "D'un Passage à l'Autre · Boulogne-Billancourt", 'La Ferme de Viltain · Yaourts · Jouy-en-Josas', 'Maison Marques · Île-de-France'],
     img: '/buffet.webp',
   },
   {
     num: '04',
     titre: 'Une livraison qui fait partie du service',
     desc: "Nos livreurs ne sont pas des prestataires exterens — ils font partie de notre équipe et de l'expérience que nous proposons. Présents dès 6h30, formés à nos standards, ils installent les prestations comme nous le ferions nous-mêmes.",
-    details: ['Livraison dès 6h30, 7j/7', 'Paris et Île-de-France', 'Installation soignée incluse', 'Équipe interne, pas de sous-traitance'],
+    details: ['Livraison dès 6h30, lundi–vendredi', 'Paris et Île-de-France', 'Installation soignée incluse', 'Équipe interne, pas de sous-traitance'],
     img: '/buffet-sale.webp',
   },
 ]

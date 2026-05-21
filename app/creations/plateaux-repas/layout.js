@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Plateaux Repas livrés pour entreprises - Paris & Île-de-France",
-  description: "Plateaux repas individuels frais livrés dans vos bureaux. Produits artisanaux sélectionnés, livrés à Paris et en Île-de-France. Commande avant 12h la veille.",
+  title: "Plateaux Repas Traiteur Paris — Livraison entreprises Île-de-France",
+  description: "Plateaux repas individuels frais livrés dans vos bureaux à Paris. Traiteur plateau repas artisanal, mignardises incluses sur demande. Commande avant 14h la veille, livraison dès 6h30.",
   openGraph: {
-    title: "Plateaux Repas pour entreprises | L'Écrin Traiteur",
-    description: "Plateaux repas individuels frais livrés dans vos bureaux à Paris et Île-de-France.",
+    title: "Plateaux Repas Traiteur Paris | L'Écrin Traiteur",
+    description: "Traiteur plateau repas Paris : produits artisanaux, livraison lundi–vendredi dès 6h30 dans toute l'Île-de-France.",
   },
 }
 
