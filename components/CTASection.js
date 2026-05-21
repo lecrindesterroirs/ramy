@@ -7,7 +7,7 @@ export default function CTASection() {
       className="cta-section"
       style={{
         background: 'var(--bg-primary)',
-        padding: '40px 0 160px',
+        padding: '120px 0 120px',
         textAlign: 'center',
       }}
     >
