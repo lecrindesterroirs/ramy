@@ -22,7 +22,7 @@ export const FORMULES = [
     ],
     categories: null,
     ideal: 'Goûters premium, conférences, pauses collaborateurs, accueil clients.',
-    img: '/prod-chouquettes.webp',
+    img: '/cocktail-sucre.webp',
     badge: null,
     seoTitle: 'Cocktail sucré artisanal entreprise Paris — pièces sucrées livrées dès 6h30',
     seoArticle: `
@@ -67,7 +67,7 @@ export const FORMULES = [
     ],
     categories: null,
     ideal: 'Le format corporate premium par excellence : léger, élégant et facile à déguster debout.',
-    img: '/buffet.webp',
+    img: '/cocktail-dejeunatoire.webp',
     badge: 'Le plus demandé',
     seoTitle: 'Cocktail déjeunatoire entreprise Paris — buffet debout livré dès 6h30',
     seoArticle: `
@@ -118,7 +118,7 @@ export const FORMULES = [
     ],
     categories: null,
     ideal: 'Un cocktail élégant, généreux et visuellement fort, pensé pour marquer les esprits.',
-    img: '/cocktail.webp',
+    img: '/cocktail-dinatoire.webp',
     badge: null,
     seoTitle: 'Cocktail dînatoire entreprise Paris — soirée événementielle livrée en Île-de-France',
     seoArticle: `
@@ -173,7 +173,7 @@ export const FORMULES = [
     ],
     categories: null,
     ideal: 'Lancements produits, réceptions VIP, événements presse, soirées de prestige.',
-    img: '/buffet-sale.webp',
+    img: '/signature-lecrin.webp',
     badge: 'Prestige',
     seoTitle: "Formule Signature L'Écrin — cocktail prestige entreprise Paris 22 pièces",
     seoArticle: `
@@ -238,7 +238,7 @@ export const FORMULES = [
       },
     ],
     ideal: 'Déjeuners d\'équipe, séminaires, réceptions clients en journée.',
-    img: '/buffet.webp',
+    img: '/buffet-mediterraneen.webp',
     badge: null,
     seoTitle: 'Buffet méditerranéen traiteur Paris — grandes pièces à partager livrées en Île-de-France',
     seoArticle: `
@@ -296,7 +296,7 @@ export const FORMULES = [
       },
     ],
     ideal: 'Événements en terrasse, garden parties d\'entreprise, lancements de produit en extérieur.',
-    img: '/prod-brochettes.webp',
+    img: '/buffet-garden-party.webp',
     badge: 'Coup de cœur',
     seoTitle: 'Buffet garden party traiteur Paris — burrata, focaccias & macarons livrés en Île-de-France',
     seoArticle: `
@@ -418,7 +418,7 @@ export const FORMULES = [
       },
     ],
     ideal: 'Réceptions VIP, inaugurations, soirées de prestige, événements presse.',
-    img: '/img-reception.webp',
+    img: '/grand-buffet-signature.webp',
     badge: 'Prestige',
     seoTitle: "Grand Buffet Signature L'Écrin — traiteur prestige Paris grandes tables événementielles",
     seoArticle: `
