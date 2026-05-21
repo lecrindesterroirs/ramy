@@ -162,6 +162,7 @@ export default function EvenementsSaisonniers() {
           className="sais-cta"
           style={{
             borderTop: '1px solid rgba(17,17,17,0.08)',
+            marginTop: '48px',
             padding: '48px 72px',
             textAlign: 'center',
           }}
