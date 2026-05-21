@@ -31,7 +31,7 @@ const categories = [
         specialite: 'Madeleines',
         description: "Les madeleines Mado Paris sont notre produit signature. Fabriquées dans leur atelier parisien avec des ingrédients biologiques français, sans huile de palme. Moelleuses, dorées, reconnaissables au premier goût — nos clients les reconnaissent avant même de lire l'étiquette.",
         tags: ['Ingrédients biologiques', 'Sans huile de palme', 'Paris'],
-        img: '/creations-1.png',
+        img: '/madeleine-home.jpg',
       },
       {
         nom: 'Laura Todd',
