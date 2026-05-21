@@ -3,10 +3,10 @@
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 
 const fallback = [
-  { name: 'Plateau Repas Végétarien', label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-  { name: 'Plateau Repas Poissons',   label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-  { name: 'Plateau Repas Viandes',    label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
-  { name: 'Plateau Repas Poulet',     label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
+  { name: 'Jardin Méditerranéen', label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
+  { name: 'Riviera',             label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
+  { name: 'Signature',           label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
+  { name: 'Toscane',             label: "L'Écrin Traiteur", img: '/creations-4.png', imgPosition: 'center 70%' },
 ]
 
 const SEO_ARTICLE = `
