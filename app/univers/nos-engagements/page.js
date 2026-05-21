@@ -30,7 +30,7 @@ const engagements = [
     titre: 'Une livraison qui fait partie du service',
     desc: "Nos livreurs ne sont pas des prestataires exterens — ils font partie de notre équipe et de l'expérience que nous proposons. Présents dès 6h30, formés à nos standards, ils installent les prestations comme nous le ferions nous-mêmes.",
     details: ['Livraison dès 6h30, lundi–vendredi', 'Paris et Île-de-France', 'Installation soignée incluse', 'Équipe interne, pas de sous-traitance'],
-    img: '/buffet-sale.webp',
+    img: '/creations-1.png',
   },
 ]
 
