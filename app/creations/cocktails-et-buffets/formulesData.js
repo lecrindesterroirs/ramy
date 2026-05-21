@@ -360,7 +360,7 @@ export const FORMULES = [
       },
     ],
     ideal: 'Déjeuners de direction, réceptions clients élégantes, séminaires résidentiels.',
-    img: '/section-reception.webp',
+    img: '/buffet-garden-party.webp',
     badge: null,
     seoTitle: 'Buffet traiteur italien Paris — focaccias, antipasti & tiramisu livrés en Île-de-France',
     seoArticle: `
