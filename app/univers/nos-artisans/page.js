@@ -38,7 +38,7 @@ const categories = [
         specialite: 'Cookies',
         description: "Installés à Paris depuis 1985, pionniers du cookie en France. Leur recette, primée à Chicago en 1933, est produite chaque jour dans leur atelier du 18e. Les cookies Laura Todd disparaissent toujours en premier sur nos plateaux. Une adresse qu'on garde précieusement.",
         tags: ['Paris depuis 1985', 'Recette signature', 'Production quotidienne'],
-        img: '/creations-featured.webp',
+        img: '/laura-todd.jpg',
       },
       {
         nom: 'Pierre Morel',
