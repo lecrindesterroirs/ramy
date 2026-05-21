@@ -1,42 +1,320 @@
 'use client'
 
-import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
+import Navbar from '../../../components/Navbar'
+import Footer from '../../../components/Footer'
 
-const fallback = [
-  { name: 'Plateau cocktail dînatoire',     label: "L'Écrin Paris", img: '/cocktail.webp' },
-  { name: 'Verrines gourmandes',            label: "L'Écrin Paris", img: '/buffet.webp' },
-  { name: 'Buffet froid prestige',          label: "L'Écrin Paris", img: '/mini-cookies.webp' },
-  { name: 'Mini-bouchées sucrées-salées',   label: "L'Écrin Paris", img: '/creations-2.png' },
-  { name: 'Plateau charcuterie & fromages', label: "L'Écrin Paris", img: '/buffet-sale.webp' },
-  { name: 'Buffet cocktail premium',        label: "L'Écrin Paris", img: '/chou.webp' },
-  { name: 'Corbeille de mignardises',       label: "L'Écrin Paris", img: '/creations-4.png' },
-  { name: 'Sélection de canapés',           label: "L'Écrin Paris", img: '/navette.webp' },
+const FORMULES = [
+  {
+    id: 'cocktail-sucre',
+    nom: 'Cocktail Sucré',
+    pieces: '8 pièces / pers.',
+    prix: 'À partir de 22 € HT / pers.',
+    desc: "Une sélection raffinée de pièces sucrées artisanales, pensée pour les pauses premium, réunions clients et événements d'entreprise élégants.",
+    salees: [],
+    sucrees: [
+      'Madeleine signature fleur d'oranger',
+      'Madeleine citron',
+      'Mini chou vanille',
+      'Macaron signature',
+      'Verrine citron & lemon curd',
+      'Panna cotta vanille fruits rouges',
+      'Brochette de fruits frais',
+      'Tartelette fruits rouges',
+    ],
+    ideal: 'Goûters premium, conférences, pauses collaborateurs, accueil clients.',
+    img: '/prod-chouquettes.webp',
+    badge: null,
+  },
+  {
+    id: 'cocktail-dejeunatoire',
+    nom: 'Cocktail Déjeunatoire',
+    pieces: '12 pièces / pers.',
+    detail: '9 salées · 3 sucrées',
+    prix: 'À partir de 36 € HT / pers.',
+    desc: "Un cocktail généreux et moderne, conçu pour les déjeuners debout, réunions et moments de networking.",
+    salees: [
+      'Mini focaccia pesto & mozzarella',
+      'Navette saumon citronné',
+      'Wrap poulet rôti parmesan',
+      'Club sandwich poulet truffé',
+      'Bun burrata tomates confites',
+      'Wrap avocat feta',
+      'Verrine méditerranéenne',
+      'Finger concombre fromage frais',
+      'Mini roll légumes grillés',
+    ],
+    sucrees: [
+      'Madeleine signature',
+      'Verrine citron & lemon curd',
+      'Brochette de fruits frais',
+    ],
+    ideal: 'Le format corporate premium par excellence : léger, élégant et facile à déguster debout.',
+    img: '/buffet.webp',
+    badge: 'Le plus demandé',
+  },
+  {
+    id: 'cocktail-dinatoire',
+    nom: 'Cocktail Dînatoire',
+    pieces: '18 pièces / pers.',
+    detail: '14 salées · 4 sucrées',
+    prix: 'À partir de 58 € HT / pers.',
+    desc: "Une expérience cocktail premium pensée pour les soirées d'entreprise, lancements, événements presse et réceptions haut de gamme.",
+    salees: [
+      'Brioche saumon gravlax',
+      'Focaccia truffe & burrata',
+      'Mini bun poulet effiloché',
+      'Navette poulet croustillant',
+      'Finger parmesan pesto',
+      'Tartare de légumes du soleil',
+      'Wrap avocat feta',
+      'Club sandwich premium poulet',
+      'Mini bagel saumon',
+      'Tartelette ricotta tomates anciennes',
+      'Focaccia stracciatella pistache',
+      'Finger méditerranéen',
+      'Verrine fraîcheur citron & herbes',
+      'Brochette mozzarella basilic',
+    ],
+    sucrees: [
+      'Madeleine fleur d'oranger',
+      'Mini chou chocolat',
+      'Panna cotta vanille fruits rouges',
+      'Tartelette citron',
+    ],
+    ideal: 'Un cocktail élégant, généreux et visuellement fort, pensé pour marquer les esprits.',
+    img: '/cocktail.webp',
+    badge: null,
+  },
+  {
+    id: 'signature-lecrin',
+    nom: 'Signature L'Écrin',
+    pieces: '22 pièces / pers.',
+    detail: '16 salées · 6 sucrées',
+    prix: 'À partir de 78 € HT / pers.',
+    desc: "L'expérience événementielle signature de la maison. Une sélection de créations artisanales premium, imaginée pour les événements les plus exclusifs.",
+    salees: [
+      'Brioche toastée saumon gravlax',
+      'Mini lobster roll',
+      'Focaccia truffe & burrata',
+      'Tartare de daurade agrumes',
+      'Finger parmesan affiné',
+      'Club sandwich poulet rôti',
+      'Tartelette légumes confits',
+      'Wrap avocat herbes fraîches',
+      'Mini bun bœuf effiloché',
+      'Brochette méditerranéenne',
+      'Verrine fraîcheur citronnée',
+      'Navette saumon fumé',
+      'Focaccia pesto stracciatella',
+      'Finger signature du moment',
+      'Mini bagel cream cheese saumon',
+      'Tartare végétal herbes fraîches',
+    ],
+    sucrees: [
+      'Madeleines signature',
+      'Mini flan vanille',
+      'Chou praliné',
+      'Macaron signature',
+      'Verrine citron & lemon curd',
+      'Fruits frais premium',
+    ],
+    ideal: 'Lancements produits, réceptions VIP, événements presse, soirées de prestige.',
+    img: '/buffet-sale.webp',
+    badge: 'Prestige',
+  },
 ]
 
 const SEO_ARTICLE = `
   <h2>Traiteur cocktails et buffets d'entreprise à Paris</h2>
-  <p>Le <strong>cocktail d'entreprise</strong> est le format événementiel le plus polyvalent. Plus détendu qu'un repas assis, plus généreux qu'un simple buffet : c'est l'événement qui favorise les échanges naturels entre collaborateurs, clients et partenaires. L'Écrin Traiteur livre vos cocktails et buffets à Paris et en Île-de-France, à l'heure souhaitée.</p>
+  <p>Le <strong>cocktail d'entreprise</strong> est le format événementiel le plus polyvalent. Plus détendu qu'un repas assis, plus généreux qu'un simple buffet : c'est l'événement qui favorise les échanges naturels entre collaborateurs, clients et partenaires. L'Écrin Traiteur livre vos cocktails et buffets à Paris et en Île-de-France.</p>
 
-  <h2>Cocktail apéritif ou cocktail dînatoire — quelle différence ?</h2>
-  <p>Le <strong>cocktail apéritif</strong> (1h30 à 2h) est léger — bouchées et boissons, sans vocation à remplacer un repas. Le <strong>cocktail dînatoire</strong> (2h30 à 3h) est plus généreux : les convives doivent pouvoir se nourrir correctement. Pour les événements d'entreprise, le format dînatoire est le plus courant — il offre de la flexibilité sur l'heure et évite la contrainte du service à table.</p>
-
-  <h2>Combien de pièces par personne pour un cocktail d'entreprise ?</h2>
-  <p>Pour un <strong>cocktail apéritif</strong> : 6 à 8 pièces par personne. Pour un <strong>cocktail dînatoire</strong> : 12 à 15 pièces, dont un tiers de pièces chaudes. Équilibre recommandé : 60 % de pièces froides (verrines, tartines, bouchées), 40 % de pièces chaudes (mini-quiches, feuilletés, bouchées chaudes). Prévoyez toujours 10 à 15 % de plus que le nombre confirmé.</p>
+  <h2>Cocktail sucré, déjeunatoire ou dînatoire — quelle différence ?</h2>
+  <p>Le <strong>Cocktail Sucré</strong> (8 pièces) est idéal pour une pause premium ou un accueil client. Le <strong>Cocktail Déjeunatoire</strong> (12 pièces) remplace le déjeuner debout. Le <strong>Cocktail Dînatoire</strong> (18 pièces) est pensé pour les soirées d'entreprise. La <strong>Signature L'Écrin</strong> (22 pièces) est notre offre la plus exclusive pour les événements prestige.</p>
 
   <h2>Organiser votre cocktail d'entreprise à Paris</h2>
-  <p>Commandez au minimum <strong>48 à 72h à l'avance</strong> pour les cocktails et buffets. L'Écrin Traiteur livre dans vos locaux, chez un partenaire ou dans un espace événementiel, partout en Île-de-France. Créneaux idéaux : 18h–20h30 ou 19h–21h30. Devis personnalisé sous 24h — précisez le format, le nombre de convives et vos préférences.</p>
+  <p>Commandez au minimum <strong>48 à 72h à l'avance</strong>. L'Écrin Traiteur livre dans vos locaux, chez un partenaire ou dans un espace événementiel, partout en Île-de-France. Devis personnalisé sous 24h.</p>
 `
 
 export default function CocktailsEtBuffets() {
   return (
-    <ProductsPageTemplate
-      heroImg="/creations-3.png"
-      heroTitle={"Cocktails\n& Buffets"}
-      heroSubtitle="Des buffets et cocktails pensés pour vos événements d'entreprise, de la pause au dîner debout."
-      breadcrumb="Nos Créations — Cocktails & Buffets"
-      categorieSlug="cocktails-buffets"
-      fallbackProducts={fallback}
-      seoArticle={SEO_ARTICLE}
-    />
+    <>
+      <Navbar showBanner={true} />
+
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+
+        {/* Hero */}
+        <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
+            <img src="/creations-3.png" alt="Cocktails & Buffets — L'Écrin Traiteur"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                Nos Créations — Cocktails & Buffets
+              </p>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                Cocktails<br />& Buffets
+              </h1>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px' }}>
+                Des buffets et cocktails pensés pour vos événements d'entreprise, de la pause au dîner debout.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Intro */}
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px 0' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+            Nos formules
+          </p>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '16px' }}>
+            Quatre formules, un seul exigence.
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '560px' }}>
+            De la pause sucrée premium au cocktail dînatoire de prestige — chaque formule est composée de pièces artisanales, livrées prêtes à servir à Paris et en Île-de-France.
+          </p>
+        </div>
+
+        {/* Formules */}
+        <div className="formules-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 96px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2px' }}>
+          {FORMULES.map((f) => (
+            <div key={f.id} className="formule-card" style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column' }}>
+
+              {/* Image */}
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
+                <img src={f.img} alt={f.nom}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+                  className="formule-img"
+                />
+                {f.badge && (
+                  <span style={{ position: 'absolute', top: '16px', left: '16px', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
+                    {f.badge}
+                  </span>
+                )}
+              </div>
+
+              {/* Contenu */}
+              <div style={{ padding: '32px 36px 36px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+
+                {/* Header */}
+                <div style={{ marginBottom: '20px', paddingBottom: '20px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+                  <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2vw, 30px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.1 }}>
+                    {f.nom}
+                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent)', letterSpacing: '0.04em' }}>
+                      {f.pieces}
+                    </span>
+                    {f.detail && (
+                      <>
+                        <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>—</span>
+                        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.45)' }}>
+                          {f.detail}
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)', marginTop: '10px' }}>
+                    {f.prix}
+                  </p>
+                </div>
+
+                {/* Description */}
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '24px' }}>
+                  {f.desc}
+                </p>
+
+                {/* Pièces */}
+                <div style={{ display: 'grid', gridTemplateColumns: f.salees.length > 0 ? '1fr 1fr' : '1fr', gap: '20px', marginBottom: '24px' }} className="formule-pieces">
+
+                  {f.salees.length > 0 && (
+                    <div>
+                      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
+                        Pièces salées
+                      </p>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                        {f.salees.map((item, i) => (
+                          <li key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
+                            <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px', fontSize: '10px' }}>–</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <div>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
+                      Pièces sucrées
+                    </p>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                      {f.sucrees.map((item, i) => (
+                        <li key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '7px' }}>
+                          <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px', fontSize: '10px' }}>–</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Idéal pour */}
+                <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.45)', lineHeight: 1.65 }}>
+                    <span style={{ fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>Format idéal · </span>
+                    {f.ideal}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 80px', textAlign: 'center' }}>
+          <a href="/devis" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+            Demander un devis →
+          </a>
+        </div>
+
+        {/* Séparateur */}
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px' }}>
+          <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
+        </div>
+
+        {/* SEO */}
+        <section className="cocktail-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+            Cocktails & Buffets d'entreprise
+          </p>
+          <div className="fiche-article-body" dangerouslySetInnerHTML={{ __html: SEO_ARTICLE }} />
+        </section>
+
+      </main>
+
+      <style suppressHydrationWarning>{`
+        .formule-card:hover .formule-img { transform: scale(1.03); }
+        .fiche-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
+        .fiche-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
+        .fiche-article-body strong { color: var(--text-primary); font-weight: 500; }
+        @media (max-width: 768px) {
+          .page-hero-wrapper { padding: 60px 0 0 !important; }
+          .page-hero-text { padding: 0 24px !important; }
+          .formules-grid { grid-template-columns: 1fr !important; padding: 32px 24px 64px !important; }
+          .formule-pieces { grid-template-columns: 1fr !important; }
+          .cocktail-seo { padding: 48px 24px 72px !important; }
+        }
+        @media (max-width: 1024px) and (min-width: 769px) {
+          .page-hero-wrapper { padding: 40px 40px 0 !important; }
+          .page-hero-text { padding: 0 40px !important; }
+          .formules-grid { padding: 40px 40px 72px !important; gap: 12px !important; }
+          .cocktail-seo { padding: 60px 40px 80px !important; }
+        }
+      `}</style>
+
+      <Footer />
+    </>
   )
 }
