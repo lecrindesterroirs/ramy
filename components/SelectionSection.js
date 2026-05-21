@@ -106,9 +106,6 @@ export default function SelectionSection() {
               Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Dammann Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.
             </p>
 
-            {/* Séparateur */}
-            <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.10)', marginBottom: '48px' }} />
-
             {/* 3 arguments — desktop */}
             <div
               className="selection-args-desktop"
@@ -116,14 +113,16 @@ export default function SelectionSection() {
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '12px',
+                alignItems: 'start',
               }}
             >
-              {args.map((item) => (
+              {args.map((item, i) => (
                 <div
                   key={item.num}
                   style={{
                     background: '#FFFFFF',
                     padding: '24px 20px',
+                    marginTop: i === 0 ? '0px' : i === 1 ? '18px' : '8px',
                   }}
                 >
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '10px', lineHeight: 1.5 }}>
