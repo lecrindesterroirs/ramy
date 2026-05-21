@@ -69,7 +69,7 @@ const categories = [
         specialite: 'Jus & Nectars',
         description: "Fondée en 1997 à Valence, dans la Drôme. 38 références, fruits entiers, aucun sucre ajouté, aucun additif. La moitié des fruits vient de producteurs français. Quand on pose un jus Alain Milliat sur une table, les gens le remarquent. C'est ça, un produit qui se justifie seul.",
         tags: ['Fruits entiers', 'Sans sucre ajouté', 'Drôme · 1997'],
-        img: '/pause-orange.webp',
+        img: '/selection-artisans.jpg',
       },
       {
         nom: 'Les Vergers de Plaisirs',
