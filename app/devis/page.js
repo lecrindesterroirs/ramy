@@ -161,45 +161,38 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step, goTo }) {
   const steps = ['Prestation', 'Votre projet', 'Vos coordonnées']
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, padding: '72px 16px 0' }}>
+    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '72px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
       {steps.map((label, i) => {
         const idx = i + 1
         const clickable = idx < step
+        const active = idx === step
+        const done = idx < step
         return (
-          <div key={i} style={{ display: 'flex', alignItems: 'center' }}>
-            <div
+          <div key={i} style={{ display: 'flex', alignItems: 'center', flex: i < steps.length - 1 ? '1' : '0' }}>
+            <span
               onClick={() => clickable && goTo(idx)}
-              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', cursor: clickable ? 'pointer' : 'default' }}
-            >
-              <div style={{
-                width: '28px', height: '28px', borderRadius: '50%',
-                background: idx <= step ? '#E0A126' : 'transparent',
-                border: `1px solid ${idx <= step ? '#E0A126' : 'rgba(17,17,17,0.18)'}`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'all 0.4s ease', flexShrink: 0,
-              }}>
-                {idx < step ? (
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5"><polyline points="20,6 9,17 4,12"/></svg>
-                ) : (
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, color: idx === step ? '#FFFFFF' : 'rgba(17,17,17,0.35)' }}>{idx}</span>
-                )}
-              </div>
-              <span className="progress-label" style={{
+              style={{
                 fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '10px',
-                fontWeight: idx === step ? 500 : 400,
+                fontSize: '13px',
+                fontWeight: 400,
                 letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: idx === step ? 'var(--text-primary)' : clickable ? 'rgba(17,17,17,0.55)' : 'rgba(17,17,17,0.35)',
+                color: active ? '#E0A126' : done ? 'rgba(17,17,17,0.35)' : 'rgba(17,17,17,0.28)',
+                cursor: clickable ? 'pointer' : 'default',
                 transition: 'color 0.3s ease',
-                whiteSpace: 'nowrap',
-                textDecoration: clickable ? 'underline' : 'none',
-                textUnderlineOffset: '3px',
-                textDecorationColor: 'rgba(17,17,17,0.2)',
-              }}>{label}</span>
-            </div>
+                flexShrink: 0,
+                userSelect: 'none',
+              }}
+            >
+              {String(idx).padStart(2, '0')}
+            </span>
             {i < steps.length - 1 && (
-              <div className="progress-line" style={{ width: '80px', height: '1px', background: idx < step ? '#E0A126' : 'rgba(17,17,17,0.12)', margin: '0 12px 22px', transition: 'background 0.4s ease', flexShrink: 0 }} />
+              <div style={{
+                flex: 1,
+                height: '1px',
+                background: done ? 'rgba(17,17,17,0.2)' : 'rgba(17,17,17,0.12)',
+                margin: '0 20px',
+                transition: 'background 0.4s ease',
+              }} />
             )}
           </div>
         )
@@ -603,9 +596,7 @@ export default function Contact() {
           .devis-main { height: auto !important; min-height: 100vh !important; }
           .devis-main form { overflow: visible !important; }
           .devis-bottom-nav { padding: 12px 16px !important; }
-          .devis-progress-bar { padding: 48px 12px 0 !important; }
-          .progress-line { width: 28px !important; margin: 0 4px 22px !important; }
-          .progress-label { font-size: 8px !important; letter-spacing: 0.03em !important; }
+          .devis-progress-bar { padding: 48px 24px 0 !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }
           .step2-row { grid-template-columns: 1fr !important; }
