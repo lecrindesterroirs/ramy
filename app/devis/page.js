@@ -253,8 +253,10 @@ function Step1({ data, setData, onSelect }) {
 
 // ── Step 2 ────────────────────────────────────────────────────────────────────
 
-function Step2({ data, setData }) {
+function Step2({ data, setData, showErrors }) {
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
+  const err = (k) => showErrors && !data[k]?.trim()
+
   return (
     <div className="step2-inner" style={{ maxWidth: '680px', margin: '0 auto', padding: '0 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
@@ -269,27 +271,29 @@ function Step2({ data, setData }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
-            <label style={labelStyle}>Date souhaitée</label>
+            <label style={labelStyle}>Date souhaitée <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <DatePicker value={data.date} onChange={v => set('date', v)} />
           </div>
           <div>
-            <label style={labelStyle}>Nombre de convives</label>
+            <label style={labelStyle}>Nombre de convives <span style={{ color: '#E0A126' }}>*</span></label>
             <div style={{ position: 'relative' }}>
-              <input value={data.convives} onChange={e => set('convives', e.target.value)} placeholder="Ex : 30 personnes" style={fieldStyle} />
+              <input value={data.convives} onChange={e => set('convives', e.target.value)} placeholder="Ex : 30 personnes" style={{ ...fieldStyle, borderColor: err('convives') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
+            {err('convives') && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
         </div>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
-            <label style={labelStyle}>Ville</label>
+            <label style={labelStyle}>Ville <span style={{ color: '#E0A126' }}>*</span></label>
             <div style={{ position: 'relative' }}>
-              <input value={data.ville} onChange={e => set('ville', e.target.value)} placeholder="Ex : Paris, Suresnes, Boulogne..." style={fieldStyle} />
+              <input value={data.ville} onChange={e => set('ville', e.target.value)} placeholder="Ex : Paris, Suresnes, Boulogne..." style={{ ...fieldStyle, borderColor: err('ville') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
+            {err('ville') && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
           <div>
-            <label style={labelStyle}>Budget estimé</label>
+            <label style={labelStyle}>Budget estimé <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <div style={{ position: 'relative' }}>
               <input value={data.budget} onChange={e => set('budget', e.target.value)} placeholder="Ex : 1000 € – 2000 €" style={fieldStyle} />
               <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.3)' }}>€</span>
@@ -297,14 +301,15 @@ function Step2({ data, setData }) {
           </div>
         </div>
         <div>
-          <label style={labelStyle}>Détails de votre projet</label>
+          <label style={labelStyle}>Détails de votre projet <span style={{ color: '#E0A126' }}>*</span></label>
           <textarea
             value={data.message}
             onChange={e => set('message', e.target.value)}
             placeholder={"Décrivez votre événement, vos contraintes particulières...\nPlus nous en savons, plus votre proposition sera juste."}
             rows={3}
-            style={{ ...fieldStyle, resize: 'none', lineHeight: 1.7 }}
+            style={{ ...fieldStyle, resize: 'none', lineHeight: 1.7, borderColor: err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
+          {err('message') && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
         </div>
       </div>
     </div>
@@ -394,18 +399,27 @@ function Step3({ data, setData }) {
 export default function Contact() {
   const [step, setStep] = useState(1)
   const [submitStatus, setSubmitStatus] = useState('idle') // idle | loading | success | error
+  const [showStep2Errors, setShowStep2Errors] = useState(false)
   const [data, setData] = useState({
     prestation: '', date: '', convives: '', ville: '', budget: '', message: '',
     nom: '', societe: '', email: '', telephone: '',
   })
 
+  const step2Valid = () => !!(data.convives?.trim() && data.ville?.trim() && data.message?.trim())
+
   const canNext = () => {
     if (step === 1) return !!data.prestation
-    if (step === 2) return true
+    if (step === 2) return step2Valid()
     return true
   }
 
-  const next = () => { if (step < 3) setStep(s => s + 1) }
+  const next = () => {
+    if (step === 2) {
+      if (!step2Valid()) { setShowStep2Errors(true); return }
+      setShowStep2Errors(false)
+    }
+    if (step < 3) setStep(s => s + 1)
+  }
   const prev = () => { if (step > 1) setStep(s => s - 1) }
 
   const submit = async e => {
@@ -457,7 +471,7 @@ export default function Contact() {
             {/* Step content */}
             <div style={{ flex: 1, paddingBottom: '56px', paddingTop: '32px', overflowY: 'auto' }}>
               {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
-              {step === 2 && <Step2 data={data} setData={setData} />}
+              {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
               {step === 3 && <Step3 data={data} setData={setData} />}
             </div>
 
