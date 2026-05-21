@@ -305,7 +305,7 @@ function Step2({ data, setData, showErrors }) {
           <textarea
             value={data.message}
             onChange={e => set('message', e.target.value)}
-            placeholder={"Décrivez votre événement, vos contraintes particulières...\nPlus nous en savons, plus votre proposition sera juste."}
+            placeholder={"Décrivez votre événement, vos contraintes alimentaires ou toute information utile…\nPlus nous en savons, plus notre proposition sera adaptée à vos besoins."}
             rows={3}
             style={{ ...fieldStyle, resize: 'none', lineHeight: 1.7, borderColor: err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
