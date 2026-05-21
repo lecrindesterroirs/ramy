@@ -23,7 +23,7 @@ const engagements = [
     titre: 'Circuit court quand ça sert le produit',
     desc: "Nous choisissons des producteurs locaux quand la proximité améliore réellement le produit — pas comme argument marketing. Le verger des Yvelines pour le jus de pomme, La Ferme de Viltain à Jouy-en-Josas pour ses yaourts au lait de leur troupeau de 350 vaches à 17 km de Paris. La boulangerie de Boulogne parce qu'elle fait ses cakes chaque matin.",
     details: ['Les Vergers de Plaisir · Yvelines', "D'un Passage à l'Autre · Boulogne-Billancourt", 'La Ferme de Viltain · Yaourts · Jouy-en-Josas', 'Maison Marques · Île-de-France'],
-    img: '/buffet.webp',
+    img: '/verger-plaisir.avif',
   },
   {
     num: '04',
