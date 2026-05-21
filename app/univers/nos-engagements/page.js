@@ -9,7 +9,7 @@ const engagements = [
     titre: 'Une sélection sans compromis',
     desc: "Chaque produit que vous trouvez chez L'Écrin a été choisi, testé, remis en question. Pas de référencement automatique, pas de catalogue imposé. Nous travaillons avec des artisans parce qu'ils font quelque chose de mieux que les autres — et pour aucune autre raison.",
     details: ['Dégustation avant référencement', 'Réévaluation régulière', 'Refus des produits standardisés'],
-    img: '/selection-chef.png',
+    img: '/laura-todd.jpg',
   },
   {
     num: '02',
