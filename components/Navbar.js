@@ -14,15 +14,17 @@ const dropdowns = {
     { label: 'Notre Maison', href: '/univers/notre-maison' },
     { label: 'Nos Artisans', href: '/univers/nos-artisans' },
     { label: 'Nos Engagements', href: '/univers/nos-engagements' },
-    { type: 'separator', label: 'Pour vos événements' },
-    { label: 'CODIR, COMEX & Direction', href: '/occasions/petit-dejeuner-codir' },
-    { label: 'Séminaires d\'entreprise', href: '/occasions/seminaire-entreprise' },
-    { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
-    { label: 'Journées de formation', href: '/occasions/journee-formation' },
-    { label: 'Team Building & Cohésion', href: '/occasions/team-building' },
-    { label: 'Goûter d\'entreprise', href: '/occasions/gouter-entreprise' },
   ],
 }
+
+const evenements = [
+  { label: 'CODIR, COMEX & Direction', href: '/occasions/petit-dejeuner-codir' },
+  { label: "Séminaires d'entreprise", href: '/occasions/seminaire-entreprise' },
+  { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
+  { label: 'Journées de formation', href: '/occasions/journee-formation' },
+  { label: 'Team Building & Cohésion', href: '/occasions/team-building' },
+  { label: "Goûter d'entreprise", href: '/occasions/gouter-entreprise' },
+]
 
 const allLinks = [
   { label: 'Nos Créations', href: '/creations/petits-dejeuners-et-pauses' },
@@ -35,9 +37,12 @@ const allLinks = [
 export default function Navbar({ showBanner = false }) {
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [subOpen, setSubOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
+  const [mobileSubOpen, setMobileSubOpen] = useState(false)
   const closeTimer = useRef(null)
+  const subTimer = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -141,7 +146,7 @@ export default function Navbar({ showBanner = false }) {
                 <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
               </button>
 
-              {activeDropdown === key && (
+              {activeDropdown === key && key === 'creations' && (
                 <div
                   style={{
                     position: 'absolute',
@@ -155,25 +160,46 @@ export default function Navbar({ showBanner = false }) {
                     animation: 'dropdownReveal 0.25s ease',
                   }}
                 >
-                  {dropdowns[key].map((item, idx) => {
-                    if (item.type === 'separator') {
-                      return (
-                        <div key={idx} style={{ marginTop: '14px', marginBottom: '8px', paddingTop: '14px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-                          <p style={{
-                            fontFamily: "'Neue Montreal', sans-serif",
-                            fontSize: '9px',
-                            fontWeight: 600,
-                            letterSpacing: '0.18em',
-                            textTransform: 'uppercase',
-                            color: 'rgba(17,17,17,0.3)',
-                            marginBottom: '4px',
-                          }}>
-                            {item.label}
-                          </p>
-                        </div>
-                      )
-                    }
-                    return (
+                  {dropdowns.creations.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '12px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: '#111111',
+                        padding: '9px 0',
+                        display: 'block',
+                        transition: 'color 0.2s ease',
+                      }}
+                      onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+                      onMouseLeave={e => e.target.style.color = '#111111'}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              {activeDropdown === key && key === 'univers' && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 'calc(100% + 16px)',
+                    left: 0,
+                    background: '#FFFFFF',
+                    borderTop: '1px solid rgba(17,17,17,0.08)',
+                    boxShadow: '0 24px 48px rgba(17,17,17,0.06)',
+                    animation: 'dropdownReveal 0.25s ease',
+                    display: 'flex',
+                  }}
+                >
+                  {/* Panneau gauche */}
+                  <div style={{ padding: '28px 36px', minWidth: '220px' }}>
+                    {dropdowns.univers.map(item => (
                       <a
                         key={item.label}
                         href={item.href}
@@ -193,8 +219,80 @@ export default function Navbar({ showBanner = false }) {
                       >
                         {item.label}
                       </a>
-                    )
-                  })}
+                    ))}
+
+                    {/* Trigger "Pour vos événements" */}
+                    <div
+                      style={{ borderTop: '1px solid rgba(17,17,17,0.07)', marginTop: '14px', paddingTop: '6px' }}
+                      onMouseEnter={() => { clearTimeout(subTimer.current); setSubOpen(true) }}
+                      onMouseLeave={() => { subTimer.current = setTimeout(() => setSubOpen(false), 200) }}
+                    >
+                      <div style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '12px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: subOpen ? 'var(--accent)' : '#111111',
+                        padding: '9px 0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        cursor: 'default',
+                        transition: 'color 0.2s ease',
+                      }}>
+                        Pour vos événements
+                        <span style={{ fontSize: '11px', marginLeft: '10px', opacity: 0.6 }}>›</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Panneau droit — sous-menu événements */}
+                  {subOpen && (
+                    <div
+                      style={{
+                        padding: '28px 36px',
+                        minWidth: '240px',
+                        borderLeft: '1px solid rgba(17,17,17,0.07)',
+                        animation: 'dropdownReveal 0.18s ease',
+                      }}
+                      onMouseEnter={() => clearTimeout(subTimer.current)}
+                      onMouseLeave={() => { subTimer.current = setTimeout(() => setSubOpen(false), 200) }}
+                    >
+                      <p style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '9px',
+                        fontWeight: 600,
+                        letterSpacing: '0.18em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(17,17,17,0.3)',
+                        marginBottom: '8px',
+                      }}>
+                        Pour vos événements
+                      </p>
+                      {evenements.map(item => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          style={{
+                            fontFamily: "'Neue Montreal', sans-serif",
+                            fontSize: '12px',
+                            fontWeight: 400,
+                            letterSpacing: '0.08em',
+                            textTransform: 'uppercase',
+                            color: '#111111',
+                            padding: '9px 0',
+                            display: 'block',
+                            transition: 'color 0.2s ease',
+                          }}
+                          onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+                          onMouseLeave={e => e.target.style.color = '#111111'}
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -447,47 +545,86 @@ export default function Navbar({ showBanner = false }) {
               </button>
               {mobileExpanded === 'univers' && (
                 <div style={{ paddingBottom: '12px' }}>
-                  {dropdowns.univers.map((item, idx) => {
-                    if (item.type === 'separator') {
-                      return (
-                        <p key={idx} style={{
-                          fontFamily: "'Neue Montreal', sans-serif",
-                          fontSize: '9px',
-                          fontWeight: 600,
-                          letterSpacing: '0.18em',
-                          textTransform: 'uppercase',
-                          color: 'rgba(17,17,17,0.3)',
-                          textAlign: 'center',
-                          padding: '12px 0 4px',
-                          borderTop: '1px solid rgba(17,17,17,0.06)',
-                          marginTop: '8px',
-                        }}>
-                          {item.label}
-                        </p>
-                      )
-                    }
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
-                        style={{
-                          fontFamily: "'Neue Montreal', sans-serif",
-                          fontSize: '13px',
-                          fontWeight: 400,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          color: 'rgba(17,17,17,0.65)',
-                          padding: '10px 0',
-                          display: 'block',
-                          textAlign: 'center',
-                          textDecoration: 'none',
-                        }}
-                      >
-                        {item.label}
-                      </a>
-                    )
-                  })}
+                  {dropdowns.univers.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => { setMobileOpen(false); setMobileExpanded(null); setMobileSubOpen(false) }}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '13px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(17,17,17,0.65)',
+                        padding: '10px 0',
+                        display: 'block',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+
+                  {/* Sous-section "Pour vos événements" */}
+                  <div style={{ borderTop: '1px solid rgba(17,17,17,0.06)', marginTop: '8px' }}>
+                    <button
+                      onClick={() => setMobileSubOpen(!mobileSubOpen)}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: mobileSubOpen ? 'var(--accent)' : 'rgba(17,17,17,0.65)',
+                        padding: '10px 0',
+                        width: '100%',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '6px',
+                        transition: 'color 0.2s ease',
+                      }}
+                    >
+                      Pour vos événements
+                      <span style={{
+                        fontSize: '14px',
+                        color: 'var(--accent)',
+                        transition: 'transform 0.25s ease',
+                        transform: mobileSubOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                        display: 'inline-block',
+                      }}>›</span>
+                    </button>
+                    {mobileSubOpen && (
+                      <div style={{ paddingBottom: '4px' }}>
+                        {evenements.map(item => (
+                          <a
+                            key={item.label}
+                            href={item.href}
+                            onClick={() => { setMobileOpen(false); setMobileExpanded(null); setMobileSubOpen(false) }}
+                            style={{
+                              fontFamily: "'Neue Montreal', sans-serif",
+                              fontSize: '12px',
+                              fontWeight: 400,
+                              letterSpacing: '0.07em',
+                              textTransform: 'uppercase',
+                              color: 'rgba(17,17,17,0.5)',
+                              padding: '9px 0',
+                              display: 'block',
+                              textAlign: 'center',
+                              textDecoration: 'none',
+                            }}
+                          >
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
