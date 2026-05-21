@@ -183,22 +183,34 @@ export default function MadeleinesSection() {
             </div>
           </div>
 
-          {/* Tags */}
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {['Bio AB', 'Sans huile de palme', 'Végétarien', 'Fait à Paris'].map(tag => (
-              <span key={tag} style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '10px',
-                fontWeight: 500,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'rgba(17,17,17,0.45)',
-                border: '1px solid rgba(17,17,17,0.12)',
-                padding: '5px 10px',
-              }}>
-                {tag}
-              </span>
-            ))}
+          {/* Saveurs */}
+          <div style={{ marginBottom: '0' }}>
+            <p style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'rgba(17,17,17,0.4)',
+              marginBottom: '12px',
+            }}>
+              Nos saveurs
+            </p>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              {['Nature', 'Citron', 'Fleur d\'oranger', 'Pistache framboise', 'Chocolat noir', 'Ananas coco passion'].map(saveur => (
+                <span key={saveur} style={{
+                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontSize: '10px',
+                  fontWeight: 400,
+                  letterSpacing: '0.06em',
+                  color: 'rgba(17,17,17,0.55)',
+                  border: '1px solid rgba(17,17,17,0.12)',
+                  padding: '5px 12px',
+                }}>
+                  {saveur}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
