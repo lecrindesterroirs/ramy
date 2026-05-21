@@ -57,7 +57,7 @@ const categories = [
         specialite: 'Yaourts & Produits laitiers',
         description: "À Jouy-en-Josas, à 17 km de Paris, la Ferme de Viltain fabrique ses yaourts depuis 1954. Leur troupeau de 350 vaches fournit le lait que leur laiterie transforme directement — yaourts natures, aux fruits, de dessert. Un circuit en direct qui se sent dans l'onctuosité : pas de transport long, pas d'intermédiaire, un produit frais qui arrive dans nos plateaux petit-déjeuner le lendemain matin.",
         tags: ['Jouy-en-Josas · 17 km de Paris', 'Depuis 1954 · 350 vaches', 'Laiterie en circuit direct'],
-        img: '/buffet.webp',
+        img: '/ferme-viltain.webp',
       },
     ],
   },
