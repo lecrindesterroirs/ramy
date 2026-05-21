@@ -45,7 +45,7 @@ const categories = [
         specialite: 'Macarons',
         description: "Formé auprès d'un Meilleur Ouvrier de France, Pierre Morel fabrique ses macarons depuis 2013 selon une technique exigeante. Meringue italienne signature, zéro arôme artificiel, ganaches au chocolat pur origine 64%. Des macarons d'une précision et d'une régularité rarissimes.",
         tags: ['Meringue italienne', 'Formé par un MOF', 'Chocolat pur origine'],
-        img: '/selection-chef.png',
+        img: '/pierre-morel.webp',
       },
     ],
   },
