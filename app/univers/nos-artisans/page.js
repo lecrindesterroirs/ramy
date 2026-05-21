@@ -78,7 +78,7 @@ const categories = [
         specialite: 'Jus de pomme artisanal',
         description: "Verger familial planté en 1982 à Plaisir, dans les Yvelines. 10 variétés de pommes sélectionnées pour le goût. Leur jus de pomme artisanal, sans aucun ajout, est l'un de nos produits les plus appréciés en pause. Local, direct, sans intermédiaire.",
         tags: ['Verger depuis 1982', 'Yvelines', 'Sans ajout'],
-        img: '/buffet-sale.webp',
+        img: '/verger-plaisir.avif',
       },
       {
         nom: 'Dammann Frères',
