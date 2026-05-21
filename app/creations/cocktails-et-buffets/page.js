@@ -12,7 +12,7 @@ const FORMULES = [
     desc: "Une sélection raffinée de pièces sucrées artisanales, pensée pour les pauses premium, réunions clients et événements d'entreprise élégants.",
     salees: [],
     sucrees: [
-      'Madeleine signature fleur d'oranger',
+      "Madeleine signature fleur d'oranger",
       'Madeleine citron',
       'Mini chou vanille',
       'Macaron signature',
@@ -76,7 +76,7 @@ const FORMULES = [
       'Brochette mozzarella basilic',
     ],
     sucrees: [
-      'Madeleine fleur d'oranger',
+      "Madeleine fleur d'oranger",
       'Mini chou chocolat',
       'Panna cotta vanille fruits rouges',
       'Tartelette citron',
@@ -87,7 +87,7 @@ const FORMULES = [
   },
   {
     id: 'signature-lecrin',
-    nom: 'Signature L'Écrin',
+    nom: "Signature L'Écrin",
     pieces: '22 pièces / pers.',
     detail: '16 salées · 6 sucrées',
     prix: 'À partir de 78 € HT / pers.',
