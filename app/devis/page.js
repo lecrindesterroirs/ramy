@@ -161,7 +161,7 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step, goTo }) {
   const steps = ['Prestation', 'Votre projet', 'Vos coordonnées']
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
+    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
       {steps.map((label, i) => {
         const idx = i + 1
         const clickable = idx < step
