@@ -437,20 +437,30 @@ export default function Contact() {
 
   // Écoute le bouton MobileCTA sur /devis
   const nextRef = useRef(next)
-  useEffect(() => { nextRef.current = next }, [next])
+  const stepRef = useRef(step)
+  useEffect(() => { nextRef.current = next; stepRef.current = step }, [next, step])
   useEffect(() => {
-    const handler = () => nextRef.current()
+    const handler = () => {
+      if (stepRef.current === 3) {
+        // Soumet le formulaire à l'étape 3
+        const form = document.querySelector('form')
+        if (form) form.requestSubmit()
+      } else {
+        nextRef.current()
+      }
+    }
     window.addEventListener('devis-next', handler)
     return () => window.removeEventListener('devis-next', handler)
   }, [])
 
-  // Cache la MobileCTA à l'étape 1
+  // Cache la MobileCTA à l'étape 1 + informe MobileCTA de l'étape courante
   useEffect(() => {
     if (step === 1) {
       document.body.classList.add('devis-step-1')
     } else {
       document.body.classList.remove('devis-step-1')
     }
+    window.dispatchEvent(new CustomEvent('devis-step-change', { detail: step }))
     return () => document.body.classList.remove('devis-step-1')
   }, [step])
 
@@ -593,6 +603,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={next}
+                  className="devis-nav-next"
                   style={{
                     fontFamily: "'Neue Montreal', sans-serif",
                     fontSize: '11px',
@@ -616,6 +627,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitStatus === 'loading'}
+                  className="devis-nav-next"
                   style={{
                     fontFamily: "'Neue Montreal', sans-serif",
                     fontSize: '11px',
@@ -659,6 +671,7 @@ export default function Contact() {
           .devis-main form { overflow: visible !important; display: block !important; }
           .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 24px !important; flex-wrap: wrap !important; gap: 8px !important; border-top: 1px solid rgba(17,17,17,0.08) !important; }
           .nav-indicator { order: -1 !important; width: 100% !important; padding-bottom: 8px !important; border-bottom: 1px solid rgba(17,17,17,0.06) !important; justify-content: center !important; }
+          .devis-nav-next { display: none !important; }
           .devis-progress-bar { padding: 0 24px !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }

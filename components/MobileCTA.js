@@ -1,10 +1,19 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 export default function MobileCTA() {
   const pathname = usePathname()
   const isDevis = pathname === '/devis'
+  const [devisStep, setDevisStep] = useState(1)
+
+  useEffect(() => {
+    if (!isDevis) return
+    const handler = (e) => setDevisStep(e.detail)
+    window.addEventListener('devis-step-change', handler)
+    return () => window.removeEventListener('devis-step-change', handler)
+  }, [isDevis])
 
   const handleDevisClick = (e) => {
     if (isDevis) {
@@ -12,6 +21,10 @@ export default function MobileCTA() {
       window.dispatchEvent(new CustomEvent('devis-next'))
     }
   }
+
+  const ctaLabel = isDevis
+    ? (devisStep === 3 ? 'Envoyer →' : 'Suivant →')
+    : 'Devis →'
 
   return (
     <>
@@ -30,9 +43,9 @@ export default function MobileCTA() {
           className="mobile-cta-devis"
           href="/devis"
           onClick={handleDevisClick}
-          aria-label={isDevis ? 'Étape suivante' : 'Demander un devis'}
+          aria-label={ctaLabel}
         >
-          {isDevis ? 'Suivant →' : 'Devis →'}
+          {ctaLabel}
         </a>
       </div>
 
