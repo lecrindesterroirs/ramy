@@ -516,7 +516,7 @@ export default function Contact() {
               </button>
 
               {/* Step indicator + error message */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+              <div className="nav-indicator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
                 {submitStatus === 'error' && (
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0 }}>
                     Erreur d'envoi. Réessayez ou appelez-nous.
@@ -620,7 +620,8 @@ export default function Contact() {
         @media (max-width: 768px) {
           .devis-main { height: auto !important; min-height: 100vh !important; }
           .devis-main form { overflow: visible !important; }
-          .devis-bottom-nav { padding: 12px 16px !important; }
+          .devis-bottom-nav { padding: 10px 16px 12px !important; flex-wrap: wrap !important; gap: 8px !important; }
+          .nav-indicator { order: -1 !important; width: 100% !important; padding-bottom: 4px !important; border-bottom: 1px solid rgba(17,17,17,0.06) !important; }
           .devis-progress-bar { padding: 48px 24px 0 !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }
