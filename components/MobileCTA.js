@@ -40,6 +40,9 @@ export default function MobileCTA() {
         .mobile-cta-bar {
           display: none;
         }
+        .devis-step-1 .mobile-cta-bar {
+          display: none !important;
+        }
         @media (max-width: 768px) {
           .mobile-cta-bar {
             display: flex;

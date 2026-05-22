@@ -444,6 +444,16 @@ export default function Contact() {
     return () => window.removeEventListener('devis-next', handler)
   }, [])
 
+  // Cache la MobileCTA à l'étape 1
+  useEffect(() => {
+    if (step === 1) {
+      document.body.classList.add('devis-step-1')
+    } else {
+      document.body.classList.remove('devis-step-1')
+    }
+    return () => document.body.classList.remove('devis-step-1')
+  }, [step])
+
   const submit = async e => {
     e.preventDefault()
     setSubmitStatus('loading')
@@ -510,29 +520,32 @@ export default function Contact() {
               zIndex: 50,
             }}>
               {/* Prev */}
-              <button
-                type="button"
-                onClick={prev}
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: step === 1 ? 'rgba(17,17,17,0.2)' : 'rgba(17,17,17,0.55)',
-                  background: 'none',
-                  border: 'none',
-                  cursor: step === 1 ? 'default' : 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  outline: 'none',
-                  transition: 'color 0.3s ease',
-                }}
-                disabled={step === 1}
-              >
-                ← Précédent
-              </button>
+              {step > 1 ? (
+                <button
+                  type="button"
+                  onClick={prev}
+                  style={{
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '11px',
+                    fontWeight: 500,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(17,17,17,0.55)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    outline: 'none',
+                    transition: 'color 0.3s ease',
+                  }}
+                >
+                  ← Précédent
+                </button>
+              ) : (
+                <div style={{ width: '90px' }} />
+              )}
 
               {/* Step indicator + error message */}
               <div className="nav-indicator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
