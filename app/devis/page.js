@@ -254,6 +254,75 @@ function Step1({ data, setData, onSelect }) {
   )
 }
 
+// ── CityAutocomplete ──────────────────────────────────────────────────────────
+
+function CityAutocomplete({ value, onChange, hasError }) {
+  const [suggestions, setSuggestions] = useState([])
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const ref = useRef(null)
+  const timer = useRef(null)
+
+  useEffect(() => {
+    const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', h)
+    return () => document.removeEventListener('mousedown', h)
+  }, [])
+
+  const handleChange = (e) => {
+    const v = e.target.value
+    onChange(v)
+    clearTimeout(timer.current)
+    if (v.length < 2) { setSuggestions([]); setOpen(false); return }
+    setLoading(true)
+    timer.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${encodeURIComponent(v)}&fields=nom,codesPostaux&boost=population&limit=6`)
+        const data = await res.json()
+        setSuggestions(data)
+        setOpen(data.length > 0)
+      } catch {}
+      setLoading(false)
+    }, 250)
+  }
+
+  const pick = (city) => {
+    onChange(city.nom)
+    setSuggestions([])
+    setOpen(false)
+  }
+
+  return (
+    <div ref={ref} style={{ position: 'relative' }}>
+      <input
+        value={value}
+        onChange={handleChange}
+        onFocus={() => suggestions.length > 0 && setOpen(true)}
+        placeholder="Ex : Paris, Suresnes, Boulogne..."
+        autoComplete="off"
+        style={{ ...fieldStyle, borderColor: hasError ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
+      />
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: loading ? '#E0A126' : 'rgba(17,17,17,0.3)', pointerEvents: 'none', transition: 'color 0.2s' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      {open && (
+        <div style={{ position: 'absolute', top: 'calc(100% + 2px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.1)', boxShadow: '0 8px 24px rgba(17,17,17,0.08)', zIndex: 200 }}>
+          {suggestions.map((city, i) => (
+            <div
+              key={i}
+              onMouseDown={() => pick(city)}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', cursor: 'pointer', borderBottom: i < suggestions.length - 1 ? '1px solid rgba(17,17,17,0.05)' : 'none', transition: 'background 0.15s' }}
+              onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+            >
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)' }}>{city.nom}</span>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)' }}>{city.codesPostaux?.[0]}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Step 2 ────────────────────────────────────────────────────────────────────
 
 function Step2({ data, setData, showErrors }) {
@@ -291,10 +360,7 @@ function Step2({ data, setData, showErrors }) {
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
             <label style={labelStyle}>Ville <span style={{ color: '#E0A126' }}>*</span></label>
-            <div style={{ position: 'relative' }}>
-              <input value={data.ville} onChange={e => set('ville', e.target.value)} placeholder="Ex : Paris, Suresnes, Boulogne..." style={{ ...fieldStyle, borderColor: err('ville') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
+            <CityAutocomplete value={data.ville} onChange={v => set('ville', v)} hasError={err('ville')} />
             {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
           <div>
