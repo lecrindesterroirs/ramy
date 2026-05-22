@@ -515,8 +515,13 @@ export default function Contact() {
         nextRef.current()
       }
     }
+    const prevHandler = () => { if (stepRef.current > 1) setStep(s => s - 1) }
     window.addEventListener('devis-next', handler)
-    return () => window.removeEventListener('devis-next', handler)
+    window.addEventListener('devis-prev', prevHandler)
+    return () => {
+      window.removeEventListener('devis-next', handler)
+      window.removeEventListener('devis-prev', prevHandler)
+    }
   }, [])
 
   // Cache la MobileCTA à l'étape 1 + informe MobileCTA de l'étape courante
@@ -600,6 +605,7 @@ export default function Contact() {
                 <button
                   type="button"
                   onClick={prev}
+                  className="devis-nav-prev"
                   style={{
                     fontFamily: "'Neue Montreal', sans-serif",
                     fontSize: '11px',
@@ -738,6 +744,7 @@ export default function Contact() {
           .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 24px !important; flex-wrap: wrap !important; gap: 8px !important; border-top: 1px solid rgba(17,17,17,0.08) !important; }
           .nav-indicator { order: -1 !important; width: 100% !important; padding-bottom: 8px !important; border-bottom: 1px solid rgba(17,17,17,0.06) !important; justify-content: center !important; }
           .devis-nav-next { display: none !important; }
+          .devis-nav-prev { display: none !important; }
           .devis-progress-bar { padding: 0 24px !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }

@@ -15,11 +15,16 @@ export default function MobileCTA() {
     return () => window.removeEventListener('devis-step-change', handler)
   }, [isDevis])
 
-  const handleDevisClick = (e) => {
+  const handleNextClick = (e) => {
     if (isDevis) {
       e.preventDefault()
       window.dispatchEvent(new CustomEvent('devis-next'))
     }
+  }
+
+  const handlePrevClick = (e) => {
+    e.preventDefault()
+    window.dispatchEvent(new CustomEvent('devis-prev'))
   }
 
   const ctaLabel = isDevis
@@ -29,20 +34,27 @@ export default function MobileCTA() {
   return (
     <>
       <div className="mobile-cta-bar" role="complementary" aria-label="Contactez-nous">
-        <a
-          className="mobile-cta-tel"
-          href="tel:+33760169620"
-          aria-label="Appeler L'Écrin Traiteur"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
-          </svg>
-          07 60 16 96 20
-        </a>
+        {isDevis ? (
+          <button
+            className="mobile-cta-tel"
+            onClick={handlePrevClick}
+            style={{ background: 'none', border: '1px solid rgba(17,17,17,0.15)', cursor: 'pointer' }}
+            aria-label="Étape précédente"
+          >
+            ← Précédent
+          </button>
+        ) : (
+          <a className="mobile-cta-tel" href="tel:+33760169620" aria-label="Appeler L'Écrin Traiteur">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+            </svg>
+            07 60 16 96 20
+          </a>
+        )}
         <a
           className="mobile-cta-devis"
           href="/devis"
-          onClick={handleDevisClick}
+          onClick={handleNextClick}
           aria-label={ctaLabel}
         >
           {ctaLabel}
