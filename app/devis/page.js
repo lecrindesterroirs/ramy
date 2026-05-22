@@ -283,7 +283,7 @@ function Step2({ data, setData, showErrors }) {
               <input value={data.convives} onChange={e => set('convives', e.target.value)} placeholder="Ex : 30 personnes" style={{ ...fieldStyle, borderColor: err('convives') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            {err('convives') && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+            {err('convives') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
         </div>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -293,7 +293,7 @@ function Step2({ data, setData, showErrors }) {
               <input value={data.ville} onChange={e => set('ville', e.target.value)} placeholder="Ex : Paris, Suresnes, Boulogne..." style={{ ...fieldStyle, borderColor: err('ville') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            {err('ville') && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+            {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
           <div>
             <label style={labelStyle}>Budget estimé <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
@@ -312,7 +312,7 @@ function Step2({ data, setData, showErrors }) {
             rows={3}
             style={{ ...fieldStyle, resize: 'none', lineHeight: 1.7, borderColor: err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
-          {err('message') && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+          {err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
         </div>
       </div>
     </div>
@@ -418,7 +418,15 @@ export default function Contact() {
 
   const next = () => {
     if (step === 2) {
-      if (!step2Valid()) { setShowStep2Errors(true); return }
+      if (!step2Valid()) {
+        setShowStep2Errors(true)
+        // Scroll vers le premier champ vide
+        setTimeout(() => {
+          const el = document.querySelector('.step2-error')
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 50)
+        return
+      }
       setShowStep2Errors(false)
     }
     if (step < 3) setStep(s => s + 1)
@@ -520,6 +528,11 @@ export default function Contact() {
                 {submitStatus === 'error' && (
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0 }}>
                     Erreur d'envoi. Réessayez ou appelez-nous.
+                  </p>
+                )}
+                {step === 2 && showStep2Errors && !step2Valid() && (
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0, textAlign: 'center' }}>
+                    Remplissez les champs obligatoires ↑
                   </p>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center' }}>
