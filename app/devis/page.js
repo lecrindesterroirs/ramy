@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import LogosSection from '../../components/LogosSection'
@@ -432,6 +432,15 @@ export default function Contact() {
     if (step < 3) setStep(s => s + 1)
   }
   const prev = () => { if (step > 1) setStep(s => s - 1) }
+
+  // Écoute le bouton MobileCTA sur /devis
+  const nextRef = useRef(next)
+  useEffect(() => { nextRef.current = next }, [next])
+  useEffect(() => {
+    const handler = () => nextRef.current()
+    window.addEventListener('devis-next', handler)
+    return () => window.removeEventListener('devis-next', handler)
+  }, [])
 
   const submit = async e => {
     e.preventDefault()

@@ -1,6 +1,18 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+
 export default function MobileCTA() {
+  const pathname = usePathname()
+  const isDevis = pathname === '/devis'
+
+  const handleDevisClick = (e) => {
+    if (isDevis) {
+      e.preventDefault()
+      window.dispatchEvent(new CustomEvent('devis-next'))
+    }
+  }
+
   return (
     <>
       <div className="mobile-cta-bar" role="complementary" aria-label="Contactez-nous">
@@ -17,9 +29,10 @@ export default function MobileCTA() {
         <a
           className="mobile-cta-devis"
           href="/devis"
-          aria-label="Demander un devis"
+          onClick={handleDevisClick}
+          aria-label={isDevis ? 'Étape suivante' : 'Demander un devis'}
         >
-          Devis →
+          {isDevis ? 'Suivant →' : 'Devis →'}
         </a>
       </div>
 
