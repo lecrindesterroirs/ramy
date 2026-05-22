@@ -480,7 +480,7 @@ export default function Contact() {
             <ProgressBar step={step} goTo={setStep} />
 
             {/* Step content */}
-            <div style={{ flex: 1, paddingBottom: '56px', paddingTop: '32px', overflowY: 'auto' }}>
+            <div style={{ flex: 1, paddingBottom: '80px', paddingTop: '32px', overflowY: 'auto' }}>
               {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
               {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
               {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
@@ -632,9 +632,9 @@ export default function Contact() {
         select option { color: #111111; }
         @media (max-width: 768px) {
           .devis-main { height: auto !important; min-height: 100vh !important; }
-          .devis-main form { overflow: visible !important; }
-          .devis-bottom-nav { padding: 10px 16px 12px !important; flex-wrap: wrap !important; gap: 8px !important; }
-          .nav-indicator { order: -1 !important; width: 100% !important; padding-bottom: 4px !important; border-bottom: 1px solid rgba(17,17,17,0.06) !important; }
+          .devis-main form { overflow: visible !important; display: block !important; }
+          .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 24px !important; flex-wrap: wrap !important; gap: 8px !important; border-top: 1px solid rgba(17,17,17,0.08) !important; }
+          .nav-indicator { order: -1 !important; width: 100% !important; padding-bottom: 8px !important; border-bottom: 1px solid rgba(17,17,17,0.06) !important; justify-content: center !important; }
           .devis-progress-bar { padding: 48px 24px 0 !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }
