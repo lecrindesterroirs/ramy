@@ -407,3 +407,10 @@ img {
   height: 48px;
   border-color: rgba(224, 161, 38, 0.75);
 }
+
+/* Empêche le zoom iOS sur les champs de formulaire */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
