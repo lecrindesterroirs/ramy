@@ -161,7 +161,7 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step, goTo }) {
   const steps = ['Prestation', 'Votre projet', 'Vos coordonnées']
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
+    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 48px', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
       {steps.map((label, i) => {
         const idx = i + 1
         const clickable = idx < step
@@ -501,7 +501,7 @@ export default function Contact() {
             <ProgressBar step={step} goTo={setStep} />
 
             {/* Step content */}
-            <div style={{ flex: 1, paddingBottom: '80px', paddingTop: '16px', overflowY: 'auto' }}>
+            <div style={{ flex: 1, paddingBottom: '80px', paddingTop: '8px', overflowY: 'auto' }}>
               {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
               {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
               {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
