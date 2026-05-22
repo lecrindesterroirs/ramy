@@ -475,7 +475,7 @@ export default function Contact() {
 
   return (
     <>
-      <Navbar />
+      <Navbar forceScrolled={true} />
 
       <main className="devis-main" style={{ background: '#FFFFFF', height: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 

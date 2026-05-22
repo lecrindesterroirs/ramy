@@ -34,8 +34,8 @@ const allLinks = [
 
 ]
 
-export default function Navbar({ showBanner = false }) {
-  const [scrolled, setScrolled] = useState(false)
+export default function Navbar({ showBanner = false, forceScrolled = false }) {
+  const [scrolled, setScrolled] = useState(forceScrolled)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [subOpen, setSubOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -45,10 +45,11 @@ export default function Navbar({ showBanner = false }) {
   const subTimer = useRef(null)
 
   useEffect(() => {
+    if (forceScrolled) return
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [forceScrolled])
 
   useEffect(() => {
     if (mobileOpen) {
