@@ -363,7 +363,7 @@ function Step3({ data, setData, onEdit }) {
           </div>
           <div>
             <label style={labelStyle}>Téléphone <span style={{ color: '#E0A126' }}>*</span></label>
-            <input value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" style={fieldStyle} required />
+            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" style={fieldStyle} required />
           </div>
         </div>
       </div>
