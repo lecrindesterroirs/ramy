@@ -107,9 +107,15 @@ function DatePicker({ value, onChange }) {
 
   const isSelected = d => selected && selected.getFullYear() === view.year && selected.getMonth() === view.month && selected.getDate() === d
   const isToday = d => today.getFullYear() === view.year && today.getMonth() === view.month && today.getDate() === d
+  const isPast = d => {
+    if (!d) return false
+    const date = new Date(view.year, view.month, d)
+    const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate())
+    return date < todayMidnight
+  }
 
   const pick = d => {
-    if (!d) return
+    if (!d || isPast(d)) return
     const mm = String(view.month + 1).padStart(2, '0')
     const dd = String(d).padStart(2, '0')
     onChange(`${view.year}-${mm}-${dd}`)
@@ -140,9 +146,9 @@ function DatePicker({ value, onChange }) {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1px' }}>
             {days.map((d, i) => (
-              <button key={i} type="button" onClick={() => pick(d)} disabled={!d} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? '#E0A126' : 'transparent', color: isSelected(d) ? '#FFF' : isToday(d) ? '#E0A126' : d ? 'var(--text-primary)' : 'transparent', cursor: d ? 'pointer' : 'default', outline: 'none', fontWeight: isSelected(d) ? 500 : 400, transition: 'background 0.15s' }}
-                onMouseEnter={e => { if (d && !isSelected(d)) e.currentTarget.style.background = 'rgba(224,161,38,0.1)' }}
-                onMouseLeave={e => { if (d && !isSelected(d)) e.currentTarget.style.background = 'transparent' }}
+              <button key={i} type="button" onClick={() => pick(d)} disabled={!d || isPast(d)} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? '#E0A126' : 'transparent', color: isSelected(d) ? '#FFF' : isPast(d) ? 'rgba(17,17,17,0.18)' : isToday(d) ? '#E0A126' : d ? 'var(--text-primary)' : 'transparent', cursor: d && !isPast(d) ? 'pointer' : 'default', outline: 'none', fontWeight: isSelected(d) ? 500 : 400, transition: 'background 0.15s', textDecoration: isPast(d) ? 'line-through' : 'none' }}
+                onMouseEnter={e => { if (d && !isSelected(d) && !isPast(d)) e.currentTarget.style.background = 'rgba(224,161,38,0.1)' }}
+                onMouseLeave={e => { if (d && !isSelected(d) && !isPast(d)) e.currentTarget.style.background = 'transparent' }}
               >{d || ''}</button>
             ))}
           </div>
