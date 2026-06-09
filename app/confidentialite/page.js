@@ -7,14 +7,14 @@ export default function Confidentialite() {
     <LegalTemplate title="Politique de Confidentialité" updated="Mai 2026">
 
       <div style={{ ...pStyle, marginBottom: '48px', padding: '20px 24px', background: 'var(--bg-secondary)', borderLeft: '2px solid var(--accent)' }}>
-        L'Écrin des Terroirs attache une importance particulière à la protection de vos données personnelles. Cette politique décrit quelles données nous collectons, pourquoi et comment nous les utilisons, conformément au Règlement Général sur la Protection des Données (RGPD).
+        L'Écrin Traiteur attache une importance particulière à la protection de vos données personnelles. Cette politique décrit quelles données nous collectons, pourquoi et comment nous les utilisons, conformément au Règlement Général sur la Protection des Données (RGPD).
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Responsable du traitement</h2>
         <p style={pStyle}>
           Le responsable du traitement de vos données personnelles est :<br />
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>L'ÉCRIN DES TERROIRS</strong> — SAS au capital variable<br />
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>L'Écrin Traiteur</strong> — L'Écrin des Terroirs SASU<br />
           SIRET 100 102 672 00019<br />
           2, Allée des Bergeronnettes, 92150 Suresnes<br />
           contact@lecrindesterroirs.fr — 07 60 16 96 20
@@ -24,7 +24,7 @@ export default function Confidentialite() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Données collectées et finalités</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          Nous collectons uniquement les données nécessaires à la gestion de votre relation avec L'Écrin des Terroirs. Les données collectées et leurs finalités sont les suivantes :
+          Nous collectons uniquement les données nécessaires à la gestion de votre relation avec L'Écrin Traiteur. Les données collectées et leurs finalités sont les suivantes :
         </p>
         <p style={pStyle}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Formulaire de contact :</strong> nom, prénom, email, téléphone, entreprise, message. Finalité : répondre à votre demande.<br /><br />
@@ -56,7 +56,7 @@ export default function Confidentialite() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Destinataires des données</h2>
         <p style={pStyle}>
-          Vos données personnelles sont destinées exclusivement aux équipes de L'Écrin des Terroirs dans le cadre de la gestion de votre demande. Elles ne sont jamais vendues ni cédées à des tiers à des fins commerciales. Elles peuvent être transmises à des prestataires techniques (hébergeur, outil d'emailing) dans le strict cadre de l'exécution de leurs missions, sous contrat de sous-traitance conforme au RGPD.
+          Vos données personnelles sont destinées exclusivement aux équipes de L'Écrin Traiteur dans le cadre de la gestion de votre demande. Elles ne sont jamais vendues ni cédées à des tiers à des fins commerciales. Elles peuvent être transmises à des prestataires techniques (hébergeur, outil d'emailing) dans le strict cadre de l'exécution de leurs missions, sous contrat de sous-traitance conforme au RGPD.
         </p>
       </div>
 
@@ -73,14 +73,14 @@ export default function Confidentialite() {
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Droit d'opposition :</strong> vous opposer à certains traitements.
         </p>
         <p style={pStyle}>
-          Pour exercer ces droits, contactez-nous à : contact@lecrindesterroirs.fr ou par courrier : L'Écrin des Terroirs, 2, Allée des Bergeronnettes, 92150 Suresnes. Nous nous engageons à répondre dans un délai d'un mois. En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>CNIL</strong> (www.cnil.fr).
+          Pour exercer ces droits, contactez-nous à : contact@lecrindesterroirs.fr ou par courrier : L'Écrin Traiteur, 2, Allée des Bergeronnettes, 92150 Suresnes. Nous nous engageons à répondre dans un délai d'un mois. En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>CNIL</strong> (www.cnil.fr).
         </p>
       </div>
 
       <div style={{ ...sectionStyle, borderBottom: 'none', paddingBottom: 0, marginBottom: 0 }}>
         <h2 style={h2Style}>Modifications de cette politique</h2>
         <p style={pStyle}>
-          L'Écrin des Terroirs se réserve le droit de modifier cette politique de confidentialité à tout moment. La date de dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons à la consulter régulièrement.
+          L'Écrin Traiteur se réserve le droit de modifier cette politique de confidentialité à tout moment. La date de dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons à la consulter régulièrement.
         </p>
       </div>
 

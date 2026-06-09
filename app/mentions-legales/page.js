@@ -10,10 +10,11 @@ export default function MentionsLegales() {
         <h2 style={h2Style}>Éditeur du site</h2>
         <p style={pStyle}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Dénomination sociale :</strong> L'ÉCRIN DES TERROIRS<br />
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Forme juridique :</strong> Société par Actions Simplifiée (SAS)<br />
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Nom commercial :</strong> L'Écrin Traiteur<br />
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Forme juridique :</strong> Société par Actions Simplifiée à associé unique (SASU)<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>SIREN :</strong> 100 102 672<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>SIRET :</strong> 100 102 672 00019<br />
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Numéro de TVA intracommunautaire :</strong> FR51100102672<br />
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Numéro de TVA intracommunautaire :</strong> FR05100102672<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Siège social :</strong> 2, Allée des Bergeronnettes, 92150 Suresnes<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Adresse opérationnelle :</strong> 63 bis rue de Sèvres, 92100 Boulogne-Billancourt<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Téléphone :</strong> 07 60 16 96 20<br />
@@ -34,20 +35,20 @@ export default function MentionsLegales() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Propriété intellectuelle</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          L'ensemble du contenu de ce site (textes, photographies, images, logos, graphismes) est la propriété exclusive de L'Écrin des Terroirs ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.
+          L'ensemble du contenu de ce site (textes, photographies, images, logos, graphismes) est la propriété exclusive de L'Écrin Traiteur ou de ses partenaires, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.
         </p>
         <p style={pStyle}>
-          Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de L'Écrin des Terroirs.
+          Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de L'Écrin Traiteur.
         </p>
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Limitation de responsabilité</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          L'Écrin des Terroirs s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Cependant, nous ne pouvons garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition.
+          L'Écrin Traiteur s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Cependant, nous ne pouvons garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition.
         </p>
         <p style={pStyle}>
-          L'Écrin des Terroirs décline toute responsabilité pour les dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation des informations qui y sont contenues.
+          L'Écrin Traiteur décline toute responsabilité pour les dommages directs ou indirects qui pourraient résulter de l'accès au site ou de l'utilisation des informations qui y sont contenues.
         </p>
       </div>
 

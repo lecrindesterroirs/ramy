@@ -7,23 +7,23 @@ export default function CGV() {
     <LegalTemplate title="Conditions Générales de Vente" updated="Mai 2026">
 
       <div style={{ ...pStyle, marginBottom: '48px', padding: '20px 24px', background: 'var(--bg-secondary)', borderLeft: '2px solid var(--accent)' }}>
-        Tout achat ou commande auprès de L'Écrin des Terroirs implique l'adhésion entière et sans réserve du client aux présentes conditions générales de vente. Les présentes CGV peuvent être modifiées à tout moment ; les conditions applicables sont celles en vigueur à la date de la commande.
+        Tout achat ou commande auprès de L'Écrin Traiteur implique l'adhésion entière et sans réserve du client aux présentes conditions générales de vente. Les présentes CGV peuvent être modifiées à tout moment ; les conditions applicables sont celles en vigueur à la date de la commande.
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 1 — Champ d'application</h2>
         <p style={pStyle}>
-          Les présentes Conditions Générales de Vente s'appliquent à toutes les prestations de restauration événementielle proposées par la société L'Écrin des Terroirs (SAS, SIRET 100 102 672 00019) à destination de clients professionnels (entreprises, associations, collectivités) situés en Île-de-France. Elles régissent l'ensemble des relations contractuelles entre L'Écrin des Terroirs et ses clients.
+          Les présentes Conditions Générales de Vente s'appliquent à toutes les prestations de restauration événementielle proposées par L'Écrin Traiteur (L'Écrin des Terroirs SASU, SIRET 100 102 672 00019) à destination de clients professionnels (entreprises, associations, collectivités) situés en Île-de-France. Elles régissent l'ensemble des relations contractuelles entre L'Écrin Traiteur et ses clients.
         </p>
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 2 — Offre de services</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          L'Écrin des Terroirs propose des prestations de restauration événementielle pour les entreprises : petits-déjeuners, pauses gourmandes, plateaux repas, cocktails, buffets et événements saisonniers, élaborés avec des artisans locaux sélectionnés.
+          L'Écrin Traiteur propose des prestations de restauration événementielle pour les entreprises : petits-déjeuners, pauses gourmandes, plateaux repas, cocktails, buffets et événements saisonniers, élaborés avec des artisans locaux sélectionnés.
         </p>
         <p style={pStyle}>
-          Les offres sont proposées sous réserve de disponibilité des produits. Les visuels présentés sur le site sont donnés à titre indicatif. L'Écrin des Terroirs se réserve le droit de substituer un produit équivalent en cas d'indisponibilité, après information du client.
+          Les offres sont proposées sous réserve de disponibilité des produits. Les visuels présentés sur le site sont donnés à titre indicatif. L'Écrin Traiteur se réserve le droit de substituer un produit équivalent en cas d'indisponibilité, après information du client.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ export default function CGV() {
           Les produits sont livrés conformément aux normes d'hygiène alimentaire en vigueur. À réception, les produits réfrigérés doivent être conservés entre 0°C et 4°C et consommés dans les <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>4 heures</strong> suivant la livraison. À température ambiante, la consommation ne doit pas excéder <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>2 heures</strong>.
         </p>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          L'Écrin des Terroirs décline toute responsabilité en cas de non-respect de ces conditions de conservation par le client.
+          L'Écrin Traiteur décline toute responsabilité en cas de non-respect de ces conditions de conservation par le client.
         </p>
         <p style={pStyle}>
           La liste des allergènes présents dans nos produits est disponible sur demande à l'adresse contact@lecrindesterroirs.fr. Il appartient au client de nous informer de tout régime alimentaire particulier ou allergie lors de la commande.
@@ -89,17 +89,17 @@ export default function CGV() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 8 — Matériel et force majeure</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          Tout matériel prêté par L'Écrin des Terroirs (plats, présentoirs, thermos) doit être retourné propre dans un délai de <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>72 heures</strong>. Les dégradations ou pertes seront facturées au client à leur valeur de remplacement.
+          Tout matériel prêté par L'Écrin Traiteur (plats, présentoirs, thermos) doit être retourné propre dans un délai de <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>72 heures</strong>. Les dégradations ou pertes seront facturées au client à leur valeur de remplacement.
         </p>
         <p style={pStyle}>
-          L'Écrin des Terroirs ne pourra être tenu responsable en cas de force majeure (catastrophe naturelle, grève, épidémie, panne d'infrastructure) rendant impossible l'exécution de la prestation. Dans ce cas, les sommes versées seront remboursées ou un avoir sera émis.
+          L'Écrin Traiteur ne pourra être tenu responsable en cas de force majeure (catastrophe naturelle, grève, épidémie, panne d'infrastructure) rendant impossible l'exécution de la prestation. Dans ce cas, les sommes versées seront remboursées ou un avoir sera émis.
         </p>
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 9 — Données personnelles (RGPD)</h2>
         <p style={pStyle}>
-          Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au Règlement Général sur la Protection des Données (RGPD). Le client dispose d'un droit d'accès, de rectification, de suppression et de portabilité de ses données. Pour exercer ces droits, contacter L'Écrin des Terroirs à l'adresse : contact@lecrindesterroirs.fr ou par courrier : 2, Allée des Bergeronnettes, 92150 Suresnes. Pour plus d'informations, consultez notre{' '}
+          Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au Règlement Général sur la Protection des Données (RGPD). Le client dispose d'un droit d'accès, de rectification, de suppression et de portabilité de ses données. Pour exercer ces droits, contacter L'Écrin Traiteur à l'adresse : contact@lecrindesterroirs.fr ou par courrier : 2, Allée des Bergeronnettes, 92150 Suresnes. Pour plus d'informations, consultez notre{' '}
           <a href="/confidentialite" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Politique de confidentialité</a>.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default function CGV() {
       <div style={{ ...sectionStyle, borderBottom: 'none', paddingBottom: 0, marginBottom: 0 }}>
         <h2 style={h2Style}>Article 10 — Droit applicable et juridiction</h2>
         <p style={pStyle}>
-          Les présentes CGV sont soumises au droit français. En cas de litige entre L'Écrin des Terroirs et un client professionnel, et à défaut de résolution amiable dans un délai de 30 jours, le <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Tribunal de Commerce de Nanterre</strong> sera seul compétent.
+          Les présentes CGV sont soumises au droit français. En cas de litige entre L'Écrin Traiteur et un client professionnel, et à défaut de résolution amiable dans un délai de 30 jours, le <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Tribunal de Commerce de Nanterre</strong> sera seul compétent.
         </p>
       </div>
 
