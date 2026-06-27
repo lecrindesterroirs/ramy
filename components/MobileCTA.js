@@ -10,10 +10,25 @@ export default function MobileCTA() {
   const barRef = useRef(null)
 
   useEffect(() => {
+    let footerVisible = false
+
+    const footer = document.querySelector('footer')
+    let observer
+    if (footer) {
+      observer = new IntersectionObserver(([entry]) => {
+        footerVisible = entry.isIntersecting
+        if (footerVisible) setHidden(true)
+      }, { threshold: 0 })
+      observer.observe(footer)
+    }
+
     const onScroll = () => {
       const y = window.scrollY
-      const atBottom = document.body.scrollHeight - y - window.innerHeight < 80
-      if (atBottom || y > lastY.current + 4) {
+      if (footerVisible) {
+        lastY.current = y
+        return
+      }
+      if (y > lastY.current + 4) {
         setHidden(true)
       } else if (y < lastY.current - 4) {
         setHidden(false)
@@ -21,7 +36,6 @@ export default function MobileCTA() {
       lastY.current = y
     }
     const onTap = (e) => {
-      // Ne cache pas si le tap est sur la barre CTA elle-même
       if (barRef.current && barRef.current.contains(e.target)) return
       setHidden(true)
     }
@@ -30,6 +44,7 @@ export default function MobileCTA() {
     return () => {
       window.removeEventListener('scroll', onScroll)
       document.removeEventListener('touchstart', onTap)
+      if (observer) observer.disconnect()
     }
   }, [])
 

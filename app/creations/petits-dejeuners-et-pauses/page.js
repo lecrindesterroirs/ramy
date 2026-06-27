@@ -4,10 +4,10 @@ import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { PRODUCTS } from '../../../lib/productsData'
 
 const SEO_ARTICLE = `
-  <h2>Traiteur petits-déjeuners d'entreprise à Paris — artisanal, livré dès 6h30</h2>
+  <h2>Traiteur petits-déjeuners d'entreprise à Paris, artisanal, livré dès 6h30</h2>
   <p>Le <strong>petit-déjeuner d'entreprise</strong> est le format le plus commandé en restauration B2B parisienne. CODIR, accueil client, onboarding, réunion de rentrée : c'est souvent la première impression que vous construisez. L'Écrin Traiteur livre vos sélections artisanales dès <strong>6h30</strong>, du lundi au vendredi, dans tout Paris et l'Île-de-France.</p>
 
-  <h2>Viennoiseries, pâtisseries et jus — des artisans que vos équipes reconnaissent</h2>
+  <h2>Viennoiseries, pâtisseries et jus : des artisans que vos équipes reconnaissent</h2>
   <p>Notre sélection est construite autour de maisons identifiées : viennoiseries pur beurre AOP, madeleines bio <strong>Mado Paris</strong>, jus artisanaux <strong>Alain Milliat</strong>, yaourts <strong>La Ferme de Viltain</strong>. Des produits qui portent un nom et une histoire. La différence entre un plateau qui passe inaperçu et une sélection dont vos équipes parlent encore le lendemain.</p>
 
   <h2>Combien de pièces par personne ?</h2>
@@ -23,7 +23,7 @@ export default function PetitsDejeuners() {
       heroImg="/creations-1.png"
       heroTitle={"Petits-Déjeuners\n& Pauses"}
       heroSubtitle="Des créations pensées pour les réunions, accueils et moments de partage."
-      breadcrumb="Nos Créations — Petits-Déjeuners & Pauses"
+      breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"
       categorieSlug="petits-dejeuners"
       fallbackProducts={PRODUCTS}
       seoArticle={SEO_ARTICLE}

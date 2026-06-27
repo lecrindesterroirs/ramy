@@ -89,7 +89,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           whiteSpace: 'nowrap',
           position: 'absolute',
         }}>
-          Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
+          Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
         </div>
         <style suppressHydrationWarning>{`
           .banner-sole {

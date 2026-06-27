@@ -12,8 +12,8 @@ export default function EvenementDetail() {
   if (!ev) {
     return (
       <>
-        <Navbar />
-        <main style={{ paddingTop: 'var(--header-h)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Navbar showBanner={true} />
+        <main style={{ paddingTop: 'calc(var(--banner-h) + var(--nav-h))', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)' }}>
             Événement non trouvé.
           </p>
@@ -25,9 +25,9 @@ export default function EvenementDetail() {
 
   return (
     <>
-      <Navbar />
+      <Navbar showBanner={true} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
         {/* Header */}
         <div

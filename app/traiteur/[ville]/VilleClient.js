@@ -103,7 +103,7 @@ export default function VilleClient({ ville }) {
               color: 'var(--accent)',
               marginBottom: '16px',
             }}>
-              Traiteur d'entreprise — {city.region}
+              Traiteur d'entreprise, {city.region}
             </p>
             <h1 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",
@@ -361,7 +361,7 @@ export default function VilleClient({ ville }) {
               L'Écrin Traiteur livre à {city.name}
             </p>
             {[
-              `Livraison dès 6h30 — ${city.name} et communes limitrophes`,
+              `Livraison dès 6h30, ${city.name} et communes limitrophes`,
               'Commandez en ligne avant 14h la veille',
               'Artisans boulangers et pâtissiers parisiens',
               'Facturation entreprise avec TVA',

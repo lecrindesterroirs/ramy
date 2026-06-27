@@ -80,7 +80,7 @@ export default function NotreSavoirFaire() {
               color: 'rgba(255,255,255,0.6)',
               marginBottom: '18px',
             }}>
-              L'Univers — Notre Savoir-Faire
+              L'Univers, Notre Savoir-Faire
             </p>
             <h1 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",

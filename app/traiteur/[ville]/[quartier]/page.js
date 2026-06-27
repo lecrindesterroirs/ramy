@@ -123,7 +123,7 @@ export default function QuartierPage() {
               color: 'var(--accent)',
               marginBottom: '16px',
             }}>
-              Traiteur d'entreprise — {city.name}
+              Traiteur d'entreprise, {city.name}
             </p>
             <h1 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",
@@ -283,7 +283,7 @@ export default function QuartierPage() {
               L'Écrin Traiteur livre à {q.name}
             </p>
             {[
-              `Livraison dès 6h30 — ${q.name}, ${city.name}`,
+              `Livraison dès 6h30, ${q.name}, ${city.name}`,
               'Commandez en ligne avant 14h la veille',
               'Artisans boulangers et pâtissiers parisiens',
               'Facturation entreprise avec TVA',

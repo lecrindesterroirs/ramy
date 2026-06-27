@@ -7,9 +7,9 @@ import { evenements } from './evenementsData'
 export default function EvenementsSaisonniers() {
   return (
     <>
-      <Navbar />
+      <Navbar showBanner={true} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
         {/* Hero */}
         <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
@@ -30,7 +30,7 @@ export default function EvenementsSaisonniers() {
                 color: 'rgba(255,255,255,0.65)',
                 marginBottom: '16px',
               }}>
-                Nos Créations — Événements Saisonniers
+                Nos Créations, Événements Saisonniers
               </p>
               <h1 style={{
                 fontFamily: "'Baskerville Display PT', Georgia, serif",

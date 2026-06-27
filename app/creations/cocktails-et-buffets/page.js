@@ -11,7 +11,7 @@ const SEO_ARTICLE = `
   <h2>Traiteur cocktails et buffets d'entreprise à Paris</h2>
   <p>Le <strong>cocktail d'entreprise</strong> est le format événementiel le plus polyvalent. Plus détendu qu'un repas assis, plus généreux qu'un simple buffet : c'est l'événement qui favorise les échanges naturels entre collaborateurs, clients et partenaires. L'Écrin Traiteur livre vos cocktails et buffets à Paris et en Île-de-France, dès 6h30.</p>
 
-  <h2>Cocktail sucré, déjeunatoire ou dînatoire — quelle différence ?</h2>
+  <h2>Cocktail sucré, déjeunatoire ou dînatoire : quelle différence ?</h2>
   <p>Le <strong>Cocktail Sucré</strong> (8 pièces) est idéal pour une pause premium ou un accueil client. Le <strong>Cocktail Déjeunatoire</strong> (12 pièces) remplace avantageusement le déjeuner debout. Le <strong>Cocktail Dînatoire</strong> (18 pièces) est pensé pour les soirées d'entreprise. La <strong>Signature L'Écrin</strong> (22 pièces) est notre offre la plus exclusive pour les événements prestige.</p>
 
   <h2>Organiser votre cocktail d'entreprise à Paris</h2>
@@ -52,7 +52,7 @@ function FormulaCard({ f }) {
             )}
             {f.detail && (
               <>
-                <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>—</span>
+                <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>·</span>
                 <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.45)' }}>{f.detail}</span>
               </>
             )}
@@ -87,7 +87,7 @@ export default function CocktailsEtBuffets() {
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                Nos Créations — Cocktails & Buffets
+                Nos Créations, Cocktails & Buffets
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                 Cocktails<br />& Buffets
@@ -108,7 +108,7 @@ export default function CocktailsEtBuffets() {
             Quatre formules cocktail, une seule exigence.
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '560px' }}>
-            De la pause sucrée premium au cocktail dînatoire de prestige — pièces artisanales, livrées prêtes à servir.
+            De la pause sucrée premium au cocktail dînatoire de prestige, pièces artisanales, livrées prêtes à servir.
           </p>
         </div>
 
@@ -125,7 +125,7 @@ export default function CocktailsEtBuffets() {
             Des tables qui imposent le respect.
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '560px' }}>
-            Grandes focaccias, salades fraîches, pièces à partager — des buffets scénographiés pour les événements qui ne souffrent aucune concession.
+            Grandes focaccias, salades fraîches, pièces à partager, des buffets scénographiés pour les événements qui ne souffrent aucune concession.
           </p>
         </div>
 

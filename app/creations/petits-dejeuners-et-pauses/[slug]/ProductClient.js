@@ -110,7 +110,7 @@ export default function ProductClient({ slug }) {
           <DevisRapide
             defaultPrestation={product.categoryLabel?.includes('repas') ? 'Plateaux repas' : 'Petit-déjeuner'}
             titre="Un événement à Paris ou en Île-de-France ?"
-            sousTitre="Répondez en 30 secondes — devis personnalisé sous 24h."
+            sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
 
           {/* Retour */}
@@ -359,7 +359,7 @@ function ProductInfo({ product }) {
       {/* Livraison info */}
       <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {[
-          { icon: '🚚', text: 'Livraison dès 6h30 — Paris & Île-de-France' },
+          { icon: '🚚', text: 'Livraison dès 6h30, Paris & Île-de-France' },
           { icon: '⏰', text: 'Commandez avant 14h la veille' },
           { icon: '🧾', text: 'Facturation entreprise disponible' },
         ].map(({ icon, text }) => (

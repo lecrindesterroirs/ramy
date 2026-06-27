@@ -68,7 +68,7 @@ export default function NotrePhilosophie() {
               color: 'rgba(255,255,255,0.6)',
               marginBottom: '18px',
             }}>
-              L'Univers — Notre Philosophie
+              L'Univers, Notre Philosophie
             </p>
             <h1 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",

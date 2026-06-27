@@ -83,7 +83,7 @@ export default function APropos() {
               color: 'rgba(255,255,255,0.6)',
               marginBottom: '18px',
             }}>
-              L'Écrin Traiteur — Paris &amp; Île-de-France
+              L'Écrin Traiteur, Paris &amp; Île-de-France
             </p>
             <h1 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",

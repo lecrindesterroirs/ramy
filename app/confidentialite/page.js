@@ -14,10 +14,10 @@ export default function Confidentialite() {
         <h2 style={h2Style}>Responsable du traitement</h2>
         <p style={pStyle}>
           Le responsable du traitement de vos données personnelles est :<br />
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>L'Écrin Traiteur</strong> — L'Écrin des Terroirs SASU<br />
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>L'Écrin Traiteur</strong>, L'Écrin des Terroirs SASU<br />
           SIRET 100 102 672 00019<br />
           2, Allée des Bergeronnettes, 92150 Suresnes<br />
-          commercial@lecrin-traiteur.fr — 07 60 16 96 20
+          commercial@lecrin-traiteur.fr, 07 60 16 96 20
         </p>
       </div>
 

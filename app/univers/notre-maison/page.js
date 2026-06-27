@@ -111,7 +111,7 @@ export default function NotreMaison() {
               color: 'rgba(255,255,255,0.6)',
               marginBottom: '18px',
             }}>
-              L'Univers — Notre Maison
+              L'Univers, Notre Maison
             </p>
             <h1 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",
@@ -233,7 +233,7 @@ export default function NotreMaison() {
             textTransform: 'uppercase',
             color: 'var(--text-secondary)',
           }}>
-            — L'Écrin Traiteur, Paris
+            L'Écrin Traiteur, Paris
           </p>
           <div style={{
             width: '1px',

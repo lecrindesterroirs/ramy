@@ -25,11 +25,11 @@ const fallbackFaqs = [
   },
   {
     question: "Livrez-vous dans les tours et immeubles sécurisés ?",
-    reponse: "Oui, c'est notre quotidien. La Défense, Boulogne, Issy — nos livreurs connaissent les procédures d'accès : réception, monte-charge, badge. Précisez vos contraintes à la commande.",
+    reponse: "Oui, c'est notre quotidien. La Défense, Boulogne, Issy : nos livreurs connaissent les procédures d'accès : réception, monte-charge, badge. Précisez vos contraintes à la commande.",
   },
   {
     question: "Peut-on modifier ou annuler une commande ?",
-    reponse: "Les modifications sont acceptées jusqu'à 14h la veille de la livraison. Pour les annulations, contactez-nous dès que possible à commercial@lecrin-traiteur.fr — nous faisons notre possible pour trouver une solution selon le délai restant.",
+    reponse: "Les modifications sont acceptées jusqu'à 14h la veille de la livraison. Pour les annulations, contactez-nous dès que possible à commercial@lecrin-traiteur.fr, nous faisons notre possible pour trouver une solution selon le délai restant.",
   },
   {
     question: "Les prestations arrivent-elles prêtes à servir ?",

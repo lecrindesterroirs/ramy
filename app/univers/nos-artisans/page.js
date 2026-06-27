@@ -10,7 +10,7 @@ const categories = [
       {
         nom: 'Maison Marques',
         specialite: 'Viennoiseries',
-        description: "On travaille avec Maison Marques depuis le début. Référencée Gault & Millau, leurs viennoiseries sont confectionnées chaque matin avec des farines françaises rigoureusement sélectionnées. C'est le genre de partenaire qui ne déçoit jamais — régulier, précis, toujours bon.",
+        description: "On travaille avec Maison Marques depuis le début. Référencée Gault & Millau, leurs viennoiseries sont confectionnées chaque matin avec des farines françaises rigoureusement sélectionnées. C'est le genre de partenaire qui ne déçoit jamais, régulier, précis, toujours bon.",
         tags: ['Gault & Millau', 'Fabrication quotidienne', 'Île-de-France'],
         img: '/maison-marques.avif',
         avatar: '/carlos-marques.avif',
@@ -31,7 +31,7 @@ const categories = [
       {
         nom: 'Mado Paris',
         specialite: 'Madeleines',
-        description: "Les madeleines Mado Paris sont notre produit signature. Fabriquées dans leur atelier parisien avec des ingrédients biologiques français, sans huile de palme. Moelleuses, dorées, reconnaissables au premier goût — nos clients les reconnaissent avant même de lire l'étiquette.",
+        description: "Les madeleines Mado Paris sont notre produit signature. Fabriquées dans leur atelier parisien avec des ingrédients biologiques français, sans huile de palme. Moelleuses, dorées, reconnaissables au premier goût : nos clients les reconnaissent avant même de lire l'étiquette.",
         tags: ['Ingrédients biologiques', 'Sans huile de palme', 'Paris'],
         img: '/madeleine-home.jpg',
       },
@@ -58,7 +58,7 @@ const categories = [
       {
         nom: 'La Ferme de Viltain',
         specialite: 'Yaourts & Produits laitiers',
-        description: "À Jouy-en-Josas, à 17 km de Paris, la Ferme de Viltain fabrique ses yaourts depuis 1954. Leur troupeau de 350 vaches fournit le lait que leur laiterie transforme directement — yaourts natures, aux fruits, de dessert. Un circuit en direct qui se sent dans l'onctuosité : pas de transport long, pas d'intermédiaire, un produit frais qui arrive dans nos plateaux petit-déjeuner le lendemain matin.",
+        description: "À Jouy-en-Josas, à 17 km de Paris, la Ferme de Viltain fabrique ses yaourts depuis 1954. Leur troupeau de 350 vaches fournit le lait que leur laiterie transforme directement : yaourts natures, aux fruits, de dessert. Un circuit en direct qui se sent dans l'onctuosité : pas de transport long, pas d'intermédiaire, un produit frais qui arrive dans nos plateaux petit-déjeuner le lendemain matin.",
         tags: ['Jouy-en-Josas · 17 km de Paris', 'Depuis 1954 · 350 vaches', 'Laiterie en circuit direct'],
         img: '/ferme-viltain.webp',
       },
