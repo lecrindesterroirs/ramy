@@ -170,7 +170,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p style={labelStyle}>Email</p>
-                  <a href="mailto:contact@lecrindesterroirs.fr" style={infoStyle}>contact@lecrindesterroirs.fr</a>
+                  <a href="mailto:commercial@lecrin-traiteur.fr" style={infoStyle}>commercial@lecrin-traiteur.fr</a>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>

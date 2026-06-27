@@ -111,10 +111,10 @@ export default function Footer() {
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                 >07 60 16 96 20</a>
-                <a href="mailto:contact@lecrindesterroirs.fr" style={linkStyle}
+                <a href="mailto:commercial@lecrin-traiteur.fr" style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >contact@lecrindesterroirs.fr</a>
+                >commercial@lecrin-traiteur.fr</a>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=63+bis+rue+de+Sèvres+92100+Boulogne-Billancourt"
                   target="_blank"

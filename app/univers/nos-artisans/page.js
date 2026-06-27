@@ -282,7 +282,7 @@ export default function NosArtisans() {
           }}>
             Vous êtes artisan et souhaitez rejoindre notre réseau ?
             <a
-              href="mailto:contact@lecrindesterroirs.fr"
+              href="mailto:commercial@lecrin-traiteur.fr"
               style={{
                 color: 'var(--text-primary)',
                 textDecoration: 'none',

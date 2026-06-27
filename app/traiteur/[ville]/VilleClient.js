@@ -49,7 +49,7 @@ export default function VilleClient({ ville }) {
     description: `Traiteur d'entreprise livrant à ${city.name} — petits-déjeuners artisanaux, pauses gourmandes, coffrets et plateaux repas.`,
     url: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}`,
     telephone: '+33760169620',
-    email: 'contact@lecrindesterroirs.fr',
+    email: 'commercial@lecrin-traiteur.fr',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '63 bis rue de Sèvres',

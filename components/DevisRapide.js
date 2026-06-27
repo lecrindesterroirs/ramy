@@ -188,7 +188,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
 
         {status === 'error' && (
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', marginTop: '4px' }}>
-            Erreur d'envoi. Réessayez ou écrivez-nous à contact@lecrindesterroirs.fr
+            Erreur d'envoi. Réessayez ou écrivez-nous à commercial@lecrin-traiteur.fr
           </p>
         )}
       </form>
@@ -213,9 +213,11 @@ const fieldStyle = {
   background: '#FFFFFF',
   border: '1px solid rgba(17,17,17,0.1)',
   padding: '10px 14px',
+  height: '46px',
   outline: 'none',
   boxSizing: 'border-box',
   appearance: 'none',
+  WebkitAppearance: 'none',
   transition: 'border-color 0.25s ease',
 }
 

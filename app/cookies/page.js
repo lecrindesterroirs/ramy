@@ -7,7 +7,7 @@ export default function Cookies() {
     <LegalTemplate title="Politique de Cookies" updated="Mai 2026">
 
       <div style={{ ...pStyle, marginBottom: '48px', padding: '20px 24px', background: 'var(--bg-secondary)', borderLeft: '2px solid var(--accent)' }}>
-        Lors de votre visite sur le site lecrindesterroirs.fr, des cookies peuvent être déposés sur votre navigateur. Cette page vous explique ce que sont les cookies, lesquels nous utilisons et comment les gérer.
+        Lors de votre visite sur le site lecrin-traiteur.fr, des cookies peuvent être déposés sur votre navigateur. Cette page vous explique ce que sont les cookies, lesquels nous utilisons et comment les gérer.
       </div>
 
       <div style={sectionStyle}>
@@ -63,7 +63,7 @@ export default function Cookies() {
       <div style={{ ...sectionStyle, borderBottom: 'none', paddingBottom: 0, marginBottom: 0 }}>
         <h2 style={h2Style}>Contact</h2>
         <p style={pStyle}>
-          Pour toute question relative à notre utilisation des cookies ou pour exercer vos droits, contactez-nous à : contact@lecrindesterroirs.fr ou consultez notre{' '}
+          Pour toute question relative à notre utilisation des cookies ou pour exercer vos droits, contactez-nous à : commercial@lecrin-traiteur.fr ou consultez notre{' '}
           <a href="/confidentialite" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Politique de confidentialité</a>.
         </p>
       </div>

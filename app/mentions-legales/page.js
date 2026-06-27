@@ -18,7 +18,7 @@ export default function MentionsLegales() {
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Siège social :</strong> 2, Allée des Bergeronnettes, 92150 Suresnes<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Adresse opérationnelle :</strong> 63 bis rue de Sèvres, 92100 Boulogne-Billancourt<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Téléphone :</strong> 07 60 16 96 20<br />
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Email :</strong> contact@lecrindesterroirs.fr<br />
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Email :</strong> commercial@lecrin-traiteur.fr<br />
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Directeur de la publication :</strong> Ramy ABDELATY
         </p>
       </div>

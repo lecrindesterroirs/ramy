@@ -17,7 +17,7 @@ export default function Confidentialite() {
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>L'Écrin Traiteur</strong> — L'Écrin des Terroirs SASU<br />
           SIRET 100 102 672 00019<br />
           2, Allée des Bergeronnettes, 92150 Suresnes<br />
-          contact@lecrindesterroirs.fr — 07 60 16 96 20
+          commercial@lecrin-traiteur.fr — 07 60 16 96 20
         </p>
       </div>
 
@@ -73,7 +73,7 @@ export default function Confidentialite() {
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Droit d'opposition :</strong> vous opposer à certains traitements.
         </p>
         <p style={pStyle}>
-          Pour exercer ces droits, contactez-nous à : contact@lecrindesterroirs.fr ou par courrier : L'Écrin Traiteur, 2, Allée des Bergeronnettes, 92150 Suresnes. Nous nous engageons à répondre dans un délai d'un mois. En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>CNIL</strong> (www.cnil.fr).
+          Pour exercer ces droits, contactez-nous à : commercial@lecrin-traiteur.fr ou par courrier : L'Écrin Traiteur, 2, Allée des Bergeronnettes, 92150 Suresnes. Nous nous engageons à répondre dans un délai d'un mois. En cas de réponse insatisfaisante, vous pouvez introduire une réclamation auprès de la <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>CNIL</strong> (www.cnil.fr).
         </p>
       </div>
 

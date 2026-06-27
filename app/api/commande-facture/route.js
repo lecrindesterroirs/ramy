@@ -99,7 +99,7 @@ export async function POST(req) {
 
           <!-- Footer -->
           <div style="border-top:1px solid #f0ebe2;padding:20px 40px;text-align:center;">
-            <p style="font-size:11px;color:#aaa;margin:0;">L'Écrin Traiteur · Paris · contact@lecrindesterroirs.fr</p>
+            <p style="font-size:11px;color:#aaa;margin:0;">L'Écrin Traiteur · Paris · commercial@lecrin-traiteur.fr</p>
           </div>
         </div>
       </body>
@@ -108,15 +108,15 @@ export async function POST(req) {
 
     // Email to the team
     await resend.emails.send({
-      from: "L'Écrin Traiteur <contact@lecrindesterroirs.fr>",
-      to: ['contact@lecrindesterroirs.fr'],
+      from: "L'Écrin Traiteur <commercial@lecrin-traiteur.fr>",
+      to: ['commercial@lecrin-traiteur.fr'],
       subject: `Commande sur facture — ${customer.entreprise || customer.nom} — ${formatPrice(total)}`,
       html,
     })
 
     // Confirmation email to the client
     await resend.emails.send({
-      from: "L'Écrin Traiteur <contact@lecrindesterroirs.fr>",
+      from: "L'Écrin Traiteur <commercial@lecrin-traiteur.fr>",
       to: [customer.email],
       subject: "Votre commande a bien été reçue — L'Écrin Traiteur",
       html: `
@@ -134,7 +134,7 @@ export async function POST(req) {
                 Votre commande a bien été reçue. Notre équipe va la traiter et vous enverra votre facture dans les plus brefs délais.
               </p>
               <p style="font-size:14px;color:#555;line-height:1.75;margin:0 0 32px;">
-                Pour toute question, n'hésitez pas à nous contacter à <a href="mailto:contact@lecrindesterroirs.fr" style="color:#E0A126;">contact@lecrindesterroirs.fr</a>.
+                Pour toute question, n'hésitez pas à nous contacter à <a href="mailto:commercial@lecrin-traiteur.fr" style="color:#E0A126;">commercial@lecrin-traiteur.fr</a>.
               </p>
               <div style="border-top:1px solid #f0ebe2;padding-top:24px;">
                 <p style="font-size:13px;color:#888;margin:0 0 4px;font-weight:500;">${formatPrice(total)} · ${dateStr}</p>
@@ -142,7 +142,7 @@ export async function POST(req) {
               </div>
             </div>
             <div style="border-top:1px solid #f0ebe2;padding:16px 40px;text-align:center;">
-              <p style="font-size:11px;color:#aaa;margin:0;">L'Écrin Traiteur · Paris · contact@lecrindesterroirs.fr</p>
+              <p style="font-size:11px;color:#aaa;margin:0;">L'Écrin Traiteur · Paris · commercial@lecrin-traiteur.fr</p>
             </div>
           </div>
         </body>

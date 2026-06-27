@@ -30,7 +30,7 @@ export default function CGV() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 3 — Modalités de commande</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          Les commandes peuvent être passées par téléphone au 07 60 16 96 20 ou par email à contact@lecrindesterroirs.fr. Toute commande doit être validée avant <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>12h00 la veille</strong> de la livraison souhaitée.
+          Les commandes peuvent être passées par téléphone au 07 60 16 96 20 ou par email à commercial@lecrin-traiteur.fr. Toute commande doit être validée avant <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>12h00 la veille</strong> de la livraison souhaitée.
         </p>
         <p style={pStyle}>
           Le montant minimum de commande est fixé à <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>50 € HT</strong>. Toute commande confirmée par le client vaut acceptation des présentes CGV et des tarifs en vigueur.
@@ -46,7 +46,7 @@ export default function CGV() {
           L'Écrin Traiteur décline toute responsabilité en cas de non-respect de ces conditions de conservation par le client.
         </p>
         <p style={pStyle}>
-          La liste des allergènes présents dans nos produits est disponible sur demande à l'adresse contact@lecrindesterroirs.fr. Il appartient au client de nous informer de tout régime alimentaire particulier ou allergie lors de la commande.
+          La liste des allergènes présents dans nos produits est disponible sur demande à l'adresse commercial@lecrin-traiteur.fr. Il appartient au client de nous informer de tout régime alimentaire particulier ou allergie lors de la commande.
         </p>
       </div>
 
@@ -99,7 +99,7 @@ export default function CGV() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 9 — Données personnelles (RGPD)</h2>
         <p style={pStyle}>
-          Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au Règlement Général sur la Protection des Données (RGPD). Le client dispose d'un droit d'accès, de rectification, de suppression et de portabilité de ses données. Pour exercer ces droits, contacter L'Écrin Traiteur à l'adresse : contact@lecrindesterroirs.fr ou par courrier : 2, Allée des Bergeronnettes, 92150 Suresnes. Pour plus d'informations, consultez notre{' '}
+          Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au Règlement Général sur la Protection des Données (RGPD). Le client dispose d'un droit d'accès, de rectification, de suppression et de portabilité de ses données. Pour exercer ces droits, contacter L'Écrin Traiteur à l'adresse : commercial@lecrin-traiteur.fr ou par courrier : 2, Allée des Bergeronnettes, 92150 Suresnes. Pour plus d'informations, consultez notre{' '}
           <a href="/confidentialite" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Politique de confidentialité</a>.
         </p>
       </div>

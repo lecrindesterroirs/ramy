@@ -12,8 +12,8 @@ export async function POST(request) {
     }
 
     await resend.emails.send({
-      from: 'L\'Écrin Traiteur <onboarding@resend.dev>',
-      to: ['contact@lecrindesterroirs.fr'],
+      from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',
+      to: ['commercial@lecrin-traiteur.fr'],
       replyTo: email,
       subject: `Nouvelle demande de contact — ${nom} (${societe})`,
       html: `

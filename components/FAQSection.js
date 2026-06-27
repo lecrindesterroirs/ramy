@@ -29,7 +29,7 @@ const fallbackFaqs = [
   },
   {
     question: "Peut-on modifier ou annuler une commande ?",
-    reponse: "Les modifications sont acceptées jusqu'à 14h la veille de la livraison. Pour les annulations, contactez-nous dès que possible à contact@lecrindesterroirs.fr — nous faisons notre possible pour trouver une solution selon le délai restant.",
+    reponse: "Les modifications sont acceptées jusqu'à 14h la veille de la livraison. Pour les annulations, contactez-nous dès que possible à commercial@lecrin-traiteur.fr — nous faisons notre possible pour trouver une solution selon le délai restant.",
   },
   {
     question: "Les prestations arrivent-elles prêtes à servir ?",
@@ -41,7 +41,7 @@ const fallbackFaqs = [
   },
   {
     question: "Comment se passe la demande de devis ?",
-    reponse: "Remplissez notre formulaire en ligne ou écrivez-nous à contact@lecrindesterroirs.fr. Nous revenons vers vous sous 24h avec une proposition adaptée à votre événement et votre budget.",
+    reponse: "Remplissez notre formulaire en ligne ou écrivez-nous à commercial@lecrin-traiteur.fr. Nous revenons vers vous sous 24h avec une proposition adaptée à votre événement et votre budget.",
   },
 ]
 
