@@ -10,6 +10,6 @@ export default function robots() {
         '/creations/coffrets-cadeaux',
       ],
     },
-    sitemap: 'https://www.lecrindesterroirs.fr/sitemap.xml',
+    sitemap: 'https://www.lecrin-traiteur.fr/sitemap.xml',
   }
 }

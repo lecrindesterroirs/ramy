@@ -39,9 +39,9 @@ export default function OccasionPage() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lecrindesterroirs.fr' },
-      { '@type': 'ListItem', position: 2, name: 'Occasions', item: 'https://www.lecrindesterroirs.fr/occasions' },
-      { '@type': 'ListItem', position: 3, name: occasion.name, item: `https://www.lecrindesterroirs.fr/occasions/${occasion.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lecrin-traiteur.fr' },
+      { '@type': 'ListItem', position: 2, name: 'Occasions', item: 'https://www.lecrin-traiteur.fr/occasions' },
+      { '@type': 'ListItem', position: 3, name: occasion.name, item: `https://www.lecrin-traiteur.fr/occasions/${occasion.slug}` },
     ],
   }
 

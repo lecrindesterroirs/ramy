@@ -11,7 +11,7 @@ export const metadata = {
   keywords: ["traiteur Paris", "traiteur entreprise Paris", "livraison petit déjeuner Paris", "plateau repas entreprise", "traiteur RSE Paris", "mignardises traiteur", "traiteur petit déjeuner Paris", "traiteur plateau repas Paris", "livraison petit déjeuner entreprise"],
   authors: [{ name: "L'Écrin Traiteur" }],
   creator: "L'Écrin Traiteur",
-  metadataBase: new URL('https://www.lecrindesterroirs.fr'),
+  metadataBase: new URL('https://www.lecrin-traiteur.fr'),
   openGraph: {
     type: 'website',
     locale: 'fr_FR',

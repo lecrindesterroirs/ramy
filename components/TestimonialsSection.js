@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: "L'Écrin Traiteur",
-    url: 'https://www.lecrindesterroirs.fr',
+    url: 'https://www.lecrin-traiteur.fr',
     review: testimonials.map(t => ({
       '@type': 'Review',
       author: {

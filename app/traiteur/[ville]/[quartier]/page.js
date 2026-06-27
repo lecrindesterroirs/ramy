@@ -37,17 +37,17 @@ export default function QuartierPage() {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lecrindesterroirs.fr' },
-          { '@type': 'ListItem', position: 2, name: 'Nos villes', item: 'https://www.lecrindesterroirs.fr/traiteur' },
-          { '@type': 'ListItem', position: 3, name: city.name, item: `https://www.lecrindesterroirs.fr/traiteur/${city.slug}` },
-          { '@type': 'ListItem', position: 4, name: q.name, item: `https://www.lecrindesterroirs.fr/traiteur/${city.slug}/${q.slug}` },
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lecrin-traiteur.fr' },
+          { '@type': 'ListItem', position: 2, name: 'Nos villes', item: 'https://www.lecrin-traiteur.fr/traiteur' },
+          { '@type': 'ListItem', position: 3, name: city.name, item: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}` },
+          { '@type': 'ListItem', position: 4, name: q.name, item: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}/${q.slug}` },
         ],
       },
       {
         '@type': ['LocalBusiness', 'FoodEstablishment'],
         name: "L'Écrin Traiteur",
         description: `Traiteur d'entreprise livrant à ${q.name} (${city.name}) — petits-déjeuners artisanaux, pauses gourmandes, coffrets et plateaux repas.`,
-        url: `https://www.lecrindesterroirs.fr/traiteur/${city.slug}/${q.slug}`,
+        url: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}/${q.slug}`,
         telephone: '+33760169620',
         email: 'contact@lecrindesterroirs.fr',
         address: {

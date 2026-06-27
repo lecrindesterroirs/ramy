@@ -5,7 +5,7 @@ import { CITIES } from '../lib/citiesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { FORMULES } from './creations/cocktails-et-buffets/formulesData'
 
-const BASE_URL = 'https://www.lecrindesterroirs.fr'
+const BASE_URL = 'https://www.lecrin-traiteur.fr'
 const NOW = new Date().toISOString()
 
 function url(path, priority, changeFrequency) {

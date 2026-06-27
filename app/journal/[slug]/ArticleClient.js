@@ -350,25 +350,25 @@ export default function ArticleClient({ slug }) {
           'author': {
             '@type': 'Organization',
             'name': "L'Écrin Traiteur",
-            'url': 'https://www.lecrindesterroirs.fr',
+            'url': 'https://www.lecrin-traiteur.fr',
           },
           'publisher': {
             '@type': 'Organization',
             'name': "L'Écrin Traiteur",
-            'url': 'https://www.lecrindesterroirs.fr',
+            'url': 'https://www.lecrin-traiteur.fr',
           },
           'image': article.img,
-          'url': `https://www.lecrindesterroirs.fr/journal/${article.slug}`,
+          'url': `https://www.lecrin-traiteur.fr/journal/${article.slug}`,
           'mainEntityOfPage': {
             '@type': 'WebPage',
-            '@id': `https://www.lecrindesterroirs.fr/journal/${article.slug}`,
+            '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}`,
           },
           'breadcrumb': {
             '@type': 'BreadcrumbList',
             'itemListElement': [
-              { '@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': 'https://www.lecrindesterroirs.fr' },
-              { '@type': 'ListItem', 'position': 2, 'name': 'Journal', 'item': 'https://www.lecrindesterroirs.fr/journal' },
-              { '@type': 'ListItem', 'position': 3, 'name': article.titre, 'item': `https://www.lecrindesterroirs.fr/journal/${article.slug}` },
+              { '@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': 'https://www.lecrin-traiteur.fr' },
+              { '@type': 'ListItem', 'position': 2, 'name': 'Journal', 'item': 'https://www.lecrin-traiteur.fr/journal' },
+              { '@type': 'ListItem', 'position': 3, 'name': article.titre, 'item': `https://www.lecrin-traiteur.fr/journal/${article.slug}` },
             ],
           },
         }) }}
