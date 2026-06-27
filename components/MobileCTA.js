@@ -1,72 +1,64 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export default function MobileCTA() {
   const pathname = usePathname()
-  const isDevis = pathname === '/devis'
-  const [devisStep, setDevisStep] = useState(1)
+  const [hidden, setHidden] = useState(true)
+  const lastY = useRef(0)
+  const barRef = useRef(null)
 
   useEffect(() => {
-    if (!isDevis) return
-    const handler = (e) => setDevisStep(e.detail)
-    window.addEventListener('devis-step-change', handler)
-    return () => window.removeEventListener('devis-step-change', handler)
-  }, [isDevis])
-
-  const handleNextClick = (e) => {
-    if (isDevis) {
-      e.preventDefault()
-      window.dispatchEvent(new CustomEvent('devis-next'))
+    const onScroll = () => {
+      const y = window.scrollY
+      const atBottom = document.body.scrollHeight - y - window.innerHeight < 80
+      if (atBottom || y > lastY.current + 4) {
+        setHidden(true)
+      } else if (y < lastY.current - 4) {
+        setHidden(false)
+      }
+      lastY.current = y
     }
-  }
+    const onTap = (e) => {
+      // Ne cache pas si le tap est sur la barre CTA elle-même
+      if (barRef.current && barRef.current.contains(e.target)) return
+      setHidden(true)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    document.addEventListener('touchstart', onTap, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      document.removeEventListener('touchstart', onTap)
+    }
+  }, [])
 
-  const handlePrevClick = (e) => {
-    e.preventDefault()
-    window.dispatchEvent(new CustomEvent('devis-prev'))
-  }
-
-  const ctaLabel = isDevis
-    ? (devisStep === 3 ? 'Envoyer →' : 'Suivant →')
-    : 'Devis →'
+  // Masqué sur la page devis — la nav est intégrée dans le formulaire
+  if (pathname === '/devis') return null
 
   return (
     <>
-      <div className="mobile-cta-bar" role="complementary" aria-label="Contactez-nous">
-        {isDevis ? (
-          <button
-            className="mobile-cta-tel"
-            onClick={handlePrevClick}
-            style={{ background: 'none', border: '1px solid rgba(17,17,17,0.15)', cursor: 'pointer' }}
-            aria-label="Étape précédente"
-          >
-            ← Précédent
-          </button>
-        ) : (
-          <a className="mobile-cta-tel" href="tel:+33760169620" aria-label="Appeler L'Écrin Traiteur">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
-            </svg>
-            07 60 16 96 20
-          </a>
-        )}
-        <a
-          className="mobile-cta-devis"
-          href="/devis"
-          onClick={handleNextClick}
-          aria-label={ctaLabel}
-        >
-          {ctaLabel}
+      <div
+        ref={barRef}
+        className="mobile-cta-bar"
+        role="complementary"
+        aria-label="Contactez-nous"
+        style={{ opacity: hidden ? 0 : 1, pointerEvents: hidden ? 'none' : 'auto', transition: 'opacity 0.25s ease' }}
+      >
+        <a className="mobile-cta-tel" href="tel:+33760169620" aria-label="Appeler L'Écrin Traiteur">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+          </svg>
+          07 60 16 96 20
+        </a>
+        <a className="mobile-cta-devis" href="/devis" aria-label="Demander un devis">
+          Devis →
         </a>
       </div>
 
       <style suppressHydrationWarning>{`
         .mobile-cta-bar {
           display: none;
-        }
-        .devis-step-1 .mobile-cta-bar {
-          display: none !important;
         }
         @media (max-width: 768px) {
           .mobile-cta-bar {

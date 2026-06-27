@@ -83,13 +83,15 @@
 @media (max-width: 768px) {
   :root {
     --banner-h: 40px;
-    --header-h: 72px;
+    --nav-h: 52px;
+    --header-h: 52px;
   }
 }
 
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {

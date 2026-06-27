@@ -167,7 +167,7 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step, goTo }) {
   const steps = ['Prestation', 'Votre projet', 'Vos coordonnées']
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 48px', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
+    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '56px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
       {steps.map((label, i) => {
         const idx = i + 1
         const clickable = idx < step
@@ -223,11 +223,11 @@ function Step1({ data, setData, onSelect }) {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
-          Quel type de prestation souhaitez-vous organiser ?
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '8px' }}>
+          Pour quelle occasion ?
         </h2>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-          Sélectionnez l'expérience qui correspond le mieux à votre événement.
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', letterSpacing: '0.02em' }}>
+          Appuyez sur votre choix
         </p>
       </div>
 
@@ -283,17 +283,57 @@ function CityAutocomplete({ value, onChange, hasError }) {
     setLoading(true)
     timer.current = setTimeout(async () => {
       try {
-        const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${encodeURIComponent(v)}&fields=nom,codesPostaux&boost=population&limit=6`)
-        const data = await res.json()
-        setSuggestions(data)
-        setOpen(data.length > 0)
+        let results = []
+        if (/^\d+$/.test(v)) {
+          if (v.length >= 5) {
+            // Code postal complet : correspondance exacte
+            const res = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${v}&fields=nom,codesPostaux&boost=population&limit=6`)
+            const raw = await res.json()
+            // Si la commune a plusieurs codes (ex: Paris), ajouter le label d'arrondissement
+            results = raw.map(c => {
+              if ((c.codesPostaux?.length || 0) > 1) {
+                const n = parseInt(v.slice(-2), 10)
+                const arr = n ? ` ${n}${n === 1 ? 'er' : 'e'} arr.` : ''
+                return { nom: `${c.nom}${arr}`, rawNom: c.nom, codesPostaux: [v] }
+              }
+              return { nom: c.nom, rawNom: c.nom, codesPostaux: c.codesPostaux }
+            })
+          } else {
+            // Code postal partiel : on cherche par département puis on filtre
+            const dept = v.substring(0, 2)
+            const res = await fetch(`https://geo.api.gouv.fr/communes?codeDepartement=${dept}&fields=nom,codesPostaux&boost=population&limit=100`)
+            const all = await res.json()
+            // Éclater les communes avec plusieurs codes postaux (ex: Paris → 75001, 75002…)
+            const expanded = []
+            all.forEach(c => {
+              const matching = (c.codesPostaux || []).filter(cp => cp.startsWith(v))
+              if (matching.length === 0) return
+              if (matching.length === 1) {
+                expanded.push({ nom: c.nom, codesPostaux: matching })
+              } else {
+                matching.forEach(cp => {
+                  const n = parseInt(cp.slice(-2), 10)
+                  const arrLabel = n ? ` ${n}${n === 1 ? 'er' : 'e'} arr.` : ''
+                  expanded.push({ nom: `${c.nom}${arrLabel}`, rawNom: c.nom, codesPostaux: [cp] })
+                })
+              }
+            })
+            results = expanded.slice(0, 6)
+          }
+        } else {
+          // Nom de ville
+          const res = await fetch(`https://geo.api.gouv.fr/communes?nom=${encodeURIComponent(v)}&fields=nom,codesPostaux&boost=population&limit=6`)
+          results = await res.json()
+        }
+        setSuggestions(results)
+        setOpen(results.length > 0)
       } catch {}
       setLoading(false)
     }, 250)
   }
 
   const pick = (city) => {
-    onChange(city.nom)
+    onChange(city.rawNom || city.nom)
     setSuggestions([])
     setOpen(false)
   }
@@ -304,8 +344,8 @@ function CityAutocomplete({ value, onChange, hasError }) {
         value={value}
         onChange={handleChange}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
-        placeholder="Ex : Paris, Suresnes, Boulogne..."
-        autoComplete="off"
+        placeholder="Ex : Paris, 92150, Suresnes..."
+        autoComplete="postal-code"
         style={{ ...fieldStyle, borderColor: hasError ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
       />
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: loading ? '#E0A126' : 'rgba(17,17,17,0.3)', pointerEvents: 'none', transition: 'color 0.2s' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -338,8 +378,8 @@ function Step2({ data, setData, showErrors }) {
   useEffect(() => { setIsMobile(window.innerWidth <= 768) }, [])
 
   return (
-    <div className="step2-inner" style={{ maxWidth: '680px', margin: '0 auto', padding: '0 24px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+    <div className="step2-inner" style={{ maxWidth: '860px', margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
           Parlez-nous de votre projet
         </h2>
@@ -348,8 +388,8 @@ function Step2({ data, setData, showErrors }) {
         </p>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
             <label style={labelStyle}>Date souhaitée <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <DatePicker value={data.date} onChange={v => set('date', v)} />
@@ -363,9 +403,9 @@ function Step2({ data, setData, showErrors }) {
             {err('convives') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
         </div>
-        <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+        <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
-            <label style={labelStyle}>Ville <span style={{ color: '#E0A126' }}>*</span></label>
+            <label style={labelStyle}>Ville ou code postal <span style={{ color: '#E0A126' }}>*</span></label>
             <CityAutocomplete value={data.ville} onChange={v => set('ville', v)} hasError={err('ville')} />
             {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
@@ -383,8 +423,8 @@ function Step2({ data, setData, showErrors }) {
             value={data.message}
             onChange={e => set('message', e.target.value)}
             placeholder={isMobile ? "Décrivez votre événement, vos contraintes alimentaires ou toute information utile…" : "Décrivez votre événement, vos contraintes alimentaires ou toute information utile…\nPlus nous en savons, plus notre proposition sera adaptée à vos besoins."}
-            rows={3}
-            style={{ ...fieldStyle, resize: 'none', lineHeight: 1.7, borderColor: err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
+            rows={6}
+            style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
           {err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
         </div>
@@ -477,6 +517,16 @@ export default function Contact() {
   const [step, setStep] = useState(1)
   const [submitStatus, setSubmitStatus] = useState('idle') // idle | loading | success | error
   const [showStep2Errors, setShowStep2Errors] = useState(false)
+  const [bottomNavHidden, setBottomNavHidden] = useState(false)
+  const logosRef = useRef(null)
+  useEffect(() => {
+    const onScroll = () => {
+      const atBottom = document.body.scrollHeight - window.scrollY - window.innerHeight < 80
+      setBottomNavHidden(atBottom)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
   const [data, setData] = useState({
     prestation: '', date: '', convives: '', ville: '', budget: '', message: '',
     nom: '', societe: '', email: '', telephone: '',
@@ -555,6 +605,7 @@ export default function Contact() {
       })
       if (res.ok) {
         setSubmitStatus('success')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         setSubmitStatus('error')
       }
@@ -591,7 +642,7 @@ export default function Contact() {
             <ProgressBar step={step} goTo={setStep} />
 
             {/* Step content */}
-            <div style={{ flex: 1, paddingBottom: '80px', paddingTop: '8px', overflowY: 'auto' }}>
+            <div className="devis-content" style={{ flex: 1, paddingBottom: '80px', paddingTop: '40px', overflowY: 'auto' }}>
               {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
               {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
               {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
@@ -608,6 +659,9 @@ export default function Contact() {
               alignItems: 'center',
               justifyContent: 'space-between',
               zIndex: 50,
+              opacity: bottomNavHidden ? 0 : 1,
+              pointerEvents: bottomNavHidden ? 'none' : 'auto',
+              transition: 'opacity 0.3s ease',
             }}>
               {/* Prev */}
               {step > 1 ? (
@@ -741,20 +795,25 @@ export default function Contact() {
         style={{ paddingBottom: '56px' }}
       />
 
-      <Footer />
+      <div ref={logosRef}>
+        <Footer />
+      </div>
 
       <style suppressHydrationWarning>{`
-        input::placeholder, textarea::placeholder { color: rgba(17,17,17,0.35); }
+        input::placeholder, textarea::placeholder { color: rgba(17,17,17,0.55); }
         input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.45) !important; }
         select option { color: #111111; }
         @media (max-width: 768px) {
           .devis-main { height: auto !important; min-height: 100vh !important; }
           .devis-main form { overflow: visible !important; display: block !important; }
-          .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 24px !important; flex-wrap: wrap !important; gap: 8px !important; border-top: 1px solid rgba(17,17,17,0.08) !important; }
-          .nav-indicator { order: -1 !important; width: 100% !important; padding-bottom: 8px !important; border-bottom: 1px solid rgba(17,17,17,0.06) !important; justify-content: center !important; }
-          .devis-nav-next { display: none !important; }
-          .devis-nav-prev { display: none !important; }
-          .devis-progress-bar { padding: 0 24px !important; }
+          .devis-content { padding-bottom: 4px !important; padding-top: 28px !important; }
+          .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 20px !important; flex-wrap: wrap !important; gap: 0 !important; border-top: none !important; }
+          .devis-nav-prev { order: 1 !important; display: flex !important; }
+          .devis-nav-next { order: 2 !important; display: flex !important; }
+          .nav-indicator { order: 3 !important; width: 100% !important; justify-content: center !important; padding-top: 12px !important; margin-top: 8px !important; border-top: none !important; border-bottom: none !important; }
+          .devis-progress-bar { padding: 16px 24px 0 !important; }
+          .progress-label { display: none !important; }
+          .progress-line { margin: 0 12px !important; width: 40px !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }
           .step2-row { grid-template-columns: 1fr !important; }
@@ -777,8 +836,9 @@ const fieldStyle = {
   fontSize: '13px',
   color: 'var(--text-primary)',
   background: '#FFFFFF',
-  border: '1px solid rgba(17,17,17,0.1)',
-  padding: '10px 14px',
+  border: '1px solid #111111',
+  padding: '14px 16px',
+  height: '50px',
   outline: 'none',
   boxSizing: 'border-box',
   appearance: 'none',
@@ -792,7 +852,7 @@ const labelStyle = {
   fontWeight: 500,
   letterSpacing: '0.14em',
   textTransform: 'uppercase',
-  color: 'rgba(17,17,17,0.45)',
+  color: '#111111',
   marginBottom: '6px',
 }
 

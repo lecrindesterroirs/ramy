@@ -124,7 +124,7 @@ export default function MadeleinesSection() {
               {COFFRETS.map((c) => (
                 <a
                   key={c.id}
-                  href="/devis"
+                  href={c.href}
                   className="madeleine-coffret-row"
                   style={{
                     display: 'flex',
@@ -169,13 +169,10 @@ export default function MadeleinesSection() {
                     </span>
                     <span style={{
                       fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '10px',
-                      fontWeight: 500,
-                      letterSpacing: '0.1em',
-                      textTransform: 'uppercase',
-                      color: 'var(--accent)',
+                      fontSize: '13px',
+                      color: 'rgba(17,17,17,0.35)',
                     }}>
-                      Devis →
+                      →
                     </span>
                   </div>
                 </a>
@@ -191,23 +188,62 @@ export default function MadeleinesSection() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'rgba(17,17,17,0.4)',
-              marginBottom: '12px',
+              color: 'var(--accent)',
+              marginBottom: '8px',
             }}>
               Nos saveurs
             </p>
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {['Nature', 'Citron', 'Fleur d\'oranger', 'Pistache framboise', 'Chocolat noir', 'Ananas coco passion'].map(saveur => (
-                <span key={saveur} style={{
+            <span style={{ display: 'block', width: '28px', height: '1px', background: 'var(--accent)', marginBottom: '14px' }} />
+            <p style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '12px',
+              lineHeight: 1.65,
+              color: 'var(--text-secondary)',
+              marginBottom: '20px',
+            }}>
+              Des recettes raffinées, élaborées avec des ingrédients d'exception.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {[
+                { nom: 'Nature' },
+                { nom: 'Citron' },
+                { nom: 'Fleur d\'oranger' },
+                { nom: 'Pistache framboise', best: true },
+                { nom: 'Chocolat noir' },
+                { nom: 'Chocolat au lait', best: true },
+                { nom: 'Ananas coco passion', best: true },
+                { nom: 'Rose violette' },
+                { nom: 'Thé vert matcha griotte' },
+              ].map(s => (
+                <span key={s.nom} style={{
                   fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '10px',
+                  fontSize: '11px',
                   fontWeight: 400,
-                  letterSpacing: '0.06em',
-                  color: 'rgba(17,17,17,0.55)',
-                  border: '1px solid rgba(17,17,17,0.12)',
-                  padding: '5px 12px',
+                  letterSpacing: '0.04em',
+                  color: 'var(--text-primary)',
+                  background: '#FFFFFF',
+                  padding: '7px 14px',
+                  boxShadow: '0 1px 4px rgba(17,17,17,0.07)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '7px',
                 }}>
-                  {saveur}
+                  {s.nom}
+                  {s.best && (
+                    <span style={{
+                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontSize: '7px',
+                      fontWeight: 500,
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      color: 'var(--accent)',
+                      border: '1px solid var(--accent)',
+                      padding: '2px 6px',
+                      whiteSpace: 'nowrap',
+                    }}>
+                      Best-seller
+                    </span>
+                  )}
                 </span>
               ))}
             </div>

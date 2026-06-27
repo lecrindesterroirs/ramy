@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 const dropdowns = {
   creations: [
@@ -35,7 +36,10 @@ const allLinks = [
 ]
 
 export default function Navbar({ showBanner = false, forceScrolled = false }) {
-  const [scrolled, setScrolled] = useState(forceScrolled)
+  const pathname = usePathname()
+  const alwaysScrolled = forceScrolled || pathname !== '/'
+
+  const [scrolled, setScrolled] = useState(alwaysScrolled)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [subOpen, setSubOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -45,11 +49,11 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
   const subTimer = useRef(null)
 
   useEffect(() => {
-    if (forceScrolled) return
+    if (alwaysScrolled) return
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [forceScrolled])
+  }, [alwaysScrolled])
 
   useEffect(() => {
     if (mobileOpen) {
@@ -85,15 +89,15 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           whiteSpace: 'nowrap',
           position: 'absolute',
         }}>
-          Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Paris & Île-de-France
+          Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;—&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
         </div>
         <style suppressHydrationWarning>{`
           .banner-sole {
-            animation: bannerOne 38s linear infinite;
+            animation: bannerScroll 22s linear infinite;
           }
-          @keyframes bannerOne {
-            0%   { transform: translateX(110vw); }
-            100% { transform: translateX(-110vw); }
+          @keyframes bannerScroll {
+            from { transform: translateX(100vw); }
+            to   { transform: translateX(-100%); }
           }
         `}</style>
       </div>}
