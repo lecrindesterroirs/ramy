@@ -312,39 +312,37 @@ function ProductCard({ product, basePath }) {
         </div>
       </a>
 
-      <div style={{ padding: '14px 4px 10px' }}>
+      <div style={{ padding: '14px 4px 10px', display: 'flex', flexDirection: 'column' }}>
         {/* Nom cliquable */}
         <a href={href} style={{ textDecoration: 'none' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '4px', transition: 'color 0.25s ease' }}>
             {product.name}
           </p>
         </a>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: product.dietary?.length ? '8px' : '14px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '8px' }}>
           {product.label}
         </p>
 
-        {/* Tags régimes */}
-        {product.dietary?.length > 0 && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '12px' }}>
-            {product.dietary.map(tag => {
-              const style = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
-              return (
-                <span key={tag} style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '8px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: style.color,
-                  background: style.bg,
-                  padding: '3px 6px',
-                }}>
-                  {tag}
-                </span>
-              )
-            })}
-          </div>
-        )}
+        {/* Tags régimes — hauteur fixe pour aligner les CTA */}
+        <div style={{ minHeight: '24px', display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '12px', alignItems: 'flex-start' }}>
+          {product.dietary?.map(tag => {
+            const style = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
+            return (
+              <span key={tag} style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '8px',
+                fontWeight: 500,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: style.color,
+                background: style.bg,
+                padding: '3px 6px',
+              }}>
+                {tag}
+              </span>
+            )
+          })}
+        </div>
 
         {/* CTA → Voir la fiche */}
         <a
