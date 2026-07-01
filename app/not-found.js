@@ -74,7 +74,7 @@ export default function NotFound() {
           </p>
 
           {/* CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
             <a
               href="/"
               style={{

@@ -28,7 +28,7 @@ function FormulaCard({ f }) {
       {/* Image */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
         <img src={f.img} alt={f.nom}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: f.imgPosition || 'center center', display: 'block', transition: 'transform 0.6s ease' }}
           className="formule-img"
         />
         {f.badge && (

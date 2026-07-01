@@ -7,7 +7,6 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
 import DevisRapide from '../../../../components/DevisRapide'
-import MadeleineComposer from '../../../../components/MadeleineComposer'
 
 const FORMATS = [
   { id: 'madeleines-10', pieces: 10, price: 24.90, label: '10 pièces', sub: '4 à 6 pers.' },
@@ -15,21 +14,51 @@ const FORMATS = [
   { id: 'madeleines-50', pieces: 50, price: 119.00, label: '50 pièces', sub: '25 à 30 pers.' },
 ]
 
+/* ── Vitrine éditoriale (structure "plateau repas") — test sur 1 produit ── */
+const MARBLE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1200'>
+  <filter id='v'>
+    <feTurbulence type='fractalNoise' baseFrequency='0.011 0.018' numOctaves='6' seed='9' result='t'/>
+    <feColorMatrix in='t' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 1.45'/>
+  </filter>
+  <rect width='100%' height='100%' fill='#f3efe7'/>
+  <rect width='100%' height='100%' fill='#d8cfbf' filter='url(#v)' opacity='0.10'/>
+</svg>`
+const MARBLE = `url("data:image/svg+xml,${encodeURIComponent(MARBLE_SVG)}")`
+
+const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
+  <filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/>
+  <feColorMatrix type='saturate' values='0'/></filter>
+  <rect width='100%' height='100%' filter='url(#g)' opacity='0.5'/>
+</svg>`
+const GRAIN = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`
+
+const GOLD = '#A9803B'
+
+function Sprig() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', marginTop: '4px' }}>
+      <span style={{ width: '46px', height: '1px', background: 'rgba(169,128,59,0.5)' }} />
+      <svg width="26" height="16" viewBox="0 0 26 16" fill="none" stroke={GOLD} strokeWidth="0.9">
+        <path d="M13 15 C13 9 13 5 13 1" />
+        <path d="M13 11 C9 10 7 8 6.5 5.5 C9.5 6 11.5 7.5 13 10.5 Z" fill={GOLD} fillOpacity="0.28" />
+        <path d="M13 11 C17 10 19 8 19.5 5.5 C16.5 6 14.5 7.5 13 10.5 Z" fill={GOLD} fillOpacity="0.28" />
+        <path d="M13 7 C10 6.5 8.5 5 8 3 C10.5 3.5 12 4.8 13 6.8 Z" fill={GOLD} fillOpacity="0.28" />
+        <path d="M13 7 C16 6.5 17.5 5 18 3 C15.5 3.5 14 4.8 13 6.8 Z" fill={GOLD} fillOpacity="0.28" />
+      </svg>
+      <span style={{ width: '46px', height: '1px', background: 'rgba(169,128,59,0.5)' }} />
+    </div>
+  )
+}
+
 export default function ProductPage() {
   const { slug } = useParams()
 
-  // Tous les hooks d'abord — avant tout return/throw conditionnel
-  const initFormat = FORMATS.find(f => f.id === slug) || FORMATS[0]
-  const [format, setFormat]           = useState(initFormat)
-  const [composition, setComposition] = useState(null)
+  const [format, setFormat] = useState(FORMATS[0])
 
   const product = PRODUCTS.find(p => p.id === slug)
   if (!product) notFound()
 
-  const handleFormatChange = (fmt) => {
-    setFormat(fmt)
-    setComposition(null)
-  }
+  const isEditorial = !product.isMadeleine
 
   const breadcrumb = [
     { label: 'Accueil', href: '/' },
@@ -42,7 +71,8 @@ export default function ProductPage() {
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* ── Breadcrumb ── */}
+        {/* ── Breadcrumb (masqué en mode éditorial : rendu sur le marbre) ── */}
+        {!isEditorial && (
         <div className="fiche-breadcrumb" style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px 72px 0' }}>
           <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             {breadcrumb.map((crumb, i, arr) => (
@@ -60,120 +90,112 @@ export default function ProductPage() {
             ))}
           </nav>
         </div>
+        )}
 
         {/* ── Layout principal ── */}
-        {product.isMadeleine ? (
+        {isEditorial ? (
+          <EditorialHero product={product} breadcrumb={breadcrumb} />
+        ) : product.isMadeleine ? (
           /* ═══ LAYOUT MADELEINES ═══ */
           <div style={{ maxWidth: '720px', margin: '0 auto', padding: '32px 72px 80px' }}>
 
-              {/* Label */}
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
-                Pâtisserie · Mado Paris
+            {/* Label */}
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+              Pâtisserie · Mado Paris
+            </p>
+
+            {/* Titre */}
+            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '28px' }}>
+              Coffrets de madeleines
+            </h1>
+
+            {/* Formats disponibles */}
+            <div style={{ marginBottom: '32px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
+                Taille du coffret
               </p>
-
-              {/* Titre + Prix */}
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '28px', gap: '16px' }}>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
-                  Coffrets de madeleines
-                </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '22px', fontWeight: 500, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>
-                  {format.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
-                </p>
-              </div>
-
-              {/* ── Sélecteur de taille ── */}
-              <div style={{ marginBottom: '32px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
-                  Taille du coffret
-                </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px' }}>
-                  {FORMATS.map(fmt => {
-                    const isSelected = fmt.id === format.id
-                    return (
-                      <button
-                        key={fmt.id}
-                        onClick={() => handleFormatChange(fmt)}
-                        style={{
-                          padding: '14px 10px', textAlign: 'left', cursor: 'pointer',
-                          background: isSelected ? 'var(--text-primary)' : 'var(--bg-secondary)',
-                          border: 'none', position: 'relative',
-                          transition: 'background 0.15s',
-                        }}
-                        onMouseEnter={e => { if (!isSelected) e.currentTarget.style.background = '#EDE8DE' }}
-                        onMouseLeave={e => { if (!isSelected) e.currentTarget.style.background = 'var(--bg-secondary)' }}
-                      >
-                        {fmt.popular && (
-                          <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
-                            Le plus choisi
-                          </span>
-                        )}
-                        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: isSelected ? '#fff' : 'var(--text-primary)', marginBottom: '2px', lineHeight: 1 }}>
-                          {fmt.label}
-                        </p>
-                        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: isSelected ? 'rgba(255,255,255,0.6)' : 'rgba(17,17,17,0.45)', marginBottom: '5px' }}>
-                          {fmt.sub}
-                        </p>
-                        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: isSelected ? 'rgba(255,255,255,0.9)' : 'var(--accent)' }}>
-                          {fmt.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
-                        </p>
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
-
-              {/* Séparateur */}
-              <div style={{ height: '1px', background: 'rgba(17,17,17,0.07)', marginBottom: '28px' }} />
-
-              {/* Compositeur de saveurs */}
-              <MadeleineComposer key={format.id} maxPieces={format.pieces} onChange={setComposition} />
-
-              {/* Séparateur */}
-              <div style={{ height: '1px', background: 'rgba(17,17,17,0.07)', marginBottom: '24px' }} />
-
-              {/* Ingrédients bio */}
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '16px' }}>
-                {product.ingredients}
-              </p>
-
-              {/* Tags */}
-              {product.dietary?.length > 0 && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
-                  {product.dietary.map(tag => {
-                    const s = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
-                    return (
-                      <span key={tag} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: s.color, background: s.bg, padding: '5px 10px' }}>
-                        {tag}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px' }}>
+                {FORMATS.map(fmt => (
+                  <div
+                    key={fmt.id}
+                    style={{ padding: '14px 10px', textAlign: 'left', background: 'var(--bg-secondary)', position: 'relative' }}
+                  >
+                    {fmt.popular && (
+                      <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
+                        Le plus choisi
                       </span>
-                    )
-                  })}
-                </div>
-              )}
-
-              {/* CTA devis */}
-              <a
-                href="/devis"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500,
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                  color: '#FFFFFF', background: 'var(--accent)',
-                  border: '1px solid var(--accent)', padding: '18px 36px',
-                  display: 'flex', alignItems: 'center', gap: '10px',
-                  textDecoration: 'none', justifyContent: 'center', width: '100%',
-                  transition: 'opacity 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                Demande de devis →
-              </a>
-
-              {/* Livraison */}
-              <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {['Livraison dès 6h30 — Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
-                  <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
+                    )}
+                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '2px', lineHeight: 1 }}>
+                      {fmt.label}
+                    </p>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.45)', marginBottom: '5px' }}>
+                      {fmt.sub}
+                    </p>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent)' }}>
+                      {fmt.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                    </p>
+                  </div>
                 ))}
               </div>
+            </div>
+
+            {/* Séparateur */}
+            <div style={{ height: '1px', background: 'rgba(17,17,17,0.07)', marginBottom: '28px' }} />
+
+            {/* Saveurs disponibles */}
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '16px' }}>
+              Les saveurs
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', marginBottom: '32px' }}>
+              {MADELEINE_FLAVORS.map(f => (
+                <div key={f.id} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 14px', background: f.bg }}>
+                  <img src={f.img} alt={f.label} style={{ width: '52px', height: '52px', objectFit: 'contain', flexShrink: 0 }} />
+                  <div>
+                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: '#211C16', lineHeight: 1.15, marginBottom: '3px' }}>{f.label}</p>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.5, color: 'rgba(33,28,22,0.55)' }}>{f.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Séparateur */}
+            <div style={{ height: '1px', background: 'rgba(17,17,17,0.07)', marginBottom: '24px' }} />
+
+            {/* Ingrédients */}
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '16px' }}>
+              {product.ingredients}
+            </p>
+
+            {/* Tags */}
+            {product.dietary?.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
+                {product.dietary.map(tag => {
+                  const s = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
+                  return (
+                    <span key={tag} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: s.color, background: s.bg, padding: '5px 10px' }}>
+                      {tag}
+                    </span>
+                  )
+                })}
+              </div>
+            )}
+
+            {/* CTA devis */}
+            <a
+              href="/devis"
+              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '18px 36px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', justifyContent: 'center', width: '100%', transition: 'opacity 0.3s ease' }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+            >
+              Demande de devis →
+            </a>
+
+            {/* Livraison */}
+            <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {['Livraison dès 6h30 — Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
+                <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
+              ))}
+            </div>
           </div>
 
         ) : (
@@ -224,16 +246,134 @@ export default function ProductPage() {
           .fiche-breadcrumb { padding: 20px 24px 0 !important; }
           .fiche-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 32px 24px 60px !important; }
           .fiche-seo { padding: 48px 24px 72px !important; }
+          .editorial-grid { grid-template-columns: 1fr !important; gap: 36px !important; padding: 24px 24px 48px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .fiche-breadcrumb { padding: 20px 40px 0 !important; }
           .fiche-grid { padding: 32px 40px 60px !important; gap: 40px !important; }
           .fiche-seo { padding: 60px 40px 80px !important; }
+          .editorial-grid { padding: 24px 40px 48px !important; gap: 40px !important; }
         }
       `}</style>
 
       <Footer />
     </>
+  )
+}
+
+// ── Vitrine éditoriale — structure "plateau repas" ──
+function EditorialHero({ product, breadcrumb }) {
+  const accroche = product.description?.includes('—')
+    ? product.description.split('—').slice(1).join('—').trim()
+    : product.description
+
+  return (
+    <section style={{ backgroundColor: '#FFFFFF', minHeight: 'calc(100vh - var(--banner-h) - var(--nav-h))', display: 'flex', flexDirection: 'column' }}>
+      {/* Filtre bords déchirés */}
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden>
+        <filter id="deckle-pdj">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="6" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
+
+      {/* Breadcrumb sur marbre */}
+      <div className="fiche-breadcrumb" style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px 72px 0' }}>
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+          {breadcrumb.map((crumb, i, arr) => (
+            <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              {crumb.href ? (
+                <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(40,34,28,0.45)', textDecoration: 'none' }}
+                  onMouseEnter={e => e.currentTarget.style.color = GOLD}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(40,34,28,0.45)'}
+                >{crumb.label}</a>
+              ) : (
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(40,34,28,0.72)' }}>{crumb.label}</span>
+              )}
+              {i < arr.length - 1 && <span style={{ color: 'rgba(40,34,28,0.28)', fontSize: '10px' }}>›</span>}
+            </span>
+          ))}
+        </nav>
+      </div>
+
+      {/* Composition : photo + carte papier */}
+      <div className="editorial-grid" style={{ flex: 1, width: '100%', maxWidth: '1280px', margin: '0 auto', padding: '16px 72px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4vw', alignItems: 'center' }}>
+
+        {/* Gauche — photo posée sur le marbre */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ width: '100%', maxWidth: '560px', maxHeight: 'calc(100vh - var(--banner-h) - var(--nav-h) - 80px)', aspectRatio: '1 / 1', overflow: 'hidden', boxShadow: '0 26px 60px -24px rgba(60,48,34,0.5)' }}>
+            <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+        </div>
+
+        {/* Droite — carte papier */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: '480px' }}>
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: '#FEFCF8', backgroundImage: GRAIN, backgroundSize: '320px', boxShadow: '0 22px 48px rgba(60,48,34,0.12)' }} />
+
+            <div style={{ position: 'relative', padding: '20px 40px 20px', textAlign: 'center' }}>
+              {/* Monogramme */}
+              <img src="/logo-footer.svg" alt="L'Écrin" style={{ height: '36px', width: 'auto', margin: '0 auto 10px', opacity: 0.92 }} />
+
+              {/* Titre */}
+              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 34px)', fontWeight: 400, color: '#211C16', lineHeight: 1.08, marginBottom: '8px' }}>
+                {product.name}
+              </h1>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.26em', textTransform: 'uppercase', color: GOLD, marginBottom: '10px' }}>
+                {product.categoryLabel}
+              </p>
+              <div style={{ width: '34px', height: '1px', background: GOLD, margin: '0 auto 10px', opacity: 0.7 }} />
+
+              {/* Accroche */}
+              {accroche && (
+                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '14px', fontStyle: 'italic', lineHeight: 1.5, color: 'rgba(33,28,22,0.62)', maxWidth: '320px', margin: '0 auto 16px' }}>
+                  {accroche}
+                </p>
+              )}
+
+              {/* Composition */}
+              <div style={{ textAlign: 'left', marginBottom: '14px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Composition</p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'rgba(33,28,22,0.6)' }}>{product.ingredients}</p>
+              </div>
+
+              {/* Allergènes */}
+              {product.allergens?.length > 0 && (
+                <div style={{ textAlign: 'left', marginBottom: '14px' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Allergènes</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
+                    {product.allergens.map(a => (
+                      <span key={a} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.04em', color: 'rgba(33,28,22,0.62)', border: '1px solid rgba(169,128,59,0.35)', padding: '3px 9px' }}>{a}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Prix */}
+              {product.price && (
+                <>
+                  <div style={{ width: '34px', height: '1px', background: GOLD, margin: '4px auto 12px', opacity: 0.7 }} />
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '5px' }}>Tarif</p>
+                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#211C16', lineHeight: 1, marginBottom: '16px' }}>
+                    {product.price.toFixed(2).replace('.', ',')} €
+                    {product.qty && <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(33,28,22,0.45)', marginLeft: '8px' }}>· {product.qty}</span>}
+                  </p>
+                </>
+              )}
+
+              {/* CTA devis */}
+              <a href="/devis" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '10px 32px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              >
+                Demande de devis →
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 

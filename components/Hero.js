@@ -86,7 +86,7 @@ export default function Hero() {
           }}
         >
           Le traiteur qui redonne<br />
-          le goût aux pauses d'entreprise.
+          goût aux pauses d'entreprise.
         </h1>
 
         {/* Body text */}
