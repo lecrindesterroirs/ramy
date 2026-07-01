@@ -6,7 +6,7 @@ const args = [
   {
     num: '01',
     title: 'Artisans sélectionnés',
-    body: 'Mado Paris, Maison Marques, Alain Milliat, Dammann Frères... Chaque produit vient d\'un artisan choisi pour ce qu\'il sait faire, pas pour son prix.',
+    body: 'Mado Paris, Maison Marques, Alain Milliat, Mariage Frères... Chaque produit vient d\'un artisan choisi pour ce qu\'il sait faire, pas pour son prix.',
   },
   {
     num: '02',
@@ -103,7 +103,7 @@ export default function SelectionSection() {
                 marginBottom: '52px',
               }}
             >
-              Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Dammann Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.
+              Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Mariage Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.
             </p>
 
             {/* 3 arguments — desktop */}

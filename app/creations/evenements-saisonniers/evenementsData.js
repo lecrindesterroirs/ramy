@@ -89,14 +89,14 @@ export const evenements = [
     nom: 'Journée des Femmes',
     tags: ['Petits-déjeuners', 'Pauses gourmandes', 'Goûters'],
     img: '/section-reception.webp',
-    descCourt: "Madeleines roses personnalisées, pâtisseries fines, jus Alain Milliat et thé Dammann Frères.",
+    descCourt: "Madeleines roses personnalisées, pâtisseries fines, jus Alain Milliat et thé Mariage Frères.",
     desc: "Une attention sincère pour vos équipes féminines. Pas un buffet générique. Des madeleines roses personnalisées, des pâtisseries fines, une mise en scène soignée. Simple, élégant, et qui veut vraiment dire quelque chose.",
     produits: [
       'Madeleines roses personnalisées',
       'Macarons assortis',
       'Pâtisseries fines',
       'Jus Alain Milliat',
-      'Thé Dammann Frères',
+      'Thé Mariage Frères',
     ],
     differentiateur: {
       label: 'Personnalisation',
@@ -111,7 +111,7 @@ export const evenements = [
         },
         {
           heading: "Les idées qui marquent vraiment",
-          texte: "Oubliez les bouquets de fleurs génériques ou les chocolats de supermarché. Ce qui marque, c'est le soin apporté et la personnalisation. Des madeleines roses avec l'emballage aux couleurs de l'entreprise. Un plateau avec une vraie sélection : macarons, pâtisseries fines, thé Dammann Frères. L'idée n'est pas de dépenser beaucoup, mais de montrer que quelqu'un a réfléchi à ce moment et y a consacré du temps.",
+          texte: "Oubliez les bouquets de fleurs génériques ou les chocolats de supermarché. Ce qui marque, c'est le soin apporté et la personnalisation. Des madeleines roses avec l'emballage aux couleurs de l'entreprise. Un plateau avec une vraie sélection : macarons, pâtisseries fines, thé Mariage Frères. L'idée n'est pas de dépenser beaucoup, mais de montrer que quelqu'un a réfléchi à ce moment et y a consacré du temps.",
         },
         {
           heading: "Quel format choisir ?",
@@ -137,7 +137,7 @@ export const evenements = [
       'Oeufs et cloches en chocolat',
       'Viennoiseries de saison',
       'Jus de fruits Alain Milliat',
-      'Thé Dammann Frères',
+      'Thé Mariage Frères',
     ],
     differentiateur: {
       label: 'Notre sélection',
@@ -219,7 +219,7 @@ export const evenements = [
       'Plaque chocolat personnalisée',
       'Viennoiseries boulangers partenaires',
       'Thermos café bio',
-      'Thermos thé Dammann Frères',
+      'Thermos thé Mariage Frères',
       'Jus de fruits Alain Milliat',
     ],
     differentiateur: {
@@ -261,7 +261,7 @@ export const evenements = [
       'Plateau macarons et cakes roses',
       'Emballages avec ruban rose',
       'Smoothie fruits rouges',
-      'Thé Dammann Frères',
+      'Thé Mariage Frères',
     ],
     differentiateur: {
       label: 'Personnalisation',
@@ -336,7 +336,7 @@ export const evenements = [
     nom: 'Noël',
     tags: ['Petits-déjeuners', 'Cocktails & Buffets', 'Pauses gourmandes'],
     img: '/buffet-sale.webp',
-    descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud Dammann Frères.",
+    descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud Mariage Frères.",
     desc: "La prestation la plus attendue de l'année. Menu de fête complet avec les grands classiques de saison. Foie gras, saumon fumé, bûche artisanale, chocolats chauds, viennoiseries de Noël. Un buffet festif ou un plateau repas selon votre format et votre effectif.",
     produits: [
       'Foie gras et toasts',
@@ -344,7 +344,7 @@ export const evenements = [
       'Bûche artisanale',
       'Chocolats de Noël',
       'Viennoiseries de saison',
-      'Chocolat chaud Dammann Frères',
+      'Chocolat chaud Mariage Frères',
       'Champagne ou jus pétillant',
     ],
     differentiateur: {
@@ -364,7 +364,7 @@ export const evenements = [
         },
         {
           heading: "Le menu idéal pour un repas de Noël d'entreprise",
-          texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons : champagne pour la convivialité, jus Alain Milliat pour les non-alcoolisés, chocolat chaud Dammann Frères pour finir.",
+          texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons : champagne pour la convivialité, jus Alain Milliat pour les non-alcoolisés, chocolat chaud Mariage Frères pour finir.",
         },
         {
           heading: "Anticiper : la règle numéro un",

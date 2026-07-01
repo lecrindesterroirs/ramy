@@ -47,7 +47,7 @@ export default function PrometteSection() {
           }}
         >
           La pause en entreprise mérite mieux qu'un simple café.<br />
-          Mado Paris, Maison Marques, Dammann Frères...
+          Mado Paris, Maison Marques, Mariage Frères...
         </p>
       </div>
 

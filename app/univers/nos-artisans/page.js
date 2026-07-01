@@ -82,12 +82,12 @@ const categories = [
         img: '/verger-plaisir.avif',
       },
       {
-        nom: 'Dammann Frères',
+        nom: 'Mariage Frères',
         specialite: 'Thés & Infusions',
-        description: "Privilège royal accordé par Louis XIV en 1692. Boutique historique place des Vosges, Paris. Inventeurs du thé aromatisé moderne. Dammann Frères, c'est le choix qu'on fait quand on veut que la pause thé soit aussi soignée que le reste de la prestation.",
-        tags: ['Depuis 1692', 'Place des Vosges', 'Grande maison'],
-        img: '/damann-frere.jpg',
-        avatar: '/the-dammann.jpg',
+        description: "Grande maison de thé française fondée en 1854. Boutique historique rue du Bourg-Tibourg, dans le Marais à Paris. Référence de l'art français du thé et pionnière des thés parfumés. Mariage Frères, c'est le choix qu'on fait quand on veut que la pause thé soit aussi soignée que le reste de la prestation.",
+        tags: ['Depuis 1854', 'Le Marais', 'Grande maison'],
+        img: '/mariage-freres.jpg',
+        avatar: '/mariage-freres-logo.jpg',
       },
     ],
   },
@@ -139,7 +139,7 @@ export default function NosArtisans() {
             maxWidth: '540px',
             margin: '0 auto',
           }}>
-            Mado Paris, Alain Milliat, Dammann Frères, Laura Todd... Chaque partenaire a été choisi pour une raison simple : la qualité de ce qu'il produit, sa régularité et son engagement artisanal.
+            Mado Paris, Alain Milliat, Mariage Frères, Laura Todd... Chaque partenaire a été choisi pour une raison simple : la qualité de ce qu'il produit, sa régularité et son engagement artisanal.
           </p>
         </div>
 
