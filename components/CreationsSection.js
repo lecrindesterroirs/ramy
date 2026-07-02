@@ -33,7 +33,7 @@ const creations = [
     label: 'Boissons',
     subtitle: 'Jus, softs, cafés & thés d\'exception',
     credit: "L'Écrin Traiteur",
-    img: '/creations-featured.webp',
+    img: '/creations-boissons.png',
     href: '/creations/boissons',
   },
   {
