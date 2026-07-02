@@ -158,23 +158,13 @@ export default function MadeleinesSection() {
                       {c.desc}
                     </span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <span style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '15px',
-                      fontWeight: 500,
-                      color: 'var(--text-primary)',
-                    }}>
-                      {c.price}
-                    </span>
-                    <span style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '13px',
-                      color: 'rgba(17,17,17,0.35)',
-                    }}>
-                      →
-                    </span>
-                  </div>
+                  <span style={{
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '13px',
+                    color: 'rgba(17,17,17,0.35)',
+                  }}>
+                    →
+                  </span>
                 </a>
               ))}
             </div>
