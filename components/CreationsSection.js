@@ -114,7 +114,7 @@ export default function CreationsSection() {
       </div>
 
       {/* Grid 3x2 */}
-      <div className="reveal creations-grid-wrap" style={{ padding: '48px 72px 48px 72px', flexShrink: 0 }}>
+      <div className="reveal creations-grid-wrap" style={{ padding: '48px 72px 56px 72px', flexShrink: 0 }}>
         <div className="creations-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px', gridAutoRows: '340px', maxWidth: '1280px', margin: '0 auto' }}>
           {creations.map((item) => (
             <div key={item.label} style={{ overflow: 'hidden' }}>

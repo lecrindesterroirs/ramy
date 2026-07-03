@@ -48,16 +48,15 @@ export default function Footer() {
           {/* 4 colonnes centrées */}
           <div className="footer-cols" style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: '48px' }}>
 
-            {/* Nos Créations */}
+            {/* La Carte — par moments */}
             <div>
-              <span style={colTitleStyle}>Nos Créations</span>
+              <span style={colTitleStyle}>La Carte</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
-                  { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-                  { label: 'Plateaux Repas', href: '/creations/plateaux-repas' },
-                  { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
+                  { label: 'Petit-déjeuner & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
+                  { label: 'Déjeuner', href: '/creations/plateaux-repas' },
+                  { label: 'Cocktail', href: '/creations/cocktails-et-buffets' },
                   { label: 'Boissons', href: '/creations/boissons' },
-                  { label: 'Coffrets & Cadeaux', href: '/creations/coffrets-cadeaux' },
                   { label: 'Événements Saisonniers', href: '/creations/evenements-saisonniers' },
                 ].map(l => (
                   <a key={l.label} href={l.href} style={linkStyle}
