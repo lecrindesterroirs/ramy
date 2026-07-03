@@ -58,7 +58,9 @@ export default function ProductPage() {
   const product = PRODUCTS.find(p => p.id === slug)
   if (!product) notFound()
 
-  const isEditorial = !product.isMadeleine
+  // Galerie = fiche par défaut pour tous les produits (sauf coffrets madeleines)
+  const isGallery = !product.isMadeleine
+  const isEditorial = false
 
   const breadcrumb = [
     { label: 'Accueil', href: '/' },
@@ -93,7 +95,9 @@ export default function ProductPage() {
         )}
 
         {/* ── Layout principal ── */}
-        {isEditorial ? (
+        {isGallery ? (
+          <GalleryFiche product={product} />
+        ) : isEditorial ? (
           <EditorialHero product={product} breadcrumb={breadcrumb} />
         ) : product.isMadeleine ? (
           /* ═══ LAYOUT MADELEINES ═══ */
@@ -247,17 +251,145 @@ export default function ProductPage() {
           .fiche-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 32px 24px 60px !important; }
           .fiche-seo { padding: 48px 24px 72px !important; }
           .editorial-grid { grid-template-columns: 1fr !important; gap: 36px !important; padding: 24px 24px 48px !important; }
+          .gallery-fiche { grid-template-columns: 1fr !important; gap: 32px !important; padding: 24px 24px 60px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .fiche-breadcrumb { padding: 20px 40px 0 !important; }
           .fiche-grid { padding: 32px 40px 60px !important; gap: 40px !important; }
           .fiche-seo { padding: 60px 40px 80px !important; }
           .editorial-grid { padding: 24px 40px 48px !important; gap: 40px !important; }
+          .gallery-fiche { padding: 24px 40px 60px !important; gap: 40px !important; }
         }
       `}</style>
 
       <Footer />
     </>
+  )
+}
+
+// ── Fiche galerie (mockup crêpes) ──
+function GalleryFiche({ product }) {
+  const gallery = product.gallery && product.gallery.length ? product.gallery : [product.img]
+  const [active, setActive] = useState(0)
+  const thumbSlots = 4
+
+  return (
+    <div className="gallery-fiche" style={{ maxWidth: '1280px', margin: '0 auto', padding: '28px 72px 64px', display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '52px', alignItems: 'center', minHeight: 'calc(100vh - var(--banner-h) - var(--nav-h))' }}>
+
+      {/* ── Colonne gauche : galerie (grande) ── */}
+      <div className="gallery-col">
+        <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
+          <img src={gallery[active]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        </div>
+
+        {/* Miniatures — format paysage fin */}
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${thumbSlots}, 1fr)`, gap: '16px', marginTop: '18px' }}>
+          {Array.from({ length: thumbSlots }).map((_, i) => {
+            const hasImg = i < gallery.length
+            const isActive = i === active
+            return hasImg ? (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                aria-label={`Photo ${i + 1}`}
+                style={{ padding: 0, border: 'none', cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF', outline: isActive ? '2px solid var(--accent)' : '2px solid transparent', outlineOffset: '2px', transition: 'outline-color 0.2s ease' }}
+              >
+                <img src={gallery[i]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: isActive ? 1 : 0.72, transition: 'opacity 0.2s ease' }} />
+              </button>
+            ) : (
+              <button
+                key={i}
+                type="button"
+                aria-label="Photo à venir"
+                style={{ padding: 0, cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', borderRadius: '3px', background: '#F4F1EA', border: '1px solid transparent', outline: '2px solid transparent', outlineOffset: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'outline-color 0.2s ease, background 0.2s ease' }}
+                onMouseEnter={e => { e.currentTarget.style.outlineColor = 'rgba(224,161,38,0.4)'; e.currentTarget.style.background = '#EFEBE1' }}
+                onMouseLeave={e => { e.currentTarget.style.outlineColor = 'transparent'; e.currentTarget.style.background = '#F4F1EA' }}
+              >
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.28)', textAlign: 'center', lineHeight: 1.4 }}>Photo<br />à venir</span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* ── Colonne droite : infos ── */}
+      <div className="gallery-info" style={{ paddingLeft: '28px' }}>
+        {/* En-tête centré */}
+        <div style={{ textAlign: 'center', marginBottom: '22px' }}>
+          <img src="/logo-footer.svg" alt="L'Écrin" style={{ height: '32px', width: 'auto', margin: '0 auto 12px', opacity: 0.9 }} />
+          <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '8px' }}>
+            {product.name}
+          </h1>
+          {product.subtitle && (
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '9px' }}>
+              {product.subtitle}
+            </p>
+          )}
+          {product.qty && (
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.03em' }}>
+              {product.description || product.qty}
+            </p>
+          )}
+        </div>
+
+        {/* Description (gauche) */}
+        {product.ingredients && (
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '22px' }}>
+            {product.ingredients}
+          </p>
+        )}
+
+        {/* Composition (gauche) */}
+        {product.allergens?.length > 0 && (
+          <div style={{ marginBottom: '18px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>Composition</p>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
+              Contient : {product.allergens.join(', ').toLowerCase()}.
+            </p>
+          </div>
+        )}
+
+        {/* Accompagnements inclus (gauche) */}
+        {product.included?.length > 0 && (
+          <div style={{ marginBottom: '22px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '9px' }}>Accompagnements inclus</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {product.included.map(item => (
+                <li key={item} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.4, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Séparateur */}
+        <div style={{ height: '1px', background: 'rgba(17,17,17,0.08)', marginBottom: '20px' }} />
+
+        {/* Bloc action centré : prix + CTA */}
+        <div style={{ textAlign: 'center' }}>
+          {product.price && (
+            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
+              {product.price.toFixed(2).replace('.', ',')} €
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>HT</span>
+              {product.qty && (
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.4)', marginLeft: '10px' }}>· {product.qty}</span>
+              )}
+            </p>
+          )}
+
+          <a
+            href="/devis"
+            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10.5px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', background: 'transparent', border: '1px solid var(--accent)', padding: '11px 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', justifyContent: 'center', transition: 'background 0.3s ease, color 0.3s ease' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
+          >
+            Demande de devis →
+          </a>
+        </div>
+      </div>
+    </div>
   )
 }
 

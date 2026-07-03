@@ -3,37 +3,69 @@
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 
-const dropdowns = {
-  creations: [
-    { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-    { label: 'Plateaux Repas', href: '/creations/plateaux-repas' },
-    { label: 'Cocktails & Buffets', href: '/creations/cocktails-et-buffets' },
-    { label: 'Boissons', href: '/creations/boissons' },
-    { label: 'Événements Saisonniers', href: '/creations/evenements-saisonniers' },
-  ],
-  univers: [
-    { label: 'Notre Maison', href: '/univers/notre-maison' },
-    { label: 'Nos Artisans', href: '/univers/nos-artisans' },
-    { label: 'Nos Engagements', href: '/univers/nos-engagements' },
-  ],
+const MOMENTS = {
+  petitDej: {
+    label: 'Petit-déjeuner & Pauses',
+    key: 'petitDej',
+    cards: [
+      { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/creations-1.png' },
+      { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/creations-2.png' },
+    ],
+  },
+  dejeuner: {
+    label: 'Déjeuner',
+    key: 'dejeuner',
+    cards: [
+      { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/creations-4.png' },
+      { title: 'Lunch Box', href: '/creations/lunch-box', img: '/creations-4.png' },
+      { title: 'À partager', href: '/creations/a-partager', img: '/creations-4.png' },
+    ],
+  },
+  cocktail: {
+    label: 'Cocktail',
+    key: 'cocktail',
+    cards: [
+      { title: 'Cocktails', href: '/creations/cocktails', img: '/creations-3.png' },
+      { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/creations-3.png' },
+      { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/creations-3.png' },
+    ],
+  },
+  boissons: {
+    label: 'Boissons',
+    key: 'boissons',
+    href: '/creations/boissons',
+  },
 }
 
-const evenements = [
-  { label: 'CODIR, COMEX & Direction', href: '/occasions/petit-dejeuner-codir' },
-  { label: "Séminaires d'entreprise", href: '/occasions/seminaire-entreprise' },
-  { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
-  { label: 'Journées de formation', href: '/occasions/journee-formation' },
-  { label: 'Team Building & Cohésion', href: '/occasions/team-building' },
-  { label: "Goûter d'entreprise", href: '/occasions/gouter-entreprise' },
+const UNIVERS_ITEMS = [
+  { label: 'Notre Maison', href: '/univers/notre-maison' },
+  { label: 'Nos Artisans', href: '/univers/nos-artisans' },
+  { label: 'Nos Engagements', href: '/univers/nos-engagements' },
 ]
 
-const allLinks = [
-  { label: 'Nos Créations', href: '/creations/petits-dejeuners-et-pauses' },
-  { label: "L'Univers", href: '/univers/notre-maison' },
-  { label: 'Le Journal', href: '/journal' },
-  { label: 'Contact', href: '/contact' },
-
-]
+const JOURNAL_ITEMS = {
+  main: [
+    { label: 'Le Journal', href: '/journal' },
+    { label: 'Tous les articles', href: '/journal/tous-les-articles' },
+  ],
+  categories: [
+    { label: 'Guides', href: '/journal/guides' },
+    { label: 'Conseils', href: '/journal/conseils' },
+    { label: 'Inspirations', href: '/journal/inspirations' },
+  ],
+  occasions: [
+    { label: 'CODIR & COMEX', href: '/occasions/codir-comex' },
+    { label: 'Séminaires d\'entreprise', href: '/occasions/seminaires' },
+    { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
+    { label: 'Journées de formation', href: '/occasions/formation' },
+    { label: 'Team Building', href: '/occasions/team-building' },
+    { label: 'Petit-déjeuner d\'entreprise', href: '/occasions/petit-dejeuner' },
+    { label: 'Déjeuner d\'entreprise', href: '/occasions/dejeuner' },
+    { label: 'Cocktail d\'entreprise', href: '/occasions/cocktail' },
+    { label: 'Goûter d\'entreprise', href: '/occasions/gouter' },
+    { label: 'Afterwork', href: '/occasions/afterwork' },
+  ],
+}
 
 export default function Navbar({ showBanner = false, forceScrolled = false }) {
   const pathname = usePathname()
@@ -41,12 +73,9 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
   const [scrolled, setScrolled] = useState(alwaysScrolled)
   const [activeDropdown, setActiveDropdown] = useState(null)
-  const [subOpen, setSubOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
-  const [mobileSubOpen, setMobileSubOpen] = useState(false)
   const closeTimer = useRef(null)
-  const subTimer = useRef(null)
 
   useEffect(() => {
     if (alwaysScrolled) return
@@ -119,210 +148,134 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           borderBottom: scrolled ? '1px solid rgba(17,17,17,0.06)' : 'none',
         }}
       >
-        {/* Left nav */}
-        <div className="nav-left" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          {[
-            { key: 'creations', label: 'Nos Créations' },
-            { key: 'univers', label: "L'Univers" },
-          ].map(({ key, label }) => (
-            <div
-              key={key}
-              style={{ position: 'relative' }}
-              onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown(key) }}
-              onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
-            >
+        {/* LEFT NAV — Moments */}
+        <div
+          className="nav-left"
+          style={{ display: 'flex', alignItems: 'center', gap: '32px', position: 'relative' }}
+          onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
+        >
+          {Object.values(MOMENTS).map(moment => {
+            const hasDropdown = moment.cards
+            const active = activeDropdown === moment.key
+
+            if (!hasDropdown) {
+              return (
+                <a
+                  key={moment.key}
+                  href={moment.href}
+                  style={{
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    letterSpacing: '0.01em',
+                    color: '#111111',
+                    textDecoration: 'none',
+                    transition: 'color 0.4s ease',
+                  }}
+                  onMouseEnter={e => { clearTimeout(closeTimer.current); setActiveDropdown(null); e.currentTarget.style.color = 'var(--accent)' }}
+                  onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+                >
+                  {moment.label}
+                </a>
+              )
+            }
+
+            return (
               <button
+                key={moment.key}
+                onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown(moment.key) }}
                 style={{
                   fontFamily: "'Neue Montreal', sans-serif",
                   fontSize: '14px',
                   fontWeight: 500,
                   letterSpacing: '0.01em',
-                  color: '#111111',
+                  color: active ? 'var(--accent)' : '#111111',
                   background: 'none',
                   border: 'none',
-                                    display: 'flex',
+                  display: 'flex',
                   alignItems: 'center',
                   gap: '5px',
-                  transition: 'color 0.4s ease',
+                  transition: 'color 0.2s ease',
                   padding: 0,
+                  cursor: 'pointer',
                 }}
               >
-                {label}
+                {moment.label}
                 <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
               </button>
+            )
+          })}
 
-              {activeDropdown === key && key === 'creations' && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 'calc(100% + 16px)',
-                    left: 0,
-                    background: '#FFFFFF',
-                    borderTop: '1px solid rgba(17,17,17,0.08)',
-                    padding: '28px 36px',
-                    minWidth: '230px',
-                    boxShadow: '0 24px 48px rgba(17,17,17,0.06)',
-                    animation: 'dropdownReveal 0.25s ease',
-                  }}
-                >
-                  {dropdowns.creations.map(item => (
+          {/* Panneau dropdown partagé — ancré au bord gauche de nav-left (= marge de page) */}
+          {Object.values(MOMENTS).filter(m => m.cards).map(moment => (
+            activeDropdown === moment.key && (
+              <div
+                key={moment.key}
+                onMouseEnter={() => clearTimeout(closeTimer.current)}
+                onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 20px)',
+                  left: 0,
+                  background: 'var(--bg-primary)',
+                  borderRadius: '14px',
+                  padding: '22px 22px 26px',
+                  boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
+                  animation: 'dropdownReveal 0.22s ease',
+                  zIndex: 99,
+                  width: `${moment.cards.length * 320 + (moment.cards.length - 1) * 18 + 44}px`,
+                }}
+              >
+                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, 320px)`, gap: '18px' }}>
+                  {moment.cards.map(card => (
                     <a
-                      key={item.label}
-                      href={item.href}
+                      key={card.title}
+                      href={card.href}
                       style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '12px',
-                        fontWeight: 400,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: '#111111',
-                        padding: '9px 0',
-                        display: 'block',
-                        transition: 'color 0.2s ease',
+                        textDecoration: 'none',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '10px',
+                        cursor: 'pointer',
                       }}
-                      onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-                      onMouseLeave={e => e.target.style.color = '#111111'}
+                      onMouseEnter={e => {
+                        e.currentTarget.querySelector('img').style.transform = 'scale(1.06)'
+                        e.currentTarget.querySelector('.card-img').style.boxShadow = '0 18px 40px rgba(17,17,17,0.16)'
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.querySelector('img').style.transform = 'scale(1)'
+                        e.currentTarget.querySelector('.card-img').style.boxShadow = '0 10px 28px rgba(17,17,17,0.10)'
+                      }}
                     >
-                      {item.label}
+                      <div className="card-img" style={{ width: '100%', height: '240px', overflow: 'hidden', borderRadius: '10px', background: '#F8F5EF', boxShadow: '0 10px 28px rgba(17,17,17,0.10)', transition: 'box-shadow 0.4s ease' }}>
+                        <img
+                          src={card.img}
+                          alt={card.title}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease', display: 'block' }}
+                        />
+                      </div>
+                      <p style={{
+                        fontFamily: "'Baskerville Display PT', Georgia, serif",
+                        fontSize: '17px',
+                        fontWeight: 400,
+                        letterSpacing: '0.02em',
+                        color: '#111111',
+                        margin: '4px 0 0 0',
+                        lineHeight: 1.3,
+                        textAlign: 'center',
+                      }}>
+                        {card.title}
+                      </p>
                     </a>
                   ))}
                 </div>
-              )}
-
-              {activeDropdown === key && key === 'univers' && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 'calc(100% + 16px)',
-                    left: 0,
-                    background: '#FFFFFF',
-                    borderTop: '1px solid rgba(17,17,17,0.08)',
-                    boxShadow: '0 24px 48px rgba(17,17,17,0.06)',
-                    animation: 'dropdownReveal 0.25s ease',
-                    display: 'flex',
-                  }}
-                >
-                  {/* Panneau gauche */}
-                  <div style={{ padding: '28px 36px', minWidth: '220px' }}>
-                    {dropdowns.univers.map(item => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        style={{
-                          fontFamily: "'Neue Montreal', sans-serif",
-                          fontSize: '12px',
-                          fontWeight: 400,
-                          letterSpacing: '0.08em',
-                          textTransform: 'uppercase',
-                          color: '#111111',
-                          padding: '9px 0',
-                          display: 'block',
-                          transition: 'color 0.2s ease',
-                        }}
-                        onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-                        onMouseLeave={e => e.target.style.color = '#111111'}
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-
-                    {/* Trigger "Pour vos événements" */}
-                    <div
-                      style={{ borderTop: '1px solid rgba(17,17,17,0.07)', marginTop: '14px', paddingTop: '6px' }}
-                      onMouseEnter={() => { clearTimeout(subTimer.current); setSubOpen(true) }}
-                      onMouseLeave={() => { subTimer.current = setTimeout(() => setSubOpen(false), 200) }}
-                    >
-                      <div style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '12px',
-                        fontWeight: 400,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: subOpen ? 'var(--accent)' : '#111111',
-                        padding: '9px 0',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        cursor: 'default',
-                        transition: 'color 0.2s ease',
-                      }}>
-                        Pour vos événements
-                        <span style={{ fontSize: '11px', marginLeft: '10px', opacity: 0.6 }}>›</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Panneau droit — sous-menu événements */}
-                  {subOpen && (
-                    <div
-                      style={{
-                        padding: '28px 36px',
-                        minWidth: '240px',
-                        borderLeft: '1px solid rgba(17,17,17,0.07)',
-                        animation: 'dropdownReveal 0.18s ease',
-                      }}
-                      onMouseEnter={() => clearTimeout(subTimer.current)}
-                      onMouseLeave={() => { subTimer.current = setTimeout(() => setSubOpen(false), 200) }}
-                    >
-                      <p style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '9px',
-                        fontWeight: 600,
-                        letterSpacing: '0.18em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(17,17,17,0.3)',
-                        marginBottom: '8px',
-                      }}>
-                        Pour vos événements
-                      </p>
-                      {evenements.map(item => (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          style={{
-                            fontFamily: "'Neue Montreal', sans-serif",
-                            fontSize: '12px',
-                            fontWeight: 400,
-                            letterSpacing: '0.08em',
-                            textTransform: 'uppercase',
-                            color: '#111111',
-                            padding: '9px 0',
-                            display: 'block',
-                            transition: 'color 0.2s ease',
-                          }}
-                          onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-                          onMouseLeave={e => e.target.style.color = '#111111'}
-                        >
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+              </div>
+            )
           ))}
-
-          {/* Le Journal — lien simple à côté de L'Univers */}
-          <a
-            href="/journal"
-            style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '14px',
-              fontWeight: 500,
-              letterSpacing: '0.01em',
-              color: '#111111',
-              textDecoration: 'none',
-              transition: 'color 0.4s ease',
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-            onMouseLeave={e => e.currentTarget.style.color = '#111111'}
-          >
-            Le Journal
-          </a>
         </div>
 
-        {/* Logo center */}
+        {/* LOGO CENTER */}
         <a
           href="/"
           className={scrolled ? 'nav-logo' : 'nav-logo nav-logo-hero'}
@@ -339,38 +292,246 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           onMouseEnter={e => { e.currentTarget.querySelectorAll('span').forEach(s => s.style.color = 'var(--accent)') }}
           onMouseLeave={e => { e.currentTarget.querySelectorAll('span').forEach(s => s.style.color = '#111111') }}
         >
-          <span
-            style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
-              fontSize: '24px',
-              fontWeight: 400,
-              letterSpacing: '0.12em',
-              color: '#111111',
-              transition: 'color 0.4s ease',
-              lineHeight: 1,
-            }}
-          >
+          <span style={{
+            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontSize: '24px',
+            fontWeight: 400,
+            letterSpacing: '0.12em',
+            color: '#111111',
+            transition: 'color 0.4s ease',
+            lineHeight: 1,
+          }}>
             L'ÉCRIN
           </span>
-          <span
-            style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '9.5px',
-              fontWeight: 500,
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: '#111111',
-              transition: 'color 0.4s ease',
-            }}
-          >
+          <span style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '9.5px',
+            fontWeight: 500,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: '#111111',
+            transition: 'color 0.4s ease',
+          }}>
             TRAITEUR
           </span>
         </a>
 
-        {/* Right nav */}
+        {/* RIGHT NAV — L'Univers, Le Journal, Contact, CTA */}
         <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
 
+          {/* L'Univers */}
+          <div
+            style={{ position: 'relative' }}
+            onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown('univers') }}
+            onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
+          >
+            <button
+              style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '14px',
+                fontWeight: 500,
+                letterSpacing: '0.01em',
+                color: '#111111',
+                background: 'none',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                transition: 'color 0.4s ease',
+                padding: 0,
+                cursor: 'pointer',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+              onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+            >
+              L'Univers
+              <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
+            </button>
 
+            {activeDropdown === 'univers' && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 16px)',
+                  left: 0,
+                  background: '#FFFFFF',
+                  borderRadius: '14px',
+                  padding: '20px 28px',
+                  minWidth: '220px',
+                  boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
+                  animation: 'dropdownReveal 0.25s ease',
+                }}
+              >
+                {UNIVERS_ITEMS.map(item => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    style={{
+                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: '#111111',
+                      padding: '8px 0',
+                      display: 'block',
+                      transition: 'color 0.2s ease',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                    onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Le Journal */}
+          <div
+            style={{ position: 'relative' }}
+            onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown('journal') }}
+            onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
+          >
+            <button
+              style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '14px',
+                fontWeight: 500,
+                letterSpacing: '0.01em',
+                color: '#111111',
+                background: 'none',
+                border: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                transition: 'color 0.4s ease',
+                padding: 0,
+                cursor: 'pointer',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+              onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+            >
+              Le Journal
+              <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
+            </button>
+
+            {activeDropdown === 'journal' && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 16px)',
+                  left: 0,
+                  background: '#FFFFFF',
+                  borderRadius: '14px',
+                  padding: '20px 28px',
+                  minWidth: '260px',
+                  boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
+                  animation: 'dropdownReveal 0.25s ease',
+                }}
+              >
+                {JOURNAL_ITEMS.main.map(item => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    style={{
+                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontSize: '12px',
+                      fontWeight: 400,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: '#111111',
+                      padding: '8px 0',
+                      display: 'block',
+                      transition: 'color 0.2s ease',
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                    onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+
+                <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '8px', paddingTop: '8px' }}>
+                  <p style={{
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '9px',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(17,17,17,0.35)',
+                    marginBottom: '6px',
+                    margin: '0 0 6px 0',
+                  }}>
+                    Catégories
+                  </p>
+                  {JOURNAL_ITEMS.categories.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '12px',
+                        fontWeight: 400,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: '#111111',
+                        padding: '6px 0',
+                        display: 'block',
+                        transition: 'color 0.2s ease',
+                        textDecoration: 'none',
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                      onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+
+                <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '8px', paddingTop: '8px' }}>
+                  <p style={{
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '9px',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(17,17,17,0.35)',
+                    marginBottom: '6px',
+                    margin: '0 0 6px 0',
+                  }}>
+                    Pour vos événements
+                  </p>
+                  {JOURNAL_ITEMS.occasions.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      style={{
+                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontSize: '11px',
+                        fontWeight: 400,
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        color: '#111111',
+                        padding: '4px 0',
+                        display: 'block',
+                        transition: 'color 0.2s ease',
+                        textDecoration: 'none',
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                      onMouseLeave={e => e.currentTarget.style.color = '#111111'}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Contact */}
           <a
             href="/contact"
             style={{
@@ -395,6 +556,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             Contact <span>→</span>
           </a>
 
+          {/* CTA Devis */}
           <a
             href="/devis"
             style={{
@@ -413,7 +575,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               transition: 'opacity 0.35s ease',
               textDecoration: 'none',
             }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '0.82'}
+            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
             Demande de devis <span>→</span>
@@ -429,19 +591,17 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             display: 'none',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'flex-end',
             gap: '5px',
             background: 'none',
             border: 'none',
             cursor: 'pointer',
             padding: '4px',
             zIndex: 200,
-            position: 'relative',
-            marginLeft: 'auto',
           }}
         >
           {mobileOpen ? (
-            <span style={{ fontSize: '22px', lineHeight: 1, color: '#111111', fontWeight: 300 }}>✕</span>
+            <span style={{ fontSize: '26px', lineHeight: 1, color: '#111111', marginTop: '-4px' }}>×</span>
           ) : (
             <>
               <span style={{ display: 'block', width: '24px', height: '1.5px', background: '#111111' }} />
@@ -452,235 +612,130 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         </button>
       </nav>
 
-      {/* Mobile menu overlay */}
+      {/* ── Menu mobile ── */}
       {mobileOpen && (
         <div
           style={{
             position: 'fixed',
-            inset: 0,
-            zIndex: 99,
+            top: showBanner ? 'calc(var(--banner-h) + 58px)' : '58px',
+            left: 0,
+            right: 0,
+            bottom: 0,
             background: 'var(--bg-primary)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: '100px 40px 60px',
-            animation: 'mobileMenuIn 0.32s ease',
+            zIndex: 95,
             overflowY: 'auto',
+            padding: '20px 24px 48px',
+            animation: 'mobileMenuIn 0.3s ease',
           }}
         >
-          {/* Liens */}
-          <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '320px', marginTop: '8px' }}>
-
-            {/* Nos Créations — avec sous-menu */}
-            <div style={{ width: '100%', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
-              <button
-                onClick={() => setMobileExpanded(mobileExpanded === 'creations' ? null : 'creations')}
-                style={{
-                  fontFamily: "'Baskerville Display PT', Georgia, serif",
-                  fontSize: '26px',
-                  fontWeight: 400,
-                  letterSpacing: '0.01em',
-                  color: '#111111',
-                  textAlign: 'center',
-                  padding: '18px 0',
-                  width: '100%',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                }}
-              >
-                Nos Créations
-                <span style={{ fontSize: '16px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: mobileExpanded === 'creations' ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>›</span>
-              </button>
-              {mobileExpanded === 'creations' && (
-                <div style={{ paddingBottom: '12px' }}>
-                  {dropdowns.creations.map(item => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
-                      style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '13px',
-                        fontWeight: 400,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(17,17,17,0.65)',
-                        padding: '10px 0',
-                        display: 'block',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* L'Univers — avec sous-menu */}
-            <div style={{ width: '100%', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
-              <button
-                onClick={() => setMobileExpanded(mobileExpanded === 'univers' ? null : 'univers')}
-                style={{
-                  fontFamily: "'Baskerville Display PT', Georgia, serif",
-                  fontSize: '26px',
-                  fontWeight: 400,
-                  letterSpacing: '0.01em',
-                  color: '#111111',
-                  textAlign: 'center',
-                  padding: '18px 0',
-                  width: '100%',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                }}
-              >
-                L'Univers
-                <span style={{ fontSize: '16px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>›</span>
-              </button>
-              {mobileExpanded === 'univers' && (
-                <div style={{ paddingBottom: '12px' }}>
-                  {dropdowns.univers.map(item => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => { setMobileOpen(false); setMobileExpanded(null); setMobileSubOpen(false) }}
-                      style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '13px',
-                        fontWeight: 400,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(17,17,17,0.65)',
-                        padding: '10px 0',
-                        display: 'block',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-
-                  {/* Sous-section "Pour vos événements" */}
-                  <div style={{ borderTop: '1px solid rgba(17,17,17,0.06)', marginTop: '8px' }}>
-                    <button
-                      onClick={() => setMobileSubOpen(!mobileSubOpen)}
-                      style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '13px',
-                        fontWeight: 500,
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        color: mobileSubOpen ? 'var(--accent)' : 'rgba(17,17,17,0.65)',
-                        padding: '10px 0',
-                        width: '100%',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '6px',
-                        transition: 'color 0.2s ease',
-                      }}
-                    >
-                      Pour vos événements
-                      <span style={{
-                        fontSize: '14px',
-                        color: 'var(--accent)',
-                        transition: 'transform 0.25s ease',
-                        transform: mobileSubOpen ? 'rotate(90deg)' : 'rotate(0deg)',
-                        display: 'inline-block',
-                      }}>›</span>
-                    </button>
-                    {mobileSubOpen && (
-                      <div style={{ paddingBottom: '4px' }}>
-                        {evenements.map(item => (
-                          <a
-                            key={item.label}
-                            href={item.href}
-                            onClick={() => { setMobileOpen(false); setMobileExpanded(null); setMobileSubOpen(false) }}
-                            style={{
-                              fontFamily: "'Neue Montreal', sans-serif",
-                              fontSize: '12px',
-                              fontWeight: 400,
-                              letterSpacing: '0.07em',
-                              textTransform: 'uppercase',
-                              color: 'rgba(17,17,17,0.5)',
-                              padding: '9px 0',
-                              display: 'block',
-                              textAlign: 'center',
-                              textDecoration: 'none',
-                            }}
-                          >
-                            {item.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
+          {/* Moments */}
+          {Object.values(MOMENTS).map(moment => {
+            if (!moment.cards) {
+              return (
+                <a
+                  key={moment.key}
+                  href={moment.href}
+                  onClick={() => setMobileOpen(false)}
+                  style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
+                >
+                  {moment.label}
+                </a>
+              )
+            }
+            const open = mobileExpanded === moment.key
+            return (
+              <div key={moment.key} style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+                <button
+                  onClick={() => setMobileExpanded(open ? null : moment.key)}
+                  style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
+                >
+                  <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{moment.label}</span>
+                  <span style={{ fontSize: '18px', color: 'var(--accent)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+                </button>
+                {open && (
+                  <div style={{ paddingBottom: '14px' }}>
+                    {moment.cards.map(card => (
+                      <a
+                        key={card.title}
+                        href={card.href}
+                        onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                        style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
+                      >
+                        {card.title}
+                      </a>
+                    ))}
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
+            )
+          })}
 
-            {/* Le Journal, Contact */}
-            {[
-              { label: 'Le Journal', href: '/journal' },
-              { label: 'Contact', href: '/contact' },
-            ].map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                onClick={() => setMobileOpen(false)}
-                style={{
-                  fontFamily: "'Baskerville Display PT', Georgia, serif",
-                  fontSize: '26px',
-                  fontWeight: 400,
-                  letterSpacing: '0.01em',
-                  color: '#111111',
-                  textAlign: 'center',
-                  padding: '18px 0',
-                  borderBottom: '1px solid rgba(17,17,17,0.06)',
-                  width: '100%',
-                  display: 'block',
-                  textDecoration: 'none',
-                }}
-              >
-                {label}
-              </a>
-            ))}
-            <a
-              href="/devis"
-              onClick={() => setMobileOpen(false)}
-              style={{
-                marginTop: '40px',
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: '#FFFFFF',
-                background: 'var(--accent)',
-                padding: '14px 36px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
+          {/* L'Univers */}
+          <div style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+            <button
+              onClick={() => setMobileExpanded(mobileExpanded === 'univers' ? null : 'univers')}
+              style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
-              Demande de devis <span>→</span>
-            </a>
-          </nav>
+              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>L'Univers</span>
+              <span style={{ fontSize: '18px', color: 'var(--accent)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+            </button>
+            {mobileExpanded === 'univers' && (
+              <div style={{ paddingBottom: '14px' }}>
+                {UNIVERS_ITEMS.map(item => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                    style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Le Journal */}
+          <div style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
+            <button
+              onClick={() => setMobileExpanded(mobileExpanded === 'journal' ? null : 'journal')}
+              style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
+            >
+              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>Le Journal</span>
+              <span style={{ fontSize: '18px', color: 'var(--accent)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+            </button>
+            {mobileExpanded === 'journal' && (
+              <div style={{ paddingBottom: '14px' }}>
+                {[...JOURNAL_ITEMS.main, ...JOURNAL_ITEMS.categories].map(item => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
+                    style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Contact + Devis */}
+          <a
+            href="/contact"
+            onClick={() => setMobileOpen(false)}
+            style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
+          >
+            Contact
+          </a>
+
+          <a
+            href="/devis"
+            onClick={() => setMobileOpen(false)}
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px', textDecoration: 'none', marginTop: '28px' }}
+          >
+            Demande de devis <span>→</span>
+          </a>
         </div>
       )}
 
@@ -690,17 +745,21 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes mobileMenuIn {
-          from { opacity: 0; transform: translateY(-12px); }
+          from { opacity: 0; transform: translateY(-8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+
         @media (max-width: 768px) {
-          .nav-left  { display: none !important; }
-          .nav-right { display: none !important; }
-          .nav-hamburger { display: flex !important; }
-          .nav-logo-hero { top: 48px !important; transform: translateX(-50%) !important; }
-          .nav-bar-hero .nav-hamburger { align-self: flex-start; margin-top: 22px; }
-          .nav-banner-text { display: none !important; }
-          .nav-banner-short { display: flex !important; }
+          .nav-bar, .nav-bar-hero {
+            padding: 16px 24px !important;
+          }
+          .nav-left, .nav-right {
+            display: none !important;
+          }
+          .nav-hamburger {
+            display: flex !important;
+            margin-left: auto;
+          }
         }
         @media (min-width: 769px) {
           .nav-hamburger { display: none !important; }

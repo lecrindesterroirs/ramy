@@ -62,7 +62,7 @@ function Card({ item }) {
         />
       </div>
       <div style={{ position: 'relative', width: '100%', height: '35%', background: '#F5F5F5', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '20px 18px' }}>
-        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#111111', marginBottom: '3px', margin: 0 }}>
+        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#111111', marginBottom: '4px', margin: 0 }}>
           {item.label}
         </p>
         {item.subtitle && (

@@ -144,7 +144,7 @@ export default function ProductsPageTemplate({
         </div>
 
         {/* ── Grille produits ── */}
-        <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
+        <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
           {products.map((p, i) => (
             <ProductCard key={p.id || i} product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
           ))}
@@ -270,7 +270,7 @@ export default function ProductsPageTemplate({
           .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
           .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
           .filter-cats::-webkit-scrollbar { display: none; }
-          .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 2px !important; }
+          .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 36px 16px !important; }
           .prods-args { grid-template-columns: 1fr 1fr !important; padding: 0 24px 60px !important; }
           .cat-seo-body { padding: 0 !important; }
           .cat-seo-body h2 { font-size: 22px !important; }
@@ -278,7 +278,7 @@ export default function ProductsPageTemplate({
         @media (max-width: 1024px) and (min-width: 769px) {
           .page-hero-wrapper { padding: 24px 40px 0 !important; }
           .products-filter-bar { padding: 0 40px !important; }
-          .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 40px 40px 100px !important; }
+          .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
           .prods-args { padding: 0 40px 60px !important; }
         }
       `}</style>
@@ -295,6 +295,13 @@ function ProductCard({ product, basePath }) {
     ? `${basePath}/${product.id}`
     : '/devis'
 
+  // "16 pièces — 26,80€" → pièces + prix séparés
+  const parts = (product.label || '').split('—').map(s => s.trim()).filter(Boolean)
+  const hasPieces = parts.length > 1
+  const pieces = hasPieces ? parts[0] : ''
+  const priceRaw = hasPieces ? parts[1] : parts[0]
+  const priceClean = (priceRaw || '').replace(/\s*ht\s*$/i, '').trim()
+
   return (
     <div
       style={{ cursor: 'pointer' }}
@@ -303,69 +310,60 @@ function ProductCard({ product, basePath }) {
     >
       {/* Image cliquable */}
       <a href={href} style={{ display: 'block', textDecoration: 'none' }}>
-        <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF' }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF', borderRadius: '4px', boxShadow: hovered ? '0 16px 36px rgba(17,17,17,0.12)' : '0 4px 16px rgba(17,17,17,0.04)', transition: 'box-shadow 0.5s ease' }}>
           <img
             src={product.img}
             alt={product.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
           />
+          {/* Overlay au survol */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(20,16,12,0.30)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            opacity: hovered ? 1 : 0,
+            transition: 'opacity 0.4s ease',
+          }}>
+            <span style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '12px',
+              fontWeight: 500,
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: '#FFFFFF',
+              border: '1px solid rgba(255,255,255,0.7)',
+              padding: '11px 26px',
+              transform: hovered ? 'translateY(0)' : 'translateY(6px)',
+              transition: 'transform 0.4s ease',
+            }}>
+              Découvrir
+            </span>
+          </div>
         </div>
       </a>
 
-      <div style={{ padding: '14px 4px 10px', display: 'flex', flexDirection: 'column' }}>
-        {/* Nom cliquable */}
+      <div style={{ padding: '18px 2px 0', display: 'flex', flexDirection: 'column' }}>
+        {/* Nom — Baskerville serif */}
         <a href={href} style={{ textDecoration: 'none' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '4px', transition: 'color 0.25s ease' }}>
+          <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '8px', transition: 'color 0.25s ease' }}>
             {product.name}
           </p>
         </a>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '8px' }}>
-          {product.label}
+
+        {/* Prix */}
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '2px' : '0' }}>
+          {priceClean}
+          <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>
         </p>
-
-        {/* Tags régimes — hauteur fixe pour aligner les CTA */}
-        <div style={{ minHeight: '24px', display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '12px', alignItems: 'flex-start' }}>
-          {product.dietary?.map(tag => {
-            const style = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
-            return (
-              <span key={tag} style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '8px',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: style.color,
-                background: style.bg,
-                padding: '3px 6px',
-              }}>
-                {tag}
-              </span>
-            )
-          })}
-        </div>
-
-        {/* CTA → Voir la fiche */}
-        <a
-          href={href}
-          style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '10px',
-            fontWeight: 500,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: hovered ? 'var(--accent)' : 'rgba(17,17,17,0.45)',
-            border: `1px solid ${hovered ? 'var(--accent)' : 'rgba(17,17,17,0.15)'}`,
-            padding: '8px 14px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            textDecoration: 'none',
-            justifyContent: 'center',
-            transition: 'all 0.25s ease',
-          }}
-        >
-          Voir le produit →
-        </a>
+        {/* Pièces */}
+        {hasPieces && (
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)' }}>
+            {pieces}
+          </p>
+        )}
       </div>
     </div>
   )
