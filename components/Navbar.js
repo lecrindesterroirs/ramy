@@ -164,6 +164,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 <a
                   key={moment.key}
                   href={moment.href}
+                  className="nav-moment-item"
                   style={{
                     fontFamily: "'Neue Montreal', sans-serif",
                     fontSize: '15px',
@@ -172,6 +173,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     color: '#111111',
                     textDecoration: 'none',
                     transition: 'color 0.4s ease',
+                    whiteSpace: 'nowrap',
                   }}
                   onMouseEnter={e => { clearTimeout(closeTimer.current); setActiveDropdown(null); e.currentTarget.style.color = 'var(--accent)' }}
                   onMouseLeave={e => e.currentTarget.style.color = '#111111'}
@@ -184,6 +186,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             return (
               <button
                 key={moment.key}
+                className="nav-moment-item"
                 onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown(moment.key) }}
                 style={{
                   fontFamily: "'Neue Montreal', sans-serif",
@@ -212,6 +215,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             activeDropdown === moment.key && (
               <div
                 key={moment.key}
+                className="nav-mega-dropdown"
                 onMouseEnter={() => clearTimeout(closeTimer.current)}
                 onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
                 style={{
@@ -225,9 +229,10 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   animation: 'dropdownReveal 0.22s ease',
                   zIndex: 99,
                   width: `${moment.cards.length * 320 + (moment.cards.length - 1) * 18 + 44}px`,
+                  maxWidth: 'calc(100vw - 48px)',
                 }}
               >
-                <div style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, 320px)`, gap: '18px' }}>
+                <div className="nav-mega-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, 320px)`, gap: '18px' }}>
                   {moment.cards.map(card => (
                     <a
                       key={card.title}
@@ -327,6 +332,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
           >
             <button
+              className="nav-util-btn"
               style={{
                 fontFamily: "'Neue Montreal', sans-serif",
                 fontSize: '15px',
@@ -341,6 +347,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 transition: 'color 0.4s ease',
                 padding: 0,
                 cursor: 'pointer',
+                whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
               onMouseLeave={e => e.currentTarget.style.color = '#111111'}
@@ -396,6 +403,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
           >
             <button
+              className="nav-util-btn"
               style={{
                 fontFamily: "'Neue Montreal', sans-serif",
                 fontSize: '15px',
@@ -410,6 +418,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 transition: 'color 0.4s ease',
                 padding: 0,
                 cursor: 'pointer',
+                whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
               onMouseLeave={e => e.currentTarget.style.color = '#111111'}
@@ -535,6 +544,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           {/* Contact */}
           <a
             href="/contact"
+            className="nav-contact-link"
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
               fontSize: '12px',
@@ -550,6 +560,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               gap: '7px',
               textDecoration: 'none',
               transition: 'border-color 0.3s ease, color 0.3s ease',
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.5)'; e.currentTarget.style.color = '#111111' }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.2)'; e.currentTarget.style.color = 'rgba(17,17,17,0.65)' }}
@@ -560,6 +571,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           {/* CTA Devis */}
           <a
             href="/devis"
+            className="nav-cta-link"
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
               fontSize: '12px',
@@ -575,6 +587,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               gap: '7px',
               transition: 'opacity 0.35s ease',
               textDecoration: 'none',
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
@@ -749,7 +762,34 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         @keyframes mobileMenuIn {
           from { opacity: 0; transform: translateY(-8px); }
           to   { opacity: 1; transform: translateY(0); }
-        }@media (max-width: 768px) {
+        }
+        /* Rétrécissement en paliers fixes, comme un site "normal" — pas de
+           calc(vw) continu (ça fait "rebondir" le texte pendant le drag de
+           redimensionnement à cause des arrondis de sous-pixel). Chaque palier
+           a des valeurs figées, stables tant qu'on reste dans sa plage :
+           1) 1440→1200 : espaces resserrés, texte encore à taille normale
+           2) 1199→960  : espaces au minimum, c'est le texte qui rétrécit
+           3) <960      : hamburger */
+        @media (max-width: 1439px) and (min-width: 1200px) {
+          .nav-bar, .nav-bar-hero { padding-left: 32px !important; padding-right: 32px !important; }
+          .nav-left  { gap: 14px !important; }
+          .nav-right { gap: 12px !important; }
+          .nav-contact-link, .nav-cta-link { padding: 8px 14px !important; }
+          .nav-mega-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; gap: 14px !important; }
+          .nav-mega-dropdown .card-img { height: 190px !important; }
+        }
+        @media (max-width: 1199px) and (min-width: 960px) {
+          .nav-bar, .nav-bar-hero { padding-left: 28px !important; padding-right: 28px !important; }
+          .nav-left  { gap: 12px !important; }
+          .nav-right { gap: 10px !important; }
+          .nav-moment-item, .nav-util-btn { font-size: 12.5px !important; }
+          .nav-contact-link, .nav-cta-link { font-size: 10.5px !important; padding: 7px 12px !important; }
+          .nav-logo span:first-child { font-size: 19px !important; }
+          .nav-logo span:last-child { font-size: 7.5px !important; }
+          .nav-mega-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important; gap: 10px !important; }
+          .nav-mega-dropdown .card-img { height: 150px !important; }
+        }
+        @media (max-width: 959px) {
           .nav-bar, .nav-bar-hero {
             padding: 16px 24px !important;
           }
@@ -767,7 +807,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             margin-left: auto;
           }
         }
-        @media (min-width: 769px) {
+        @media (min-width: 960px) {
           .nav-hamburger { display: none !important; }
         }
       `}</style>

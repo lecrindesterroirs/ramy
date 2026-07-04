@@ -4,37 +4,30 @@ import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import Reveal from '../../../components/Reveal'
+import LogosSection from '../../../components/LogosSection'
+import CategoryClosing from '../../../components/CategoryClosing'
 import { CITIES } from '../../../lib/citiesData'
 import { OCCASIONS } from '../../../lib/occasionsData'
 
 const SERVICES = [
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/>
-        <line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>
-      </svg>
-    ),
     label: 'Petits-Déjeuners',
+    desc: 'Viennoiseries et coffrets artisanaux, livrés dès 6h30.',
     href: '/creations/petits-dejeuners-et-pauses',
+    img: '/creations-1.png',
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6h3.5c.8 0 1.5.7 1.5 1.5V22"/>
-      </svg>
-    ),
     label: 'Plateaux Repas',
+    desc: 'Des plateaux composés pour vos déjeuners de travail.',
     href: '/creations/plateaux-repas',
+    img: '/creations-4.png',
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-        <path d="M8 22h8M12 11v11M3 3h18l-3 7H6L3 3z"/>
-      </svg>
-    ),
     label: 'Cocktails & Buffets',
+    desc: 'Pièces cocktail et buffets pour vos réceptions.',
     href: '/creations/cocktails-et-buffets',
+    img: '/creations-3.png',
   },
 ]
 
@@ -83,183 +76,120 @@ export default function CityPage() {
     ],
   }
 
+  const CITY_ARGS = [
+    { icon: 'delivery', titre: `Livraison dès 6h30 à ${city.name}`, desc: `Nos livreurs desservent ${city.name} et les communes limitrophes, chaque matin en semaine.` },
+    { icon: 'quality', titre: 'Artisans sélectionnés', desc: "Boulangers, pâtissiers et épiciers fins choisis pour leur savoir-faire, pas pour leur prix." },
+    { icon: 'custom', titre: 'Commande avant 14h', desc: "Passez commande la veille avant 14h pour une livraison le lendemain matin dès 6h30." },
+    { icon: 'support', titre: 'Facturation entreprise', desc: "Facture avec TVA et interlocuteur dédié pour vos commandes récurrentes ou volumes importants." },
+  ]
+
   return (
     <>
-      <Navbar />
+      <Navbar showBanner={true} />
 
       {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* ── Hero ── */}
-        <div className="city-hero" style={{ background: 'var(--bg-secondary)', padding: '72px 72px 64px' }}>
-          <div style={{ maxWidth: '760px' }}>
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '11px',
-              fontWeight: 500,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'var(--accent)',
-              marginBottom: '16px',
-            }}>
-              Traiteur d'entreprise, {city.region}
-            </p>
-            <h1 style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
-              fontSize: 'clamp(32px, 5vw, 62px)',
-              fontWeight: 400,
-              lineHeight: 1.06,
-              color: 'var(--text-primary)',
-              marginBottom: '24px',
-              letterSpacing: '-0.015em',
-            }}>
-              Traiteur<br />{city.name}
-            </h1>
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '15px',
-              lineHeight: 1.75,
-              color: 'var(--text-secondary)',
-              marginBottom: '36px',
-              maxWidth: '560px',
-            }}>
-              {city.heroDescription}
-            </p>
+        {/* ── Hero image pleine largeur ── */}
+        <div className="city-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <header className="city-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
+            <img src="/hero-bg.png" alt={`Traiteur d'entreprise ${city.name} — L'Écrin Traiteur`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
+            <Reveal mode="mount" y={16}>
+              <div className="city-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
+                  Traiteur d'entreprise, {city.region}
+                </p>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
+                  Traiteur<br />{city.name}
+                </h1>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '32px' }}>
+                  {city.heroDescription}
+                </p>
 
-            {/* Badges */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
-              {[
-                'Livraison dès 6h30',
-                'Commande avant 14h la veille',
-                'Artisans sélectionnés',
-                'Facturation entreprise',
-              ].map(badge => (
-                <span key={badge} style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(17,17,17,0.55)',
-                  border: '1px solid rgba(17,17,17,0.12)',
-                  padding: '6px 12px',
-                  background: '#FFFFFF',
-                }}>
-                  {badge}
-                </span>
-              ))}
-            </div>
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
+                  <a
+                    href="/creations/petits-dejeuners-et-pauses"
+                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                  >
+                    Voir les produits →
+                  </a>
+                  <a
+                    href="/devis"
+                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                  >
+                    Demander un devis
+                  </a>
+                </div>
 
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <a
-                href="/creations/petits-dejeuners-et-pauses"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: '#FFFFFF',
-                  background: 'var(--text-primary)',
-                  padding: '14px 28px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  textDecoration: 'none',
-                  transition: 'opacity 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                Voir les produits →
-              </a>
-              <a
-                href="/devis"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent)',
-                  border: '1px solid var(--accent)',
-                  padding: '14px 28px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  textDecoration: 'none',
-                  background: 'transparent',
-                  transition: 'background 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(224,161,38,0.06)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                Demander un devis
-              </a>
-            </div>
-          </div>
+                {/* Badges */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
+                  {['Livraison dès 6h30', 'Commande avant 14h la veille', 'Artisans sélectionnés'].map(badge => (
+                    <span key={badge} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </header>
         </div>
 
-        {/* ── 4 services ── */}
-        <div className="city-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '64px 72px' }}>
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: '32px',
-            textAlign: 'center',
-          }}>
-            Nos prestations à {city.name}
-          </p>
-          <div className="city-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2px' }}>
-            {SERVICES.map(s => (
-              <a
-                key={s.label}
-                href={s.href}
-                style={{
-                  background: 'var(--bg-secondary)',
-                  padding: '32px 24px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '14px',
-                  textDecoration: 'none',
-                  transition: 'background 0.25s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
-                onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
-              >
-                <div style={{ color: 'var(--accent)' }}>{s.icon}</div>
-                <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  color: 'var(--text-primary)',
-                  letterSpacing: '0.02em',
-                }}>
-                  {s.label}
-                </p>
-                <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  color: 'var(--accent)',
-                  letterSpacing: '0.06em',
-                }}>
-                  Voir →
-                </p>
-              </a>
+        {/* ── Nos prestations — 3 cartes illustrées ── */}
+        <div className="city-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>
+              Nos prestations à {city.name}
+            </p>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
+              Des formats pensés<br />pour vos événements
+            </h2>
+          </div>
+          <div className="city-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            {SERVICES.map((s, i) => (
+              <Reveal key={s.label} delay={i * 90}>
+                <a
+                  href={s.href}
+                  className="city-service-card"
+                  style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', transition: 'box-shadow 0.35s ease, transform 0.35s ease' }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)' }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)' }}
+                >
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
+                    <img src={s.img} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ padding: '22px 22px 26px' }}>
+                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                      {s.label}
+                    </p>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
+                      {s.desc}
+                    </p>
+                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                      Découvrir →
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
             ))}
           </div>
         </div>
 
+        {/* ── Ils nous font confiance ── */}
+        <div style={{ marginTop: '88px' }}>
+          <LogosSection />
+        </div>
+
         {/* ── Zones desservies ── */}
-        <div style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.06)', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
-          <div className="city-zones" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px' }}>
+        <div style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
+          <div className="city-zones" style={{ maxWidth: '1280px', margin: '0 auto', padding: '56px 72px' }}>
             <p style={{
               fontFamily: "'Neue Montreal', sans-serif",
               fontSize: '11px',
@@ -335,149 +265,55 @@ export default function CityPage() {
           </div>
         </div>
 
-        {/* ── Article SEO ── */}
-        <section className="city-article" style={{ maxWidth: '800px', margin: '0 auto', padding: '80px 72px 96px' }}>
-          <div
-            className="city-article-body"
-            dangerouslySetInnerHTML={{ __html: city.seoArticle }}
-          />
-
-          {/* Encart livraison */}
-          <div style={{
-            marginTop: '52px',
-            padding: '32px 36px',
-            background: 'var(--bg-secondary)',
-            borderLeft: '3px solid var(--accent)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-          }}>
-            <p style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
-              fontSize: '20px',
-              fontWeight: 400,
-              color: 'var(--text-primary)',
-              lineHeight: 1.3,
-              marginBottom: '4px',
-            }}>
-              L'Écrin Traiteur livre à {city.name}
-            </p>
-            {[
-              `Livraison dès 6h30, ${city.name} et communes limitrophes`,
-              'Commandez en ligne avant 14h la veille',
-              'Artisans boulangers et pâtissiers parisiens',
-              'Facturation entreprise avec TVA',
-            ].map(line => (
-              <div key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span style={{ color: 'var(--accent)', fontSize: '12px', marginTop: '1px', flexShrink: 0 }}>✓</span>
-                <span style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '13px',
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.6,
-                }}>{line}</span>
-              </div>
-            ))}
-            <div style={{ marginTop: '16px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <a
-                href="/creations/petits-dejeuners-et-pauses"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: '#FFFFFF',
-                  background: 'var(--accent)',
-                  padding: '12px 24px',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'opacity 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                Commander maintenant →
-              </a>
-              <a
-                href="/devis"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(17,17,17,0.5)',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(17,17,17,0.2)',
-                  paddingBottom: '2px',
-                  alignSelf: 'flex-end',
-                  marginBottom: '2px',
-                }}
-              >
-                Demander un devis
-              </a>
-            </div>
-          </div>
-
-          {/* Lien vers toutes les villes */}
-          <div style={{ marginTop: '48px', paddingTop: '36px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <a
-              href="/traiteur"
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                borderBottom: '1px solid currentColor',
-                paddingBottom: '2px',
-              }}
-            >
-              ← Toutes nos villes de livraison
-            </a>
-          </div>
-        </section>
-
       </main>
 
+      {/* ── Éditorial + arguments + CTA + article SEO ── */}
+      <CategoryClosing
+        eyebrow={`Traiteur d'entreprise à ${city.name}`}
+        title={`Le goût de l'artisanat,\nlivré à ${city.name}.`}
+        body={city.businessContext || city.heroDescription}
+        args={CITY_ARGS}
+        seoArticle={city.seoArticle}
+      />
+
+      {/* ── Lien vers toutes les villes ── */}
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 64px', textAlign: 'center' }}>
+        <a
+          href="/traiteur"
+          style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '11px',
+            fontWeight: 500,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: 'var(--text-primary)',
+            textDecoration: 'none',
+            borderBottom: '1px solid currentColor',
+            paddingBottom: '2px',
+          }}
+        >
+          ← Toutes nos villes de livraison
+        </a>
+      </div>
+
       <style suppressHydrationWarning>{`
-        .city-article-body p {
-          font-family: 'Neue Montreal', sans-serif;
-          font-size: 15px;
-          line-height: 1.85;
-          color: var(--text-secondary);
-          margin-bottom: 18px;
-        }
-        .city-article-body h2 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
-          font-size: clamp(20px, 2.2vw, 30px);
-          font-weight: 400;
-          color: var(--text-primary);
-          margin: 40px 0 14px;
-          line-height: 1.15;
-        }
-        .city-article-body strong {
-          color: var(--text-primary);
-          font-weight: 500;
-        }
+        .city-service-card { border-radius: 4px !important; }
         @media (max-width: 768px) {
-          .city-hero { padding: 48px 24px 40px !important; }
-          .city-services { padding: 48px 24px !important; }
-          .city-services-grid { grid-template-columns: 1fr 1fr !important; }
+          .city-hero-wrapper { padding: 20px 20px 0 !important; }
+          .city-hero { min-height: 560px !important; height: 72vh !important; }
+          .city-hero-text { padding: 0 28px !important; max-width: 100% !important; }
+          .city-services { padding: 56px 24px 0 !important; }
+          .city-services-grid { grid-template-columns: 1fr !important; }
           .city-zones { padding: 36px 24px !important; }
-          .city-article { padding: 56px 24px 72px !important; }
+          .city-occasions { padding: 40px 24px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
-          .city-hero { padding: 56px 40px 48px !important; }
-          .city-services { padding: 56px 40px !important; }
+          .city-hero-wrapper { padding: 32px 40px 0 !important; }
+          .city-hero-text { padding: 0 40px !important; }
+          .city-services { padding: 64px 40px 0 !important; }
           .city-services-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .city-zones { padding: 40px !important; }
-          .city-article { padding: 64px 40px 80px !important; }
+          .city-occasions { padding: 48px 40px !important; }
         }
       `}</style>
 

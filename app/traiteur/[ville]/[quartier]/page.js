@@ -4,7 +4,31 @@ import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
+import Reveal from '../../../../components/Reveal'
+import LogosSection from '../../../../components/LogosSection'
+import CategoryClosing from '../../../../components/CategoryClosing'
 import { CITIES } from '../../../../lib/citiesData'
+
+const SERVICES = [
+  {
+    label: 'Petits-Déjeuners',
+    desc: 'Viennoiseries et coffrets artisanaux, livrés dès 6h30.',
+    href: '/creations/petits-dejeuners-et-pauses',
+    img: '/creations-1.png',
+  },
+  {
+    label: 'Plateaux Repas',
+    desc: 'Des plateaux composés pour vos déjeuners de travail.',
+    href: '/creations/plateaux-repas',
+    img: '/creations-4.png',
+  },
+  {
+    label: 'Cocktails & Buffets',
+    desc: 'Pièces cocktail et buffets pour vos réceptions.',
+    href: '/creations/cocktails-et-buffets',
+    img: '/creations-3.png',
+  },
+]
 
 export default function QuartierPage() {
   const { ville, quartier } = useParams()
@@ -64,174 +88,142 @@ export default function QuartierPage() {
     ],
   }
 
+  const QUARTIER_ARGS = [
+    { icon: 'delivery', titre: `Livraison dès 6h30 à ${q.name}`, desc: `Nos livreurs desservent ${q.name} et ses environs, chaque matin en semaine.` },
+    { icon: 'quality', titre: 'Artisans sélectionnés', desc: "Boulangers, pâtissiers et épiciers fins choisis pour leur savoir-faire, pas pour leur prix." },
+    { icon: 'custom', titre: 'Commande avant 14h', desc: "Passez commande la veille avant 14h pour une livraison le lendemain matin dès 6h30." },
+    { icon: 'support', titre: 'Facturation entreprise', desc: "Facture avec TVA et interlocuteur dédié pour vos commandes récurrentes ou volumes importants." },
+  ]
+
   return (
     <>
-      <Navbar />
+      <Navbar showBanner={true} />
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* ── Hero ── */}
-        <div className="quartier-hero" style={{ background: 'var(--bg-secondary)', padding: '72px 72px 64px' }}>
-          <div style={{ maxWidth: '760px' }}>
+        {/* ── Hero image pleine largeur ── */}
+        <div className="q-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <header className="q-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 48vw, 560px)', overflow: 'hidden' }}>
+            <img src="/hero-bg2.png" alt={`Traiteur d'entreprise ${q.name}, ${city.name} — L'Écrin Traiteur`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
+            <Reveal mode="mount" y={16}>
+              <div className="q-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
 
-            {/* Breadcrumb */}
-            <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '24px', flexWrap: 'wrap' }}>
-              {[
-                { label: 'Toutes nos villes', href: '/traiteur' },
-                { label: city.name, href: `/traiteur/${city.slug}` },
-              ].map((crumb, i) => (
-                <span key={crumb.href} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <a href={crumb.href} style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '11px',
-                    fontWeight: 400,
-                    color: 'rgba(17,17,17,0.4)',
-                    textDecoration: 'none',
-                    letterSpacing: '0.04em',
-                    transition: 'color 0.2s ease',
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.4)'}
+                {/* Breadcrumb */}
+                <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}>
+                  {[
+                    { label: 'Toutes nos villes', href: '/traiteur' },
+                    { label: city.name, href: `/traiteur/${city.slug}` },
+                  ].map((crumb) => (
+                    <span key={crumb.href} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textDecoration: 'none', letterSpacing: '0.04em', transition: 'color 0.2s ease' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
+                      >
+                        {crumb.label}
+                      </a>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '10px' }}>›</span>
+                    </span>
+                  ))}
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, color: 'var(--accent)', letterSpacing: '0.04em' }}>
+                    {q.name}
+                  </span>
+                </nav>
+
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
+                  Traiteur d'entreprise, {city.name}
+                </p>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4.4vw, 60px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '20px' }}>
+                  Traiteur<br />{q.name}
+                </h1>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '30px' }}>
+                  {q.heroDescription}
+                </p>
+
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                  <a
+                    href="/creations/petits-dejeuners-et-pauses"
+                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
-                    {crumb.label}
+                    Voir les produits →
                   </a>
-                  <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>›</span>
-                </span>
-              ))}
-              <span style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                color: 'var(--accent)',
-                letterSpacing: '0.04em',
-              }}>
-                {q.name}
-              </span>
-            </nav>
+                  <a
+                    href="/devis"
+                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                  >
+                    Demander un devis
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          </header>
+        </div>
 
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '11px',
-              fontWeight: 500,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'var(--accent)',
-              marginBottom: '16px',
-            }}>
-              Traiteur d'entreprise, {city.name}
+        {/* ── Nos prestations ── */}
+        <div className="q-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 72px 0' }}>
+          <div style={{ textAlign: 'center', marginBottom: '44px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>
+              Nos prestations à {q.name}
             </p>
-            <h1 style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
-              fontSize: 'clamp(30px, 4.5vw, 58px)',
-              fontWeight: 400,
-              lineHeight: 1.07,
-              color: 'var(--text-primary)',
-              marginBottom: '24px',
-              letterSpacing: '-0.015em',
-            }}>
-              Traiteur<br />{q.name}
-            </h1>
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '15px',
-              lineHeight: 1.75,
-              color: 'var(--text-secondary)',
-              marginBottom: '36px',
-              maxWidth: '560px',
-            }}>
-              {q.heroDescription}
-            </p>
-
-            {/* Badges */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
-              {[
-                'Livraison dès 6h30',
-                'Commande avant 14h la veille',
-                'Artisans sélectionnés',
-                'Facturation entreprise',
-              ].map(badge => (
-                <span key={badge} style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(17,17,17,0.55)',
-                  border: '1px solid rgba(17,17,17,0.12)',
-                  padding: '6px 12px',
-                  background: '#FFFFFF',
-                }}>
-                  {badge}
-                </span>
-              ))}
-            </div>
-
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <a
-                href="/creations/petits-dejeuners-et-pauses"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: '#FFFFFF',
-                  background: 'var(--text-primary)',
-                  padding: '14px 28px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  textDecoration: 'none',
-                  transition: 'opacity 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.8'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                Voir les produits →
-              </a>
-              <a
-                href="/devis"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent)',
-                  border: '1px solid var(--accent)',
-                  padding: '14px 28px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  textDecoration: 'none',
-                  background: 'transparent',
-                  transition: 'background 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(224,161,38,0.06)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                Demander un devis
-              </a>
-            </div>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
+              Des formats pensés<br />pour vos événements
+            </h2>
           </div>
+          <div className="q-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            {SERVICES.map((s, i) => (
+              <Reveal key={s.label} delay={i * 90}>
+                <a
+                  href={s.href}
+                  className="q-service-card"
+                  style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', transition: 'box-shadow 0.35s ease, transform 0.35s ease' }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)' }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)' }}
+                >
+                  <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
+                    <img src={s.img} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ padding: '22px 22px 26px' }}>
+                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                      {s.label}
+                    </p>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
+                      {s.desc}
+                    </p>
+                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                      Découvrir →
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Ils nous font confiance ── */}
+        <div style={{ marginTop: '88px' }}>
+          <LogosSection />
         </div>
 
         {/* ── Zones couvertes ── */}
         {q.linkedZones?.length > 0 && (
-          <div style={{ background: '#FFFFFF', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
-            <div className="quartier-zones" style={{ maxWidth: '1280px', margin: '0 auto', padding: '36px 72px' }}>
+          <div style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
+            <div className="q-zones" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px' }}>
               <p style={{
                 fontFamily: "'Neue Montreal', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'rgba(17,17,17,0.35)',
+                color: 'rgba(17,17,17,0.4)',
                 marginBottom: '16px',
               }}>
                 Zones couvertes dans ce secteur
@@ -242,8 +234,8 @@ export default function QuartierPage() {
                     fontFamily: "'Neue Montreal', sans-serif",
                     fontSize: '12px',
                     color: 'var(--text-primary)',
-                    background: 'var(--bg-secondary)',
-                    border: '1px solid rgba(17,17,17,0.08)',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(17,17,17,0.1)',
                     padding: '6px 14px',
                     letterSpacing: '0.02em',
                   }}>
@@ -255,182 +247,67 @@ export default function QuartierPage() {
           </div>
         )}
 
-        {/* ── Article SEO ── */}
-        <section className="quartier-article" style={{ maxWidth: '800px', margin: '0 auto', padding: '80px 72px 96px' }}>
-          <div
-            className="quartier-article-body"
-            dangerouslySetInnerHTML={{ __html: q.seoArticle }}
-          />
-
-          {/* Encart livraison */}
-          <div style={{
-            marginTop: '52px',
-            padding: '32px 36px',
-            background: 'var(--bg-secondary)',
-            borderLeft: '3px solid var(--accent)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-          }}>
-            <p style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
-              fontSize: '20px',
-              fontWeight: 400,
-              color: 'var(--text-primary)',
-              lineHeight: 1.3,
-              marginBottom: '4px',
-            }}>
-              L'Écrin Traiteur livre à {q.name}
+        {/* ── FAQ ── */}
+        {allFaq.length > 0 && (
+          <div className="q-faq" style={{ maxWidth: '800px', margin: '0 auto', padding: '80px 72px 0' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px', lineHeight: 1.2, textAlign: 'center' }}>
+              Questions fréquentes
             </p>
-            {[
-              `Livraison dès 6h30, ${q.name}, ${city.name}`,
-              'Commandez en ligne avant 14h la veille',
-              'Artisans boulangers et pâtissiers parisiens',
-              'Facturation entreprise avec TVA',
-            ].map(line => (
-              <div key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span style={{ color: 'var(--accent)', fontSize: '12px', marginTop: '1px', flexShrink: 0 }}>✓</span>
-                <span style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '13px',
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.6,
-                }}>{line}</span>
+            {allFaq.map((item, i) => (
+              <div key={i} style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '20px 0' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.5 }}>{item.q}</p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>{item.a}</p>
               </div>
             ))}
-            <div style={{ marginTop: '16px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <a
-                href="/creations/petits-dejeuners-et-pauses"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: '#FFFFFF',
-                  background: 'var(--accent)',
-                  padding: '12px 24px',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transition: 'opacity 0.3s ease',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
-                Commander maintenant →
-              </a>
-              <a
-                href="/devis"
-                style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(17,17,17,0.5)',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(17,17,17,0.2)',
-                  paddingBottom: '2px',
-                  alignSelf: 'flex-end',
-                  marginBottom: '2px',
-                }}
-              >
-                Demander un devis
-              </a>
-            </div>
+            <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
           </div>
-
-          {/* FAQ */}
-          {allFaq.length > 0 && (
-            <div style={{ marginTop: '52px', padding: '36px', background: 'var(--bg-secondary)' }}>
-              <p style={{
-                fontFamily: "'Baskerville Display PT', Georgia, serif",
-                fontSize: '22px',
-                fontWeight: 400,
-                color: 'var(--text-primary)',
-                marginBottom: '28px',
-                lineHeight: 1.2,
-              }}>Questions fréquentes</p>
-              {allFaq.map((item, i) => (
-                <div key={i} style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '18px 0' }}>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.5 }}>{item.q}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>{item.a}</p>
-                </div>
-              ))}
-              <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
-            </div>
-          )}
-
-          {/* Navigation retour */}
-          <div style={{ marginTop: '48px', paddingTop: '36px', borderTop: '1px solid rgba(17,17,17,0.07)', display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
-            <a
-              href={`/traiteur/${city.slug}`}
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                borderBottom: '1px solid currentColor',
-                paddingBottom: '2px',
-              }}
-            >
-              ← Retour à {city.name}
-            </a>
-            <a
-              href="/traiteur"
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'rgba(17,17,17,0.4)',
-                textDecoration: 'none',
-                borderBottom: '1px solid rgba(17,17,17,0.2)',
-                paddingBottom: '2px',
-              }}
-            >
-              Toutes nos villes →
-            </a>
-          </div>
-        </section>
+        )}
 
       </main>
 
+      {/* ── Éditorial + arguments + CTA + article SEO ── */}
+      <CategoryClosing
+        eyebrow={`Traiteur d'entreprise à ${q.name}`}
+        title={`Le goût de l'artisanat,\nlivré à ${q.name}.`}
+        body={q.heroDescription}
+        args={QUARTIER_ARGS}
+        seoArticle={q.seoArticle}
+      />
+
+      {/* ── Navigation retour ── */}
+      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 64px', display: 'flex', gap: '32px', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <a
+          href={`/traiteur/${city.slug}`}
+          style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
+        >
+          ← Retour à {city.name}
+        </a>
+        <a
+          href="/traiteur"
+          style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', textDecoration: 'none', borderBottom: '1px solid rgba(17,17,17,0.2)', paddingBottom: '2px' }}
+        >
+          Toutes nos villes →
+        </a>
+      </div>
+
       <style suppressHydrationWarning>{`
-        .quartier-article-body p {
-          font-family: 'Neue Montreal', sans-serif;
-          font-size: 15px;
-          line-height: 1.85;
-          color: var(--text-secondary);
-          margin-bottom: 18px;
-        }
-        .quartier-article-body h2 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
-          font-size: clamp(20px, 2.2vw, 30px);
-          font-weight: 400;
-          color: var(--text-primary);
-          margin: 40px 0 14px;
-          line-height: 1.15;
-        }
-        .quartier-article-body strong {
-          color: var(--text-primary);
-          font-weight: 500;
-        }
+        .q-service-card { border-radius: 4px !important; }
         @media (max-width: 768px) {
-          .quartier-hero { padding: 48px 24px 40px !important; }
-          .quartier-zones { padding: 28px 24px !important; }
-          .quartier-article { padding: 56px 24px 72px !important; }
+          .q-hero-wrapper { padding: 20px 20px 0 !important; }
+          .q-hero { min-height: 560px !important; height: 72vh !important; }
+          .q-hero-text { padding: 0 28px !important; max-width: 100% !important; }
+          .q-services { padding: 56px 24px 0 !important; }
+          .q-services-grid { grid-template-columns: 1fr !important; }
+          .q-zones { padding: 36px 24px !important; }
+          .q-faq { padding: 56px 24px 0 !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
-          .quartier-hero { padding: 56px 40px 48px !important; }
-          .quartier-zones { padding: 32px 40px !important; }
-          .quartier-article { padding: 64px 40px 80px !important; }
+          .q-hero-wrapper { padding: 32px 40px 0 !important; }
+          .q-hero-text { padding: 0 40px !important; }
+          .q-services { padding: 64px 40px 0 !important; }
+          .q-services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .q-zones { padding: 40px !important; }
+          .q-faq { padding: 64px 40px 0 !important; }
         }
       `}</style>
 
