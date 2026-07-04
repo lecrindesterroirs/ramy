@@ -8,10 +8,16 @@ import Footer from '../../../../components/Footer'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
 import DevisRapide from '../../../../components/DevisRapide'
 
-const FORMATS = [
-  { id: 'madeleines-10', pieces: 10, price: 24.90, label: '10 pièces', sub: '4 à 6 pers.' },
-  { id: 'madeleines-20', pieces: 20, price: 49.00, label: '20 pièces', sub: '8 à 12 pers.', popular: true },
-  { id: 'madeleines-50', pieces: 50, price: 119.00, label: '50 pièces', sub: '25 à 30 pers.' },
+const COFFRETS = [
+  { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.png' },
+  { id: 'madeleines-20', titre: 'Coffret Signature', pieces: 20, price: 49.00, desc: 'Le format idéal pour accueillir vos collaborateurs.', popular: true, img: '/coffret-madeleines-20-cut.png' },
+  { id: 'madeleines-50', titre: 'Coffret Réception', pieces: 50, price: 119.00, desc: "Pensé pour les petits-déjeuners et cocktails d'entreprise.", img: '/coffret-madeleines-50-cut.png' },
+]
+
+const MAD_EXIGENCE = [
+  'Pur beurre et recettes artisanales, préparées chaque jour.',
+  'Des ingrédients de qualité sélectionnés avec soin.',
+  'Pour un moelleux incomparable et des saveurs authentiques.',
 ]
 
 /* ── Vitrine éditoriale (structure "plateau repas") — test sur 1 produit ── */
@@ -53,8 +59,6 @@ function Sprig() {
 export default function ProductPage() {
   const { slug } = useParams()
 
-  const [format, setFormat] = useState(FORMATS[0])
-
   const product = PRODUCTS.find(p => p.id === slug)
   if (!product) notFound()
 
@@ -73,8 +77,8 @@ export default function ProductPage() {
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* ── Breadcrumb (masqué en mode éditorial : rendu sur le marbre) ── */}
-        {!isEditorial && (
+        {/* ── Breadcrumb (masqué en mode éditorial et madeleines : hero pleine largeur) ── */}
+        {!isEditorial && !product.isMadeleine && (
         <div className="fiche-breadcrumb" style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px 72px 0' }}>
           <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             {breadcrumb.map((crumb, i, arr) => (
@@ -100,105 +104,121 @@ export default function ProductPage() {
         ) : isEditorial ? (
           <EditorialHero product={product} breadcrumb={breadcrumb} />
         ) : product.isMadeleine ? (
-          /* ═══ LAYOUT MADELEINES ═══ */
-          <div style={{ maxWidth: '720px', margin: '0 auto', padding: '32px 72px 80px' }}>
+          /* ═══ LAYOUT MADELEINES (reproduction maquette) ═══ */
+          <div className="mad-page">
 
-            {/* Label */}
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
-              Pâtisserie · Mado Paris
-            </p>
-
-            {/* Titre */}
-            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '28px' }}>
-              Coffrets de madeleines
-            </h1>
-
-            {/* Formats disponibles */}
-            <div style={{ marginBottom: '32px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
-                Taille du coffret
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px' }}>
-                {FORMATS.map(fmt => (
-                  <div
-                    key={fmt.id}
-                    style={{ padding: '14px 10px', textAlign: 'left', background: 'var(--bg-secondary)', position: 'relative' }}
-                  >
-                    {fmt.popular && (
-                      <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
-                        Le plus choisi
-                      </span>
-                    )}
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '2px', lineHeight: 1 }}>
-                      {fmt.label}
-                    </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.45)', marginBottom: '5px' }}>
-                      {fmt.sub}
-                    </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent)' }}>
-                      {fmt.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
-                    </p>
-                  </div>
-                ))}
+            {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
+            <div className="mad-hero" style={{ position: 'relative', width: '100%', height: 'clamp(360px, 42vw, 520px)', overflow: 'hidden' }}>
+              <img src="/madeleine-home.jpg" alt="Les madeleines signature — L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
+              <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
+                  Les madeleines<br /><em style={{ fontStyle: 'italic' }}>signature</em>
+                </h1>
+                <span style={{ display: 'block', width: '36px', height: '1px', background: 'var(--accent)', marginBottom: '20px' }} />
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '380px' }}>
+                  Une madeleine généreuse, préparée chaque jour par notre artisan partenaire et devenue l'une des créations les plus appréciées de nos événements.
+                </p>
               </div>
             </div>
 
-            {/* Séparateur */}
-            <div style={{ height: '1px', background: 'rgba(17,17,17,0.07)', marginBottom: '28px' }} />
-
-            {/* Saveurs disponibles */}
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '16px' }}>
-              Les saveurs
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', marginBottom: '32px' }}>
-              {MADELEINE_FLAVORS.map(f => (
-                <div key={f.id} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 14px', background: f.bg }}>
-                  <img src={f.img} alt={f.label} style={{ width: '52px', height: '52px', objectFit: 'contain', flexShrink: 0 }} />
-                  <div>
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: '#211C16', lineHeight: 1.15, marginBottom: '3px' }}>{f.label}</p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.5, color: 'rgba(33,28,22,0.55)' }}>{f.description}</p>
+            {/* ── Choisissez votre coffret ── */}
+            <div style={{ textAlign: 'center', padding: '68px 24px 0' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                Choisissez votre coffret
+              </p>
+            </div>
+            <div className="mad-coffrets-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px', maxWidth: '1160px', margin: '0 auto', padding: '40px 72px 24px' }}>
+              {COFFRETS.map(c => (
+                <div key={c.id} style={{ textAlign: 'center' }}>
+                  <div style={{ position: 'relative', width: '100%', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <img src={c.img} alt={c.titre} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }} />
                   </div>
+                  <div style={{ height: '26px', marginBottom: '8px' }}>
+                    {c.popular && (
+                      <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 12px' }}>
+                        Le plus choisi
+                      </span>
+                    )}
+                  </div>
+                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px' }}>
+                    {c.titre}
+                  </p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+                    {c.pieces} madeleines
+                  </p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: '240px', margin: '0 auto' }}>
+                    {c.desc}
+                  </p>
                 </div>
               ))}
             </div>
 
-            {/* Séparateur */}
-            <div style={{ height: '1px', background: 'rgba(17,17,17,0.07)', marginBottom: '24px' }} />
-
-            {/* Ingrédients */}
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '16px' }}>
-              {product.ingredients}
-            </p>
-
-            {/* Tags */}
-            {product.dietary?.length > 0 && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
-                {product.dietary.map(tag => {
-                  const s = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
-                  return (
-                    <span key={tag} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: s.color, background: s.bg, padding: '5px 10px' }}>
-                      {tag}
-                    </span>
-                  )
-                })}
-              </div>
-            )}
-
-            {/* CTA devis */}
-            <a
-              href="/devis"
-              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '18px 36px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', justifyContent: 'center', width: '100%', transition: 'opacity 0.3s ease' }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-            >
-              Demande de devis →
-            </a>
-
-            {/* Livraison */}
-            <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              {['Livraison dès 6h30 — Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
-                <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
+            {/* ── Nos saveurs ── */}
+            <div style={{ textAlign: 'center', padding: '56px 24px 36px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                Nos saveurs
+              </p>
+            </div>
+            <div className="mad-flavors-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px', maxWidth: '1160px', margin: '0 auto', padding: '0 72px 8px' }}>
+              {MADELEINE_FLAVORS.map(f => (
+                <div key={f.id} style={{ textAlign: 'center', padding: '10px 8px' }}>
+                  <img src={f.img} alt={f.label} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
+                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '6px' }}>{f.label}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{f.description}</p>
+                </div>
               ))}
+            </div>
+            <div style={{ textAlign: 'center', padding: '36px 24px 72px' }}>
+              <a
+                href="/devis"
+                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              >
+                Demander un devis →
+              </a>
+            </div>
+
+            {/* ── Notre exigence | image | Notre artisan | image ── */}
+            <div className="mad-4col" style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr 1.05fr 0.95fr', minHeight: '380px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+              {/* Cellule 1 : Notre exigence */}
+              <div style={{ background: 'var(--bg-secondary)', padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '14px' }}>
+                  Notre exigence
+                </p>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '20px' }}>
+                  Le goût du vrai,<br />l'exigence en plus.
+                </h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {MAD_EXIGENCE.map(t => (
+                    <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'var(--text-secondary)' }}>{t}</p>
+                  ))}
+                </div>
+              </div>
+              {/* Cellule 2 : image madeleines */}
+              <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px' }}>
+                <img src="/prod-madeleines-20.webp" alt="Madeleines Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
+              {/* Cellule 3 : Notre artisan partenaire */}
+              <div style={{ padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '14px' }}>
+                  Notre artisan partenaire
+                </p>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '4px' }}>
+                  Mado Paris
+                </h2>
+                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '18px' }}>
+                  L'atelier de la madeleine
+                </p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+                  Fabriquées chaque jour dans leur atelier parisien, elles sont réputées comme les meilleures madeleines de Paris — c'est cette exigence qui nous a convaincus de les intégrer à notre sélection.
+                </p>
+              </div>
+              {/* Cellule 4 : photo atelier */}
+              <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px' }}>
+                <img src="/prod-madeleines-50.webp" alt="L'atelier Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
             </div>
           </div>
 
@@ -252,6 +272,11 @@ export default function ProductPage() {
           .fiche-seo { padding: 48px 24px 72px !important; }
           .editorial-grid { grid-template-columns: 1fr !important; gap: 36px !important; padding: 24px 24px 48px !important; }
           .gallery-fiche { grid-template-columns: 1fr !important; gap: 32px !important; padding: 24px 24px 60px !important; }
+          .mad-hero-text { padding: 0 24px !important; }
+          .mad-coffrets-grid { grid-template-columns: 1fr !important; padding: 32px 24px 24px !important; gap: 40px !important; }
+          .mad-flavors-row { grid-template-columns: repeat(3, 1fr) !important; padding: 0 24px 48px !important; gap: 24px 8px !important; }
+          .mad-4col { grid-template-columns: 1fr !important; }
+          .mad-4col > div { padding: 40px 24px !important; min-height: 240px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .fiche-breadcrumb { padding: 20px 40px 0 !important; }
@@ -259,6 +284,10 @@ export default function ProductPage() {
           .fiche-seo { padding: 60px 40px 80px !important; }
           .editorial-grid { padding: 24px 40px 48px !important; gap: 40px !important; }
           .gallery-fiche { padding: 24px 40px 60px !important; gap: 40px !important; }
+          .mad-hero-text { padding: 0 40px !important; }
+          .mad-coffrets-grid { padding: 40px 40px 24px !important; gap: 32px !important; }
+          .mad-flavors-row { grid-template-columns: repeat(3, 1fr) !important; padding: 0 40px 56px !important; gap: 28px 12px !important; }
+          .mad-4col { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
 

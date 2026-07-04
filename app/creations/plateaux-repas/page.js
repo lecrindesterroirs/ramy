@@ -1,252 +1,511 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import Reveal from '../../../components/Reveal'
+import CategoryClosing from '../../../components/CategoryClosing'
 
-const CATS = [
-  { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-  { label: 'Plateaux repas',            href: '/creations/plateaux-repas' },
-  { label: 'Cocktails & Buffets',       href: '/creations/cocktails-et-buffets' },
-  { label: 'Coffrets cadeaux',          href: '/creations/coffrets-cadeaux' },
+const SEO_ARTICLE = `
+  <h2>Plateaux repas d'entreprise livrés à Paris : frais, individuels, équilibrés</h2>
+  <p>Le <strong>plateau repas d'entreprise</strong> résout l'équation des déjeuners de réunion : un repas complet, individuel et soigné, servi directement en salle sans interrompre les échanges. Conseils d'administration, formations, réunions qui débordent sur la pause déjeuner — L'Écrin Traiteur livre vos plateaux à Paris et en Île-de-France, préparés le matin même.</p>
+
+  <h2>Des recettes de saison, pensées comme au restaurant</h2>
+  <p>Chaque plateau se compose d'une entrée, d'un plat, d'un dessert et de pain — construits autour de recettes signées : saumon confit, bœuf mariné, césar revisitée, saveurs méditerranéennes ou thaïes. Nous travaillons des produits frais et de saison, dressés avec le soin d'une assiette de restaurant, dans un coffret élégant qui tient la comparaison face aux clients les plus exigeants.</p>
+
+  <h2>Régimes et contraintes alimentaires : tout le monde à la même table</h2>
+  <p>Végétarien, sans gluten, sans porc, allergies spécifiques : indiquez les contraintes de vos convives à la commande et nous composons des plateaux équivalents en qualité et en générosité. Personne ne doit se contenter d'une salade par défaut pendant que les autres déjeunent bien — c'est un principe non négociable de notre carte.</p>
+
+  <h2>Commander vos plateaux repas pour une réunion à Paris</h2>
+  <p>Commandez avant <strong>14h la veille</strong> en précisant l'adresse, l'heure de livraison et la répartition des menus. Les plateaux arrivent prêts à poser sur table, avec couverts et serviettes. Facturation entreprise avec TVA, devis personnalisé sous 24h pour les volumes importants ou les commandes récurrentes.</p>
+`
+
+/* ─── Données ───────────────────────────────────────────────────── */
+
+export const COLLECTIONS = [
+  {
+    key: 'essentiel',
+    label: 'Essentiel',
+    description: 'Des recettes fraîches et équilibrées, entrée, plat et dessert préparés chaque matin avec des produits de saison.',
+    prix: '28,90',
+    hero: '/hero-plateaux-essentiel.png',
+  },
+  {
+    key: 'signature',
+    label: 'Signature',
+    description: 'Une sélection raffinée élaborée par nos chefs — produits nobles, dressage soigné, transformable en coffret Prestige.',
+    prix: '33,90',
+    hero: '/hero-plateaux-essentiel.png',
+  },
 ]
 
-const PLATEAUX_ITEMS = [
+const FILTRES = [
+  { key: 'tous',       label: 'Tous' },
+  { key: 'vegetarien', label: 'Végétarien' },
+  { key: 'poulet',     label: 'Poulet' },
+  { key: 'viande',     label: 'Viande' },
+  { key: 'poisson',    label: 'Poisson' },
+]
+
+const CATEGORIE_COLORS = {
+  vegetarien: '#5A7247',
+  poulet:     '#C08A3E',
+  viande:     '#8A3A3A',
+  poisson:    '#C4756B',
+}
+
+/* Prix HT par gamme × catégorie (par personne). Le poisson et la viande
+   (Tataki) partagent le même tarif. Source de vérité unique. */
+export const PRIX = {
+  essentiel: { vegetarien: '28,90', poulet: '29,90', poisson: '30,90' },
+  signature: { vegetarien: '33,90', poulet: '34,90', poisson: '35,90', viande: '35,90' },
+}
+/* Prix : explicite sur le menu (Lunch Box) sinon dérivé de la table. */
+export const prixMenu = (p) => p.prix ?? PRIX[p.collection]?.[p.categorie] ?? ''
+
+/* Options du coffret Prestige (upgrade d'un menu Signature). */
+const PRESTIGE_OPTIONS = [
+  'Coffret premium L\'Écrin',
+  'Vaisselle & couverts premium',
+  'Serviette en tissu',
+  'Petit pain artisanal',
+  'Sélection de 2 fromages affinés',
+  'Dessert Signature du Chef',
+  'Mignardise',
+]
+
+/* Menus — composition (entrée / plat / dessert) stockée pour la fiche
+   produit ; la grille n'affiche que nom · catégorie · prix.
+   Photos : plats uniquement (le coffret se découvre sur la fiche). */
+export const PRODUITS = [
+  // ── Collection Essentiel (à partir de 28,90 € HT) ──
   {
-    id: 'essentiel',
-    nom: 'Menu Essentiel',
-    prix: 28.90,
-    img: '/creations-4.png',
-    description: 'Entrée + Plat + Dessert au choix',
+    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plat-mediterraneen.png',
+    entree: 'Houmous, huile d\'olive & pain grillé',
+    plat: 'Quinoa gourmand, falafels & sauce tahini',
+    dessert: 'Cookie Signature',
   },
   {
-    id: 'signature',
-    nom: 'Menu Signature',
-    prix: 33.90,
-    img: '/creations-4.png',
-    description: 'Sélection gourmande avec options premium',
+    id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'Le César', img: '/plat-cesar.png',
+    entree: 'Salade de tomates anciennes & basilic',
+    plat: 'Salade César au poulet rôti',
+    dessert: 'Brownie',
   },
   {
-    id: 'prestige',
-    nom: 'Option Prestige',
-    prix: 9.90,
-    img: '/creations-4.png',
-    description: 'Upgrade avec fromages et présentation premium',
+    id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Provençal', img: '/plat-grec.png',
+    entree: 'Caviar d\'aubergine & focaccia romarin',
+    plat: 'Salade de pâtes au pesto, mozzarella & tomates confites',
+    dessert: 'Panna Cotta fruits rouges',
+  },
+  {
+    id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'Le Fermier', img: '/plat-thai.png',
+    entree: 'Salade de concombre au yaourt, menthe & aneth',
+    plat: 'Salade César au poulet rôti',
+    dessert: 'Compote pomme & fève tonka',
+  },
+  {
+    id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'Le Nordique', img: '/plat-saumon.png',
+    entree: 'Salade de tomates anciennes & basilic',
+    plat: 'Salade de pommes de terre, saumon fumé & crème citronnée',
+    dessert: 'Brownie',
+  },
+  {
+    id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plat-mediterraneen.png',
+    entree: 'Part de pissaladière & jeunes pousses',
+    plat: 'Salade de lentilles, feta & légumes rôtis',
+    dessert: 'Cookie Signature',
+  },
+
+  // ── Collection Signature (à partir de 33,90 € HT) ──
+  {
+    id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'L\'Italien', img: '/plat-grec.png',
+    entree: 'Burrata, tomates anciennes & pesto',
+    plat: 'Trofie au pesto, burrata & tomates confites',
+    dessert: 'Tartelette Praliné',
+  },
+  {
+    id: 's2', collection: 'signature', categorie: 'poulet', nom: 'Le Coréen', img: '/plat-thai.png',
+    entree: 'Assiette mezzé',
+    plat: 'Poulet coréen, riz au sésame & légumes pickles',
+    dessert: 'Mousse Chocolat',
+  },
+  {
+    id: 's3', collection: 'signature', categorie: 'poisson', nom: 'Le Riviera', img: '/plat-saumon.png',
+    entree: 'Tartare de saumon méditerranéen',
+    plat: 'Saumon gravlax, pommes grenailles, crème d\'Isigny & jeunes pousses',
+    dessert: 'Tartelette Citron',
+  },
+  {
+    id: 's4', collection: 'signature', categorie: 'viande', nom: 'Le Bistrot', img: '/plat-boeuf.png',
+    entree: 'Carpaccio de bœuf, parmesan & roquette',
+    plat: 'Tataki de bœuf, pommes grenailles rôties & chimichurri',
+    dessert: 'Carrot Cake Fudge',
+  },
+  {
+    id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'Le Levant', img: '/plat-mediterraneen.png',
+    entree: 'Assiette mezzé',
+    plat: 'Quinoa gourmand, falafels, feta, légumes grillés & tahini',
+    dessert: 'Mousse Chocolat',
+  },
+  {
+    id: 's6', collection: 'signature', categorie: 'poisson', nom: 'Le Méditerranéen', img: '/plat-saumon.png',
+    entree: 'Ceviche de daurade, mangue & coriandre',
+    plat: 'Saumon gravlax, pommes grenailles & crème d\'Isigny',
+    dessert: 'Tartelette Citron',
+  },
+  {
+    id: 's7', collection: 'signature', categorie: 'viande', nom: 'Le Prestige Bœuf', img: '/plat-fusion.png',
+    entree: 'Carpaccio de bœuf, parmesan & roquette',
+    plat: 'Tataki de bœuf & chimichurri',
+    dessert: 'Mousse Chocolat',
+  },
+  {
+    id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'Le Prestige Burrata', img: '/plat-grec.png',
+    entree: 'Burrata, tomates anciennes & pesto',
+    plat: 'Trofie au pesto & burrata',
+    dessert: 'Carrot Cake Fudge',
   },
 ]
 
-const LUNCHBOX_ITEMS = [
-  {
-    id: 'menu-rapide',
-    nom: 'Menu à 19,90€',
-    prix: 19.90,
-    img: '/creations-4.png',
-    description: 'Entrée + Plat (Sandwich ou Salade) + Dessert',
-  },
-  {
-    id: 'sandwichs',
-    nom: 'Sandwichs & Clubs',
-    prix: null,
-    img: '/creations-4.png',
-    description: 'Sélection de 6 formules variées',
-  },
-  {
-    id: 'salades',
-    nom: 'Salades',
-    prix: null,
-    img: '/creations-4.png',
-    description: '5 bases + 12 déclinaisons',
-  },
-]
+/* ─── Carte menu ─────────────────────────────────────────────────── */
+
+function MenuCard({ produit }) {
+  const [hovered, setHovered] = useState(false)
+  const catColor = CATEGORIE_COLORS[produit.categorie] ?? '#6E675F'
+  const catLabel = FILTRES.find(f => f.key === produit.categorie)?.label ?? ''
+  return (
+    <Link
+      href={`/creations/plateaux-repas/${produit.id}`}
+      className="pr-card"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'block', textDecoration: 'none',
+        background: '#FFFFFF',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        boxShadow: hovered
+          ? '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)'
+          : '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'box-shadow 0.35s ease, transform 0.35s ease',
+      }}
+    >
+      {/* Photo du plat — pleine largeur dans la carte, overlay "Découvrir" au survol */}
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
+        {produit.img && (
+          <img
+            src={produit.img}
+            alt={produit.nom}
+            style={{
+              width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
+              transition: 'transform 0.7s ease',
+              transform: hovered ? 'scale(1.05)' : 'scale(1)',
+            }}
+          />
+        )}
+        {/* Overlay au survol */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(20,16,12,0.30)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.4s ease',
+        }}>
+          <span style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '10px 24px',
+            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'transform 0.4s ease',
+          }}>
+            Découvrir
+          </span>
+        </div>
+      </div>
+
+      {/* Contenu — nom, catégorie, prix */}
+      <div style={{ padding: '16px 16px 16px' }}>
+        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '9px', transition: 'color 0.25s ease' }}>
+          {produit.nom}
+        </h3>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.13em', textTransform: 'uppercase', color: catColor, marginBottom: '12px' }}>
+          {catLabel}
+        </p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111' }}>
+          À partir de {prixMenu(produit)} €<span style={{ color: 'rgba(17,17,17,0.3)', fontSize: '11px', marginLeft: '3px' }}>HT</span>
+        </p>
+      </div>
+    </Link>
+  )
+}
+
+/* ─── Lien texte souligné (nav collections & filtres) ────────────── */
+
+function TextTab({ label, active, onClick, size = '16px', gap = '10px', underline = '28px' }) {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        fontFamily: "'Neue Montreal', sans-serif",
+        fontSize: size,
+        fontWeight: 400,
+        color: active ? '#111111' : hovered ? '#4A453F' : '#B4AFA8',
+        background: 'none',
+        border: 'none',
+        padding: `0 0 ${gap}`,
+        cursor: 'pointer',
+        position: 'relative',
+        transition: 'color 0.2s ease',
+        whiteSpace: 'nowrap',
+        letterSpacing: '0.005em',
+      }}
+    >
+      {label}
+      <span style={{
+        position: 'absolute', left: 0, bottom: 0, width: underline, height: '1.5px',
+        background: '#111111',
+        opacity: active ? 1 : 0,
+        transition: 'opacity 0.2s ease',
+      }} />
+    </button>
+  )
+}
+
+/* ─── Page principale ────────────────────────────────────────────── */
 
 export default function PlateauxRepas() {
-  const [activeTab, setActiveTab] = useState('plateaux')
-  const [hovered, setHovered] = useState(null)
+  const [activeCollection, setActiveCollection] = useState('essentiel')
+  const [activeFiltre, setActiveFiltre] = useState('tous')
 
-  const items = activeTab === 'plateaux' ? PLATEAUX_ITEMS : LUNCHBOX_ITEMS
+  const col = COLLECTIONS.find(c => c.key === activeCollection)
+
+  const produitsCollection = PRODUITS.filter(p => p.collection === activeCollection)
+
+  // Filtres affichés = uniquement les catégories réellement présentes
+  // dans la collection active (ex : pas de « Viande » en Essentiel).
+  const categoriesDispo = new Set(produitsCollection.map(p => p.categorie))
+  const filtresDispo = FILTRES.filter(f => f.key === 'tous' || categoriesDispo.has(f.key))
+
+  const produitsFiltres = produitsCollection.filter(p =>
+    activeFiltre === 'tous' ? true : p.categorie === activeFiltre
+  )
+
+  function handleCollectionChange(key) {
+    setActiveCollection(key)
+    setActiveFiltre('tous')
+  }
 
   return (
     <>
       <Navbar showBanner={true} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+      <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* Hero */}
-        <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
-          <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
+        {/* ── Hero — contenu + immersif, aligné sur petit-déjeuner ── */}
+        <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <header className="pr-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
             <img
-              src="/creations-4.png"
-              alt="Plateaux Repas"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%', display: 'block' }}
+              key={`hero-img-${col.key}`}
+              src={col.hero}
+              alt={`Plateaux repas ${col.label}`}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
             />
+            {/* Dégradé sombre gauche pour la lisibilité du texte blanc */}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
-            <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                Nos Créations — Déjeuners
-              </p>
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                Menus & Formules
-              </h1>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px' }}>
-                Plateaux pour événements ou lunch box pour déjeuners rapides.
-              </p>
-            </div>
-          </div>
+
+            {/* Texte overlay, aligné à gauche, centré verticalement — fade-up au montage, rejoué à chaque changement de collection */}
+            <Reveal key={`hero-text-${col.key}`} mode="mount" y={16}>
+              <div className="pr-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                  Collection {col.label}
+                </p>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                  {col.label}
+                </h1>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px', marginBottom: '20px' }}>
+                  {col.description}
+                </p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', color: 'rgba(255,255,255,0.9)' }}>
+                  À partir de <span style={{ fontSize: '15px' }}>{col.prix} €</span> HT · par personne
+                </p>
+              </div>
+            </Reveal>
+          </header>
         </div>
 
-        {/* Onglets */}
-        <div className="products-filter-bar" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-          <div className="filter-cats" style={{ display: 'flex', alignItems: 'center' }}>
-            {[
-              { key: 'plateaux', label: 'Plateaux Repas' },
-              { key: 'lunchbox', label: 'Lunch Box' },
-            ].map(tab => {
-              const active = tab.key === activeTab
+        {/* ── Navigation légère — deux niveaux de texte ─────────── */}
+        <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          {/* Niveau 1 : collections — barre pleine largeur, trait coloré sous l'actif */}
+          <div className="pr-scroll" style={{ display: 'flex', borderBottom: '1px solid rgba(17,17,17,0.1)', marginBottom: '20px' }}>
+            {COLLECTIONS.map((c, i) => {
+              const active = c.key === activeCollection
               return (
                 <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
+                  key={c.key}
+                  onClick={() => handleCollectionChange(c.key)}
                   style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '11px',
-                    fontWeight: active ? 500 : 400,
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    color: active ? 'var(--text-primary)' : 'rgba(17,17,17,0.42)',
-                    textDecoration: 'none',
-                    padding: '20px 18px',
-                    borderBottom: active ? '2px solid var(--text-primary)' : '2px solid transparent',
-                    whiteSpace: 'nowrap',
-                    display: 'inline-block',
-                    transition: 'color 0.2s ease, border-color 0.2s ease',
+                    fontFamily: "'Baskerville Display PT', Georgia, serif",
+                    fontSize: '19px',
+                    fontWeight: 400,
+                    color: active ? '#111111' : '#A7A29B',
+                    padding: '0 28px 14px',
+                    paddingLeft: i === 0 ? 0 : '28px',
+                    marginBottom: '-1px',
                     background: 'none',
                     border: 'none',
+                    boxShadow: active ? 'inset 0 -2.5px 0 #111111' : 'none',
                     cursor: 'pointer',
+                    transition: 'color 0.2s ease, box-shadow 0.2s ease',
+                    whiteSpace: 'nowrap',
                   }}
-                  onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'rgba(17,17,17,0.2)' } }}
-                  onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(17,17,17,0.42)'; e.currentTarget.style.borderBottomColor = 'transparent' } }}
+                  onMouseEnter={e => { if (!active) e.currentTarget.style.color = '#4A453F' }}
+                  onMouseLeave={e => { if (!active) e.currentTarget.style.color = '#A7A29B' }}
                 >
-                  {tab.label}
+                  {c.label}
                 </button>
               )
             })}
           </div>
-          <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)' }}>
-            {items.length} menu{items.length > 1 ? 's' : ''}
-          </span>
+
         </div>
 
-        {/* Grille de cartes */}
-        <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-          {items.map(item => (
-            <MenuCard
-              key={item.id}
-              item={item}
-              hovered={hovered === item.id}
-              onHover={() => setHovered(item.id)}
-              onLeave={() => setHovered(null)}
-            />
-          ))}
+        {/* ── Corps : filtres à gauche + grille 3 colonnes à droite ── */}
+        <div className="pr-shell pr-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 72px', display: 'grid', gridTemplateColumns: '168px 1fr', gap: '52px', alignItems: 'start' }}>
+
+          {/* Filtres verticaux */}
+          <aside className="pr-filters" style={{ position: 'sticky', top: '104px' }}>
+            <p className="pr-filters-label" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
+              Filtrer
+            </p>
+            {filtresDispo.map(f => {
+              const active = f.key === activeFiltre
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setActiveFiltre(f.key)}
+                  style={{
+                    display: 'block', width: '100%', textAlign: 'left',
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '13.5px',
+                    fontWeight: active ? 500 : 400,
+                    color: active ? '#111111' : '#9B9590',
+                    padding: '9px 0 9px 14px',
+                    background: 'none',
+                    border: 'none',
+                    boxShadow: active ? 'inset 2px 0 0 #E0A126' : 'inset 2px 0 0 transparent',
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease, box-shadow 0.2s ease',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={e => { if (!active) e.currentTarget.style.color = '#4A453F' }}
+                  onMouseLeave={e => { if (!active) e.currentTarget.style.color = '#9B9590' }}
+                >
+                  {f.label}
+                </button>
+              )
+            })}
+          </aside>
+
+          {/* Grille 3 colonnes */}
+          <div className="pr-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
+            {produitsFiltres.length === 0 ? (
+              <div style={{ gridColumn: '1/-1', padding: '48px 0' }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', color: '#111111', marginBottom: '10px' }}>
+                  Aucun menu dans cette catégorie
+                </p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#6E675F' }}>
+                  Sélectionnez un autre filtre pour parcourir la collection.
+                </p>
+              </div>
+            ) : (
+              produitsFiltres.map((p, i) => (
+                <Reveal key={p.id} delay={(i % 3) * 90}>
+                  <MenuCard produit={p} />
+                </Reveal>
+              ))
+            )}
+          </div>
         </div>
 
-        {/* CTA */}
-        <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)', textAlign: 'center', padding: '80px 40px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
-            Besoin d'une formule personnalisée ?
-          </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '16px' }}>
-            Des produits qui ont du goût.<br />Un service qui tient ses promesses.
-          </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '40px' }}>
-            Devis personnalisé sous 24h.
-          </p>
-          <a
-            href="/devis"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px 40px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', transition: 'opacity 0.3s ease' }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-          >
-            Demande de devis →
-          </a>
-        </section>
+        {/* ── Option Prestige — upgrade d'un menu Signature ─────── */}
+        {activeCollection === 'signature' && (
+          <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 120px' }}>
+            <div style={{ background: '#F5F1E8', padding: '48px 56px', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', alignItems: 'center' }} className="pr-prestige">
+              <div>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#B07D10', marginBottom: '14px' }}>
+                  Option Prestige
+                </p>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '28px', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
+                  Transformez votre menu Signature en coffret Prestige
+                </h2>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#5A544C' }}>
+                  Le même menu, sublimé dans un écrin d'exception — vaisselle premium, fromages affinés et attentions du Chef pour vos réceptions les plus soignées.
+                </p>
+              </div>
+              <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }} className="pr-prestige-list">
+                {PRESTIGE_OPTIONS.map(opt => (
+                  <li key={opt} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13.5px', lineHeight: 1.5, color: '#111111' }}>
+                    <span style={{ color: '#E0A126', flexShrink: 0, marginTop: '1px' }}>◆</span>
+                    {opt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
 
       </main>
 
+      <CategoryClosing
+        eyebrow="Pensé pour vos déjeuners de réunion"
+        title={'Un déjeuner soigné.\nUne réunion qui avance.'}
+        body="Le plateau repas transforme la contrainte du déjeuner en moment apprécié : un repas complet et individuel, dressé avec soin, servi en salle sans logistique. Vos équipes déjeunent bien, votre réunion ne s'arrête pas."
+        seoArticle={SEO_ARTICLE}
+      />
+
+      {/* ── Radius (override du reset global border-radius:0 !important) + responsive ── */}
       <style suppressHydrationWarning>{`
-        @media (max-width: 768px) {
-          .page-hero-wrapper { padding: 24px 16px 0 !important; }
-          .page-hero { height: 50vh !important; min-height: 300px !important; }
-          .page-hero-text { padding: 0 24px !important; }
-          .products-filter-bar { padding: 0 16px !important; flex-wrap: wrap !important; }
-          .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
-          .filter-cats::-webkit-scrollbar { display: none; }
-          .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 2px !important; }
+        .pr-hero { border-radius: 2px !important; }
+        .pr-card { border-radius: 4px !important; }
+        @media (max-width: 1100px) {
+          .pr-hero-wrapper { padding-left: 48px !important; padding-right: 48px !important; }
+          .pr-hero-text    { padding-left: 48px !important; padding-right: 48px !important; }
+          .pr-shell { padding-left: 48px !important; padding-right: 48px !important; }
+          .pr-body { grid-template-columns: 150px 1fr !important; gap: 36px !important; }
+          .pr-grid  { grid-template-columns: repeat(2,1fr) !important; }
+          .pr-prestige { grid-template-columns: 1fr !important; gap: 28px !important; padding: 40px !important; }
         }
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .page-hero-wrapper { padding: 24px 40px 0 !important; }
-          .products-filter-bar { padding: 0 40px !important; }
-          .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 40px 40px 100px !important; }
+        @media (max-width: 560px) {
+          .pr-prestige-list { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 900px) {
+          /* Filtres repassent en rangée horizontale au-dessus de la grille */
+          .pr-body { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .pr-filters { position: static !important; display: flex; gap: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-bottom: 1px solid rgba(17,17,17,0.08); }
+          .pr-filters::-webkit-scrollbar { display: none; }
+          .pr-filters-label { display: none !important; }
+          .pr-filters button { width: auto !important; padding: 0 0 12px !important; box-shadow: none !important; }
+        }
+        @media (max-width: 768px) {
+          .pr-hero-wrapper { padding: 20px 20px 0 !important; }
+          .pr-hero         { min-height: 380px !important; height: 42vh !important; }
+          .pr-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
+          .pr-shell { padding-left: 24px !important; padding-right: 24px !important; }
+          .pr-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 20px 14px !important; }
+          .pr-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+          .pr-scroll::-webkit-scrollbar { display: none; }
+        }
+        @media (max-width: 480px) {
+          .pr-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
 
       <Footer />
     </>
-  )
-}
-
-function MenuCard({ item, hovered, onHover, onLeave }) {
-  return (
-    <div
-      style={{ cursor: 'pointer' }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-    >
-      <a href="#" style={{ display: 'block', textDecoration: 'none', position: 'relative' }} onClick={e => e.preventDefault()}>
-        <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF' }}>
-          <img
-            src={item.img}
-            alt={item.nom}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.6s ease', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
-          />
-        </div>
-      </a>
-
-      <div style={{ padding: '14px 4px 10px', display: 'flex', flexDirection: 'column' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '4px', transition: 'color 0.25s ease' }}>
-          {item.nom}
-        </p>
-        {item.prix && (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.38)', marginBottom: '8px' }}>
-            Dès {item.prix.toFixed(2).replace('.', ',')} € HT
-          </p>
-        )}
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.06em', color: 'rgba(17,17,17,0.5)', marginBottom: '12px', lineHeight: 1.4 }}>
-          {item.description}
-        </p>
-
-        <button
-          style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '10px',
-            fontWeight: 500,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: hovered ? 'var(--accent)' : 'rgba(17,17,17,0.45)',
-            border: `1px solid ${hovered ? 'var(--accent)' : 'rgba(17,17,17,0.15)'}`,
-            padding: '8px 14px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            textDecoration: 'none',
-            justifyContent: 'center',
-            transition: 'all 0.25s ease',
-            background: 'none',
-            cursor: 'pointer',
-          }}
-        >
-          Voir le menu →
-        </button>
-      </div>
-    </div>
   )
 }

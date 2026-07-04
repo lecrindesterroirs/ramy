@@ -2,10 +2,17 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "Next.js Dev",
+      "name": "lecrin-traiteur",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "lecrin-os",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/ramy/Desktop/lecrin-os", "run", "dev", "--", "-p", "3001"],
+      "port": 3001
     }
   ]
 }

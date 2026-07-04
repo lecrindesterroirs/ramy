@@ -1,256 +1,103 @@
 'use client'
 
-const COFFRETS = [
+import { MADELEINE_FLAVORS } from '../lib/productsData'
+
+const INFOS = [
   {
-    id: 'madeleines-10',
-    label: '× 10 pièces',
-    desc: 'Pour 4 à 6 personnes',
-    price: '24,90 €',
-    href: '/creations/petits-dejeuners-et-pauses/madeleines-10',
+    title: 'Préparées chaque jour',
+    text: "Nos madeleines sont confectionnées quotidiennement pour vous offrir un moelleux incomparable et une fraîcheur optimale.",
   },
   {
-    id: 'madeleines-20',
-    label: '× 20 pièces',
-    desc: 'Pour 8 à 12 personnes',
-    price: '49,00 €',
-    href: '/creations/petits-dejeuners-et-pauses/madeleines-20',
+    title: 'Des saveurs qui surprennent',
+    text: "Pistache framboise, ananas coco passion, fleur d'oranger, rose violette... Des recettes originales qui raviront tous les palais.",
   },
   {
-    id: 'madeleines-50',
-    label: '× 50 pièces',
-    desc: 'Pour 25 à 30 personnes',
-    price: '119,00 €',
-    href: '/creations/petits-dejeuners-et-pauses/madeleines-50',
+    title: "Le best-seller de L'Écrin",
+    text: "Le produit le plus demandé lors de nos petits-déjeuners, cocktails et événements d'entreprise.",
   },
 ]
 
 export default function MadeleinesSection() {
   return (
-    <section className="madeleine-section" style={{ background: '#FFFFFF' }}>
-      <div
-        className="madeleine-inner"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          minHeight: '640px',
-        }}
-      >
+    <section className="mad-section" style={{ background: 'var(--bg-secondary)' }}>
 
-        {/* ── Image gauche ── */}
-        <div
-          className="madeleine-img-col"
-          style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }}
-        >
+      {/* ── Haut : image + contenu ── */}
+      <div className="mad-top" style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr' }}>
+
+        {/* Image */}
+        <div className="mad-img-col" style={{ position: 'relative', overflow: 'hidden', minHeight: '680px' }}>
           <img
             src="/madeleine-home.jpg"
-            alt="Madeleines artisanales Mado Paris — L'Écrin Traiteur"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              display: 'block',
-            }}
+            alt="Madeleines artisanales — L'Écrin Traiteur"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
         </div>
 
-        {/* ── Contenu droite ── */}
-        <div
-          className="madeleine-content"
-          style={{
-            background: 'var(--bg-secondary)',
-            padding: '72px 72px 72px 64px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          {/* Eyebrow */}
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '10px',
-            fontWeight: 500,
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: '10px',
-          }}>
-            Produit signature
+        {/* Contenu */}
+        <div className="mad-content" style={{ padding: '88px 88px 80px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>
+            Les incontournables
           </p>
-          <span className="accent-line" style={{ marginBottom: '28px' }} />
-
-          {/* Titre */}
-          <h2 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
-            fontSize: 'clamp(30px, 3.2vw, 50px)',
-            fontWeight: 400,
-            lineHeight: 1.05,
-            letterSpacing: '-0.01em',
-            color: 'var(--text-primary)',
-            marginBottom: '24px',
-          }}>
-            La madeleine<br />
-            Mado Paris
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 3.8vw, 56px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
+            Madeleines artisanales
           </h2>
-
-          {/* Corps */}
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '14px',
-            lineHeight: 1.75,
-            color: 'var(--text-secondary)',
-            marginBottom: '40px',
-            maxWidth: '440px',
-          }}>
-            Derrière leur texture moelleuse et leur bosse généreuse, nos madeleines déclinent des saveurs comme la pistache, la fleur d'oranger ou l'ananas coco passion, devenues au fil des prestations l'un des grands classiques de la maison.
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '44px', maxWidth: '500px' }}>
+            Derrière leur texture moelleuse et leur bosse généreuse, nos madeleines déclinent des saveurs originales et raffinées, pensées pour ravir tous les palais lors de vos événements.
           </p>
 
-          {/* Coffrets */}
-          <div style={{ marginBottom: '36px' }}>
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'rgba(17,17,17,0.4)',
-              marginBottom: '16px',
-            }}>
-              Choisissez votre format
-            </p>
-            <div className="madeleine-coffrets" style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-              {COFFRETS.map((c) => (
-                <a
-                  key={c.id}
-                  href={c.href}
-                  className="madeleine-coffret-row"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '16px 20px',
-                    background: '#FFFFFF',
-                    textDecoration: 'none',
-                    transition: 'background 0.2s ease',
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
-                  onMouseLeave={e => e.currentTarget.style.background = '#FFFFFF'}
-                >
-                  <div>
-                    <span style={{
-                      fontFamily: "'Baskerville Display PT', Georgia, serif",
-                      fontSize: '17px',
-                      fontWeight: 400,
-                      color: 'var(--text-primary)',
-                      display: 'block',
-                      lineHeight: 1.2,
-                    }}>
-                      Coffret {c.label}
-                    </span>
-                    <span style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '11px',
-                      color: 'rgba(17,17,17,0.45)',
-                      letterSpacing: '0.03em',
-                    }}>
-                      {c.desc}
-                    </span>
-                  </div>
-                  <span style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '13px',
-                    color: 'rgba(17,17,17,0.35)',
-                  }}>
-                    →
-                  </span>
-                </a>
-              ))}
-            </div>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+            Nos saveurs
+          </p>
+
+          <div className="mad-flavors" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '44px' }}>
+            {MADELEINE_FLAVORS.map(f => (
+              <div key={f.id} className="mad-flavor-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(17,17,17,0.08)', borderRadius: '6px', padding: '20px 12px 16px', textAlign: 'center' }}>
+                <div style={{ height: '88px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                  <img src={f.img} alt={f.label} style={{ maxHeight: '88px', maxWidth: '85%', objectFit: 'contain', display: 'block' }} />
+                </div>
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: '#3A342C', lineHeight: 1.3 }}>{f.label}</span>
+              </div>
+            ))}
           </div>
 
-          {/* Saveurs */}
-          <div style={{ marginBottom: '0' }}>
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'var(--accent)',
-              marginBottom: '8px',
-            }}>
-              Nos saveurs
-            </p>
-            <span style={{ display: 'block', width: '28px', height: '1px', background: 'var(--accent)', marginBottom: '14px' }} />
-            <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '12px',
-              lineHeight: 1.65,
-              color: 'var(--text-secondary)',
-              marginBottom: '20px',
-            }}>
-              Des recettes raffinées, élaborées avec des ingrédients d'exception.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {[
-                { nom: 'Nature' },
-                { nom: 'Citron' },
-                { nom: 'Fleur d\'oranger' },
-                { nom: 'Pistache framboise', best: true },
-                { nom: 'Chocolat noir' },
-                { nom: 'Chocolat au lait', best: true },
-                { nom: 'Ananas coco passion', best: true },
-                { nom: 'Rose violette' },
-                { nom: 'Thé vert matcha griotte' },
-              ].map(s => (
-                <span key={s.nom} style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '11px',
-                  fontWeight: 400,
-                  letterSpacing: '0.04em',
-                  color: 'var(--text-primary)',
-                  background: '#FFFFFF',
-                  padding: '7px 14px',
-                  boxShadow: '0 1px 4px rgba(17,17,17,0.07)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                }}>
-                  {s.nom}
-                  {s.best && (
-                    <span style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
-                      fontSize: '7px',
-                      fontWeight: 500,
-                      letterSpacing: '0.14em',
-                      textTransform: 'uppercase',
-                      color: 'var(--accent)',
-                      border: '1px solid var(--accent)',
-                      padding: '2px 6px',
-                      whiteSpace: 'nowrap',
-                    }}>
-                      Best-seller
-                    </span>
-                  )}
-                </span>
-              ))}
-            </div>
-          </div>
+          <a href="/creations/petits-dejeuners-et-pauses/madeleines-20" className="mad-cta" style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', transition: 'color 0.25s ease, border-color 0.25s ease' }}>
+            Découvrir les coffrets
+            <span className="mad-arrow" style={{ display: 'inline-block', transition: 'transform 0.25s ease' }}>→</span>
+          </a>
         </div>
+      </div>
 
+      {/* ── Bas : 3 colonnes d'infos ── */}
+      <div className="mad-infos-wrap" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', background: '#FFFFFF' }}>
+        <div className="mad-infos" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
+          {INFOS.map(info => (
+            <div key={info.title}>
+              <span style={{ display: 'block', width: '24px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '12px' }}>
+                {info.title}
+              </p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+                {info.text}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <style suppressHydrationWarning>{`
-        @media (max-width: 768px) {
-          .madeleine-inner { grid-template-columns: 1fr !important; }
-          .madeleine-img-col { min-height: 280px !important; }
-          .madeleine-content { padding: 48px 24px !important; }
-          .madeleine-coffret-row { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+        .mad-flavor-card { transition: transform 0.25s ease; }
+        .mad-flavor-card:hover { transform: translateY(-3px); }
+        .mad-cta:hover { color: var(--accent); border-color: var(--accent); }
+        .mad-cta:hover .mad-arrow { transform: translateX(4px); }
+        @media (max-width: 900px) {
+          .mad-top { grid-template-columns: 1fr !important; }
+          .mad-img-col { min-height: 300px !important; }
+          .mad-content { padding: 48px 24px !important; }
+          .mad-infos { grid-template-columns: 1fr !important; gap: 28px !important; padding: 40px 24px !important; }
         }
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .madeleine-content { padding: 52px 40px !important; }
+        @media (max-width: 1024px) and (min-width: 901px) {
+          .mad-content { padding: 56px 40px !important; }
+          .mad-infos { padding: 44px 40px !important; }
         }
       `}</style>
     </section>

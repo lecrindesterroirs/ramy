@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import Reveal from './Reveal'
+import CategoryClosing from './CategoryClosing'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
@@ -31,6 +33,7 @@ export default function ProductsPageTemplate({
   fallbackProducts,
   seoArticle,
   basePath,
+  editorial,
 }) {
   const [sortOpen, setSortOpen]     = useState(false)
   const [sortLabel, setSortLabel]   = useState('En vedette')
@@ -56,24 +59,26 @@ export default function ProductsPageTemplate({
 
         {/* ── Hero ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
-          <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
+          <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '460px', overflow: 'hidden' }}>
             <img
               src={heroImg}
               alt={heroTitle}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: heroImgPosition || 'center', display: 'block' }}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: heroImgPosition || 'center', display: 'block' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
-            <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                {breadcrumb}
-              </p>
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                {heroTitle}
-              </h1>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px' }}>
-                {heroSubtitle}
-              </p>
-            </div>
+            <Reveal mode="mount" y={16}>
+              <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                  {breadcrumb}
+                </p>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                  {heroTitle}
+                </h1>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px' }}>
+                  {heroSubtitle}
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
 
@@ -146,140 +151,32 @@ export default function ProductsPageTemplate({
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
           {products.map((p, i) => (
-            <ProductCard key={p.id || i} product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
+            <Reveal key={p.id || i} delay={(i % 4) * 90}>
+              <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
+            </Reveal>
           ))}
         </div>
 
       </main>
 
-      {/* ── Section éditoriale ── */}
-      <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-
-        {/* Bloc texte centré */}
-        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '80px 40px 64px', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
-            Pensé pour les réceptions d'entreprise
-          </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
-            Des produits qui ont du goût.<br />Un service qui tient ses promesses.
-          </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
-            Des prestations pensées pour les entreprises qui accordent de l'importance au goût. Petits-déjeuners, plateaux repas, cocktails, buffets : chaque produit est sélectionné, chaque livraison est soignée.
-          </p>
-        </div>
-
-        {/* 4 icônes */}
-        <div className="prods-args" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 72px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
-          {[
-            {
-              icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l2 2 4-4"/></svg>,
-              titre: 'Produits de qualité',
-              desc: 'Des ingrédients sélectionnés avec exigence et travaillés dans notre savoir-faire pour des créations raffinées.',
-            },
-            {
-              icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>,
-              titre: 'Livraison dès 6h30',
-              desc: 'Une logistique pensée pour les entreprises, livraison à l\'heure souhaitée à Paris et en Île-de-France.',
-            },
-            {
-              icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>,
-              titre: 'Prestations sur mesure',
-              desc: 'Nous prenons en compte vos contraintes alimentaires, votre budget et vos envies pour chaque événement.',
-            },
-            {
-              icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
-              titre: 'Accompagnement dédié',
-              desc: 'Un interlocuteur unique, dédié et à l\'écoute, pour vous accompagner du devis à la réalisation.',
-            },
-          ].map((item, i) => (
-            <div key={i} style={{ background: '#FFFFFF', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <div style={{ color: 'var(--accent)', opacity: 0.85 }}>{item.icon}</div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>{item.titre}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div style={{ textAlign: 'center', padding: '0 40px 80px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
-            Besoin d'une prestation sur mesure ?
-          </p>
-          <a
-            href="/devis"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-          >
-            Demander un devis →
-          </a>
-        </div>
-
-      </section>
-
-      {/* ── Article SEO catégorie ── */}
-      {seoArticle && (
-        <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-          <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 88px' }}>
-            <div
-              className="cat-seo-body"
-              dangerouslySetInnerHTML={{ __html: seoArticle }}
-            />
-          </div>
-        </section>
-      )}
+      {/* ── Section éditoriale + article SEO ── */}
+      <CategoryClosing {...(editorial || {})} seoArticle={seoArticle} />
 
       <style suppressHydrationWarning>{`
-        .cat-seo-body p {
-          font-family: 'Neue Montreal', sans-serif;
-          font-size: 15px;
-          line-height: 1.8;
-          color: var(--text-secondary);
-          margin-bottom: 20px;
-        }
-        .cat-seo-body h2 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
-          font-size: 26px;
-          font-weight: 400;
-          color: var(--text-primary);
-          margin: 40px 0 16px;
-        }
-        .cat-seo-body h2:first-child { margin-top: 0; }
-        .cat-seo-body ul {
-          font-family: 'Neue Montreal', sans-serif;
-          font-size: 15px;
-          line-height: 1.8;
-          color: var(--text-secondary);
-          padding-left: 24px;
-          margin-bottom: 20px;
-        }
-        .cat-seo-body strong {
-          color: var(--text-primary);
-          font-weight: 500;
-        }
-        .cat-seo-body a {
-          color: var(--accent);
-          text-decoration: none;
-          border-bottom: 1px solid var(--accent);
-        }
-        .cat-seo-body a:hover { opacity: 0.75; }
+        .pd-card { border-radius: 4px !important; }
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
-          .page-hero { height: 50vh !important; min-height: 300px !important; }
+          .page-hero { height: 50vh !important; min-height: 340px !important; }
           .page-hero-text { padding: 0 24px !important; }
           .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
           .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
           .filter-cats::-webkit-scrollbar { display: none; }
           .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 36px 16px !important; }
-          .prods-args { grid-template-columns: 1fr 1fr !important; padding: 0 24px 60px !important; }
-          .cat-seo-body { padding: 0 !important; }
-          .cat-seo-body h2 { font-size: 22px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .page-hero-wrapper { padding: 24px 40px 0 !important; }
           .products-filter-bar { padding: 0 40px !important; }
           .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
-          .prods-args { padding: 0 40px 60px !important; }
         }
       `}</style>
 
@@ -303,68 +200,65 @@ function ProductCard({ product, basePath }) {
   const priceClean = (priceRaw || '').replace(/\s*ht\s*$/i, '').trim()
 
   return (
-    <div
-      style={{ cursor: 'pointer' }}
+    <a
+      href={href}
+      className="pd-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'block',
+        textDecoration: 'none',
+        background: '#FFFFFF',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        boxShadow: hovered
+          ? '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)'
+          : '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'box-shadow 0.35s ease, transform 0.35s ease',
+      }}
     >
-      {/* Image cliquable */}
-      <a href={href} style={{ display: 'block', textDecoration: 'none' }}>
-        <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF', borderRadius: '4px', boxShadow: hovered ? '0 16px 36px rgba(17,17,17,0.12)' : '0 4px 16px rgba(17,17,17,0.04)', transition: 'box-shadow 0.5s ease' }}>
-          <img
-            src={product.img}
-            alt={product.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
-          />
-          {/* Overlay au survol */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'rgba(20,16,12,0.30)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            opacity: hovered ? 1 : 0,
-            transition: 'opacity 0.4s ease',
+      {/* Image pleine largeur dans la carte, overlay "Découvrir" au survol */}
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
+        <img
+          src={product.img}
+          alt={product.name}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
+        />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(20,16,12,0.30)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.4s ease',
+        }}>
+          <span style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '11px 26px',
+            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'transform 0.4s ease',
           }}>
-            <span style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '12px',
-              fontWeight: 500,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              color: '#FFFFFF',
-              border: '1px solid rgba(255,255,255,0.7)',
-              padding: '11px 26px',
-              transform: hovered ? 'translateY(0)' : 'translateY(6px)',
-              transition: 'transform 0.4s ease',
-            }}>
-              Découvrir
-            </span>
-          </div>
+            Découvrir
+          </span>
         </div>
-      </a>
+      </div>
 
-      <div style={{ padding: '18px 2px 0', display: 'flex', flexDirection: 'column' }}>
-        {/* Nom — Baskerville serif */}
-        <a href={href} style={{ textDecoration: 'none' }}>
-          <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '8px', transition: 'color 0.25s ease' }}>
-            {product.name}
-          </p>
-        </a>
-
-        {/* Prix */}
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '2px' : '0' }}>
+      {/* Contenu dans la carte — nom, prix, pièces */}
+      <div style={{ padding: '16px 16px 16px', display: 'flex', flexDirection: 'column' }}>
+        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '9px', transition: 'color 0.25s ease' }}>
+          {product.name}
+        </p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '9px' : '0' }}>
           {priceClean}
           <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>
         </p>
-        {/* Pièces */}
         {hasPieces && (
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)' }}>
             {pieces}
           </p>
         )}
       </div>
-    </div>
+    </a>
   )
 }

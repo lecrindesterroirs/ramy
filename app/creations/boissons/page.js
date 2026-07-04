@@ -28,6 +28,11 @@ export default function Boissons() {
       fallbackProducts={BOISSONS}
       basePath="/creations/boissons"
       seoArticle={SEO_ARTICLE}
+      editorial={{
+        eyebrow: 'Pensé pour accompagner chaque moment',
+        title: 'Des boissons choisies.\nJamais par défaut.',
+        body: "Jus de fruits entiers Alain Milliat, thés Mariage Frères, cafés servis en thermose : la boisson est le détail que vos invités remarquent. Nous la choisissons avec la même exigence que le reste de la table.",
+      }}
     />
   )
 }

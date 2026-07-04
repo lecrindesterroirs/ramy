@@ -55,9 +55,10 @@ export default function Footer() {
                 {[
                   { label: 'Petit-déjeuner & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
                   { label: 'Déjeuner', href: '/creations/plateaux-repas' },
-                  { label: 'Cocktail', href: '/creations/cocktails-et-buffets' },
+                  { label: 'Cocktail', href: '/creations/cocktails' },
                   { label: 'Boissons', href: '/creations/boissons' },
-                  { label: 'Événements Saisonniers', href: '/creations/evenements-saisonniers' },
+                  { label: 'Personnalisation', href: '/creations/personnalisation' },
+                  { label: 'Coffrets Cadeaux', href: '/creations/coffrets-cadeaux' },
                 ].map(l => (
                   <a key={l.label} href={l.href} style={linkStyle}
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
@@ -90,6 +91,7 @@ export default function Footer() {
               <span style={colTitleStyle}>Entreprise</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
+                  { label: 'Nos occasions', href: '/occasions' },
                   { label: 'Contact', href: '/contact' },
                   { label: 'Demande de devis', href: '/devis' },
                 ].map(l => (

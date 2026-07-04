@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import Reveal from '../../components/Reveal'
 import ArticleCard from './ArticleCard'
 import { articles } from '../../lib/journalData'
 
@@ -10,6 +11,12 @@ const CATEGORIES = ['Tous', 'Conseils', 'Inspirations', 'QCVT']
 
 export default function Journal() {
   const [activeCategory, setActiveCategory] = useState('Tous')
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const cat = params.get('categorie')
+    if (cat && CATEGORIES.includes(cat)) setActiveCategory(cat)
+  }, [])
 
   const filtered = activeCategory === 'Tous'
     ? articles
@@ -22,46 +29,24 @@ export default function Journal() {
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* ── Hero ── */}
-        <div
-          className="journal-hero"
-          style={{
-            background: 'var(--bg-secondary)',
-            padding: '100px 72px 80px',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: '20px',
-          }}>
-            L'Écrin Traiteur
-          </p>
-          <h1 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
-            fontSize: 'clamp(48px, 7vw, 96px)',
-            fontWeight: 400,
-            lineHeight: 1.0,
-            letterSpacing: '-0.01em',
-            color: 'var(--text-primary)',
-            marginBottom: '24px',
-          }}>
-            Le Journal
-          </h1>
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '16px',
-            lineHeight: 1.7,
-            color: 'var(--text-secondary)',
-            maxWidth: '500px',
-            margin: '0 auto',
-          }}>
-            Actualités, coulisses, inspirations et conseils de notre maison traiteur.
-          </p>
+        <div className="journal-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <header className="journal-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
+            <img src="/creations-featured.webp" alt="Le Journal L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <Reveal mode="mount" y={16}>
+              <div className="journal-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '560px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                  L'Écrin Traiteur
+                </p>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(40px, 5vw, 70px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                  Le Journal
+                </h1>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
+                  Actualités, coulisses, inspirations et conseils de notre maison traiteur.
+                </p>
+              </div>
+            </Reveal>
+          </header>
         </div>
 
         {/* ── Filtres catégories ── */}
@@ -157,17 +142,21 @@ export default function Journal() {
       </main>
 
       <style suppressHydrationWarning>{`
+        .journal-hero { border-radius: 2px !important; }
         .journal-filters button:hover {
           color: var(--text-primary) !important;
         }
         @media (max-width: 768px) {
-          .journal-hero { padding: 80px 24px 60px !important; }
+          .journal-hero-wrapper { padding: 20px 20px 0 !important; }
+          .journal-hero         { min-height: 380px !important; height: 42vh !important; }
+          .journal-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
           .journal-filters > div { padding: 0 16px !important; }
           .journal-grid-wrapper { padding: 48px 24px 80px !important; }
           .journal-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .journal-hero { padding: 80px 40px 60px !important; }
+        @media (max-width: 1100px) and (min-width: 769px) {
+          .journal-hero-wrapper { padding-left: 48px !important; padding-right: 48px !important; }
+          .journal-hero-text    { padding-left: 48px !important; padding-right: 48px !important; }
           .journal-filters > div { padding: 0 40px !important; }
           .journal-grid-wrapper { padding: 60px 40px 80px !important; }
           .journal-grid { grid-template-columns: repeat(2, 1fr) !important; }

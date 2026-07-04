@@ -8,6 +8,7 @@ const PRESTATIONS = [
   'Cocktail / Buffet',
   'Goûter',
   'Séminaire',
+  'Personnalisation',
   'Événement sur mesure',
 ]
 

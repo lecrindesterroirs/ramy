@@ -10,6 +10,7 @@ const MOMENTS = {
     cards: [
       { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/creations-1.png' },
       { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/creations-2.png' },
+      { title: 'Personnalisation', href: '/creations/personnalisation', img: '/prod-macarons.webp' },
     ],
   },
   dejeuner: {
@@ -46,24 +47,24 @@ const UNIVERS_ITEMS = [
 const JOURNAL_ITEMS = {
   main: [
     { label: 'Le Journal', href: '/journal' },
-    { label: 'Tous les articles', href: '/journal/tous-les-articles' },
+    { label: 'Tous les articles', href: '/journal' },
   ],
   categories: [
-    { label: 'Guides', href: '/journal/guides' },
-    { label: 'Conseils', href: '/journal/conseils' },
-    { label: 'Inspirations', href: '/journal/inspirations' },
+    { label: 'QCVT', href: '/journal?categorie=QCVT' },
+    { label: 'Conseils', href: '/journal?categorie=Conseils' },
+    { label: 'Inspirations', href: '/journal?categorie=Inspirations' },
   ],
   occasions: [
-    { label: 'CODIR & COMEX', href: '/occasions/codir-comex' },
-    { label: 'Séminaires d\'entreprise', href: '/occasions/seminaires' },
+    { label: 'CODIR & COMEX', href: '/occasions/petit-dejeuner-codir' },
+    { label: 'Séminaires d\'entreprise', href: '/occasions/seminaire-entreprise' },
     { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
-    { label: 'Journées de formation', href: '/occasions/formation' },
+    { label: 'Journées de formation', href: '/occasions/journee-formation' },
     { label: 'Team Building', href: '/occasions/team-building' },
-    { label: 'Petit-déjeuner d\'entreprise', href: '/occasions/petit-dejeuner' },
-    { label: 'Déjeuner d\'entreprise', href: '/occasions/dejeuner' },
-    { label: 'Cocktail d\'entreprise', href: '/occasions/cocktail' },
-    { label: 'Goûter d\'entreprise', href: '/occasions/gouter' },
-    { label: 'Afterwork', href: '/occasions/afterwork' },
+    { label: 'Petit-déjeuner d\'entreprise', href: '/occasions/petit-dejeuner-entreprise' },
+    { label: 'Déjeuner d\'entreprise', href: '/occasions/dejeuner-entreprise' },
+    { label: 'Cocktail d\'entreprise', href: '/occasions/cocktail-entreprise' },
+    { label: 'Goûter d\'entreprise', href: '/occasions/gouter-entreprise' },
+    { label: 'Afterwork', href: '/occasions/afterwork-entreprise' },
   ],
 }
 
@@ -151,7 +152,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         {/* LEFT NAV — Moments */}
         <div
           className="nav-left"
-          style={{ display: 'flex', alignItems: 'center', gap: '32px', position: 'relative' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '36px', position: 'relative' }}
           onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
         >
           {Object.values(MOMENTS).map(moment => {
@@ -165,7 +166,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   href={moment.href}
                   style={{
                     fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '14px',
+                    fontSize: '15px',
                     fontWeight: 500,
                     letterSpacing: '0.01em',
                     color: '#111111',
@@ -186,7 +187,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown(moment.key) }}
                 style={{
                   fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '14px',
+                  fontSize: '15px',
                   fontWeight: 500,
                   letterSpacing: '0.01em',
                   color: active ? 'var(--accent)' : '#111111',
@@ -328,7 +329,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             <button
               style={{
                 fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '14px',
+                fontSize: '15px',
                 fontWeight: 500,
                 letterSpacing: '0.01em',
                 color: '#111111',
@@ -397,7 +398,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             <button
               style={{
                 fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '14px',
+                fontSize: '15px',
                 fontWeight: 500,
                 letterSpacing: '0.01em',
                 color: '#111111',
@@ -536,7 +537,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             href="/contact"
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 400,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
@@ -561,7 +562,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             href="/devis"
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 400,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
@@ -740,6 +741,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
       )}
 
       <style suppressHydrationWarning>{`
+        .card-img { border-radius: 4px !important; }
         @keyframes dropdownReveal {
           from { opacity: 0; transform: translateY(-6px); }
           to   { opacity: 1; transform: translateY(0); }

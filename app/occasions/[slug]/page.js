@@ -6,10 +6,16 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { OCCASIONS, FAQ_DERNIERE_MINUTE } from '../../../lib/occasionsData'
 import { PRODUCTS } from '../../../lib/productsData'
-import { COLLECTIONS } from '../../../lib/collectionsData'
+import { PRODUITS as PLATEAUX_PRODUITS } from '../../creations/plateaux-repas/page'
+import { FORMULES as COCKTAIL_FORMULES } from '../../creations/cocktails/page'
 import { CITIES } from '../../../lib/citiesData'
 import DevisRapide from '../../../components/DevisRapide'
 import { useState } from 'react'
+
+const PRODUCT_ROUTE_BY_CATEGORY = {
+  'plateaux-repas': 'plateaux-repas',
+  'cocktails': 'cocktails',
+}
 
 export default function OccasionPage() {
   const { slug } = useParams()
@@ -17,9 +23,12 @@ export default function OccasionPage() {
   if (!occasion) notFound()
 
   const isPlateaux = occasion.productCategory === 'plateaux-repas'
-  const productRoute = isPlateaux ? 'plateaux-repas' : 'petits-dejeuners-et-pauses'
+  const isCocktails = occasion.productCategory === 'cocktails'
+  const productRoute = PRODUCT_ROUTE_BY_CATEGORY[occasion.productCategory] || 'petits-dejeuners-et-pauses'
   const products = isPlateaux
-    ? occasion.linkedProducts.map(id => COLLECTIONS.find(c => c.id === id)).filter(Boolean).map(c => ({ id: c.id, img: c.img, name: c.nom, categoryLabel: 'Plateau repas' }))
+    ? occasion.linkedProducts.map(id => PLATEAUX_PRODUITS.find(p => p.id === id)).filter(Boolean).map(p => ({ id: p.id, img: p.img, name: p.nom, categoryLabel: p.collection === 'signature' ? 'Collection Signature' : 'Collection Essentiel' }))
+    : isCocktails
+    ? occasion.linkedProducts.map(id => COCKTAIL_FORMULES.find(f => f.key === id)).filter(Boolean).map(f => ({ id: f.key, img: f.img, name: `Cocktail ${f.label}`, categoryLabel: 'Formule cocktail' }))
     : occasion.linkedProducts.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
 
   const cities = occasion.linkedCities
@@ -224,6 +233,7 @@ export default function OccasionPage() {
                 occasion.name?.toLowerCase().includes('repas') ? 'Plateaux repas'
                 : occasion.name?.toLowerCase().includes('séminaire') ? 'Séminaire'
                 : occasion.name?.toLowerCase().includes('goûter') ? 'Goûter'
+                : occasion.name?.toLowerCase().includes('cocktail') || occasion.name?.toLowerCase().includes('afterwork') ? 'Cocktail / Buffet'
                 : 'Petit-déjeuner'
               }
               titre={`Organiser un ${occasion.name?.toLowerCase()} à Paris ?`}

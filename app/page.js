@@ -7,6 +7,7 @@ import SelectionSection from '../components/SelectionSection'
 import ManifestoSection from '../components/ManifestoSection'
 import DetailSection from '../components/DetailSection'
 import CreationsSection from '../components/CreationsSection'
+import ArtisansMapSection from '../components/ArtisansMapSection'
 import MadeleinesSection from '../components/MadeleinesSection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import FAQSection from '../components/FAQSection'
@@ -25,6 +26,7 @@ export default function Home() {
         <LogosSection />
         <PrometteSection />
         <CreationsSection />
+        <ArtisansMapSection />
         <MadeleinesSection />
         <ExperiencesSection />
         <SelectionSection />

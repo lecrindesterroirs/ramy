@@ -10,8 +10,8 @@ const args = [
   },
   {
     num: '02',
-    title: 'Fait par des mains expertes',
-    body: 'Nos partenaires fabriquent artisanalement, souvent chaque matin. Ce que vous recevez n\'est pas industriel. Ça se sent au premier goût.',
+    title: 'Le goût de l\'artisanat',
+    body: 'Derrière chaque création se cache le savoir-faire d\'un artisan qui privilégie la qualité des ingrédients, la précision du geste et le plaisir de la dégustation.',
   },
   {
     num: '03',

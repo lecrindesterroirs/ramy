@@ -1,295 +1,167 @@
 'use client'
 
+import { useRef } from 'react'
+import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import Reveal from '../../../components/Reveal'
+import ArtisansMapSection from '../../../components/ArtisansMapSection'
+import { ARTISANS } from '../../../lib/artisansData'
 
-const categories = [
-  {
-    titre: 'Boulangerie & Viennoiseries',
-    artisans: [
-      {
-        nom: 'Maison Marques',
-        specialite: 'Viennoiseries',
-        description: "On travaille avec Maison Marques depuis le début. Référencée Gault & Millau, leurs viennoiseries sont confectionnées chaque matin avec des farines françaises rigoureusement sélectionnées. C'est le genre de partenaire qui ne déçoit jamais, régulier, précis, toujours bon.",
-        tags: ['Gault & Millau', 'Fabrication quotidienne', 'Île-de-France'],
-        img: '/maison-marques.avif',
-        avatar: '/carlos-marques.avif',
-      },
-      {
-        nom: "D'un Passage à l'Autre",
-        specialite: 'Boulangerie · Cakes & Crêpes',
-        description: "Une boulangerie artisanale boulonnaise que peu de gens connaissent et qu'on est fiers de faire découvrir. Deux adresses rue Galliéni et rue Paul Bert à Boulogne, dont une gamme certifiée bio. Leurs cakes et crêpes apportent une vraie touche maison à nos prestations.",
-        tags: ['Boulogne-Billancourt', 'Gamme bio certifiée', 'Fait maison'],
-        img: '/cake-passage-avatar.png',
-        avatar: '/cake-passage.jpg',
-      },
-    ],
-  },
-  {
-    titre: 'Pâtisserie',
-    artisans: [
-      {
-        nom: 'Mado Paris',
-        specialite: 'Madeleines',
-        description: "Les madeleines Mado Paris sont notre produit signature. Fabriquées dans leur atelier parisien avec des ingrédients biologiques français, sans huile de palme. Moelleuses, dorées, reconnaissables au premier goût : nos clients les reconnaissent avant même de lire l'étiquette.",
-        tags: ['Ingrédients biologiques', 'Sans huile de palme', 'Paris'],
-        img: '/madeleine-home.jpg',
-      },
-      {
-        nom: 'Laura Todd',
-        specialite: 'Cookies',
-        description: "Installés à Paris depuis 1985, pionniers du cookie en France. Leur recette, primée à Chicago en 1933, est produite chaque jour dans leur atelier du 18e. Les cookies Laura Todd disparaissent toujours en premier sur nos plateaux. Une adresse qu'on garde précieusement.",
-        tags: ['Paris depuis 1985', 'Recette signature', 'Production quotidienne'],
-        img: '/laura-todd.jpg',
-      },
-      {
-        nom: 'Pierre Morel',
-        specialite: 'Macarons',
-        description: "Formé auprès d'un Meilleur Ouvrier de France, Pierre Morel fabrique ses macarons depuis 2013 selon une technique exigeante. Meringue italienne signature, zéro arôme artificiel, ganaches au chocolat pur origine 64%. Des macarons d'une précision et d'une régularité rarissimes.",
-        tags: ['Meringue italienne', 'Formé par un MOF', 'Chocolat pur origine'],
-        img: '/pm-pierre-morel.jpg',
-        avatar: '/pierre-morel.jpg',
-      },
-    ],
-  },
-  {
-    titre: 'Produits laitiers',
-    artisans: [
-      {
-        nom: 'La Ferme de Viltain',
-        specialite: 'Yaourts & Produits laitiers',
-        description: "À Jouy-en-Josas, à 17 km de Paris, la Ferme de Viltain fabrique ses yaourts depuis 1954. Leur troupeau de 350 vaches fournit le lait que leur laiterie transforme directement : yaourts natures, aux fruits, de dessert. Un circuit en direct qui se sent dans l'onctuosité : pas de transport long, pas d'intermédiaire, un produit frais qui arrive dans nos plateaux petit-déjeuner le lendemain matin.",
-        tags: ['Jouy-en-Josas · 17 km de Paris', 'Depuis 1954 · 350 vaches', 'Laiterie en circuit direct'],
-        img: '/ferme-viltain.webp',
-      },
-    ],
-  },
-  {
-    titre: 'Boissons',
-    artisans: [
-      {
-        nom: 'Alain Milliat',
-        specialite: 'Jus & Nectars',
-        description: "Fondée en 1997 à Valence, dans la Drôme. 38 références, fruits entiers, aucun sucre ajouté, aucun additif. La moitié des fruits vient de producteurs français. Quand on pose un jus Alain Milliat sur une table, les gens le remarquent. C'est ça, un produit qui se justifie seul.",
-        tags: ['Fruits entiers', 'Sans sucre ajouté', 'Drôme · 1997'],
-        img: '/selection-artisans.jpg',
-      },
-      {
-        nom: 'Les Vergers de Plaisirs',
-        specialite: 'Jus de pomme artisanal',
-        description: "Verger familial planté en 1982 à Plaisir, dans les Yvelines. 10 variétés de pommes sélectionnées pour le goût. Leur jus de pomme artisanal, sans aucun ajout, est l'un de nos produits les plus appréciés en pause. Local, direct, sans intermédiaire.",
-        tags: ['Verger depuis 1982', 'Yvelines', 'Sans ajout'],
-        img: '/verger-plaisir.avif',
-      },
-      {
-        nom: 'Mariage Frères',
-        specialite: 'Thés & Infusions',
-        description: "Grande maison de thé française fondée en 1854. Boutique historique rue du Bourg-Tibourg, dans le Marais à Paris. Référence de l'art français du thé et pionnière des thés parfumés. Mariage Frères, c'est le choix qu'on fait quand on veut que la pause thé soit aussi soignée que le reste de la prestation.",
-        tags: ['Depuis 1854', 'Le Marais', 'Grande maison'],
-        img: '/mariage-freres.jpg',
-        avatar: '/mariage-freres-logo.jpg',
-      },
-    ],
-  },
-]
+/* ─── Icônes ─────────────────────────────────────────────────────────── */
+
+function Icon({ name, size = 20, color = 'currentColor' }) {
+  const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth: 1.4, strokeLinecap: 'round', strokeLinejoin: 'round' }
+  if (name === 'wheat') return (
+    <svg {...common}><path d="M12 21V9" /><path d="M12 9c-2-1-3-3-3-5 2 0 4 1 3 5Z" /><path d="M12 9c2-1 3-3 3-5-2 0-4 1-3 5Z" /><path d="M12 13c-2-1-3-3-3-5 2 0 4 1 3 5Z" /><path d="M12 13c2-1 3-3 3-5-2 0-4 1-3 5Z" /><path d="M12 17c-2-1-3-3-3-5 2 0 4 1 3 5Z" /><path d="M12 17c2-1 3-3 3-5-2 0-4 1-3 5Z" /></svg>
+  )
+  if (name === 'cake') return (
+    <svg {...common}><path d="M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7" /><path d="M4 21h16" /><path d="M8 12V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4" /><path d="M12 6V3" /><path d="M12 3c.7 0 1-.5 1-1" /></svg>
+  )
+  if (name === 'bottle') return (
+    <svg {...common}><path d="M10 2h4" /><path d="M10 2v4.5L7 10a3 3 0 0 0-1 2.2V20a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7.8a3 3 0 0 0-1-2.2l-3-3.5V2" /><path d="M7.5 14h9" /></svg>
+  )
+  if (name === 'leaf') return (
+    <svg {...common}><path d="M12 4Q19 8 19 14Q19 20 12 20Q5 20 5 14Q5 8 12 4Z" /><path d="M12 20V9" /></svg>
+  )
+  if (name === 'craft') return (
+    <svg {...common}><circle cx="12" cy="9" r="6" /><path d="M8.5 14L6.5 21l5.5-3 5.5 3-2-7" /></svg>
+  )
+  if (name === 'truck') return (
+    <svg {...common}><rect x="2" y="8" width="12" height="9" rx="1" /><path d="M14 11h3.2c.4 0 .8.2 1 .5l2 3v3.5h-6" /><circle cx="6.5" cy="19" r="1.6" /><circle cx="16.5" cy="19" r="1.6" /></svg>
+  )
+  if (name === 'arrow-left') return (<svg {...common}><path d="M19 12H5" /><path d="M11 18l-6-6 6-6" /></svg>)
+  if (name === 'arrow-right') return (<svg {...common}><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>)
+  return null
+}
+
+/* ─── Carte artisan (carrousel) ──────────────────────────────────────── */
+
+function ArtisanCard({ a }) {
+  return (
+    <Link href={`/univers/nos-artisans/${a.slug}`} className="artisan-mini-card" style={{ textDecoration: 'none', display: 'block', flex: '0 0 auto', width: '260px', background: '#FFFFFF' }}>
+      <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
+        <img src={a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      </div>
+      <div style={{ padding: '18px 4px 4px', textAlign: 'center' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>{a.specialite}</p>
+        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)' }}>{a.nom}</p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>{a.ville}</p>
+      </div>
+    </Link>
+  )
+}
+
+/* ─── Page ───────────────────────────────────────────────────────────── */
 
 export default function NosArtisans() {
+  const scrollerRef = useRef(null)
+
+  const scrollBy = (dir) => {
+    const el = scrollerRef.current
+    if (!el) return
+    el.scrollBy({ left: dir * 300, behavior: 'smooth' })
+  }
+
   return (
     <>
       <Navbar />
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
-        {/* ── Header ── */}
-        <div
-          className="artisans-header"
-          style={{
-            background: 'var(--bg-secondary)',
-            padding: '100px 72px 80px',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: 'var(--accent)',
-            marginBottom: '24px',
-          }}>
-            Nos Artisans
-          </p>
-          <h1 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
-            fontSize: 'clamp(32px, 5vw, 68px)',
-            fontWeight: 400,
-            lineHeight: 1.05,
-            letterSpacing: '-0.01em',
-            color: 'var(--text-primary)',
-            marginBottom: '28px',
-          }}>
-            Des artisans choisis<br />pour ce qu'ils font vraiment.
-          </h1>
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '15px',
-            lineHeight: 1.75,
-            color: 'var(--text-secondary)',
-            maxWidth: '540px',
-            margin: '0 auto',
-          }}>
-            Mado Paris, Alain Milliat, Mariage Frères, Laura Todd... Chaque partenaire a été choisi pour une raison simple : la qualité de ce qu'il produit, sa régularité et son engagement artisanal.
-          </p>
-        </div>
-
-        {/* ── Catégories ── */}
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px 120px' }}>
-          {categories.map((cat, ci) => (
-            <div key={ci} style={{ marginBottom: ci < categories.length - 1 ? '96px' : 0 }}>
-
-              {/* Titre catégorie */}
-              <div style={{ marginBottom: '40px' }}>
-                <h2 style={{
-                  fontFamily: "'Baskerville Display PT', Georgia, serif",
-                  fontSize: 'clamp(28px, 3vw, 44px)',
-                  fontWeight: 400,
-                  letterSpacing: '-0.01em',
-                  color: 'var(--text-primary)',
-                  marginBottom: '16px',
-                  lineHeight: 1,
-                }}>
-                  {cat.titre}
-                </h2>
-                <div style={{ width: '40px', height: '2px', background: 'var(--accent)' }} />
-              </div>
-
-              {/* Grille 2 colonnes */}
-              <div
-                className="artisans-grid"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '10px',
-                }}
-              >
-                {cat.artisans.map((a, i) => (
-                  <div key={i} style={{ background: 'var(--bg-secondary)' }}>
-
-                    {/* Photo */}
-                    <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden' }}>
-                      <img
-                        src={a.img}
-                        alt={a.nom}
-                        className="artisan-img"
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          display: 'block',
-                          transition: 'transform 0.6s ease',
-                        }}
-                      />
-                    </div>
-
-                    {/* Cercle portrait */}
-                    <div style={{ position: 'relative', height: 0 }}>
-                      <img
-                        src={a.avatar || a.img}
-                        alt={a.nom}
-                        className="artisan-avatar"
-                      />
-                    </div>
-
-                    {/* Contenu */}
-                    <div className="artisan-card-body" style={{ padding: '36px 32px 40px' }}>
-                      <p style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '10px',
-                        fontWeight: 500,
-                        letterSpacing: '0.18em',
-                        textTransform: 'uppercase',
-                        color: 'var(--accent)',
-                        marginBottom: '8px',
-                      }}>
-                        {a.specialite}
-                      </p>
-                      <h3 className="artisan-card-title" style={{
-                        fontFamily: "'Baskerville Display PT', Georgia, serif",
-                        fontSize: '26px',
-                        fontWeight: 400,
-                        color: 'var(--text-primary)',
-                        marginBottom: '16px',
-                        lineHeight: 1.2,
-                      }}>
-                        {a.nom}
-                      </h3>
-                      <p className="artisan-card-desc" style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
-                        fontSize: '14px',
-                        lineHeight: 1.75,
-                        color: 'var(--text-secondary)',
-                        marginBottom: '24px',
-                      }}>
-                        {a.description}
-                      </p>
-
-                      {/* Tags */}
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {a.tags.map((tag, j) => (
-                          <span key={j} style={{
-                            fontFamily: "'Neue Montreal', sans-serif",
-                            fontSize: '9px',
-                            fontWeight: 500,
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                            color: 'var(--text-secondary)',
-                            border: '1px solid rgba(17,17,17,0.15)',
-                            padding: '4px 8px',
-                          }}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                  </div>
-                ))}
-              </div>
+        {/* ── Intro ── */}
+        <div className="art-intro" style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+          <Reveal mode="mount">
+            <div>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
+                Nos Artisans
+              </p>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '24px' }}>
+                Des artisans d'exception,<br />
+                <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>des produits d'exception.</span>
+              </h1>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '440px', marginBottom: '32px' }}>
+                Nous sélectionnons chaque artisan pour son savoir-faire, la qualité irréprochable de ses produits et son exigence du détail.
+              </p>
+              <a href="#carte" style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.25)', padding: '15px 28px', textDecoration: 'none' }}>
+                Découvrir nos artisans
+              </a>
             </div>
-          ))}
+          </Reveal>
+          <Reveal mode="mount" delay={120}>
+            <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
+              <img src="/selection-artisans.jpg" alt="Nos artisans partenaires" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </div>
+          </Reveal>
         </div>
 
-        {/* ── CTA ── */}
-        <div
-          className="artisans-cta"
-          style={{
-            borderTop: '1px solid rgba(17,17,17,0.08)',
-            padding: '40px 72px',
-            textAlign: 'center',
-          }}
-        >
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'var(--text-secondary)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '16px',
-          }}>
+        {/* ── Carte de France ── */}
+        <ArtisansMapSection />
+
+        {/* ── Carrousel artisans partenaires ── */}
+        <div className="art-carousel-section" style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '32px', gap: '24px' }}>
+            <Reveal>
+              <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, color: 'var(--text-primary)' }}>
+                Nos artisans partenaires
+              </h2>
+            </Reveal>
+            <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+              <button aria-label="Précédent" onClick={() => scrollBy(-1)} className="carousel-btn" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid rgba(17,17,17,0.2)', background: '#FFFFFF', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-primary)' }}>
+                <Icon name="arrow-left" size={16} />
+              </button>
+              <button aria-label="Suivant" onClick={() => scrollBy(1)} className="carousel-btn" style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid rgba(17,17,17,0.2)', background: '#FFFFFF', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-primary)' }}>
+                <Icon name="arrow-right" size={16} />
+              </button>
+            </div>
+          </div>
+          <div ref={scrollerRef} className="art-scroller" style={{ display: 'flex', gap: '24px', overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory', paddingBottom: '8px' }}>
+            {ARTISANS.map((a, i) => (
+              <div key={a.slug} style={{ scrollSnapAlign: 'start' }}>
+                <Reveal delay={(i % 4) * 90}>
+                  <ArtisanCard a={a} />
+                </Reveal>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Notre engagement ── */}
+        <div className="art-engagement" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', maxWidth: '1440px', margin: '0 auto', padding: '72px 72px', display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: '32px', alignItems: 'center' }}>
+          <Reveal>
+            <div className="art-avatar-round" style={{ width: '96px', height: '96px', overflow: 'hidden', flexShrink: 0 }}>
+              <img src="/maison-marques.avif" alt="Notre engagement" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          </Reveal>
+          <Reveal delay={80}>
+            <div>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>Notre engagement</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '480px' }}>
+                En travaillant main dans la main avec ces artisans, nous soutenons l'excellence française et vous garantissons des produits authentiques, responsables et pleins de sens.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={160}>
+            <div className="engagement-icons" style={{ display: 'flex', gap: '28px' }}>
+              {[
+                { icon: 'leaf', label: 'Produits frais et de saison' },
+                { icon: 'craft', label: 'Savoir-faire artisanal' },
+                { icon: 'truck', label: 'Circuits courts et responsables' },
+              ].map((it, i) => (
+                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100px', textAlign: 'center' }}>
+                  <Icon name={it.icon} size={22} color="var(--accent)" />
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--text-secondary)', lineHeight: 1.4 }}>{it.label}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* ── CTA contact ── */}
+        <div className="artisans-cta" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '40px 72px', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
             Vous êtes artisan et souhaitez rejoindre notre réseau ?
-            <a
-              href="mailto:commercial@lecrin-traiteur.fr"
-              style={{
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                borderBottom: '1px solid currentColor',
-                paddingBottom: '1px',
-              }}
-            >
+            <a href="mailto:commercial@lecrin-traiteur.fr" style={{ color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '1px' }}>
               Contactez-nous →
             </a>
           </p>
@@ -298,32 +170,25 @@ export default function NosArtisans() {
       </main>
 
       <style suppressHydrationWarning>{`
-        .artisan-img:hover { transform: scale(1.04); }
-        .artisan-avatar {
-          position: absolute;
-          top: -28px;
-          left: 20px;
-          width: 56px;
-          height: 56px;
-          border-radius: 50% !important;
-          object-fit: cover;
-          object-position: center top;
-          border: 2px solid #FFFFFF;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-          display: block;
+        .art-scroller::-webkit-scrollbar { display: none; }
+        .art-scroller { scrollbar-width: none; }
+        .art-avatar-round { border-radius: 50% !important; }
+        .carousel-btn { border-radius: 50% !important; }
+        .carousel-btn:hover { background: var(--accent) !important; border-color: var(--accent) !important; color: #FFFFFF !important; }
+        .art-thumb { border-radius: 4px !important; }
+        .artisan-mini-card img { transition: transform 0.6s ease; }
+        .artisan-mini-card:hover img { transform: scale(1.05); }
+        @media (max-width: 1024px) {
+          .art-intro, .art-map > div { grid-template-columns: 1fr !important; }
+          .art-engagement { grid-template-columns: 1fr !important; text-align: center; }
+          .art-engagement > div:first-child { margin: 0 auto; }
+          .engagement-icons { justify-content: center !important; }
         }
         @media (max-width: 768px) {
-          .artisans-header { padding: 60px 24px 48px !important; }
-          .artisans-grid { grid-template-columns: 1fr !important; }
-          .artisans-cta { padding: 32px 24px !important; }
+          .art-intro, .art-carousel-section, .artisans-cta { padding-left: 24px !important; padding-right: 24px !important; }
+          .art-map > div { padding-left: 24px !important; padding-right: 24px !important; }
+          .art-engagement { padding: 56px 24px !important; }
           .artisans-cta p { flex-direction: column; gap: 12px; }
-          .artisan-card-title { font-size: 18px !important; }
-          .artisan-card-desc { font-size: 12px !important; }
-          .artisan-card-body { padding: 28px 20px 32px !important; }
-        }
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .artisans-header { padding: 80px 40px 60px !important; }
-          .artisans-cta { padding: 32px 40px !important; }
         }
       `}</style>
 

@@ -1,0 +1,359 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import Navbar from '../../../components/Navbar'
+import Footer from '../../../components/Footer'
+import Reveal from '../../../components/Reveal'
+import CategoryClosing from '../../../components/CategoryClosing'
+
+const SEO_ARTICLE = `
+  <h2>Plateaux apéritifs pour entreprise : l'afterwork sans logistique</h2>
+  <p>Le <strong>plateau apéritif d'entreprise</strong> est le format des fins de journée réussies : afterwork d'équipe, célébration d'un projet livré, pot informel entre deux services. Pas de traiteur en cuisine, pas de vaisselle — des plateaux généreux posés sur la table, et la convivialité fait le reste. L'Écrin Traiteur livre vos apéritifs à Paris et en Île-de-France.</p>
+
+  <h2>Des planches pensées pour le partage</h2>
+  <p>Nos plateaux réunissent le meilleur de nos artisans : bouchées salées, produits de caractère, douceurs à picorer. Le format « à partager » casse la distance entre collègues — on tend le plateau, on compare, on discute. C'est précisément ce qu'on attend d'un apéritif d'équipe, et c'est ce qui le distingue d'un buffet formel.</p>
+
+  <h2>Quelles quantités pour un afterwork ?</h2>
+  <p>Comptez <strong>4 à 6 pièces par personne et par heure</strong> pour un apéritif de fin de journée. Pour un afterwork qui se prolonge au-delà de deux heures ou qui remplace le dîner, passez à 10-12 pièces en ajoutant des bouchées plus consistantes. Pensez aux boissons : jus artisanaux et softs premium complètent naturellement la commande.</p>
+
+  <h2>Commander vos plateaux apéritifs à Paris</h2>
+  <p>Commandez avant <strong>14h la veille</strong> en indiquant l'heure exacte de livraison — vos plateaux arrivent prêts à servir, présentation soignée. Facturation entreprise avec TVA. Pour un événement plus ambitieux, notre équipe compose des formats sur mesure sur devis, réponse sous 24h.</p>
+`
+
+/* ─── Données ───────────────────────────────────────────────────── */
+
+const HERO = {
+  label: 'Plateaux Apéritifs',
+  description: 'De généreux plateaux à partager pour vos afterworks et réceptions — sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
+  hero: '/hero-plateaux-essentiel.png',
+}
+
+/* Filtres = familles de plateaux. */
+export const FILTRES = [
+  { key: 'tous',      label: 'Tous' },
+  { key: 'sandwichs', label: 'Sandwichs' },
+  { key: 'gourmands', label: 'Gourmands' },
+  { key: 'fraicheur', label: 'Fraîcheur' },
+  { key: 'signature', label: 'Signature' },
+]
+
+const CATEGORIE_COLORS = {
+  sandwichs: '#C08A3E',
+  gourmands: '#8A3A3A',
+  fraicheur: '#5A7247',
+  signature: '#B07D10',
+}
+
+/* Plateaux : description affichée sur la carte, recettes stockées pour
+   la fiche produit. Photos placeholder. */
+export const PLATEAUX = [
+  // ── Sandwichs ──
+  {
+    id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plat-cesar.png',
+    description: 'Assortiment de mini baguettes artisanales garnies.',
+    recettes: ['Jambon Beurre', 'Poulet César', 'Saumon & Cream Cheese', 'Thon Ciboulette', 'Burrata & Pesto', 'Pastrami Pickles'],
+  },
+  {
+    id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plat-thai.png',
+    description: 'Assortiment de clubs sandwichs moelleux découpés.',
+    recettes: ['Club Poulet César', 'Club Saumon & Cream Cheese', 'Club Thon', 'Club Jambon Beurre'],
+  },
+  {
+    id: 'sw3', famille: 'sandwichs', nom: 'Wraps Gourmands', img: '/plat-grec.png',
+    description: 'Assortiment de wraps découpés en bouchées.',
+    recettes: ['César Poulet', 'Saumon & Cream Cheese', 'Falafel & Houmous', 'Burrata & Légumes grillés', 'Thon Ciboulette'],
+  },
+  {
+    id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plat-boeuf.png',
+    description: 'Assortiment de mini burgers artisanaux.',
+    recettes: ['Cheeseburger', 'Chicken Crispy', 'Pulled Beef BBQ', 'Halloumi & Légumes grillés'],
+  },
+  {
+    id: 'sw5', famille: 'sandwichs', nom: 'Focaccia Italienne', img: '/plat-mediterraneen.png',
+    description: 'Focaccias artisanales découpées à partager.',
+    recettes: ['Jambon cru & Burrata', 'Mortadelle & Pistache', 'Saumon fumé & Cream Cheese', 'Légumes grillés & Pesto', 'Poulet rôti & Parmesan'],
+  },
+  {
+    id: 'sw6', famille: 'sandwichs', nom: 'Brioches Gourmet', img: '/plat-roti.png',
+    description: 'Mini brioches garnies découpées.',
+    recettes: ['Pastrami & Cheddar', 'Poulet César', 'Saumon fumé', 'Burrata & Pesto'],
+  },
+  {
+    id: 'sw7', famille: 'sandwichs', nom: 'Croissants Salés', img: '/plat-cesar.png',
+    description: 'Mini croissants pur beurre garnis.',
+    recettes: ['Jambon & Comté', 'Saumon & Cream Cheese', 'Poulet rôti & Parmesan', 'Burrata & Tomates confites'],
+  },
+
+  // ── Gourmands ──
+  {
+    id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plat-fusion.png',
+    description: 'Sélection de fromages affinés accompagnés de fruits frais, fruits secs et pain artisanal.',
+    recettes: [],
+  },
+  {
+    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plat-boeuf.png',
+    description: 'Jambon de Parme, Coppa, Rosette, Bresaola, Chorizo doux, Cornichons & Condiments.',
+    recettes: [],
+  },
+  {
+    id: 'go3', famille: 'gourmands', nom: 'Mix Fromages & Charcuteries', img: '/plat-fusion.png',
+    description: 'L\'association parfaite des meilleurs fromages affinés et charcuteries artisanales.',
+    recettes: [],
+  },
+  {
+    id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plat-saumon.png',
+    description: 'Saumon fumé, saumon gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.',
+    recettes: [],
+  },
+  {
+    id: 'go5', famille: 'gourmands', nom: 'Burrata & Antipasti', img: '/plat-mediterraneen.png',
+    description: 'Burrata crémeuse, légumes grillés, tomates anciennes, artichauts, olives marinées, pesto & focaccia.',
+    recettes: [],
+  },
+
+  // ── Fraîcheur ──
+  {
+    id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plat-grec.png',
+    description: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.',
+    recettes: [],
+  },
+  {
+    id: 'fr2', famille: 'fraicheur', nom: 'Mezzé', img: '/plat-mediterraneen.png',
+    description: 'Houmous, caviar d\'aubergine, labneh, falafels, olives, focaccia & crudités.',
+    recettes: [],
+  },
+  {
+    id: 'fr3', famille: 'fraicheur', nom: 'Fruits Frais', img: '/plat-grec.png',
+    description: 'Sélection de fruits frais de saison découpés.',
+    recettes: [],
+  },
+
+  // ── Signature ──
+  {
+    id: 'si1', famille: 'signature', nom: 'Asiatique', img: '/plat-thai.png',
+    description: 'Assortiment de bouchées d\'inspiration asiatique.',
+    recettes: ['Makis', 'California Rolls', 'Spring Rolls', 'Gyozas', 'Brochettes Yakitori', 'Sauce soja, gingembre & wasabi'],
+  },
+  {
+    id: 'si2', famille: 'signature', nom: 'Méditerranéen', img: '/plat-mediterraneen.png',
+    description: 'Assortiment de spécialités méditerranéennes.',
+    recettes: ['Focaccia', 'Burrata', 'Charcuteries italiennes', 'Légumes grillés', 'Olives marinées', 'Pesto', 'Parmesan'],
+  },
+  {
+    id: 'si3', famille: 'signature', nom: 'Apéritif Premium', img: '/plat-fusion.png',
+    description: 'Le plateau idéal pour les afterworks.',
+    recettes: ['Charcuteries', 'Fromages', 'Mini focaccias', 'Olives', 'Fruits secs', 'Raisins frais'],
+  },
+  {
+    id: 'si4', famille: 'signature', nom: 'Douceurs', img: '/plat-roti.png',
+    description: 'Sélection de desserts artisanaux.',
+    recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
+  },
+]
+
+/* ─── Carte plateau ──────────────────────────────────────────────── */
+
+function PlateauCard({ produit }) {
+  const [hovered, setHovered] = useState(false)
+  const catColor = CATEGORIE_COLORS[produit.famille] ?? '#6E675F'
+  const catLabel = FILTRES.find(f => f.key === produit.famille)?.label ?? ''
+  return (
+    <Link
+      href={`/creations/plateaux-aperitifs/${produit.id}`}
+      className="pa-card"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        textDecoration: 'none',
+        display: 'flex', flexDirection: 'column',
+        background: '#FFFFFF',
+        overflow: 'hidden',
+        cursor: 'pointer',
+        boxShadow: hovered
+          ? '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)'
+          : '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'box-shadow 0.35s ease, transform 0.35s ease',
+      }}
+    >
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#F8F5EF', overflow: 'hidden' }}>
+        <img
+          src={produit.img}
+          alt={produit.nom}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
+        />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(20,16,12,0.30)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.4s ease',
+        }}>
+          <span style={{
+            fontFamily: "'Neue Montreal', sans-serif",
+            fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
+            color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '10px 24px',
+            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'transform 0.4s ease',
+          }}>
+            Découvrir
+          </span>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '16px 16px 16px' }}>
+        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '7px', transition: 'color 0.25s ease' }}>
+          Plateau {produit.nom}
+        </h3>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.13em', textTransform: 'uppercase', color: catColor, marginBottom: '10px' }}>
+          {catLabel}
+        </p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.55, color: '#6E675F', flex: 1 }}>
+          {produit.description}
+        </p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#9B9590', marginTop: '14px' }}>
+          À partager · sur devis
+        </p>
+      </div>
+    </Link>
+  )
+}
+
+/* ─── Page ───────────────────────────────────────────────────────── */
+
+export default function PlateauxAperitifs() {
+  const [activeFiltre, setActiveFiltre] = useState('tous')
+
+  const famillesDispo = new Set(PLATEAUX.map(p => p.famille))
+  const filtresDispo = FILTRES.filter(f => f.key === 'tous' || famillesDispo.has(f.key))
+
+  const plateauxFiltres = PLATEAUX.filter(p =>
+    activeFiltre === 'tous' ? true : p.famille === activeFiltre
+  )
+
+  return (
+    <>
+      <Navbar showBanner={true} />
+
+      <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+
+        {/* ── Hero ── */}
+        <div className="pa-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <header className="pa-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
+            <img src={HERO.hero} alt="Plateaux apéritifs L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <Reveal mode="mount" y={16}>
+              <div className="pa-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                  Cocktail
+                </p>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(30px, 3.6vw, 54px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                  {HERO.label}
+                </h1>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
+                  {HERO.description}
+                </p>
+              </div>
+            </Reveal>
+          </header>
+        </div>
+
+        {/* ── Fil d'Ariane ── */}
+        <div className="pa-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px 0' }}>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#9B9590' }}>
+            <Link href="/" style={{ color: '#9B9590' }}>Accueil</Link>
+            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
+            <span>Cocktail</span>
+            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
+            <span style={{ color: '#111111' }}>Plateaux Apéritifs</span>
+          </nav>
+        </div>
+
+        {/* ── Corps : familles à gauche + grille 3 colonnes ── */}
+        <div className="pa-shell pa-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 96px', display: 'grid', gridTemplateColumns: '178px 1fr', gap: '52px', alignItems: 'start' }}>
+
+          <aside className="pa-filters" style={{ position: 'sticky', top: '104px' }}>
+            <p className="pa-filters-label" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
+              Familles
+            </p>
+            {filtresDispo.map(f => {
+              const active = f.key === activeFiltre
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setActiveFiltre(f.key)}
+                  style={{
+                    display: 'block', width: '100%', textAlign: 'left',
+                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontSize: '13.5px',
+                    fontWeight: active ? 500 : 400,
+                    color: active ? '#111111' : '#9B9590',
+                    padding: '9px 0 9px 14px',
+                    background: 'none',
+                    border: 'none',
+                    boxShadow: active ? 'inset 2px 0 0 #E0A126' : 'inset 2px 0 0 transparent',
+                    cursor: 'pointer',
+                    transition: 'color 0.2s ease, box-shadow 0.2s ease',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={e => { if (!active) e.currentTarget.style.color = '#4A453F' }}
+                  onMouseLeave={e => { if (!active) e.currentTarget.style.color = '#9B9590' }}
+                >
+                  {f.label}
+                </button>
+              )
+            })}
+          </aside>
+
+          <div className="pa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
+            {plateauxFiltres.map((p, i) => (
+              <Reveal key={p.id} delay={(i % 3) * 90}>
+                <PlateauCard produit={p} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+      </main>
+
+      <CategoryClosing
+        eyebrow="Pensé pour vos afterworks"
+        title={"L'apéritif qui fédère.\nZéro logistique pour vous."}
+        body="Un projet livré, une recrue à fêter, une fin de semaine à marquer : nos plateaux apéritifs arrivent prêts à poser sur la table. Généreux, artisanaux, pensés pour le partage — vous n'avez plus qu'à trinquer."
+        seoArticle={SEO_ARTICLE}
+      />
+
+      <style suppressHydrationWarning>{`
+        .pa-hero { border-radius: 2px !important; }
+        .pa-card { border-radius: 4px !important; }
+        @media (max-width: 1100px) {
+          .pa-hero-wrapper { padding-left: 48px !important; padding-right: 48px !important; }
+          .pa-hero-text    { padding-left: 48px !important; padding-right: 48px !important; }
+          .pa-shell { padding-left: 48px !important; padding-right: 48px !important; }
+          .pa-body  { grid-template-columns: 150px 1fr !important; gap: 36px !important; }
+          .pa-grid  { grid-template-columns: repeat(2,1fr) !important; }
+        }
+        @media (max-width: 900px) {
+          .pa-body { grid-template-columns: 1fr !important; gap: 24px !important; }
+          .pa-filters { position: static !important; display: flex; gap: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-bottom: 1px solid rgba(17,17,17,0.08); }
+          .pa-filters::-webkit-scrollbar { display: none; }
+          .pa-filters-label { display: none !important; }
+          .pa-filters button { width: auto !important; padding: 0 0 12px !important; box-shadow: none !important; }
+        }
+        @media (max-width: 768px) {
+          .pa-hero-wrapper { padding: 20px 20px 0 !important; }
+          .pa-hero         { min-height: 380px !important; height: 42vh !important; }
+          .pa-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
+          .pa-shell { padding-left: 24px !important; padding-right: 24px !important; }
+          .pa-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 20px 14px !important; }
+        }
+        @media (max-width: 480px) {
+          .pa-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
+      <Footer />
+    </>
+  )
+}
