@@ -749,14 +749,18 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         @keyframes mobileMenuIn {
           from { opacity: 0; transform: translateY(-8px); }
           to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
+        }@media (max-width: 768px) {
           .nav-bar, .nav-bar-hero {
             padding: 16px 24px !important;
           }
           .nav-left, .nav-right {
             display: none !important;
+          }
+          .nav-logo span:first-child {
+            font-size: 18px !important;
+          }
+          .nav-logo span:last-child {
+            font-size: 7px !important;
           }
           .nav-hamburger {
             display: flex !important;
