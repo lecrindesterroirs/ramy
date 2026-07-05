@@ -228,18 +228,11 @@ export default function QuartierPage() {
               }}>
                 Zones couvertes dans ce secteur
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {q.linkedZones.map(zone => (
-                  <span key={zone} style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '12px',
-                    color: 'var(--text-primary)',
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(17,17,17,0.1)',
-                    padding: '6px 14px',
-                    letterSpacing: '0.02em',
-                  }}>
-                    {zone}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', rowGap: '14px' }}>
+                {q.linkedZones.map((zone, i) => (
+                  <span key={zone} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    <span className="city-tag-plain" style={{ color: 'var(--text-primary)' }}>{zone}</span>
+                    {i < q.linkedZones.length - 1 && <span className="city-tag-sep">·</span>}
                   </span>
                 ))}
               </div>
@@ -292,6 +285,19 @@ export default function QuartierPage() {
 
       <style suppressHydrationWarning>{`
         .q-service-card { border-radius: 4px !important; }
+        .city-tag-plain {
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          padding: 2px 0;
+        }
+        .city-tag-sep {
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px;
+          color: rgba(17,17,17,0.25);
+          margin: 0 14px;
+        }
         @media (max-width: 768px) {
           .q-hero-wrapper { padding: 20px 20px 0 !important; }
           .q-hero { min-height: 560px !important; height: 72vh !important; }

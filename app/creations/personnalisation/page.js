@@ -25,7 +25,7 @@ const SEO_ARTICLE = `
 
 /* Ce que nous personnalisons — 6 familles */
 const FAMILLES = [
-  { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.png' },
+  { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.webp' },
   { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.jpg' },
   { nom: 'Chocolats',         desc: 'Carrés, plaques et assortiments.',          img: '/perso-chocolats-bouygues.webp' },
   { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/perso-number-cake.png' },

@@ -201,41 +201,20 @@ export default function CityPage() {
             }}>
               Zones & quartiers desservis
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {city.zones.map(zone => {
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', rowGap: '14px' }}>
+              {city.zones.map((zone, i) => {
                 const quartierMatch = city.quartiers?.find(q => q.linkedZones?.includes(zone))
-                const sharedStyle = {
-                  fontFamily: "'Neue Montreal', sans-serif",
-                  fontSize: '12px',
-                  fontWeight: 400,
-                  color: 'var(--text-primary)',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(17,17,17,0.1)',
-                  padding: '6px 14px',
-                  letterSpacing: '0.02em',
-                  textDecoration: 'none',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                  transition: 'border-color 0.2s ease, color 0.2s ease',
-                }
-                if (quartierMatch) {
-                  return (
-                    <a
-                      key={zone}
-                      href={`/traiteur/${city.slug}/${quartierMatch.slug}`}
-                      style={sharedStyle}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)' }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.1)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-                    >
-                      {zone}
-                      <span style={{ fontSize: '10px', opacity: 0.7 }}>→</span>
-                    </a>
-                  )
-                }
+                const isLast = i === city.zones.length - 1
                 return (
-                  <span key={zone} style={{ ...sharedStyle, cursor: 'default' }}>
-                    {zone}
+                  <span key={zone} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    {quartierMatch ? (
+                      <a href={`/traiteur/${city.slug}/${quartierMatch.slug}`} className="city-tag-link">
+                        {zone}
+                      </a>
+                    ) : (
+                      <span className="city-tag-plain">{zone}</span>
+                    )}
+                    {!isLast && <span className="city-tag-sep">·</span>}
                   </span>
                 )
               })}
@@ -249,17 +228,14 @@ export default function CityPage() {
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '20px' }}>
               Pour quel événement ?
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {OCCASIONS.map(o => (
-                <a
-                  key={o.slug}
-                  href={`/occasions/${o.slug}`}
-                  style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 400, color: 'var(--text-primary)', background: 'var(--bg-secondary)', border: '1px solid rgba(17,17,17,0.08)', padding: '7px 16px', textDecoration: 'none', transition: 'border-color 0.2s ease, color 0.2s ease', letterSpacing: '0.02em' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)' }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.08)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-                >
-                  {o.name}
-                </a>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', rowGap: '14px' }}>
+              {OCCASIONS.map((o, i) => (
+                <span key={o.slug} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <a href={`/occasions/${o.slug}`} className="city-tag-link">
+                    {o.name}
+                  </a>
+                  {i < OCCASIONS.length - 1 && <span className="city-tag-sep">·</span>}
+                </span>
               ))}
             </div>
           </div>
@@ -298,6 +274,50 @@ export default function CityPage() {
 
       <style suppressHydrationWarning>{`
         .city-service-card { border-radius: 4px !important; }
+        .city-tag-link {
+          position: relative;
+          display: inline-block;
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          color: var(--text-primary);
+          text-decoration: none;
+          padding: 2px 0;
+          transition: color 0.25s ease;
+        }
+        .city-tag-link::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 1px;
+          background: currentColor;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease;
+        }
+        .city-tag-link:hover {
+          color: var(--accent);
+        }
+        .city-tag-link:hover::after {
+          transform: scaleX(1);
+        }
+        .city-tag-plain {
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          color: rgba(17,17,17,0.38);
+          padding: 2px 0;
+        }
+        .city-tag-sep {
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px;
+          color: rgba(17,17,17,0.25);
+          margin: 0 14px;
+        }
         @media (max-width: 768px) {
           .city-hero-wrapper { padding: 20px 20px 0 !important; }
           .city-hero { min-height: 560px !important; height: 72vh !important; }

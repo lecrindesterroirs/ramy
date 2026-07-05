@@ -140,7 +140,7 @@ export const PRODUITS = [
     id: 's4', collection: 'signature', categorie: 'viande', nom: 'Le Bistrot', img: '/plat-tataki.png',
     entree: 'Carpaccio de bœuf, parmesan & roquette',
     plat: 'Tataki de bœuf, pommes grenailles rôties & chimichurri',
-    dessert: 'Carrot Cake Fudge',
+    dessert: 'Carrot Cake',
   },
   {
     id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'Le Levant', img: '/plat-levant.png',
@@ -164,7 +164,7 @@ export const PRODUITS = [
     id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'Le Prestige Burrata', img: '/plat-trofie-prestige.png',
     entree: 'Burrata, tomates anciennes & pesto',
     plat: 'Trofie au pesto & burrata',
-    dessert: 'Carrot Cake Fudge',
+    dessert: 'Carrot Cake',
   },
 ]
 

@@ -253,7 +253,7 @@ export const evenements = [
     mois: 'Octobre',
     nom: 'Octobre Rose',
     tags: ['Goûters', 'Pauses gourmandes'],
-    img: '/mado-pistache-framboise.png',
+    img: '/mado-pistache-framboise.webp',
     descCourt: "Madeleines roses personnalisées, plateau macarons et cakes roses, ruban sur les emballages.",
     desc: "Un goûter pour sensibiliser vos équipes au dépistage du cancer du sein. Plateau full rose et rouge, madeleines personnalisées, ruban sur les emballages. Un geste simple, mais concret. Un moment de partage autour d'une cause qui compte.",
     produits: [

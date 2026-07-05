@@ -9,9 +9,9 @@ import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/pro
 import DevisRapide from '../../../../components/DevisRapide'
 
 const COFFRETS = [
-  { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.png' },
-  { id: 'madeleines-20', titre: 'Coffret Signature', pieces: 20, price: 49.00, desc: 'Le format idéal pour accueillir vos collaborateurs.', popular: true, img: '/coffret-madeleines-20-cut.png' },
-  { id: 'madeleines-50', titre: 'Coffret Réception', pieces: 50, price: 119.00, desc: "Pensé pour les petits-déjeuners et cocktails d'entreprise.", img: '/coffret-madeleines-50-cut.png' },
+  { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.webp' },
+  { id: 'madeleines-20', titre: 'Coffret Signature', pieces: 20, price: 49.00, desc: 'Le format idéal pour accueillir vos collaborateurs.', popular: true, img: '/coffret-madeleines-20-cut.webp' },
+  { id: 'madeleines-50', titre: 'Coffret Réception', pieces: 50, price: 119.00, desc: "Pensé pour les petits-déjeuners et cocktails d'entreprise.", img: '/coffret-madeleines-50-cut.webp' },
 ]
 
 const MAD_EXIGENCE = [

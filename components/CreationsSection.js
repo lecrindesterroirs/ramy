@@ -2,21 +2,19 @@ const creations = [
   {
     label: 'Petit-déjeuner & Pause',
     description: 'Commencez la journée en douceur avec des produits frais et gourmands.',
-    img: '/creations-1.png',
-    imgPosition: 'center 75%',
+    img: '/hero-petitdej.webp',
     href: '/creations/petits-dejeuners-et-pauses',
   },
   {
     label: 'Plateaux repas',
     description: 'Des recettes fraîches, de saison et équilibrées pour des déjeuners savoureux et responsables.',
-    img: '/creations-4.png',
-    imgPosition: 'center bottom',
+    img: '/plateau-mediterraneen.png',
     href: '/creations/plateaux-repas',
   },
   {
     label: 'Cocktails',
     description: 'Des pièces salées et sucrées raffinées pour sublimer tous vos événements.',
-    img: '/creations-3.png',
+    img: '/cocktail-signature.png',
     href: '/creations/cocktails-et-buffets',
   },
   {
@@ -34,7 +32,7 @@ const creations = [
   {
     label: 'Créations',
     description: 'Des recettes de saison et des créations uniques imaginées pour éveiller les papilles.',
-    img: '/creations-featured.webp',
+    img: '/prod-tartes-fines.png',
     href: '/creations/evenements-saisonniers',
   },
 ]

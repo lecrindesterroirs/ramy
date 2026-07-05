@@ -8,7 +8,7 @@ const MOMENTS = {
     label: 'Petit-déjeuner & Pauses',
     key: 'petitDej',
     cards: [
-      { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.png' },
+      { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.webp' },
       { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.png' },
       { title: 'Personnalisation', href: '/creations/personnalisation', img: '/perso-number-cake.png' },
     ],

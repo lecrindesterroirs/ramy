@@ -96,7 +96,7 @@ export const FORMULES = [
       'Tartelette Citron',
       'Tartelette Praliné',
       'Mousse Chocolat',
-      'Carrot Cake Fudge',
+      'Carrot Cake',
     ],
   },
 ]
