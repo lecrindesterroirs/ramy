@@ -162,14 +162,14 @@ export default function VillesSection() {
 
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .villes-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .villes-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

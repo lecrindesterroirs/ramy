@@ -169,7 +169,7 @@ export default function NosArtisans() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .art-scroller::-webkit-scrollbar { display: none; }
         .art-scroller { scrollbar-width: none; }
         .art-avatar-round { border-radius: 50% !important; }
@@ -190,7 +190,7 @@ export default function NosArtisans() {
           .art-engagement { padding: 56px 24px !important; }
           .artisans-cta p { flex-direction: column; gap: 12px; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

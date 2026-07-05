@@ -200,7 +200,7 @@ export default function GalleryFiche({
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .gf-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
         .gf-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
         .gf-article-body h3 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: 20px; font-weight: 400; color: var(--text-primary); margin: 28px 0 10px; }
@@ -217,7 +217,7 @@ export default function GalleryFiche({
           .gallery-fiche { padding: 24px 40px 60px !important; gap: 40px !important; }
           .gf-seo { padding: 60px 40px 80px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

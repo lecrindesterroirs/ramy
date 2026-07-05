@@ -437,7 +437,7 @@ export default function EvenementDetail() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .ev-header { padding: 48px 24px 40px !important; }
           .ev-content {
@@ -456,7 +456,7 @@ export default function EvenementDetail() {
           .ev-footer-cta { padding: 56px 40px !important; }
           .ev-nav { padding: 32px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

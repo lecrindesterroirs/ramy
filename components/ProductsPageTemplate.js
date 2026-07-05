@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Reveal from './Reveal'
@@ -35,6 +36,7 @@ export default function ProductsPageTemplate({
   basePath,
   editorial,
 }) {
+  const pathname = usePathname()
   const [sortOpen, setSortOpen]     = useState(false)
   const [sortLabel, setSortLabel]   = useState('En vedette')
   const [baseProducts, setBaseProducts] = useState(fallbackProducts)
@@ -93,7 +95,7 @@ export default function ProductsPageTemplate({
               { label: 'Cocktails & Buffets',        href: '/creations/cocktails-et-buffets' },
               { label: 'Coffrets cadeaux',           href: '/creations/coffrets-cadeaux' },
             ].map(cat => {
-              const active = typeof window !== 'undefined' && window.location.pathname === cat.href
+              const active = pathname === cat.href
               return (
                 <a
                   key={cat.href}
@@ -162,7 +164,7 @@ export default function ProductsPageTemplate({
       {/* ── Section éditoriale + article SEO ── */}
       <CategoryClosing {...(editorial || {})} seoArticle={seoArticle} />
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .pd-card { border-radius: 4px !important; }
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
@@ -178,7 +180,7 @@ export default function ProductsPageTemplate({
           .products-filter-bar { padding: 0 40px !important; }
           .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

@@ -169,7 +169,7 @@ export default function FormulePage() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .fiche-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 14px; line-height: 1.72; color: var(--text-secondary); margin-bottom: 16px; }
         .fiche-article-body h2 { font-family: 'Neue Montreal', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin: 48px 0 12px; padding-top: 24px; border-top: 1px solid rgba(169,128,59,0.22); line-height: 1; }
         .fiche-article-body strong { color: rgba(17,17,17,0.82); font-weight: 500; }
@@ -183,7 +183,7 @@ export default function FormulePage() {
           .editorial-grid { padding: 24px 40px 48px !important; gap: 40px !important; }
           .fiche-seo { padding: 60px 40px 80px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

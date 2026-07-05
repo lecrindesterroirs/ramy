@@ -283,7 +283,7 @@ export default function QuartierPage() {
         </a>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .q-service-card { border-radius: 4px !important; }
         .city-tag-plain {
           font-family: 'Neue Montreal', sans-serif;
@@ -315,7 +315,7 @@ export default function QuartierPage() {
           .q-zones { padding: 40px !important; }
           .q-faq { padding: 64px 40px 0 !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

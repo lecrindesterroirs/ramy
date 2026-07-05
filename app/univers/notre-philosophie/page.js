@@ -190,7 +190,7 @@ export default function NotrePhilosophie() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .univ-hero { height: 55vh !important; min-height: 360px !important; }
           .univ-hero-text { padding: 0 24px !important; }
@@ -205,7 +205,7 @@ export default function NotrePhilosophie() {
           .univ-valeurs-grid { grid-template-columns: 1fr !important; }
           .univ-closing { padding: 80px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

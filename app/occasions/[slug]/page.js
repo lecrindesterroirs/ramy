@@ -244,7 +244,7 @@ export default function OccasionPage() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .occasion-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 14px; line-height: 1.72; color: rgba(17,17,17,0.58); margin-bottom: 16px; }
         .occasion-article-body h2 { font-family: 'Neue Montreal', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin: 48px 0 12px; padding-top: 24px; border-top: 1px solid rgba(169,128,59,0.22); line-height: 1; }
         .occasion-article-body strong { color: rgba(17,17,17,0.82); font-weight: 500; }
@@ -269,7 +269,7 @@ export default function OccasionPage() {
           .occasion-cities { padding: 40px 40px !important; }
           .occasion-faq { padding: 56px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

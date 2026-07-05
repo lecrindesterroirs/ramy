@@ -86,7 +86,7 @@ export default function CategoryClosing({
         </section>
       )}
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cat-seo-body p {
           font-family: 'Neue Montreal', sans-serif;
           font-size: 15px;
@@ -127,7 +127,7 @@ export default function CategoryClosing({
         @media (max-width: 1024px) and (min-width: 769px) {
           .prods-args { padding: 0 40px 60px !important; }
         }
-      `}</style>
+      ` }} />
     </>
   )
 }

@@ -262,7 +262,7 @@ export default function ProductPage() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .fiche-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
         .fiche-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
         .fiche-article-body strong { color: var(--text-primary); font-weight: 500; }
@@ -289,7 +289,7 @@ export default function ProductPage() {
           .mad-flavors-row { grid-template-columns: repeat(3, 1fr) !important; padding: 0 40px 56px !important; gap: 28px 12px !important; }
           .mad-4col { grid-template-columns: 1fr 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

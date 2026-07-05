@@ -316,7 +316,7 @@ export default function PlateauxRepas() {
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
             />
             {/* Dégradé sombre gauche pour la lisibilité du texte blanc */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
 
             {/* Texte overlay, aligné à gauche, centré verticalement — fade-up au montage, rejoué à chaque changement de collection */}
             <Reveal key={`hero-text-${col.key}`} mode="mount" y={16}>
@@ -469,7 +469,7 @@ export default function PlateauxRepas() {
       />
 
       {/* ── Radius (override du reset global border-radius:0 !important) + responsive ── */}
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .pr-hero { border-radius: 2px !important; }
         .pr-card { border-radius: 4px !important; }
         @media (max-width: 1100px) {
@@ -492,6 +492,7 @@ export default function PlateauxRepas() {
           .pr-filters button { width: auto !important; padding: 0 0 12px !important; box-shadow: none !important; }
         }
         @media (max-width: 768px) {
+          .cat-hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.5) 100%) !important; }
           .pr-hero-wrapper { padding: 20px 20px 0 !important; }
           .pr-hero         { min-height: 380px !important; height: 42vh !important; }
           .pr-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
@@ -500,10 +501,7 @@ export default function PlateauxRepas() {
           .pr-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
           .pr-scroll::-webkit-scrollbar { display: none; }
         }
-        @media (max-width: 480px) {
-          .pr-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

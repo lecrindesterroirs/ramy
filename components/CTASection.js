@@ -64,14 +64,14 @@ export default function CTASection() {
         </div>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .cta-section { padding: 72px 24px 96px !important; }
           .cta-yellow-box { padding: 40px 24px !important; width: 100% !important; box-sizing: border-box !important; }
           .cta-yellow-box h2 { font-size: clamp(28px, 7vw, 44px) !important; }
           .cta-yellow-box p br { display: none; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

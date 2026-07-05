@@ -81,12 +81,12 @@ export default function ManifestoSection() {
         </p>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .manifesto-section { padding: 80px 0 !important; }
           .manifesto-section > div { padding: 0 24px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

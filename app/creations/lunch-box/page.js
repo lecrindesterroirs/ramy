@@ -212,7 +212,7 @@ export default function LunchBox() {
               alt="Lunch Box L'Écrin"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="lb-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
@@ -309,7 +309,7 @@ export default function LunchBox() {
       />
 
       {/* ── Radius (override du reset global) + responsive ── */}
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .lb-hero { border-radius: 2px !important; }
         .lb-card { border-radius: 4px !important; }
         @media (max-width: 1100px) {
@@ -327,16 +327,14 @@ export default function LunchBox() {
           .lb-filters button { width: auto !important; padding: 0 0 12px !important; box-shadow: none !important; }
         }
         @media (max-width: 768px) {
+          .cat-hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.5) 100%) !important; }
           .lb-hero-wrapper { padding: 20px 20px 0 !important; }
           .lb-hero         { min-height: 380px !important; height: 42vh !important; }
           .lb-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
           .lb-shell { padding-left: 24px !important; padding-right: 24px !important; }
           .lb-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 20px 14px !important; }
         }
-        @media (max-width: 480px) {
-          .lb-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

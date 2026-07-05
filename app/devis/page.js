@@ -799,7 +799,7 @@ export default function Contact() {
         <Footer />
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         input::placeholder, textarea::placeholder { color: rgba(17,17,17,0.55); }
         input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.45) !important; }
         select option { color: #111111; }
@@ -823,7 +823,7 @@ export default function Contact() {
           .step2-inner { max-width: 100% !important; padding: 0 40px !important; }
           .step3-grid { grid-template-columns: 1fr !important; max-width: 680px !important; }
         }
-      `}</style>
+      ` }} />
     </>
   )
 }

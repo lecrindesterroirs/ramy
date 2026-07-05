@@ -166,7 +166,7 @@ export default function APartager() {
         <div className="ap-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="ap-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
             <img src={HERO.hero} alt="Salades à partager L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="ap-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
@@ -248,7 +248,7 @@ export default function APartager() {
         seoArticle={SEO_ARTICLE}
       />
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .ap-hero { border-radius: 2px !important; }
         .ap-card { border-radius: 4px !important; }
         @media (max-width: 1100px) {
@@ -266,16 +266,14 @@ export default function APartager() {
           .ap-filters button { width: auto !important; padding: 0 0 12px !important; box-shadow: none !important; }
         }
         @media (max-width: 768px) {
+          .cat-hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.5) 100%) !important; }
           .ap-hero-wrapper { padding: 20px 20px 0 !important; }
           .ap-hero         { min-height: 380px !important; height: 42vh !important; }
           .ap-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
           .ap-shell { padding-left: 24px !important; padding-right: 24px !important; }
           .ap-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 20px 14px !important; }
         }
-        @media (max-width: 480px) {
-          .ap-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

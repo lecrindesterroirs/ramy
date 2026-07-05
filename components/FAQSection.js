@@ -164,7 +164,7 @@ export default function FAQSection() {
         </div>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .faq-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
         @media (max-width: 768px) {
           .faq-section { padding: 80px 0 !important; }
@@ -174,7 +174,7 @@ export default function FAQSection() {
         @media (max-width: 1024px) and (min-width: 769px) {
           .faq-cols { gap: 0 40px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

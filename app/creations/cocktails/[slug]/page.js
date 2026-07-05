@@ -107,7 +107,7 @@ export default function CocktailDetail() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .ckd-gallery-item { border-radius: 4px !important; }
         .ckd-gallery-item:hover img { transform: scale(1.05); }
         @media (max-width: 1100px) {
@@ -120,7 +120,7 @@ export default function CocktailDetail() {
           .ckd-compo { grid-template-columns: 1fr !important; gap: 40px !important; }
           .ckd-gallery { columns: 1 !important; padding-left: 24px !important; padding-right: 24px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

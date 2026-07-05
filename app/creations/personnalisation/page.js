@@ -166,7 +166,7 @@ export default function Personnalisation() {
         </div>
       </section>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cat-seo-body p {
           font-family: 'Neue Montreal', sans-serif;
           font-size: 15px;
@@ -200,7 +200,7 @@ export default function Personnalisation() {
           .pz-bottom-bar { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; padding: 40px 24px !important; }
           .cat-seo-body h2 { font-size: 22px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

@@ -95,7 +95,7 @@ export default function LegalTemplate({ title, category = 'Informations légales
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .legal-header { padding: 60px 24px 48px !important; }
           .legal-content { padding: 48px 24px 72px !important; }
@@ -104,7 +104,7 @@ export default function LegalTemplate({ title, category = 'Informations légales
           .legal-header { padding: 64px 40px 48px !important; }
           .legal-content { padding: 56px 32px 80px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

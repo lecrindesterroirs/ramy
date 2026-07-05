@@ -264,11 +264,11 @@ export default function MadeleineComposer({ maxPieces, onChange }) {
         </button>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 480px) {
           .mc-cards { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
     </div>
   )
 }

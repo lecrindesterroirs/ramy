@@ -134,14 +134,14 @@ function CoffretDetail({ produit }) {
         </section>
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cf-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
         .cf-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
         .cf-article-body strong { color: var(--text-primary); font-weight: 500; }
         @media (max-width: 768px) {
           div[style*="max-width: 720px"] { padding-left: 24px !important; padding-right: 24px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

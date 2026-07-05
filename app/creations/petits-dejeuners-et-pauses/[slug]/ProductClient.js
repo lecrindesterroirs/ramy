@@ -136,7 +136,7 @@ export default function ProductClient({ slug }) {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .fiche-article-body p {
           font-family: 'Neue Montreal', sans-serif;
           font-size: 15px;
@@ -166,7 +166,7 @@ export default function ProductClient({ slug }) {
           .fiche-grid { padding: 32px 40px 60px !important; gap: 40px !important; }
           .fiche-seo { padding: 60px 40px 80px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

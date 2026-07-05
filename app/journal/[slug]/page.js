@@ -214,7 +214,7 @@ export default function ArticlePage() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .article-body p {
           font-family: 'Neue Montreal', sans-serif;
           font-size: 15px;
@@ -324,7 +324,7 @@ export default function ArticlePage() {
         @media (max-width: 600px) {
           .article-products-grid { grid-template-columns: 1fr 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       {article.faq?.length > 0 && (
         <script

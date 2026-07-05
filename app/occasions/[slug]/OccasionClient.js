@@ -397,7 +397,7 @@ export default function OccasionClient({ slug }) {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .occasion-article-body p {
           font-family: 'Neue Montreal', sans-serif;
           font-size: 15px;
@@ -435,7 +435,7 @@ export default function OccasionClient({ slug }) {
           .occasion-cities { padding: 48px 40px !important; }
           .occasion-faq { padding: 56px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

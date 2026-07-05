@@ -417,7 +417,7 @@ export default function NotreMaison() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .univ-hero { height: 55vh !important; min-height: 360px !important; }
           .univ-hero-text { padding: 0 24px !important; }
@@ -440,7 +440,7 @@ export default function NotreMaison() {
           .univ-etape > div:last-child { padding: 48px 40px !important; }
           .univ-closing { padding: 0 40px 100px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

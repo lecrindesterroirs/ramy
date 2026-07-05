@@ -163,7 +163,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .footer-main { padding: 60px 24px 48px !important; }
           .footer-grid { flex-direction: column !important; gap: 40px !important; }
@@ -178,7 +178,7 @@ export default function Footer() {
           .footer-main { padding: 60px 40px 48px !important; }
           .footer-cols { gap: 32px !important; flex-wrap: wrap !important; }
         }
-      `}</style>
+      ` }} />
 
     </footer>
   )

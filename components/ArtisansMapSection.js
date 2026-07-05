@@ -122,7 +122,7 @@ export default function ArtisansMapSection() {
 
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .pin-wrap { line-height: 0; }
         .pin-wrap:hover { z-index: 20 !important; }
         .map-pin { border-radius: 50% !important; transition: transform 0.25s ease; }
@@ -159,7 +159,7 @@ export default function ArtisansMapSection() {
           .amp-section { padding: 64px 0 !important; }
           .amp-inner { padding: 0 24px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

@@ -166,7 +166,7 @@ export default function DetailSection() {
 
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .detail-args-mobile { display: none; }
         @media (max-width: 768px) {
           .detail-section { padding: 48px 0 0 !important; }
@@ -187,7 +187,7 @@ export default function DetailSection() {
           .detail-inner { padding: 0 40px !important; }
           .detail-overlay-text { width: 65% !important; padding-left: 40px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

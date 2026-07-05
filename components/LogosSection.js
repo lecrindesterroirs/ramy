@@ -88,7 +88,7 @@ export default function LogosSection({ subtitle, style: extraStyle }) {
         ))}
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @keyframes marquee {
           0%   { transform: translateX(0); }
           100% { transform: translateX(calc(-100% / 3)); }
@@ -96,7 +96,7 @@ export default function LogosSection({ subtitle, style: extraStyle }) {
         @media (prefers-reduced-motion: reduce) {
           [style*="marquee"] { animation: none; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

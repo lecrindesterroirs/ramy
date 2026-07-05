@@ -215,7 +215,7 @@ export default function TraiteurPage() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .traiteur-hero { padding: 56px 24px 48px !important; }
           .traiteur-filter { padding: 16px 24px !important; }
@@ -228,7 +228,7 @@ export default function TraiteurPage() {
           .traiteur-grid-wrap { padding: 48px 40px 80px !important; }
           .traiteur-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

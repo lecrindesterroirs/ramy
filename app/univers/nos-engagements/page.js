@@ -117,7 +117,7 @@ export default function NosEngagements() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .eng-hero { padding: 64px 24px 56px !important; }
           .eng-chiffres { padding: 0 0 !important; }
@@ -136,7 +136,7 @@ export default function NosEngagements() {
           .eng-item > div:last-child { padding: 40px 36px !important; }
           .eng-quote { padding: 80px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

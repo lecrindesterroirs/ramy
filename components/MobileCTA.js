@@ -71,7 +71,7 @@ export default function MobileCTA() {
         </a>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .mobile-cta-bar {
           display: none;
         }
@@ -130,7 +130,7 @@ export default function MobileCTA() {
             opacity: 0.88;
           }
         }
-      `}</style>
+      ` }} />
     </>
   )
 }

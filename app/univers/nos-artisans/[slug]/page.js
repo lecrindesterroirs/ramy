@@ -126,7 +126,7 @@ export default function ArtisanDetail() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .art-thumb { border-radius: 4px !important; }
         .art-quote-img { border-radius: 4px !important; }
         .art-creation-card:hover img { transform: scale(1.05); }
@@ -140,7 +140,7 @@ export default function ArtisanDetail() {
           .art-quote > div { padding: 48px 24px !important; }
           .art-creations-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

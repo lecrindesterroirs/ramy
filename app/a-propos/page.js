@@ -332,7 +332,7 @@ export default function APropos() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .apropos-hero { height: 55vh !important; min-height: 360px !important; }
           .apropos-hero-text { padding: 0 24px !important; }
@@ -348,7 +348,7 @@ export default function APropos() {
           .apropos-equipe { padding: 80px 40px 100px !important; }
           .apropos-equipe-grid { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

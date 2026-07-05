@@ -203,7 +203,7 @@ export default function Hero() {
         />
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @keyframes scrollPulse {
           0%, 100% { opacity: 0.4; transform: scaleY(1); }
           50%       { opacity: 1;   transform: scaleY(0.6); }
@@ -212,7 +212,7 @@ export default function Hero() {
           .hero-content { padding: 0 24px !important; max-width: 100% !important; }
           .hero-phone { display: none !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

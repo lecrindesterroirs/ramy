@@ -84,7 +84,7 @@ export default function CocktailsEtBuffets() {
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
             <img src="/creations-3.png" alt="Cocktails & Buffets — L'Écrin Traiteur"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
                 Nos Créations, Cocktails & Buffets
@@ -158,13 +158,14 @@ export default function CocktailsEtBuffets() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .formule-card:hover .formule-img { transform: scale(1.04); }
         .formule-card:hover { opacity: 0.96; }
         .fiche-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
         .fiche-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
         .fiche-article-body strong { color: var(--text-primary); font-weight: 500; }
         @media (max-width: 768px) {
+          .cat-hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.5) 100%) !important; }
           .page-hero-wrapper { padding: 60px 0 0 !important; }
           .page-hero-text { padding: 0 24px !important; }
           .formules-grid { grid-template-columns: 1fr !important; padding: 32px 24px 64px !important; }
@@ -176,7 +177,7 @@ export default function CocktailsEtBuffets() {
           .formules-grid { padding: 40px 40px 72px !important; }
           .cocktail-seo { padding: 60px 40px 80px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

@@ -121,7 +121,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         }}>
           Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
         </div>
-        <style suppressHydrationWarning>{`
+        <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
           .banner-sole {
             animation: bannerScroll 22s linear infinite;
           }
@@ -129,7 +129,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             from { transform: translateX(100vw); }
             to   { transform: translateX(-100%); }
           }
-        `}</style>
+        ` }} />
       </div>}
 
       <nav
@@ -753,7 +753,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         </div>
       )}
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .card-img { border-radius: 4px !important; }
         @keyframes dropdownReveal {
           from { opacity: 0; transform: translateY(-6px); }
@@ -810,7 +810,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         @media (min-width: 960px) {
           .nav-hamburger { display: none !important; }
         }
-      `}</style>
+      ` }} />
     </>
   )
 }

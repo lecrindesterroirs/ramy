@@ -84,7 +84,7 @@ export default function MadeleinesSection() {
         </div>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .mad-flavor-card { transition: transform 0.25s ease; }
         .mad-flavor-card:hover { transform: translateY(-3px); }
         .mad-cta:hover { color: var(--accent); border-color: var(--accent); }
@@ -99,7 +99,7 @@ export default function MadeleinesSection() {
           .mad-content { padding: 56px 40px !important; }
           .mad-infos { padding: 44px 40px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

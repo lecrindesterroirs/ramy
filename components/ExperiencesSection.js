@@ -106,7 +106,7 @@ export default function ExperiencesSection() {
         />
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .experiences-section {
             height: auto !important;
@@ -130,7 +130,7 @@ export default function ExperiencesSection() {
             padding: 72px 40px 80px !important;
           }
         }
-      `}</style>
+      ` }} />
 
     </section>
   )

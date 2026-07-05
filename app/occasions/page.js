@@ -44,12 +44,12 @@ export default function OccasionsListing() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .occ-card:hover { background: #EDE8DE !important; }
         @media (max-width: 900px) {
           div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

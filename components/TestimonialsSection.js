@@ -144,7 +144,7 @@ export default function TestimonialsSection() {
 
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 1024px) {
           .ts-grid { grid-template-columns: 1fr !important; }
         }
@@ -159,7 +159,7 @@ export default function TestimonialsSection() {
         @media (max-width: 1024px) and (min-width: 769px) {
           .ts-inner { padding: 0 40px 56px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

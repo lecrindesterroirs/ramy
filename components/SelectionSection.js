@@ -177,7 +177,7 @@ export default function SelectionSection() {
         </div>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .selection-args-mobile { display: none; }
         @media (max-width: 768px) {
           .selection-section { padding: 48px 0 8px !important; }
@@ -192,7 +192,7 @@ export default function SelectionSection() {
           .selection-grid { gap: 48px !important; }
           .selection-img { height: 480px !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

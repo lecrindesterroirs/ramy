@@ -51,13 +51,13 @@ export default function PrometteSection() {
         </p>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .promette-section { padding: 80px 0 !important; }
           .promette-section .container { padding: 0 24px !important; }
           .promette-section h2 { font-size: clamp(28px, 7vw, 40px) !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

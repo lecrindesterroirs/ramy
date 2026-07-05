@@ -99,7 +99,7 @@ export default function CreationsSection() {
         </div>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .creations-section { padding-top: 40px !important; padding-bottom: 40px !important; }
           .creations-title-wrap { padding: 0 20px 28px !important; }
@@ -111,7 +111,7 @@ export default function CreationsSection() {
           .creations-grid-wrap { padding: 0 40px !important; }
           .creations-grid { grid-template-columns: 1fr 1fr !important; }
         }
-      `}</style>
+      ` }} />
 
     </section>
   )

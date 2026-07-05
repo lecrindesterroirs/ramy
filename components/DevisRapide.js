@@ -194,14 +194,14 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
         )}
       </form>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.3; cursor: pointer; }
         input::placeholder { color: rgba(17,17,17,0.35); }
         input:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.45) !important; }
         @media (max-width: 600px) {
           .dr-row { grid-template-columns: 1fr !important; }
         }
-      `}</style>
+      ` }} />
     </div>
   )
 }

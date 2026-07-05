@@ -19,7 +19,7 @@ export default function EvenementsSaisonniers() {
               alt="Événements Saisonniers — L'Écrin Traiteur"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
               <p style={{
                 fontFamily: "'Neue Montreal', sans-serif",
@@ -201,10 +201,11 @@ export default function EvenementsSaisonniers() {
 
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .sais-card:hover .sais-img { transform: scale(1.04); }
         .sais-card:hover { opacity: 0.96; }
         @media (max-width: 768px) {
+          .cat-hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.5) 100%) !important; }
           .sais-header { padding: 60px 24px 48px !important; }
           .sais-grid { grid-template-columns: 1fr !important; padding: 40px 24px 80px !important; }
           .sais-cta { padding: 40px 24px !important; }
@@ -214,7 +215,7 @@ export default function EvenementsSaisonniers() {
           .sais-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 48px 40px 80px !important; }
           .sais-cta { padding: 40px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

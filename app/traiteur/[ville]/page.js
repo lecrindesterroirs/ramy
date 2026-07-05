@@ -272,7 +272,7 @@ export default function CityPage() {
         </a>
       </div>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .city-service-card { border-radius: 4px !important; }
         .city-tag-link {
           position: relative;
@@ -335,7 +335,7 @@ export default function CityPage() {
           .city-zones { padding: 40px !important; }
           .city-occasions { padding: 48px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       <Footer />
     </>

@@ -260,7 +260,7 @@ export default function Contact() {
         </div>
       </main>
 
-      <style suppressHydrationWarning>{`
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         input::placeholder, textarea::placeholder { color: rgba(17,17,17,0.38); }
         select option { color: #111111; }
         input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.5) !important; }
@@ -277,7 +277,7 @@ export default function Contact() {
           .args-grid { grid-template-columns: repeat(2, 1fr) !important; }
           section { padding: 60px 40px !important; }
         }
-      `}</style>
+      ` }} />
 
       {/* ── Section arguments ── */}
       <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)', padding: '80px 72px' }}>
