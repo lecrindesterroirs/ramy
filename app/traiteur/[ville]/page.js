@@ -15,19 +15,19 @@ const SERVICES = [
     label: 'Petits-Déjeuners',
     desc: 'Viennoiseries et coffrets artisanaux, livrés dès 6h30.',
     href: '/creations/petits-dejeuners-et-pauses',
-    img: '/creations-1.png',
+    img: '/creations-1.webp',
   },
   {
     label: 'Plateaux Repas',
     desc: 'Des plateaux composés pour vos déjeuners de travail.',
     href: '/creations/plateaux-repas',
-    img: '/creations-4.png',
+    img: '/creations-4.webp',
   },
   {
     label: 'Cocktails & Buffets',
     desc: 'Pièces cocktail et buffets pour vos réceptions.',
     href: '/creations/cocktails-et-buffets',
-    img: '/creations-3.png',
+    img: '/creations-3.webp',
   },
 ]
 
@@ -96,7 +96,7 @@ export default function CityPage() {
         {/* ── Hero image pleine largeur ── */}
         <div className="city-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="city-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
-            <img src="/hero-bg.png" alt={`Traiteur d'entreprise ${city.name} — L'Écrin Traiteur`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <img loading="eager" src="/hero-bg.webp" alt={`Traiteur d'entreprise ${city.name} — L'Écrin Traiteur`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="city-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
@@ -163,7 +163,7 @@ export default function CityPage() {
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)' }}
                 >
                   <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
-                    <img src={s.img} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img loading="lazy" src={s.img} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '22px 22px 26px' }}>
                     <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>

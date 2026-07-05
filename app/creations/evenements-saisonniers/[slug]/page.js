@@ -102,8 +102,7 @@ export default function EvenementDetail() {
 
         {/* Image pleine largeur */}
         <div style={{ width: '100%', height: '55vh', overflow: 'hidden', minHeight: '320px', maxHeight: '580px' }}>
-          <img
-            src={ev.img}
+          <img loading="lazy" src={ev.img}
             alt={ev.nom}
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />

@@ -20,8 +20,7 @@ export default function ArticlePage() {
 
         {/* ── Hero image ── */}
         <div style={{ width: '100%', maxHeight: '520px', overflow: 'hidden' }}>
-          <img
-            src={article.img}
+          <img loading="eager" src={article.img}
             alt={article.titre}
             style={{ width: '100%', height: '520px', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
@@ -170,7 +169,7 @@ export default function ArticlePage() {
                     >
                       {product.img && (
                         <div style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
-                          <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                          <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                         </div>
                       )}
                       <div style={{ padding: '16px 18px 20px' }}>

@@ -72,8 +72,7 @@ export default function LogosSection({ subtitle, style: extraStyle }) {
               flexShrink: 0,
             }}
           >
-            <img
-              src={logo.src}
+            <img loading="lazy" src={logo.src}
               alt={logo.name}
               style={{
                 height: logo.height || '36px',

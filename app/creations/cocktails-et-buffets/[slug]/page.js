@@ -66,7 +66,7 @@ export default function FormulePage() {
                     {formule.badge}
                   </div>
                 )}
-                <img src={formule.img} alt={formule.nom}
+                <img loading="lazy" src={formule.img} alt={formule.nom}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: formule.imgPosition || 'center center', display: 'block' }} />
               </div>
             </div>
@@ -80,7 +80,7 @@ export default function FormulePage() {
                 <div style={{ position: 'relative', padding: formule.categories ? '20px 32px' : '32px 40px', textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxSizing: 'border-box' }}>
 
                   {/* Monogramme */}
-                  <img src="/logo-footer.svg" alt="L'Écrin" style={{ height: formule.categories ? '34px' : '42px', width: 'auto', margin: `0 auto ${formule.categories ? '12px' : '20px'}`, opacity: 0.9 }} />
+                  <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: formule.categories ? '34px' : '42px', width: 'auto', margin: `0 auto ${formule.categories ? '12px' : '20px'}`, opacity: 0.9 }} />
 
                   {/* Titre */}
                   <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(20px, 2vw, 28px)', fontWeight: 400, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#211C16', lineHeight: 1.05, marginBottom: '4px' }}>

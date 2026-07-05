@@ -14,8 +14,7 @@ export default function ArticleCard({ article }) {
         marginBottom: '20px',
         background: 'var(--bg-secondary)',
       }}>
-        <img
-          src={article.img}
+        <img loading="lazy" src={article.img}
           alt={article.titre}
           className="article-card-img"
           style={{

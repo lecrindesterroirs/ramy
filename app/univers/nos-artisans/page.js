@@ -41,7 +41,7 @@ function ArtisanCard({ a }) {
   return (
     <Link href={`/univers/nos-artisans/${a.slug}`} className="artisan-mini-card" style={{ textDecoration: 'none', display: 'block', flex: '0 0 auto', width: '260px', background: '#FFFFFF' }}>
       <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-        <img src={a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <img loading="lazy" src={a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </div>
       <div style={{ padding: '18px 4px 4px', textAlign: 'center' }}>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>{a.specialite}</p>
@@ -90,7 +90,7 @@ export default function NosArtisans() {
           </Reveal>
           <Reveal mode="mount" delay={120}>
             <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <img src="/selection-artisans.jpg" alt="Nos artisans partenaires" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img loading="lazy" src="/selection-artisans.webp" alt="Nos artisans partenaires" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
           </Reveal>
         </div>
@@ -130,7 +130,7 @@ export default function NosArtisans() {
         <div className="art-engagement" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', maxWidth: '1440px', margin: '0 auto', padding: '72px 72px', display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: '32px', alignItems: 'center' }}>
           <Reveal>
             <div className="art-avatar-round" style={{ width: '96px', height: '96px', overflow: 'hidden', flexShrink: 0 }}>
-              <img src="/maison-marques.avif" alt="Notre engagement" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img loading="lazy" src="/maison-marques.avif" alt="Notre engagement" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </Reveal>
           <Reveal delay={80}>

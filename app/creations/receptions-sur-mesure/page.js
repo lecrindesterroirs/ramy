@@ -8,7 +8,7 @@ const fallback = [
   { name: 'Cocktail de lancement',         label: "L'Écrin Paris", img: '/cocktail.webp' },
   { name: 'Buffet inauguration',           label: "L'Écrin Paris", img: '/buffet.webp' },
   { name: "Soirée gala d'entreprise",      label: "L'Écrin Paris", img: '/creations-featured.webp' },
-  { name: 'Réception privée prestige',     label: "L'Écrin Paris", img: '/detail-bg.png' },
+  { name: 'Réception privée prestige',     label: "L'Écrin Paris", img: '/detail-bg.webp' },
   { name: "Déjeuner d'affaires premium",   label: "L'Écrin Paris", img: '/chou.webp' },
   { name: 'Cocktail networking',           label: "L'Écrin Paris", img: '/mini-cookies.webp' },
 ]

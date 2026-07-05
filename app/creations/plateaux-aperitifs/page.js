@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Plateaux Apéritifs',
   description: 'De généreux plateaux à partager pour vos afterworks et réceptions — sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
-  hero: '/hero-plateaux-essentiel.png',
+  hero: '/hero-plateaux-essentiel.webp',
 }
 
 /* Filtres = familles de plateaux. */
@@ -50,103 +50,103 @@ const CATEGORIE_COLORS = {
 export const PLATEAUX = [
   // ── Sandwichs ──
   {
-    id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plat-cesar.png',
+    id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plat-cesar.webp',
     description: 'Assortiment de mini baguettes artisanales garnies.',
     recettes: ['Jambon Beurre', 'Poulet César', 'Saumon & Cream Cheese', 'Thon Ciboulette', 'Burrata & Pesto', 'Pastrami Pickles'],
   },
   {
-    id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plat-thai.png',
+    id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plat-thai.webp',
     description: 'Assortiment de clubs sandwichs moelleux découpés.',
     recettes: ['Club Poulet César', 'Club Saumon & Cream Cheese', 'Club Thon', 'Club Jambon Beurre'],
   },
   {
-    id: 'sw3', famille: 'sandwichs', nom: 'Wraps Gourmands', img: '/plat-grec.png',
+    id: 'sw3', famille: 'sandwichs', nom: 'Wraps Gourmands', img: '/plat-grec.webp',
     description: 'Assortiment de wraps découpés en bouchées.',
     recettes: ['César Poulet', 'Saumon & Cream Cheese', 'Falafel & Houmous', 'Burrata & Légumes grillés', 'Thon Ciboulette'],
   },
   {
-    id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plat-boeuf.png',
+    id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plat-boeuf.webp',
     description: 'Assortiment de mini burgers artisanaux.',
     recettes: ['Cheeseburger', 'Chicken Crispy', 'Pulled Beef BBQ', 'Halloumi & Légumes grillés'],
   },
   {
-    id: 'sw5', famille: 'sandwichs', nom: 'Focaccia Italienne', img: '/plat-mediterraneen.png',
+    id: 'sw5', famille: 'sandwichs', nom: 'Focaccia Italienne', img: '/plat-mediterraneen.webp',
     description: 'Focaccias artisanales découpées à partager.',
     recettes: ['Jambon cru & Burrata', 'Mortadelle & Pistache', 'Saumon fumé & Cream Cheese', 'Légumes grillés & Pesto', 'Poulet rôti & Parmesan'],
   },
   {
-    id: 'sw6', famille: 'sandwichs', nom: 'Brioches Gourmet', img: '/plat-roti.png',
+    id: 'sw6', famille: 'sandwichs', nom: 'Brioches Gourmet', img: '/plat-roti.webp',
     description: 'Mini brioches garnies découpées.',
     recettes: ['Pastrami & Cheddar', 'Poulet César', 'Saumon fumé', 'Burrata & Pesto'],
   },
   {
-    id: 'sw7', famille: 'sandwichs', nom: 'Croissants Salés', img: '/plat-cesar.png',
+    id: 'sw7', famille: 'sandwichs', nom: 'Croissants Salés', img: '/plat-cesar.webp',
     description: 'Mini croissants pur beurre garnis.',
     recettes: ['Jambon & Comté', 'Saumon & Cream Cheese', 'Poulet rôti & Parmesan', 'Burrata & Tomates confites'],
   },
 
   // ── Gourmands ──
   {
-    id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plat-fusion.png',
+    id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plat-fusion.webp',
     description: 'Sélection de fromages affinés accompagnés de fruits frais, fruits secs et pain artisanal.',
     recettes: [],
   },
   {
-    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plat-boeuf.png',
+    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plat-boeuf.webp',
     description: 'Jambon de Parme, Coppa, Rosette, Bresaola, Chorizo doux, Cornichons & Condiments.',
     recettes: [],
   },
   {
-    id: 'go3', famille: 'gourmands', nom: 'Mix Fromages & Charcuteries', img: '/plat-fusion.png',
+    id: 'go3', famille: 'gourmands', nom: 'Mix Fromages & Charcuteries', img: '/plat-fusion.webp',
     description: 'L\'association parfaite des meilleurs fromages affinés et charcuteries artisanales.',
     recettes: [],
   },
   {
-    id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plat-saumon.png',
+    id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plat-saumon.webp',
     description: 'Saumon fumé, saumon gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.',
     recettes: [],
   },
   {
-    id: 'go5', famille: 'gourmands', nom: 'Burrata & Antipasti', img: '/plat-mediterraneen.png',
+    id: 'go5', famille: 'gourmands', nom: 'Burrata & Antipasti', img: '/plat-mediterraneen.webp',
     description: 'Burrata crémeuse, légumes grillés, tomates anciennes, artichauts, olives marinées, pesto & focaccia.',
     recettes: [],
   },
 
   // ── Fraîcheur ──
   {
-    id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plat-grec.png',
+    id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plat-grec.webp',
     description: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.',
     recettes: [],
   },
   {
-    id: 'fr2', famille: 'fraicheur', nom: 'Mezzé', img: '/plat-mediterraneen.png',
+    id: 'fr2', famille: 'fraicheur', nom: 'Mezzé', img: '/plat-mediterraneen.webp',
     description: 'Houmous, caviar d\'aubergine, labneh, falafels, olives, focaccia & crudités.',
     recettes: [],
   },
   {
-    id: 'fr3', famille: 'fraicheur', nom: 'Fruits Frais', img: '/plat-grec.png',
+    id: 'fr3', famille: 'fraicheur', nom: 'Fruits Frais', img: '/plat-grec.webp',
     description: 'Sélection de fruits frais de saison découpés.',
     recettes: [],
   },
 
   // ── Signature ──
   {
-    id: 'si1', famille: 'signature', nom: 'Asiatique', img: '/plat-thai.png',
+    id: 'si1', famille: 'signature', nom: 'Asiatique', img: '/plat-thai.webp',
     description: 'Assortiment de bouchées d\'inspiration asiatique.',
     recettes: ['Makis', 'California Rolls', 'Spring Rolls', 'Gyozas', 'Brochettes Yakitori', 'Sauce soja, gingembre & wasabi'],
   },
   {
-    id: 'si2', famille: 'signature', nom: 'Méditerranéen', img: '/plat-mediterraneen.png',
+    id: 'si2', famille: 'signature', nom: 'Méditerranéen', img: '/plat-mediterraneen.webp',
     description: 'Assortiment de spécialités méditerranéennes.',
     recettes: ['Focaccia', 'Burrata', 'Charcuteries italiennes', 'Légumes grillés', 'Olives marinées', 'Pesto', 'Parmesan'],
   },
   {
-    id: 'si3', famille: 'signature', nom: 'Apéritif Premium', img: '/plat-fusion.png',
+    id: 'si3', famille: 'signature', nom: 'Apéritif Premium', img: '/plat-fusion.webp',
     description: 'Le plateau idéal pour les afterworks.',
     recettes: ['Charcuteries', 'Fromages', 'Mini focaccias', 'Olives', 'Fruits secs', 'Raisins frais'],
   },
   {
-    id: 'si4', famille: 'signature', nom: 'Douceurs', img: '/plat-roti.png',
+    id: 'si4', famille: 'signature', nom: 'Douceurs', img: '/plat-roti.webp',
     description: 'Sélection de desserts artisanaux.',
     recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
   },
@@ -178,8 +178,7 @@ function PlateauCard({ produit }) {
       }}
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#F8F5EF', overflow: 'hidden' }}>
-        <img
-          src={produit.img}
+        <img loading="lazy" src={produit.img}
           alt={produit.nom}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
@@ -241,7 +240,7 @@ export default function PlateauxAperitifs() {
         {/* ── Hero ── */}
         <div className="pa-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pa-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img src={HERO.hero} alt="Plateaux apéritifs L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <img loading="eager" src={HERO.hero} alt="Plateaux apéritifs L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="pa-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>

@@ -27,7 +27,7 @@ function FormulaCard({ f }) {
     >
       {/* Image */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
-        <img src={f.img} alt={f.nom}
+        <img loading="lazy" src={f.img} alt={f.nom}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: f.imgPosition || 'center center', display: 'block', transition: 'transform 0.6s ease' }}
           className="formule-img"
         />
@@ -82,7 +82,7 @@ export default function CocktailsEtBuffets() {
         {/* Hero */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img src="/creations-3.png" alt="Cocktails & Buffets — L'Écrin Traiteur"
+            <img loading="eager" src="/creations-3.webp" alt="Cocktails & Buffets — L'Écrin Traiteur"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>

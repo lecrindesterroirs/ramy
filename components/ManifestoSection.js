@@ -54,8 +54,7 @@ export default function ManifestoSection() {
         </blockquote>
 
         {/* Monogramme L'Écrin */}
-        <img
-          src="/logo-footer.svg"
+        <img loading="lazy" src="/logo-footer.svg"
           alt="L'Écrin"
           style={{
             height: '56px',

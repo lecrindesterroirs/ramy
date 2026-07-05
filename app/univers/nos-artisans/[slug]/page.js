@@ -64,7 +64,7 @@ export default function ArtisanDetail() {
 
           <Reveal mode="mount" delay={120}>
             <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <img src={artisan.img} alt={artisan.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img loading="lazy" src={artisan.img} alt={artisan.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
           </Reveal>
         </div>
@@ -87,7 +87,7 @@ export default function ArtisanDetail() {
             </Reveal>
             <Reveal delay={160}>
               <div className="art-quote-img" style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '4px' }}>
-                <img src={artisan.avatar || artisan.img} alt={artisan.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+                <img loading="lazy" src={artisan.avatar || artisan.img} alt={artisan.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
               </div>
             </Reveal>
           </div>
@@ -105,7 +105,7 @@ export default function ArtisanDetail() {
               <Reveal key={c.id} delay={(i % 4) * 90}>
                 <Link href={c.href} className="art-creation-card" style={{ textDecoration: 'none', display: 'block' }}>
                   <div className="art-thumb" style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-                    <img src={c.img} alt={c.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }} />
+                    <img loading="lazy" src={c.img} alt={c.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }} />
                   </div>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)', marginTop: '12px', textAlign: 'center' }}>{c.nom}</p>
                 </Link>

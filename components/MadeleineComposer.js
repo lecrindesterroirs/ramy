@@ -129,8 +129,7 @@ export default function MadeleineComposer({ maxPieces, onChange }) {
                 position: 'relative',
                 overflow: 'hidden',
               }}>
-                <img
-                  src={f.img}
+                <img loading="lazy" src={f.img}
                   alt={f.label}
                   style={{
                     width: '100%', height: '100%',

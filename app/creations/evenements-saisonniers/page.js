@@ -14,8 +14,7 @@ export default function EvenementsSaisonniers() {
         {/* Hero */}
         <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img
-              src="/creations-featured.webp"
+            <img loading="lazy" src="/creations-featured.webp"
               alt="Événements Saisonniers — L'Écrin Traiteur"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
             />
@@ -81,8 +80,7 @@ export default function EvenementsSaisonniers() {
               }}
             >
               <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
-                <img
-                  src={ev.img}
+                <img loading="lazy" src={ev.img}
                   alt={ev.nom}
                   className="sais-img"
                   style={{

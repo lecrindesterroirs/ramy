@@ -94,8 +94,7 @@ export default function ExperiencesSection() {
           overflow: 'hidden',
         }}
       >
-        <img
-          src="/creations-1.png"
+        <img loading="lazy" src="/creations-1.webp"
           alt="Réception L'Écrin Traiteur"
           style={{
             width: '100%',

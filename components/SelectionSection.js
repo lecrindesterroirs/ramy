@@ -44,9 +44,8 @@ export default function SelectionSection() {
             className="reveal img-zoom selection-img-wrap"
             style={{ overflow: 'hidden' }}
           >
-            <img
-              className="selection-img"
-              src="/selection-artisans.jpg"
+            <img loading="lazy" className="selection-img"
+              src="/selection-artisans.webp"
               alt="L'art de la sélection — L'Écrin Traiteur"
               style={{
                 width: '100%',

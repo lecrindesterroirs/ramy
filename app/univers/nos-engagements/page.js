@@ -9,7 +9,7 @@ const engagements = [
     titre: 'Une sélection sans compromis',
     desc: "Chaque produit que vous trouvez chez L'Écrin a été choisi, testé, remis en question. Pas de référencement automatique, pas de catalogue imposé. Nous travaillons avec des artisans parce qu'ils font quelque chose de mieux que les autres, et pour aucune autre raison.",
     details: ['Dégustation avant référencement', 'Réévaluation régulière', 'Refus des produits standardisés'],
-    img: '/laura-todd.jpg',
+    img: '/laura-todd.webp',
   },
   {
     num: '02',
@@ -30,7 +30,7 @@ const engagements = [
     titre: 'Une livraison qui fait partie du service',
     desc: "Nos livreurs ne sont pas des prestataires exterens, ils font partie de notre équipe et de l'expérience que nous proposons. Présents dès 6h30, formés à nos standards, ils installent les prestations comme nous le ferions nous-mêmes.",
     details: ['Livraison dès 6h30, lundi–vendredi', 'Paris et Île-de-France', 'Installation soignée incluse', 'Équipe interne, pas de sous-traitance'],
-    img: '/creations-1.png',
+    img: '/creations-1.webp',
   },
 ]
 
@@ -76,7 +76,7 @@ export default function NosEngagements() {
             >
               {/* Image */}
               <div style={{ overflow: 'hidden', direction: 'ltr' }}>
-                <img src={e.img} alt={e.titre} style={{ width: '100%', height: '440px', objectFit: 'cover', display: 'block' }} />
+                <img loading="lazy" src={e.img} alt={e.titre} style={{ width: '100%', height: '440px', objectFit: 'cover', display: 'block' }} />
               </div>
 
               {/* Texte */}

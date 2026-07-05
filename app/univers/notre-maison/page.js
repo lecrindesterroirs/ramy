@@ -27,7 +27,7 @@ const etapes = [
       "Chaque prestation débute par une compréhension attentive de vos besoins et du moment que vous souhaitez créer.",
       "Formats, produits, contraintes alimentaires, horaires ou demandes spécifiques : nous concevons des prestations sur mesure, pensées pour s'adapter naturellement à chaque entreprise.",
     ],
-    img: '/petit-dejeuner-ds.jpg',
+    img: '/petit-dejeuner-ds.webp',
   },
   {
     num: '02',
@@ -37,7 +37,7 @@ const etapes = [
       "Produits artisanaux, maisons reconnues, circuits courts quand ça sert vraiment le produit. Rien n'est sélectionné au hasard.",
       "Parce qu'au final, ce sont toujours les détails et le goût dont les équipes se souviennent.",
     ],
-    img: '/selection-chef.png',
+    img: '/selection-chef.webp',
   },
   {
     num: '03',
@@ -79,8 +79,7 @@ export default function NotreMaison() {
             overflow: 'hidden',
           }}
         >
-          <img
-            src="/hero-bg2.png"
+          <img loading="eager" src="/hero-bg2.webp"
             alt="Notre Maison — L'Écrin Traiteur"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
@@ -190,8 +189,7 @@ export default function NotreMaison() {
           </div>
 
           <div style={{ overflow: 'hidden' }}>
-            <img
-              src="/creations-featured.webp"
+            <img loading="lazy" src="/creations-featured.webp"
               alt="L'atelier L'Écrin Traiteur"
               style={{ width: '100%', height: '560px', objectFit: 'cover', display: 'block' }}
             />
@@ -298,8 +296,7 @@ export default function NotreMaison() {
               }}
             >
               <div style={{ overflow: 'hidden', direction: 'ltr' }}>
-                <img
-                  src={e.img}
+                <img loading="lazy" src={e.img}
                   alt={e.titre}
                   style={{ width: '100%', height: '480px', objectFit: 'cover', display: 'block' }}
                 />

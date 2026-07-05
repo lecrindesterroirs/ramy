@@ -8,13 +8,13 @@ const etapes = [
     num: '01',
     titre: 'Écoute & Conception',
     desc: "Chaque prestation commence par une conversation. Nous prenons le temps de comprendre vos besoins, vos envies, vos contraintes, pour concevoir une proposition sur-mesure.",
-    img: '/petit-dejeuner-ds.jpg',
+    img: '/petit-dejeuner-ds.webp',
   },
   {
     num: '02',
     titre: 'Sélection des produits',
     desc: "Nous travaillons avec un réseau de producteurs et artisans sélectionnés pour la qualité constante de leurs produits. Fraîcheur, saisonnalité et traçabilité sont nos exigences.",
-    img: '/selection-chef.png',
+    img: '/selection-chef.webp',
   },
   {
     num: '03',
@@ -48,8 +48,7 @@ export default function NotreSavoirFaire() {
             overflow: 'hidden',
           }}
         >
-          <img
-            src="/selection-chef.png"
+          <img loading="eager" src="/selection-chef.webp"
             alt="Notre Savoir-Faire — L'Écrin Traiteur"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
           />
@@ -151,8 +150,7 @@ export default function NotreSavoirFaire() {
               }}
             >
               <div style={{ overflow: 'hidden', direction: 'ltr' }}>
-                <img
-                  src={e.img}
+                <img loading="lazy" src={e.img}
                   alt={e.titre}
                   style={{ width: '100%', height: '480px', objectFit: 'cover', display: 'block' }}
                 />

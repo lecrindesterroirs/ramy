@@ -9,26 +9,26 @@ const MOMENTS = {
     key: 'petitDej',
     cards: [
       { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.webp' },
-      { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.png' },
-      { title: 'Personnalisation', href: '/creations/personnalisation', img: '/perso-number-cake.png' },
+      { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.webp' },
+      { title: 'Personnalisation', href: '/creations/personnalisation', img: '/perso-number-cake.webp' },
     ],
   },
   dejeuner: {
     label: 'Déjeuner',
     key: 'dejeuner',
     cards: [
-      { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.png' },
-      { title: 'Lunch Box', href: '/creations/lunch-box', img: '/hero-lunch-box.png' },
-      { title: 'À partager', href: '/creations/a-partager', img: '/hero-a-partager.png' },
+      { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.webp' },
+      { title: 'Lunch Box', href: '/creations/lunch-box', img: '/hero-lunch-box.webp' },
+      { title: 'À partager', href: '/creations/a-partager', img: '/hero-a-partager.webp' },
     ],
   },
   cocktail: {
     label: 'Cocktail',
     key: 'cocktail',
     cards: [
-      { title: 'Cocktails', href: '/creations/cocktails', img: '/hero-cocktail.png' },
-      { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/creations-3.png' },
-      { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/creations-3.png' },
+      { title: 'Cocktails', href: '/creations/cocktails', img: '/hero-cocktail.webp' },
+      { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/creations-3.webp' },
+      { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/creations-3.webp' },
     ],
   },
   boissons: {
@@ -255,8 +255,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                       }}
                     >
                       <div className="card-img" style={{ width: '100%', height: '240px', overflow: 'hidden', borderRadius: '10px', background: '#F8F5EF', boxShadow: '0 10px 28px rgba(17,17,17,0.10)', transition: 'box-shadow 0.4s ease' }}>
-                        <img
-                          src={card.img}
+                        <img loading="lazy" src={card.img}
                           alt={card.title}
                           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease', display: 'block' }}
                         />

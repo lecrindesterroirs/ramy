@@ -51,7 +51,7 @@ function CoffretDetail({ produit }) {
           </p>
 
           <div style={{ width: '100%', aspectRatio: '16/10', overflow: 'hidden', background: '#F8F5EF', marginBottom: '32px' }}>
-            <img src={produit.img} alt={produit.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <img loading="lazy" src={produit.img} alt={produit.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
 
           {/* Formats disponibles */}

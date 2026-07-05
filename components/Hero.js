@@ -37,8 +37,7 @@ export default function Hero() {
           willChange: 'transform',
         }}
       >
-        <img
-          src="/hero-bg2.png"
+        <img loading="eager" src="/hero-bg2.webp"
           alt=""
           style={{
             width: '100%',

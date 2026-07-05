@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Animations Culinaires',
   description: 'Des ateliers et bars animés en direct par nos chefs et baristas — l\'expérience gourmande qui donne du relief à vos événements.',
-  hero: '/hero-plateaux-essentiel.png',
+  hero: '/hero-plateaux-essentiel.webp',
 }
 
 /* Filtres = les 5 univers d'animation. */
@@ -64,7 +64,7 @@ const ANIMATIONS = [
   { id: 'b4', univers: 'brunch', nom: 'Brunch Gourmand', img: '/prod-viennoiseries.webp',
     description: 'Une animation complète de brunch servie en continu.',
     compo: ['Viennoiseries artisanales', 'Pain & brioches', 'Beurre & confitures', 'Fruits frais', 'Yaourts & granola', 'Jus frais', 'Café & thé'] },
-  { id: 'b5', univers: 'brunch', nom: 'Atelier Œufs', img: '/petit-dejeuner-ds.jpg',
+  { id: 'b5', univers: 'brunch', nom: 'Atelier Œufs', img: '/petit-dejeuner-ds.webp',
     description: 'Œufs préparés minute selon les envies.',
     compo: ['Œufs brouillés', 'Œufs au plat', 'Omelettes', 'Œufs aux fines herbes', 'Bacon (option)', 'Saumon fumé (option)'] },
   { id: 'b6', univers: 'brunch', nom: 'Atelier Crêpes & Pancakes', img: '/prod-crepes.webp',
@@ -81,60 +81,60 @@ const ANIMATIONS = [
     compo: ['Skyr', 'Yaourt grec', 'Granola maison', 'Fruits frais', 'Fruits secs', 'Miel', 'Coulis'] },
 
   // ── Déjeuner Gourmet ──
-  { id: 'd1', univers: 'dejeuner', nom: 'Atelier Pasta', img: '/plat-grec.png',
+  { id: 'd1', univers: 'dejeuner', nom: 'Atelier Pasta', img: '/plat-grec.webp',
     description: 'Préparation minute de pâtes fraîches.',
     compo: ['Trofie au pesto', 'Parmesan', 'Burrata', 'Tomates confites'] },
-  { id: 'd2', univers: 'dejeuner', nom: 'Atelier Focaccia & Burrata', img: '/plat-mediterraneen.png',
+  { id: 'd2', univers: 'dejeuner', nom: 'Atelier Focaccia & Burrata', img: '/plat-mediterraneen.webp',
     description: 'Focaccias artisanales et burrata crémeuse dressées devant les invités.',
     compo: ['Focaccia', 'Burrata crémeuse', 'Jambon cru', 'Mortadelle', 'Tomates anciennes', 'Légumes grillés', 'Pesto', 'Basilic', 'Huile d\'olive'] },
-  { id: 'd3', univers: 'dejeuner', nom: 'Atelier Saumon', img: '/plat-saumon.png',
+  { id: 'd3', univers: 'dejeuner', nom: 'Atelier Saumon', img: '/plat-saumon.webp',
     description: 'Découpe et dressage de saumon fumé & gravlax.',
     compo: ['Blinis', 'Crème citron-aneth', 'Câpres', 'Oignons rouges'] },
-  { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/plat-fusion.png',
+  { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/plat-fusion.webp',
     description: 'Découpe et présentation de fromages AOP, pains artisanaux, fruits frais et fruits secs.',
     compo: [] },
-  { id: 'd6', univers: 'dejeuner', nom: 'Atelier Charcuterie Artisanale', img: '/plat-boeuf.png',
+  { id: 'd6', univers: 'dejeuner', nom: 'Atelier Charcuterie Artisanale', img: '/plat-boeuf.webp',
     description: 'Découpe minute de charcuteries italiennes.',
     compo: ['Jambon de Parme', 'Coppa', 'Bresaola', 'Mortadelle', 'Rosette'] },
-  { id: 'd7', univers: 'dejeuner', nom: 'Atelier Sushi & Maki', img: '/plat-thai.png',
+  { id: 'd7', univers: 'dejeuner', nom: 'Atelier Sushi & Maki', img: '/plat-thai.webp',
     description: 'Préparation ou dressage de bouchées japonaises.',
     compo: ['Makis', 'California Rolls', 'Nigiris', 'Gyozas'] },
-  { id: 'd8', univers: 'dejeuner', nom: 'Atelier Tataki', img: '/plat-boeuf.png',
+  { id: 'd8', univers: 'dejeuner', nom: 'Atelier Tataki', img: '/plat-boeuf.webp',
     description: 'Découpe et dressage minute.',
     compo: ['Tataki de bœuf', 'Chimichurri', 'Pommes grenailles'] },
 
   // ── Street Food Premium ──
-  { id: 's1', univers: 'streetfood', nom: 'Atelier Hot Dogs Gourmet', img: '/plat-fusion.png',
+  { id: 's1', univers: 'streetfood', nom: 'Atelier Hot Dogs Gourmet', img: '/plat-fusion.webp',
     description: 'Préparation minute de hot dogs briochés.',
     compo: ['New York (bœuf, oignons crispy, moutarde)', 'Chili Cheese', 'Truffe & Comté', 'Chicken Crispy', 'Végétarien'] },
-  { id: 's2', univers: 'streetfood', nom: 'Atelier Lobster Roll', img: '/plat-saumon.png',
+  { id: 's2', univers: 'streetfood', nom: 'Atelier Lobster Roll', img: '/plat-saumon.webp',
     description: 'Le grand classique new-yorkais, servi dans un pain brioché toasté.',
     compo: ['Homard', 'Crevettes', 'Crabe', 'Saumon fumé'] },
-  { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/plat-boeuf.png',
+  { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/plat-boeuf.webp',
     description: 'Montage minute de mini burgers.',
     compo: ['Cheeseburger', 'Chicken Crispy', 'Pulled Beef BBQ', 'Truffe & Comté', 'Halloumi'] },
-  { id: 's4', univers: 'streetfood', nom: 'Atelier Brioches Gourmet', img: '/plat-cesar.png',
+  { id: 's4', univers: 'streetfood', nom: 'Atelier Brioches Gourmet', img: '/plat-cesar.webp',
     description: 'Petits pains briochés garnis devant les invités.',
     compo: ['Pastrami & Cheddar', 'Poulet César', 'Burrata & Pesto', 'Saumon fumé', 'Effiloché de bœuf'] },
-  { id: 's5', univers: 'streetfood', nom: 'Atelier Mini Baguettes', img: '/plat-cesar.png',
+  { id: 's5', univers: 'streetfood', nom: 'Atelier Mini Baguettes', img: '/plat-cesar.webp',
     description: 'Découpe et dressage de mini baguettes artisanales.',
     compo: ['Jambon Beurre', 'Poulet César', 'Thon Ciboulette', 'Burrata', 'Pastrami'] },
-  { id: 's6', univers: 'streetfood', nom: 'Atelier Tacos Gourmet', img: '/plat-thai.png',
+  { id: 's6', univers: 'streetfood', nom: 'Atelier Tacos Gourmet', img: '/plat-thai.webp',
     description: 'Mini tacos dressés à la minute.',
     compo: ['Poulet mariné', 'Bœuf effiloché', 'Crevettes', 'Falafel'] },
-  { id: 's7', univers: 'streetfood', nom: 'Atelier Pita & Shawarma', img: '/plat-mediterraneen.png',
+  { id: 's7', univers: 'streetfood', nom: 'Atelier Pita & Shawarma', img: '/plat-mediterraneen.webp',
     description: 'Pain pita chaud garni devant les invités.',
     compo: ['Poulet mariné', 'Agneau', 'Falafel', 'Halloumi'] },
-  { id: 's8', univers: 'streetfood', nom: 'Atelier Wraps Signature', img: '/plat-grec.png',
+  { id: 's8', univers: 'streetfood', nom: 'Atelier Wraps Signature', img: '/plat-grec.webp',
     description: 'Découpe de wraps gourmands.',
     compo: ['César', 'Saumon', 'Burrata', 'Falafel', 'Thon'] },
-  { id: 's9', univers: 'streetfood', nom: 'Atelier Loaded Fries', img: '/plat-fusion.png',
+  { id: 's9', univers: 'streetfood', nom: 'Atelier Loaded Fries', img: '/plat-fusion.webp',
     description: 'Pommes de terre croustillantes garnies.',
     compo: ['Cheddar & Bacon', 'Pulled Beef', 'Chicken Crispy', 'Truffe & Parmesan'] },
-  { id: 's10', univers: 'streetfood', nom: 'Atelier Croque Gourmet', img: '/plat-roti.png',
+  { id: 's10', univers: 'streetfood', nom: 'Atelier Croque Gourmet', img: '/plat-roti.webp',
     description: 'Croques minute dans du pain de campagne.',
     compo: ['Truffe', 'Jambon & Comté', 'Saumon', 'Mortadelle & Pistache'] },
-  { id: 's11', univers: 'streetfood', nom: 'Atelier Bao Buns', img: '/plat-thai.png',
+  { id: 's11', univers: 'streetfood', nom: 'Atelier Bao Buns', img: '/plat-thai.webp',
     description: 'Petits pains vapeur asiatiques.',
     compo: ['Bœuf effiloché', 'Poulet frit', 'Crevettes', 'Champignons'] },
 
@@ -182,8 +182,7 @@ function AnimationCard({ produit }) {
       }}
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#F8F5EF', overflow: 'hidden' }}>
-        <img
-          src={produit.img}
+        <img loading="lazy" src={produit.img}
           alt={produit.nom}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
@@ -245,7 +244,7 @@ export default function AnimationsCulinaires() {
         {/* ── Hero ── */}
         <div className="aa-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="aa-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img src={HERO.hero} alt="Animations culinaires L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <img loading="eager" src={HERO.hero} alt="Animations culinaires L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="aa-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>

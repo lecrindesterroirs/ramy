@@ -109,7 +109,7 @@ export default function ProductPage() {
 
             {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
             <div className="mad-hero" style={{ position: 'relative', width: '100%', height: 'clamp(360px, 42vw, 520px)', overflow: 'hidden' }}>
-              <img src="/madeleine-home.jpg" alt="Les madeleines signature — L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
+              <img loading="eager" src="/madeleine-home.webp" alt="Les madeleines signature — L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
@@ -132,7 +132,7 @@ export default function ProductPage() {
               {COFFRETS.map(c => (
                 <div key={c.id} style={{ textAlign: 'center' }}>
                   <div style={{ position: 'relative', width: '100%', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                    <img src={c.img} alt={c.titre} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }} />
+                    <img loading="lazy" src={c.img} alt={c.titre} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }} />
                   </div>
                   <div style={{ height: '26px', marginBottom: '8px' }}>
                     {c.popular && (
@@ -163,7 +163,7 @@ export default function ProductPage() {
             <div className="mad-flavors-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px', maxWidth: '1160px', margin: '0 auto', padding: '0 72px 8px' }}>
               {MADELEINE_FLAVORS.map(f => (
                 <div key={f.id} style={{ textAlign: 'center', padding: '10px 8px' }}>
-                  <img src={f.img} alt={f.label} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
+                  <img loading="lazy" src={f.img} alt={f.label} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
                   <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '6px' }}>{f.label}</p>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{f.description}</p>
                 </div>
@@ -198,7 +198,7 @@ export default function ProductPage() {
               </div>
               {/* Cellule 2 : image madeleines */}
               <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px' }}>
-                <img src="/prod-madeleines-20.webp" alt="Madeleines Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img loading="lazy" src="/prod-madeleines-20.webp" alt="Madeleines Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               {/* Cellule 3 : Notre artisan partenaire */}
               <div style={{ padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -217,7 +217,7 @@ export default function ProductPage() {
               </div>
               {/* Cellule 4 : photo atelier */}
               <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px' }}>
-                <img src="/prod-madeleines-50.webp" alt="L'atelier Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img loading="lazy" src="/prod-madeleines-50.webp" alt="L'atelier Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
             </div>
           </div>
@@ -227,7 +227,7 @@ export default function ProductPage() {
           <div className="fiche-grid" style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 72px 80px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'start' }}>
             <div className="fiche-image-col">
               <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF', position: 'sticky', top: 'calc(var(--banner-h) + var(--nav-h) + 24px)' }}>
-                <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
             </div>
             <ProductInfo product={product} />
@@ -308,7 +308,7 @@ function GalleryFiche({ product }) {
       {/* ── Colonne gauche : galerie (grande) ── */}
       <div className="gallery-col">
         <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-          <img src={gallery[active]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <img loading="lazy" src={gallery[active]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
 
         {/* Miniatures — format paysage fin */}
@@ -323,7 +323,7 @@ function GalleryFiche({ product }) {
                 aria-label={`Photo ${i + 1}`}
                 style={{ padding: 0, border: 'none', cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF', outline: isActive ? '2px solid var(--accent)' : '2px solid transparent', outlineOffset: '2px', transition: 'outline-color 0.2s ease' }}
               >
-                <img src={gallery[i]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: isActive ? 1 : 0.72, transition: 'opacity 0.2s ease' }} />
+                <img loading="lazy" src={gallery[i]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: isActive ? 1 : 0.72, transition: 'opacity 0.2s ease' }} />
               </button>
             ) : (
               <button
@@ -345,7 +345,7 @@ function GalleryFiche({ product }) {
       <div className="gallery-info" style={{ paddingLeft: '28px' }}>
         {/* En-tête centré */}
         <div style={{ textAlign: 'center', marginBottom: '22px' }}>
-          <img src="/logo-footer.svg" alt="L'Écrin" style={{ height: '32px', width: 'auto', margin: '0 auto 12px', opacity: 0.9 }} />
+          <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '32px', width: 'auto', margin: '0 auto 12px', opacity: 0.9 }} />
           <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '8px' }}>
             {product.name}
           </h1>
@@ -463,7 +463,7 @@ function EditorialHero({ product, breadcrumb }) {
         {/* Gauche — photo posée sur le marbre */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ width: '100%', maxWidth: '560px', maxHeight: 'calc(100vh - var(--banner-h) - var(--nav-h) - 80px)', aspectRatio: '1 / 1', overflow: 'hidden', boxShadow: '0 26px 60px -24px rgba(60,48,34,0.5)' }}>
-            <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
         </div>
 
@@ -474,7 +474,7 @@ function EditorialHero({ product, breadcrumb }) {
 
             <div style={{ position: 'relative', padding: '20px 40px 20px', textAlign: 'center' }}>
               {/* Monogramme */}
-              <img src="/logo-footer.svg" alt="L'Écrin" style={{ height: '36px', width: 'auto', margin: '0 auto 10px', opacity: 0.92 }} />
+              <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '36px', width: 'auto', margin: '0 auto 10px', opacity: 0.92 }} />
 
               {/* Titre */}
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 34px)', fontWeight: 400, color: '#211C16', lineHeight: 1.08, marginBottom: '8px' }}>

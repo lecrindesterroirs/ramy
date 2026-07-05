@@ -231,7 +231,7 @@ export default function MadeleineCoffretViz({ maxPieces, composition }) {
                     overflow: 'hidden', flexShrink: 0,
                     border: `1.5px solid ${f.color}55`,
                   }}>
-                    <img src={f.img} alt={f.label}
+                    <img loading="lazy" src={f.img} alt={f.label}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </span>
                   {count} × {f.label}

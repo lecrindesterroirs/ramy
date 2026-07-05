@@ -29,14 +29,14 @@ export const COLLECTIONS = [
     label: 'Essentiel',
     description: 'Des recettes fraîches et équilibrées, entrée, plat et dessert préparés chaque matin avec des produits de saison.',
     prix: '28,90',
-    hero: '/plateau-mediterraneen.png',
+    hero: '/plateau-mediterraneen.webp',
   },
   {
     key: 'signature',
     label: 'Signature',
     description: 'Une sélection raffinée élaborée par nos chefs — produits nobles, dressage soigné, transformable en coffret Prestige.',
     prix: '33,90',
-    hero: '/hero-plateau-signature.png',
+    hero: '/hero-plateau-signature.webp',
   },
 ]
 
@@ -81,37 +81,37 @@ const PRESTIGE_OPTIONS = [
 export const PRODUITS = [
   // ── Collection Essentiel (à partir de 28,90 € HT) ──
   {
-    id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'Le César', img: '/plateau-cesar.png',
+    id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'Le César', img: '/plateau-cesar.webp',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Salade César au poulet rôti',
     dessert: 'Brownie',
   },
   {
-    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plateau-mediterraneen.png',
+    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plateau-mediterraneen.webp',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Quinoa gourmand, falafels & sauce tahini',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Provençal', img: '/plateau-provencal.png',
+    id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Provençal', img: '/plateau-provencal.webp',
     entree: 'Caviar d\'aubergine & focaccia romarin',
     plat: 'Pâtes au pesto, mozzarella & tomates confites',
     dessert: 'Panna Cotta fruits rouges',
   },
   {
-    id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'Le Fermier', img: '/plateau-fermier.png',
+    id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'Le Fermier', img: '/plateau-fermier.webp',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Émincé de Poulet, légumes grillés marinés & huile au basilic',
     dessert: 'Compote pomme & fève tonka',
   },
   {
-    id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'Le Nordique', img: '/plateau-nordique.png',
+    id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'Le Nordique', img: '/plateau-nordique.webp',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Salade de pommes de terre, saumon fumé & crème citronnée',
     dessert: 'Mousse au chocolat du Chef',
   },
   {
-    id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plateau-gourmand.png',
+    id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plateau-gourmand.webp',
     entree: 'Tartelette pissaladière & jeunes pousses',
     plat: 'Salade de lentilles, feta & légumes rôtis',
     dessert: 'Cookie Signature',
@@ -119,49 +119,49 @@ export const PRODUITS = [
 
   // ── Collection Signature (à partir de 33,90 € HT) ──
   {
-    id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'L\'Italien', img: '/plat-trofie-burrata.png',
+    id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'L\'Italien', img: '/plat-trofie-burrata.webp',
     entree: 'Burrata, tomates anciennes & pesto',
     plat: 'Trofie au pesto, burrata & tomates confites',
     dessert: 'Tartelette Praliné',
   },
   {
-    id: 's2', collection: 'signature', categorie: 'poulet', nom: 'Le Coréen', img: '/plat-poulet-coreen.png',
+    id: 's2', collection: 'signature', categorie: 'poulet', nom: 'Le Coréen', img: '/plat-poulet-coreen.webp',
     entree: 'Assiette mezzé',
     plat: 'Poulet coréen, riz au sésame & légumes pickles',
     dessert: 'Mousse Chocolat',
   },
   {
-    id: 's3', collection: 'signature', categorie: 'poisson', nom: 'Le Riviera', img: '/plat-gravlax-riviera.png',
+    id: 's3', collection: 'signature', categorie: 'poisson', nom: 'Le Riviera', img: '/plat-gravlax-riviera.webp',
     entree: 'Tartare de saumon méditerranéen',
     plat: 'Saumon gravlax, pommes grenailles, crème d\'Isigny & jeunes pousses',
     dessert: 'Tartelette Citron',
   },
   {
-    id: 's4', collection: 'signature', categorie: 'viande', nom: 'Le Bistrot', img: '/plat-tataki.png',
+    id: 's4', collection: 'signature', categorie: 'viande', nom: 'Le Bistrot', img: '/plat-tataki.webp',
     entree: 'Carpaccio de bœuf, parmesan & roquette',
     plat: 'Tataki de bœuf, pommes grenailles rôties & chimichurri',
     dessert: 'Carrot Cake',
   },
   {
-    id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'Le Levant', img: '/plat-levant.png',
+    id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'Le Levant', img: '/plat-levant.webp',
     entree: 'Assiette mezzé',
     plat: 'Quinoa gourmand, falafels, feta, légumes grillés & tahini',
     dessert: 'Mousse Chocolat',
   },
   {
-    id: 's6', collection: 'signature', categorie: 'poisson', nom: 'Le Méditerranéen', img: '/plat-gravlax.png',
+    id: 's6', collection: 'signature', categorie: 'poisson', nom: 'Le Méditerranéen', img: '/plat-gravlax.webp',
     entree: 'Ceviche de daurade, mangue & coriandre',
     plat: 'Saumon gravlax, pommes grenailles & crème d\'Isigny',
     dessert: 'Tartelette Citron',
   },
   {
-    id: 's7', collection: 'signature', categorie: 'viande', nom: 'Le Prestige Bœuf', img: '/plat-tataki-prestige.png',
+    id: 's7', collection: 'signature', categorie: 'viande', nom: 'Le Prestige Bœuf', img: '/plat-tataki-prestige.webp',
     entree: 'Carpaccio de bœuf, parmesan & roquette',
     plat: 'Tataki de bœuf & chimichurri',
     dessert: 'Mousse Chocolat',
   },
   {
-    id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'Le Prestige Burrata', img: '/plat-trofie-prestige.png',
+    id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'Le Prestige Burrata', img: '/plat-trofie-prestige.webp',
     entree: 'Burrata, tomates anciennes & pesto',
     plat: 'Trofie au pesto & burrata',
     dessert: 'Carrot Cake',
@@ -195,8 +195,7 @@ function MenuCard({ produit }) {
       {/* Photo du plat — pleine largeur dans la carte, overlay "Découvrir" au survol */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
-          <img
-            src={produit.img}
+          <img loading="lazy" src={produit.img}
             alt={produit.nom}
             style={{
               width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
@@ -309,8 +308,7 @@ export default function PlateauxRepas() {
         {/* ── Hero — contenu + immersif, aligné sur petit-déjeuner ── */}
         <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pr-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img
-              key={`hero-img-${col.key}`}
+            <img loading="eager" key={`hero-img-${col.key}`}
               src={col.hero}
               alt={`Plateaux repas ${col.label}`}
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}

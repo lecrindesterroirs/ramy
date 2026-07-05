@@ -23,8 +23,7 @@ function FranceMap({ artisans }) {
   return (
     <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', maxWidth: '480px', margin: '0 auto' }}>
       <div style={{ position: 'absolute', inset: '-10%', background: 'radial-gradient(closest-side, rgba(224,161,38,0.14), rgba(224,161,38,0) 72%)', pointerEvents: 'none' }} />
-      <img
-        src="/france-map.svg"
+      <img loading="lazy" src="/france-map.svg"
         alt="Carte de France"
         style={{
           width: '100%',
@@ -58,7 +57,7 @@ function FranceMap({ artisans }) {
       {artisans.map((a) => (
         <div key={a.slug} className="pin-wrap" style={{ position: 'absolute', left: `${a.map.x}%`, top: `${a.map.y}%`, transform: 'translate(-50%, -50%)' }}>
           <Link href={`/univers/nos-artisans/${a.slug}`} className="map-pin" aria-label={a.nom} style={{ display: 'block', width: '34px', height: '34px', borderRadius: '50%', border: '2px solid #FFFFFF', boxShadow: '0 2px 8px rgba(17,17,17,0.25)', overflow: 'hidden', background: 'var(--accent)' }}>
-            <img src={a.avatar || a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+            <img loading="lazy" src={a.avatar || a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
           </Link>
           <span className="pin-label">{a.nom}</span>
         </div>

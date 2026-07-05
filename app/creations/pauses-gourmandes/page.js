@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Pauses Gourmandes',
   description: 'La touche sucrée de l\'après-midi — pâtisseries, biscuits et fruits frais préparés le jour même pour rythmer vos pauses et goûters d\'entreprise.',
-  hero: '/hero-pauses-gourmandes.png',
+  hero: '/hero-pauses-gourmandes.webp',
 }
 
 /* Coffrets — tailles disponibles, même logique que les Madeleines
@@ -47,23 +47,23 @@ const COFFRETS_MACARONS = [
 export const PAUSES = [
   { id: 'madeleines',    nom: 'Madeleines',                  img: '/prod-madeleines-20.webp', description: 'Madeleines moelleuses cuites du jour, nature ou parfumées.', coffrets: COFFRETS_MADELEINES },
   { id: 'macarons',      nom: 'Macarons',                    img: '/prod-macarons.webp',       description: 'Macarons aux ganaches délicates, assortiment de saveurs.', coffrets: COFFRETS_MACARONS },
-  { id: 'brownie',       nom: 'Brownie',                     img: '/prod-brownie.png',        description: 'Brownie fondant au chocolat intense, servi à couper.' },
-  { id: 'carrot-cake',   nom: 'Carrot Cake',           img: '/prod-carrot-cake.png',    description: 'Carrot cake moelleux aux épices, servi à couper.' },
-  { id: 'cake-citron',   nom: 'Cake Citron Pavot',           img: '/prod-cake-citron-pavot.png', description: 'Cake maison au citron et graines de pavot, tranché.' },
+  { id: 'brownie',       nom: 'Brownie',                     img: '/prod-brownie.webp',        description: 'Brownie fondant au chocolat intense, servi à couper.' },
+  { id: 'carrot-cake',   nom: 'Carrot Cake',           img: '/prod-carrot-cake.webp',    description: 'Carrot cake moelleux aux épices, servi à couper.' },
+  { id: 'cake-citron',   nom: 'Cake Citron Pavot',           img: '/prod-cake-citron-pavot.webp', description: 'Cake maison au citron et graines de pavot, tranché.' },
   { id: 'cake-marbre',   nom: 'Cake Marbré',                 img: '/prod-cake-marbre.webp',    description: 'Cake marbré chocolat-vanille, tranché.' },
   { id: 'cookie',        nom: 'Cookie Signature',            img: '/prod-cookies.webp',        description: 'Cookie généreux aux pépites de chocolat.' },
-  { id: 'tartelette-citron', nom: 'Tartelette Citron',        img: '/prod-tartelette-citron.png', description: 'Tartelette au citron meringuée, crémeux acidulé.' },
-  { id: 'tartelette-praline', nom: 'Tartelette Praliné',      img: '/prod-tartelette-praline.png', description: 'Tartelette au praliné maison, croustillant noisette.' },
-  { id: 'mousse-chocolat', nom: 'Mousse Chocolat',           img: '/prod-mousse-chocolat.png', description: 'Mousse au chocolat intense, texture aérienne.' },
+  { id: 'tartelette-citron', nom: 'Tartelette Citron',        img: '/prod-tartelette-citron.webp', description: 'Tartelette au citron meringuée, crémeux acidulé.' },
+  { id: 'tartelette-praline', nom: 'Tartelette Praliné',      img: '/prod-tartelette-praline.webp', description: 'Tartelette au praliné maison, croustillant noisette.' },
+  { id: 'mousse-chocolat', nom: 'Mousse Chocolat',           img: '/prod-mousse-chocolat.webp', description: 'Mousse au chocolat intense, texture aérienne.' },
   { id: 'panna-cotta',   nom: 'Panna Cotta',                 img: '/prod-panna-cotta.webp',    description: 'Panna cotta vanille, dressée en verrine individuelle.' },
-  { id: 'verrine-citron', nom: 'Verrine Citron / Lemon Curd', img: '/prod-verrine-citron.png', description: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
-  { id: 'choux',         nom: 'Choux',                       img: '/prod-choux.png',          description: 'Choux garnis assortis, glaçages et crèmes aux parfums variés.' },
-  { id: 'babka',         nom: 'Babka',                       img: '/prod-babka.png',          description: 'Babka briochée roulée au chocolat, tranchée.' },
-  { id: 'tartes-fines',  nom: 'Tartes Fines',                img: '/prod-tartes-fines.png',   description: 'Tartes fines aux fruits de saison, à partager.' },
-  { id: 'yaourt-fruits', nom: 'Yaourt Fermier',                img: '/prod-yaourt-fruits.png',  description: 'Yaourt aux fruits de la Ferme de Viltain, au lait de leurs vaches.' },
+  { id: 'verrine-citron', nom: 'Verrine Citron / Lemon Curd', img: '/prod-verrine-citron.webp', description: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
+  { id: 'choux',         nom: 'Choux',                       img: '/prod-choux.webp',          description: 'Choux garnis assortis, glaçages et crèmes aux parfums variés.' },
+  { id: 'babka',         nom: 'Babka',                       img: '/prod-babka.webp',          description: 'Babka briochée roulée au chocolat, tranchée.' },
+  { id: 'tartes-fines',  nom: 'Tartes Fines',                img: '/prod-tartes-fines.webp',   description: 'Tartes fines aux fruits de saison, à partager.' },
+  { id: 'yaourt-fruits', nom: 'Yaourt Fermier',                img: '/prod-yaourt-fruits.webp',  description: 'Yaourt aux fruits de la Ferme de Viltain, au lait de leurs vaches.' },
   { id: 'compote-pomme', nom: 'Compote Pomme',                img: '/prod-compote.webp',        description: 'Compote de pomme nature, sans sucres ajoutés.' },
-  { id: 'compote-pomme-fraise', nom: 'Compote Pomme Fraise',  img: '/prod-compote-fraise.png', description: 'Compote pomme et fraise, fraîche et gourmande.' },
-  { id: 'compote-pomme-tonka', nom: 'Compote Pomme Fève Tonka', img: '/prod-compote-tonka.png', description: 'Compote pomme parfumée à la fève tonka.' },
+  { id: 'compote-pomme-fraise', nom: 'Compote Pomme Fraise',  img: '/prod-compote-fraise.webp', description: 'Compote pomme et fraise, fraîche et gourmande.' },
+  { id: 'compote-pomme-tonka', nom: 'Compote Pomme Fève Tonka', img: '/prod-compote-tonka.webp', description: 'Compote pomme parfumée à la fève tonka.' },
   { id: 'brochettes-fruits', nom: 'Brochettes de Fruits',    img: '/prod-brochettes.webp',    description: 'Brochettes de fruits frais de saison, à picorer.' },
   { id: 'corbeilles-fruits', nom: 'Corbeilles de Fruits',    img: '/prod-corbeille.webp',     description: 'Corbeilles de fruits frais de saison, à partager.' },
   { id: 'crepes',        nom: 'Crêpes',                      img: '/prod-crepes.webp',         description: 'Crêpes sucrées préparées le jour même, garnitures au choix.' },
@@ -96,8 +96,7 @@ function PauseCard({ produit }) {
       }}
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', background: '#F8F5EF', overflow: 'hidden' }}>
-        <img
-          src={produit.img}
+        <img loading="lazy" src={produit.img}
           alt={produit.nom}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
@@ -144,7 +143,7 @@ export default function PausesGourmandes() {
         {/* ── Hero ── */}
         <div className="pg-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pg-hero" style={{ position: 'relative', width: '100%', height: '54vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img src={HERO.hero} alt="Pauses gourmandes L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <img loading="eager" src={HERO.hero} alt="Pauses gourmandes L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="pg-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>

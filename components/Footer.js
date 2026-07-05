@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Logo + tagline */}
           <div style={{ flexShrink: 0, width: '200px' }}>
             <a href="/" style={{ textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '24px' }}>
-              <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '90px', width: 'auto', display: 'block', marginBottom: '6px' }} />
+              <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '90px', width: 'auto', display: 'block', marginBottom: '6px' }} />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, letterSpacing: '0.12em', color: '#111111', lineHeight: 1 }}>L'ÉCRIN</span>
                 <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#111111', marginTop: '4px' }}>TRAITEUR</span>

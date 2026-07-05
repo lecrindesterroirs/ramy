@@ -22,7 +22,7 @@ const CARDS = [
     quote: "Les madeleines sont très bonnes, grand choix de parfums, viennoiseries, jus — et le service au top. Le livreur nous a même aidé à tout installer.",
     author: 'Rose Jean',
     role: 'Office Manager · SIA Partners',
-    img: '/creations-1.png',
+    img: '/creations-1.webp',
   },
   {
     company: 'Stellantis',
@@ -94,10 +94,10 @@ export default function TestimonialsSection() {
           {/* Vedette — photo + carte texte côte à côte */}
           <div className="ts-featured" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', border: '1px solid rgba(17,17,17,0.10)', background: '#FFFFFF', overflow: 'hidden' }}>
             <div className="ts-featured-img" style={{ overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <img src={FEATURED.img} alt={`Événement ${FEATURED.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+              <img loading="lazy" src={FEATURED.img} alt={`Événement ${FEATURED.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
             </div>
             <div style={{ padding: '34px 38px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <img src={FEATURED.logo} alt={FEATURED.company} style={{ height: '24px', width: 'auto', marginBottom: '14px', filter: 'grayscale(1)', alignSelf: 'flex-start' }} />
+              <img loading="lazy" src={FEATURED.logo} alt={FEATURED.company} style={{ height: '24px', width: 'auto', marginBottom: '14px', filter: 'grayscale(1)', alignSelf: 'flex-start' }} />
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>{FEATURED.context}</p>
               <QuoteMark size={34} />
               <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(16px, 1.5vw, 21px)', fontWeight: 400, lineHeight: 1.32, color: 'var(--text-primary)', fontStyle: 'italic', margin: '10px 0 24px' }}>
@@ -113,7 +113,7 @@ export default function TestimonialsSection() {
             {CARDS.map(t => (
               <div key={t.company} className="ts-card" style={{ display: 'grid', gridTemplateColumns: '0.62fr 1fr', border: '1px solid rgba(17,17,17,0.10)', background: '#FFFFFF', overflow: 'hidden', flex: 1 }}>
                 <div className="ts-card-img" style={{ overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-                  <img src={t.img} alt={`Événement ${t.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <img loading="lazy" src={t.img} alt={`Événement ${t.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 </div>
                 <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '6px' }}>{t.company}</p>
@@ -137,7 +137,7 @@ export default function TestimonialsSection() {
           </p>
           <div className="ts-logos" style={{ display: 'grid', gridTemplateColumns: `repeat(${CLIENT_LOGOS.length}, 1fr)`, alignItems: 'center', justifyItems: 'center', gap: '24px' }}>
             {CLIENT_LOGOS.map(logo => (
-              <img key={logo.name} src={logo.src} alt={logo.name} style={{ height: logo.height || '30px', width: 'auto', maxWidth: '100%', objectFit: 'contain', filter: 'grayscale(1)', opacity: logo.opacity || 0.6, mixBlendMode: 'multiply' }} />
+              <img loading="lazy" key={logo.name} src={logo.src} alt={logo.name} style={{ height: logo.height || '30px', width: 'auto', maxWidth: '100%', objectFit: 'contain', filter: 'grayscale(1)', opacity: logo.opacity || 0.6, mixBlendMode: 'multiply' }} />
             ))}
           </div>
         </div>

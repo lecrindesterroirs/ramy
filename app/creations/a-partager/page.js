@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'À Partager',
   description: 'De grandes salades généreuses à partager, pensées par base — vertes, pâtes, pommes de terre, lentilles ou céréales. Composées le matin avec des produits de saison.',
-  hero: '/hero-a-partager.png',
+  hero: '/hero-a-partager.webp',
 }
 
 /* Filtres = les bases de salade. */
@@ -50,28 +50,28 @@ const CATEGORIE_COLORS = {
 /* Salades par base. Photos placeholder (bols de saison). */
 export const SALADES = [
   // ── Bases vertes ──
-  { id: 'v1', categorie: 'vertes', nom: 'La César',        img: '/partager-cesar.png' },
-  { id: 'v2', categorie: 'vertes', nom: 'La Grecque',      img: '/partager-grecque.png' },
-  { id: 'v3', categorie: 'vertes', nom: 'La Burrata',      img: '/partager-burrata.png' },
-  { id: 'v4', categorie: 'vertes', nom: 'Le Saumon Gravlax', img: '/partager-gravlax.png' },
+  { id: 'v1', categorie: 'vertes', nom: 'La César',        img: '/partager-cesar.webp' },
+  { id: 'v2', categorie: 'vertes', nom: 'La Grecque',      img: '/partager-grecque.webp' },
+  { id: 'v3', categorie: 'vertes', nom: 'La Burrata',      img: '/partager-burrata.webp' },
+  { id: 'v4', categorie: 'vertes', nom: 'Le Saumon Gravlax', img: '/partager-gravlax.webp' },
   // ── Salades de pâtes ──
-  { id: 'p1', categorie: 'pates', nom: 'Pesto, Mozzarella & Tomates Confites', img: '/plat-grec.png' },
-  { id: 'p2', categorie: 'pates', nom: 'Poulet César',    img: '/plat-cesar.png' },
-  { id: 'p3', categorie: 'pates', nom: 'Thon',            img: '/plat-saumon.png' },
-  { id: 'p4', categorie: 'pates', nom: 'Légumes Grillés', img: '/plat-mediterraneen.png' },
+  { id: 'p1', categorie: 'pates', nom: 'Pesto, Mozzarella & Tomates Confites', img: '/plat-grec.webp' },
+  { id: 'p2', categorie: 'pates', nom: 'Poulet César',    img: '/plat-cesar.webp' },
+  { id: 'p3', categorie: 'pates', nom: 'Thon',            img: '/plat-saumon.webp' },
+  { id: 'p4', categorie: 'pates', nom: 'Légumes Grillés', img: '/plat-mediterraneen.webp' },
   // ── Salades de pommes de terre ──
-  { id: 'd1', categorie: 'pdt', nom: 'Saumon & Crème Citronnée', img: '/plat-saumon.png' },
-  { id: 'd2', categorie: 'pdt', nom: 'Moutarde à l\'Ancienne',   img: '/plat-roti.png' },
-  { id: 'd3', categorie: 'pdt', nom: 'Herbes fraîches',          img: '/plat-grec.png' },
-  { id: 'd4', categorie: 'pdt', nom: 'Poulet rôti',              img: '/plat-cesar.png' },
+  { id: 'd1', categorie: 'pdt', nom: 'Saumon & Crème Citronnée', img: '/plat-saumon.webp' },
+  { id: 'd2', categorie: 'pdt', nom: 'Moutarde à l\'Ancienne',   img: '/plat-roti.webp' },
+  { id: 'd3', categorie: 'pdt', nom: 'Herbes fraîches',          img: '/plat-grec.webp' },
+  { id: 'd4', categorie: 'pdt', nom: 'Poulet rôti',              img: '/plat-cesar.webp' },
   // ── Salades de lentilles ──
-  { id: 'l1', categorie: 'lentilles', nom: 'Feta',          img: '/plat-grec.png' },
-  { id: 'l2', categorie: 'lentilles', nom: 'Saumon fumé',   img: '/plat-saumon.png' },
-  { id: 'l3', categorie: 'lentilles', nom: 'Légumes rôtis', img: '/plat-fusion.png' },
+  { id: 'l1', categorie: 'lentilles', nom: 'Feta',          img: '/plat-grec.webp' },
+  { id: 'l2', categorie: 'lentilles', nom: 'Saumon fumé',   img: '/plat-saumon.webp' },
+  { id: 'l3', categorie: 'lentilles', nom: 'Légumes rôtis', img: '/plat-fusion.webp' },
   // ── Salades de céréales ──
-  { id: 'c1', categorie: 'cereales', nom: 'Quinoa Méditerranéen', img: '/plat-mediterraneen.png' },
-  { id: 'c2', categorie: 'cereales', nom: 'Boulgour Oriental',    img: '/plat-fusion.png' },
-  { id: 'c3', categorie: 'cereales', nom: 'Épeautre & Légumes',   img: '/plat-grec.png' },
+  { id: 'c1', categorie: 'cereales', nom: 'Quinoa Méditerranéen', img: '/plat-mediterraneen.webp' },
+  { id: 'c2', categorie: 'cereales', nom: 'Boulgour Oriental',    img: '/plat-fusion.webp' },
+  { id: 'c3', categorie: 'cereales', nom: 'Épeautre & Légumes',   img: '/plat-grec.webp' },
 ]
 
 /* ─── Carte salade ───────────────────────────────────────────────── */
@@ -100,8 +100,7 @@ function SaladeCard({ produit }) {
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
-          <img
-            src={produit.img}
+          <img loading="lazy" src={produit.img}
             alt={produit.nom}
             style={{
               width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
@@ -165,7 +164,7 @@ export default function APartager() {
         {/* ── Hero ── */}
         <div className="ap-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="ap-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img src={HERO.hero} alt="Salades à partager L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <img loading="eager" src={HERO.hero} alt="Salades à partager L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="ap-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>

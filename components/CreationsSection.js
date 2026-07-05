@@ -8,31 +8,31 @@ const creations = [
   {
     label: 'Plateaux repas',
     description: 'Des recettes fraîches, de saison et équilibrées pour des déjeuners savoureux et responsables.',
-    img: '/plateau-mediterraneen.png',
+    img: '/plateau-mediterraneen.webp',
     href: '/creations/plateaux-repas',
   },
   {
     label: 'Cocktails',
     description: 'Des pièces salées et sucrées raffinées pour sublimer tous vos événements.',
-    img: '/cocktail-signature.png',
+    img: '/cocktail-signature.webp',
     href: '/creations/cocktails-et-buffets',
   },
   {
     label: 'Buffets',
     description: 'Des buffets conviviaux et généreux pensés pour rassembler et marquer les esprits.',
-    img: '/creations-2.png',
+    img: '/creations-2.webp',
     href: '/creations/plateaux-aperitifs',
   },
   {
     label: 'Boissons',
     description: "Jus, softs, cafés et thés d'exception pour accompagner chaque moment.",
-    img: '/creations-boissons.png',
+    img: '/creations-boissons.webp',
     href: '/creations/boissons',
   },
   {
     label: 'Créations',
     description: 'Des recettes de saison et des créations uniques imaginées pour éveiller les papilles.',
-    img: '/prod-tartes-fines.png',
+    img: '/prod-tartes-fines.webp',
     href: '/creations/evenements-saisonniers',
   },
 ]
@@ -47,8 +47,7 @@ function Card({ item }) {
         className="img-zoom"
         style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', flexShrink: 0 }}
       >
-        <img
-          src={item.img}
+        <img loading="lazy" src={item.img}
           alt={item.label}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: item.imgPosition || 'center center', display: 'block', transition: 'transform 0.6s ease' }}
         />

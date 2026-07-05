@@ -26,11 +26,11 @@ const SEO_ARTICLE = `
 /* Ce que nous personnalisons — 6 familles */
 const FAMILLES = [
   { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.webp' },
-  { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.jpg' },
+  { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.webp' },
   { nom: 'Chocolats',         desc: 'Carrés, plaques et assortiments.',          img: '/perso-chocolats-bouygues.webp' },
-  { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/perso-number-cake.png' },
-  { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions.',    img: '/perso-packaging.png' },
-  { nom: 'Cartes & Messages', desc: 'Cartes de remerciement et messages sur-mesure.', img: '/perso-cartes.png' },
+  { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/perso-number-cake.webp' },
+  { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions.',    img: '/perso-packaging.webp' },
+  { nom: 'Cartes & Messages', desc: 'Cartes de remerciement et messages sur-mesure.', img: '/perso-cartes.webp' },
 ]
 
 /* Accompagnement sur-mesure — 5 étapes */
@@ -51,7 +51,7 @@ export default function Personnalisation() {
 
         {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
         <div className="pz-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 46vw, 580px)', overflow: 'hidden' }}>
-          <img src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
+          <img loading="eager" src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.82) 0%, rgba(16,12,9,0.62) 38%, rgba(16,12,9,0.2) 64%, rgba(16,12,9,0) 82%)' }} />
           <Reveal mode="mount" y={16}>
             <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
@@ -85,7 +85,7 @@ export default function Personnalisation() {
             <Reveal key={f.nom} delay={(i % 6) * 70}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)', marginBottom: '16px' }}>
-                  <img src={f.img} alt={f.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <img loading="lazy" src={f.img} alt={f.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 </div>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
                   {f.nom}

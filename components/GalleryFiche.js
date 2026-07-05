@@ -65,14 +65,14 @@ export default function GalleryFiche({
           {/* ── Colonne gauche : photo ── */}
           <div className="gallery-col">
             <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-              <img src={photos[0]} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <img loading="eager" src={photos[0]} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
 
             {showThumbnails && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginTop: '18px' }}>
                 {photos.slice(0, 4).map((src, i) => (
                   <div key={i} style={{ width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF' }}>
-                    <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <img loading="lazy" src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </div>
                 ))}
               </div>
@@ -83,7 +83,7 @@ export default function GalleryFiche({
           <div className="gallery-info" style={{ paddingLeft: '28px' }}>
             {/* En-tête centré */}
             <div style={{ textAlign: 'center', marginBottom: '22px' }}>
-              <img src="/logo-footer.svg" alt="L'Écrin" style={{ height: '32px', width: 'auto', margin: '0 auto 12px', opacity: 0.9 }} />
+              <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '32px', width: 'auto', margin: '0 auto 12px', opacity: 0.9 }} />
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '8px' }}>
                 {title}
               </h1>

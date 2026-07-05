@@ -27,7 +27,7 @@ const HERO = {
   label: 'Lunch Box',
   description: 'Une entrée, un sandwich Signature, Club ou Wrap, un dessert artisanal, serviette & couverts. Boisson en option.',
   prix: '22,90',
-  hero: '/hero-lunch-box.png',
+  hero: '/hero-lunch-box.webp',
 }
 
 const FILTRES = [
@@ -49,63 +49,63 @@ const CATEGORIE_COLORS = {
    la grille n'affiche que nom · catégorie · prix. Photos placeholder. */
 export const BOXES = [
   {
-    id: 'lb1', categorie: 'viande', nom: 'La Parisienne', prix: '22,90', img: '/lunchbox-parisienne.png',
+    id: 'lb1', categorie: 'viande', nom: 'La Parisienne', prix: '22,90', img: '/lunchbox-parisienne.webp',
     sousTitre: 'Baguette Signature · Jambon Beurre',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Baguette Jambon Beurre',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb2', categorie: 'poulet', nom: 'La César', prix: '23,90', img: '/lunchbox-cesar.png',
+    id: 'lb2', categorie: 'poulet', nom: 'La César', prix: '23,90', img: '/lunchbox-cesar.webp',
     sousTitre: 'Club Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Club Poulet César',
     dessert: 'Brownie',
   },
   {
-    id: 'lb3', categorie: 'vegetarien', nom: 'La Méditerranéenne', prix: '22,90', img: '/lunchbox-mediterraneenne.png',
+    id: 'lb3', categorie: 'vegetarien', nom: 'La Méditerranéenne', prix: '22,90', img: '/lunchbox-mediterraneenne.webp',
     sousTitre: 'Wrap Falafel & Houmous',
     entree: 'Caviar d\'aubergine & focaccia romarin',
     plat: 'Wrap Falafel & Houmous',
     dessert: 'Panna Cotta fruits rouges',
   },
   {
-    id: 'lb4', categorie: 'poisson', nom: 'La Nordique', prix: '24,90', img: '/lunchbox-nordique.png',
+    id: 'lb4', categorie: 'poisson', nom: 'La Nordique', prix: '24,90', img: '/lunchbox-nordique.webp',
     sousTitre: 'Baguette Saumon & Cream Cheese',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Baguette Saumon & Cream Cheese',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb5', categorie: 'poisson', nom: 'La Marine', prix: '23,90', img: '/lunchbox-marine.png',
+    id: 'lb5', categorie: 'poisson', nom: 'La Marine', prix: '23,90', img: '/lunchbox-marine.webp',
     sousTitre: 'Club Thon',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Club Thon',
     dessert: 'Brownie',
   },
   {
-    id: 'lb6', categorie: 'viande', nom: 'La Deli', prix: '24,90', img: '/lunchbox-deli.png',
+    id: 'lb6', categorie: 'viande', nom: 'La Deli', prix: '24,90', img: '/lunchbox-deli.webp',
     sousTitre: 'Baguette Pastrami Pickles',
     entree: 'Part de pissaladière & jeunes pousses',
     plat: 'Baguette Pastrami Pickles',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb7', categorie: 'vegetarien', nom: 'La Burrata', prix: '23,90', img: '/lunchbox-burrata.png',
+    id: 'lb7', categorie: 'vegetarien', nom: 'La Burrata', prix: '23,90', img: '/lunchbox-burrata.webp',
     sousTitre: 'Wrap Burrata & Légumes grillés',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Wrap Burrata & Légumes grillés',
     dessert: 'Compote pomme & fève tonka',
   },
   {
-    id: 'lb8', categorie: 'poulet', nom: 'La César Baguette', prix: '23,90', img: '/lunchbox-cesar-baguette.png',
+    id: 'lb8', categorie: 'poulet', nom: 'La César Baguette', prix: '23,90', img: '/lunchbox-cesar-baguette.webp',
     sousTitre: 'Baguette Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Baguette Poulet César',
     dessert: 'Brownie',
   },
   {
-    id: 'lb9', categorie: 'poisson', nom: 'La Thon Ciboulette', prix: '23,90', img: '/lunchbox-thon.png',
+    id: 'lb9', categorie: 'poisson', nom: 'La Thon Ciboulette', prix: '23,90', img: '/lunchbox-thon.webp',
     sousTitre: 'Baguette Thon Ciboulette',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Baguette Thon Ciboulette',
@@ -139,8 +139,7 @@ function MenuCard({ produit }) {
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
-          <img
-            src={produit.img}
+          <img loading="lazy" src={produit.img}
             alt={produit.nom}
             style={{
               width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
@@ -207,8 +206,7 @@ export default function LunchBox() {
         {/* ── Hero — contenu + immersif, aligné sur les autres pages ── */}
         <div className="lb-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="lb-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img
-              src={HERO.hero}
+            <img loading="eager" src={HERO.hero}
               alt="Lunch Box L'Écrin"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
             />

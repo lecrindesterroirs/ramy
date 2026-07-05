@@ -26,8 +26,7 @@ export default function MadeleinesSection() {
 
         {/* Image */}
         <div className="mad-img-col" style={{ position: 'relative', overflow: 'hidden', minHeight: '680px' }}>
-          <img
-            src="/madeleine-home.jpg"
+          <img loading="lazy" src="/madeleine-home.webp"
             alt="Madeleines artisanales — L'Écrin Traiteur"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
@@ -53,7 +52,7 @@ export default function MadeleinesSection() {
             {MADELEINE_FLAVORS.map(f => (
               <div key={f.id} className="mad-flavor-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(17,17,17,0.08)', borderRadius: '6px', padding: '20px 12px 16px', textAlign: 'center' }}>
                 <div style={{ height: '88px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
-                  <img src={f.img} alt={f.label} style={{ maxHeight: '88px', maxWidth: '85%', objectFit: 'contain', display: 'block' }} />
+                  <img loading="lazy" src={f.img} alt={f.label} style={{ maxHeight: '88px', maxWidth: '85%', objectFit: 'contain', display: 'block' }} />
                 </div>
                 <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: '#3A342C', lineHeight: 1.3 }}>{f.label}</span>
               </div>

@@ -71,8 +71,7 @@ export default function OccasionPage() {
         {/* ── Hero photo ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img
-              src={heroImg}
+            <img loading="eager" src={heroImg}
               alt={occasion.heroTitle}
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
             />
@@ -160,7 +159,7 @@ export default function OccasionPage() {
                   onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
                 >
                   <div style={{ aspectRatio: '1/1', overflow: 'hidden', background: '#EDE8DE' }}>
-                    <img src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </div>
                   <div style={{ padding: '18px 20px 22px' }}>
                     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '5px' }}>
