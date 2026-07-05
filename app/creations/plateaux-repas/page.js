@@ -81,38 +81,38 @@ const PRESTIGE_OPTIONS = [
 export const PRODUITS = [
   // ── Collection Essentiel (à partir de 28,90 € HT) ──
   {
-    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plateau-mediterraneen.png',
-    entree: 'Houmous, huile d\'olive & pain grillé',
-    plat: 'Quinoa gourmand, falafels & sauce tahini',
-    dessert: 'Cookie Signature',
-  },
-  {
     id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'Le César', img: '/plateau-cesar.png',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Salade César au poulet rôti',
     dessert: 'Brownie',
   },
   {
+    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plateau-mediterraneen.png',
+    entree: 'Houmous, huile d\'olive & pain grillé',
+    plat: 'Quinoa gourmand, falafels & sauce tahini',
+    dessert: 'Cookie Signature',
+  },
+  {
     id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Provençal', img: '/plateau-provencal.png',
     entree: 'Caviar d\'aubergine & focaccia romarin',
-    plat: 'Salade de pâtes au pesto, mozzarella & tomates confites',
+    plat: 'Pâtes au pesto, mozzarella & tomates confites',
     dessert: 'Panna Cotta fruits rouges',
   },
   {
     id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'Le Fermier', img: '/plateau-fermier.png',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
-    plat: 'Salade César au poulet rôti',
+    plat: 'Émincé de Poulet, légumes grillés marinés & huile au basilic',
     dessert: 'Compote pomme & fève tonka',
   },
   {
     id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'Le Nordique', img: '/plateau-nordique.png',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Salade de pommes de terre, saumon fumé & crème citronnée',
-    dessert: 'Brownie',
+    dessert: 'Mousse au chocolat du Chef',
   },
   {
     id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plateau-gourmand.png',
-    entree: 'Part de pissaladière & jeunes pousses',
+    entree: 'Tartelette pissaladière & jeunes pousses',
     plat: 'Salade de lentilles, feta & légumes rôtis',
     dessert: 'Cookie Signature',
   },

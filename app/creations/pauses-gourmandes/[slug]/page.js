@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
-import CreationFiche from '../../../../components/CreationFiche'
+import GalleryFiche from '../../../../components/GalleryFiche'
 import { PAUSES } from '../page'
 
 const SEO_HTML = `
@@ -158,9 +158,9 @@ export default function PauseDetail() {
   }
 
   return (
-    <CreationFiche
-      eyebrow="Pause Gourmande · L'après-midi"
+    <GalleryFiche
       title={produit.nom}
+      subtitle="Pause Gourmande · L'après-midi"
       img={produit.img}
       price={null}
       description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi. Tarif au format et à l'effectif — sur devis.`}

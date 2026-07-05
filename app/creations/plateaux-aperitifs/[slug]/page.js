@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, notFound } from 'next/navigation'
-import CreationFiche from '../../../../components/CreationFiche'
+import GalleryFiche from '../../../../components/GalleryFiche'
 import { PLATEAUX, FILTRES } from '../page'
 
 const SEO_HTML = `
@@ -20,9 +20,9 @@ export default function PlateauAperitifDetail() {
   const famille = FILTRES.find(f => f.key === plateau.famille)?.label ?? ''
 
   return (
-    <CreationFiche
-      eyebrow={`Plateaux apéritifs · ${famille}`}
+    <GalleryFiche
       title={`Plateau ${plateau.nom}`}
+      subtitle={famille}
       img={plateau.img}
       price={null}
       description={`${plateau.description} Format à partager, idéal pour vos afterworks et réceptions. Tarif au format et à l'effectif — sur devis.`}

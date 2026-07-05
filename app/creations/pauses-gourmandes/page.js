@@ -60,7 +60,7 @@ export const PAUSES = [
   { id: 'choux',         nom: 'Choux',                       img: '/prod-choux.png',          description: 'Choux garnis assortis, glaçages et crèmes aux parfums variés.' },
   { id: 'babka',         nom: 'Babka',                       img: '/prod-babka.png',          description: 'Babka briochée roulée au chocolat, tranchée.' },
   { id: 'tartes-fines',  nom: 'Tartes Fines',                img: '/prod-tartes-fines.png',   description: 'Tartes fines aux fruits de saison, à partager.' },
-  { id: 'yaourt-fruits', nom: 'Yaourt aux Fruits',            img: '/prod-yaourt-fruits.png',  description: 'Yaourt aux fruits de la Ferme de Viltain, au lait de leurs vaches.' },
+  { id: 'yaourt-fruits', nom: 'Yaourt Fermier',                img: '/prod-yaourt-fruits.png',  description: 'Yaourt aux fruits de la Ferme de Viltain, au lait de leurs vaches.' },
   { id: 'compote-pomme', nom: 'Compote Pomme',                img: '/prod-compote.png',        description: 'Compote de pomme nature, sans sucres ajoutés.' },
   { id: 'compote-pomme-fraise', nom: 'Compote Pomme Fraise',  img: '/prod-compote-fraise.png', description: 'Compote pomme et fraise, fraîche et gourmande.' },
   { id: 'compote-pomme-tonka', nom: 'Compote Pomme Fève Tonka', img: '/prod-compote-tonka.png', description: 'Compote pomme parfumée à la fève tonka.' },

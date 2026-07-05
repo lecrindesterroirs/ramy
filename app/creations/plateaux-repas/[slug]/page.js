@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, notFound } from 'next/navigation'
-import CreationFiche from '../../../../components/CreationFiche'
+import GalleryFiche from '../../../../components/GalleryFiche'
 import { PRODUITS, COLLECTIONS, prixMenu } from '../page'
 
 const SEO_HTML = `
@@ -26,9 +26,9 @@ export default function PlateauDetail() {
   ].filter(Boolean)
 
   return (
-    <CreationFiche
-      eyebrow={`Plateaux repas · Collection ${col?.label ?? ''}`}
+    <GalleryFiche
       title={produit.nom}
+      subtitle={`Collection ${col?.label ?? ''}`}
       img={produit.img}
       price={prixMenu(produit)}
       priceNote="HT · par personne"

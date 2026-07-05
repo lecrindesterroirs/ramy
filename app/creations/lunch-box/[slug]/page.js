@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, notFound } from 'next/navigation'
-import CreationFiche from '../../../../components/CreationFiche'
+import GalleryFiche from '../../../../components/GalleryFiche'
 import { BOXES } from '../page'
 
 const SEO_HTML = `
@@ -24,9 +24,9 @@ export default function LunchBoxDetail() {
   ].filter(Boolean)
 
   return (
-    <CreationFiche
-      eyebrow={`Lunch Box · ${box.sousTitre ?? ''}`}
+    <GalleryFiche
       title={box.nom}
+      subtitle={box.sousTitre}
       img={box.img}
       price={box.prix}
       priceNote="HT · par personne"

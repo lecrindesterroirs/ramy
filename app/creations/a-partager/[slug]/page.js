@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams, notFound } from 'next/navigation'
-import CreationFiche from '../../../../components/CreationFiche'
+import GalleryFiche from '../../../../components/GalleryFiche'
 import { SALADES, FILTRES } from '../page'
 
 const SEO_HTML = `
@@ -20,9 +20,9 @@ export default function SaladeDetail() {
   const base = FILTRES.find(f => f.key === salade.categorie)?.label ?? ''
 
   return (
-    <CreationFiche
-      eyebrow={`À Partager · ${base}`}
+    <GalleryFiche
       title={salade.nom}
+      subtitle={base}
       img={salade.img}
       price={null}
       description={`Une grande salade généreuse à partager, sur base « ${base.toLowerCase()} », composée le matin avec des produits de saison. Tarif au format et à l'effectif — sur devis.`}
