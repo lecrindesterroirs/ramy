@@ -27,7 +27,7 @@ const HERO = {
   label: 'Lunch Box',
   description: 'Une entrée, un sandwich Signature, Club ou Wrap, un dessert artisanal, serviette & couverts. Boisson en option.',
   prix: '22,90',
-  hero: '/hero-plateaux-essentiel.png',
+  hero: '/hero-lunch-box.png',
 }
 
 const FILTRES = [
@@ -49,63 +49,63 @@ const CATEGORIE_COLORS = {
    la grille n'affiche que nom · catégorie · prix. Photos placeholder. */
 export const BOXES = [
   {
-    id: 'lb1', categorie: 'viande', nom: 'La Parisienne', prix: '22,90', img: '/plat-boeuf.png',
+    id: 'lb1', categorie: 'viande', nom: 'La Parisienne', prix: '22,90', img: '/lunchbox-parisienne.png',
     sousTitre: 'Baguette Signature · Jambon Beurre',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Baguette Jambon Beurre',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb2', categorie: 'poulet', nom: 'La César', prix: '23,90', img: '/plat-cesar.png',
+    id: 'lb2', categorie: 'poulet', nom: 'La César', prix: '23,90', img: '/lunchbox-cesar.png',
     sousTitre: 'Club Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Club Poulet César',
     dessert: 'Brownie',
   },
   {
-    id: 'lb3', categorie: 'vegetarien', nom: 'La Méditerranéenne', prix: '22,90', img: '/plat-grec.png',
+    id: 'lb3', categorie: 'vegetarien', nom: 'La Méditerranéenne', prix: '22,90', img: '/lunchbox-mediterraneenne.png',
     sousTitre: 'Wrap Falafel & Houmous',
     entree: 'Caviar d\'aubergine & focaccia romarin',
     plat: 'Wrap Falafel & Houmous',
     dessert: 'Panna Cotta fruits rouges',
   },
   {
-    id: 'lb4', categorie: 'poisson', nom: 'La Nordique', prix: '24,90', img: '/plat-saumon.png',
+    id: 'lb4', categorie: 'poisson', nom: 'La Nordique', prix: '24,90', img: '/lunchbox-nordique.png',
     sousTitre: 'Baguette Saumon & Cream Cheese',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Baguette Saumon & Cream Cheese',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb5', categorie: 'poisson', nom: 'La Marine', prix: '23,90', img: '/plat-saumon.png',
+    id: 'lb5', categorie: 'poisson', nom: 'La Marine', prix: '23,90', img: '/lunchbox-marine.png',
     sousTitre: 'Club Thon',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Club Thon',
     dessert: 'Brownie',
   },
   {
-    id: 'lb6', categorie: 'viande', nom: 'La Deli', prix: '24,90', img: '/plat-fusion.png',
+    id: 'lb6', categorie: 'viande', nom: 'La Deli', prix: '24,90', img: '/lunchbox-deli.png',
     sousTitre: 'Baguette Pastrami Pickles',
     entree: 'Part de pissaladière & jeunes pousses',
     plat: 'Baguette Pastrami Pickles',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb7', categorie: 'vegetarien', nom: 'La Burrata', prix: '23,90', img: '/plat-mediterraneen.png',
+    id: 'lb7', categorie: 'vegetarien', nom: 'La Burrata', prix: '23,90', img: '/lunchbox-burrata.png',
     sousTitre: 'Wrap Burrata & Légumes grillés',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Wrap Burrata & Légumes grillés',
     dessert: 'Compote pomme & fève tonka',
   },
   {
-    id: 'lb8', categorie: 'poulet', nom: 'La César Baguette', prix: '23,90', img: '/plat-cesar.png',
+    id: 'lb8', categorie: 'poulet', nom: 'La César Baguette', prix: '23,90', img: '/lunchbox-cesar-baguette.png',
     sousTitre: 'Baguette Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Baguette Poulet César',
     dessert: 'Brownie',
   },
   {
-    id: 'lb9', categorie: 'poisson', nom: 'La Thon Ciboulette', prix: '23,90', img: '/plat-saumon.png',
+    id: 'lb9', categorie: 'poisson', nom: 'La Thon Ciboulette', prix: '23,90', img: '/lunchbox-thon.png',
     sousTitre: 'Baguette Thon Ciboulette',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Baguette Thon Ciboulette',

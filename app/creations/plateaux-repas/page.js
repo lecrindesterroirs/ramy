@@ -29,14 +29,14 @@ export const COLLECTIONS = [
     label: 'Essentiel',
     description: 'Des recettes fraîches et équilibrées, entrée, plat et dessert préparés chaque matin avec des produits de saison.',
     prix: '28,90',
-    hero: '/hero-plateaux-essentiel.png',
+    hero: '/plateau-mediterraneen.png',
   },
   {
     key: 'signature',
     label: 'Signature',
     description: 'Une sélection raffinée élaborée par nos chefs — produits nobles, dressage soigné, transformable en coffret Prestige.',
     prix: '33,90',
-    hero: '/hero-plateaux-essentiel.png',
+    hero: '/hero-plateau-signature.png',
   },
 ]
 
@@ -81,37 +81,37 @@ const PRESTIGE_OPTIONS = [
 export const PRODUITS = [
   // ── Collection Essentiel (à partir de 28,90 € HT) ──
   {
-    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plat-mediterraneen.png',
+    id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Méditerranéen', img: '/plateau-mediterraneen.png',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Quinoa gourmand, falafels & sauce tahini',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'Le César', img: '/plat-cesar.png',
+    id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'Le César', img: '/plateau-cesar.png',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Salade César au poulet rôti',
     dessert: 'Brownie',
   },
   {
-    id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Provençal', img: '/plat-grec.png',
+    id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Provençal', img: '/plateau-provencal.png',
     entree: 'Caviar d\'aubergine & focaccia romarin',
     plat: 'Salade de pâtes au pesto, mozzarella & tomates confites',
     dessert: 'Panna Cotta fruits rouges',
   },
   {
-    id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'Le Fermier', img: '/plat-thai.png',
+    id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'Le Fermier', img: '/plateau-fermier.png',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Salade César au poulet rôti',
     dessert: 'Compote pomme & fève tonka',
   },
   {
-    id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'Le Nordique', img: '/plat-saumon.png',
+    id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'Le Nordique', img: '/plateau-nordique.png',
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Salade de pommes de terre, saumon fumé & crème citronnée',
     dessert: 'Brownie',
   },
   {
-    id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plat-mediterraneen.png',
+    id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plateau-gourmand.png',
     entree: 'Part de pissaladière & jeunes pousses',
     plat: 'Salade de lentilles, feta & légumes rôtis',
     dessert: 'Cookie Signature',
@@ -119,49 +119,49 @@ export const PRODUITS = [
 
   // ── Collection Signature (à partir de 33,90 € HT) ──
   {
-    id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'L\'Italien', img: '/plat-grec.png',
+    id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'L\'Italien', img: '/plat-trofie-burrata.png',
     entree: 'Burrata, tomates anciennes & pesto',
     plat: 'Trofie au pesto, burrata & tomates confites',
     dessert: 'Tartelette Praliné',
   },
   {
-    id: 's2', collection: 'signature', categorie: 'poulet', nom: 'Le Coréen', img: '/plat-thai.png',
+    id: 's2', collection: 'signature', categorie: 'poulet', nom: 'Le Coréen', img: '/plat-poulet-coreen.png',
     entree: 'Assiette mezzé',
     plat: 'Poulet coréen, riz au sésame & légumes pickles',
     dessert: 'Mousse Chocolat',
   },
   {
-    id: 's3', collection: 'signature', categorie: 'poisson', nom: 'Le Riviera', img: '/plat-saumon.png',
+    id: 's3', collection: 'signature', categorie: 'poisson', nom: 'Le Riviera', img: '/plat-gravlax-riviera.png',
     entree: 'Tartare de saumon méditerranéen',
     plat: 'Saumon gravlax, pommes grenailles, crème d\'Isigny & jeunes pousses',
     dessert: 'Tartelette Citron',
   },
   {
-    id: 's4', collection: 'signature', categorie: 'viande', nom: 'Le Bistrot', img: '/plat-boeuf.png',
+    id: 's4', collection: 'signature', categorie: 'viande', nom: 'Le Bistrot', img: '/plat-tataki.png',
     entree: 'Carpaccio de bœuf, parmesan & roquette',
     plat: 'Tataki de bœuf, pommes grenailles rôties & chimichurri',
     dessert: 'Carrot Cake Fudge',
   },
   {
-    id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'Le Levant', img: '/plat-mediterraneen.png',
+    id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'Le Levant', img: '/plat-levant.png',
     entree: 'Assiette mezzé',
     plat: 'Quinoa gourmand, falafels, feta, légumes grillés & tahini',
     dessert: 'Mousse Chocolat',
   },
   {
-    id: 's6', collection: 'signature', categorie: 'poisson', nom: 'Le Méditerranéen', img: '/plat-saumon.png',
+    id: 's6', collection: 'signature', categorie: 'poisson', nom: 'Le Méditerranéen', img: '/plat-gravlax.png',
     entree: 'Ceviche de daurade, mangue & coriandre',
     plat: 'Saumon gravlax, pommes grenailles & crème d\'Isigny',
     dessert: 'Tartelette Citron',
   },
   {
-    id: 's7', collection: 'signature', categorie: 'viande', nom: 'Le Prestige Bœuf', img: '/plat-fusion.png',
+    id: 's7', collection: 'signature', categorie: 'viande', nom: 'Le Prestige Bœuf', img: '/plat-tataki-prestige.png',
     entree: 'Carpaccio de bœuf, parmesan & roquette',
     plat: 'Tataki de bœuf & chimichurri',
     dessert: 'Mousse Chocolat',
   },
   {
-    id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'Le Prestige Burrata', img: '/plat-grec.png',
+    id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'Le Prestige Burrata', img: '/plat-trofie-prestige.png',
     entree: 'Burrata, tomates anciennes & pesto',
     plat: 'Trofie au pesto & burrata',
     dessert: 'Carrot Cake Fudge',

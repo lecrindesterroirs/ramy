@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'À Partager',
   description: 'De grandes salades généreuses à partager, pensées par base — vertes, pâtes, pommes de terre, lentilles ou céréales. Composées le matin avec des produits de saison.',
-  hero: '/hero-plateaux-essentiel.png',
+  hero: '/hero-a-partager.png',
 }
 
 /* Filtres = les bases de salade. */
@@ -50,10 +50,10 @@ const CATEGORIE_COLORS = {
 /* Salades par base. Photos placeholder (bols de saison). */
 export const SALADES = [
   // ── Bases vertes ──
-  { id: 'v1', categorie: 'vertes', nom: 'La César',        img: '/plat-cesar.png' },
-  { id: 'v2', categorie: 'vertes', nom: 'La Grecque',      img: '/plat-grec.png' },
-  { id: 'v3', categorie: 'vertes', nom: 'La Burrata',      img: '/plat-mediterraneen.png' },
-  { id: 'v4', categorie: 'vertes', nom: 'Le Saumon Gravlax', img: '/plat-saumon.png' },
+  { id: 'v1', categorie: 'vertes', nom: 'La César',        img: '/partager-cesar.png' },
+  { id: 'v2', categorie: 'vertes', nom: 'La Grecque',      img: '/partager-grecque.png' },
+  { id: 'v3', categorie: 'vertes', nom: 'La Burrata',      img: '/partager-burrata.png' },
+  { id: 'v4', categorie: 'vertes', nom: 'Le Saumon Gravlax', img: '/partager-gravlax.png' },
   // ── Salades de pâtes ──
   { id: 'p1', categorie: 'pates', nom: 'Pesto, Mozzarella & Tomates Confites', img: '/plat-grec.png' },
   { id: 'p2', categorie: 'pates', nom: 'Poulet César',    img: '/plat-cesar.png' },

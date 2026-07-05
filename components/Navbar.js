@@ -8,25 +8,25 @@ const MOMENTS = {
     label: 'Petit-déjeuner & Pauses',
     key: 'petitDej',
     cards: [
-      { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/creations-1.png' },
-      { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/creations-2.png' },
-      { title: 'Personnalisation', href: '/creations/personnalisation', img: '/prod-macarons.webp' },
+      { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.png' },
+      { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.png' },
+      { title: 'Personnalisation', href: '/creations/personnalisation', img: '/perso-number-cake.png' },
     ],
   },
   dejeuner: {
     label: 'Déjeuner',
     key: 'dejeuner',
     cards: [
-      { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/creations-4.png' },
-      { title: 'Lunch Box', href: '/creations/lunch-box', img: '/creations-4.png' },
-      { title: 'À partager', href: '/creations/a-partager', img: '/creations-4.png' },
+      { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.png' },
+      { title: 'Lunch Box', href: '/creations/lunch-box', img: '/hero-lunch-box.png' },
+      { title: 'À partager', href: '/creations/a-partager', img: '/hero-a-partager.png' },
     ],
   },
   cocktail: {
     label: 'Cocktail',
     key: 'cocktail',
     cards: [
-      { title: 'Cocktails', href: '/creations/cocktails', img: '/creations-3.png' },
+      { title: 'Cocktails', href: '/creations/cocktails', img: '/hero-cocktail.png' },
       { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/creations-3.png' },
       { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/creations-3.png' },
     ],

@@ -25,12 +25,12 @@ const SEO_ARTICLE = `
 
 /* Ce que nous personnalisons — 6 familles */
 const FAMILLES = [
-  { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.webp' },
-  { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/prod-madeleines-20.webp' },
+  { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.png' },
+  { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.jpg' },
   { nom: 'Chocolats',         desc: 'Carrés, plaques et assortiments.',          img: '/perso-chocolats-bouygues.webp' },
-  { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/prod-cake.webp' },
-  { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions.',    img: '/madeleine-home.jpg' },
-  { nom: 'Cartes & Messages', desc: 'Cartes de remerciement et messages sur-mesure.', img: '/prod-panna-cotta.webp' },
+  { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/perso-number-cake.png' },
+  { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions.',    img: '/perso-packaging.png' },
+  { nom: 'Cartes & Messages', desc: 'Cartes de remerciement et messages sur-mesure.', img: '/perso-cartes.png' },
 ]
 
 /* Accompagnement sur-mesure — 5 étapes */
