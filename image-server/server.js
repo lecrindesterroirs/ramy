@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import express from 'express'
-import OpenAI from 'openai'
+import OpenAI, { toFile } from 'openai'
 import fs from 'fs/promises'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -72,6 +72,49 @@ app.post('/generate-image', async (req, res) => {
     })
   } catch (err) {
     console.error('generate-image error:', err.message)
+    res.status(500).json({ success: false, error: err.message })
+  }
+})
+
+// POST /edit-image
+// body: { imagePath, prompt, filename, outputPath?, size? }
+// - imagePath: chemin de l'image source (absolu, ex: /Users/.../macarons.jpg — ou relatif au repo)
+// - Garde le sujet de l'image source et applique le prompt (ex: changer le décor/l'ambiance)
+app.post('/edit-image', async (req, res) => {
+  const { imagePath, prompt, filename, outputPath, size } = req.body || {}
+  if (!imagePath || !prompt || !filename) {
+    return res.status(400).json({ success: false, error: 'imagePath, prompt et filename sont requis' })
+  }
+
+  try {
+    const srcPath = path.isAbsolute(imagePath) ? imagePath : path.resolve(PROJECT_ROOT, imagePath)
+    const ext = path.extname(srcPath).toLowerCase()
+    const mime = ext === '.png' ? 'image/png' : ext === '.webp' ? 'image/webp' : 'image/jpeg'
+    const srcBuffer = await fs.readFile(srcPath)
+    const imageFile = await toFile(srcBuffer, path.basename(srcPath), { type: mime })
+
+    const result = await openai.images.edit({
+      model: IMAGE_MODEL,
+      image: imageFile,
+      prompt,
+      size: size || '1024x1024',
+      n: 1,
+    })
+
+    const b64 = result.data[0].b64_json
+    const buffer = Buffer.from(b64, 'base64')
+
+    const destPath = resolveOutputPath(outputPath, filename)
+    await fs.mkdir(path.dirname(destPath), { recursive: true })
+    await fs.writeFile(destPath, buffer)
+
+    res.json({
+      success: true,
+      path: path.relative(PROJECT_ROOT, destPath),
+      bytes: buffer.length,
+    })
+  } catch (err) {
+    console.error('edit-image error:', err.message)
     res.status(500).json({ success: false, error: err.message })
   }
 })

@@ -20,7 +20,7 @@ const SEO_ARTICLE = `
 export default function PetitsDejeuners() {
   return (
     <ProductsPageTemplate
-      heroImg="/hero-plateaux-essentiel.png"
+      heroImg="/hero-petitdej.png"
       heroTitle={"Petits-Déjeuners\n& Pauses"}
       heroSubtitle="Des créations pensées pour les réunions, accueils et moments de partage."
       breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"

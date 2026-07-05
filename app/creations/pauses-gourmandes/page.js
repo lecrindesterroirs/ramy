@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Pauses Gourmandes',
   description: 'La touche sucrée de l\'après-midi — pâtisseries, biscuits et fruits frais préparés le jour même pour rythmer vos pauses et goûters d\'entreprise.',
-  hero: '/hero-plateaux-essentiel.png',
+  hero: '/hero-pauses-gourmandes.png',
 }
 
 /* Coffrets — tailles disponibles, même logique que les Madeleines
@@ -42,31 +42,31 @@ const COFFRETS_MACARONS = [
   { id: 'macarons-48', pieces: 48, price: 99.90, label: '48 pièces', sub: '20 à 24 pers.' },
 ]
 
-/* Douceurs — description sur la carte, photos placeholder thématiques. */
+/* Douceurs — images partagées avec Petit-déjeuner quand le produit existe déjà,
+   sinon visuels générés dans la DA du site (planche bois, lumière naturelle). */
 export const PAUSES = [
   { id: 'madeleines',    nom: 'Madeleines',                  img: '/prod-madeleines-20.webp', description: 'Madeleines moelleuses cuites du jour, nature ou parfumées.', coffrets: COFFRETS_MADELEINES },
-  { id: 'macarons',      nom: 'Macarons',                    img: '/prod-macarons.webp',      description: 'Macarons aux ganaches délicates, assortiment de saveurs.', coffrets: COFFRETS_MACARONS },
-  { id: 'brownie',       nom: 'Brownie',                     img: '/prod-cookies.webp',       description: 'Brownie fondant au chocolat intense, servi à couper.' },
-  { id: 'carrot-cake',   nom: 'Carrot Cake Fudge',           img: '/prod-cake-marbre.webp',   description: 'Carrot cake moelleux, glaçage fudge, servi à couper.' },
-  { id: 'cake-citron',   nom: 'Cake Citron Pavot',           img: '/prod-cake-marbre.webp',   description: 'Cake maison au citron et graines de pavot, tranché.' },
-  { id: 'cake-marbre',   nom: 'Cake Marbré',                 img: '/prod-cake-marbre.webp',   description: 'Cake marbré chocolat-vanille, tranché.' },
-  { id: 'cookie',        nom: 'Cookie Signature',            img: '/prod-cookies.webp',       description: 'Cookie généreux aux pépites de chocolat.' },
-  { id: 'tartelette-citron', nom: 'Tartelette Citron',        img: '/prod-panna-cotta.webp',   description: 'Tartelette fine au citron, crémeux acidulé.' },
-  { id: 'tartelette-praline', nom: 'Tartelette Praliné',      img: '/prod-panna-cotta.webp',   description: 'Tartelette au praliné maison, croustillant noisette.' },
-  { id: 'mousse-chocolat', nom: 'Mousse Chocolat',           img: '/prod-panna-cotta.webp',   description: 'Mousse au chocolat intense, texture aérienne.' },
-  { id: 'panna-cotta',   nom: 'Panna Cotta',                 img: '/prod-panna-cotta.webp',   description: 'Panna cotta vanille, dressée en verrine individuelle.' },
-  { id: 'verrine-citron', nom: 'Verrine Citron / Lemon Curd', img: '/prod-panna-cotta.webp',   description: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
-  { id: 'choux',         nom: 'Choux',                       img: '/prod-chouquettes.webp',   description: 'Choux garnis, crème onctueuse à la vanille.' },
-  { id: 'babka',         nom: 'Babka',                       img: '/prod-cake-marbre.webp',   description: 'Babka briochée roulée au chocolat, tranchée.' },
-  { id: 'tartes-fines',  nom: 'Tartes Fines',                img: '/prod-panna-cotta.webp',   description: 'Tartes fines aux fruits de saison, à partager.' },
-  { id: 'yaourt-nature', nom: 'Yaourt Nature',                img: '/prod-panna-cotta.webp',   description: 'Yaourt nature onctueux, servi en pot individuel.' },
-  { id: 'yaourt-granola', nom: 'Yaourt Granola Fruits',       img: '/prod-panna-cotta.webp',   description: 'Yaourt, granola croustillant et fruits frais.' },
-  { id: 'compote-pomme', nom: 'Compote Pomme',                img: '/prod-compote.webp',       description: 'Compote de pomme nature, sans sucres ajoutés.' },
-  { id: 'compote-pomme-fraise', nom: 'Compote Pomme Fraise',  img: '/prod-compote.webp',       description: 'Compote pomme et fraise, fraîche et gourmande.' },
-  { id: 'compote-pomme-tonka', nom: 'Compote Pomme Fève Tonka', img: '/prod-compote.webp',     description: 'Compote pomme parfumée à la fève tonka.' },
-  { id: 'brochettes-fruits', nom: 'Brochettes de Fruits',    img: '/prod-corbeille.webp',     description: 'Brochettes de fruits frais de saison, à picorer.' },
+  { id: 'macarons',      nom: 'Macarons',                    img: '/prod-macarons.png',       description: 'Macarons aux ganaches délicates, assortiment de saveurs.', coffrets: COFFRETS_MACARONS },
+  { id: 'brownie',       nom: 'Brownie',                     img: '/prod-brownie.png',        description: 'Brownie fondant au chocolat intense, servi à couper.' },
+  { id: 'carrot-cake',   nom: 'Carrot Cake Fudge',           img: '/prod-carrot-cake.png',    description: 'Carrot cake moelleux, glaçage fudge, servi à couper.' },
+  { id: 'cake-citron',   nom: 'Cake Citron Pavot',           img: '/prod-cake-citron-pavot.png', description: 'Cake maison au citron et graines de pavot, tranché.' },
+  { id: 'cake-marbre',   nom: 'Cake Marbré',                 img: '/prod-cake-marbre.png',    description: 'Cake marbré chocolat-vanille, tranché.' },
+  { id: 'cookie',        nom: 'Cookie Signature',            img: '/prod-cookies.png',        description: 'Cookie généreux aux pépites de chocolat.' },
+  { id: 'tartelette-citron', nom: 'Tartelette Citron',        img: '/prod-tartelette-citron.png', description: 'Tartelette au citron meringuée, crémeux acidulé.' },
+  { id: 'tartelette-praline', nom: 'Tartelette Praliné',      img: '/prod-tartelette-praline.png', description: 'Tartelette au praliné maison, croustillant noisette.' },
+  { id: 'mousse-chocolat', nom: 'Mousse Chocolat',           img: '/prod-mousse-chocolat.png', description: 'Mousse au chocolat intense, texture aérienne.' },
+  { id: 'panna-cotta',   nom: 'Panna Cotta',                 img: '/prod-panna-cotta.png',    description: 'Panna cotta vanille, dressée en verrine individuelle.' },
+  { id: 'verrine-citron', nom: 'Verrine Citron / Lemon Curd', img: '/prod-verrine-citron.png', description: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
+  { id: 'choux',         nom: 'Choux',                       img: '/prod-choux.png',          description: 'Choux garnis assortis, glaçages et crèmes aux parfums variés.' },
+  { id: 'babka',         nom: 'Babka',                       img: '/prod-babka.png',          description: 'Babka briochée roulée au chocolat, tranchée.' },
+  { id: 'tartes-fines',  nom: 'Tartes Fines',                img: '/prod-tartes-fines.png',   description: 'Tartes fines aux fruits de saison, à partager.' },
+  { id: 'yaourt-fruits', nom: 'Yaourt aux Fruits',            img: '/prod-yaourt-fruits.png',  description: 'Yaourt aux fruits de la Ferme de Viltain, au lait de leurs vaches.' },
+  { id: 'compote-pomme', nom: 'Compote Pomme',                img: '/prod-compote.png',        description: 'Compote de pomme nature, sans sucres ajoutés.' },
+  { id: 'compote-pomme-fraise', nom: 'Compote Pomme Fraise',  img: '/prod-compote-fraise.png', description: 'Compote pomme et fraise, fraîche et gourmande.' },
+  { id: 'compote-pomme-tonka', nom: 'Compote Pomme Fève Tonka', img: '/prod-compote-tonka.png', description: 'Compote pomme parfumée à la fève tonka.' },
+  { id: 'brochettes-fruits', nom: 'Brochettes de Fruits',    img: '/prod-brochettes.webp',    description: 'Brochettes de fruits frais de saison, à picorer.' },
   { id: 'corbeilles-fruits', nom: 'Corbeilles de Fruits',    img: '/prod-corbeille.webp',     description: 'Corbeilles de fruits frais de saison, à partager.' },
-  { id: 'crepes',        nom: 'Crêpes',                      img: '/prod-crepes.webp',        description: 'Crêpes sucrées préparées le jour même, garnitures au choix.' },
+  { id: 'crepes',        nom: 'Crêpes',                      img: '/prod-crepes.png',         description: 'Crêpes sucrées préparées le jour même, garnitures au choix.' },
 ]
 
 /* ─── Carte douceur ──────────────────────────────────────────────── */
