@@ -86,7 +86,7 @@ export default function Home() {
                 { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Cocktail & Buffet d\'entreprise' } },
               ],
             },
-            'sameAs': ['https://share.google/bhldByNtwFZup8tz9'],
+            'sameAs': ['https://www.google.com/maps?cid=7256328868778850442'],
           }) }}
         />
       </main>
