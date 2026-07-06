@@ -17,6 +17,8 @@ const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='4
 </svg>`
 const GRAIN = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`
 
+const BASE = 'https://www.lecrin-traiteur.fr'
+
 export default function FormulePage() {
   const { slug } = useParams()
   const formule = FORMULES.find(f => f.slug === slug)
@@ -28,8 +30,46 @@ export default function FormulePage() {
     { label: formule.nom },
   ]
 
+  const priceMatch = (formule.prix || '').match(/(\d+[.,]?\d*)/)
+  const priceNum = priceMatch ? priceMatch[1].replace(',', '.') : null
+  const pageUrl = `${BASE}/creations/cocktails-et-buffets/${formule.slug}`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${BASE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Cocktails & Buffets', item: `${BASE}/creations/cocktails-et-buffets` },
+          { '@type': 'ListItem', position: 3, name: formule.nom, item: pageUrl },
+        ],
+      },
+      {
+        '@type': 'Product',
+        name: `${formule.nom} — L'Écrin Traiteur`,
+        description: formule.seoTitle || `${formule.nom}, formule cocktail & buffet d'entreprise livrée à Paris et en Île-de-France par L'Écrin Traiteur.`,
+        image: `${BASE}${formule.img}`,
+        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
+        category: "Cocktail & Buffet d'entreprise",
+        ...(priceNum ? {
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'EUR',
+            price: priceNum,
+            availability: 'https://schema.org/InStock',
+            url: pageUrl,
+            areaServed: { '@type': 'State', name: 'Île-de-France' },
+            seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+          },
+        } : {}),
+      },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar showBanner />
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>

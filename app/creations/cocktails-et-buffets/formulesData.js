@@ -92,7 +92,7 @@ export const FORMULES = [
     detail: '14 salées · 4 sucrées',
     prix: 'À partir de 58 € HT / pers.',
     prixNum: 58,
-    descCourt: "Une expérience cocktail premium pour vos soirées d'entreprise, lancements et réceptions haut de gamme.",
+    descCourt: "Cocktail dînatoire d'entreprise à Paris : 18 pièces salées et sucrées artisanales par personne pour vos soirées, lancements et réceptions. Livré en Île-de-France.",
     desc: "Une expérience cocktail premium pensée pour les soirées d'entreprise, lancements, événements presse et réceptions haut de gamme.",
     salees: [
       'Brioche saumon gravlax',

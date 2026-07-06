@@ -73,8 +73,44 @@ export default function ProductPage() {
     { label: product.name },
   ]
 
+  const BASE = 'https://www.lecrin-traiteur.fr'
+  const pageUrl = `${BASE}/creations/petits-dejeuners-et-pauses/${product.id}`
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${BASE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Petits-Déjeuners & Pauses', item: `${BASE}/creations/petits-dejeuners-et-pauses` },
+          { '@type': 'ListItem', position: 3, name: product.name, item: pageUrl },
+        ],
+      },
+      {
+        '@type': 'Product',
+        name: `${product.name} — L'Écrin Traiteur`,
+        description: product.ingredients || `${product.name}, spécialité artisanale livrée pour vos petits-déjeuners d'entreprise à Paris et en Île-de-France.`,
+        image: product.img ? `${BASE}${product.img}` : undefined,
+        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
+        category: "Petit-déjeuner d'entreprise",
+        ...(product.price ? {
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'EUR',
+            price: product.price.toFixed(2),
+            availability: 'https://schema.org/InStock',
+            url: pageUrl,
+            areaServed: { '@type': 'State', name: 'Île-de-France' },
+            seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+          },
+        } : {}),
+      },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
