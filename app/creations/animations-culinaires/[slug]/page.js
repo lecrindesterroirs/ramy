@@ -20,6 +20,38 @@ export default function AnimationDetail() {
     { label: anim.nom },
   ]
 
+  const BASE = 'https://www.lecrin-traiteur.fr'
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumb.map((c, i) => ({
+          '@type': 'ListItem', position: i + 1, name: c.label,
+          ...(c.href ? { item: `${BASE}${c.href}` } : {}),
+        })),
+      },
+      {
+        '@type': 'Product',
+        name: anim.nom,
+        ...(anim.description ? { description: anim.description } : {}),
+        ...(anim.img ? { image: `${BASE}${anim.img}` } : {}),
+        category: universLabel,
+        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'EUR',
+          price: '0',
+          priceSpecification: { '@type': 'PriceSpecification', valueAddedTaxIncluded: false },
+          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+          areaServed: 'Île-de-France',
+          url: `${BASE}/devis`,
+        },
+      },
+    ],
+  }
+
   const nomLc = anim.nom.toLowerCase()
   const seoArticle = `
     <h2>${anim.nom} : l'animation culinaire live pour vos événements d'entreprise à Paris</h2>
@@ -34,6 +66,7 @@ export default function AnimationDetail() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

@@ -43,8 +43,42 @@ export default function CocktailDetail() {
   const f = FORMULES.find(x => x.key === slug)
   if (!f) notFound()
 
+  const BASE = 'https://www.lecrin-traiteur.fr'
+  const nomFormule = `Cocktail ${f.label}`
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${BASE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Cocktails', item: `${BASE}/creations/cocktails` },
+          { '@type': 'ListItem', position: 3, name: nomFormule },
+        ],
+      },
+      {
+        '@type': 'Product',
+        name: nomFormule,
+        description: `Formule cocktail ${f.label} — ${f.pieces} pièces salées et sucrées façonnées à la main, pour vos réceptions et afterworks d'entreprise à Paris et en Île-de-France.`,
+        ...(f.img ? { image: `${BASE}${f.img}` } : {}),
+        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'EUR',
+          price: '0',
+          priceSpecification: { '@type': 'PriceSpecification', valueAddedTaxIncluded: false },
+          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+          areaServed: 'Île-de-France',
+          url: `${BASE}/devis`,
+        },
+      },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar showBanner={true} />
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
