@@ -16,8 +16,23 @@ export const metadata = {
     type: 'website',
     locale: 'fr_FR',
     siteName: "L'Écrin Traiteur",
+    url: 'https://www.lecrin-traiteur.fr',
     title: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
     description: "Petits-déjeuners, plateaux repas, cocktails et buffets livrés pour vos événements d'entreprise. Artisans sélectionnés, livraison dès 6h30.",
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: "L'Écrin Traiteur — petits-déjeuners & pauses gourmandes d'entreprise",
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
+    description: "Petits-déjeuners, plateaux repas, cocktails et buffets livrés pour vos événements d'entreprise.",
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,

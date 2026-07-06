@@ -61,11 +61,19 @@ export default function TestimonialsSection() {
     '@type': 'Organization',
     name: "L'Écrin Traiteur",
     url: 'https://www.lecrin-traiteur.fr',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      bestRating: '5',
+      worstRating: '1',
+      ratingCount: String(all.length),
+      reviewCount: String(all.length),
+    },
     review: all.map(t => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: t.author, jobTitle: t.role },
       reviewBody: t.quote,
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5', worstRating: '1' },
     })),
   }
 
