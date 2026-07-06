@@ -56,8 +56,8 @@ export default function ExperiencesSection() {
           }}
         >
           Du petit-déjeuner de rentrée au cocktail de fin d'année,<br />
-          en passant par la pause du mardi matin,<br />
-          on s'adapte à votre rythme.
+          du déjeuner d'équipe au séminaire,<br />
+          on s'adapte à chacun de vos moments.
         </p>
 
         <a

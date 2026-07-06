@@ -42,7 +42,7 @@ export default function CityPage() {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FoodEstablishment'],
     name: "L'Écrin Traiteur",
-    description: `Traiteur d'entreprise livrant à ${city.name} — petits-déjeuners artisanaux, pauses gourmandes, coffrets et plateaux repas.`,
+    description: `Traiteur d'entreprise livrant à ${city.name} — petits-déjeuners, plateaux repas, cocktails, buffets et animations culinaires. Artisans sélectionnés, livraison dès 6h30.`,
     url: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}`,
     telephone: '+33760169620',
     email: 'commercial@lecrin-traiteur.fr',

@@ -43,7 +43,7 @@ export default function TraiteurPage() {
             Traiteur Paris<br />& Île-de-France
           </h1>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
-            L'Écrin Traiteur livre vos petits-déjeuners d'entreprise dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
+            L'Écrin Traiteur livre vos événements d'entreprise — petits-déjeuners, plateaux repas, cocktails et réceptions — dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
           </p>
 
           {/* Ligne sobre — points clés séparés par des puces dorées */}

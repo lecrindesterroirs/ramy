@@ -75,7 +75,7 @@ export default function PrometteSection() {
             textAlign: 'center',
           }}
         >
-          La pause en entreprise mérite mieux qu'un simple café.<br />
+          Recevoir en entreprise mérite mieux qu'un simple café.<br />
           Mado Paris, Maison Marques, Mariage Frères...
         </p>
       </div>

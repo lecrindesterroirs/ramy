@@ -42,7 +42,7 @@ export default function Home() {
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             'name': "L'Écrin Traiteur",
-            'description': "Traiteur artisanal parisien spécialisé dans les petits-déjeuners d'entreprise, plateaux repas, pauses café et mignardises livrés à Paris et en Île-de-France.",
+            'description': "Traiteur d'entreprise artisanal à Paris & Île-de-France : petits-déjeuners, plateaux repas, cocktails, buffets, animations culinaires et réceptions sur mesure. Artisans sélectionnés, livraison dès 6h30.",
             'url': 'https://www.lecrin-traiteur.fr',
             'email': 'commercial@lecrin-traiteur.fr',
             'address': {
