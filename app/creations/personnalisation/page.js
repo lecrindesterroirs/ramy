@@ -141,7 +141,7 @@ export default function Personnalisation() {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(17,17,17,0.28)'; e.currentTarget.style.color = 'var(--text-primary)' }}
           >
-            Demander un devis personnalisé →
+            Obtenir un devis personnalisé →
           </a>
         </div>
 

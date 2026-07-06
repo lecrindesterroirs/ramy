@@ -591,7 +591,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Demande de devis <span>→</span>
+            Obtenir un devis <span>→</span>
           </a>
         </div>
 
@@ -747,7 +747,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onClick={() => setMobileOpen(false)}
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px', textDecoration: 'none', marginTop: '28px' }}
           >
-            Demande de devis <span>→</span>
+            Obtenir un devis <span>→</span>
           </a>
         </div>
       )}

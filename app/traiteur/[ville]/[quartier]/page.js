@@ -160,7 +160,7 @@ export default function QuartierPage() {
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                   >
-                    Demander un devis
+                    Obtenir un devis
                   </a>
                 </div>
               </div>

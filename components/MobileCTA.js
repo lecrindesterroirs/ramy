@@ -66,7 +66,7 @@ export default function MobileCTA() {
           </svg>
           07 60 16 96 20
         </a>
-        <a className="mobile-cta-devis" href="/devis" aria-label="Demander un devis">
+        <a className="mobile-cta-devis" href="/devis" aria-label="Obtenir un devis">
           Devis →
         </a>
       </div>

@@ -205,7 +205,7 @@ function AnimGalleryFiche({ anim, universLabel }) {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
           >
-            Demande de devis →
+            Obtenir un devis →
           </a>
         </div>
       </div>

@@ -127,7 +127,7 @@ export default function ArticlePage() {
                 textDecoration: 'none',
               }}
             >
-              Demander un devis →
+              Obtenir un devis →
             </a>
           </div>
 

@@ -92,7 +92,7 @@ export default function OccasionPage() {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Demande de devis →
+                Obtenir un devis →
               </a>
             </div>
           </div>

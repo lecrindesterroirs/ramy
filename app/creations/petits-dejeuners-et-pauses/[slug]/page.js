@@ -176,7 +176,7 @@ export default function ProductPage() {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Demander un devis →
+                Obtenir un devis →
               </a>
             </div>
 
@@ -385,7 +385,7 @@ function GalleryFiche({ product }) {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
           >
-            Demande de devis →
+            Obtenir un devis →
           </a>
         </div>
       </div>
@@ -498,7 +498,7 @@ function EditorialHero({ product, breadcrumb }) {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Demande de devis →
+                Obtenir un devis →
               </a>
 
             </div>
@@ -554,7 +554,7 @@ function ProductInfo({ product }) {
         onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
         onMouseLeave={e => e.currentTarget.style.opacity = '1'}
       >
-        Demande de devis →
+        Obtenir un devis →
       </a>
 
       <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>

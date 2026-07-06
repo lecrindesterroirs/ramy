@@ -193,7 +193,7 @@ export default function EvenementsSaisonniers() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Demander un devis →
+            Obtenir un devis →
           </a>
         </div>
 

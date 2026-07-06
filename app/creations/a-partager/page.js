@@ -188,7 +188,7 @@ function MenuCard({ m }) {
             transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease',
           }}
         >
-          Demande de devis →
+          Obtenir un devis →
         </a>
       </div>
     </article>

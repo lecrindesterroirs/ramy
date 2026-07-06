@@ -41,6 +41,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>
+        <link rel="preload" href="/fonts/BaskervilleDisplayPT.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <CartProvider>{children}</CartProvider>
         <MobileCTA />
       </body>

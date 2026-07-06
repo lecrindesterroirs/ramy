@@ -37,7 +37,7 @@ export default function Hero() {
           willChange: 'transform',
         }}
       >
-        <img loading="eager" src="/hero-bg2.webp"
+        <img loading="eager" fetchPriority="high" decoding="async" src="/hero-bg2.webp"
           alt=""
           style={{
             width: '100%',
@@ -128,7 +128,7 @@ export default function Hero() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.82'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Demande de devis <span>→</span>
+            Obtenir un devis <span>→</span>
           </a>
           <a
             href="/creations/petits-dejeuners-et-pauses"

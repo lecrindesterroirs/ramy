@@ -101,7 +101,7 @@ function CoffretDetail({ produit }) {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Demande de devis — {format.label} →
+            Obtenir un devis — {format.label} →
           </a>
 
           <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>

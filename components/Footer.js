@@ -93,7 +93,7 @@ export default function Footer() {
                 {[
                   { label: 'Nos occasions', href: '/occasions' },
                   { label: 'Contact', href: '/contact' },
-                  { label: 'Demande de devis', href: '/devis' },
+                  { label: 'Obtenir un devis', href: '/devis' },
                 ].map(l => (
                   <a key={l.label} href={l.href}
                     style={linkStyle}
