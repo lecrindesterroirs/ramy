@@ -46,24 +46,15 @@ export default function TraiteurPage() {
             L'Écrin Traiteur livre vos petits-déjeuners d'entreprise dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
           </p>
 
-          {/* Stats séparées par filets */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {[
-              { num: `${CITIES.length}+`, label: 'villes desservies' },
-              { num: '6h30', label: 'livraison dès' },
-              { num: '24h', label: 'devis sous' },
-            ].map(({ num, label }, i) => (
-              <div key={label} style={{ display: 'flex', alignItems: 'center' }}>
-                {i > 0 && <span style={{ width: '1px', height: '38px', background: 'rgba(17,17,17,0.12)', margin: '0 32px' }} />}
-                <div style={{ textAlign: 'center' }}>
-                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '38px', fontWeight: 400, color: 'var(--accent)', lineHeight: 1, marginBottom: '6px' }}>
-                    {num}
-                  </p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)' }}>
-                    {label}
-                  </p>
-                </div>
-              </div>
+          {/* Ligne sobre — points clés séparés par des puces dorées */}
+          <div className="traiteur-facts" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '4px 16px' }}>
+            {[`${CITIES.length} villes desservies`, 'Livraison dès 6h30', 'Devis sous 24h'].map((fact, i) => (
+              <span key={fact} style={{ display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
+                {i > 0 && <span style={{ color: 'var(--accent)', fontSize: '12px', lineHeight: 1 }}>·</span>}
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.04em', color: 'var(--text-secondary)' }}>
+                  {fact}
+                </span>
+              </span>
             ))}
           </div>
         </div>
