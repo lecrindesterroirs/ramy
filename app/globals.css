@@ -50,7 +50,7 @@
   --bg-secondary: #F8F5EF;
   --white: #FFFFFF;
   --text-primary: #111111;
-  --text-secondary: #6E675F;
+  --text-secondary: #605A4F; /* foncé pour WCAG AA (≥4,5:1) y compris sur fond crème */
   --accent: #E0A126;          /* jaune signature — fonds, ornements, filets */
   --accent-deep: #9A6B12;     /* accent en TEXTE sur fond clair — contraste WCAG AA (4,5:1) */
   --banner-h: 36px;

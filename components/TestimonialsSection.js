@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
             Ils parlent de leurs événements.
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.55)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.66)' }}>
             Des prestations pensées pour les entreprises qui recherchent plus qu'un simple traiteur.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function TestimonialsSection() {
                 {FEATURED.quote}
               </blockquote>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '3px' }}>{FEATURED.author}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.45)' }}>{FEATURED.role}</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{FEATURED.role}</p>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export default function TestimonialsSection() {
                     {t.quote}
                   </blockquote>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '2px' }}>{t.author}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.45)' }}>{t.role}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{t.role}</p>
                 </div>
               </div>
             ))}
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
 
         {/* ── Barre logos ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '56px', paddingTop: '40px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', textAlign: 'center', marginBottom: '28px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)', textAlign: 'center', marginBottom: '28px' }}>
             Ils nous font confiance
           </p>
           <div className="ts-logos" style={{ display: 'grid', gridTemplateColumns: `repeat(${CLIENT_LOGOS.length}, 1fr)`, alignItems: 'center', justifyItems: 'center', gap: '24px' }}>

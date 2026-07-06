@@ -6,7 +6,7 @@
 // analytics.google.com + doubleclick/googleadservices/google.com/.fr (Ads).
 // ⚠️ Ajouter tout nouveau service tiers ici avant de le brancher, sinon il sera bloqué.
 const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com'
-const ADS = 'https://*.g.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
+const ADS = 'https://*.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
 const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GA_GTM} https://www.googleadservices.com`,

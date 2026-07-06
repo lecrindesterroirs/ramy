@@ -8,9 +8,10 @@ import { GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS } from '../lib/site'
 export default function ReviewsBadge({ variant = 'light', showCount = false, style = {} }) {
   const isOnImage = variant === 'onImage'
   const textColor = isOnImage ? 'rgba(24,18,16,0.9)' : 'var(--text-secondary)'
+  // L'aria-label doit CONTENIR le texte visible (WCAG 2.5.3) — visible = "5,0 · [N ]Avis Google"
   const ariaLabel = showCount
-    ? `Note ${GBP_RATING_LABEL} sur 5 — ${GBP_REVIEWS} avis Google, voir la fiche`
-    : `Note ${GBP_RATING_LABEL} sur 5 sur Google, voir la fiche`
+    ? `${GBP_RATING_LABEL} · ${GBP_REVIEWS} avis Google — note ${GBP_RATING_LABEL} sur 5, voir la fiche`
+    : `${GBP_RATING_LABEL} · Avis Google — note ${GBP_RATING_LABEL} sur 5, voir la fiche`
 
   return (
     <a
