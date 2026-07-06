@@ -124,6 +124,7 @@ export default function Contact() {
       })
       if (res.ok) {
         setStatus('success')
+        window.dataLayer?.push({ event: 'contact_submit', form_location: 'page_contact' })
       } else {
         setStatus('error')
       }

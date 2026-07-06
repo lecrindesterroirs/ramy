@@ -610,6 +610,7 @@ export default function Contact() {
       })
       if (res.ok) {
         setSubmitStatus('success')
+        window.dataLayer?.push({ event: 'devis_submit', form_location: 'page_devis' })
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         setSubmitStatus('error')

@@ -34,6 +34,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
         body: JSON.stringify({ ...form, source: 'devis-rapide' }),
       })
       setStatus(res.ok ? 'success' : 'error')
+      if (res.ok) window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide' })
     } catch {
       setStatus('error')
     }
