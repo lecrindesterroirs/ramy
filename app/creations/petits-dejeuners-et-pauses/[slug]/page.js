@@ -479,8 +479,8 @@ function EditorialHero({ product, breadcrumb }) {
 
         {/* Gauche — photo posée sur le marbre */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <div style={{ width: '100%', maxWidth: '560px', maxHeight: 'calc(100vh - var(--banner-h) - var(--nav-h) - 80px)', aspectRatio: '1 / 1', overflow: 'hidden', boxShadow: '0 26px 60px -24px rgba(60,48,34,0.5)' }}>
-            <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <div style={{ position: 'relative', width: '100%', maxWidth: '560px', maxHeight: 'calc(100vh - var(--banner-h) - var(--nav-h) - 80px)', aspectRatio: '1 / 1', overflow: 'hidden', boxShadow: '0 26px 60px -24px rgba(60,48,34,0.5)' }}>
+            <Image fill sizes="(max-width: 768px) 100vw, 560px" src={product.img} alt={product.name} style={{ objectFit: 'cover', display: 'block' }} />
           </div>
         </div>
 

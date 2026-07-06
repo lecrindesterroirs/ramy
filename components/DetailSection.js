@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 const args = [
   {
@@ -31,19 +32,19 @@ export default function DetailSection() {
 
         {/* ── Image pleine largeur avec texte superposé ── */}
         <div
-          className="reveal"
+          className="reveal detail-img-wrap"
           style={{
             position: 'relative',
             overflow: 'hidden',
             width: '100%',
+            height: '580px',
           }}
         >
-          <img loading="lazy" className="detail-img"
+          <Image fill className="detail-img"
+            sizes="100vw"
             src="/detail-home.webp"
             alt="Le détail fait la différence — L'Écrin Traiteur"
             style={{
-              width: '100%',
-              height: '580px',
               objectFit: 'cover',
               display: 'block',
             }}
@@ -170,7 +171,7 @@ export default function DetailSection() {
         @media (max-width: 768px) {
           .detail-section { padding: 48px 0 0 !important; }
           .detail-inner { padding: 0 !important; }
-          .detail-img { height: 320px !important; }
+          .detail-img-wrap { height: 320px !important; }
           .detail-overlay-text {
             position: relative !important;
             top: auto !important; left: auto !important; bottom: auto !important;
