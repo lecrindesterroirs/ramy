@@ -4,32 +4,31 @@ import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 
+// Faits vérifiables uniquement (aucun chiffre inventé)
 const stats = [
-  { chiffre: '10 ans', label: "d'expérience" },
-  { chiffre: '+500', label: 'événements réalisés' },
-  { chiffre: '98%', label: 'de clients satisfaits' },
+  { chiffre: '5,0★', label: 'note Google · 18 avis' },
+  { chiffre: '6h30', label: 'livraison au plus tôt' },
+  { chiffre: '24h', label: 'devis personnalisé' },
 ]
 
-const equipe = [
+// Notre modèle réel : sélection d'artisans → préparation → livraison
+const piliers = [
   {
-    prenom: 'Édouard',
-    nom: 'Marchand',
-    role: 'Fondateur & Chef Traiteur',
-    bio: "Édouard a fondé L'Écrin après 12 ans passés dans les cuisines des grands palaces parisiens. Sa conviction : l'exigence n'est pas un luxe, c'est un droit.",
-    img: '/creations-featured.webp',
-  },
-  {
-    prenom: 'Lucie',
-    nom: 'Bernard',
-    role: 'Directrice des Opérations',
-    bio: "Lucie coordonne chaque prestation avec une rigueur et une bienveillance qui font la force de notre équipe. Elle est la garante de la promesse L'Écrin.",
+    titre: 'La sélection',
+    label: 'Des artisans, pas des industriels',
+    bio: "Nous ne cuisinons pas tout, nous sélectionnons. Chaque maison est choisie pour son savoir-faire — Mado Paris, Mariage Frères, Alain Milliat, Laura Todd. Des produits qui portent un nom.",
     img: '/selection-chef.webp',
   },
   {
-    prenom: 'Théo',
-    nom: 'Chevalier',
-    role: 'Chef Pâtissier',
-    bio: "Formé à l'école Ferrandi, Théo apporte sa sensibilité artistique à chaque création sucrée. Ses pièces maîtresses sont la signature visuelle de nos prestations.",
+    titre: 'La préparation',
+    label: 'Assemblé et dressé avec soin',
+    bio: "Thermos de café, mise en boîte soignée, dressage à la minute pour les cocktails : chaque commande est préparée le jour même, prête à servir.",
+    img: '/creations-featured.webp',
+  },
+  {
+    titre: 'La livraison',
+    label: 'Dès 6h30, prêt à servir',
+    bio: "Livraison en entreprise dès 6h30, du lundi au vendredi, à Paris et en Île-de-France. C'est notre différence — et ce dont vos équipes se souviennent.",
     img: '/creations-2.webp',
   },
 ]
@@ -140,7 +139,7 @@ export default function APropos() {
               color: 'var(--text-secondary)',
               marginBottom: '22px',
             }}>
-              L'Écrin Traiteur est né à Paris d'une conviction simple : les moments de partage méritent une attention particulière. Ce qui a commencé comme une boutique artisanale du 11e arrondissement est aujourd'hui une maison reconnue à travers toute l'Île-de-France.
+              L'Écrin Traiteur est né d'une conviction simple : les moments partagés en entreprise méritent mieux que l'ordinaire. Nous concevons des petits-déjeuners, plateaux repas, cocktails et pauses gourmandes pour les entreprises de Paris et d'Île-de-France.
             </p>
             <p style={{
               fontFamily: "'Neue Montreal', sans-serif",
@@ -149,7 +148,7 @@ export default function APropos() {
               color: 'var(--text-secondary)',
               marginBottom: '22px',
             }}>
-              Depuis notre fondation, nous n'avons jamais transigé sur l'essentiel : la qualité des produits, le soin de la présentation, et la fiabilité du service.
+              Notre parti pris : nous ne cuisinons pas tout, nous sélectionnons. Chaque produit vient d'un artisan choisi pour son savoir-faire — Mado Paris pour les madeleines, Mariage Frères pour les thés, Alain Milliat pour les jus — que nous rassemblons, dressons et livrons avec le même soin.
             </p>
             <p style={{
               fontFamily: "'Neue Montreal', sans-serif",
@@ -157,7 +156,7 @@ export default function APropos() {
               lineHeight: 1.85,
               color: 'var(--text-secondary)',
             }}>
-              Aujourd'hui, nous accompagnons aussi bien les grandes entreprises du CAC 40 que les particuliers dans leurs célébrations les plus intimes.
+              Nous ne transigeons jamais sur l'essentiel : la qualité des produits, le soin de la présentation et la fiabilité du service, livré prêt à servir dès 6h30.
             </p>
           </div>
 
@@ -263,7 +262,7 @@ export default function APropos() {
               color: 'var(--accent)',
               marginBottom: '16px',
             }}>
-              Les visages de L'Écrin
+              Notre approche
             </p>
             <h2 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",
@@ -272,7 +271,7 @@ export default function APropos() {
               color: 'var(--text-primary)',
               lineHeight: 1.1,
             }}>
-              Notre équipe
+              Comment nous travaillons
             </h2>
           </div>
 
@@ -284,11 +283,11 @@ export default function APropos() {
               gap: '10px',
             }}
           >
-            {equipe.map((p, i) => (
+            {piliers.map((p, i) => (
               <div key={i} style={{ background: 'var(--bg-secondary)' }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '3 / 4', overflow: 'hidden' }}>
                   <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={p.img}
-                    alt={`${p.prenom} ${p.nom}`}
+                    alt={p.titre}
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
@@ -301,7 +300,7 @@ export default function APropos() {
                     marginBottom: '4px',
                     lineHeight: 1.2,
                   }}>
-                    {p.prenom} {p.nom}
+                    {p.titre}
                   </h3>
                   <p style={{
                     fontFamily: "'Neue Montreal', sans-serif",
@@ -312,7 +311,7 @@ export default function APropos() {
                     color: 'var(--accent)',
                     marginBottom: '16px',
                   }}>
-                    {p.role}
+                    {p.label}
                   </p>
                   <p style={{
                     fontFamily: "'Neue Montreal', sans-serif",
