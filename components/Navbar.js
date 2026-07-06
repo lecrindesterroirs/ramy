@@ -616,6 +616,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           className="nav-hamburger"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
+          aria-expanded={mobileOpen}
           style={{
             display: 'none',
             flexDirection: 'column',
@@ -625,7 +626,10 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: '4px',
+            padding: '10px',
+            minWidth: '44px',
+            minHeight: '44px',
+            boxSizing: 'border-box',
             zIndex: 200,
           }}
         >
