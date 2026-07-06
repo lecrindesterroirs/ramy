@@ -5,11 +5,14 @@
 // Next). Whitelist : Vercel analytics + googletagmanager/google-analytics/
 // analytics.google.com + doubleclick/googleadservices/google.com/.fr (Ads).
 // ⚠️ Ajouter tout nouveau service tiers ici avant de le brancher, sinon il sera bloqué.
-const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com'
+// ⚠️ analytics.google.com EN PLUS de *.analytics.google.com : GA4 envoie /g/collect au domaine NU
+// (le wildcard *.analytics.google.com ne matche PAS l'apex) → sinon page_view bloqué par le CSP.
+const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com'
+// ADS doit aussi être dans script-src : le pixel de conversion charge un SCRIPT depuis googleads.g.doubleclick.net
 const ADS = 'https://*.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GA_GTM} https://www.googleadservices.com`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GA_GTM} ${ADS}`,
   "style-src 'self' 'unsafe-inline'",
   `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${GA_GTM} ${ADS}`,
   "font-src 'self' data:",
