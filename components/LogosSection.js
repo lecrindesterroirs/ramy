@@ -1,7 +1,7 @@
 'use client'
 
 const logos = [
-  { name: 'Le Monde',         src: '/logos/lemonde.svg' },
+  { name: 'Le Monde',         src: '/logos/lemonde.png', height: '40px' },
   { name: 'SNCF',             src: '/logos/sncf.png' },
   { name: 'DS Automobiles',   src: '/logos/ds.png', height: '52px' },
   { name: 'Carglass',         src: '/logos/carglass.svg' },

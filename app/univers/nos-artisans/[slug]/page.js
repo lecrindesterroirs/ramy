@@ -100,7 +100,7 @@ export default function ArtisanDetail() {
               Leurs créations dans nos prestations
             </p>
           </Reveal>
-          <div className="art-creations-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${artisan.creations.length}, 1fr)`, gap: '24px' }}>
+          <div className="art-creations-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(artisan.creations.length, 4)}, 1fr)`, gap: '24px', maxWidth: artisan.creations.length === 1 ? '460px' : artisan.creations.length === 2 ? '760px' : artisan.creations.length === 3 ? '1080px' : '100%', margin: '0 auto' }}>
             {artisan.creations.map((c, i) => (
               <Reveal key={c.id} delay={(i % 4) * 90}>
                 <Link href={c.href} className="art-creation-card" style={{ textDecoration: 'none', display: 'block' }}>

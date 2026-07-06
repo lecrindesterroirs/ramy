@@ -8,153 +8,196 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 
 const SEO_ARTICLE = `
-  <h2>Plateaux à partager pour vos moments d'équipe à Paris</h2>
-  <p>Certains moments d'entreprise n'ont pas besoin d'un format codifié — ils ont besoin d'un <strong>plateau généreux au centre de la table</strong>. Brainstorming qui s'éternise, point d'équipe du vendredi, accueil improvisé d'un partenaire : nos plateaux à partager livrent de la convivialité prête à servir, à Paris et en Île-de-France.</p>
+  <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
+  <p>Certains déjeuners d'entreprise n'ont pas besoin d'un format codifié — ils ont besoin d'un <strong>grand menu généreux à partager au centre de la table</strong>. Point d'équipe, accueil d'un partenaire, déjeuner de service : nos menus à partager mêlent salades, planches et pièces cocktail, dressés prêts à servir à Paris et en Île-de-France.</p>
 
   <h2>Le partage, un rituel d'équipe sous-estimé</h2>
-  <p>Un plateau posé au centre change la dynamique d'une salle : on se sert, on fait passer, on commente. C'est le team building le moins cher et le plus naturel qui existe. Nos formats — corbeilles de fruits frais, assortiments sucrés, plateaux salés — sont pensés pour circuler de main en main, pas pour rester intacts en bout de table.</p>
+  <p>Un menu posé au centre change la dynamique d'une salle : on se sert, on fait passer, on commente. Chaque menu équilibre pièces salées et douceurs, pour circuler de main en main — généreux, beau à regarder et pensé pour tous les goûts.</p>
 
-  <h2>Composer le bon assortiment</h2>
-  <p>Pour une pause partagée, comptez l'équivalent de <strong>2 pièces par personne</strong> en mélangeant les familles : un plateau sucré pour 8 à 10 personnes, une corbeille de fruits pour compléter, des boissons artisanales pour accompagner. Nos équipes vous aident à dimensionner selon la durée et l'horaire de votre moment d'équipe.</p>
+  <h2>Choisir le bon menu</h2>
+  <p>Comptez un menu pour 8 à 12 personnes en le complétant selon l'appétit et l'horaire. Signature, Méditerranéen, Parisien ou Jardin (100 % végétarien) : nos équipes vous aident à composer et à dimensionner selon le nombre de convives.</p>
 
-  <h2>Commander vos plateaux à partager à Paris</h2>
-  <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les plateaux arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA — et pour les moments récurrents, un devis cadre simplifie tout.</p>
+  <h2>Commander vos menus à partager à Paris</h2>
+  <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA — et pour les moments récurrents, un devis cadre simplifie tout.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
 
 const HERO = {
   label: 'À Partager',
-  description: 'De grandes salades généreuses à partager, pensées par base — vertes, pâtes, pommes de terre, lentilles ou céréales. Composées le matin avec des produits de saison.',
+  description: 'Des menus généreux à partager — salades dressées, planches gourmandes et pièces cocktail, en grand format. Composés le matin avec des produits de saison.',
   hero: '/hero-a-partager.webp',
 }
 
-/* Filtres = les bases de salade. */
-export const FILTRES = [
-  { key: 'tous',      label: 'Toutes' },
-  { key: 'vertes',    label: 'Bases vertes' },
-  { key: 'pates',     label: 'Pâtes' },
-  { key: 'pdt',       label: 'Pommes de terre' },
-  { key: 'lentilles', label: 'Lentilles' },
-  { key: 'cereales',  label: 'Céréales' },
+/* Menus à partager : chacun équilibré (recettes salées + sucrées),
+   dressé en salades ou en verrines. Photos = visuels maison L'Écrin. */
+export const MENUS = [
+  {
+    key: 'mediterraneen',
+    nom: 'Le Méditerranéen',
+    accroche: 'Le soleil au centre de la table : fraîcheur, herbes et huile d\'olive.',
+    img: '/prod-atelier-libanais.webp',
+    featured: false,
+    salees: [
+      "Houmous, huile d'olive & pain grillé",
+      "Caviar d'aubergine & focaccia romarin",
+      'Salade grecque',
+      'Wrap falafel & houmous',
+      'Bruschetta tomates confites',
+      'Mini bun tomates confites & mozzarella',
+    ],
+    sucrees: [
+      'Panna cotta fruits rouges',
+      'Verrine citron & lemon curd',
+    ],
+  },
+  {
+    key: 'parisien',
+    nom: 'Le Parisien',
+    accroche: 'Les classiques du bistrot, en pièces à partager.',
+    img: '/prod-atelier-saumon.webp',
+    featured: false,
+    salees: [
+      'Salade César au poulet rôti',
+      'Club sandwich poulet César',
+      'Mini baguette jambon beurre',
+      "Pomme de terre rôtie, crème d'Isigny & saumon fumé",
+      'Mini bun saumon gravlax & mousse aux herbes',
+      "Bruschetta caviar d'aubergine",
+    ],
+    sucrees: [
+      'Brownie signature',
+      'Tartelette citron',
+    ],
+  },
+  {
+    key: 'jardin',
+    nom: 'Le Jardin',
+    accroche: '100 % végétarien, sans concession sur la gourmandise.',
+    img: '/prod-atelier-focaccia.webp',
+    featured: false,
+    salees: [
+      'Samoussa curry végétarien',
+      'Verrine houmous méditerranéen',
+      'Quinoa gourmand, falafels & sauce tahini',
+      'Wrap burrata & légumes grillés',
+      'Salade de lentilles, feta & légumes rôtis',
+      'Bruschetta tomates confites',
+    ],
+    sucrees: [
+      'Madeleines',
+      'Fruits frais de saison',
+    ],
+  },
 ]
 
-const CATEGORIE_COLORS = {
-  vertes:    '#5A7247',
-  pates:     '#C08A3E',
-  pdt:       '#A0764A',
-  lentilles: '#6B7A3A',
-  cereales:  '#B8945A',
+/* Exports conservés pour compatibilité avec l'ancienne fiche détail [slug]. */
+export const SALADES = []
+export const FILTRES = []
+
+/* ─── Liste de recettes (Salé / Sucré) ───────────────────────────── */
+
+function Liste({ titre, items, accent }) {
+  return (
+    <div style={{ marginBottom: '18px' }}>
+      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: accent, marginBottom: '12px' }}>
+        {titre} · {items.length}
+      </p>
+      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '9px', padding: 0, margin: 0 }}>
+        {items.map((it, i) => (
+          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.45, color: '#3A352F' }}>
+            <span style={{ color: accent, flexShrink: 0, fontSize: '7px', marginTop: '5px' }}>◆</span>
+            {it}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
-/* Salades par base. Photos placeholder (bols de saison). */
-export const SALADES = [
-  // ── Bases vertes ──
-  { id: 'v1', categorie: 'vertes', nom: 'La César',        img: '/partager-cesar.webp' },
-  { id: 'v2', categorie: 'vertes', nom: 'La Grecque',      img: '/partager-grecque.webp' },
-  { id: 'v3', categorie: 'vertes', nom: 'La Burrata',      img: '/partager-burrata.webp' },
-  { id: 'v4', categorie: 'vertes', nom: 'Le Saumon Gravlax', img: '/partager-gravlax.webp' },
-  // ── Salades de pâtes ──
-  { id: 'p1', categorie: 'pates', nom: 'Pesto, Mozzarella & Tomates Confites', img: '/plat-grec.webp' },
-  { id: 'p2', categorie: 'pates', nom: 'Poulet César',    img: '/plat-cesar.webp' },
-  { id: 'p3', categorie: 'pates', nom: 'Thon',            img: '/plat-saumon.webp' },
-  { id: 'p4', categorie: 'pates', nom: 'Légumes Grillés', img: '/plat-mediterraneen.webp' },
-  // ── Salades de pommes de terre ──
-  { id: 'd1', categorie: 'pdt', nom: 'Saumon & Crème Citronnée', img: '/plat-saumon.webp' },
-  { id: 'd2', categorie: 'pdt', nom: 'Moutarde à l\'Ancienne',   img: '/plat-roti.webp' },
-  { id: 'd3', categorie: 'pdt', nom: 'Herbes fraîches',          img: '/plat-grec.webp' },
-  { id: 'd4', categorie: 'pdt', nom: 'Poulet rôti',              img: '/plat-cesar.webp' },
-  // ── Salades de lentilles ──
-  { id: 'l1', categorie: 'lentilles', nom: 'Feta',          img: '/plat-grec.webp' },
-  { id: 'l2', categorie: 'lentilles', nom: 'Saumon fumé',   img: '/plat-saumon.webp' },
-  { id: 'l3', categorie: 'lentilles', nom: 'Légumes rôtis', img: '/plat-fusion.webp' },
-  // ── Salades de céréales ──
-  { id: 'c1', categorie: 'cereales', nom: 'Quinoa Méditerranéen', img: '/plat-mediterraneen.webp' },
-  { id: 'c2', categorie: 'cereales', nom: 'Boulgour Oriental',    img: '/plat-fusion.webp' },
-  { id: 'c3', categorie: 'cereales', nom: 'Épeautre & Légumes',   img: '/plat-grec.webp' },
-]
+/* ─── Grande carte menu ──────────────────────────────────────────── */
 
-/* ─── Carte salade ───────────────────────────────────────────────── */
-
-function SaladeCard({ produit }) {
+function MenuCard({ m }) {
   const [hovered, setHovered] = useState(false)
-  const catColor = CATEGORIE_COLORS[produit.categorie] ?? '#6E675F'
-  const catLabel = FILTRES.find(f => f.key === produit.categorie)?.label ?? ''
+  const featured = m.featured
   return (
-    <Link
-      href={`/creations/a-partager/${produit.id}`}
+    <article
       className="ap-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        display: 'block', textDecoration: 'none',
-        background: '#FFFFFF',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
         overflow: 'hidden',
-        cursor: 'pointer',
+        background: featured ? '#FBF7EE' : '#FFFFFF',
+        border: featured ? '1px solid rgba(224,161,38,0.4)' : '1px solid rgba(17,17,17,0.07)',
         boxShadow: hovered
-          ? '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)'
-          : '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+          ? '0 4px 10px rgba(17,17,17,0.05), 0 24px 50px rgba(17,17,17,0.10)'
+          : '0 1px 3px rgba(17,17,17,0.04), 0 8px 24px rgba(17,17,17,0.05)',
+        transform: hovered ? 'translateY(-5px)' : 'translateY(0)',
         transition: 'box-shadow 0.35s ease, transform 0.35s ease',
       }}
     >
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
-        {produit.img && (
-          <img loading="lazy" src={produit.img}
-            alt={produit.nom}
-            style={{
-              width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
-              transition: 'transform 0.7s ease',
-              transform: hovered ? 'scale(1.05)' : 'scale(1)',
-            }}
-          />
-        )}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(20,16,12,0.30)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.4s ease',
-        }}>
-          <span style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
-            color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '10px 24px',
-            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'transform 0.4s ease',
-          }}>
-            Découvrir
+      {/* Photo */}
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#F8F5EF' }}>
+        <img loading="lazy" src={m.img} alt={m.nom}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
+        />
+        {featured && (
+          <span style={{ position: 'absolute', top: '14px', left: '14px', background: '#E0A126', color: '#FFFFFF', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '6px 14px', whiteSpace: 'nowrap' }}>
+            Le plus choisi
           </span>
-        </div>
+        )}
       </div>
+      {featured && <div style={{ height: '3px', background: '#E0A126' }} />}
 
-      <div style={{ padding: '16px 16px 16px' }}>
-        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '10px', transition: 'color 0.25s ease' }}>
-          {produit.nom}
-        </h3>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.13em', textTransform: 'uppercase', color: catColor, marginBottom: '12px' }}>
-          {catLabel}
-        </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#6E675F' }}>
-          Grand format à partager · sur devis
-        </p>
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '30px 34px 34px' }}>
+        {/* En-tête */}
+        <div style={{ textAlign: 'center', paddingBottom: '22px', borderBottom: '1px solid rgba(17,17,17,0.09)', marginBottom: '24px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '10px' }}>
+            Menu à partager
+          </p>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '30px', fontWeight: 400, color: '#111111', marginBottom: '12px' }}>
+            {m.nom}
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.55, color: '#6E675F', maxWidth: '340px', margin: '0 auto 6px' }}>
+            {m.accroche}
+          </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)' }}>
+            {m.salees.length} recettes salées · {m.sucrees.length} sucrées — dressé en salades ou en verrines
+          </p>
+        </div>
+
+        {/* Composition */}
+        <div style={{ flex: 1 }}>
+          <Liste titre="Salé" items={m.salees} accent="#5A7247" />
+          <Liste titre="Sucré" items={m.sucrees} accent="#C08A3E" />
+        </div>
+
+        {/* CTA */}
+        <a
+          href="/devis"
+          style={{
+            marginTop: '24px', display: 'block', textAlign: 'center',
+            fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
+            padding: '14px 20px', textDecoration: 'none',
+            color: featured ? '#FFFFFF' : (hovered ? '#FFFFFF' : '#111111'),
+            background: featured ? '#E0A126' : (hovered ? '#111111' : 'transparent'),
+            border: featured ? '1px solid #E0A126' : (hovered ? '1px solid #111111' : '1px solid rgba(17,17,17,0.25)'),
+            transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease',
+          }}
+        >
+          Demande de devis →
+        </a>
       </div>
-    </Link>
+    </article>
   )
 }
 
 /* ─── Page ───────────────────────────────────────────────────────── */
 
 export default function APartager() {
-  const [activeFiltre, setActiveFiltre] = useState('tous')
-
-  const categoriesDispo = new Set(SALADES.map(s => s.categorie))
-  const filtresDispo = FILTRES.filter(f => f.key === 'tous' || categoriesDispo.has(f.key))
-
-  const saladesFiltres = SALADES.filter(s =>
-    activeFiltre === 'tous' ? true : s.categorie === activeFiltre
-  )
-
   return (
     <>
       <Navbar showBanner={true} />
@@ -163,8 +206,8 @@ export default function APartager() {
 
         {/* ── Hero ── */}
         <div className="ap-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
-          <header className="ap-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img loading="eager" src={HERO.hero} alt="Salades à partager L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+          <header className="ap-hero" style={{ position: 'relative', width: '100%', height: '52vh', minHeight: '420px', overflow: 'hidden' }}>
+            <img loading="eager" src={HERO.hero} alt="Menus à partager L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="ap-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
@@ -174,7 +217,7 @@ export default function APartager() {
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                   {HERO.label}
                 </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
                   {HERO.description}
                 </p>
               </div>
@@ -193,84 +236,68 @@ export default function APartager() {
           </nav>
         </div>
 
-        {/* ── Corps : bases à gauche + grille 3 colonnes ── */}
-        <div className="ap-shell ap-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 72px', display: 'grid', gridTemplateColumns: '190px 1fr', gap: '52px', alignItems: 'start' }}>
+        {/* ── Intro ── */}
+        <div className="ap-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
+            Quatre menus
+          </p>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
+            Choisissez votre menu à partager
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
+            Chaque menu mêle salades, planches et pièces cocktail, dans un équilibre pensé pour toute l'équipe. Personnalisable selon vos effectifs et régimes.
+          </p>
+        </div>
 
-          <aside className="ap-filters" style={{ position: 'sticky', top: '104px' }}>
-            <p className="ap-filters-label" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
-              Par base
-            </p>
-            {filtresDispo.map(f => {
-              const active = f.key === activeFiltre
-              return (
-                <button
-                  key={f.key}
-                  onClick={() => setActiveFiltre(f.key)}
-                  style={{
-                    display: 'block', width: '100%', textAlign: 'left',
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '13.5px',
-                    fontWeight: active ? 500 : 400,
-                    color: active ? '#111111' : '#9B9590',
-                    padding: '9px 0 9px 14px',
-                    background: 'none',
-                    border: 'none',
-                    boxShadow: active ? 'inset 2px 0 0 #E0A126' : 'inset 2px 0 0 transparent',
-                    cursor: 'pointer',
-                    transition: 'color 0.2s ease, box-shadow 0.2s ease',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={e => { if (!active) e.currentTarget.style.color = '#4A453F' }}
-                  onMouseLeave={e => { if (!active) e.currentTarget.style.color = '#9B9590' }}
-                >
-                  {f.label}
-                </button>
-              )
-            })}
-          </aside>
-
-          <div className="ap-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
-            {saladesFiltres.map((s, i) => (
-              <Reveal key={s.id} delay={(i % 3) * 90}>
-                <SaladeCard produit={s} />
+        {/* ── Grille menus (2 colonnes, grand format) ── */}
+        <div className="ap-shell ap-cards" style={{ maxWidth: '1180px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', alignItems: 'stretch' }}>
+          {MENUS.map((m, i) => {
+            const centered = i === MENUS.length - 1 && MENUS.length % 2 === 1
+            return centered ? (
+              <div key={m.key} className="ap-center">
+                <Reveal delay={(i % 2) * 90}>
+                  <MenuCard m={m} />
+                </Reveal>
+              </div>
+            ) : (
+              <Reveal key={m.key} delay={(i % 2) * 90}>
+                <MenuCard m={m} />
               </Reveal>
-            ))}
-          </div>
+            )
+          })}
         </div>
 
       </main>
 
       <CategoryClosing
         eyebrow="Pensé pour les moments collectifs"
-        title={'Des plateaux généreux.\nPensés pour rassembler.'}
-        body="Un plateau au centre de la table vaut mieux qu'un long discours d'équipe. Fruits frais, douceurs artisanales, pièces salées : des formats à faire circuler, livrés prêts à servir pour vos moments partagés."
+        title={'Des menus généreux.\nPensés pour rassembler.'}
+        body="Un menu au centre de la table vaut mieux qu'un long discours d'équipe. Salades, planches, pièces cocktail et douceurs : des formats à faire circuler, livrés prêts à servir pour vos déjeuners partagés."
         seoArticle={SEO_ARTICLE}
       />
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .ap-hero { border-radius: 2px !important; }
-        .ap-card { border-radius: 4px !important; }
+        .ap-card { border-radius: 6px !important; }
+        .ap-center { grid-column: 1 / -1; display: flex; justify-content: center; }
+        .ap-center > * { width: calc(50% - 14px); }
         @media (max-width: 1100px) {
           .ap-hero-wrapper { padding-left: 48px !important; padding-right: 48px !important; }
           .ap-hero-text    { padding-left: 48px !important; padding-right: 48px !important; }
           .ap-shell { padding-left: 48px !important; padding-right: 48px !important; }
-          .ap-body  { grid-template-columns: 160px 1fr !important; gap: 36px !important; }
-          .ap-grid  { grid-template-columns: repeat(2,1fr) !important; }
+          .ap-cards { padding-left: 48px !important; padding-right: 48px !important; gap: 20px !important; }
         }
-        @media (max-width: 900px) {
-          .ap-body { grid-template-columns: 1fr !important; gap: 24px !important; }
-          .ap-filters { position: static !important; display: flex; gap: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-bottom: 1px solid rgba(17,17,17,0.08); }
-          .ap-filters::-webkit-scrollbar { display: none; }
-          .ap-filters-label { display: none !important; }
-          .ap-filters button { width: auto !important; padding: 0 0 12px !important; box-shadow: none !important; }
+        @media (max-width: 860px) {
+          .ap-cards { grid-template-columns: 1fr !important; max-width: 520px !important; gap: 40px !important; }
+          .ap-center > * { width: 100% !important; }
         }
         @media (max-width: 768px) {
           .cat-hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.5) 100%) !important; }
           .ap-hero-wrapper { padding: 20px 20px 0 !important; }
-          .ap-hero         { min-height: 380px !important; height: 42vh !important; }
+          .ap-hero         { min-height: 360px !important; height: 40vh !important; }
           .ap-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
           .ap-shell { padding-left: 24px !important; padding-right: 24px !important; }
-          .ap-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 20px 14px !important; }
+          .ap-cards { padding-left: 24px !important; padding-right: 24px !important; }
         }
       ` }} />
 

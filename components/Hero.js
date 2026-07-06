@@ -48,12 +48,12 @@ export default function Hero() {
         />
       </div>
 
-      {/* Subtle warm overlay */}
+      {/* Warm cream scrim — renforcé côté gauche pour la lisibilité */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(252,248,242,0.72) 0%, rgba(252,248,242,0.38) 55%, rgba(252,248,242,0.08) 100%)',
+          background: 'linear-gradient(105deg, rgba(249,246,239,0.95) 0%, rgba(249,246,239,0.80) 34%, rgba(249,246,239,0.36) 62%, rgba(249,246,239,0.04) 100%)',
         }}
       />
 
@@ -67,8 +67,8 @@ export default function Hero() {
           flexDirection: 'column',
           alignItems: 'flex-start',
           textAlign: 'left',
-          padding: '0 80px',
-          maxWidth: '760px',
+          padding: '0 80px 0 clamp(80px, 11vw, 180px)',
+          maxWidth: '820px',
         }}
       >
         {/* Main title */}
@@ -76,32 +76,34 @@ export default function Hero() {
           style={{
             fontFamily: "'Baskerville Display PT', Georgia, serif",
             fontStyle: 'normal',
-            fontSize: 'clamp(28px, 3.4vw, 50px)',
+            fontSize: 'clamp(34px, 4.6vw, 60px)',
             fontWeight: 400,
-            lineHeight: 1.08,
+            lineHeight: 1.05,
             letterSpacing: '-0.02em',
-            color: '#1A1A1A',
-            marginBottom: '20px',
+            color: '#171310',
+            marginBottom: '24px',
+            textShadow: '0 1px 26px rgba(249,246,239,0.75)',
           }}
         >
-          Le traiteur qui redonne<br />
-          goût aux pauses d'entreprise.
+          L'art de recevoir<br />
+          en entreprise.
         </h1>
 
         {/* Body text */}
         <p
           style={{
             fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '15px',
+            fontSize: '16.5px',
             fontWeight: 400,
             lineHeight: 1.6,
-            color: 'rgba(28,22,20,0.62)',
-            marginBottom: '36px',
-            maxWidth: '400px',
+            color: 'rgba(24,18,16,0.82)',
+            marginBottom: '38px',
+            maxWidth: '430px',
+            textShadow: '0 1px 18px rgba(249,246,239,0.7)',
           }}
         >
-          Petits-déjeuners, plateaux repas et cocktails<br />
-          livrés prêts à servir à Paris et en Île-de-France.
+          Nous sélectionnons les meilleurs artisans pour créer<br />
+          des réceptions dont vos équipes se souviennent.
         </p>
 
         {/* CTA group */}
@@ -137,14 +139,18 @@ export default function Hero() {
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
               padding: '11px 24px',
-              border: '1px solid rgba(28,22,20,0.18)',
-              color: 'rgba(28,22,20,0.65)',
-              background: 'transparent',
+              border: '1px solid rgba(28,22,20,0.35)',
+              color: 'rgba(20,15,13,0.9)',
+              background: 'rgba(255,253,249,0.55)',
+              backdropFilter: 'blur(3px)',
+              WebkitBackdropFilter: 'blur(3px)',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
-                            transition: 'border-color 0.3s ease, color 0.3s ease',
+              transition: 'border-color 0.3s ease, color 0.3s ease, background 0.3s ease',
             }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.85)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.5)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.55)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.35)' }}
           >
             Découvrir notre catalogue <span>→</span>
           </a>

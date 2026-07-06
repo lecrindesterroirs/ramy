@@ -310,35 +310,6 @@ function GalleryFiche({ product }) {
         <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
           <img loading="lazy" src={gallery[active]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
-
-        {/* Miniatures — format paysage fin */}
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${thumbSlots}, 1fr)`, gap: '16px', marginTop: '18px' }}>
-          {Array.from({ length: thumbSlots }).map((_, i) => {
-            const hasImg = i < gallery.length
-            const isActive = i === active
-            return hasImg ? (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Photo ${i + 1}`}
-                style={{ padding: 0, border: 'none', cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF', outline: isActive ? '2px solid var(--accent)' : '2px solid transparent', outlineOffset: '2px', transition: 'outline-color 0.2s ease' }}
-              >
-                <img loading="lazy" src={gallery[i]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: isActive ? 1 : 0.72, transition: 'opacity 0.2s ease' }} />
-              </button>
-            ) : (
-              <button
-                key={i}
-                type="button"
-                aria-label="Photo à venir"
-                style={{ padding: 0, cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', borderRadius: '3px', background: '#F4F1EA', border: '1px solid transparent', outline: '2px solid transparent', outlineOffset: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'outline-color 0.2s ease, background 0.2s ease' }}
-                onMouseEnter={e => { e.currentTarget.style.outlineColor = 'rgba(224,161,38,0.4)'; e.currentTarget.style.background = '#EFEBE1' }}
-                onMouseLeave={e => { e.currentTarget.style.outlineColor = 'transparent'; e.currentTarget.style.background = '#F4F1EA' }}
-              >
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.28)', textAlign: 'center', lineHeight: 1.4 }}>Photo<br />à venir</span>
-              </button>
-            )
-          })}
-        </div>
       </div>
 
       {/* ── Colonne droite : infos ── */}

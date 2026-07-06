@@ -114,7 +114,7 @@ export const PRODUITS = [
     id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'Le Gourmand', img: '/plateau-gourmand.webp',
     entree: 'Tartelette pissaladière & jeunes pousses',
     plat: 'Salade de lentilles, feta & légumes rôtis',
-    dessert: 'Cookie Signature',
+    dessert: 'Verrine Citron / Lemon Curd',
   },
 
   // ── Collection Signature (à partir de 33,90 € HT) ──

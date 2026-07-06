@@ -45,7 +45,7 @@ export default function SelectionSection() {
             style={{ overflow: 'hidden' }}
           >
             <img loading="lazy" className="selection-img"
-              src="/selection-artisans.webp"
+              src="/prod-macarons.webp"
               alt="L'art de la sélection — L'Écrin Traiteur"
               style={{
                 width: '100%',

@@ -25,7 +25,7 @@ const SEO_ARTICLE = `
 
 const HERO = {
   label: 'Lunch Box',
-  description: 'Une entrée, un sandwich Signature, Club ou Wrap, un dessert artisanal, serviette & couverts. Boisson en option.',
+  description: 'Une entrée, un sandwich Signature ou Club, un dessert artisanal, serviette & couverts. Boisson en option.',
   prix: '22,90',
   hero: '/hero-lunch-box.webp',
 }
@@ -63,13 +63,6 @@ export const BOXES = [
     dessert: 'Brownie',
   },
   {
-    id: 'lb3', categorie: 'vegetarien', nom: 'La Méditerranéenne', prix: '22,90', img: '/lunchbox-mediterraneenne.webp',
-    sousTitre: 'Wrap Falafel & Houmous',
-    entree: 'Caviar d\'aubergine & focaccia romarin',
-    plat: 'Wrap Falafel & Houmous',
-    dessert: 'Panna Cotta fruits rouges',
-  },
-  {
     id: 'lb4', categorie: 'poisson', nom: 'La Nordique', prix: '24,90', img: '/lunchbox-nordique.webp',
     sousTitre: 'Baguette Saumon & Cream Cheese',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
@@ -89,13 +82,6 @@ export const BOXES = [
     entree: 'Part de pissaladière & jeunes pousses',
     plat: 'Baguette Pastrami Pickles',
     dessert: 'Cookie Signature',
-  },
-  {
-    id: 'lb7', categorie: 'vegetarien', nom: 'La Burrata', prix: '23,90', img: '/lunchbox-burrata.webp',
-    sousTitre: 'Wrap Burrata & Légumes grillés',
-    entree: 'Salade de tomates anciennes & basilic',
-    plat: 'Wrap Burrata & Légumes grillés',
-    dessert: 'Compote pomme & fève tonka',
   },
   {
     id: 'lb8', categorie: 'poulet', nom: 'La César Baguette', prix: '23,90', img: '/lunchbox-cesar-baguette.webp',

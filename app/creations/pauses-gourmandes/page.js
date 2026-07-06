@@ -45,8 +45,8 @@ const COFFRETS_MACARONS = [
 /* Douceurs — images partagées avec Petit-déjeuner quand le produit existe déjà,
    sinon visuels générés dans la DA du site (planche bois, lumière naturelle). */
 export const PAUSES = [
-  { id: 'madeleines',    nom: 'Madeleines',                  img: '/prod-madeleines-20.webp', description: 'Madeleines moelleuses cuites du jour, nature ou parfumées.', coffrets: COFFRETS_MADELEINES },
-  { id: 'macarons',      nom: 'Macarons',                    img: '/prod-macarons.webp',       description: 'Macarons aux ganaches délicates, assortiment de saveurs.', coffrets: COFFRETS_MACARONS },
+  { id: 'madeleines',    nom: 'Madeleines',                  img: '/prod-madeleines-50.webp', description: 'Madeleines moelleuses cuites du jour, nature ou parfumées.', coffrets: COFFRETS_MADELEINES },
+  { id: 'macarons',      nom: 'Macarons',                    img: '/prod-macarons.webp',       description: 'Macarons aux ganaches délicates, assortiment de saveurs.' },
   { id: 'brownie',       nom: 'Brownie',                     img: '/prod-brownie.webp',        description: 'Brownie fondant au chocolat intense, servi à couper.' },
   { id: 'carrot-cake',   nom: 'Carrot Cake',           img: '/prod-carrot-cake.webp',    description: 'Carrot cake moelleux aux épices, servi à couper.' },
   { id: 'cake-citron',   nom: 'Cake Citron Pavot',           img: '/prod-cake-citron-pavot.webp', description: 'Cake maison au citron et graines de pavot, tranché.' },

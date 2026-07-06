@@ -170,7 +170,7 @@ export const evenements = [
     mois: 'Juin',
     nom: "Fête de fin d'année",
     tags: ['Cocktails & Buffets', 'Plateaux Repas'],
-    img: '/buffet.webp',
+    img: '/prod-brunch-gourmand.webp',
     descCourt: "Cocktail dînatoire, buffet généreux ou plateau repas estival. Pour clôturer la saison avec élégance.",
     desc: "Le moment pour clôturer une saison avec une vraie table. Cocktail dînatoire, buffet généreux ou plateau repas estival. Une formule à la hauteur de l'année que vos équipes viennent de passer. Avant les congés d'été.",
     produits: [

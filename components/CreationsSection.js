@@ -20,7 +20,7 @@ const creations = [
   {
     label: 'Buffets',
     description: 'Des buffets conviviaux et généreux pensés pour rassembler et marquer les esprits.',
-    img: '/creations-2.webp',
+    img: '/hero-a-partager.webp',
     href: '/creations/plateaux-aperitifs',
   },
   {
@@ -81,7 +81,7 @@ export default function CreationsSection() {
           Notre carte
         </p>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '14px' }}>
-          Les moments de la journée
+          Pour tous les moments de la journée
         </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '480px', margin: '0 auto' }}>
           Des instants gourmands, pensés avec passion pour sublimer vos journées.

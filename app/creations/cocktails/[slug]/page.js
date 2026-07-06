@@ -9,16 +9,15 @@ import Reveal from '../../../../components/Reveal'
 import { FORMULES } from '../page'
 
 const GALERIE = [
-  '/cocktail.webp',
-  '/img-reception.webp',
-  '/cocktail-dinatoire.webp',
-  '/buffet-garden-party.webp',
-  '/cocktail-sucre.webp',
-  '/section-reception.webp',
-  '/grand-buffet-signature.webp',
-  '/cocktail-dejeunatoire.webp',
-  '/buffet-mediterraneen.webp',
-  '/signature-lecrin.webp',
+  '/hero-cocktail.webp',
+  '/prod-atelier-charcuterie.webp',
+  '/prod-atelier-saumon.webp',
+  '/prod-atelier-lobster.webp',
+  '/prod-bar-mocktails.webp',
+  '/prod-atelier-fromages.webp',
+  '/prod-atelier-desserts.webp',
+  '/prod-bar-fruits.webp',
+  '/prod-fontaine-chocolat.webp',
 ]
 
 function Colonne({ titre, items, accent }) {

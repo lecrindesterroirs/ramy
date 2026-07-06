@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 export const FORMULES = [
   {
     key: 'classique',
-    label: 'Cocktail',
+    label: 'Apéro',
     pieces: 8,
     prix: '29,90',
     accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.',

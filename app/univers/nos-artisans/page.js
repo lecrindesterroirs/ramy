@@ -8,6 +8,14 @@ import Reveal from '../../../components/Reveal'
 import ArtisansMapSection from '../../../components/ArtisansMapSection'
 import { ARTISANS } from '../../../lib/artisansData'
 
+/* Texture papier (grain léger) — cohérence avec les parchemins Univers. */
+const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
+  <filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/>
+  <feColorMatrix type='saturate' values='0'/></filter>
+  <rect width='100%' height='100%' filter='url(#g)' opacity='0.4'/>
+</svg>`
+const GRAIN = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`
+
 /* ─── Icônes ─────────────────────────────────────────────────────────── */
 
 function Icon({ name, size = 20, color = 'currentColor' }) {
@@ -69,32 +77,6 @@ export default function NosArtisans() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
-        {/* ── Intro ── */}
-        <div className="art-intro" style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
-          <Reveal mode="mount">
-            <div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
-                Nos Artisans
-              </p>
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '24px' }}>
-                Des artisans d'exception,<br />
-                <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>des produits d'exception.</span>
-              </h1>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '440px', marginBottom: '32px' }}>
-                Nous sélectionnons chaque artisan pour son savoir-faire, la qualité irréprochable de ses produits et son exigence du détail.
-              </p>
-              <a href="#carte" style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.25)', padding: '15px 28px', textDecoration: 'none' }}>
-                Découvrir nos artisans
-              </a>
-            </div>
-          </Reveal>
-          <Reveal mode="mount" delay={120}>
-            <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <img loading="lazy" src="/selection-artisans.webp" alt="Nos artisans partenaires" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-            </div>
-          </Reveal>
-        </div>
-
         {/* ── Carte de France ── */}
         <ArtisansMapSection />
 
@@ -126,35 +108,38 @@ export default function NosArtisans() {
           </div>
         </div>
 
-        {/* ── Notre engagement ── */}
-        <div className="art-engagement" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', maxWidth: '1440px', margin: '0 auto', padding: '72px 72px', display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: '32px', alignItems: 'center' }}>
-          <Reveal>
-            <div className="art-avatar-round" style={{ width: '96px', height: '96px', overflow: 'hidden', flexShrink: 0 }}>
-              <img loading="lazy" src="/maison-marques.avif" alt="Notre engagement" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </div>
-          </Reveal>
-          <Reveal delay={80}>
-            <div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>Notre engagement</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '480px' }}>
-                En travaillant main dans la main avec ces artisans, nous soutenons l'excellence française et vous garantissons des produits authentiques, responsables et pleins de sens.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={160}>
-            <div className="engagement-icons" style={{ display: 'flex', gap: '28px' }}>
-              {[
-                { icon: 'leaf', label: 'Produits frais et de saison' },
-                { icon: 'craft', label: 'Savoir-faire artisanal' },
-                { icon: 'truck', label: 'Circuits courts et responsables' },
-              ].map((it, i) => (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100px', textAlign: 'center' }}>
-                  <Icon name={it.icon} size={22} color="var(--accent)" />
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--text-secondary)', lineHeight: 1.4 }}>{it.label}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+        {/* ── Notre engagement (parchemin — cohérence DA) ── */}
+        <div className="art-engagement-wrap" style={{ maxWidth: '1180px', margin: '0 auto', padding: '24px 72px 96px' }}>
+          <div className="art-engagement" style={{ position: 'relative', backgroundColor: '#FBF6EA', backgroundImage: GRAIN, backgroundSize: '300px', boxShadow: '0 22px 50px -26px rgba(80,60,30,0.32), inset 0 0 0 1px rgba(169,128,59,0.18)', padding: '48px 56px', display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: '32px', alignItems: 'center' }}>
+            <span style={{ position: 'absolute', inset: '14px', border: '1px solid rgba(169,128,59,0.22)', pointerEvents: 'none' }} />
+            <Reveal>
+              <div className="art-avatar-round" style={{ position: 'relative', width: '96px', height: '96px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid rgba(169,128,59,0.4)', background: 'rgba(255,255,255,0.45)' }}>
+                <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ width: '58%', height: 'auto', opacity: 0.9 }} />
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <div>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>Notre engagement</p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'rgba(42,32,19,0.78)', maxWidth: '480px' }}>
+                  En travaillant main dans la main avec ces artisans, nous soutenons l'excellence française et vous garantissons des produits authentiques, responsables et pleins de sens.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={160}>
+              <div className="engagement-icons" style={{ display: 'flex', gap: '28px' }}>
+                {[
+                  { icon: 'leaf', label: 'Produits frais et de saison' },
+                  { icon: 'craft', label: 'Savoir-faire artisanal' },
+                  { icon: 'truck', label: 'Circuits courts et responsables' },
+                ].map((it, i) => (
+                  <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100px', textAlign: 'center' }}>
+                    <Icon name={it.icon} size={22} color="var(--accent)" />
+                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.06em', color: 'rgba(42,32,19,0.7)', lineHeight: 1.4 }}>{it.label}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
         </div>
 
         {/* ── CTA contact ── */}

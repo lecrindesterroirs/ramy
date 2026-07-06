@@ -48,9 +48,8 @@ export default function ManifestoSection() {
             marginBottom: '52px',
           }}
         >
-          Nous ne cherchons pas<br />
-          à en faire plus.<br />
-          Nous cherchons à faire juste.
+          Nous préférons dix produits remarquables<br />
+          à cent produits oubliables.
         </blockquote>
 
         {/* Monogramme L'Écrin */}

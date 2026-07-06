@@ -1,15 +1,44 @@
+/* Grain fin pour donner de la matière au fond (évite l'aplat "cheap"). */
+const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
+  <filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/>
+  <feColorMatrix type='saturate' values='0'/></filter>
+  <rect width='100%' height='100%' filter='url(#g)' opacity='0.35'/>
+</svg>`
+const GRAIN = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`
+
 export default function PrometteSection() {
   return (
     <section
       className="promette-section"
       style={{
-        background: 'var(--bg-secondary)',
+        position: 'relative',
+        overflow: 'hidden',
         padding: '160px 0',
+        background: 'radial-gradient(ellipse 80% 70% at 50% 42%, #FCF8F1 0%, #F4EDDF 58%, #EEE5D3 100%)',
       }}
     >
+      {/* Voile de grain — matière subtile */}
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: GRAIN,
+          backgroundSize: '260px',
+          opacity: 0.5,
+          mixBlendMode: 'multiply',
+          pointerEvents: 'none',
+        }}
+      />
+      {/* Filets dorés très fins, haut & bas */}
+      <div aria-hidden style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 'min(560px, 60%)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(169,128,59,0.35), transparent)' }} />
+      <div aria-hidden style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 'min(560px, 60%)', height: '1px', background: 'linear-gradient(to right, transparent, rgba(169,128,59,0.35), transparent)' }} />
+
       <div
         className="container"
         style={{
+          position: 'relative',
+          zIndex: 1,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -35,7 +64,7 @@ export default function PrometteSection() {
             color: 'var(--text-primary)',
           }}
         >
-          Ce que vous servez dit quelque chose de vous.
+          Chaque détail compte.
         </h2>
 
         <p

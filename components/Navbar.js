@@ -28,7 +28,7 @@ const MOMENTS = {
     cards: [
       { title: 'Cocktails', href: '/creations/cocktails', img: '/hero-cocktail.webp' },
       { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/creations-3.webp' },
-      { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/creations-3.webp' },
+      { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/hero-animations.webp' },
     ],
   },
   boissons: {

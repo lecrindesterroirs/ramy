@@ -39,7 +39,7 @@ export default function DetailSection() {
           }}
         >
           <img loading="lazy" className="detail-img"
-            src="/detail-bg.webp"
+            src="/detail-home.webp"
             alt="Le détail fait la différence — L'Écrin Traiteur"
             style={{
               width: '100%',

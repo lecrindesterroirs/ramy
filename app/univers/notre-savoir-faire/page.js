@@ -8,25 +8,25 @@ const etapes = [
     num: '01',
     titre: 'Écoute & Conception',
     desc: "Chaque prestation commence par une conversation. Nous prenons le temps de comprendre vos besoins, vos envies, vos contraintes, pour concevoir une proposition sur-mesure.",
-    img: '/petit-dejeuner-ds.webp',
+    img: '/prod-cafe.webp',
   },
   {
     num: '02',
     titre: 'Sélection des produits',
     desc: "Nous travaillons avec un réseau de producteurs et artisans sélectionnés pour la qualité constante de leurs produits. Fraîcheur, saisonnalité et traçabilité sont nos exigences.",
-    img: '/selection-chef.webp',
+    img: '/boissons-hero.webp',
   },
   {
     num: '03',
     titre: 'Fabrication artisanale',
     desc: "Nous ne fabriquons pas tout nous-mêmes, et c'est précisément notre force. Chaque produit vient d'un artisan choisi pour ce qu'il sait faire. Mado Paris, Maison Marques, Pierre Morel... des mains expertes, au service de votre prestation.",
-    img: '/creations-featured.webp',
+    img: '/prod-atelier-crepes.webp',
   },
   {
     num: '04',
     titre: 'Livraison & Service',
     desc: "La prestation ne s'arrête pas à la livraison. Nos équipes assurent le dressage, la mise en place et, si besoin, le service sur place pour une expérience sans faille.",
-    img: '/buffet.webp',
+    img: '/prod-brunch-gourmand.webp',
   },
 ]
 
@@ -48,7 +48,7 @@ export default function NotreSavoirFaire() {
             overflow: 'hidden',
           }}
         >
-          <img loading="eager" src="/selection-chef.webp"
+          <img loading="eager" src="/prod-atelier-saumon.webp"
             alt="Notre Savoir-Faire — L'Écrin Traiteur"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
           />

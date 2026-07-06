@@ -26,7 +26,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Plateaux Apéritifs',
   description: 'De généreux plateaux à partager pour vos afterworks et réceptions — sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
-  hero: '/hero-plateaux-essentiel.webp',
+  hero: '/creations-3.webp',
 }
 
 /* Filtres = familles de plateaux. */
@@ -36,6 +36,7 @@ export const FILTRES = [
   { key: 'gourmands', label: 'Gourmands' },
   { key: 'fraicheur', label: 'Fraîcheur' },
   { key: 'signature', label: 'Signature' },
+  { key: 'sucre',     label: 'Sucré' },
 ]
 
 const CATEGORIE_COLORS = {
@@ -69,22 +70,6 @@ export const PLATEAUX = [
     description: 'Assortiment de mini burgers artisanaux.',
     recettes: ['Cheeseburger', 'Chicken Crispy', 'Pulled Beef BBQ', 'Halloumi & Légumes grillés'],
   },
-  {
-    id: 'sw5', famille: 'sandwichs', nom: 'Focaccia Italienne', img: '/plat-mediterraneen.webp',
-    description: 'Focaccias artisanales découpées à partager.',
-    recettes: ['Jambon cru & Burrata', 'Mortadelle & Pistache', 'Saumon fumé & Cream Cheese', 'Légumes grillés & Pesto', 'Poulet rôti & Parmesan'],
-  },
-  {
-    id: 'sw6', famille: 'sandwichs', nom: 'Brioches Gourmet', img: '/plat-roti.webp',
-    description: 'Mini brioches garnies découpées.',
-    recettes: ['Pastrami & Cheddar', 'Poulet César', 'Saumon fumé', 'Burrata & Pesto'],
-  },
-  {
-    id: 'sw7', famille: 'sandwichs', nom: 'Croissants Salés', img: '/plat-cesar.webp',
-    description: 'Mini croissants pur beurre garnis.',
-    recettes: ['Jambon & Comté', 'Saumon & Cream Cheese', 'Poulet rôti & Parmesan', 'Burrata & Tomates confites'],
-  },
-
   // ── Gourmands ──
   {
     id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plat-fusion.webp',
@@ -97,35 +82,14 @@ export const PLATEAUX = [
     recettes: [],
   },
   {
-    id: 'go3', famille: 'gourmands', nom: 'Mix Fromages & Charcuteries', img: '/plat-fusion.webp',
-    description: 'L\'association parfaite des meilleurs fromages affinés et charcuteries artisanales.',
-    recettes: [],
-  },
-  {
     id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plat-saumon.webp',
     description: 'Saumon fumé, saumon gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.',
     recettes: [],
   },
-  {
-    id: 'go5', famille: 'gourmands', nom: 'Burrata & Antipasti', img: '/plat-mediterraneen.webp',
-    description: 'Burrata crémeuse, légumes grillés, tomates anciennes, artichauts, olives marinées, pesto & focaccia.',
-    recettes: [],
-  },
-
   // ── Fraîcheur ──
   {
     id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plat-grec.webp',
     description: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.',
-    recettes: [],
-  },
-  {
-    id: 'fr2', famille: 'fraicheur', nom: 'Mezzé', img: '/plat-mediterraneen.webp',
-    description: 'Houmous, caviar d\'aubergine, labneh, falafels, olives, focaccia & crudités.',
-    recettes: [],
-  },
-  {
-    id: 'fr3', famille: 'fraicheur', nom: 'Fruits Frais', img: '/plat-grec.webp',
-    description: 'Sélection de fruits frais de saison découpés.',
     recettes: [],
   },
 
@@ -135,20 +99,17 @@ export const PLATEAUX = [
     description: 'Assortiment de bouchées d\'inspiration asiatique.',
     recettes: ['Makis', 'California Rolls', 'Spring Rolls', 'Gyozas', 'Brochettes Yakitori', 'Sauce soja, gingembre & wasabi'],
   },
+
+  // ── Sucré ──
   {
-    id: 'si2', famille: 'signature', nom: 'Méditerranéen', img: '/plat-mediterraneen.webp',
-    description: 'Assortiment de spécialités méditerranéennes.',
-    recettes: ['Focaccia', 'Burrata', 'Charcuteries italiennes', 'Légumes grillés', 'Olives marinées', 'Pesto', 'Parmesan'],
-  },
-  {
-    id: 'si3', famille: 'signature', nom: 'Apéritif Premium', img: '/plat-fusion.webp',
-    description: 'Le plateau idéal pour les afterworks.',
-    recettes: ['Charcuteries', 'Fromages', 'Mini focaccias', 'Olives', 'Fruits secs', 'Raisins frais'],
-  },
-  {
-    id: 'si4', famille: 'signature', nom: 'Douceurs', img: '/plat-roti.webp',
+    id: 'si4', famille: 'sucre', nom: 'Douceurs', img: '/plat-roti.webp',
     description: 'Sélection de desserts artisanaux.',
     recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
+  },
+  {
+    id: 'fr3', famille: 'sucre', nom: 'Fruits Frais', img: '/plat-grec.webp',
+    description: 'Sélection de fruits frais de saison découpés.',
+    recettes: [],
   },
 ]
 

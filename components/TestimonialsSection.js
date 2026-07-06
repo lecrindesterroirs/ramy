@@ -7,7 +7,7 @@
 
 const FEATURED = {
   company: 'Le Monde',
-  logo: '/logos/lemonde.svg',
+  logo: '/logos/lemonde.png',
   context: 'Petit-déjeuner presse',
   quote: "Je n'ai eu que d'excellents retours sur tous les produits — yaourts, viennoiseries, jus de fruits — avec une mention spéciale pour les madeleines qui étaient succulentes, ainsi que le nectar de fraise qui a énormément plu.",
   author: 'Claire Renard',
@@ -38,7 +38,7 @@ const CARDS = [
 // Hauteurs calées pour un poids visuel équilibré : wordmarks larges plus bas,
 // emblèmes compacts plus hauts.
 const CLIENT_LOGOS = [
-  { name: 'Le Monde', src: '/logos/lemonde.svg', height: '24px' },
+  { name: 'Le Monde', src: '/logos/lemonde.png', height: '30px' },
   { name: 'SNCF', src: '/logos/sncf.png', height: '34px' },
   { name: 'DS Automobiles', src: '/logos/ds.png', height: '58px', opacity: 0.85 },
   { name: 'Carglass', src: '/logos/carglass.svg', height: '30px' },
