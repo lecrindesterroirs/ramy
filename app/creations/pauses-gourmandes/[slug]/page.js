@@ -41,7 +41,7 @@ function CoffretDetail({ produit }) {
 
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '32px 72px 80px' }}>
 
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
             Pause Gourmande · Coffret
           </p>
           <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '16px' }}>
@@ -74,7 +74,7 @@ function CoffretDetail({ produit }) {
                     }}
                   >
                     {fmt.popular && (
-                      <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
+                      <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
                         Le plus choisi
                       </span>
                     )}
@@ -84,7 +84,7 @@ function CoffretDetail({ produit }) {
                     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.45)', marginBottom: '5px' }}>
                       {fmt.sub}
                     </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent)' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent-deep)' }}>
                       {fmt.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                     </p>
                   </button>
@@ -98,7 +98,7 @@ function CoffretDetail({ produit }) {
           {/* CTA devis */}
           <a
             href="/devis"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '18px 36px', display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', justifyContent: 'center', width: '100%', transition: 'opacity 0.3s ease' }}
+            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '18px 36px', display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', justifyContent: 'center', width: '100%', transition: 'opacity 0.3s ease' }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
@@ -117,7 +117,7 @@ function CoffretDetail({ produit }) {
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 20px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             Pauses Gourmandes · Traiteur entreprise
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>

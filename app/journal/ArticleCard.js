@@ -41,7 +41,7 @@ export default function ArticleCard({ article }) {
           fontWeight: 500,
           letterSpacing: '0.14em',
           textTransform: 'uppercase',
-          color: 'var(--accent)',
+          color: 'var(--accent-deep)',
         }}>
           {article.categorie}
         </span>

@@ -117,7 +117,7 @@ export default function APropos() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
               marginBottom: '24px',
             }}>
               Notre histoire
@@ -184,7 +184,7 @@ export default function APropos() {
                 fontWeight: 500,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--accent)',
+                color: 'var(--accent-deep)',
                 marginBottom: '16px',
               }}>
                 En chiffres
@@ -222,7 +222,7 @@ export default function APropos() {
                     fontSize: 'clamp(48px, 5vw, 72px)',
                     fontWeight: 400,
                     lineHeight: 1,
-                    color: 'var(--accent)',
+                    color: 'var(--accent-deep)',
                     marginBottom: '12px',
                   }}>
                     {s.chiffre}
@@ -259,7 +259,7 @@ export default function APropos() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
               marginBottom: '16px',
             }}>
               Notre approche
@@ -308,7 +308,7 @@ export default function APropos() {
                     fontWeight: 500,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
-                    color: 'var(--accent)',
+                    color: 'var(--accent-deep)',
                     marginBottom: '16px',
                   }}>
                     {p.label}

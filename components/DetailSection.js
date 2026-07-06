@@ -73,7 +73,7 @@ export default function DetailSection() {
               padding: '0 0 0 64px',
             }}
           >
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '10px' }}>
               Notre Signature
             </p>
             <span style={{ width: '32px', height: '1px', background: 'var(--accent)', display: 'block', marginBottom: '32px' }} />
@@ -150,7 +150,7 @@ export default function DetailSection() {
                     {item.title}
                   </span>
                 </div>
-                <span style={{ fontSize: '18px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', display: 'inline-block' }}>
+                <span style={{ fontSize: '18px', color: 'var(--accent-deep)', transition: 'transform 0.25s ease', transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', display: 'inline-block' }}>
                   ›
                 </span>
               </button>

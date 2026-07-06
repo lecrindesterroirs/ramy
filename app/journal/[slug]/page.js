@@ -40,7 +40,7 @@ export default function ArticlePage() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
             }}>
               {article.categorie}
             </span>
@@ -144,7 +144,7 @@ export default function ArticlePage() {
                   fontWeight: 500,
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'var(--accent)',
+                  color: 'var(--accent-deep)',
                   marginBottom: '8px',
                 }}>
                   Nos produits
@@ -180,7 +180,7 @@ export default function ArticlePage() {
                         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-secondary)', marginBottom: '12px' }}>
                           {product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                         </p>
-                        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                           Commander →
                         </span>
                       </div>

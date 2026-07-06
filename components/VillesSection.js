@@ -27,7 +27,7 @@ export default function VillesSection() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
               marginBottom: '14px',
             }}>
               Livraison Paris & Île-de-France
@@ -122,7 +122,7 @@ export default function VillesSection() {
               </div>
               <span style={{
                 fontSize: '12px',
-                color: 'var(--accent)',
+                color: 'var(--accent-deep)',
                 opacity: 0.6,
                 flexShrink: 0,
               }}>→</span>

@@ -19,7 +19,7 @@ export default function CTASection() {
         }}>
           <h2
             className="section-title-xl"
-            style={{ marginBottom: '24px', color: '#FFFFFF' }}
+            style={{ marginBottom: '24px', color: '#1A1A18' }}
           >
             Prêt à organiser<br />
             votre événement ?
@@ -32,7 +32,7 @@ export default function CTASection() {
               fontWeight: 500,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
-              color: 'rgba(255,255,255,0.75)',
+              color: 'rgba(26,26,24,0.78)',
               marginBottom: '48px',
             }}
           >
@@ -49,7 +49,7 @@ export default function CTASection() {
             fontWeight: 400,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            color: 'var(--accent)',
+            color: 'var(--accent-deep)',
             background: '#FFFFFF',
             border: '1px solid #FFFFFF',
             padding: '9px 18px',

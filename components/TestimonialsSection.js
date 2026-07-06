@@ -50,7 +50,7 @@ const CLIENT_LOGOS = [
 ]
 
 function QuoteMark({ size = 34 }) {
-  return <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: `${size}px`, lineHeight: 1, color: 'var(--accent)', display: 'block' }}>❝</span>
+  return <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: `${size}px`, lineHeight: 1, color: 'var(--accent-deep)', display: 'block' }}>❝</span>
 }
 
 export default function TestimonialsSection() {
@@ -64,7 +64,7 @@ export default function TestimonialsSection() {
 
         {/* ── Header ── */}
         <div className="ts-top" style={{ marginBottom: '44px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
             Ils nous font confiance
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
             </div>
             <div style={{ padding: '34px 38px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <img loading="lazy" src={FEATURED.logo} alt={FEATURED.company} style={{ height: '24px', width: 'auto', marginBottom: '14px', filter: 'grayscale(1)', alignSelf: 'flex-start' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>{FEATURED.context}</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>{FEATURED.context}</p>
               <QuoteMark size={34} />
               <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(16px, 1.5vw, 21px)', fontWeight: 400, lineHeight: 1.32, color: 'var(--text-primary)', fontStyle: 'italic', margin: '10px 0 24px' }}>
                 {FEATURED.quote}
@@ -104,7 +104,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '6px' }}>{t.company}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '14px' }}>{t.context}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>{t.context}</p>
                   <QuoteMark size={26} />
                   <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(13px, 1.15vw, 16px)', fontWeight: 400, lineHeight: 1.36, color: 'var(--text-primary)', fontStyle: 'italic', margin: '8px 0 18px' }}>
                     {t.quote}

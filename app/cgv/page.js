@@ -100,7 +100,7 @@ export default function CGV() {
         <h2 style={h2Style}>Article 9 — Données personnelles (RGPD)</h2>
         <p style={pStyle}>
           Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au Règlement Général sur la Protection des Données (RGPD). Le client dispose d'un droit d'accès, de rectification, de suppression et de portabilité de ses données. Pour exercer ces droits, contacter L'Écrin Traiteur à l'adresse : commercial@lecrin-traiteur.fr ou par courrier : 2, Allée des Bergeronnettes, 92150 Suresnes. Pour plus d'informations, consultez notre{' '}
-          <a href="/confidentialite" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Politique de confidentialité</a>.
+          <a href="/confidentialite" style={{ color: 'var(--accent-deep)', textDecoration: 'none' }}>Politique de confidentialité</a>.
         </p>
       </div>
 

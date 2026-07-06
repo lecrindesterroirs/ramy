@@ -78,6 +78,34 @@ export async function POST(request) {
       `,
     })
 
+    // Confirmation au prospect (best-effort : n'échoue pas la requête si elle rate)
+    try {
+      await resend.emails.send({
+        from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',
+        to: [email],
+        subject: 'Votre demande de devis — L\'Écrin Traiteur',
+        html: `
+          <div style="font-family: Georgia, serif; max-width: 560px; margin: 0 auto; padding: 40px 32px; background: #FDFBF7;">
+            <p style="font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: #1A1A1A; margin: 0 0 8px;">Merci pour votre demande</p>
+            <div style="width: 40px; height: 2px; background: #E0A126; margin: 16px 0 24px;"></div>
+            <p style="font-family: sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 18px;">Bonjour${nom ? ` ${esc(nom)}` : ''},</p>
+            <p style="font-family: sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 18px;">
+              Nous avons bien reçu votre demande de devis${prestation ? ` pour « ${esc(prestationLabel)} »` : ''}. Notre équipe l'étudie avec attention et revient vers vous <strong>sous 24h ouvrées</strong> avec une proposition personnalisée.
+            </p>
+            <p style="font-family: sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 24px;">
+              Pour toute précision, répondez simplement à cet email ou appelez-nous au <a href="tel:+33174542310" style="color: #E0A126; text-decoration: none;">01 74 54 23 10</a>.
+            </p>
+            <p style="font-family: Georgia, serif; font-size: 15px; color: #1A1A1A; margin: 0;">L'équipe L'Écrin Traiteur</p>
+            <p style="font-family: sans-serif; font-size: 12px; color: #999; margin-top: 32px; padding-top: 16px; border-top: 1px solid #E8DFD0;">
+              Petits-déjeuners, plateaux repas & cocktails d'entreprise — Paris &amp; Île-de-France
+            </p>
+          </div>
+        `,
+      })
+    } catch (confErr) {
+      console.error('Resend devis confirmation error:', confErr)
+    }
+
     return Response.json({ success: true })
   } catch (err) {
     console.error('Resend devis error:', err)

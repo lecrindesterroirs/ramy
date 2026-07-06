@@ -35,7 +35,7 @@ export default function TraiteurPage() {
 
         {/* ── Hero ── */}
         <div className="traiteur-hero" style={{ background: 'var(--bg-secondary)', padding: '90px 72px 78px', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
             Zone de livraison
           </p>
           <span style={{ display: 'block', width: '38px', height: '1px', background: 'var(--accent)', opacity: 0.6, margin: '0 auto 26px' }} />
@@ -50,7 +50,7 @@ export default function TraiteurPage() {
           <div className="traiteur-facts" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '4px 16px' }}>
             {[`${CITIES.length} villes desservies`, 'Livraison dès 6h30', 'Devis sous 24h'].map((fact, i) => (
               <span key={fact} style={{ display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
-                {i > 0 && <span style={{ color: 'var(--accent)', fontSize: '12px', lineHeight: 1 }}>·</span>}
+                {i > 0 && <span style={{ color: 'var(--accent-deep)', fontSize: '12px', lineHeight: 1 }}>·</span>}
                 <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.04em', color: 'var(--text-secondary)' }}>
                   {fact}
                 </span>
@@ -99,7 +99,7 @@ export default function TraiteurPage() {
                 <div className="dept-head" style={{ display: 'flex', alignItems: 'baseline', gap: '24px', marginBottom: '30px' }}>
                   <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, whiteSpace: 'nowrap' }}>
                     {name}
-                    {code && <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, color: 'var(--accent)', marginLeft: '10px', letterSpacing: '0.02em' }}>{code}</span>}
+                    {code && <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, color: 'var(--accent-deep)', marginLeft: '10px', letterSpacing: '0.02em' }}>{code}</span>}
                   </h2>
                   <span style={{ flex: 1, height: '1px', background: 'rgba(17,17,17,0.12)' }} />
                   <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
@@ -145,7 +145,7 @@ export default function TraiteurPage() {
                             </span>
                           )}
                         </span>
-                        <span className="city-arrow" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--accent)', opacity: 0, transform: 'translateX(-6px)', transition: 'opacity 0.25s ease, transform 0.25s ease', flexShrink: 0, marginLeft: '12px' }}>
+                        <span className="city-arrow" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--accent-deep)', opacity: 0, transform: 'translateX(-6px)', transition: 'opacity 0.25s ease, transform 0.25s ease', flexShrink: 0, marginLeft: '12px' }}>
                           →
                         </span>
                       </a>
@@ -160,7 +160,7 @@ export default function TraiteurPage() {
         {/* ── CTA ── */}
         <div style={{ textAlign: 'center', padding: '0 40px 96px' }}>
           <div style={{ maxWidth: '560px', margin: '0 auto', paddingTop: '32px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginTop: '64px', marginBottom: '16px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginTop: '64px', marginBottom: '16px' }}>
               Votre ville n'est pas listée ?
             </p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px' }}>
@@ -168,7 +168,7 @@ export default function TraiteurPage() {
             </p>
             <a
               href="/devis"
-              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >

@@ -64,7 +64,7 @@ export default function Cookies() {
         <h2 style={h2Style}>Contact</h2>
         <p style={pStyle}>
           Pour toute question relative à notre utilisation des cookies ou pour exercer vos droits, contactez-nous à : commercial@lecrin-traiteur.fr ou consultez notre{' '}
-          <a href="/confidentialite" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Politique de confidentialité</a>.
+          <a href="/confidentialite" style={{ color: 'var(--accent-deep)', textDecoration: 'none' }}>Politique de confidentialité</a>.
         </p>
       </div>
 

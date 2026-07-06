@@ -56,7 +56,7 @@ export default function MentionsLegales() {
         <h2 style={h2Style}>Données personnelles</h2>
         <p style={pStyle}>
           Les informations recueillies via les formulaires de contact ou de devis font l'objet d'un traitement informatique destiné à la gestion de votre demande. Pour en savoir plus sur la gestion de vos données personnelles et exercer vos droits, consultez notre{' '}
-          <a href="/confidentialite" style={{ color: 'var(--accent)', textDecoration: 'none' }}>Politique de confidentialité</a>.
+          <a href="/confidentialite" style={{ color: 'var(--accent-deep)', textDecoration: 'none' }}>Politique de confidentialité</a>.
         </p>
       </div>
 

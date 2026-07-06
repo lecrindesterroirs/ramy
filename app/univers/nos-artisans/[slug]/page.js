@@ -33,13 +33,13 @@ export default function ArtisanDetail() {
         <div className="art-detail-hero" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 96px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
           <Reveal mode="mount">
             <div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
                 {artisan.eyebrow}
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4vw, 54px)', fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '6px' }}>
                 {artisan.nom}
               </h1>
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '20px', color: 'var(--accent)', marginBottom: '24px' }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '20px', color: 'var(--accent-deep)', marginBottom: '24px' }}>
                 {artisan.ville}
               </p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '460px', marginBottom: '32px' }}>
@@ -57,7 +57,7 @@ export default function ArtisanDetail() {
                 ))}
               </div>
 
-              <a href={artisan.creationsHref} style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '15px 28px', textDecoration: 'none' }}>
+              <a href={artisan.creationsHref} style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '15px 28px', textDecoration: 'none' }}>
                 Voir les produits
               </a>
             </div>
@@ -74,7 +74,7 @@ export default function ArtisanDetail() {
         <div className="art-quote" style={{ background: 'var(--bg-secondary)' }}>
           <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px', display: 'grid', gridTemplateColumns: '96px 1fr 200px', gap: '32px', alignItems: 'center' }}>
             <Reveal>
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '64px', lineHeight: 1, color: 'var(--accent)' }}>&ldquo;</span>
+              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '64px', lineHeight: 1, color: 'var(--accent-deep)' }}>&ldquo;</span>
             </Reveal>
             <Reveal delay={80}>
               <div>
@@ -97,7 +97,7 @@ export default function ArtisanDetail() {
         {/* ── Leurs créations dans nos prestations ── */}
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px' }}>
           <Reveal>
-            <p style={{ textAlign: 'center', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '40px' }}>
+            <p style={{ textAlign: 'center', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '40px' }}>
               Leurs créations dans nos prestations
             </p>
           </Reveal>

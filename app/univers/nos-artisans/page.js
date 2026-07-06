@@ -53,7 +53,7 @@ function ArtisanCard({ a }) {
         <Image fill sizes="260px" src={a.img} alt={a.nom} style={{ objectFit: 'cover' }} />
       </div>
       <div style={{ padding: '18px 4px 4px', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>{a.specialite}</p>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>{a.specialite}</p>
         <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)' }}>{a.nom}</p>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>{a.ville}</p>
       </div>
@@ -120,7 +120,7 @@ export default function NosArtisans() {
             </Reveal>
             <Reveal delay={80}>
               <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>Notre engagement</p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '10px' }}>Notre engagement</p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'rgba(42,32,19,0.78)', maxWidth: '480px' }}>
                   En travaillant main dans la main avec ces artisans, nous soutenons l'excellence française et vous garantissons des produits authentiques, responsables et pleins de sens.
                 </p>

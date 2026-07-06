@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import ReviewsBadge from '../../components/ReviewsBadge'
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -55,21 +56,25 @@ function DatePicker({ value, onChange, required }) {
   return (
     <div ref={ref} style={{ position: 'relative', width: '100%' }}>
       <input type="hidden" name="date" value={value} required={required} />
-      <div
+      <button
+        type="button"
         onClick={() => setOpen(o => !o)}
-        style={{ ...inputStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', userSelect: 'none', color: value ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)' }}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-label={displayValue ? `Date de l'événement : ${displayValue}. Modifier` : "Date de l'événement (obligatoire)"}
+        style={{ ...inputStyle, textAlign: 'left', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', userSelect: 'none', color: value ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)' }}
       >
         <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px' }}>{displayValue || "Date de l'événement *"}</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'rgba(17,17,17,0.38)', flexShrink: 0 }}>
           <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
-      </div>
+      </button>
       {open && (
-        <div style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.12)', boxShadow: '0 16px 40px rgba(17,17,17,0.12)', zIndex: 200, padding: '20px', minWidth: '260px' }}>
+        <div role="dialog" aria-label="Choisir une date" style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.12)', boxShadow: '0 16px 40px rgba(17,17,17,0.12)', zIndex: 200, padding: '20px', minWidth: '260px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <button type="button" onClick={prevMonth} style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15,18 9,12 15,6"/></svg></button>
+            <button type="button" onClick={prevMonth} aria-label="Mois précédent" style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg></button>
             <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.05em', color: 'var(--text-primary)' }}>{MOIS[view.month]} {view.year}</span>
-            <button type="button" onClick={nextMonth} style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9,18 15,12 9,6"/></svg></button>
+            <button type="button" onClick={nextMonth} aria-label="Mois suivant" style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg></button>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px', marginBottom: '6px' }}>
             {JOURS.map((j, i) => <div key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textAlign: 'center', padding: '4px 0' }}>{j}</div>)}
@@ -77,6 +82,9 @@ function DatePicker({ value, onChange, required }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px' }}>
             {days.map((d, i) => (
               <button key={i} type="button" onClick={() => pick(d)} disabled={!d}
+                aria-hidden={!d}
+                aria-label={d ? `${d} ${MOIS[view.month]} ${view.year}` : undefined}
+                aria-pressed={d ? isSelected(d) : undefined}
                 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: isSelected(d) ? 500 : 400, width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? '#E0A126' : 'transparent', color: isSelected(d) ? '#FFF' : isToday(d) ? '#E0A126' : d ? 'var(--text-primary)' : 'transparent', cursor: d ? 'pointer' : 'default', outline: 'none', transition: 'background 0.15s ease' }}
                 onMouseEnter={e => { if (d && !isSelected(d)) e.currentTarget.style.background = 'rgba(224,161,38,0.1)' }}
                 onMouseLeave={e => { if (d && !isSelected(d)) e.currentTarget.style.background = 'transparent' }}
@@ -145,7 +153,7 @@ export default function Contact() {
         >
           {/* ── Colonne gauche ── */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '24px' }}>
               Contactez-nous
             </p>
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
@@ -154,6 +162,8 @@ export default function Contact() {
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '32px' }}>
               Notre équipe vous répond avec attention pour concevoir une prestation sur mesure, adaptée à vos besoins et à vos contraintes.
             </p>
+
+            <ReviewsBadge style={{ marginBottom: '32px' }} />
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
@@ -193,7 +203,7 @@ export default function Contact() {
 
           {/* ── Colonne droite — Formulaire ── */}
           <div style={{ background: '#FFFFFF', padding: '36px 40px 32px', display: 'flex', flexDirection: 'column' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '14px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
               Parlez-nous de votre projet
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.5vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
@@ -201,9 +211,9 @@ export default function Contact() {
             </h2>
 
             {status === 'success' ? (
-              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '16px', padding: '32px 0' }}>
+              <div role="status" aria-live="polite" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '16px', padding: '32px 0' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(224,161,38,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A126" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A126" strokeWidth="2" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
                 </div>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2 }}>Demande bien reçue.</p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '300px' }}>
@@ -214,14 +224,14 @@ export default function Contact() {
               <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
                 <input type="text" name="website" value={form.website} onChange={handle} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="nom" value={form.nom} onChange={handle} placeholder="Nom complet *" required style={inputStyle} />
-                  <input name="societe" value={form.societe} onChange={handle} placeholder="Société *" required style={inputStyle} />
+                  <input name="nom" value={form.nom} onChange={handle} placeholder="Nom complet *" aria-label="Nom complet" required aria-required="true" style={inputStyle} />
+                  <input name="societe" value={form.societe} onChange={handle} placeholder="Société *" aria-label="Société" required aria-required="true" style={inputStyle} />
                 </div>
-                <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email professionnel *" required style={inputStyle} />
+                <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email professionnel *" aria-label="Email professionnel" required aria-required="true" style={inputStyle} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="telephone" value={form.telephone} onChange={handle} placeholder="Téléphone *" required style={inputStyle} />
+                  <input name="telephone" value={form.telephone} onChange={handle} placeholder="Téléphone *" aria-label="Téléphone" required aria-required="true" style={inputStyle} />
                   <div style={{ position: 'relative' }}>
-                    <select name="type" value={form.type} onChange={handle} required style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
+                    <select name="type" value={form.type} onChange={handle} required aria-required="true" aria-label="Type d'événement" style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
                       <option value="" disabled>Type d'événement *</option>
                       {typesEvenement.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
@@ -229,7 +239,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="personnes" type="number" value={form.personnes} onChange={handle} placeholder="Nombre de personnes *" required style={inputStyle} />
+                  <input name="personnes" type="number" value={form.personnes} onChange={handle} placeholder="Nombre de personnes *" aria-label="Nombre de personnes" required aria-required="true" style={inputStyle} />
                   <DatePicker value={form.date} onChange={setDate} required />
                 </div>
                 <textarea
@@ -237,17 +247,18 @@ export default function Contact() {
                   value={form.message}
                   onChange={handle}
                   placeholder="Votre message. Décrivez votre projet, vos envies, vos contraintes..."
+                  aria-label="Votre message"
                   style={{ ...inputStyle, resize: 'none', lineHeight: 1.6, flex: 1, minHeight: '80px' }}
                 />
                 {status === 'error' && (
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#c0392b', textAlign: 'center', margin: '0' }}>
+                  <p role="alert" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#c0392b', textAlign: 'center', margin: '0' }}>
                     Une erreur est survenue. Veuillez réessayer ou nous appeler directement.
                   </p>
                 )}
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', border: 'none', padding: '18px 32px', cursor: status === 'loading' ? 'default' : 'pointer', opacity: status === 'loading' ? 0.65 : 1, transition: 'opacity 0.3s ease', marginTop: '4px' }}
+                  style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: 'none', padding: '18px 32px', cursor: status === 'loading' ? 'default' : 'pointer', opacity: status === 'loading' ? 0.65 : 1, transition: 'opacity 0.3s ease', marginTop: '4px' }}
                   onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.opacity = '0.85' }}
                   onMouseLeave={e => { if (status !== 'loading') e.currentTarget.style.opacity = '1' }}
                 >
@@ -285,7 +296,7 @@ export default function Contact() {
       <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)', padding: '80px 72px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
               Pensé pour les entreprises
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 44px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)' }}>
@@ -309,7 +320,7 @@ export default function Contact() {
                 flexDirection: 'column',
                 gap: '14px',
               }}>
-                <div style={{ color: 'var(--accent)', opacity: 0.85 }}>{item.icon}</div>
+                <div style={{ color: 'var(--accent-deep)', opacity: 0.85 }}>{item.icon}</div>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.01em' }}>{item.titre}</p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
               </div>
@@ -342,7 +353,7 @@ const labelStyle = {
   fontWeight: 500,
   letterSpacing: '0.16em',
   textTransform: 'uppercase',
-  color: 'var(--accent)',
+  color: 'var(--accent-deep)',
   marginBottom: '4px',
 }
 
@@ -361,7 +372,7 @@ const iconBox = {
   alignItems: 'center',
   justifyContent: 'center',
   flexShrink: 0,
-  color: 'var(--accent)',
+  color: 'var(--accent-deep)',
 }
 
 const navBtn = {

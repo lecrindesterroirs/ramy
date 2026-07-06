@@ -100,7 +100,7 @@ export default function NotrePhilosophie() {
                 fontWeight: 500,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--accent)',
+                color: 'var(--accent-deep)',
                 marginBottom: '16px',
               }}>
                 Nos valeurs fondatrices
@@ -139,7 +139,7 @@ export default function NotrePhilosophie() {
                     fontWeight: 500,
                     letterSpacing: '0.18em',
                     textTransform: 'uppercase',
-                    color: 'var(--accent)',
+                    color: 'var(--accent-deep)',
                     marginBottom: '20px',
                   }}>
                     0{i + 1}

@@ -87,7 +87,7 @@ export default function ArtisansMapSection() {
 
         <Reveal>
           <div>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
               Notre réseau d'artisans
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
@@ -105,7 +105,7 @@ export default function ArtisansMapSection() {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px', padding: 0, margin: 0, maxWidth: '440px' }}>
               {AVANTAGES.map((t, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <span style={{ flexShrink: 0, color: 'var(--accent)', marginTop: '2px' }}>
+                  <span style={{ flexShrink: 0, color: 'var(--accent-deep)', marginTop: '2px' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                   </span>
                   <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.55, color: 'var(--text-secondary)' }}>{t}</span>

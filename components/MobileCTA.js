@@ -120,7 +120,7 @@ export default function MobileCTA() {
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #FFFFFF;
+            color: #1A1A18;
             background: var(--accent);
             text-decoration: none;
             padding: 12px 0;

@@ -80,7 +80,7 @@ export default function FAQSection() {
           <p style={{
             fontFamily: "'Neue Montreal', sans-serif",
             fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em',
-            textTransform: 'uppercase', color: 'var(--accent)',
+            textTransform: 'uppercase', color: 'var(--accent-deep)',
             marginBottom: '20px', textAlign: 'center',
           }}>
             Questions fréquentes
@@ -138,7 +138,7 @@ export default function FAQSection() {
                         </span>
                         <span style={{
                           fontFamily: "'Neue Montreal', sans-serif",
-                          fontSize: '20px', fontWeight: 300, color: 'var(--accent)',
+                          fontSize: '20px', fontWeight: 300, color: 'var(--accent-deep)',
                           flexShrink: 0, lineHeight: 1, transition: 'transform 0.3s ease',
                           transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', display: 'block',
                         }}>

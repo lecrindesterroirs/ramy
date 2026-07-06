@@ -64,7 +64,7 @@ export default function EvenementDetail() {
             fontWeight: 500,
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--accent)',
+            color: 'var(--accent-deep)',
             marginBottom: '16px',
           }}>
             {ev.mois}
@@ -130,7 +130,7 @@ export default function EvenementDetail() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
               marginBottom: '20px',
             }}>
               L'événement
@@ -152,7 +152,7 @@ export default function EvenementDetail() {
                 fontWeight: 500,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--accent)',
+                color: 'var(--accent-deep)',
                 marginBottom: '10px',
               }}>
                 {ev.differentiateur.label}
@@ -176,7 +176,7 @@ export default function EvenementDetail() {
               fontWeight: 500,
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
               marginBottom: '24px',
             }}>
               Au programme
@@ -260,7 +260,7 @@ export default function EvenementDetail() {
               fontWeight: 500,
               letterSpacing: '0.22em',
               textTransform: 'uppercase',
-              color: 'var(--accent)',
+              color: 'var(--accent-deep)',
               marginBottom: '20px',
             }}>
               Guide pratique

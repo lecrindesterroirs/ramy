@@ -89,7 +89,7 @@ export default function OccasionPage() {
               </p>
               <a
                 href="/devis"
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease', alignSelf: 'flex-start' }}
+                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease', alignSelf: 'flex-start' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
@@ -104,7 +104,7 @@ export default function OccasionPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
             {occasion.piliers.map((p, i) => (
               <div key={p.title} style={{ padding: '40px 32px 40px 0', borderRight: i < 2 ? '1px solid rgba(17,17,17,0.08)' : 'none', paddingLeft: i > 0 ? '32px' : 0 }}>
-                <span style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', color: 'var(--accent)', marginBottom: '16px' }}>
+                <span style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', color: 'var(--accent-deep)', marginBottom: '16px' }}>
                   0{i + 1}
                 </span>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(17px, 1.6vw, 22px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.25 }}>
@@ -131,7 +131,7 @@ export default function OccasionPage() {
               <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(18px, 2vw, 26px)', fontWeight: 400, fontStyle: 'italic', color: '#FFFFFF', lineHeight: 1.55, letterSpacing: '-0.005em', marginBottom: '32px' }}>
                 « {occasion.testimonial.quote} »
               </blockquote>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent)', marginBottom: '4px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent-deep)', marginBottom: '4px' }}>
                 {occasion.testimonial.author}
               </p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
@@ -144,7 +144,7 @@ export default function OccasionPage() {
         {/* ── Produits recommandés ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="occasion-products" style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '8px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '8px' }}>
               Sélection recommandée
             </p>
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 34px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '40px', lineHeight: 1.15 }}>
@@ -169,7 +169,7 @@ export default function OccasionPage() {
                     <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '12px' }}>
                       {product.name}
                     </p>
-                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                       Voir le produit →
                     </span>
                   </div>
@@ -201,7 +201,7 @@ export default function OccasionPage() {
                 </a>
               ))}
               <a href="/traiteur"
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent)', border: '1px solid rgba(224,161,38,0.35)', padding: '7px 16px', textDecoration: 'none', letterSpacing: '0.02em', transition: 'border-color 0.2s ease' }}
+                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent-deep)', border: '1px solid rgba(224,161,38,0.35)', padding: '7px 16px', textDecoration: 'none', letterSpacing: '0.02em', transition: 'border-color 0.2s ease' }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(224,161,38,0.35)'}
               >
@@ -287,7 +287,7 @@ function FaqItem({ item }) {
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.5, margin: 0 }}>
           {item.q}
         </p>
-        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '18px', color: 'var(--accent)', flexShrink: 0, lineHeight: 1, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s ease' }}>+</span>
+        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '18px', color: 'var(--accent-deep)', flexShrink: 0, lineHeight: 1, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s ease' }}>+</span>
       </button>
       {open && (
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', paddingBottom: '22px' }}>

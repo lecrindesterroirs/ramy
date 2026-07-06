@@ -98,7 +98,7 @@ export default function EvenementsSaisonniers() {
                   fontWeight: 500,
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'var(--accent)',
+                  color: 'var(--accent-deep)',
                   marginBottom: '8px',
                 }}>
                   {ev.mois}
@@ -144,7 +144,7 @@ export default function EvenementsSaisonniers() {
                   fontWeight: 500,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--accent)',
+                  color: 'var(--accent-deep)',
                 }}>
                   Voir l'événement →
                 </p>

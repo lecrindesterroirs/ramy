@@ -86,7 +86,7 @@ export default function Home() {
                 { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Cocktail & Buffet d\'entreprise' } },
               ],
             },
-            'sameAs': ['https://www.lecrin-traiteur.fr'],
+            'sameAs': ['https://share.google/bhldByNtwFZup8tz9'],
           }) }}
         />
       </main>

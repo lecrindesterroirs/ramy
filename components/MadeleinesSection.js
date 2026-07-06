@@ -34,7 +34,7 @@ export default function MadeleinesSection() {
 
         {/* Contenu */}
         <div className="mad-content" style={{ padding: '88px 88px 80px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '16px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
             Les incontournables
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 3.8vw, 56px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
@@ -44,7 +44,7 @@ export default function MadeleinesSection() {
             Derrière leur texture moelleuse et leur bosse généreuse, nos madeleines déclinent des saveurs originales et raffinées, pensées pour ravir tous les palais lors de vos événements.
           </p>
 
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             Nos saveurs
           </p>
 

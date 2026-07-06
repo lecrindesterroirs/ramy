@@ -111,7 +111,7 @@ export default function NotreSavoirFaire() {
             fontWeight: 500,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: 'var(--accent)',
+            color: 'var(--accent-deep)',
             marginBottom: '24px',
           }}>
             Notre processus

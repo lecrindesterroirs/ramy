@@ -33,7 +33,7 @@ function FormulaCard({ f }) {
           className="formule-img"
         />
         {f.badge && (
-          <span style={{ position: 'absolute', top: '16px', left: '16px', background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
+          <span style={{ position: 'absolute', top: '16px', left: '16px', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
             {f.badge}
           </span>
         )}
@@ -47,7 +47,7 @@ function FormulaCard({ f }) {
           </h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '8px' }}>
             {f.pieces && (
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent)', letterSpacing: '0.04em' }}>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent-deep)', letterSpacing: '0.04em' }}>
                 {f.pieces}
               </span>
             )}
@@ -65,7 +65,7 @@ function FormulaCard({ f }) {
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '24px', flex: 1 }}>
           {f.descCourt}
         </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
           Voir la formule →
         </p>
       </div>
@@ -102,7 +102,7 @@ export default function CocktailsEtBuffets() {
 
         {/* ── Section Cocktails ── */}
         <div className="section-intro" style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px 0' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
             Cocktails
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '16px' }}>
@@ -119,7 +119,7 @@ export default function CocktailsEtBuffets() {
 
         {/* ── Section Buffets ── */}
         <div className="section-intro" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px 0' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '12px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
             Buffets à partager
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, marginBottom: '16px' }}>
@@ -137,7 +137,7 @@ export default function CocktailsEtBuffets() {
         {/* CTA devis */}
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 80px', textAlign: 'center' }}>
           <a href="/devis"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
             Obtenir un devis →
@@ -151,7 +151,7 @@ export default function CocktailsEtBuffets() {
 
         {/* Article SEO */}
         <section className="cocktail-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             Cocktails & Buffets d'entreprise
           </p>
           <div className="fiche-article-body" dangerouslySetInnerHTML={{ __html: SEO_ARTICLE }} />

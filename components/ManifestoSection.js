@@ -71,7 +71,7 @@ export default function ManifestoSection() {
             fontWeight: 500,
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
-            color: 'var(--accent)',
+            color: 'var(--accent-deep)',
             margin: 0,
           }}
         >

@@ -103,7 +103,7 @@ export default function FormulePage() {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch' }}>
               <div style={{ position: 'relative', width: '100%', maxWidth: '560px', minHeight: '400px', overflow: 'hidden', boxShadow: '0 26px 60px -24px rgba(60,48,34,0.35)' }}>
                 {formule.badge && (
-                  <div style={{ position: 'absolute', top: '16px', left: '16px', zIndex: 2, background: 'var(--accent)', color: '#fff', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
+                  <div style={{ position: 'absolute', top: '16px', left: '16px', zIndex: 2, background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 10px' }}>
                     {formule.badge}
                   </div>
                 )}
@@ -193,7 +193,7 @@ export default function FormulePage() {
 
         {/* ── Article SEO ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             Cocktails & Buffets d'entreprise
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>

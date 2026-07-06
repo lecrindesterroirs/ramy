@@ -131,7 +131,7 @@ export default function QuartierPage() {
                       <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '10px' }}>›</span>
                     </span>
                   ))}
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, color: 'var(--accent)', letterSpacing: '0.04em' }}>
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, color: 'var(--accent-deep)', letterSpacing: '0.04em' }}>
                     {q.name}
                   </span>
                 </nav>
@@ -172,7 +172,7 @@ export default function QuartierPage() {
         {/* ── Nos prestations ── */}
         <div className="q-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
               Nos prestations à {q.name}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
@@ -199,7 +199,7 @@ export default function QuartierPage() {
                     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
                       {s.desc}
                     </p>
-                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                       Découvrir →
                     </span>
                   </div>

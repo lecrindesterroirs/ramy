@@ -67,7 +67,7 @@ export default function SelectionSection() {
                 fontWeight: 500,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: 'var(--accent)',
+                color: 'var(--accent-deep)',
                 marginBottom: '12px',
               }}
             >
@@ -158,7 +158,7 @@ export default function SelectionSection() {
                         {item.title}
                       </span>
                     </div>
-                    <span style={{ fontSize: '18px', color: 'var(--accent)', transition: 'transform 0.25s ease', transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', display: 'inline-block' }}>
+                    <span style={{ fontSize: '18px', color: 'var(--accent-deep)', transition: 'transform 0.25s ease', transform: openIndex === i ? 'rotate(180deg)' : 'rotate(0deg)', display: 'inline-block' }}>
                       ›
                     </span>
                   </button>

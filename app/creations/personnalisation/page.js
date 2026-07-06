@@ -77,7 +77,7 @@ export default function Personnalisation() {
 
         {/* ── Ce que nous personnalisons ── */}
         <div id="familles" style={{ textAlign: 'center', padding: '80px 24px 0' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
             Ce que nous personnalisons
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function Personnalisation() {
           <div className="pz-process" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px', display: 'grid', gridTemplateColumns: '0.9fr 1.4fr', gap: '64px', alignItems: 'center' }}>
             <Reveal>
               <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '18px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
                   Votre identité, notre savoir-faire
                 </p>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
@@ -119,7 +119,7 @@ export default function Personnalisation() {
               <div className="pz-steps" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '18px' }}>
                 {ETAPES.map((s) => (
                   <div key={s.n} style={{ borderTop: '1px solid rgba(17,17,17,0.14)', paddingTop: '18px' }}>
-                    <span style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '30px', fontWeight: 400, color: 'var(--accent)', marginBottom: '14px', lineHeight: 1 }}>{s.n}</span>
+                    <span style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '30px', fontWeight: 400, color: 'var(--accent-deep)', marginBottom: '14px', lineHeight: 1 }}>{s.n}</span>
                     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.5, color: 'var(--text-primary)' }}>{s.title}</p>
                   </div>
                 ))}

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import LogosSection from '../../components/LogosSection'
+import ReviewsBadge from '../../components/ReviewsBadge'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -229,6 +230,9 @@ function Step1({ data, setData, onSelect }) {
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', letterSpacing: '0.02em' }}>
           Appuyez sur votre choix
         </p>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+          <ReviewsBadge />
+        </div>
       </div>
 
       <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
@@ -482,7 +486,7 @@ function Step3({ data, setData, onEdit }) {
 
       {/* Right — récap */}
       <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17,17,17,0.08)', padding: '20px 20px' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '20px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
           Récapitulatif de votre projet
         </p>
         <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>

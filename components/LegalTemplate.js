@@ -9,7 +9,7 @@ const h2Style = {
   fontWeight: 500,
   letterSpacing: '0.18em',
   textTransform: 'uppercase',
-  color: 'var(--accent)',
+  color: 'var(--accent-deep)',
   marginBottom: '16px',
   marginTop: '0',
 }
@@ -57,7 +57,7 @@ export default function LegalTemplate({ title, category = 'Informations légales
             fontWeight: 500,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: 'var(--accent)',
+            color: 'var(--accent-deep)',
             marginBottom: '20px',
           }}>
             {category}

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
+import ReviewsBadge from './ReviewsBadge'
 
 export default function Hero() {
   const imageRef = useRef(null)
@@ -118,7 +119,7 @@ export default function Hero() {
               padding: '11px 24px',
               background: 'var(--accent)',
               border: '1px solid var(--accent)',
-              color: '#FFFFFF',
+              color: '#1A1A18',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
@@ -154,6 +155,9 @@ export default function Hero() {
             Découvrir notre catalogue <span>→</span>
           </a>
         </div>
+
+        {/* Preuve sociale — fiche Google */}
+        <ReviewsBadge variant="onImage" style={{ marginTop: '26px' }} />
       </div>
 
       {/* Phone — bottom right */}

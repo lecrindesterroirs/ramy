@@ -40,8 +40,11 @@ const MOMENTS = {
 
 const UNIVERS_ITEMS = [
   { label: 'Notre Maison', href: '/univers/notre-maison' },
+  { label: 'Notre Savoir-Faire', href: '/univers/notre-savoir-faire' },
+  { label: 'Notre Philosophie', href: '/univers/notre-philosophie' },
   { label: 'Nos Artisans', href: '/univers/nos-artisans' },
   { label: 'Nos Engagements', href: '/univers/nos-engagements' },
+  { label: 'À Propos', href: '/a-propos' },
 ]
 
 const JOURNAL_ITEMS = {
@@ -115,7 +118,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           fontWeight: 500,
           letterSpacing: '0.16em',
           textTransform: 'uppercase',
-          color: '#FFFFFF',
+          color: '#1A1A18',
           whiteSpace: 'nowrap',
           position: 'absolute',
         }}>
@@ -577,7 +580,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               fontWeight: 400,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              color: '#FFFFFF',
+              color: '#1A1A18',
               background: 'var(--accent)',
               border: '1px solid var(--accent)',
               padding: '9px 18px',
@@ -663,7 +666,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
                 >
                   <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{moment.label}</span>
-                  <span style={{ fontSize: '18px', color: 'var(--accent)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+                  <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
                 </button>
                 {open && (
                   <div style={{ paddingBottom: '14px' }}>
@@ -690,7 +693,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
               <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>L'Univers</span>
-              <span style={{ fontSize: '18px', color: 'var(--accent)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+              <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
             </button>
             {mobileExpanded === 'univers' && (
               <div style={{ paddingBottom: '14px' }}>
@@ -715,7 +718,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
               <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>Le Journal</span>
-              <span style={{ fontSize: '18px', color: 'var(--accent)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+              <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
             </button>
             {mobileExpanded === 'journal' && (
               <div style={{ paddingBottom: '14px' }}>
@@ -745,7 +748,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           <a
             href="/devis"
             onClick={() => setMobileOpen(false)}
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '16px', textDecoration: 'none', marginTop: '28px' }}
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '16px', textDecoration: 'none', marginTop: '28px' }}
           >
             Obtenir un devis <span>→</span>
           </a>

@@ -170,7 +170,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
               fontWeight: 500,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#FFFFFF',
+              color: '#1A1A18',
               background: 'var(--accent)',
               border: 'none',
               padding: '13px 32px',
