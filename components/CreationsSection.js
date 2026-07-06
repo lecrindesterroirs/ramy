@@ -18,7 +18,7 @@ const creations = [
     href: '/creations/cocktails-et-buffets',
   },
   {
-    label: 'Buffets',
+    label: 'Buffet à partager',
     description: 'Des buffets conviviaux et généreux pensés pour rassembler et marquer les esprits.',
     img: '/hero-a-partager.webp',
     href: '/creations/plateaux-aperitifs',
@@ -72,7 +72,7 @@ export default function CreationsSection() {
       className="creations-section"
       style={{
         background: 'var(--bg-primary)',
-        paddingTop: '64px',
+        paddingTop: '112px',
         paddingBottom: '56px',
       }}
     >

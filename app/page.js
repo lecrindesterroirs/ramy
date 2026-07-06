@@ -24,7 +24,7 @@ export default function Home() {
       <main>
         <Hero />
         <LogosSection />
-        <PrometteSection />
+        {/* <PrometteSection />  ← masquée pour test */}
         <CreationsSection />
         <ArtisansMapSection />
         <MadeleinesSection />
