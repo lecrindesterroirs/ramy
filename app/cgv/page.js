@@ -30,7 +30,7 @@ export default function CGV() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 3 — Modalités de commande</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          Les commandes peuvent être passées par téléphone au 07 60 16 96 20 ou par email à commercial@lecrin-traiteur.fr. Toute commande doit être validée avant <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>12h00 la veille</strong> de la livraison souhaitée.
+          Les commandes peuvent être passées par téléphone au 01 74 54 23 10 ou par email à commercial@lecrin-traiteur.fr. Toute commande doit être validée avant <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>12h00 la veille</strong> de la livraison souhaitée.
         </p>
         <p style={pStyle}>
           Le montant minimum de commande est fixé à <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>50 € HT</strong>. Toute commande confirmée par le client vaut acceptation des présentes CGV et des tarifs en vigueur.

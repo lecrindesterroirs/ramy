@@ -108,10 +108,10 @@ export default function Footer() {
             <div className="footer-col-contact">
               <span style={colTitleStyle}>Nous contacter</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <a href="tel:+33760169620" style={linkStyle}
+                <a href="tel:+33174542310" style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >07 60 16 96 20</a>
+                >01 74 54 23 10</a>
                 <a href="mailto:commercial@lecrin-traiteur.fr" style={linkStyle}
                   onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                   onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}

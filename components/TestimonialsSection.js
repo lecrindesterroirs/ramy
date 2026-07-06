@@ -54,32 +54,11 @@ function QuoteMark({ size = 34 }) {
 }
 
 export default function TestimonialsSection() {
-  const all = [FEATURED, ...CARDS]
-
-  const reviewSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: "L'Écrin Traiteur",
-    url: 'https://www.lecrin-traiteur.fr',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      bestRating: '5',
-      worstRating: '1',
-      ratingCount: String(all.length),
-      reviewCount: String(all.length),
-    },
-    review: all.map(t => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: t.author, jobTitle: t.role },
-      reviewBody: t.quote,
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5', worstRating: '1' },
-    })),
-  }
-
+  // NB : pas de JSON-LD Review/AggregateRating ici — les avis auto-attribués
+  // sur sa propre entité sont contraires aux règles Google (risque de flag).
+  // Les vraies notes proviennent de la fiche Google Business Profile (5,0★ / 18 avis).
   return (
     <section className="ts-section" style={{ background: 'var(--bg-secondary)', padding: 'calc(var(--header-h) + 56px) 0 0' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
 
       <div className="ts-inner" style={{ maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 72px 64px' }}>
 

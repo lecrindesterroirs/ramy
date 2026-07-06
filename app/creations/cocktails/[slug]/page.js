@@ -62,16 +62,8 @@ export default function CocktailDetail() {
         description: `Formule cocktail ${f.label} — ${f.pieces} pièces salées et sucrées façonnées à la main, pour vos réceptions et afterworks d'entreprise à Paris et en Île-de-France.`,
         ...(f.img ? { image: `${BASE}${f.img}` } : {}),
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
-        offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
-          priceCurrency: 'EUR',
-          price: '0',
-          priceSpecification: { '@type': 'PriceSpecification', valueAddedTaxIncluded: false },
-          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
-          areaServed: 'Île-de-France',
-          url: `${BASE}/devis`,
-        },
+        category: "Cocktail & Buffet d'entreprise",
+        // Prestation sur devis (pas de prix fixe) → pas de bloc offers pour éviter un Offer invalide
       },
     ],
   }
@@ -89,9 +81,9 @@ export default function CocktailDetail() {
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
                 En images
               </p>
-              <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
-                L&apos;art de recevoir, signé L&apos;Écrin
-              </h2>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
+                {nomFormule} — l&apos;art de recevoir
+              </h1>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '540px', margin: '0 auto' }}>
                 Des bouchées façonnées à la main, un dressage soigné, une atmosphère qui fait la différence — l&apos;esprit de vos réceptions et afterworks.
               </p>

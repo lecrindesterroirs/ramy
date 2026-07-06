@@ -52,6 +52,9 @@ export default function sitemap() {
     // Journal
     url('/journal',                                       0.70, 'weekly'),
 
+    // Occasions — hub
+    url('/occasions',                                     0.85, 'monthly'),
+
     // SEO local — hub
     url('/traiteur',                                      0.88, 'monthly'),
 

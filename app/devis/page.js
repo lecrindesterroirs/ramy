@@ -620,6 +620,10 @@ export default function Contact() {
 
       <main className="devis-main" style={{ background: '#FFFFFF', height: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
+        <h1 style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
+          Demander un devis traiteur d&apos;entreprise à Paris &amp; Île-de-France
+        </h1>
+
         {submitStatus === 'success' ? (
           /* ── Success screen ── */
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '40px 24px', gap: '20px' }}>

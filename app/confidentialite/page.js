@@ -17,7 +17,7 @@ export default function Confidentialite() {
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>L'Écrin Traiteur</strong>, L'Écrin des Terroirs SASU<br />
           SIRET 100 102 672 00019<br />
           2, Allée des Bergeronnettes, 92150 Suresnes<br />
-          commercial@lecrin-traiteur.fr, 07 60 16 96 20
+          commercial@lecrin-traiteur.fr, 01 74 54 23 10
         </p>
       </div>
 

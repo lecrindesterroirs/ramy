@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Traiteur Paris & Île-de-France — Livraison entreprise dès 6h30 | L'Écrin Traiteur",
+  title: "Traiteur Paris & Île-de-France — Livraison entreprise dès 6h30",
   description: "L'Écrin Traiteur livre vos petits-déjeuners, plateaux repas et cocktails d'entreprise dans toute l'Île-de-France. Devis sous 24h.",
   openGraph: {
     title: "Traiteur Paris & Île-de-France | L'Écrin Traiteur",

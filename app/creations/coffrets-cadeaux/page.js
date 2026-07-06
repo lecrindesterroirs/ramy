@@ -31,7 +31,6 @@ const COFFRETS = [
   { id: 'madeleines-20', nom: 'Coffret de madeleines', sousTitre: '20 madeleines Mado Paris', prix: '49,00', img: '/prod-madeleines-20.webp' },
   { id: 'macarons', nom: 'Coffret de macarons', sousTitre: '24 macarons Pierre Morel', prix: '64,00', img: '/prod-macarons.webp' },
   { id: 'cookies', nom: 'Coffret de cookies', sousTitre: '6 cookies Laura Todd', prix: '17,90', img: '/prod-cookies.webp' },
-  { id: 'chocolat', nom: 'Coffret de chocolats', sousTitre: 'Sélection de chocolats artisanaux', prix: '34,90', img: '/prod-panna-cotta.webp' },
 ]
 
 function CoffretCard({ produit }) {

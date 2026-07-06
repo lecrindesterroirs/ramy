@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Un traiteur pour chaque occasion d'entreprise | L'Écrin Traiteur",
+  title: "Un traiteur pour chaque occasion d'entreprise",
   description: "CODIR, séminaire, accueil client, team building, cocktail, afterwork : nos recommandations traiteur par occasion d'entreprise à Paris.",
   alternates: {
     canonical: '/occasions',

@@ -97,6 +97,7 @@ export default function Contact() {
   const [form, setForm] = useState({
     nom: '', societe: '', email: '', telephone: '',
     type: '', personnes: '', date: '', message: '',
+    website: '', // honeypot anti-spam (doit rester vide)
   })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
 
@@ -161,7 +162,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p style={labelStyle}>Téléphone</p>
-                  <a href="tel:+33760169620" style={infoStyle}>07 60 16 96 20</a>
+                  <a href="tel:+33174542310" style={infoStyle}>01 74 54 23 10</a>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
@@ -211,6 +212,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+                <input type="text" name="website" value={form.website} onChange={handle} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <input name="nom" value={form.nom} onChange={handle} placeholder="Nom complet *" required style={inputStyle} />
                   <input name="societe" value={form.societe} onChange={handle} placeholder="Société *" required style={inputStyle} />

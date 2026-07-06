@@ -18,6 +18,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
     convives: '',
     date: '',
     email: '',
+    website: '', // honeypot anti-spam (doit rester vide)
   })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
@@ -93,6 +94,18 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
       </p>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+
+        {/* Honeypot anti-spam — invisible aux humains, rempli par les bots */}
+        <input
+          type="text"
+          name="website"
+          value={form.website}
+          onChange={e => set('website', e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+        />
 
         {/* Row 1 — Prestation + Date */}
         <div className="dr-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>

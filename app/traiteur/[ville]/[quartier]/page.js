@@ -73,7 +73,7 @@ export default function QuartierPage() {
         name: "L'Écrin Traiteur",
         description: `Traiteur d'entreprise livrant à ${q.name} (${city.name}) — petits-déjeuners, plateaux repas, cocktails, buffets et animations culinaires. Artisans sélectionnés, livraison dès 6h30.`,
         url: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}/${q.slug}`,
-        telephone: '+33760169620',
+        telephone: '+33174542310',
         email: 'commercial@lecrin-traiteur.fr',
         address: {
           '@type': 'PostalAddress',

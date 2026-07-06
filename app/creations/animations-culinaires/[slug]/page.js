@@ -39,16 +39,7 @@ export default function AnimationDetail() {
         ...(anim.img ? { image: `${BASE}${anim.img}` } : {}),
         category: universLabel,
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
-        offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
-          priceCurrency: 'EUR',
-          price: '0',
-          priceSpecification: { '@type': 'PriceSpecification', valueAddedTaxIncluded: false },
-          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
-          areaServed: 'Île-de-France',
-          url: `${BASE}/devis`,
-        },
+        // Prestation sur devis (pas de prix fixe) → pas de bloc offers pour éviter un Offer invalide
       },
     ],
   }

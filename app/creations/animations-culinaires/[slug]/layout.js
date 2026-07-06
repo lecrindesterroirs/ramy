@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Animation culinaire live traiteur Paris — L'Écrin Traiteur",
+  title: "Animation culinaire live pour entreprise à Paris",
   description: "Animation culinaire préparée en direct pour vos événements d'entreprise à Paris. Installation, service et démontage inclus. Devis sous 24h.",
   openGraph: {
     title: "Animation culinaire live | L'Écrin Traiteur",

@@ -45,20 +45,24 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
+            '@id': 'https://www.lecrin-traiteur.fr/#business',
             'name': "L'Écrin Traiteur",
             'description': "Traiteur d'entreprise artisanal à Paris & Île-de-France : petits-déjeuners, plateaux repas, cocktails, buffets, animations culinaires et réceptions sur mesure. Artisans sélectionnés, livraison dès 6h30.",
             'url': 'https://www.lecrin-traiteur.fr',
             'email': 'commercial@lecrin-traiteur.fr',
+            'telephone': '+33174542310',
             'address': {
               '@type': 'PostalAddress',
-              'addressLocality': 'Paris',
+              'streetAddress': '63 bis Rue de Sèvres',
+              'postalCode': '92100',
+              'addressLocality': 'Boulogne-Billancourt',
               'addressRegion': 'Île-de-France',
               'addressCountry': 'FR',
             },
             'geo': {
               '@type': 'GeoCoordinates',
-              'latitude': 48.8566,
-              'longitude': 2.3522,
+              'latitude': 48.8352,
+              'longitude': 2.2409,
             },
             'openingHoursSpecification': [{
               '@type': 'OpeningHoursSpecification',

@@ -1,6 +1,6 @@
 export const metadata = {
   alternates: { canonical: '/univers/notre-maison' },
-  title: "Notre Maison - L'histoire de L'Écrin Traiteur",
+  title: "Notre Maison — L'histoire et la conviction de la maison",
   description: "Née d'une conviction simple : les pauses d'entreprise méritent mieux. Découvrez l'histoire, l'approche et les valeurs de L'Écrin Traiteur.",
   openGraph: {
     title: "Notre Maison | L'Écrin Traiteur",

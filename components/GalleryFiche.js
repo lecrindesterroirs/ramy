@@ -59,15 +59,18 @@ export default function GalleryFiche({
         ...(description ? { description } : {}),
         ...(img ? { image: `${BASE}${img}` } : {}),
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
-        offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
-          priceCurrency: 'EUR',
-          ...(price ? { price: String(price).replace(',', '.') } : { price: '0', priceSpecification: { '@type': 'PriceSpecification', valueAddedTaxIncluded: false } }),
-          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
-          areaServed: 'Île-de-France',
-          url: `${BASE}/devis`,
-        },
+        // Offer uniquement si un vrai prix existe (sinon prestation sur devis → pas d'Offer invalide)
+        ...(price ? {
+          offers: {
+            '@type': 'Offer',
+            availability: 'https://schema.org/InStock',
+            priceCurrency: 'EUR',
+            price: String(price).replace(',', '.'),
+            seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+            areaServed: 'Île-de-France',
+            url: `${BASE}/devis`,
+          },
+        } : {}),
       },
     ].filter(Boolean),
   }
