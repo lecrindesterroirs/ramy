@@ -3,13 +3,16 @@
 // CSP en Report-Only : n'impacte pas le rendu, remonte les violations pour
 // affiner puis passer en enforce. 'unsafe-inline' requis (styles inline React +
 // blocs <style>/JSON-LD, hydratation Next). Domaines Vercel prévus pour analytics.
+const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com'
+const ADS = 'https://*.g.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GA_GTM} https://www.googleadservices.com`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://images.unsplash.com https://www.google.com https://*.googleusercontent.com",
+  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${GA_GTM} ${ADS}`,
   "font-src 'self' data:",
-  "connect-src 'self' https://vitals.vercel-insights.com",
+  `connect-src 'self' https://vitals.vercel-insights.com ${GA_GTM} ${ADS}`,
+  `frame-src https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self'",

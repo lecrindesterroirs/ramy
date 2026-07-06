@@ -1,6 +1,7 @@
 import './globals.css'
 import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata = {
   title: {
@@ -55,6 +56,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
+      <GoogleTagManager gtmId="GTM-N22T3FZJ" />
       <body>
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
         <link rel="preload" href="/fonts/BaskervilleDisplayPT.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
