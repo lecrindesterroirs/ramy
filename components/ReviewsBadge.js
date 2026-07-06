@@ -2,18 +2,22 @@
 
 import { GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS } from '../lib/site'
 
-// Badge preuve sociale "5,0★ · 18 avis Google" — cliquable vers la fiche GBP.
-// variant : 'light' (fond clair, texte foncé) | 'onImage' (sur photo/scrim, texte foncé chaud)
-export default function ReviewsBadge({ variant = 'light', style = {} }) {
+// Badge preuve sociale "5,0★ · Avis Google" — cliquable vers la fiche GBP.
+// variant   : 'light' (fond clair, texte foncé) | 'onImage' (sur photo/scrim, texte foncé chaud)
+// showCount : afficher le nombre d'avis (par défaut non — juste les étoiles + note)
+export default function ReviewsBadge({ variant = 'light', showCount = false, style = {} }) {
   const isOnImage = variant === 'onImage'
   const textColor = isOnImage ? 'rgba(24,18,16,0.9)' : 'var(--text-secondary)'
+  const ariaLabel = showCount
+    ? `Note ${GBP_RATING_LABEL} sur 5 — ${GBP_REVIEWS} avis Google, voir la fiche`
+    : `Note ${GBP_RATING_LABEL} sur 5 sur Google, voir la fiche`
 
   return (
     <a
       href={GBP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Note ${GBP_RATING_LABEL} sur 5 — ${GBP_REVIEWS} avis Google, voir la fiche`}
+      aria-label={ariaLabel}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -35,7 +39,7 @@ export default function ReviewsBadge({ variant = 'light', style = {} }) {
       </span>
       <span style={{ fontSize: '13px', fontWeight: 500, letterSpacing: '0.01em', color: textColor, whiteSpace: 'nowrap' }}>
         <strong style={{ fontWeight: 600, color: isOnImage ? '#171310' : 'var(--text-primary)' }}>{GBP_RATING_LABEL}</strong>
-        {' · '}{GBP_REVIEWS} avis Google
+        {' · '}{showCount ? `${GBP_REVIEWS} avis Google` : 'Avis Google'}
       </span>
     </a>
   )
