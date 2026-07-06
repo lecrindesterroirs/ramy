@@ -22,15 +22,32 @@ export default function sitemap() {
 
     // Créations
     url('/creations/petits-dejeuners-et-pauses',          0.92, 'weekly'),
-    url('/creations/cocktails-et-buffets',                0.88, 'monthly'),
+    url('/creations/pauses-gourmandes',                   0.86, 'monthly'),
     url('/creations/plateaux-repas',                      0.88, 'monthly'),
+    url('/creations/lunch-box',                           0.86, 'monthly'),
+    url('/creations/a-partager',                          0.84, 'monthly'),
+    url('/creations/cocktails',                           0.90, 'monthly'),
+    url('/creations/cocktails/classique',                 0.82, 'monthly'),
+    url('/creations/cocktails/signature',                 0.82, 'monthly'),
+    url('/creations/cocktails/prestige',                  0.82, 'monthly'),
+    url('/creations/plateaux-aperitifs',                  0.84, 'monthly'),
+    url('/creations/animations-culinaires',               0.84, 'monthly'),
+    url('/creations/cocktails-et-buffets',                0.80, 'monthly'),
     url('/creations/boissons',                            0.78, 'monthly'),
+    url('/creations/personnalisation',                    0.72, 'monthly'),
+    url('/creations/coffrets-cadeaux',                    0.70, 'monthly'),
+    url('/creations/receptions-sur-mesure',               0.78, 'monthly'),
     url('/creations/evenements-saisonniers',              0.88, 'monthly'),
 
     // L'Univers
     url('/univers/notre-maison',                          0.72, 'monthly'),
+    url('/univers/notre-savoir-faire',                    0.68, 'monthly'),
     url('/univers/nos-artisans',                          0.72, 'monthly'),
     url('/univers/nos-engagements',                       0.68, 'monthly'),
+    url('/univers/notre-philosophie',                     0.66, 'monthly'),
+
+    // À propos
+    url('/a-propos',                                      0.70, 'monthly'),
 
     // Journal
     url('/journal',                                       0.70, 'weekly'),
