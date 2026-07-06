@@ -7,6 +7,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import Reveal from './Reveal'
 import CategoryClosing from './CategoryClosing'
+import CategoryJsonLd from './CategoryJsonLd'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
@@ -182,6 +183,11 @@ export default function ProductsPageTemplate({
         }
       ` }} />
 
+      <CategoryJsonLd
+        name={heroTitle}
+        path={basePath || '/creations/petits-dejeuners-et-pauses'}
+        items={products.map(p => ({ name: p.name, url: `${basePath || '/creations/petits-dejeuners-et-pauses'}/${p.id}` }))}
+      />
       <Footer />
     </>
   )

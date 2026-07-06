@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
 
 const SEO_ARTICLE = `
@@ -397,6 +398,11 @@ export default function PlateauxRepas() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Plateaux repas"
+        path="/creations/plateaux-repas"
+        items={PRODUITS.map(p => ({ name: p.nom, url: `/creations/plateaux-repas/${p.id}` }))}
+      />
       <Footer />
     </>
   )

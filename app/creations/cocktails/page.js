@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 
@@ -314,6 +315,11 @@ export default function Cocktails() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Cocktails"
+        path="/creations/cocktails"
+        items={FORMULES.map(f => ({ name: `Cocktail ${f.label}`, url: `/creations/cocktails/${f.key}` }))}
+      />
       <Footer />
     </>
   )

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 
@@ -322,6 +323,11 @@ export default function LunchBox() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Lunch Box"
+        path="/creations/lunch-box"
+        items={BOXES.map(b => ({ name: b.nom, url: `/creations/lunch-box/${b.id}` }))}
+      />
       <Footer />
     </>
   )

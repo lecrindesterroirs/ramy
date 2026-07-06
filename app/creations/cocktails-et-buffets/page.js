@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { FORMULES } from './formulesData'
 
 const COCKTAILS = FORMULES.filter(f => f.type === 'cocktail')
@@ -180,6 +181,11 @@ export default function CocktailsEtBuffets() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Cocktails & Buffets"
+        path="/creations/cocktails-et-buffets"
+        items={FORMULES.map(f => ({ name: f.nom, url: `/creations/cocktails-et-buffets/${f.slug}` }))}
+      />
       <Footer />
     </>
   )

@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { UNIVERS, UNIVERS_LABEL, slugAnim, ANIMATIONS } from './data'
 
 const SEO_ARTICLE = `
@@ -243,6 +244,11 @@ export default function AnimationsCulinaires() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Animations culinaires"
+        path="/creations/animations-culinaires"
+        items={ANIMATIONS.map(a => ({ name: a.nom, url: `/creations/animations-culinaires/${slugAnim(a.nom)}` }))}
+      />
       <Footer />
     </>
   )

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 
@@ -313,6 +314,11 @@ export default function PlateauxAperitifs() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Plateaux apéritifs"
+        path="/creations/plateaux-aperitifs"
+        items={PLATEAUX.map(p => ({ name: p.nom, url: `/creations/plateaux-aperitifs/${p.id}` }))}
+      />
       <Footer />
     </>
   )

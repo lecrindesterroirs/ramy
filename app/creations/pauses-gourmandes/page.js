@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 
@@ -211,6 +212,11 @@ export default function PausesGourmandes() {
         }
       ` }} />
 
+      <CategoryJsonLd
+        name="Pauses gourmandes"
+        path="/creations/pauses-gourmandes"
+        items={PAUSES.map(p => ({ name: p.nom, url: `/creations/pauses-gourmandes/${p.id}` }))}
+      />
       <Footer />
     </>
   )
