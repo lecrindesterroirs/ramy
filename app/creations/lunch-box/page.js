@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
@@ -125,10 +126,11 @@ function MenuCard({ produit }) {
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
-          <img loading="lazy" src={produit.img}
+          <Image fill src={produit.img}
             alt={produit.nom}
+            sizes="(max-width: 768px) 50vw, 33vw"
             style={{
-              width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
+              objectFit: 'cover', objectPosition: 'center',
               transition: 'transform 0.7s ease',
               transform: hovered ? 'scale(1.05)' : 'scale(1)',
             }}
@@ -192,9 +194,9 @@ export default function LunchBox() {
         {/* ── Hero — contenu + immersif, aligné sur les autres pages ── */}
         <div className="lb-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="lb-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img loading="eager" src={HERO.hero}
+            <Image fill priority sizes="100vw" src={HERO.hero}
               alt="Lunch Box L'Écrin"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>

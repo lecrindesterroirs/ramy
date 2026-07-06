@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const creations = [
   {
     label: 'Petit-déjeuner & Pause',
@@ -47,9 +49,10 @@ function Card({ item }) {
         className="img-zoom"
         style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', flexShrink: 0 }}
       >
-        <img loading="lazy" src={item.img}
+        <Image fill src={item.img}
           alt={item.label}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: item.imgPosition || 'center center', display: 'block', transition: 'transform 0.6s ease' }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: 'cover', objectPosition: item.imgPosition || 'center center', transition: 'transform 0.6s ease' }}
         />
       </div>
       <div style={{ background: '#F5F5F0', padding: '18px 20px 22px', flex: 1, display: 'flex', flexDirection: 'column' }}>

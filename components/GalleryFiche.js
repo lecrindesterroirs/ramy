@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -64,15 +65,15 @@ export default function GalleryFiche({
 
           {/* ── Colonne gauche : photo ── */}
           <div className="gallery-col">
-            <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-              <img loading="eager" src={photos[0]} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
+              <Image fill priority sizes="(max-width: 900px) 100vw, 55vw" src={photos[0]} alt={title} style={{ objectFit: 'cover' }} />
             </div>
 
             {showThumbnails && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginTop: '18px' }}>
                 {photos.slice(0, 4).map((src, i) => (
-                  <div key={i} style={{ width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF' }}>
-                    <img loading="lazy" src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <div key={i} style={{ position: 'relative', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF' }}>
+                    <Image fill sizes="(max-width: 900px) 25vw, 12vw" src={src} alt="" style={{ objectFit: 'cover' }} />
                   </div>
                 ))}
               </div>

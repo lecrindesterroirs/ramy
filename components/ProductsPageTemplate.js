@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Navbar from './Navbar'
@@ -62,9 +63,9 @@ export default function ProductsPageTemplate({
         {/* ── Hero ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '460px', overflow: 'hidden' }}>
-            <img loading="eager" src={heroImg}
+            <Image fill priority sizes="100vw" src={heroImg}
               alt={heroTitle}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: heroImgPosition || 'center', display: 'block' }}
+              style={{ objectFit: 'cover', objectPosition: heroImgPosition || 'center' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
@@ -221,9 +222,10 @@ function ProductCard({ product, basePath }) {
     >
       {/* Image pleine largeur dans la carte, overlay "Découvrir" au survol */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
-        <img loading="lazy" src={product.img}
+        <Image fill src={product.img}
           alt={product.name}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+          style={{ objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
         <div style={{
           position: 'absolute', inset: 0,

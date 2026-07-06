@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
@@ -178,9 +179,10 @@ function AnimationCard({ produit }) {
       }}
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#F8F5EF', overflow: 'hidden' }}>
-        <img loading="lazy" src={produit.img}
+        <Image fill src={produit.img}
           alt={produit.nom}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
+          sizes="(max-width: 900px) 50vw, 33vw"
+          style={{ objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
         <div style={{
           position: 'absolute', inset: 0,
@@ -240,7 +242,7 @@ export default function AnimationsCulinaires() {
         {/* ── Hero ── */}
         <div className="aa-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="aa-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img loading="eager" src={HERO.hero} alt="Animations culinaires L'Écrin" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <Image fill priority sizes="100vw" src={HERO.hero} alt="Animations culinaires L'Écrin" style={{ objectFit: 'cover', objectPosition: 'center' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="aa-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>

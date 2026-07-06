@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 
 export default function Hero() {
@@ -37,11 +38,9 @@ export default function Hero() {
           willChange: 'transform',
         }}
       >
-        <img loading="eager" fetchPriority="high" decoding="async" src="/hero-bg2.webp"
+        <Image fill priority sizes="100vw" src="/hero-bg2.webp"
           alt=""
           style={{
-            width: '100%',
-            height: '100%',
             objectFit: 'cover',
             objectPosition: 'center center',
           }}

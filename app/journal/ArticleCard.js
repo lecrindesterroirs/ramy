@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function ArticleCard({ article }) {
   return (
     <a
@@ -8,20 +10,19 @@ export default function ArticleCard({ article }) {
     >
       {/* Image */}
       <div style={{
+        position: 'relative',
         width: '100%',
         aspectRatio: '16 / 10',
         overflow: 'hidden',
         marginBottom: '20px',
         background: 'var(--bg-secondary)',
       }}>
-        <img loading="lazy" src={article.img}
+        <Image fill src={article.img}
           alt={article.titre}
           className="article-card-img"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{
-            width: '100%',
-            height: '100%',
             objectFit: 'cover',
-            display: 'block',
             transition: 'transform 0.6s ease',
           }}
         />
