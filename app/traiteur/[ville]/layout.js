@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
   }
   return {
     title: city.seoTitle,
-    description: `L'Écrin Traiteur livre à ${city.name} — petits-déjeuners, plateaux repas, cocktails, buffets et animations culinaires pour vos événements d'entreprise. Livraison dès 6h30, commande avant 14h la veille.`,
+    description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Artisans sélectionnés, devis sous 24h.`,
     openGraph: {
       title: `Traiteur ${city.name} | L'Écrin Traiteur`,
       description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et réceptions. Artisans sélectionnés, livraison dès 6h30.`,
