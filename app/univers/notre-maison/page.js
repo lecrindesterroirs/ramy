@@ -31,7 +31,7 @@ function Sprig() {
 
 const MANIFESTE = [
   "L'Écrin est né d'une conviction simple : les moments partagés en entreprise méritent mieux que l'ordinaire.",
-  "Nous ne cuisinons pas tout, nous choisissons. Chaque artisan, chaque produit, chaque geste est sélectionné pour la justesse de son savoir-faire et l'émotion qu'il crée à la dégustation.",
+  "Nous ne cuisinons pas tout, nous sélectionnons. Chaque artisan, chaque produit, chaque geste est choisi pour la justesse de son savoir-faire et l'émotion qu'il crée à la dégustation.",
   "Un petit-déjeuner livré dès 6h30, un cocktail dressé à la minute, une pause qui rassemble : nous mettons le même soin dans chaque détail, car ce sont eux dont vos équipes se souviennent.",
   "Le luxe, pour nous, n'est pas froid. Il est vivant, chaleureux, humain. C'est tout l'art de recevoir.",
 ]
