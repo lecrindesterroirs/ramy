@@ -96,6 +96,9 @@ export async function POST(request) {
               Pour toute précision, répondez simplement à cet email ou appelez-nous au <a href="tel:+33174542310" style="color: #E0A126; text-decoration: none;">01 74 54 23 10</a>.
             </p>
             <p style="font-family: Georgia, serif; font-size: 15px; color: #1A1A1A; margin: 0;">L'équipe L'Écrin Traiteur</p>
+            <p style="font-family: sans-serif; font-size: 13px; margin: 10px 0 0;">
+              <a href="https://www.lecrin-traiteur.fr" style="color: #E0A126; text-decoration: none;">www.lecrin-traiteur.fr</a>
+            </p>
             <p style="font-family: sans-serif; font-size: 12px; color: #999; margin-top: 32px; padding-top: 16px; border-top: 1px solid #E8DFD0;">
               Petits-déjeuners, plateaux repas & cocktails d'entreprise — Paris &amp; Île-de-France
             </p>

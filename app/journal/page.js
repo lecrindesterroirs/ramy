@@ -8,7 +8,7 @@ import Reveal from '../../components/Reveal'
 import ArticleCard from './ArticleCard'
 import { articles } from '../../lib/journalData'
 
-const CATEGORIES = ['Tous', 'Conseils', 'Inspirations', 'QCVT']
+const CATEGORIES = ['Tous', 'Conseils', 'Régimes', 'Inspirations', 'QCVT']
 
 export default function Journal() {
   const [activeCategory, setActiveCategory] = useState('Tous')
