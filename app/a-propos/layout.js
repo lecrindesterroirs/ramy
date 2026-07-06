@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Notre histoire — Traiteur artisanal d'entreprise à Paris",
+  title: "Notre histoire — traiteur d'entreprise",
   description: "L'Écrin Traiteur : notre histoire et notre conviction. Des artisans sélectionnés et un sens du détail pour le traiteur d'entreprise à Paris.",
   alternates: { canonical: '/a-propos' },
   openGraph: {

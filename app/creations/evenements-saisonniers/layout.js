@@ -1,6 +1,6 @@
 export const metadata = {
   alternates: { canonical: '/creations/evenements-saisonniers' },
-  title: "Événements Saisonniers en entreprise - Paris & Île-de-France",
+  title: "Événements saisonniers entreprise Paris",
   description: "Galette des Rois, Chandeleur, Halloween, Noël : des prestations traiteur pour chaque moment de l'année dans vos bureaux à Paris.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],

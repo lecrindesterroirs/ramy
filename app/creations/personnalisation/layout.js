@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Personnalisation traiteur entreprise — number cakes, packaging & messages",
+  title: "Personnalisation traiteur entreprise",
   description: "Personnalisez vos prestations traiteur : number cakes, plaques chocolat au message et packaging aux couleurs de votre entreprise à Paris.",
   alternates: { canonical: '/creations/personnalisation' },
   openGraph: {

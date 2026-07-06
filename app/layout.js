@@ -4,7 +4,7 @@ import MobileCTA from '../components/MobileCTA'
 
 export const metadata = {
   title: {
-    default: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
+    default: "Traiteur d'entreprise à Paris | L'Écrin Traiteur",
     template: "%s | L'Écrin Traiteur",
   },
   description: "Traiteur d'entreprise à Paris & Île-de-France : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Devis sous 24h.",

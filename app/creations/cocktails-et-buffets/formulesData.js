@@ -24,7 +24,7 @@ export const FORMULES = [
     ideal: 'Goûters premium, conférences, pauses collaborateurs, accueil clients.',
     img: '/cocktail-sucre.webp',
     badge: null,
-    seoTitle: 'Cocktail sucré artisanal entreprise Paris — pièces sucrées livrées dès 6h30',
+    seoTitle: 'Cocktail sucré d\'entreprise Paris',
     seoArticle: `
       <h2>Le cocktail sucré : la pause premium qui marque les esprits</h2>
       <p>Pour les pauses d'entreprise qui comptent vraiment, le <strong>cocktail sucré</strong> est le format qui fait la différence. 8 pièces sucrées artisanales par personne — madeleines, choux, macarons, verrines — composées avec soin et livrées prêtes à servir dans vos locaux parisiens.</p>
@@ -69,7 +69,7 @@ export const FORMULES = [
     ideal: 'Le format corporate premium par excellence : léger, élégant et facile à déguster debout.',
     img: '/cocktail-dejeunatoire.webp',
     badge: 'Le plus demandé',
-    seoTitle: 'Cocktail déjeunatoire entreprise Paris — buffet debout livré dès 6h30',
+    seoTitle: 'Cocktail déjeunatoire entreprise Paris',
     seoArticle: `
       <h2>Le cocktail déjeunatoire : le déjeuner debout réinventé</h2>
       <p>Le <strong>cocktail déjeunatoire</strong> est devenu le format de référence pour les déjeuners d'entreprise qui veulent allier praticité et élégance. 12 pièces par personne — 9 salées et 3 sucrées — livrées prêtes à servir pour un repas debout complet, sans la contrainte d'un service à table.</p>
@@ -120,7 +120,7 @@ export const FORMULES = [
     ideal: 'Un cocktail élégant, généreux et visuellement fort, pensé pour marquer les esprits.',
     img: '/cocktail-dinatoire.webp',
     badge: null,
-    seoTitle: 'Cocktail dînatoire entreprise Paris — soirée événementielle livrée en Île-de-France',
+    seoTitle: 'Cocktail dînatoire entreprise Paris',
     seoArticle: `
       <h2>Le cocktail dînatoire : l'événement qui remplace le dîner assis</h2>
       <p>Le <strong>cocktail dînatoire</strong> est le format événementiel qui monte. Plus flexible qu'un dîner à table, plus généreux qu'un simple cocktail apéritif — 18 pièces par personne dont 14 salées — il permet à vos invités de se restaurer pleinement tout en gardant la fluidité d'un événement debout.</p>
@@ -240,7 +240,7 @@ export const FORMULES = [
     ideal: 'Déjeuners d\'équipe, séminaires, réceptions clients en journée.',
     img: '/buffet-mediterraneen.webp',
     badge: null,
-    seoTitle: 'Buffet méditerranéen traiteur Paris — grandes pièces à partager livrées en Île-de-France',
+    seoTitle: 'Buffet méditerranéen traiteur Paris',
     seoArticle: `
       <h2>Le Buffet Méditerranéen Signature : généreux, premium, artisanal</h2>
       <p>Le <strong>Buffet Méditerranéen Signature</strong> est la traduction directe de l'ADN de L'Écrin Traiteur : des produits beaux, des saveurs franches, une générosité assumée. Grandes focaccias burrata & pesto, salades fraîches, pièces gourmandes — tout est pensé pour que le buffet soit aussi beau à regarder qu'agréable à déguster.</p>
@@ -298,7 +298,7 @@ export const FORMULES = [
     ideal: 'Événements en terrasse, garden parties d\'entreprise, lancements de produit en extérieur.',
     img: '/buffet-garden-party.webp',
     badge: 'Coup de cœur',
-    seoTitle: 'Buffet garden party traiteur Paris — burrata, focaccias & macarons livrés en Île-de-France',
+    seoTitle: 'Buffet garden party traiteur Paris',
     seoArticle: `
       <h2>Le Buffet Garden Party : le buffet le plus beau de notre carte</h2>
       <p>Le <strong>Buffet Garden Party</strong> est notre formule la plus visuellement réussie. Burrata entière posée sur tomates anciennes, légumes grillés aux herbes, houmous citronné, grandes focaccias, macarons signature : l'ensemble forme une table à la fois généreuse, colorée et élégante. Exactement ce qu'on attend d'un traiteur haut de gamme parisien.</p>
@@ -362,7 +362,7 @@ export const FORMULES = [
     ideal: 'Déjeuners de direction, réceptions clients élégantes, séminaires résidentiels.',
     img: '/buffet-garden-party.webp',
     badge: null,
-    seoTitle: 'Buffet traiteur italien Paris — focaccias, antipasti & tiramisu livrés en Île-de-France',
+    seoTitle: 'Buffet italien traiteur Paris',
     seoArticle: `
       <h2>Le Buffet Italian Table : la Riviera dans vos bureaux</h2>
       <p>Le <strong>Buffet Italian Table</strong> s'inspire des grandes tablées italiennes — généreuses, conviviales, visuellement fortes. Grandes focaccias pesto & burrata, planches antipasti, salades maison, tiramisu en verrine : l'ensemble évoque le déjeuner sous les pins, tout en restant parfaitement adapté aux exigences d'un événement d'entreprise parisien.</p>

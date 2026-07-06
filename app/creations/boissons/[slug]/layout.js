@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     return { title: "Boisson introuvable | L'Écrin Traiteur" }
   }
   return {
-    title: `${product.name} — Livraison Paris & Île-de-France | L'Écrin Traiteur`,
+    title: { absolute: `${product.seoTitle || product.name} | L'Écrin Traiteur` },
     description: product.description + '. Livraison dès 6h30 à Paris et en Île-de-France. Commandez avant 14h la veille.',
     openGraph: {
       title: `${product.name} | L'Écrin Traiteur`,

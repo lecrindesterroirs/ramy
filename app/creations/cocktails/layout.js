@@ -1,6 +1,6 @@
 export const metadata = {
   alternates: { canonical: '/creations/cocktails' },
-  title: "Cocktail Traiteur Paris — Réceptions & Afterworks entreprises Île-de-France",
+  title: "Cocktail d'entreprise traiteur Paris",
   description: "Cocktails traiteur à Paris : formules 8, 12 ou 16 pièces salé & sucré artisanales par personne. Déjeunatoire, Signature, Prestige.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],

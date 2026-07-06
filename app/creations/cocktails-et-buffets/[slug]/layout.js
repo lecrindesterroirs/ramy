@@ -3,7 +3,7 @@ export async function generateMetadata({ params }) {
   const formule = FORMULES.find(f => f.slug === params.slug)
   if (!formule) return {}
   return {
-    title: formule.seoTitle,
+    title: { absolute: `${formule.seoTitle} | L'Écrin Traiteur` },
     description: formule.descCourt,
     alternates: { canonical: `/creations/cocktails-et-buffets/${formule.slug}` },
     openGraph: {

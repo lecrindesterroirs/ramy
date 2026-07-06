@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Réceptions sur mesure — traiteur événementiel d'entreprise à Paris",
+  title: "Réceptions sur mesure traiteur Paris",
   description: "Réceptions sur mesure à Paris : cocktails de lancement, inaugurations et réceptions VIP conçues par L'Écrin Traiteur. Devis sous 24h.",
   alternates: { canonical: '/creations/receptions-sur-mesure' },
   openGraph: {

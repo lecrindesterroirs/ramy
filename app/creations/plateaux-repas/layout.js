@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Plateaux Repas Traiteur Paris — Livraison entreprises Île-de-France",
+  title: "Plateaux repas traiteur Paris",
   description: "Plateaux repas d'entreprise à Paris : recettes fraîches et artisanales livrées dans vos bureaux dès 6h30 en Île-de-France. Devis sous 24h.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],
