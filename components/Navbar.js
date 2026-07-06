@@ -213,12 +213,15 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             )
           })}
 
-          {/* Panneau dropdown partagé — ancré au bord gauche de nav-left (= marge de page) */}
-          {Object.values(MOMENTS).filter(m => m.cards).map(moment => (
-            activeDropdown === moment.key && (
+          {/* Panneaux dropdown — toujours rendus (liens dans le HTML serveur = crawlables),
+              masqués en CSS et révélés au survol. */}
+          {Object.values(MOMENTS).filter(m => m.cards).map(moment => {
+            const active = activeDropdown === moment.key
+            return (
               <div
                 key={moment.key}
                 className="nav-mega-dropdown"
+                aria-hidden={!active}
                 onMouseEnter={() => clearTimeout(closeTimer.current)}
                 onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
                 style={{
@@ -229,10 +232,14 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   borderRadius: '14px',
                   padding: '22px 22px 26px',
                   boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
-                  animation: 'dropdownReveal 0.22s ease',
                   zIndex: 99,
                   width: `${moment.cards.length * 320 + (moment.cards.length - 1) * 18 + 44}px`,
                   maxWidth: 'calc(100vw - 48px)',
+                  opacity: active ? 1 : 0,
+                  visibility: active ? 'visible' : 'hidden',
+                  pointerEvents: active ? 'auto' : 'none',
+                  transform: active ? 'translateY(0)' : 'translateY(-6px)',
+                  transition: 'opacity 0.22s ease, transform 0.22s ease, visibility 0.22s',
                 }}
               >
                 <div className="nav-mega-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, 320px)`, gap: '18px' }}>
@@ -280,7 +287,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 </div>
               </div>
             )
-          ))}
+          })}
         </div>
 
         {/* LOGO CENTER */}
@@ -358,8 +365,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
             </button>
 
-            {activeDropdown === 'univers' && (
-              <div
+            <div
+                aria-hidden={activeDropdown !== 'univers'}
                 style={{
                   position: 'absolute',
                   top: 'calc(100% + 16px)',
@@ -369,7 +376,11 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   padding: '20px 28px',
                   minWidth: '220px',
                   boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
-                  animation: 'dropdownReveal 0.25s ease',
+                  opacity: activeDropdown === 'univers' ? 1 : 0,
+                  visibility: activeDropdown === 'univers' ? 'visible' : 'hidden',
+                  pointerEvents: activeDropdown === 'univers' ? 'auto' : 'none',
+                  transform: activeDropdown === 'univers' ? 'translateY(0)' : 'translateY(-6px)',
+                  transition: 'opacity 0.22s ease, transform 0.22s ease, visibility 0.22s',
                 }}
               >
                 {UNIVERS_ITEMS.map(item => (
@@ -395,7 +406,6 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   </a>
                 ))}
               </div>
-            )}
           </div>
 
           {/* Le Journal */}
@@ -429,8 +439,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
             </button>
 
-            {activeDropdown === 'journal' && (
-              <div
+            <div
+                aria-hidden={activeDropdown !== 'journal'}
                 style={{
                   position: 'absolute',
                   top: 'calc(100% + 16px)',
@@ -440,7 +450,11 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   padding: '20px 28px',
                   minWidth: '260px',
                   boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
-                  animation: 'dropdownReveal 0.25s ease',
+                  opacity: activeDropdown === 'journal' ? 1 : 0,
+                  visibility: activeDropdown === 'journal' ? 'visible' : 'hidden',
+                  pointerEvents: activeDropdown === 'journal' ? 'auto' : 'none',
+                  transform: activeDropdown === 'journal' ? 'translateY(0)' : 'translateY(-6px)',
+                  transition: 'opacity 0.22s ease, transform 0.22s ease, visibility 0.22s',
                 }}
               >
                 {JOURNAL_ITEMS.main.map(item => (
@@ -540,7 +554,6 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   ))}
                 </div>
               </div>
-            )}
           </div>
 
           {/* Contact */}
