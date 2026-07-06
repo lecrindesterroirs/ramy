@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-// CSP en Report-Only : n'impacte pas le rendu, remonte les violations pour
-// affiner puis passer en enforce. 'unsafe-inline' requis (styles inline React +
-// blocs <style>/JSON-LD, hydratation Next). Domaines Vercel prévus pour analytics.
+// CSP en ENFORCE (validé sans violation en Report-Only, GTM/GA/Ads inclus).
+// 'unsafe-inline' requis (styles inline React + blocs <style>/JSON-LD, hydratation
+// Next). Whitelist : Vercel analytics + googletagmanager/google-analytics/
+// analytics.google.com + doubleclick/googleadservices/google.com/.fr (Ads).
+// ⚠️ Ajouter tout nouveau service tiers ici avant de le brancher, sinon il sera bloqué.
 const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com'
 const ADS = 'https://*.g.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
 const csp = [
@@ -26,7 +28,7 @@ const securityHeaders = [
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()' },
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
-  { key: 'Content-Security-Policy-Report-Only', value: csp },
+  { key: 'Content-Security-Policy', value: csp },
 ]
 
 const nextConfig = {
