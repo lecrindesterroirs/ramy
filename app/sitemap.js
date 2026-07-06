@@ -5,6 +5,12 @@ import { CITIES } from '../lib/citiesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { FORMULES } from './creations/cocktails-et-buffets/formulesData'
 import { BOISSONS } from '../lib/boissonsData'
+import { PRODUITS as PLATEAUX_REPAS } from './creations/plateaux-repas/data'
+import { SLUGS as LUNCHBOX_SLUGS } from './creations/lunch-box/[slug]/layout'
+import { SLUGS as APERITIFS_SLUGS } from './creations/plateaux-aperitifs/[slug]/layout'
+import { SLUGS as PAUSES_SLUGS } from './creations/pauses-gourmandes/[slug]/layout'
+import { SLUGS as COCKTAILS_SLUGS } from './creations/cocktails/[slug]/layout'
+import { ANIMATIONS, slugAnim } from './creations/animations-culinaires/data'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
 const NOW = new Date().toISOString()
@@ -87,6 +93,12 @@ export default function sitemap() {
   // ── Fiches leaf boissons (données dans lib/, importables côté serveur) ─
   const leafPages = [
     ...BOISSONS.map(b => url(`/creations/boissons/${b.id}`, 0.72, 'monthly')),
+    ...PLATEAUX_REPAS.map(p => url(`/creations/plateaux-repas/${p.id}`, 0.82, 'monthly')),
+    ...LUNCHBOX_SLUGS.map(s => url(`/creations/lunch-box/${s}`, 0.80, 'monthly')),
+    ...APERITIFS_SLUGS.map(s => url(`/creations/plateaux-aperitifs/${s}`, 0.78, 'monthly')),
+    ...PAUSES_SLUGS.map(s => url(`/creations/pauses-gourmandes/${s}`, 0.80, 'monthly')),
+    ...COCKTAILS_SLUGS.map(s => url(`/creations/cocktails/${s}`, 0.80, 'monthly')),
+    ...ANIMATIONS.map(a => url(`/creations/animations-culinaires/${slugAnim(a.nom)}`, 0.78, 'monthly')),
   ]
 
   // ── Occasions / Pour vos événements ──────────────────────────────

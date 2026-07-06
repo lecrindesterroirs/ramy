@@ -6,12 +6,14 @@ const META = {
   prestige: { label: 'Prestige', pieces: 16, accroche: "L'excellence gastronomique pour vos réceptions les plus soignées.", img: '/cocktail-prestige.webp' },
 }
 
+export const SLUGS = Object.keys(META)
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const f = META[slug]
   if (!f) return { title: "Cocktail introuvable | L'Écrin Traiteur" }
   return {
-    title: `Cocktail ${f.label} — ${f.pieces} pièces par personne | L'Écrin Traiteur`,
+    title: { absolute: `Cocktail ${f.label} Paris | L'Écrin Traiteur` },
     description: `${f.accroche} Cocktail ${f.label} (${f.pieces} pièces/pers.), pièces artisanales livrées prêtes à servir à Paris et en Île-de-France. Devis personnalisé sous 24h.`,
     openGraph: {
       title: `Cocktail ${f.label} | L'Écrin Traiteur`,

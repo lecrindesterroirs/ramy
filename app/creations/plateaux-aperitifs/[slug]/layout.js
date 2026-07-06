@@ -14,16 +14,18 @@ const META = {
   'si4': { nom: 'Douceurs',                    d: 'Sélection de desserts artisanaux à partager.' },
 }
 
+export const SLUGS = Object.keys(META)
+
 export function generateMetadata({ params }) {
   const m = META[params.slug]
   const path = `/creations/plateaux-aperitifs/${params.slug}`
   if (!m) {
     return { title: "Plateaux apéritifs à partager — traiteur à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
-  const title = `Plateau ${m.nom} — apéritif à partager à Paris | L'Écrin Traiteur`
+  const title = `${m.nom} — apéritif Paris | L'Écrin Traiteur`
   const description = `${m.d} Plateau apéritif à partager livré à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `Plateau ${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },

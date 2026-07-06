@@ -2,7 +2,7 @@
 
 import { useParams, notFound } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
-import { PRODUITS, COLLECTIONS, prixMenu } from '../page'
+import { PRODUITS, COLLECTIONS, prixMenu } from '../data'
 
 const SEO_HTML = `
   <p>Le <strong>plateau repas d'entreprise</strong> est devenu la solution de référence pour les déjeuners de travail, comités de direction et séminaires à Paris. Individuel, équilibré et présenté avec soin, il permet à chacun de déjeuner sans quitter les locaux, tout en soignant l'image de l'entreprise auprès des collaborateurs et des clients.</p>

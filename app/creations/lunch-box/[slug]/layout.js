@@ -10,16 +10,18 @@ const META = {
   'lb9': { nom: 'La Thon Ciboulette', d: 'Lunch box baguette thon ciboulette, entrée et dessert artisanal.' },
 }
 
+export const SLUGS = Object.keys(META)
+
 export function generateMetadata({ params }) {
   const m = META[params.slug]
   const path = `/creations/lunch-box/${params.slug}`
   if (!m) {
     return { title: "Lunch box d'entreprise à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
-  const title = `${m.nom} — lunch box d'entreprise à Paris | L'Écrin Traiteur`
+  const title = `${m.nom} — lunch box Paris | L'Écrin Traiteur`
   const description = `${m.d} Livraison à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },

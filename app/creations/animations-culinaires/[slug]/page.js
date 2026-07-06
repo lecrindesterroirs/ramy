@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
-import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../page'
+import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
 export default function AnimationDetail() {
   const { slug } = useParams()

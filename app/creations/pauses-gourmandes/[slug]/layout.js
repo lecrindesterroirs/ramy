@@ -12,8 +12,10 @@ const META = {
   'tartelette-praline':{ nom: 'Tartelette Praliné',        d: 'Tartelette au praliné maison, croustillant noisette.' },
   'mousse-chocolat':   { nom: 'Mousse Chocolat',           d: 'Mousse au chocolat intense, texture aérienne.' },
   'panna-cotta':       { nom: 'Panna Cotta',               d: 'Panna cotta vanille, dressée en verrine individuelle.' },
-  'verrine-citron':    { nom: 'Verrine Citron / Lemon Curd', d: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
+  'verrine-citron':    { nom: 'Verrine Citron', d: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
 }
+
+export const SLUGS = Object.keys(META)
 
 export function generateMetadata({ params }) {
   const m = META[params.slug]
@@ -21,10 +23,10 @@ export function generateMetadata({ params }) {
   if (!m) {
     return { title: "Pauses gourmandes — traiteur d'entreprise à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
-  const title = `${m.nom} — pause gourmande d'entreprise à Paris | L'Écrin Traiteur`
+  const title = `${m.nom} — pause gourmande | L'Écrin Traiteur`
   const description = `${m.d} Livraison de pauses gourmandes à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
