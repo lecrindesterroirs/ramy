@@ -346,20 +346,30 @@ export default function ArticlePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
+          '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}#article`,
           'headline': article.titre,
           'description': article.extrait,
           'datePublished': article.isoDate || article.date,
+          'dateModified': article.isoModified || article.isoDate || article.date,
           'author': {
             '@type': 'Organization',
+            '@id': 'https://www.lecrin-traiteur.fr/#business',
             'name': "L'Écrin Traiteur",
             'url': 'https://www.lecrin-traiteur.fr',
           },
           'publisher': {
             '@type': 'Organization',
+            '@id': 'https://www.lecrin-traiteur.fr/#business',
             'name': "L'Écrin Traiteur",
             'url': 'https://www.lecrin-traiteur.fr',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://www.lecrin-traiteur.fr/icon-512.png',
+              'width': 512,
+              'height': 512,
+            },
           },
-          'image': article.img,
+          'image': article.img?.startsWith('http') ? article.img : `https://www.lecrin-traiteur.fr${article.img}`,
           'url': `https://www.lecrin-traiteur.fr/journal/${article.slug}`,
           'mainEntityOfPage': {
             '@type': 'WebPage',

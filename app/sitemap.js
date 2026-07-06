@@ -4,6 +4,7 @@ import { PRODUCTS } from '../lib/productsData'
 import { CITIES } from '../lib/citiesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { FORMULES } from './creations/cocktails-et-buffets/formulesData'
+import { BOISSONS } from '../lib/boissonsData'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
 const NOW = new Date().toISOString()
@@ -83,6 +84,11 @@ export default function sitemap() {
     0.82, 'monthly'
   ))
 
+  // ── Fiches leaf boissons (données dans lib/, importables côté serveur) ─
+  const leafPages = [
+    ...BOISSONS.map(b => url(`/creations/boissons/${b.id}`, 0.72, 'monthly')),
+  ]
+
   // ── Occasions / Pour vos événements ──────────────────────────────
   const occasionPages = OCCASIONS.map(o => url(
     `/occasions/${o.slug}`,
@@ -116,6 +122,7 @@ export default function sitemap() {
     ...productPages,
     ...formulePages,
     ...eventPages,
+    ...leafPages,
     ...occasionPages,
     ...journalPages,
     ...cityPages,

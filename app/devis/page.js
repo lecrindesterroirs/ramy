@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import LogosSection from '../../components/LogosSection'
 import ReviewsBadge from '../../components/ReviewsBadge'
+import { contactPageLd } from '../../lib/site'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -801,6 +802,11 @@ export default function Contact() {
       <LogosSection
         subtitle="Et pourquoi pas vous ?"
         style={{ paddingBottom: '56px' }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageLd('/devis', 'Demander un devis — L\'Écrin Traiteur')) }}
       />
 
       <div ref={logosRef}>

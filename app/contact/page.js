@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ReviewsBadge from '../../components/ReviewsBadge'
+import { contactPageLd } from '../../lib/site'
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -328,6 +329,11 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageLd('/contact', 'Contact — L\'Écrin Traiteur')) }}
+      />
 
       <Footer />
     </>
