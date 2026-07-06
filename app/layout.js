@@ -56,9 +56,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>
+        <a href="#main-content" className="skip-link">Aller au contenu principal</a>
         <link rel="preload" href="/fonts/BaskervilleDisplayPT.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          <div id="main-content" style={{ display: 'contents' }}>{children}</div>
+        </CartProvider>
         <MobileCTA />
       </body>
     </html>
