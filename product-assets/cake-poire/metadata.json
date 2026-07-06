@@ -1,0 +1,38 @@
+{
+  "product_id": "cake-poire",
+  "name": "Cake Poire",
+  "category": "patisserie",
+  "type": "cake",
+  "assets": {
+    "product": {
+      "type": "ai",
+      "source": "/public/prod-cake-poire.png",
+      "status": "✅ EXIST",
+      "generated_date": "2026-07-05",
+      "model": "gpt-image-1",
+      "notes": "IA généré — photo produit standalone (fond blanc/neutre)"
+    },
+    "presentation": {
+      "type": "ai_to_generate",
+      "description": "Plateau bois minimaliste OU assiette céramique avec cake tranché",
+      "status": "❌ À générer",
+      "priority": "MEDIUM",
+      "prompt_template": "CAKE_PLATEAU_PRESENTATION"
+    },
+    "ambiance": {
+      "type": "ai_to_generate",
+      "description": "Contexte réception élégant — table calme, moment gourmand, saveur poire visible",
+      "status": "❌ À générer",
+      "priority": "MEDIUM",
+      "prompt_template": "CAKE_AMBIANCE_RECEPTION"
+    }
+  },
+  "generation_status": "PENDING",
+  "validation_checklist": {
+    "cake_texture": false,
+    "color_pear_tones": false,
+    "plate_coherence": false,
+    "anti_ia_score": null
+  },
+  "notes": "Flavor: Poire. IA déjà validée. Consolider avec ambiance réception."
+}

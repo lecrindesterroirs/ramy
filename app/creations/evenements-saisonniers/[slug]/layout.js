@@ -13,6 +13,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${ev.nom} en entreprise : idées et conseils`,
     description: `${ev.descCourt} Prestation traiteur livrée à Paris et en Île-de-France.`,
+    alternates: { canonical: `/creations/evenements-saisonniers/${params.slug}` },
     openGraph: {
       title: `${ev.nom} en entreprise | L'Écrin Traiteur`,
       description: ev.descCourt,

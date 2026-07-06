@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/creations/lunch-box' },
   title: "Lunch Box Traiteur Paris — Livraison entreprises Île-de-France",
   description: "Lunch box individuelles fraîches livrées dans vos bureaux à Paris : entrée, sandwich Signature, Club ou Wrap, dessert artisanal. Commande avant 14h la veille, livraison dès 6h30.",
   openGraph: {

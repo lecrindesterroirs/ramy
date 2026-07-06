@@ -6,6 +6,7 @@ export async function generateMetadata({ params }) {
   return {
     title: article.titre,
     description: article.extrait,
+    alternates: { canonical: `/journal/${params.slug}` },
     openGraph: {
       title: `${article.titre} | L'Écrin Traiteur`,
       description: article.extrait,

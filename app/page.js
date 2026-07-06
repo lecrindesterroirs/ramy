@@ -16,6 +16,10 @@ import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
 import ScrollRevealInit from '../components/ScrollRevealInit'
 
+export const metadata = {
+  alternates: { canonical: '/' },
+}
+
 export default function Home() {
   return (
     <>

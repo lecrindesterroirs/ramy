@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/journal' },
   title: "Le Journal",
   description: "Conseils, inspirations et actualités pour vos événements d'entreprise à Paris et Île-de-France. Petit-déjeuner, cocktail, plateau repas : les guides L'Écrin Traiteur.",
   openGraph: {

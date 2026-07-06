@@ -1,0 +1,31 @@
+{
+  "product_id": "chouquettes",
+  "name": "Plateau de chouquettes",
+  "category": "viennoiseries",
+  "qty": "30 pièces",
+  "price": "26,80€",
+  "assets": {
+    "product": {
+      "type": "real",
+      "source": "AirDrop photos (chouquettes dorées, perles sucre visibles)",
+      "status": "✅ EXIST",
+      "notes": "Chouquettes pâte à choux fraîches, perles de sucre caramélisées"
+    },
+    "presentation": {
+      "type": "ai_to_generate",
+      "description": "Plateau bois ou bol céramique — mise en avant des perles de sucre",
+      "status": "❌ À générer",
+      "priority": "HIGH",
+      "prompt_template": "CHOUQUETTES_PLATEAU"
+    },
+    "ambiance": {
+      "type": "ai_to_generate",
+      "description": "Pause café légère, 10h matin, moment équipe convivial",
+      "status": "❌ À générer",
+      "priority": "MEDIUM",
+      "prompt_template": "CHOUQUETTES_AMBIANCE"
+    }
+  },
+  "generation_status": "PENDING",
+  "notes": "Perles de sucre = élément clé de l'identité visuelle. Photos réelles existantes."
+}

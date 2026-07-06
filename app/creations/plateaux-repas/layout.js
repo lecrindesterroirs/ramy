@@ -5,6 +5,7 @@ export const metadata = {
     title: "Plateaux Repas Traiteur Paris | L'Écrin Traiteur",
     description: "Traiteur plateau repas Paris : produits artisanaux, livraison lundi–vendredi dès 6h30 dans toute l'Île-de-France.",
   },
+  alternates: { canonical: '/creations/plateaux-repas' },
 }
 
 export default function Layout({ children }) {

@@ -1,0 +1,37 @@
+{
+  "product_id": "viennoiseries-duo",
+  "name": "Plateau duo de viennoiseries",
+  "category": "viennoiseries",
+  "qty": "16 pièces (8 croissants + 8 pains au chocolat)",
+  "price": "26,80€",
+  "assets": {
+    "product": {
+      "type": "real",
+      "source": "AirDrop photos (IMG_43xx, IMG_50xx series)",
+      "status": "✅ EXIST",
+      "notes": "Vraie photo croissants/pains au chocolat dorés, feuilletage visible"
+    },
+    "presentation": {
+      "type": "ai_to_generate",
+      "description": "Plateau bois light ash wood + linen naturel",
+      "status": "❌ À générer",
+      "priority": "HIGH",
+      "prompt_template": "VIENNOISERIES_PLATEAU"
+    },
+    "ambiance": {
+      "type": "ai_to_generate",
+      "description": "Contexte office petit-déjeuner (8h30), table bureau, moment équipe",
+      "status": "❌ À générer",
+      "priority": "HIGH",
+      "prompt_template": "VIENNOISERIES_AMBIANCE_OFFICE"
+    }
+  },
+  "generation_status": "PENDING",
+  "validation_checklist": {
+    "product_realism": false,
+    "color_coherence": false,
+    "lighting_consistency": false,
+    "anti_ia_score": null
+  },
+  "notes": "Beurre AOP Charentes-Poitou — artisanal quality. Photos réelles du produit = fondation solide."
+}

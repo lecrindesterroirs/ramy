@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/devis' },
   title: "Obtenir un devis",
   description: "Décrivez votre événement en 3 étapes et recevez un devis personnalisé sous 24h. Petits-déjeuners, cocktails, buffets et plateaux repas à Paris et Île-de-France.",
   openGraph: {

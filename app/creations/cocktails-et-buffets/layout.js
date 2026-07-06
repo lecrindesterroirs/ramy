@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/creations/cocktails-et-buffets' },
   title: "Cocktails & Buffets pour entreprises à Paris",
   description: "Cocktails dînatoires, buffets charcuterie-fromages et bouchées maison pour vos événements professionnels. Livraison à Paris et en Île-de-France.",
   openGraph: {

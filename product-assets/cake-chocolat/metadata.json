@@ -1,0 +1,11 @@
+{
+  "product_id": "cake-chocolat",
+  "name": "Cake Chocolat",
+  "category": "patisserie",
+  "assets": {
+    "product": { "type": "ai", "source": "/public/prod-cake-chocolat.png", "status": "✅ EXIST" },
+    "presentation": { "type": "ai_to_generate", "priority": "MEDIUM" },
+    "ambiance": { "type": "ai_to_generate", "priority": "MEDIUM" }
+  },
+  "generation_status": "PENDING"
+}

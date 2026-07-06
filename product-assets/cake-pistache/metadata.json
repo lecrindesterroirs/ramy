@@ -1,0 +1,11 @@
+{
+  "product_id": "cake-pistache",
+  "name": "Cake Pistache",
+  "category": "patisserie",
+  "assets": {
+    "product": { "type": "ai", "source": "/public/prod-cake-pistache.png", "status": "✅ EXIST" },
+    "presentation": { "type": "ai_to_generate", "priority": "MEDIUM" },
+    "ambiance": { "type": "ai_to_generate", "priority": "MEDIUM" }
+  },
+  "generation_status": "PENDING"
+}

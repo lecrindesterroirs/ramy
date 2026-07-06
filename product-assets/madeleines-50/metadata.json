@@ -1,0 +1,11 @@
+{
+  "product_id": "madeleines-50",
+  "name": "Coffret de madeleines (50 pièces)",
+  "category": "patisserie",
+  "assets": {
+    "product": { "type": "real", "source": "AirDrop photos", "status": "✅ EXIST" },
+    "presentation": { "type": "ai_to_generate", "priority": "HIGH" },
+    "ambiance": { "type": "ai_to_generate", "priority": "HIGH" }
+  },
+  "generation_status": "PENDING"
+}

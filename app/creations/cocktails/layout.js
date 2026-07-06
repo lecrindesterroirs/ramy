@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/creations/cocktails' },
   title: "Cocktail Traiteur Paris — Réceptions & Afterworks entreprises Île-de-France",
   description: "Cocktails traiteur livrés à Paris : formules 8, 12 ou 16 pièces par personne, salé & sucré artisanaux. Cocktail, Signature ou Prestige pour vos réceptions et afterworks. Livraison Île-de-France.",
   openGraph: {

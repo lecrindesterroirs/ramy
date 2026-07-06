@@ -1,0 +1,38 @@
+{
+  "product_id": "madeleines-10",
+  "name": "Coffret de madeleines Mado Paris",
+  "category": "patisserie",
+  "qty": "10 madeleines",
+  "price": "24,90€",
+  "assets": {
+    "product": {
+      "type": "real",
+      "source": "AirDrop photos (madeleines dorées, caramélisées)",
+      "status": "✅ EXIST",
+      "notes": "Vraies madeleines Mado Paris — texture moelleuse, bosse généreuse, couleur caramel"
+    },
+    "presentation": {
+      "type": "ai_to_generate",
+      "description": "Plateau ou coffret artisan — bois naturel OU céramique",
+      "status": "❌ À générer",
+      "priority": "HIGH",
+      "design_choice": "À décider : bois épuré OU coffret minimaliste blanc",
+      "prompt_template": "MADELEINES_PLATEAU"
+    },
+    "ambiance": {
+      "type": "ai_to_generate",
+      "description": "Pause gourmande 10h — contexte office tranquille, moment de soi",
+      "status": "❌ À générer",
+      "priority": "HIGH",
+      "prompt_template": "MADELEINES_AMBIANCE_PAUSE"
+    }
+  },
+  "generation_status": "PENDING",
+  "validation_checklist": {
+    "product_realism": false,
+    "madeleine_texture": false,
+    "lighting_morning": false,
+    "anti_ia_score": null
+  },
+  "notes": "Mado Paris = réputation comme meilleures madeleines de Paris. Sans huile de palme."
+}

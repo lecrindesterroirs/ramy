@@ -5,6 +5,7 @@ export async function generateMetadata({ params }) {
   return {
     title: formule.seoTitle,
     description: formule.descCourt,
+    alternates: { canonical: `/creations/cocktails-et-buffets/${formule.slug}` },
     openGraph: {
       title: formule.seoTitle,
       description: formule.descCourt,

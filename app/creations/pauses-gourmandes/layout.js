@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/creations/pauses-gourmandes' },
   title: "Pause Gourmande & Goûter Traiteur Paris — Livraison entreprises Île-de-France",
   description: "Douceurs pour vos pauses de l'après-midi livrées à Paris : madeleines, macarons, tartelettes, choux, cakes, cookies, brownies, fruits frais. Traiteur artisanal, commande avant 14h la veille, livraison dès 6h30.",
   openGraph: {

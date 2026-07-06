@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: '/creations/a-partager' },
   title: "Salades à Partager Traiteur Paris — Livraison entreprises Île-de-France",
   description: "Grandes salades à partager livrées dans vos bureaux à Paris : bases vertes, pâtes, pommes de terre, lentilles, céréales. Traiteur artisanal, commande avant 14h la veille, livraison dès 6h30.",
   openGraph: {
