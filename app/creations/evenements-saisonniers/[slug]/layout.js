@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
     description: `${ev.descCourt} Prestation traiteur livrée à Paris et en Île-de-France.`,
     alternates: { canonical: `/creations/evenements-saisonniers/${params.slug}` },
     openGraph: {
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],
       title: `${ev.nom} en entreprise | L'Écrin Traiteur`,
       description: ev.descCourt,
     },

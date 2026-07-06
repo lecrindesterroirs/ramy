@@ -26,7 +26,7 @@ export function generateMetadata({ params }) {
     title,
     description,
     alternates: { canonical: path },
-    openGraph: { title: `Plateau ${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
+    openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `Plateau ${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
   }
 }
 

@@ -2,6 +2,7 @@ export const metadata = {
   title: "Notre Savoir-Faire — Traiteur Artisanal Paris",
   description: "De la sélection des artisans à la livraison dès 6h30 : le savoir-faire de L'Écrin Traiteur pour vos événements d'entreprise à Paris.",
   openGraph: {
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Notre Savoir-Faire | L'Écrin Traiteur",
     description: "Le savoir-faire artisanal de L'Écrin Traiteur — de la sélection des produits à la livraison en entreprise à Paris.",
   },

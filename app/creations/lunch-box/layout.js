@@ -3,6 +3,7 @@ export const metadata = {
   title: "Lunch Box Traiteur Paris — Livraison entreprises Île-de-France",
   description: "Lunch box individuelles fraîches livrées dans vos bureaux à Paris : entrée, sandwich, club ou wrap, dessert artisanal. Livraison dès 6h30.",
   openGraph: {
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Lunch Box Traiteur Paris | L'Écrin Traiteur",
     description: "Traiteur lunch box Paris : produits artisanaux, entrée + sandwich + dessert, livraison lundi–vendredi dès 6h30 dans toute l'Île-de-France.",
   },
