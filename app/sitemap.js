@@ -13,7 +13,10 @@ import { SLUGS as COCKTAILS_SLUGS } from './creations/cocktails/[slug]/layout'
 import { ANIMATIONS, slugAnim } from './creations/animations-culinaires/data'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
-const NOW = new Date().toISOString()
+// Date de dernière mise à jour éditoriale — figée volontairement (ne pas remettre
+// new Date() : cela ferait croire à Google que tout change à chaque build).
+// À bumper lors d'une vraie refonte de contenu.
+const NOW = '2026-07-06T00:00:00.000Z'
 
 function url(path, priority, changeFrequency) {
   return { url: `${BASE_URL}${path}`, lastModified: NOW, priority, changeFrequency }

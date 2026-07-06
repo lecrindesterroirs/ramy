@@ -123,6 +123,8 @@ export default function FAQSection() {
                     >
                       <button
                         onClick={() => setOpen(open === i ? null : i)}
+                        aria-expanded={open === i}
+                        aria-controls={`faq-answer-${i}`}
                         style={{
                           width: '100%', display: 'flex', alignItems: 'center',
                           justifyContent: 'space-between', padding: '22px 0',
@@ -141,13 +143,13 @@ export default function FAQSection() {
                           fontSize: '20px', fontWeight: 300, color: 'var(--accent-deep)',
                           flexShrink: 0, lineHeight: 1, transition: 'transform 0.3s ease',
                           transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', display: 'block',
-                        }}>
+                        }} aria-hidden="true">
                           +
                         </span>
                       </button>
 
                       {open === i && (
-                        <p style={{
+                        <p id={`faq-answer-${i}`} role="region" style={{
                           fontFamily: "'Neue Montreal', sans-serif",
                           fontSize: '13px', lineHeight: 1.75,
                           color: 'var(--text-secondary)', paddingBottom: '24px',

@@ -208,7 +208,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 }}
               >
                 {moment.label}
-                <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
+                <span aria-hidden="true" style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
               </button>
             )
           })}
@@ -362,7 +362,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onMouseLeave={e => e.currentTarget.style.color = '#111111'}
             >
               L'Univers
-              <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
+              <span aria-hidden="true" style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
             </button>
 
             <div
@@ -436,7 +436,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onMouseLeave={e => e.currentTarget.style.color = '#111111'}
             >
               Le Journal
-              <span style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
+              <span aria-hidden="true" style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
             </button>
 
             <div
@@ -683,7 +683,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
                 >
                   <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{moment.label}</span>
-                  <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+                  <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
                 </button>
                 {open && (
                   <div style={{ paddingBottom: '14px' }}>
@@ -710,7 +710,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
               <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>L'Univers</span>
-              <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+              <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
             </button>
             {mobileExpanded === 'univers' && (
               <div style={{ paddingBottom: '14px' }}>
@@ -735,7 +735,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
               <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>Le Journal</span>
-              <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>›</span>
+              <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
             </button>
             {mobileExpanded === 'journal' && (
               <div style={{ paddingBottom: '14px' }}>
