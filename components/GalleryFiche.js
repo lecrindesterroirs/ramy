@@ -39,8 +39,42 @@ export default function GalleryFiche({
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
 
+  const BASE = 'https://www.lecrin-traiteur.fr'
+  const canonicalPath = breadcrumb.length ? breadcrumb[breadcrumb.length - 1]?.href : undefined
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      breadcrumb.length > 0 && {
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumb.map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: c.label,
+          ...(c.href ? { item: `${BASE}${c.href}` } : {}),
+        })),
+      },
+      {
+        '@type': 'Product',
+        name: title,
+        ...(description ? { description } : {}),
+        ...(img ? { image: `${BASE}${img}` } : {}),
+        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'EUR',
+          ...(price ? { price: String(price).replace(',', '.') } : { price: '0', priceSpecification: { '@type': 'PriceSpecification', valueAddedTaxIncluded: false } }),
+          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+          areaServed: 'Île-de-France',
+          url: `${BASE}/devis`,
+        },
+      },
+    ].filter(Boolean),
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
