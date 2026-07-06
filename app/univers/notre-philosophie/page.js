@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 
@@ -36,9 +37,9 @@ export default function NotrePhilosophie() {
             overflow: 'hidden',
           }}
         >
-          <img loading="eager" src="/detail-bg.webp"
+          <Image fill priority sizes="100vw" src="/detail-bg.webp"
             alt="Notre Philosophie — L'Écrin Traiteur"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
           <div style={{
             position: 'absolute',

@@ -2,6 +2,7 @@
 
 import { useParams, notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import Reveal from '../../../../components/Reveal'
@@ -63,8 +64,8 @@ export default function ArtisanDetail() {
           </Reveal>
 
           <Reveal mode="mount" delay={120}>
-            <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <img loading="lazy" src={artisan.img} alt={artisan.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <div className="art-thumb" style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
+              <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={artisan.img} alt={artisan.nom} style={{ objectFit: 'cover' }} />
             </div>
           </Reveal>
         </div>
@@ -86,8 +87,8 @@ export default function ArtisanDetail() {
               </div>
             </Reveal>
             <Reveal delay={160}>
-              <div className="art-quote-img" style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '4px' }}>
-                <img loading="lazy" src={artisan.avatar || artisan.img} alt={artisan.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+              <div className="art-quote-img" style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '4px' }}>
+                <Image fill sizes="80px" src={artisan.avatar || artisan.img} alt={artisan.nom} style={{ objectFit: 'cover', objectPosition: 'center top' }} />
               </div>
             </Reveal>
           </div>
@@ -104,8 +105,8 @@ export default function ArtisanDetail() {
             {artisan.creations.map((c, i) => (
               <Reveal key={c.id} delay={(i % 4) * 90}>
                 <Link href={c.href} className="art-creation-card" style={{ textDecoration: 'none', display: 'block' }}>
-                  <div className="art-thumb" style={{ width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-                    <img loading="lazy" src={c.img} alt={c.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }} />
+                  <div className="art-thumb" style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
+                    <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={c.img} alt={c.nom} style={{ objectFit: 'cover', transition: 'transform 0.6s ease' }} />
                   </div>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)', marginTop: '12px', textAlign: 'center' }}>{c.nom}</p>
                 </Link>

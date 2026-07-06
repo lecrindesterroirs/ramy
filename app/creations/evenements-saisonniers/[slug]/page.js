@@ -1,6 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import { evenements } from '../evenementsData'
@@ -101,10 +102,10 @@ export default function EvenementDetail() {
         </div>
 
         {/* Image pleine largeur */}
-        <div style={{ width: '100%', height: '55vh', overflow: 'hidden', minHeight: '320px', maxHeight: '580px' }}>
-          <img loading="lazy" src={ev.img}
+        <div style={{ position: 'relative', width: '100%', height: '55vh', overflow: 'hidden', minHeight: '320px', maxHeight: '580px' }}>
+          <Image fill priority sizes="100vw" src={ev.img}
             alt={ev.nom}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            style={{ objectFit: 'cover' }}
           />
         </div>
 

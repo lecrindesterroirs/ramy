@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
@@ -48,8 +49,8 @@ function Icon({ name, size = 20, color = 'currentColor' }) {
 function ArtisanCard({ a }) {
   return (
     <Link href={`/univers/nos-artisans/${a.slug}`} className="artisan-mini-card" style={{ textDecoration: 'none', display: 'block', flex: '0 0 auto', width: '260px', background: '#FFFFFF' }}>
-      <div className="art-thumb" style={{ width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-        <img loading="lazy" src={a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      <div className="art-thumb" style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
+        <Image fill sizes="260px" src={a.img} alt={a.nom} style={{ objectFit: 'cover' }} />
       </div>
       <div style={{ padding: '18px 4px 4px', textAlign: 'center' }}>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '6px' }}>{a.specialite}</p>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
@@ -195,10 +196,10 @@ function MenuCard({ produit }) {
       {/* Photo du plat — pleine largeur dans la carte, overlay "Découvrir" au survol */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
-          <img loading="lazy" src={produit.img}
+          <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={produit.img}
             alt={produit.nom}
             style={{
-              width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
+              objectFit: 'cover', objectPosition: 'center',
               transition: 'transform 0.7s ease',
               transform: hovered ? 'scale(1.05)' : 'scale(1)',
             }}
@@ -308,10 +309,10 @@ export default function PlateauxRepas() {
         {/* ── Hero — contenu + immersif, aligné sur petit-déjeuner ── */}
         <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pr-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <img loading="eager" key={`hero-img-${col.key}`}
+            <Image fill priority sizes="100vw" key={`hero-img-${col.key}`}
               src={col.hero}
               alt={`Plateaux repas ${col.label}`}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
             {/* Dégradé sombre gauche pour la lisibilité du texte blanc */}
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />

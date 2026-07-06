@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import { FORMULES } from '../formulesData'
@@ -66,8 +67,8 @@ export default function FormulePage() {
                     {formule.badge}
                   </div>
                 )}
-                <img loading="lazy" src={formule.img} alt={formule.nom}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: formule.imgPosition || 'center center', display: 'block' }} />
+                <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={formule.img} alt={formule.nom}
+                  style={{ objectFit: 'cover', objectPosition: formule.imgPosition || 'center center' }} />
               </div>
             </div>
 

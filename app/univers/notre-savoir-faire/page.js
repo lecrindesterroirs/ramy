@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 
@@ -48,9 +49,9 @@ export default function NotreSavoirFaire() {
             overflow: 'hidden',
           }}
         >
-          <img loading="eager" src="/prod-atelier-saumon.webp"
+          <Image fill priority sizes="100vw" src="/prod-atelier-saumon.webp"
             alt="Notre Savoir-Faire — L'Écrin Traiteur"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+            style={{ objectFit: 'cover', objectPosition: 'center top' }}
           />
           <div style={{
             position: 'absolute',
@@ -149,10 +150,10 @@ export default function NotreSavoirFaire() {
                 direction: i % 2 !== 0 ? 'rtl' : 'ltr',
               }}
             >
-              <div style={{ overflow: 'hidden', direction: 'ltr' }}>
-                <img loading="lazy" src={e.img}
+              <div style={{ position: 'relative', height: '480px', overflow: 'hidden', direction: 'ltr' }}>
+                <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={e.img}
                   alt={e.titre}
-                  style={{ width: '100%', height: '480px', objectFit: 'cover', display: 'block' }}
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div

@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import Reveal from '../../../../components/Reveal'
@@ -109,7 +110,7 @@ export default function QuartierPage() {
         {/* ── Hero image pleine largeur ── */}
         <div className="q-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="q-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 48vw, 560px)', overflow: 'hidden' }}>
-            <img loading="eager" src="/hero-bg2.webp" alt={`Traiteur d'entreprise ${q.name}, ${city.name} — L'Écrin Traiteur`} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <Image fill priority sizes="100vw" src="/hero-bg2.webp" alt={`Traiteur d'entreprise ${q.name}, ${city.name} — L'Écrin Traiteur`} style={{ objectFit: 'cover', objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="q-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
@@ -189,7 +190,7 @@ export default function QuartierPage() {
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)' }}
                 >
                   <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
-                    <img loading="lazy" src={s.img} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={s.img} alt={s.label} style={{ objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '22px 22px 26px' }}>
                     <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>

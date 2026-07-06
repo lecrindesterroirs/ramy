@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useParams, notFound } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
@@ -153,8 +154,8 @@ function AnimGalleryFiche({ anim, universLabel }) {
 
       {/* ── Colonne gauche : galerie ── */}
       <div className="gallery-col">
-        <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-          <img loading="lazy" src={gallery[active]} alt={anim.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
+          <Image fill priority sizes="(max-width: 768px) 100vw, 55vw" src={gallery[active]} alt={anim.nom} style={{ objectFit: 'cover' }} />
         </div>
 
         {/* Miniatures */}
@@ -167,9 +168,9 @@ function AnimGalleryFiche({ anim, universLabel }) {
                 key={i}
                 onClick={() => setActive(i)}
                 aria-label={`Photo ${i + 1}`}
-                style={{ padding: 0, border: 'none', cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF', outline: isActive ? '2px solid var(--accent)' : '2px solid transparent', outlineOffset: '2px', transition: 'outline-color 0.2s ease' }}
+                style={{ position: 'relative', padding: 0, border: 'none', cursor: 'pointer', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF', outline: isActive ? '2px solid var(--accent)' : '2px solid transparent', outlineOffset: '2px', transition: 'outline-color 0.2s ease' }}
               >
-                <img loading="lazy" src={gallery[i]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: isActive ? 1 : 0.72, transition: 'opacity 0.2s ease' }} />
+                <Image fill sizes="160px" src={gallery[i]} alt="" style={{ objectFit: 'cover', opacity: isActive ? 1 : 0.72, transition: 'opacity 0.2s ease' }} />
               </button>
             ) : (
               <button

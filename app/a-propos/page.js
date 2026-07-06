@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 
@@ -51,9 +52,9 @@ export default function APropos() {
             overflow: 'hidden',
           }}
         >
-          <img loading="eager" src="/hero-bg2.webp"
+          <Image fill priority sizes="100vw" src="/hero-bg2.webp"
             alt="À Propos — L'Écrin Traiteur"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
           <div style={{
             position: 'absolute',
@@ -160,10 +161,10 @@ export default function APropos() {
             </p>
           </div>
 
-          <div style={{ overflow: 'hidden' }}>
-            <img loading="lazy" src="/img-reception.webp"
+          <div style={{ position: 'relative', height: '580px', overflow: 'hidden' }}>
+            <Image fill sizes="(max-width: 768px) 100vw, 50vw" src="/img-reception.webp"
               alt="L'Écrin Traiteur — notre histoire"
-              style={{ width: '100%', height: '580px', objectFit: 'cover', display: 'block' }}
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </div>
@@ -285,10 +286,10 @@ export default function APropos() {
           >
             {equipe.map((p, i) => (
               <div key={i} style={{ background: 'var(--bg-secondary)' }}>
-                <div style={{ width: '100%', aspectRatio: '3 / 4', overflow: 'hidden' }}>
-                  <img loading="lazy" src={p.img}
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '3 / 4', overflow: 'hidden' }}>
+                  <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={p.img}
                     alt={`${p.prenom} ${p.nom}`}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <div style={{ padding: '28px 28px 40px' }}>

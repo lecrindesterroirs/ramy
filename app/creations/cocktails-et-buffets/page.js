@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { FORMULES } from './formulesData'
@@ -27,8 +28,8 @@ function FormulaCard({ f }) {
     >
       {/* Image */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
-        <img loading="lazy" src={f.img} alt={f.nom}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: f.imgPosition || 'center center', display: 'block', transition: 'transform 0.6s ease' }}
+        <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={f.img} alt={f.nom}
+          style={{ objectFit: 'cover', objectPosition: f.imgPosition || 'center center', transition: 'transform 0.6s ease' }}
           className="formule-img"
         />
         {f.badge && (
@@ -82,8 +83,8 @@ export default function CocktailsEtBuffets() {
         {/* Hero */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img loading="eager" src="/creations-3.webp" alt="Cocktails & Buffets — L'Écrin Traiteur"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+            <Image fill priority sizes="100vw" src="/creations-3.webp" alt="Cocktails & Buffets — L'Écrin Traiteur"
+              style={{ objectFit: 'cover', objectPosition: 'center' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>

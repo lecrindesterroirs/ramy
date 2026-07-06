@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { articles } from '../../../lib/journalData'
@@ -19,10 +20,10 @@ export default function ArticlePage() {
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
         {/* ── Hero image ── */}
-        <div style={{ width: '100%', maxHeight: '520px', overflow: 'hidden' }}>
-          <img loading="eager" src={article.img}
+        <div style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>
+          <Image fill priority sizes="100vw" src={article.img}
             alt={article.titre}
-            style={{ width: '100%', height: '520px', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
         </div>
 
@@ -168,8 +169,8 @@ export default function ArticlePage() {
                       onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
                     >
                       {product.img && (
-                        <div style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
-                          <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+                          <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={product.img} alt={product.name} style={{ objectFit: 'cover' }} />
                         </div>
                       )}
                       <div style={{ padding: '16px 18px 20px' }}>

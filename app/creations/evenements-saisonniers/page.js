@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { evenements } from './evenementsData'
@@ -14,9 +15,9 @@ export default function EvenementsSaisonniers() {
         {/* Hero */}
         <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img loading="lazy" src="/creations-featured.webp"
+            <Image fill priority sizes="100vw" src="/creations-featured.webp"
               alt="Événements Saisonniers — L'Écrin Traiteur"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
@@ -79,15 +80,12 @@ export default function EvenementsSaisonniers() {
                 transition: 'opacity 0.25s ease',
               }}
             >
-              <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
-                <img loading="lazy" src={ev.img}
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
+                <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={ev.img}
                   alt={ev.nom}
                   className="sais-img"
                   style={{
-                    width: '100%',
-                    height: '100%',
                     objectFit: 'cover',
-                    display: 'block',
                     transition: 'transform 0.6s ease',
                   }}
                 />

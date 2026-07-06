@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
@@ -51,7 +52,7 @@ export default function Personnalisation() {
 
         {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
         <div className="pz-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 46vw, 580px)', overflow: 'hidden' }}>
-          <img loading="eager" src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
+          <Image fill priority sizes="100vw" src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.82) 0%, rgba(16,12,9,0.62) 38%, rgba(16,12,9,0.2) 64%, rgba(16,12,9,0) 82%)' }} />
           <Reveal mode="mount" y={16}>
             <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
@@ -85,7 +86,7 @@ export default function Personnalisation() {
             <Reveal key={f.nom} delay={(i % 6) * 70}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)', marginBottom: '16px' }}>
-                  <img loading="lazy" src={f.img} alt={f.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <Image fill sizes="(max-width: 768px) 50vw, 16vw" src={f.img} alt={f.nom} style={{ objectFit: 'cover' }} />
                 </div>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
                   {f.nom}

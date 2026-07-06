@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useParams, notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
@@ -50,8 +51,8 @@ function CoffretDetail({ produit }) {
             {produit.description}
           </p>
 
-          <div style={{ width: '100%', aspectRatio: '16/10', overflow: 'hidden', background: '#F8F5EF', marginBottom: '32px' }}>
-            <img loading="lazy" src={produit.img} alt={produit.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', overflow: 'hidden', background: '#F8F5EF', marginBottom: '32px' }}>
+            <Image fill sizes="(max-width: 768px) 100vw, 720px" src={produit.img} alt={produit.nom} style={{ objectFit: 'cover' }} />
           </div>
 
           {/* Formats disponibles */}

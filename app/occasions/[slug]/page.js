@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { OCCASIONS, FAQ_DERNIERE_MINUTE } from '../../../lib/occasionsData'
@@ -71,9 +72,9 @@ export default function OccasionPage() {
         {/* ── Hero photo ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <img loading="eager" src={heroImg}
+            <Image fill priority sizes="100vw" src={heroImg}
               alt={occasion.heroTitle}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
+              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 30%, rgba(0,0,0,0.30) 58%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
@@ -158,8 +159,8 @@ export default function OccasionPage() {
                   onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
                   onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
                 >
-                  <div style={{ aspectRatio: '1/1', overflow: 'hidden', background: '#EDE8DE' }}>
-                    <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <div style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', background: '#EDE8DE' }}>
+                    <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={product.img} alt={product.name} style={{ objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '18px 20px 22px' }}>
                     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '5px' }}>

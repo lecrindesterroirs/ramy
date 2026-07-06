@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { useState } from 'react'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
@@ -109,7 +110,7 @@ export default function ProductPage() {
 
             {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
             <div className="mad-hero" style={{ position: 'relative', width: '100%', height: 'clamp(360px, 42vw, 520px)', overflow: 'hidden' }}>
-              <img loading="eager" src="/madeleine-home.webp" alt="Les madeleines signature — L'Écrin Traiteur" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center right', display: 'block' }} />
+              <Image fill priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature — L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
@@ -132,7 +133,7 @@ export default function ProductPage() {
               {COFFRETS.map(c => (
                 <div key={c.id} style={{ textAlign: 'center' }}>
                   <div style={{ position: 'relative', width: '100%', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                    <img loading="lazy" src={c.img} alt={c.titre} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }} />
+                    <Image fill sizes="(max-width: 768px) 90vw, 380px" src={c.img} alt={c.titre} style={{ objectFit: 'contain' }} />
                   </div>
                   <div style={{ height: '26px', marginBottom: '8px' }}>
                     {c.popular && (
@@ -198,7 +199,7 @@ export default function ProductPage() {
               </div>
               {/* Cellule 2 : image madeleines */}
               <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px' }}>
-                <img loading="lazy" src="/prod-madeleines-20.webp" alt="Madeleines Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <Image fill sizes="(max-width: 768px) 100vw, 25vw" src="/prod-madeleines-20.webp" alt="Madeleines Mado Paris" style={{ objectFit: 'cover' }} />
               </div>
               {/* Cellule 3 : Notre artisan partenaire */}
               <div style={{ padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -217,7 +218,7 @@ export default function ProductPage() {
               </div>
               {/* Cellule 4 : photo atelier */}
               <div style={{ position: 'relative', overflow: 'hidden', minHeight: '300px' }}>
-                <img loading="lazy" src="/prod-madeleines-50.webp" alt="L'atelier Mado Paris" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <Image fill sizes="(max-width: 768px) 100vw, 25vw" src="/prod-madeleines-50.webp" alt="L'atelier Mado Paris" style={{ objectFit: 'cover' }} />
               </div>
             </div>
           </div>
@@ -227,7 +228,7 @@ export default function ProductPage() {
           <div className="fiche-grid" style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 72px 80px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'start' }}>
             <div className="fiche-image-col">
               <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden', background: '#F8F5EF', position: 'sticky', top: 'calc(var(--banner-h) + var(--nav-h) + 24px)' }}>
-                <img loading="lazy" src={product.img} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={product.img} alt={product.name} style={{ objectFit: 'cover' }} />
               </div>
             </div>
             <ProductInfo product={product} />
@@ -307,8 +308,8 @@ function GalleryFiche({ product }) {
 
       {/* ── Colonne gauche : galerie (grande) ── */}
       <div className="gallery-col">
-        <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-          <img loading="lazy" src={gallery[active]} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
+          <Image fill priority sizes="(max-width: 768px) 100vw, 55vw" src={gallery[active]} alt={product.name} style={{ objectFit: 'cover' }} />
         </div>
       </div>
 
