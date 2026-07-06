@@ -8,10 +8,10 @@ export async function generateMetadata({ params }) {
   }
   return {
     title: city.seoTitle,
-    description: `L'Écrin Traiteur livre à ${city.name} — petits-déjeuners artisanaux, pauses gourmandes et coffrets pour vos événements d'entreprise. Livraison dès 6h30, commande avant 14h la veille.`,
+    description: `L'Écrin Traiteur livre à ${city.name} — petits-déjeuners, plateaux repas, cocktails, buffets et animations culinaires pour vos événements d'entreprise. Livraison dès 6h30, commande avant 14h la veille.`,
     openGraph: {
       title: `Traiteur ${city.name} | L'Écrin Traiteur`,
-      description: `Petits-déjeuners et pauses d'entreprise livrés à ${city.name}. Artisans sélectionnés, livraison dès 6h30.`,
+      description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et réceptions. Artisans sélectionnés, livraison dès 6h30.`,
       locale: 'fr_FR',
       type: 'website',
     },
