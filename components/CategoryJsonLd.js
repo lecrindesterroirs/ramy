@@ -2,7 +2,7 @@
 // Rendu côté serveur (SSR) même dans une page 'use client'.
 const SITE = 'https://www.lecrin-traiteur.fr'
 
-export default function CategoryJsonLd({ name, path, items }) {
+export default function CategoryJsonLd({ name, path, items, serviceType }) {
   const graph = [
     {
       '@type': 'BreadcrumbList',
@@ -11,6 +11,16 @@ export default function CategoryJsonLd({ name, path, items }) {
         { '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE },
         { '@type': 'ListItem', position: 2, name, item: `${SITE}${path}` },
       ],
+    },
+    {
+      // Prestation traiteur — renforce la pertinence "traiteur d'entreprise"
+      '@type': 'Service',
+      '@id': `${SITE}${path}#service`,
+      name: `${name} — traiteur d'entreprise`,
+      serviceType: serviceType || `Traiteur ${name}`,
+      provider: { '@id': `${SITE}/#business` },
+      areaServed: { '@type': 'State', name: 'Île-de-France' },
+      url: `${SITE}${path}`,
     },
   ]
 

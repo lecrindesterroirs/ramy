@@ -73,6 +73,16 @@ export default function CityPage() {
       opens: '06:30',
       closes: '14:00',
     },
+    hasMenu: {
+      '@type': 'Menu',
+      name: 'Prestations traiteur entreprise',
+      hasMenuSection: [
+        { '@type': 'MenuSection', name: 'Petits-déjeuners & pauses', description: 'Viennoiseries, madeleines Mado Paris, corbeilles de fruits, cafés et thés livrés dès 6h30.' },
+        { '@type': 'MenuSection', name: 'Plateaux repas & lunch box', description: 'Menus individuels complets — entrée, plat, dessert — préparés le matin même.' },
+        { '@type': 'MenuSection', name: 'Cocktails & buffets', description: 'Pièces salées et sucrées artisanales pour réceptions et afterworks.' },
+        { '@type': 'MenuSection', name: 'Animations culinaires', description: 'Ateliers et bars préparés en direct devant vos invités.' },
+      ],
+    },
   }
 
   const breadcrumbLd = {
