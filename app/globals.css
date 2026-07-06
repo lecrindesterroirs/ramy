@@ -52,7 +52,7 @@
   --text-primary: #111111;
   --text-secondary: #605A4F; /* foncé pour WCAG AA (≥4,5:1) y compris sur fond crème */
   --accent: #E0A126;          /* jaune signature — fonds, ornements, filets */
-  --accent-deep: #9A6B12;     /* accent en TEXTE sur fond clair — contraste WCAG AA (4,5:1) */
+  --accent-deep: #875E10;     /* accent en TEXTE sur fond clair — WCAG AA ≥4,5:1 même sur crème (#F8F5EF) */
   --banner-h: 36px;
   --nav-h: 72px;
   --header-h: 72px; /* nav seule — toutes pages sauf produit */

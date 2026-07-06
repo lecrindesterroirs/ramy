@@ -112,7 +112,7 @@ export default function VillesSection() {
                   fontFamily: "'Neue Montreal', sans-serif",
                   fontSize: '10px',
                   fontWeight: 400,
-                  color: 'rgba(17,17,17,0.35)',
+                  color: 'rgba(17,17,17,0.62)',
                   letterSpacing: '0.04em',
                 }}>
                   {city.region.split(' ')[0] === city.region.split('(')[0].trim()
@@ -150,7 +150,7 @@ export default function VillesSection() {
                 fontFamily: "'Neue Montreal', sans-serif",
                 fontSize: '11px',
                 fontWeight: 400,
-                color: 'rgba(17,17,17,0.45)',
+                color: 'rgba(17,17,17,0.62)',
                 letterSpacing: '0.07em',
                 textTransform: 'uppercase',
               }}>

@@ -149,16 +149,16 @@ export default function Footer() {
               { label: 'Cookies', href: '/cookies' },
             ].map(l => (
               <a key={l.label} href={l.href}
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.38)', textDecoration: 'none', letterSpacing: '0.03em', transition: 'color 0.2s ease' }}
+                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em', transition: 'color 0.2s ease' }}
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.38)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.62)'}
               >{l.label}</a>
             ))}
           </div>
 
           {/* Droite */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)', letterSpacing: '0.03em' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.6)', letterSpacing: '0.03em' }}>
               © 2026 L'Écrin Traiteur
             </p>
           </div>
