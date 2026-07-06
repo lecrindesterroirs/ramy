@@ -1,7 +1,7 @@
 export const metadata = {
   alternates: { canonical: '/creations/boissons' },
   title: "Boissons artisanales pour entreprises",
-  description: "Jus Alain Milliat, thés Mariage Frères, cafés bio et eaux. Une sélection de boissons de qualité pour accompagner vos pauses et petits-déjeuners d'entreprise.",
+  description: "Boissons traiteur à Paris : jus Alain Milliat, thés Mariage Frères, cafés bio et eaux pour vos pauses et petits-déjeuners d'entreprise.",
   openGraph: {
     title: "Boissons artisanales pour entreprises | L'Écrin Traiteur",
     description: "Jus Alain Milliat, thés Mariage Frères, cafés bio. Des boissons choisies pour leur qualité.",

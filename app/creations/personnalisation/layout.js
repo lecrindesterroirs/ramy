@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Personnalisation traiteur entreprise — number cakes, packaging & messages",
-  description: "Personnalisez vos prestations : number cakes, plaques chocolat au message de votre équipe, packaging aux couleurs de l'entreprise, cartes vierges. Livraison à Paris et en Île-de-France, devis sous 24h.",
+  description: "Personnalisez vos prestations traiteur : number cakes, plaques chocolat au message et packaging aux couleurs de votre entreprise à Paris.",
   alternates: { canonical: '/creations/personnalisation' },
   openGraph: {
     title: "Personnalisation traiteur | L'Écrin Traiteur",
