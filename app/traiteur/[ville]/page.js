@@ -8,7 +8,9 @@ import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import LogosSection from '../../../components/LogosSection'
 import CategoryClosing from '../../../components/CategoryClosing'
+import RelatedLinks from '../../../components/RelatedLinks'
 import { CITIES } from '../../../lib/citiesData'
+import { CITY_NEIGHBORS } from '../../../lib/cityNeighbors'
 import { OCCASIONS } from '../../../lib/occasionsData'
 
 const SERVICES = [
@@ -36,6 +38,12 @@ export default function CityPage() {
   const { ville } = useParams()
   const city = CITIES.find(c => c.slug === ville)
   if (!city) notFound()
+
+  // Maillage local : communes limitrophes desservies
+  const neighbors = (CITY_NEIGHBORS[city.slug] || [])
+    .map(slug => CITIES.find(c => c.slug === slug))
+    .filter(Boolean)
+    .slice(0, 4)
 
   // JSON-LD LocalBusiness schema
   const jsonLd = {
@@ -243,6 +251,17 @@ export default function CityPage() {
         </div>
 
       </main>
+
+      <RelatedLinks
+        eyebrow="Nous livrons aussi à proximité"
+        title={`Traiteur d'entreprise autour de ${city.name}`}
+        items={neighbors.map(c => ({
+          href: `/traiteur/${c.slug}`,
+          title: `Traiteur ${c.name}`,
+          meta: 'À proximité',
+        }))}
+        columns={4}
+      />
 
       {/* ── Éditorial + arguments + CTA + article SEO ── */}
       <CategoryClosing

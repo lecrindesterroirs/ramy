@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import RelatedLinks from '../../../components/RelatedLinks'
 import { articles } from '../../../lib/journalData'
 import { PRODUCTS } from '../../../lib/productsData'
 
@@ -12,6 +13,12 @@ export default function ArticlePage() {
   const { slug } = useParams()
   const article = articles.find(a => a.slug === slug)
   if (!article) notFound()
+
+  // Maillage latéral : 3 articles liés (même catégorie en priorité, complété par les plus récents)
+  const related = [...articles]
+    .filter(a => a.slug !== article.slug)
+    .sort((a, b) => (b.categorie === article.categorie) - (a.categorie === article.categorie))
+    .slice(0, 3)
 
   return (
     <>
@@ -211,6 +218,16 @@ export default function ArticlePage() {
             </a>
           </div>
         </div>
+
+        <RelatedLinks
+          eyebrow="À lire aussi"
+          title="Continuez la lecture"
+          items={related.map(a => ({
+            href: `/journal/${a.slug}`,
+            title: a.titre,
+            meta: a.categorie,
+          }))}
+        />
 
       </main>
 

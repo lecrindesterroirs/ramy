@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import DevisRapide from './DevisRapide'
+import RelatedLinks from './RelatedLinks'
 
 /*
   Fiche détail réutilisable — structure "Petit-déjeuner" (référence DA du site).
@@ -35,6 +36,7 @@ export default function GalleryFiche({
   seoEyebrow, seoTitle, seoHtml, devisPrestation = '',
   devisTitre = 'Un événement à Paris ou en Île-de-France ?',
   devisSousTitre = 'Répondez en 30 secondes — devis personnalisé sous 24h.',
+  related = [], relatedTitle = 'Dans la même sélection',
 }) {
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
@@ -256,6 +258,8 @@ export default function GalleryFiche({
           .gf-seo { padding: 60px 40px 80px !important; }
         }
       ` }} />
+
+      <RelatedLinks eyebrow="Produits similaires" title={relatedTitle} items={related} columns={4} />
 
       <Footer />
     </>

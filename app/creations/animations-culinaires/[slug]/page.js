@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
+import RelatedLinks from '../../../../components/RelatedLinks'
 import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
 export default function AnimationDetail() {
@@ -14,6 +15,11 @@ export default function AnimationDetail() {
   if (!anim) notFound()
 
   const universLabel = UNIVERS_LABEL[anim.univers] ?? 'Animation culinaire'
+
+  const related = [...ANIMATIONS].filter(a => a.id !== anim.id)
+    .sort((a, b) => (b.univers === anim.univers) - (a.univers === anim.univers))
+    .slice(0, 4)
+    .map(a => ({ href: `/creations/animations-culinaires/${slugAnim(a.nom)}`, title: a.nom, meta: UNIVERS_LABEL[a.univers] || 'Animation' }))
 
   const breadcrumb = [
     { label: 'Accueil', href: '/' },
@@ -128,6 +134,8 @@ export default function AnimationDetail() {
           .fiche-seo { padding: 60px 40px 80px !important; }
         }
       ` }} />
+
+      <RelatedLinks eyebrow="Animations similaires" title="D'autres animations culinaires" items={related} columns={4} />
 
       <Footer />
     </>

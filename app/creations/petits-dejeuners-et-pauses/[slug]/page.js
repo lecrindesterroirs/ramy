@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
+import RelatedLinks from '../../../../components/RelatedLinks'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
 import DevisRapide from '../../../../components/DevisRapide'
 
@@ -62,6 +63,12 @@ export default function ProductPage() {
 
   const product = PRODUCTS.find(p => p.id === slug)
   if (!product) notFound()
+
+  const related = [...PRODUCTS]
+    .filter(p => p.id !== product.id)
+    .sort((a, b) => (b.category === product.category) - (a.category === product.category))
+    .slice(0, 4)
+    .map(p => ({ href: `/creations/petits-dejeuners-et-pauses/${p.id}`, title: p.shortName || p.name, meta: p.categoryLabel }))
 
   // Galerie = fiche par défaut pour tous les produits (sauf coffrets madeleines)
   const isGallery = !product.isMadeleine
@@ -327,6 +334,8 @@ export default function ProductPage() {
           .mad-4col { grid-template-columns: 1fr 1fr !important; }
         }
       ` }} />
+
+      <RelatedLinks eyebrow="Produits similaires" title="Dans la même sélection" items={related} columns={4} />
 
       <Footer />
     </>

@@ -4,7 +4,9 @@ import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
+import RelatedLinks from '../../../../components/RelatedLinks'
 import { evenements } from '../evenementsData'
+import { articles } from '../../../../lib/journalData'
 
 export default function EvenementDetail() {
   const { slug } = useParams()
@@ -457,6 +459,16 @@ export default function EvenementDetail() {
           .ev-nav { padding: 32px 40px !important; }
         }
       ` }} />
+
+      <RelatedLinks
+        eyebrow="À découvrir aussi"
+        title="Autres rendez-vous & lectures"
+        items={[
+          ...evenements.filter(e => e.slug !== ev.slug).slice(0, 2).map(e => ({ href: `/creations/evenements-saisonniers/${e.slug}`, title: e.nom, meta: 'Événement saisonnier' })),
+          ...articles.slice(0, 2).map(a => ({ href: `/journal/${a.slug}`, title: a.titre, meta: a.categorie })),
+        ]}
+        columns={4}
+      />
 
       <Footer />
     </>

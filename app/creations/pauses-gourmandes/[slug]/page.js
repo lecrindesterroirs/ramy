@@ -8,7 +8,11 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import GalleryFiche from '../../../../components/GalleryFiche'
+import RelatedLinks from '../../../../components/RelatedLinks'
 import { PAUSES } from '../page'
+
+const pauseRelated = (produit) => PAUSES.filter(p => p.id !== produit.id).slice(0, 4)
+  .map(p => ({ href: `/creations/pauses-gourmandes/${p.id}`, title: p.nom, meta: 'Pause gourmande' }))
 
 const SEO_HTML = `
   <p>La <strong>pause gourmande</strong> est un moment fédérateur dans la journée de travail : un goûter d'équipe, une réunion de l'après-midi ou une attention pour marquer un événement. Quelques douceurs artisanales suffisent à transformer une pause en instant convivial.</p>
@@ -144,6 +148,8 @@ function CoffretDetail({ produit }) {
         }
       ` }} />
 
+      <RelatedLinks eyebrow="Produits similaires" title="D'autres pauses gourmandes" items={pauseRelated(produit)} columns={4} />
+
       <Footer />
     </>
   )
@@ -161,6 +167,8 @@ export default function PauseDetail() {
   return (
     <GalleryFiche
       title={produit.nom}
+      related={pauseRelated(produit)}
+      relatedTitle="D'autres pauses gourmandes"
       subtitle="Pause Gourmande · L'après-midi"
       img={produit.img}
       price={null}

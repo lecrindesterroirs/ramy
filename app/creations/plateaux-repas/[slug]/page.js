@@ -25,9 +25,17 @@ export default function PlateauDetail() {
     produit.dessert && { label: 'Dessert', value: produit.dessert },
   ].filter(Boolean)
 
+  const related = [...PRODUITS]
+    .filter(p => p.id !== produit.id)
+    .sort((a, b) => (b.collection === produit.collection) - (a.collection === produit.collection))
+    .slice(0, 4)
+    .map(p => ({ href: `/creations/plateaux-repas/${p.id}`, title: p.nom, meta: COLLECTIONS.find(c => c.key === p.collection)?.label }))
+
   return (
     <GalleryFiche
       title={produit.nom}
+      related={related}
+      relatedTitle="D'autres plateaux repas"
       subtitle={`Collection ${col?.label ?? ''}`}
       img={produit.img}
       price={prixMenu(produit)}

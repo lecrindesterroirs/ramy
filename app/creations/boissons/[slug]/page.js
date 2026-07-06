@@ -9,9 +9,14 @@ export default function BoissonPage() {
   const product = BOISSONS.find(p => p.id === slug)
   if (!product) notFound()
 
+  const related = BOISSONS.filter(p => p.id !== product.id).slice(0, 4)
+    .map(p => ({ href: `/creations/boissons/${p.id}`, title: p.name, meta: 'Boisson' }))
+
   return (
     <GalleryFiche
       title={product.name}
+      related={related}
+      relatedTitle="D'autres boissons"
       subtitle={product.qty}
       img={product.img}
       description={product.ingredients}
