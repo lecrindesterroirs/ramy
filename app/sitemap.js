@@ -68,6 +68,9 @@ export default function sitemap() {
     // SEO local — hub
     url('/traiteur',                                      0.88, 'monthly'),
 
+    // SEO thématique — traiteur halal & inclusif
+    url('/traiteur-halal',                                0.90, 'monthly'),
+
     // Pages légales
     url('/mentions-legales',                              0.2,  'yearly'),
     url('/cgv',                                           0.2,  'yearly'),
