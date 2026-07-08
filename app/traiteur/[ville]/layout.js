@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
     title: { absolute: `${city.seoTitle} | L'Écrin Traiteur` },
     description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Artisans sélectionnés, devis sous 24h.`,
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
       title: `Traiteur ${city.name} | L'Écrin Traiteur`,
       description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et réceptions. Artisans sélectionnés, livraison dès 6h30.`,
       locale: 'fr_FR',

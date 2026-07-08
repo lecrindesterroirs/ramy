@@ -56,7 +56,7 @@ export default function AnimationDetail() {
     <p>${anim.description} L'Écrin Traiteur installe cette animation dans vos locaux ou votre lieu d'événement, partout à Paris et en Île-de-France : un artisan prépare devant vos invités, pour un moment aussi beau à regarder qu'agréable à déguster.</p>
 
     <h2>Pourquoi choisir une animation live plutôt qu'un buffet classique ?</h2>
-    <p>L'animation met le geste au centre. Vos invités choisissent, échangent avec la personne qui prépare et repartent avec un souvenir. C'est ce supplément d'humain et de spectacle qui transforme une prestation traiteur en moment mémorable — idéal pour une fête de fin d'année, une inauguration, une journée collaborateurs ou une semaine QVT.</p>
+    <p>L'animation met le geste au centre. Vos invités choisissent, échangent avec la personne qui prépare et repartent avec un souvenir. C'est ce supplément d'humain et de spectacle qui transforme une prestation traiteur en moment mémorable, idéal pour une fête de fin d'année, une inauguration, une journée collaborateurs ou une semaine QVT.</p>
 
     <h2>Organiser votre ${nomLc} à Paris et en Île-de-France</h2>
     <p>Chaque animation se construit sur devis : date, lieu, nombre d'invités, durée et contraintes techniques (accès, électricité, espace). Notre équipe vous répond sous <strong>24h</strong> avec une proposition détaillée, installation et démontage inclus. Facturation entreprise avec TVA.</p>
@@ -101,13 +101,13 @@ export default function AnimationDetail() {
             Animations Culinaires
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
-            {anim.nom} — animation traiteur à Paris
+            {anim.nom}, animation traiteur à Paris
           </h2>
           <div className="fiche-article-body" dangerouslySetInnerHTML={{ __html: seoArticle }} />
           <DevisRapide
             defaultPrestation="Cocktail / Buffet"
             titre="Une animation pour votre événement d'entreprise ?"
-            sousTitre="Répondez en 30 secondes — devis personnalisé sous 24h."
+            sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
             <a href="/creations/animations-culinaires" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>

@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-// Fil d'Ariane visible réutilisable — items: [{ label, href? }]
+// Fil d'Ariane visible réutilisable, items: [{ label, href? }]
 // Le dernier item (sans href) est la page courante. Style aligné sur le fil
 // des fiches produit (GalleryFiche).
 // variant='bar' (défaut) : bandeau pleine largeur avec padding page (72px).
-// variant='inline'       : juste le fil, sans wrapper — pour s'aligner sur une
+// variant='inline'       : juste le fil, sans wrapper, pour s'aligner sur une
 //                          colonne parente (ex. article de blog, 760px centré).
 export default function Breadcrumb({ items = [], variant = 'bar' }) {
   if (!items.length) return null

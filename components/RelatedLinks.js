@@ -1,6 +1,6 @@
 'use client'
 
-// Bloc de maillage latéral réutilisable — "À lire aussi", "Villes limitrophes",
+// Bloc de maillage latéral réutilisable, "À lire aussi", "Villes limitrophes",
 // "Produits similaires". Éditorial, fidèle à la DA L'Écrin.
 // items : [{ href, title, meta? }]  (meta = catégorie, département, sous-titre…)
 export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, background = 'var(--bg-secondary)' }) {

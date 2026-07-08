@@ -13,10 +13,10 @@ export default function CategoryJsonLd({ name, path, items, serviceType }) {
       ],
     },
     {
-      // Prestation traiteur — renforce la pertinence "traiteur d'entreprise"
+      // Prestation traiteur, renforce la pertinence "traiteur d'entreprise"
       '@type': 'Service',
       '@id': `${SITE}${path}#service`,
-      name: `${name} — traiteur d'entreprise`,
+      name: `${name}, traiteur d'entreprise`,
       serviceType: serviceType || `Traiteur ${name}`,
       provider: { '@id': `${SITE}/#business` },
       areaServed: { '@type': 'State', name: 'Île-de-France' },

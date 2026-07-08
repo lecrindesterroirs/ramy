@@ -6,7 +6,7 @@ const META = {
   'sw3': { nom: 'Wraps Gourmands',             d: 'Assortiment de wraps découpés en bouchées.' },
   'sw4': { nom: 'Mini Burgers',                d: 'Assortiment de mini burgers artisanaux.' },
   'go1': { nom: 'Fromages Affinés',            d: 'Sélection de fromages affinés, fruits frais, fruits secs et pain artisanal.' },
-  'go2': { nom: 'Charcuteries Artisanales',    d: 'Bœuf séché, bresaola, dinde & poulet fumés, cornichons — halal, sans porc.' },
+  'go2': { nom: 'Charcuteries Artisanales',    d: 'Bœuf séché, bresaola, dinde & poulet fumés, cornichons, halal, sans porc.' },
   'go4': { nom: 'Saumon',                      d: 'Saumon fumé, gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.' },
   'fr1': { nom: 'Crudités & Dips',             d: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.' },
   'fr3': { nom: 'Fruits Frais',                d: 'Sélection de fruits frais de saison découpés.' },
@@ -20,9 +20,9 @@ export function generateMetadata({ params }) {
   const m = META[params.slug]
   const path = `/creations/plateaux-aperitifs/${params.slug}`
   if (!m) {
-    return { title: "Plateaux apéritifs à partager — traiteur à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
+    return { title: "Plateaux apéritifs à partager, traiteur à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
-  const title = `${m.nom} — apéritif Paris | L'Écrin Traiteur`
+  const title = `${m.nom}, apéritif Paris | L'Écrin Traiteur`
   const description = `${m.d} Plateau apéritif à partager livré à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
     title: { absolute: title },

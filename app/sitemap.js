@@ -12,7 +12,7 @@ import { SLUGS as COCKTAILS_SLUGS } from './creations/cocktails/[slug]/layout'
 import { ANIMATIONS, slugAnim } from './creations/animations-culinaires/data'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
-// Date de dernière mise à jour éditoriale — figée volontairement (ne pas remettre
+// Date de dernière mise à jour éditoriale, figée volontairement (ne pas remettre
 // new Date() : cela ferait croire à Google que tout change à chaque build).
 // À bumper lors d'une vraie refonte de contenu.
 const NOW = '2026-07-06T00:00:00.000Z'
@@ -57,13 +57,13 @@ export default function sitemap() {
     // Journal
     url('/journal',                                       0.70, 'weekly'),
 
-    // Occasions — hub
+    // Occasions, hub
     url('/occasions',                                     0.85, 'monthly'),
 
-    // SEO local — hub
+    // SEO local, hub
     url('/traiteur',                                      0.88, 'monthly'),
 
-    // SEO thématique — traiteur halal & inclusif
+    // SEO thématique, traiteur halal & inclusif
     url('/traiteur-halal',                                0.90, 'monthly'),
 
     // Pages légales
@@ -110,13 +110,13 @@ export default function sitemap() {
     changeFrequency: 'yearly',
   }))
 
-  // ── SEO local — villes ────────────────────────────────────────────
+  // ── SEO local, villes ────────────────────────────────────────────
   const cityPages = CITIES.map(c => url(
     `/traiteur/${c.slug}`,
     0.85, 'monthly'
   ))
 
-  // ── SEO local — quartiers ─────────────────────────────────────────
+  // ── SEO local, quartiers ─────────────────────────────────────────
   const quartierPages = CITIES.flatMap(c =>
     (c.quartiers ?? []).map(q => url(
       `/traiteur/${c.slug}/${q.slug}`,

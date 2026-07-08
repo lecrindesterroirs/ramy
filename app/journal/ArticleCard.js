@@ -46,7 +46,7 @@ export default function ArticleCard({ article }) {
         }}>
           {article.categorie}
         </span>
-        <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>—</span>
+        <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
         <span style={{
           fontFamily: "'Neue Montreal', sans-serif",
           fontSize: '11px',

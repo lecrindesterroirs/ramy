@@ -135,8 +135,8 @@ function ProductCard({ product, basePath }) {
     ? `${basePath}/${product.id}`
     : '/devis'
 
-  // "16 pièces — 26,80€" → pièces + prix séparés
-  const parts = (product.label || '').split('—').map(s => s.trim()).filter(Boolean)
+  // "16 pièces, 26,80€" → pièces + prix séparés
+  const parts = (product.label || '').split('·').map(s => s.trim()).filter(Boolean)
   const hasPieces = parts.length > 1
   const pieces = hasPieces ? parts[0] : ''
   const priceRaw = hasPieces ? parts[1] : parts[0]
@@ -187,7 +187,7 @@ function ProductCard({ product, basePath }) {
         </div>
       </div>
 
-      {/* Contenu dans la carte — nom, prix, pièces */}
+      {/* Contenu dans la carte, nom, prix, pièces */}
       <div style={{ padding: '16px 16px 16px', display: 'flex', flexDirection: 'column' }}>
         <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '9px', transition: 'color 0.25s ease' }}>
           {product.name}

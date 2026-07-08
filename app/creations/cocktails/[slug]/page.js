@@ -64,7 +64,7 @@ export default function CocktailDetail() {
       {
         '@type': 'Product',
         name: nomFormule,
-        description: `Formule cocktail ${f.label} — ${f.pieces} pièces salées et sucrées façonnées à la main, pour vos réceptions et afterworks d'entreprise à Paris et en Île-de-France.`,
+        description: `Formule cocktail ${f.label} · ${f.pieces} pièces salées et sucrées façonnées à la main, pour vos réceptions et afterworks d'entreprise à Paris et en Île-de-France.`,
         ...(f.img ? { image: `${BASE}${f.img}` } : {}),
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
         category: "Cocktail & Buffet d'entreprise",
@@ -81,7 +81,7 @@ export default function CocktailDetail() {
 
         <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails', href: '/creations/cocktails' }, { label: nomFormule }]} />
 
-        {/* ── Galerie éditoriale — l'ambiance (d'abord, pour créer l'envie) ── */}
+        {/* ── Galerie éditoriale, l'ambiance (d'abord, pour créer l'envie) ── */}
         <section style={{ background: '#F5F1E8', padding: '56px 0 96px' }}>
           <Reveal mode="mount" y={16}>
             <div className="ckd-shell" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px 44px', textAlign: 'center' }}>
@@ -89,10 +89,10 @@ export default function CocktailDetail() {
                 En images
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
-                {nomFormule} — l&apos;art de recevoir
+                {nomFormule}, l&apos;art de recevoir
               </h1>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '540px', margin: '0 auto' }}>
-                Des bouchées façonnées à la main, un dressage soigné, une atmosphère qui fait la différence — l&apos;esprit de vos réceptions et afterworks.
+                Des bouchées façonnées à la main, un dressage soigné, une atmosphère qui fait la différence, l&apos;esprit de vos réceptions et afterworks.
               </p>
             </div>
           </Reveal>
@@ -129,7 +129,7 @@ export default function CocktailDetail() {
 
         {/* ── Devis + retour ── */}
         <section className="ckd-shell" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
-          <DevisRapide defaultPrestation="Cocktail dînatoire" titre="Un cocktail à organiser ?" sousTitre="Répondez en 30 secondes — devis personnalisé sous 24h." />
+          <DevisRapide defaultPrestation="Cocktail dînatoire" titre="Un cocktail à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
             <Link href="/creations/cocktails" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
               ← Retour aux cocktails

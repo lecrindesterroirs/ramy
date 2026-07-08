@@ -1,4 +1,4 @@
-/* Métadonnées SEO par formule — table locale (les données vivent dans la page 'use client',
+/* Métadonnées SEO par formule, table locale (les données vivent dans la page 'use client',
    non importable côté serveur ; on garde une source légère ici). */
 const META = {
   classique: { nom: "L'Invitation", kw: 'apéritif', pieces: 8, accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.', img: '/cocktail-classique.webp' },
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   const f = META[slug]
   if (!f) return { title: "Cocktail introuvable | L'Écrin Traiteur" }
   return {
-    title: { absolute: `Cocktail ${f.nom} — ${f.kw} Paris | L'Écrin Traiteur` },
+    title: { absolute: `Cocktail ${f.nom}, ${f.kw} Paris | L'Écrin Traiteur` },
     description: `${f.accroche} Cocktail ${f.kw} (${f.pieces} pièces/pers.), pièces artisanales livrées prêtes à servir à Paris et en Île-de-France. Devis sous 24h.`,
     openGraph: {
       title: `Cocktail ${f.nom} | L'Écrin Traiteur`,

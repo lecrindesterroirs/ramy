@@ -12,10 +12,10 @@ import CategoryTabs from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Lunch box entreprise à Paris : le déjeuner individuel, pratique et gourmand</h2>
-  <p>La <strong>lunch box d'entreprise</strong> répond à un besoin simple : nourrir bien, individuellement et sans installation. Formations, journées d'étude, équipes en déplacement, tournages — chaque convive reçoit sa boîte complète, prête à emporter ou à ouvrir sur place. L'Écrin Traiteur livre vos lunch box à Paris et en Île-de-France, préparées le matin même.</p>
+  <p>La <strong>lunch box d'entreprise</strong> répond à un besoin simple : nourrir bien, individuellement et sans installation. Formations, journées d'étude, équipes en déplacement, tournages, chaque convive reçoit sa boîte complète, prête à emporter ou à ouvrir sur place. L'Écrin Traiteur livre vos lunch box à Paris et en Île-de-France, préparées le matin même.</p>
 
   <h2>Une boîte complète, composée comme un vrai repas</h2>
-  <p>Chaque lunch box associe un plat travaillé, un accompagnement et une touche sucrée, dans un contenant soigné et facile à transporter. Ce n'est pas un sandwich de dépannage : c'est un déjeuner pensé, avec des produits frais et des recettes qui changent — de quoi faire d'une journée de formation un souvenir un peu meilleur.</p>
+  <p>Chaque lunch box associe un plat travaillé, un accompagnement et une touche sucrée, dans un contenant soigné et facile à transporter. Ce n'est pas un sandwich de dépannage : c'est un déjeuner pensé, avec des produits frais et des recettes qui changent, de quoi faire d'une journée de formation un souvenir un peu meilleur.</p>
 
   <h2>Le bon format pour les journées contraintes</h2>
   <p>La lunch box brille là où le plateau repas est trop formel et le buffet impossible : horaires serrés, salles sans office, groupes qui se déplacent entre deux sites. Distribution en quelques minutes, zéro vaisselle, tri des emballages simplifié. Indiquez les régimes spécifiques (végétarien, sans gluten) à la commande : chacun reçoit une boîte équivalente.</p>
@@ -193,7 +193,7 @@ export default function LunchBox() {
 
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* ── Hero — contenu + immersif, aligné sur les autres pages ── */}
+        {/* ── Hero, contenu + immersif, aligné sur les autres pages ── */}
         <div className="lb-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="lb-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
             <Image fill priority sizes="100vw" src={HERO.hero}
@@ -283,7 +283,7 @@ export default function LunchBox() {
       <CategoryClosing
         eyebrow="Pensé pour les formats individuels"
         title={'Un déjeuner complet.\nZéro installation.'}
-        body="Formations, séminaires itinérants, équipes en déplacement : la lunch box livre un vrai repas dans une boîte soignée. Distribution immédiate, aucun office nécessaire — la qualité L'Écrin, format nomade."
+        body="Formations, séminaires itinérants, équipes en déplacement : la lunch box livre un vrai repas dans une boîte soignée. Distribution immédiate, aucun office nécessaire, la qualité L'Écrin, format nomade."
         seoArticle={SEO_ARTICLE}
       />
 

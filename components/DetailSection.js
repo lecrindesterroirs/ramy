@@ -43,7 +43,7 @@ export default function DetailSection() {
           <Image fill className="detail-img"
             sizes="100vw"
             src="/detail-home.webp"
-            alt="Le détail fait la différence — L'Écrin Traiteur"
+            alt="Le détail fait la différence, L'Écrin Traiteur"
             style={{
               objectFit: 'cover',
               display: 'block',
@@ -97,7 +97,7 @@ export default function DetailSection() {
           </div>
         </div>
 
-        {/* ── 3 arguments bas — desktop ── */}
+        {/* ── 3 arguments bas, desktop ── */}
         <div
           className="reveal detail-args-desktop"
           style={{
@@ -125,7 +125,7 @@ export default function DetailSection() {
           ))}
         </div>
 
-        {/* ── 3 arguments bas — mobile accordion ── */}
+        {/* ── 3 arguments bas, mobile accordion ── */}
         <div className="detail-args-mobile" style={{ padding: '32px 24px 32px' }}>
           {args.map((item, i) => (
             <div

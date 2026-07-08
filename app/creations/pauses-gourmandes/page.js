@@ -15,24 +15,24 @@ const SEO_ARTICLE = `
   <p>La <strong>pause gourmande d'entreprise</strong> est le moment le plus attendu de l'après-midi : entre deux sessions de séminaire, à la fin d'une formation ou pour célébrer une bonne nouvelle d'équipe. L'Écrin Traiteur livre vos goûters partout à Paris et en Île-de-France, avec des douceurs artisanales préparées le jour même.</p>
 
   <h2>Madeleines, cookies, tartelettes : une carte sucrée artisanale</h2>
-  <p>Notre carte des pauses réunit les madeleines <strong>Mado Paris</strong> — réputées comme les meilleures de Paris —, des cookies généreux, des cakes maison tranchés, des tartelettes citron ou praliné et des brochettes de fruits frais. Une sélection qui alterne le réconfortant et le léger, pour que chacun y trouve son plaisir, y compris les becs peu sucrés.</p>
+  <p>Notre carte des pauses réunit les madeleines <strong>Mado Paris</strong>, réputées comme les meilleures de Paris, des cookies généreux, des cakes maison tranchés, des tartelettes citron ou praliné et des brochettes de fruits frais. Une sélection qui alterne le réconfortant et le léger, pour que chacun y trouve son plaisir, y compris les becs peu sucrés.</p>
 
   <h2>Quelle quantité prévoir pour une pause d'équipe ?</h2>
   <p>Comptez <strong>1,5 à 2 pièces sucrées par personne</strong> pour une pause de 20 à 30 minutes. Pour un après-midi complet de séminaire avec deux pauses, passez à 3 pièces en variant les familles : un cake tranché en début d'après-midi, madeleines et fruits frais vers 16h30. Ajoutez café, thé et jus pour une pause complète.</p>
 
   <h2>Commander votre goûter d'entreprise à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong> et recevez votre pause gourmande à l'heure exacte de votre programme. Conditionnement prêt à servir, facturation entreprise avec TVA. Pour les séminaires multi-jours ou les commandes récurrentes, demandez un devis personnalisé — réponse sous 24h.</p>
+  <p>Commandez avant <strong>14h la veille</strong> et recevez votre pause gourmande à l'heure exacte de votre programme. Conditionnement prêt à servir, facturation entreprise avec TVA. Pour les séminaires multi-jours ou les commandes récurrentes, demandez un devis personnalisé, réponse sous 24h.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
 
 const HERO = {
   label: 'Pauses Gourmandes',
-  description: 'La touche sucrée de l\'après-midi — pâtisseries, biscuits et fruits frais préparés le jour même pour rythmer vos pauses et goûters d\'entreprise.',
+  description: 'La touche sucrée de l\'après-midi · pâtisseries, biscuits et fruits frais préparés le jour même pour rythmer vos pauses et goûters d\'entreprise.',
   hero: '/hero-pauses-gourmandes.webp',
 }
 
-/* Coffrets — tailles disponibles, même logique que les Madeleines
+/* Coffrets, tailles disponibles, même logique que les Madeleines
    sur la page Petit-déjeuner (FORMATS avec prix + « le plus choisi »). */
 const COFFRETS_MADELEINES = [
   { id: 'madeleines-10', pieces: 10, price: 24.90, label: '10 pièces', sub: '4 à 6 pers.' },
@@ -45,7 +45,7 @@ const COFFRETS_MACARONS = [
   { id: 'macarons-48', pieces: 48, price: 99.90, label: '48 pièces', sub: '20 à 24 pers.' },
 ]
 
-/* Douceurs — images partagées avec Petit-déjeuner quand le produit existe déjà,
+/* Douceurs, images partagées avec Petit-déjeuner quand le produit existe déjà,
    sinon visuels générés dans la DA du site (planche bois, lumière naturelle). */
 export const PAUSES = [
   { id: 'madeleines',    nom: 'Madeleines Mado Paris',                  img: '/prod-madeleines-50.webp', prix: 'dès 24,90 €', description: 'Madeleines moelleuses cuites du jour, nature ou parfumées.', coffrets: COFFRETS_MADELEINES },

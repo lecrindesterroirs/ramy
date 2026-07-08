@@ -17,7 +17,7 @@ export default function PrometteSection() {
         background: 'radial-gradient(ellipse 80% 70% at 50% 42%, #FCF8F1 0%, #F4EDDF 58%, #EEE5D3 100%)',
       }}
     >
-      {/* Voile de grain — matière subtile */}
+      {/* Voile de grain, matière subtile */}
       <div
         aria-hidden
         style={{

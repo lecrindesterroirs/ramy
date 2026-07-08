@@ -13,13 +13,13 @@ import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
 
 const SEO_ARTICLE = `
   <h2>Plateaux repas d'entreprise livrés à Paris : frais, individuels, équilibrés</h2>
-  <p>Le <strong>plateau repas d'entreprise</strong> résout l'équation des déjeuners de réunion : un repas complet, individuel et soigné, servi directement en salle sans interrompre les échanges. Conseils d'administration, formations, réunions qui débordent sur la pause déjeuner — L'Écrin Traiteur livre vos plateaux à Paris et en Île-de-France, préparés le matin même.</p>
+  <p>Le <strong>plateau repas d'entreprise</strong> résout l'équation des déjeuners de réunion : un repas complet, individuel et soigné, servi directement en salle sans interrompre les échanges. Conseils d'administration, formations, réunions qui débordent sur la pause déjeuner, L'Écrin Traiteur livre vos plateaux à Paris et en Île-de-France, préparés le matin même.</p>
 
   <h2>Des recettes de saison, pensées comme au restaurant</h2>
-  <p>Chaque plateau se compose d'une entrée, d'un plat, d'un dessert et de pain — construits autour de recettes signées : saumon confit, bœuf mariné, césar revisitée, saveurs méditerranéennes ou thaïes. Nous travaillons des produits frais et de saison, dressés avec le soin d'une assiette de restaurant, dans un coffret élégant qui tient la comparaison face aux clients les plus exigeants.</p>
+  <p>Chaque plateau se compose d'une entrée, d'un plat, d'un dessert et de pain, construits autour de recettes signées : saumon confit, bœuf mariné, césar revisitée, saveurs méditerranéennes ou thaïes. Nous travaillons des produits frais et de saison, dressés avec le soin d'une assiette de restaurant, dans un coffret élégant qui tient la comparaison face aux clients les plus exigeants.</p>
 
   <h2>Régimes et contraintes alimentaires : tout le monde à la même table</h2>
-  <p>Végétarien, vegan, sans gluten, allergies spécifiques : indiquez les contraintes de vos convives à la commande et nous composons des plateaux équivalents en qualité et en générosité. Notre carte est par ailleurs pensée sans porc et halal, pour être partagée par toutes vos équipes. Personne ne doit se contenter d'une salade par défaut pendant que les autres déjeunent bien — c'est un principe non négociable de notre carte.</p>
+  <p>Végétarien, vegan, sans gluten, allergies spécifiques : indiquez les contraintes de vos convives à la commande et nous composons des plateaux équivalents en qualité et en générosité. Notre carte est par ailleurs pensée sans porc et halal, pour être partagée par toutes vos équipes. Personne ne doit se contenter d'une salade par défaut pendant que les autres déjeunent bien, c'est un principe non négociable de notre carte.</p>
 
   <h2>Commander vos plateaux repas pour une réunion à Paris</h2>
   <p>Commandez avant <strong>14h la veille</strong> en précisant l'adresse, l'heure de livraison et la répartition des menus. Les plateaux arrivent prêts à poser sur table, avec couverts et serviettes. Facturation entreprise avec TVA, devis personnalisé sous 24h pour les volumes importants ou les commandes récurrentes.</p>
@@ -61,7 +61,7 @@ const PRESTIGE_OPTIONS = [
   'Mignardise',
 ]
 
-/* Menus — composition (entrée / plat / dessert) stockée pour la fiche
+/* Menus, composition (entrée / plat / dessert) stockée pour la fiche
    produit ; la grille n'affiche que nom · catégorie · prix.
    Photos : plats uniquement (le coffret se découvre sur la fiche). */
 
@@ -90,7 +90,7 @@ function MenuCard({ produit }) {
         transition: 'box-shadow 0.35s ease, transform 0.35s ease',
       }}
     >
-      {/* Photo du plat — pleine largeur dans la carte, overlay "Découvrir" au survol */}
+      {/* Photo du plat, pleine largeur dans la carte, overlay "Découvrir" au survol */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
           <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={produit.img}
@@ -122,7 +122,7 @@ function MenuCard({ produit }) {
         </div>
       </div>
 
-      {/* Contenu — nom, catégorie, prix */}
+      {/* Contenu, nom, catégorie, prix */}
       <div style={{ padding: '16px 16px 16px' }}>
         <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '9px', transition: 'color 0.25s ease' }}>
           {produit.nom}
@@ -205,7 +205,7 @@ export default function PlateauxRepas() {
 
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        {/* ── Hero — contenu + immersif, aligné sur petit-déjeuner ── */}
+        {/* ── Hero, contenu + immersif, aligné sur petit-déjeuner ── */}
         <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pr-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
             <Image fill priority sizes="100vw" key={`hero-img-${col.key}`}
@@ -216,7 +216,7 @@ export default function PlateauxRepas() {
             {/* Dégradé sombre gauche pour la lisibilité du texte blanc */}
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
 
-            {/* Texte overlay, aligné à gauche, centré verticalement — fade-up au montage, rejoué à chaque changement de collection */}
+            {/* Texte overlay, aligné à gauche, centré verticalement, fade-up au montage, rejoué à chaque changement de collection */}
             <Reveal key={`hero-text-${col.key}`} mode="mount" y={16}>
               <div className="pr-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
@@ -238,9 +238,9 @@ export default function PlateauxRepas() {
 
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={produitsAffiches.length} />
 
-        {/* ── Navigation légère — deux niveaux de texte ─────────── */}
+        {/* ── Navigation légère, deux niveaux de texte ─────────── */}
         <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
-          {/* Niveau 1 : collections — barre pleine largeur, trait coloré sous l'actif */}
+          {/* Niveau 1 : collections, barre pleine largeur, trait coloré sous l'actif */}
           <div className="pr-scroll" style={{ display: 'flex', borderBottom: '1px solid rgba(17,17,17,0.1)', marginBottom: '20px' }}>
             {COLLECTIONS.map((c, i) => {
               const active = c.key === activeCollection
@@ -332,7 +332,7 @@ export default function PlateauxRepas() {
           </div>
         </div>
 
-        {/* ── Option Prestige — upgrade d'un menu Signature ─────── */}
+        {/* ── Option Prestige, upgrade d'un menu Signature ─────── */}
         {activeCollection === 'signature' && (
           <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 120px' }}>
             <div style={{ background: '#F5F1E8', padding: '48px 56px', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', alignItems: 'center' }} className="pr-prestige">
@@ -344,7 +344,7 @@ export default function PlateauxRepas() {
                   Transformez votre menu Signature en coffret Prestige
                 </h2>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#5A544C' }}>
-                  Le même menu, sublimé dans un écrin d'exception — vaisselle premium, fromages affinés et attentions du Chef pour vos réceptions les plus soignées.
+                  Le même menu, sublimé dans un écrin d'exception, vaisselle premium, fromages affinés et attentions du Chef pour vos réceptions les plus soignées.
                 </p>
               </div>
               <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }} className="pr-prestige-list">

@@ -1,5 +1,5 @@
 /* ============================================
-   L'ÉCRIN TRAITEUR — Design System Global CSS
+   L'ÉCRIN TRAITEUR, Design System Global CSS
    ============================================ */
 
 /* Font Faces */
@@ -51,11 +51,11 @@
   --white: #FFFFFF;
   --text-primary: #111111;
   --text-secondary: #605A4F; /* foncé pour WCAG AA (≥4,5:1) y compris sur fond crème */
-  --accent: #E0A126;          /* jaune signature — fonds, ornements, filets */
-  --accent-deep: #875E10;     /* accent en TEXTE sur fond clair — WCAG AA ≥4,5:1 même sur crème (#F8F5EF) */
+  --accent: #E0A126;          /* jaune signature, fonds, ornements, filets */
+  --accent-deep: #875E10;     /* accent en TEXTE sur fond clair, WCAG AA ≥4,5:1 même sur crème (#F8F5EF) */
   --banner-h: 36px;
   --nav-h: 72px;
-  --header-h: 72px; /* nav seule — toutes pages sauf produit */
+  --header-h: 72px; /* nav seule, toutes pages sauf produit */
 }
 
 @media (max-width: 768px) {
@@ -104,7 +104,7 @@ img {
   border-radius: 1px;
 }
 
-/* Lien d'évitement — visible uniquement au focus clavier */
+/* Lien d'évitement, visible uniquement au focus clavier */
 .skip-link {
   position: absolute;
   left: 12px;

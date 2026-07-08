@@ -12,7 +12,7 @@ import CategoryTabs from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Traiteur cocktail d'entreprise à Paris : pièces salées et sucrées artisanales</h2>
-  <p>Le <strong>cocktail d'entreprise</strong> est le format des moments qui comptent : lancement de produit, signature de partenariat, départ d'un collaborateur, vœux de début d'année. Debout, verre à la main, vos invités circulent et échangent — et chaque pièce servie parle de votre niveau d'exigence. L'Écrin Traiteur compose des cocktails livrés prêts à servir à Paris et en Île-de-France.</p>
+  <p>Le <strong>cocktail d'entreprise</strong> est le format des moments qui comptent : lancement de produit, signature de partenariat, départ d'un collaborateur, vœux de début d'année. Debout, verre à la main, vos invités circulent et échangent, et chaque pièce servie parle de votre niveau d'exigence. L'Écrin Traiteur compose des cocktails livrés prêts à servir à Paris et en Île-de-France.</p>
 
   <h2>Combien de pièces par personne pour un cocktail ?</h2>
   <p>Tout dépend de l'horaire et de ce que le cocktail remplace. Pour un <strong>cocktail apéritif</strong> avant un dîner : 6 à 8 pièces par personne. Pour un <strong>cocktail déjeunatoire</strong> qui remplace le déjeuner : 12 à 14 pièces. Pour un <strong>cocktail dînatoire</strong> en soirée : 16 à 18 pièces, en incluant des pièces plus consistantes et un tiers de sucré en fin de parcours.</p>
@@ -194,7 +194,7 @@ function FormuleCard({ f }) {
         <Liste titre="Sucré" items={f.sucre} accent="#C08A3E" />
       </div>
 
-      {/* CTA — la carte entière ouvre la fiche formule */}
+      {/* CTA, la carte entière ouvre la fiche formule */}
       <span
         style={{
           marginTop: '26px',
@@ -237,7 +237,7 @@ export default function Cocktails() {
                 Cocktails
               </h1>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
-                Des bouchées salées et sucrées façonnées à la main, servies par personne — de l&apos;afterwork décontracté à la réception d&apos;exception.
+                Des bouchées salées et sucrées façonnées à la main, servies par personne, de l&apos;afterwork décontracté à la réception d&apos;exception.
               </p>
             </div>
             </Reveal>
@@ -273,7 +273,7 @@ export default function Cocktails() {
       <CategoryClosing
         eyebrow="Pensé pour vos réceptions"
         title={'Des pièces qui impressionnent.\nUn moment qui rassemble.'}
-        body="Lancement, célébration, vœux d'équipe : le cocktail est la vitrine de votre événement. Pièces salées raffinées et mignardises d'artisans, livrées prêtes à servir — il ne vous reste que l'essentiel : vos invités."
+        body="Lancement, célébration, vœux d'équipe : le cocktail est la vitrine de votre événement. Pièces salées raffinées et mignardises d'artisans, livrées prêtes à servir, il ne vous reste que l'essentiel : vos invités."
         seoArticle={SEO_ARTICLE}
       />
 

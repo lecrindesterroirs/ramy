@@ -10,12 +10,12 @@ import CategoryClosing from '../../components/CategoryClosing'
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
-/* Les 3 régimes couverts — 100% conformes à l'offre réelle. */
+/* Les 3 régimes couverts, 100% conformes à l'offre réelle. */
 const REGIMES = [
   {
     label: 'Notre standard',
     titre: 'Tout halal, sans porc',
-    desc: "Toute notre gamme est halal et sans porc — pas une option à part, mais notre référence par défaut. Vous commandez l'esprit tranquille pour toute votre équipe.",
+    desc: "Toute notre gamme est halal et sans porc, pas une option à part, mais notre référence par défaut. Vous commandez l'esprit tranquille pour toute votre équipe.",
   },
   {
     label: 'Pour chacun',
@@ -32,7 +32,7 @@ const REGIMES = [
 const PRESTATIONS = [
   {
     label: 'Petits-Déjeuners & Pauses',
-    desc: 'Viennoiseries, madeleines, corbeilles de fruits et boissons — halal, livrés dès 6h30.',
+    desc: 'Viennoiseries, madeleines, corbeilles de fruits et boissons, halal, livrés dès 6h30.',
     href: '/creations/petits-dejeuners-et-pauses',
     img: '/creations-1.webp',
   },
@@ -53,7 +53,7 @@ const PRESTATIONS = [
 const FAQ = [
   {
     q: "Votre traiteur d'entreprise est-il halal ?",
-    a: "Oui. Toute notre gamme est halal et sans porc, par défaut — c'est notre standard, pas une option à part. Vous pouvez commander l'esprit tranquille pour l'ensemble de vos collaborateurs.",
+    a: "Oui. Toute notre gamme est halal et sans porc, par défaut, c'est notre standard, pas une option à part. Vous pouvez commander l'esprit tranquille pour l'ensemble de vos collaborateurs.",
   },
   {
     q: 'Proposez-vous des options végétariennes, vegan et sans gluten ?',
@@ -65,7 +65,7 @@ const FAQ = [
   },
   {
     q: 'Pour combien de personnes pouvez-vous livrer ?',
-    a: "De 10 à 300 personnes et plus — petites équipes comme grands séminaires. Chaque commande est préparée le matin même.",
+    a: "De 10 à 300 personnes et plus, petites équipes comme grands séminaires. Chaque commande est préparée le matin même.",
   },
 ]
 
@@ -116,7 +116,7 @@ export default function TraiteurHalal() {
   }
 
   const ARGS = [
-    { icon: 'quality',  titre: 'Halal par défaut',      desc: "Toute la gamme est halal et sans porc — pas une carte à part, mais notre standard sur chaque prestation." },
+    { icon: 'quality',  titre: 'Halal par défaut',      desc: "Toute la gamme est halal et sans porc, pas une carte à part, mais notre standard sur chaque prestation." },
     { icon: 'custom',   titre: 'Options claires',        desc: "Végétarien, vegan, sans gluten : chaque contrainte alimentaire est prise en compte, sans supplément d'effort pour vous." },
     { icon: 'delivery', titre: 'Livraison dès 6h30',     desc: "Livré et installé par notre équipe à Paris et en Île-de-France, chaque matin en semaine." },
     { icon: 'support',  titre: 'Interlocuteur dédié',    desc: "Un contact unique pour composer vos menus, de 10 à 300 personnes, du devis à la livraison." },
@@ -145,7 +145,7 @@ export default function TraiteurHalal() {
         {/* ── Hero image pleine largeur ── */}
         <div className="hl-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="hl-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src="/hero-bg.webp" alt="Traiteur d'entreprise halal et inclusif — L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <Image fill priority sizes="100vw" src="/hero-bg.webp" alt="Traiteur d'entreprise halal et inclusif, L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="hl-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '660px' }}>
@@ -156,7 +156,7 @@ export default function TraiteurHalal() {
                   Traiteur Halal<br />& Inclusif
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
-                  Le traiteur d'entreprise qui régale <em>toute</em> l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten — livré dans vos bureaux dès 6h30.
+                  Le traiteur d'entreprise qui régale <em>toute</em> l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten, livré dans vos bureaux dès 6h30.
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
@@ -221,7 +221,7 @@ export default function TraiteurHalal() {
           </div>
         </div>
 
-        {/* ── Nos prestations — 3 cartes illustrées ── */}
+        {/* ── Nos prestations, 3 cartes illustrées ── */}
         <div className="hl-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>

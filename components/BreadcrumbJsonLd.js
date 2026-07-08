@@ -1,4 +1,4 @@
-// JSON-LD fil d'Ariane pur (BreadcrumbList) — INVISIBLE, pour Google uniquement.
+// JSON-LD fil d'Ariane pur (BreadcrumbList), INVISIBLE, pour Google uniquement.
 // Aucun rendu visuel : ne remplace pas le fil d'Ariane visible (réservé aux fiches
 // produit). items: [{ name, path }] du plus haut au plus bas ; le dernier = page courante.
 // path '' = racine du site. Rendu côté serveur même dans une page 'use client'.

@@ -135,7 +135,7 @@ export default function OccasionPage() {
                 {occasion.testimonial.author}
               </p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                {occasion.testimonial.role} — {occasion.testimonial.company}
+                {occasion.testimonial.role}, {occasion.testimonial.company}
               </p>
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function OccasionPage() {
                 : 'Petit-déjeuner'
               }
               titre={`Organiser un ${occasion.name?.toLowerCase()} à Paris ?`}
-              sousTitre="Répondez en 30 secondes — devis personnalisé sous 24h, livraison dans toute l'Île-de-France."
+              sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h, livraison dans toute l'Île-de-France."
             />
           </div>
         </div>

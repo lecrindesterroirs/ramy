@@ -2,16 +2,16 @@
 
 import { GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS } from '../lib/site'
 
-// Badge preuve sociale "5,0★ · Avis Google" — cliquable vers la fiche GBP.
+// Badge preuve sociale "5,0★ · Avis Google", cliquable vers la fiche GBP.
 // variant   : 'light' (fond clair, texte foncé) | 'onImage' (sur photo/scrim, texte foncé chaud)
-// showCount : afficher le nombre d'avis (par défaut non — juste les étoiles + note)
+// showCount : afficher le nombre d'avis (par défaut non, juste les étoiles + note)
 export default function ReviewsBadge({ variant = 'light', showCount = false, style = {} }) {
   const isOnImage = variant === 'onImage'
   const textColor = isOnImage ? 'rgba(24,18,16,0.9)' : 'var(--text-secondary)'
-  // L'aria-label doit CONTENIR le texte visible (WCAG 2.5.3) — visible = "5,0 · [N ]Avis Google"
+  // L'aria-label doit CONTENIR le texte visible (WCAG 2.5.3), visible = "5,0 · [N ]Avis Google"
   const ariaLabel = showCount
-    ? `${GBP_RATING_LABEL} · ${GBP_REVIEWS} avis Google — note ${GBP_RATING_LABEL} sur 5, voir la fiche`
-    : `${GBP_RATING_LABEL} · Avis Google — note ${GBP_RATING_LABEL} sur 5, voir la fiche`
+    ? `${GBP_RATING_LABEL} · ${GBP_REVIEWS} avis Google, note ${GBP_RATING_LABEL} sur 5, voir la fiche`
+    : `${GBP_RATING_LABEL} · Avis Google, note ${GBP_RATING_LABEL} sur 5, voir la fiche`
 
   return (
     <a

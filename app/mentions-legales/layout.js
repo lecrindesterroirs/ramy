@@ -1,7 +1,7 @@
 export const metadata = {
   alternates: { canonical: '/mentions-legales' },
   title: "Mentions légales",
-  description: "Mentions légales de L'Écrin Traiteur — informations légales, éditeur du site, hébergeur.",
+  description: "Mentions légales de L'Écrin Traiteur · informations légales, éditeur du site, hébergeur.",
   robots: { index: true, follow: false },
 }
 

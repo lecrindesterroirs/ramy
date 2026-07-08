@@ -1,4 +1,4 @@
-// Données plateaux repas — module plat (importable serveur + client)
+// Données plateaux repas, module plat (importable serveur + client)
 
 export const COLLECTIONS = [
   {
@@ -11,7 +11,7 @@ export const COLLECTIONS = [
   {
     key: 'signature',
     label: 'Signature',
-    description: 'Une sélection raffinée élaborée par nos chefs — produits nobles, dressage soigné, transformable en coffret Prestige.',
+    description: 'Une sélection raffinée élaborée par nos chefs · produits nobles, dressage soigné, transformable en coffret Prestige.',
     prix: '33,90',
     hero: '/hero-plateau-signature.webp',
   },

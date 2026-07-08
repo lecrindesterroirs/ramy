@@ -19,7 +19,7 @@ export default function ReceptionsSurMesure() {
       heroImg="/img-reception.webp"
       heroTitle={"Réceptions\nSur-Mesure"}
       heroSubtitle="Des événements d'exception conçus dans les moindres détails pour votre image."
-      breadcrumb="Nos Créations — Réceptions Sur-Mesure"
+      breadcrumb="Nos Créations, Réceptions Sur-Mesure"
       categorieSlug="receptions"
       fallbackProducts={fallback}
     />

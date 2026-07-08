@@ -91,12 +91,12 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
         lineHeight: 1.65,
         marginBottom: '28px',
       }}>
-        {sousTitre || 'Répondez en 30 secondes — devis personnalisé sous 24h.'}
+        {sousTitre || 'Répondez en 30 secondes, devis personnalisé sous 24h.'}
       </p>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 
-        {/* Honeypot anti-spam — invisible aux humains, rempli par les bots */}
+        {/* Honeypot anti-spam, invisible aux humains, rempli par les bots */}
         <input
           type="text"
           name="website"
@@ -108,7 +108,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
           style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
         />
 
-        {/* Row 1 — Prestation + Date */}
+        {/* Row 1, Prestation + Date */}
         <div className="dr-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
             <label style={labelStyle}>Type de prestation</label>
@@ -136,7 +136,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
           </div>
         </div>
 
-        {/* Row 2 — Date + Email */}
+        {/* Row 2, Date + Email */}
         <div className="dr-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
             <label style={labelStyle}>Date souhaitée</label>

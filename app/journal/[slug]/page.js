@@ -43,7 +43,7 @@ export default function ArticlePage() {
           className="article-page-content"
           style={{ maxWidth: '760px', margin: '0 auto', padding: '44px 24px 120px' }}
         >
-          {/* Fil d'Ariane + méta sur une seule ligne — compact sous le hero, au-dessus du titre */}
+          {/* Fil d'Ariane + méta sur une seule ligne, compact sous le hero, au-dessus du titre */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginBottom: '24px' }}>
             <Breadcrumb variant="inline" items={[{ label: 'Accueil', href: '/' }, { label: 'Le Journal', href: '/journal' }]} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -57,7 +57,7 @@ export default function ArticlePage() {
               }}>
                 {article.categorie}
               </span>
-              <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>—</span>
+              <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
               <span style={{
                 fontFamily: "'Neue Montreal', sans-serif",
                 fontSize: '11px',

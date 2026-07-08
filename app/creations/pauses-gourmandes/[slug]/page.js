@@ -22,7 +22,7 @@ const SEO_HTML = `
   <p>Effectif, format, allergènes : nous composons la sélection idéale pour votre pause et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe dans vos bureaux.</p>
 `
 
-/* ── Fiche coffret — même logique que les Madeleines sur Petit-déjeuner :
+/* ── Fiche coffret, même logique que les Madeleines sur Petit-déjeuner :
    sélection de taille (pièces + prix), puis SEO + devis. ── */
 function CoffretDetail({ produit }) {
   const [format, setFormat] = useState(produit.coffrets.find(f => f.popular) ?? produit.coffrets[0])
@@ -106,11 +106,11 @@ function CoffretDetail({ produit }) {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Obtenir un devis — {format.label} →
+            Obtenir un devis, {format.label} →
           </a>
 
           <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            {['Livraison dès 6h30 — Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
+            {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
               <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
             ))}
           </div>
@@ -130,7 +130,7 @@ function CoffretDetail({ produit }) {
           <div className="cf-article-body" dangerouslySetInnerHTML={{ __html: SEO_HTML }} />
         </section>
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '20px 72px 96px' }}>
-          <DevisRapide defaultPrestation="Goûter" titre="Une pause gourmande à organiser ?" sousTitre="Répondez en 30 secondes — devis personnalisé sous 24h." />
+          <DevisRapide defaultPrestation="Goûter" titre="Une pause gourmande à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
             <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
               ← Retour aux pauses gourmandes
@@ -172,7 +172,7 @@ export default function PauseDetail() {
       subtitle="Pause Gourmande · L'après-midi"
       img={produit.img}
       price={null}
-      description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi. Tarif au format et à l'effectif — sur devis.`}
+      description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi. Tarif au format et à l'effectif, sur devis.`}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
         { label: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes' },
@@ -185,7 +185,7 @@ export default function PauseDetail() {
       seoHtml={SEO_HTML}
       devisPrestation="Goûter"
       devisTitre="Une pause gourmande à organiser ?"
-      devisSousTitre="Répondez en 30 secondes — devis personnalisé sous 24h."
+      devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
   )
 }

@@ -50,7 +50,7 @@ export default function CityPage() {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FoodEstablishment'],
     name: "L'Écrin Traiteur",
-    description: `Traiteur d'entreprise livrant à ${city.name} — petits-déjeuners, plateaux repas, cocktails, buffets et animations culinaires. Artisans sélectionnés, livraison dès 6h30.`,
+    description: `Traiteur d'entreprise livrant à ${city.name} · petits-déjeuners, plateaux repas, cocktails, buffets et animations culinaires. Artisans sélectionnés, livraison dès 6h30.`,
     url: `https://www.lecrin-traiteur.fr/traiteur/${city.slug}`,
     telephone: '+33174542310',
     email: 'commercial@lecrin-traiteur.fr',
@@ -78,7 +78,7 @@ export default function CityPage() {
       name: 'Prestations traiteur entreprise',
       hasMenuSection: [
         { '@type': 'MenuSection', name: 'Petits-déjeuners & pauses', description: 'Viennoiseries, madeleines Mado Paris, corbeilles de fruits, cafés et thés livrés dès 6h30.' },
-        { '@type': 'MenuSection', name: 'Plateaux repas & lunch box', description: 'Menus individuels complets — entrée, plat, dessert — préparés le matin même.' },
+        { '@type': 'MenuSection', name: 'Plateaux repas & lunch box', description: 'Menus individuels complets, entrée, plat, dessert, préparés le matin même.' },
         { '@type': 'MenuSection', name: 'Cocktails & buffets', description: 'Pièces salées et sucrées artisanales pour réceptions et afterworks.' },
         { '@type': 'MenuSection', name: 'Animations culinaires', description: 'Ateliers et bars préparés en direct devant vos invités.' },
       ],
@@ -115,7 +115,7 @@ export default function CityPage() {
         {/* ── Hero image pleine largeur ── */}
         <div className="city-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="city-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src="/hero-bg.webp" alt={`Traiteur d'entreprise ${city.name} — L'Écrin Traiteur`} style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <Image fill priority sizes="100vw" src="/hero-bg.webp" alt={`Traiteur d'entreprise ${city.name}, L'Écrin Traiteur`} style={{ objectFit: 'cover', objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="city-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
@@ -161,7 +161,7 @@ export default function CityPage() {
           </header>
         </div>
 
-        {/* ── Nos prestations — 3 cartes illustrées ── */}
+        {/* ── Nos prestations, 3 cartes illustrées ── */}
         <div className="city-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>

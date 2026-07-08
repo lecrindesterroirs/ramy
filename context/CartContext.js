@@ -17,7 +17,7 @@ export function CartProvider({ children }) {
     } catch {}
   }, [])
 
-  // Écriture dans localStorage — sauf au tout premier rendu
+  // Écriture dans localStorage, sauf au tout premier rendu
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 /*
-  Révélation subtile — conforme à la charte d'animation L'Écrin :
+  Révélation subtile, conforme à la charte d'animation L'Écrin :
   fade-up (opacity 0→1 + translateY 24px→0), 0.65s, cubic-bezier(0.25,0.1,0.25,1).
 
   mode="scroll" (défaut) : se déclenche à l'entrée dans le viewport (IntersectionObserver).

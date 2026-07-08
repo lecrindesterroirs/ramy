@@ -6,10 +6,10 @@ import { ARTISANS } from '../lib/artisansData'
 
 /* ─── Carte de France (silhouette réelle, public/france-map.svg) ─────── */
 
-// Base de production L'Écrin Traiteur — Suresnes (Hauts-de-Seine, ouest de Paris)
+// Base de production L'Écrin Traiteur, Suresnes (Hauts-de-Seine, ouest de Paris)
 const CUISINE = { x: 45, y: 30 }
 
-// Texture mottled/grain (feTurbulence) — masquée sur la silhouette pour donner du relief (papier/pierre).
+// Texture mottled/grain (feTurbulence), masquée sur la silhouette pour donner du relief (papier/pierre).
 const TEXTURE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>
   <filter id='n'>
     <feTurbulence type='fractalNoise' baseFrequency='0.035' numOctaves='3' stitchTiles='stitch' seed='7' />
@@ -63,9 +63,9 @@ function FranceMap({ artisans }) {
         </div>
       ))}
 
-      {/* Cuisine L'Écrin Traiteur — Suresnes (carré, distinct des artisans) */}
+      {/* Cuisine L'Écrin Traiteur, Suresnes (carré, distinct des artisans) */}
       <div className="pin-wrap" style={{ position: 'absolute', left: `${CUISINE.x}%`, top: `${CUISINE.y}%`, transform: 'translate(-50%, -50%)', zIndex: 6 }}>
-        <Link href="/univers/notre-maison" className="map-pin ecrin-pin" aria-label="L'Écrin Traiteur — Suresnes" style={{ display: 'block', width: '10px', height: '10px', background: 'var(--accent)', boxShadow: '0 1px 3px rgba(17,17,17,0.2)' }} />
+        <Link href="/univers/notre-maison" className="map-pin ecrin-pin" aria-label="L'Écrin Traiteur, Suresnes" style={{ display: 'block', width: '10px', height: '10px', background: 'var(--accent)', boxShadow: '0 1px 3px rgba(17,17,17,0.2)' }} />
         <span className="pin-label">L'Écrin Traiteur · Suresnes</span>
       </div>
     </div>
@@ -78,7 +78,7 @@ const AVANTAGES = [
   'Tous les artisans sont sélectionnés avec soin par nos équipes.',
 ]
 
-/* ─── Section réutilisable — page Nos Artisans + Accueil ──────────────── */
+/* ─── Section réutilisable, page Nos Artisans + Accueil ──────────────── */
 
 export default function ArtisansMapSection() {
   return (

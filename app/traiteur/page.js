@@ -8,7 +8,7 @@ import { CITIES } from '../../lib/citiesData'
 
 const DEPARTEMENTS = ['Paris', 'Hauts-de-Seine (92)', 'Yvelines (78)', 'Essonne (91)', 'Val-de-Marne (94)', 'Seine-Saint-Denis (93)']
 
-// Rattache une ville à son département (le champ region peut porter un suffixe « — La Défense »)
+// Rattache une ville à son département (le champ region peut porter un suffixe «, La Défense »)
 const deptOf = city => DEPARTEMENTS.find(d => city.region.includes(d)) || city.region
 
 // Sépare « Hauts-de-Seine (92) » → { name: 'Hauts-de-Seine', code: '92' }
@@ -18,7 +18,7 @@ const parseDept = dept => {
 }
 
 // Localité mise en avant après le tiret (ex. « La Défense »)
-const localityOf = city => (city.region.includes('—') ? city.region.split('—')[1].trim() : null)
+const localityOf = city => (city.region.includes('·') ? city.region.split('·')[1].trim() : null)
 
 export default function TraiteurPage() {
   const [activeRegion, setActiveRegion] = useState('Tous')
@@ -44,10 +44,10 @@ export default function TraiteurPage() {
             Traiteur Paris<br />& Île-de-France
           </h1>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
-            L'Écrin Traiteur livre vos événements d'entreprise — petits-déjeuners, plateaux repas, cocktails et réceptions — dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
+            L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
           </p>
 
-          {/* Ligne sobre — points clés séparés par des puces dorées */}
+          {/* Ligne sobre, points clés séparés par des puces dorées */}
           <div className="traiteur-facts" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '4px 16px' }}>
             {[`${CITIES.length} villes desservies`, 'Livraison dès 6h30', 'Devis sous 24h'].map((fact, i) => (
               <span key={fact} style={{ display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
@@ -60,7 +60,7 @@ export default function TraiteurPage() {
           </div>
         </div>
 
-        {/* ── Filtre région — onglets soulignés ── */}
+        {/* ── Filtre région, onglets soulignés ── */}
         <div style={{ borderBottom: '1px solid rgba(17,17,17,0.08)', background: '#FFFFFF', position: 'sticky', top: 'var(--header-h)', zIndex: 10 }}>
           <div className="traiteur-filter" style={{ maxWidth: '1160px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {['Tous', ...DEPARTEMENTS].map(r => {
@@ -108,7 +108,7 @@ export default function TraiteurPage() {
                   </span>
                 </div>
 
-                {/* Grille de villes — cartes hairline */}
+                {/* Grille de villes, cartes hairline */}
                 <div className="dept-cities" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', columnGap: '48px' }}>
                   {cities.map(city => {
                     const locality = localityOf(city)

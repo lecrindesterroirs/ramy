@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     }
   }
   return {
-    title: product.seoTitle || `${product.name} — Livraison Paris & Île-de-France`,
+    title: product.seoTitle || `${product.name}, Livraison Paris & Île-de-France`,
     description: product.description + '. Livraison dès 6h30 à Paris et en Île-de-France. Commandez avant 14h la veille.',
     openGraph: {
       title: `${product.seoTitle || product.name} | L'Écrin Traiteur`,

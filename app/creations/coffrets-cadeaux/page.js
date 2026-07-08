@@ -14,18 +14,18 @@ const SEO_ARTICLE = `
   <p>Le <strong>coffret cadeau d'entreprise</strong> est le geste qui reste : remerciement d'un client fidèle, félicitations à une équipe, attention de fin d'année pour vos partenaires. Là où un e-mail s'oublie, un coffret gourmand se déballe, se partage et se raconte. L'Écrin Traiteur livre vos coffrets à Paris et en Île-de-France, ou les prépare pour une distribution lors de votre événement.</p>
 
   <h2>Tous nos coffrets sont personnalisables</h2>
-  <p>Chaque coffret peut être adapté à votre image : <strong>assortiment ajusté</strong>, nombre de pièces, rubans et emballages à vos couleurs, message personnalisé, intégration de votre logo. Pour un lancement de produit ou un cadeau client premium, nous concevons des coffrets entièrement sur mesure — parlez-nous de votre projet, nous nous chargeons du reste.</p>
+  <p>Chaque coffret peut être adapté à votre image : <strong>assortiment ajusté</strong>, nombre de pièces, rubans et emballages à vos couleurs, message personnalisé, intégration de votre logo. Pour un lancement de produit ou un cadeau client premium, nous concevons des coffrets entièrement sur mesure, parlez-nous de votre projet, nous nous chargeons du reste.</p>
 
   <h2>Madeleines, macarons, cookies, chocolats : des artisans identifiés</h2>
-  <p>Un coffret L'Écrin ne contient pas de produits anonymes : madeleines <strong>Mado Paris</strong> — réputées comme les meilleures de Paris —, macarons <strong>Pierre Morel</strong>, cookies <strong>Laura Todd</strong>, chocolats artisanaux. Des noms qui parlent aux connaisseurs et donnent au cadeau une histoire à raconter, bien au-delà de la boîte de chocolats générique.</p>
+  <p>Un coffret L'Écrin ne contient pas de produits anonymes : madeleines <strong>Mado Paris</strong>, réputées comme les meilleures de Paris, macarons <strong>Pierre Morel</strong>, cookies <strong>Laura Todd</strong>, chocolats artisanaux. Des noms qui parlent aux connaisseurs et donnent au cadeau une histoire à raconter, bien au-delà de la boîte de chocolats générique.</p>
 
   <h2>Offrir un coffret gourmand à ses clients ou ses équipes</h2>
-  <p>Commandez avant <strong>14h la veille</strong> pour une livraison à l'adresse de votre choix. Pour les envois multiples (cadeaux clients de fin d'année, distribution multi-sites), notre équipe organise la logistique complète sur devis — réponse sous 24h, facturation entreprise avec TVA.</p>
+  <p>Commandez avant <strong>14h la veille</strong> pour une livraison à l'adresse de votre choix. Pour les envois multiples (cadeaux clients de fin d'année, distribution multi-sites), notre équipe organise la logistique complète sur devis, réponse sous 24h, facturation entreprise avec TVA.</p>
 `
 
 const HERO = {
   label: 'Coffrets Cadeaux',
-  description: 'Des coffrets gourmands prêts à offrir — madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, cakes maison. Idéal pour remercier un client ou marquer un moment d\'équipe.',
+  description: 'Des coffrets gourmands prêts à offrir · madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, cakes maison. Idéal pour remercier un client ou marquer un moment d\'équipe.',
   hero: '/hero-coffrets-cadeaux.webp',
 }
 
@@ -138,7 +138,7 @@ export default function CoffretsCadeaux() {
       <CategoryClosing
         eyebrow="Pensé pour remercier"
         title={'Un cadeau qui a du goût.\nUne attention qui reste.'}
-        body="Remercier un client, féliciter une équipe, marquer une fin d'année : nos coffrets gourmands portent les noms de nos artisans et peuvent être entièrement personnalisés à votre image — jusqu'au ruban."
+        body="Remercier un client, féliciter une équipe, marquer une fin d'année : nos coffrets gourmands portent les noms de nos artisans et peuvent être entièrement personnalisés à votre image, jusqu'au ruban."
         seoArticle={SEO_ARTICLE}
       />
 

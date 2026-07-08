@@ -48,7 +48,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Warm cream scrim — renforcé côté gauche pour la lisibilité */}
+      {/* Warm cream scrim, renforcé côté gauche pour la lisibilité */}
       <div
         style={{
           position: 'absolute',
@@ -57,7 +57,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Content — left-aligned */}
+      {/* Content, left-aligned */}
       <div
         className="hero-content"
         style={{
@@ -156,11 +156,11 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Preuve sociale — fiche Google */}
+        {/* Preuve sociale, fiche Google */}
         <ReviewsBadge variant="onImage" style={{ marginTop: '26px' }} />
       </div>
 
-      {/* Phone — bottom right */}
+      {/* Phone, bottom right */}
       <div
         className="hero-phone"
         style={{

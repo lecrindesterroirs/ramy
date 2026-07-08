@@ -25,7 +25,7 @@ export const metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: "L'Écrin Traiteur — petits-déjeuners & pauses gourmandes d'entreprise",
+        alt: "L'Écrin Traiteur, petits-déjeuners & pauses gourmandes d'entreprise",
       },
     ],
   },

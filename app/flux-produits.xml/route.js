@@ -1,6 +1,6 @@
 import { PRODUCTS } from '../../lib/productsData'
 
-// Flux produit Google Merchant Center — périmètre : Petits-déjeuners & Pauses.
+// Flux produit Google Merchant Center, périmètre : Petits-déjeuners & Pauses.
 // Format RSS 2.0 + namespace Google Shopping. Fetché par Merchant Center à l'URL /flux-produits.xml
 const SITE = 'https://www.lecrin-traiteur.fr'
 const CATEGORY_PATH = '/creations/petits-dejeuners-et-pauses'
@@ -41,9 +41,9 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>L'Écrin Traiteur — Petits-déjeuners &amp; Pauses</title>
+    <title>L'Écrin Traiteur, Petits-déjeuners &amp; Pauses</title>
     <link>${SITE}</link>
-    <description>Produits traiteur d'entreprise — petits-déjeuners et pauses gourmandes livrés à Paris &amp; Île-de-France.</description>${items}
+    <description>Produits traiteur d'entreprise, petits-déjeuners et pauses gourmandes livrés à Paris &amp; Île-de-France.</description>${items}
   </channel>
 </rss>`
 

@@ -12,23 +12,23 @@ import CategoryTabs, { sortItems } from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Plateaux apéritifs pour entreprise : l'afterwork sans logistique</h2>
-  <p>Le <strong>plateau apéritif d'entreprise</strong> est le format des fins de journée réussies : afterwork d'équipe, célébration d'un projet livré, pot informel entre deux services. Pas de traiteur en cuisine, pas de vaisselle — des plateaux généreux posés sur la table, et la convivialité fait le reste. L'Écrin Traiteur livre vos apéritifs à Paris et en Île-de-France.</p>
+  <p>Le <strong>plateau apéritif d'entreprise</strong> est le format des fins de journée réussies : afterwork d'équipe, célébration d'un projet livré, pot informel entre deux services. Pas de traiteur en cuisine, pas de vaisselle, des plateaux généreux posés sur la table, et la convivialité fait le reste. L'Écrin Traiteur livre vos apéritifs à Paris et en Île-de-France.</p>
 
   <h2>Des planches pensées pour le partage</h2>
-  <p>Nos plateaux réunissent le meilleur de nos artisans : bouchées salées, produits de caractère, douceurs à picorer. Le format « à partager » casse la distance entre collègues — on tend le plateau, on compare, on discute. C'est précisément ce qu'on attend d'un apéritif d'équipe, et c'est ce qui le distingue d'un buffet formel.</p>
+  <p>Nos plateaux réunissent le meilleur de nos artisans : bouchées salées, produits de caractère, douceurs à picorer. Le format « à partager » casse la distance entre collègues, on tend le plateau, on compare, on discute. C'est précisément ce qu'on attend d'un apéritif d'équipe, et c'est ce qui le distingue d'un buffet formel.</p>
 
   <h2>Quelles quantités pour un afterwork ?</h2>
   <p>Comptez <strong>4 à 6 pièces par personne et par heure</strong> pour un apéritif de fin de journée. Pour un afterwork qui se prolonge au-delà de deux heures ou qui remplace le dîner, passez à 10-12 pièces en ajoutant des bouchées plus consistantes. Pensez aux boissons : jus artisanaux et softs premium complètent naturellement la commande.</p>
 
   <h2>Commander vos plateaux apéritifs à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong> en indiquant l'heure exacte de livraison — vos plateaux arrivent prêts à servir, présentation soignée. Facturation entreprise avec TVA. Pour un événement plus ambitieux, notre équipe compose des formats sur mesure sur devis, réponse sous 24h.</p>
+  <p>Commandez avant <strong>14h la veille</strong> en indiquant l'heure exacte de livraison, vos plateaux arrivent prêts à servir, présentation soignée. Facturation entreprise avec TVA. Pour un événement plus ambitieux, notre équipe compose des formats sur mesure sur devis, réponse sous 24h.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
 
 const HERO = {
   label: 'Plateaux Apéritifs',
-  description: 'De généreux plateaux à partager pour vos afterworks et réceptions — sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
+  description: 'De généreux plateaux à partager pour vos afterworks et réceptions · sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
   hero: '/hero-plateaux-aperitifs-full.webp',
 }
 
@@ -81,7 +81,7 @@ export const PLATEAUX = [
   },
   {
     id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plateau-charcuterie.webp',
-    description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons & condiments — halal, sans porc.',
+    description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons & condiments · halal, sans porc.',
     recettes: [],
   },
   {
@@ -143,7 +143,7 @@ function PlateauCard({ produit }) {
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#F8F5EF', overflow: 'hidden' }}>
         <Image fill src={produit.img}
-          alt={`Plateau ${produit.nom} à partager — traiteur L'Écrin, Paris & Île-de-France`}
+          alt={`Plateau ${produit.nom} à partager, traiteur L'Écrin, Paris & Île-de-France`}
           sizes="(max-width: 900px) 50vw, 33vw"
           style={{ objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
@@ -277,7 +277,7 @@ export default function PlateauxAperitifs() {
       <CategoryClosing
         eyebrow="Pensé pour vos afterworks"
         title={"L'apéritif qui fédère.\nZéro logistique pour vous."}
-        body="Un projet livré, une recrue à fêter, une fin de semaine à marquer : nos plateaux apéritifs arrivent prêts à poser sur la table. Généreux, artisanaux, pensés pour le partage — vous n'avez plus qu'à trinquer."
+        body="Un projet livré, une recrue à fêter, une fin de semaine à marquer : nos plateaux apéritifs arrivent prêts à poser sur la table. Généreux, artisanaux, pensés pour le partage, vous n'avez plus qu'à trinquer."
         seoArticle={SEO_ARTICLE}
       />
 

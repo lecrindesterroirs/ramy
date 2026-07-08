@@ -40,7 +40,7 @@ export default function PlateauDetail() {
       img={produit.img}
       price={prixMenu(produit)}
       priceNote="HT · par personne"
-      description={`Un menu complet — entrée, plat et dessert préparés le matin même avec des produits de saison. Collection ${col?.label ?? ''}.`}
+      description={`Un menu complet, entrée, plat et dessert préparés le matin même avec des produits de saison. Collection ${col?.label ?? ''}.`}
       sections={sections}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
@@ -54,7 +54,7 @@ export default function PlateauDetail() {
       seoHtml={SEO_HTML}
       devisPrestation="Plateaux repas"
       devisTitre="Un déjeuner d'entreprise à organiser ?"
-      devisSousTitre="Répondez en 30 secondes — devis personnalisé sous 24h."
+      devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
   )
 }

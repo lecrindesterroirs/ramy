@@ -149,7 +149,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           borderBottom: scrolled ? '1px solid rgba(17,17,17,0.06)' : 'none',
         }}
       >
-        {/* LEFT NAV — Moments */}
+        {/* LEFT NAV, Moments */}
         <div
           className="nav-left"
           style={{ display: 'flex', alignItems: 'center', gap: '36px', position: 'relative' }}
@@ -210,7 +210,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             )
           })}
 
-          {/* Panneaux dropdown — toujours rendus (liens dans le HTML serveur = crawlables),
+          {/* Panneaux dropdown, toujours rendus (liens dans le HTML serveur = crawlables),
               masqués en CSS et révélés au survol. */}
           {Object.values(MOMENTS).filter(m => m.cards).map(moment => {
             const active = activeDropdown === moment.key
@@ -328,7 +328,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           </span>
         </a>
 
-        {/* RIGHT NAV — L'Univers, Le Journal, Contact, CTA */}
+        {/* RIGHT NAV, L'Univers, Le Journal, Contact, CTA */}
         <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
 
           {/* L'Univers */}
@@ -608,7 +608,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           </a>
         </div>
 
-        {/* Hamburger — mobile only */}
+        {/* Hamburger, mobile only */}
         <button
           className="nav-hamburger"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -779,7 +779,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           from { opacity: 0; transform: translateY(-8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        /* Rétrécissement en paliers fixes, comme un site "normal" — pas de
+        /* Rétrécissement en paliers fixes, comme un site "normal", pas de
            calc(vw) continu (ça fait "rebondir" le texte pendant le drag de
            redimensionnement à cause des arrondis de sous-pixel). Chaque palier
            a des valeurs figées, stables tant qu'on reste dans sa plage :

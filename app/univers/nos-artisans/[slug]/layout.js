@@ -9,10 +9,10 @@ export async function generateMetadata({ params }) {
     }
   }
   return {
-    title: `${artisan.nom} — ${artisan.specialite} | L'Écrin Traiteur`,
+    title: `${artisan.nom}, ${artisan.specialite} | L'Écrin Traiteur`,
     description: artisan.description,
     openGraph: {
-      title: `${artisan.nom} | Nos Artisans — L'Écrin Traiteur`,
+      title: `${artisan.nom} | Nos Artisans, L'Écrin Traiteur`,
       description: artisan.description,
       images: [{ url: artisan.img, width: 800, height: 800, alt: artisan.nom }],
       locale: 'fr_FR',

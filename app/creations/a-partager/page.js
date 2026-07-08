@@ -12,23 +12,23 @@ import CategoryJsonLd from '../../../components/CategoryJsonLd'
 
 const SEO_ARTICLE = `
   <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
-  <p>Certains déjeuners d'entreprise n'ont pas besoin d'un format codifié — ils ont besoin d'un <strong>grand menu généreux à partager au centre de la table</strong>. Point d'équipe, accueil d'un partenaire, déjeuner de service : nos menus à partager mêlent salades, planches et pièces cocktail, dressés prêts à servir à Paris et en Île-de-France.</p>
+  <p>Certains déjeuners d'entreprise n'ont pas besoin d'un format codifié, ils ont besoin d'un <strong>grand menu généreux à partager au centre de la table</strong>. Point d'équipe, accueil d'un partenaire, déjeuner de service : nos menus à partager mêlent salades, planches et pièces cocktail, dressés prêts à servir à Paris et en Île-de-France.</p>
 
   <h2>Le partage, un rituel d'équipe sous-estimé</h2>
-  <p>Un menu posé au centre change la dynamique d'une salle : on se sert, on fait passer, on commente. Chaque menu équilibre pièces salées et douceurs, pour circuler de main en main — généreux, beau à regarder et pensé pour tous les goûts.</p>
+  <p>Un menu posé au centre change la dynamique d'une salle : on se sert, on fait passer, on commente. Chaque menu équilibre pièces salées et douceurs, pour circuler de main en main, généreux, beau à regarder et pensé pour tous les goûts.</p>
 
   <h2>Choisir le bon menu</h2>
   <p>Comptez un menu pour 8 à 12 personnes en le complétant selon l'appétit et l'horaire. Signature, Méditerranéen, Parisien ou Jardin (100 % végétarien) : nos équipes vous aident à composer et à dimensionner selon le nombre de convives.</p>
 
   <h2>Commander vos menus à partager à Paris</h2>
-  <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA — et pour les moments récurrents, un devis cadre simplifie tout.</p>
+  <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA, et pour les moments récurrents, un devis cadre simplifie tout.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
 
 const HERO = {
   label: 'À Partager',
-  description: 'Des menus généreux à partager — salades dressées, planches gourmandes et pièces cocktail, en grand format. Composés le matin avec des produits de saison.',
+  description: 'Des menus généreux à partager · salades dressées, planches gourmandes et pièces cocktail, en grand format. Composés le matin avec des produits de saison.',
   hero: '/hero-a-partager.webp',
 }
 

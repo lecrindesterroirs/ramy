@@ -10,7 +10,7 @@ import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import ArtisansMapSection from '../../../components/ArtisansMapSection'
 import { ARTISANS } from '../../../lib/artisansData'
 
-/* Texture papier (grain léger) — cohérence avec les parchemins Univers. */
+/* Texture papier (grain léger), cohérence avec les parchemins Univers. */
 const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
   <filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/>
   <feColorMatrix type='saturate' values='0'/></filter>
@@ -110,7 +110,7 @@ export default function NosArtisans() {
           </div>
         </div>
 
-        {/* ── Notre engagement (parchemin — cohérence DA) ── */}
+        {/* ── Notre engagement (parchemin, cohérence DA) ── */}
         <div className="art-engagement-wrap" style={{ maxWidth: '1180px', margin: '0 auto', padding: '24px 72px 96px' }}>
           <div className="art-engagement" style={{ position: 'relative', backgroundColor: '#FBF6EA', backgroundImage: GRAIN, backgroundSize: '300px', boxShadow: '0 22px 50px -26px rgba(80,60,30,0.32), inset 0 0 0 1px rgba(169,128,59,0.18)', padding: '48px 56px', display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: '32px', alignItems: 'center' }}>
             <span style={{ position: 'absolute', inset: '14px', border: '1px solid rgba(169,128,59,0.22)', pointerEvents: 'none' }} />

@@ -17,7 +17,7 @@ export default function EvenementsSaisonniers() {
         <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
             <Image fill priority sizes="100vw" src="/creations-featured.webp"
-              alt="Événements Saisonniers — L'Écrin Traiteur"
+              alt="Événements Saisonniers, L'Écrin Traiteur"
               style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />

@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     title: `${o.seoTitle} | L'Écrin Traiteur`,
     description: o.seoDescription,
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur — traiteur d'entreprise à Paris & Île-de-France" }],
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
       title: o.seoTitle,
       description: o.seoDescription,
       locale: 'fr_FR',

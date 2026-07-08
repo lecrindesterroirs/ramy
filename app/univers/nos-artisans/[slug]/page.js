@@ -80,10 +80,10 @@ export default function ArtisanDetail() {
             <Reveal delay={80}>
               <div>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(18px, 2.2vw, 26px)', lineHeight: 1.5, color: 'var(--text-primary)', marginBottom: '16px' }}>
-                  Le temps, la patience et l'exigence du travail bien fait — c'est ce qui distingue {artisan.nom}.
+                  Le temps, la patience et l'exigence du travail bien fait, c'est ce qui distingue {artisan.nom}.
                 </p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
-                  — L'Écrin Traiteur
+                  L'Écrin Traiteur
                 </p>
               </div>
             </Reveal>

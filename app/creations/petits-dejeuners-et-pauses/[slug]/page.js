@@ -22,7 +22,7 @@ const MAD_EXIGENCE = [
   'La bosse franche et le moelleux d\'une cuisson maîtrisée.',
 ]
 
-/* ── Vitrine éditoriale (structure "plateau repas") — test sur 1 produit ── */
+/* ── Vitrine éditoriale (structure "plateau repas"), test sur 1 produit ── */
 const MARBLE_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1200'>
   <filter id='v'>
     <feTurbulence type='fractalNoise' baseFrequency='0.011 0.018' numOctaves='6' seed='9' result='t'/>
@@ -95,7 +95,7 @@ export default function ProductPage() {
       },
       {
         '@type': 'Product',
-        name: `${product.name} — L'Écrin Traiteur`,
+        name: `${product.name}, L'Écrin Traiteur`,
         description: product.ingredients || `${product.name}, spécialité artisanale livrée pour vos petits-déjeuners d'entreprise à Paris et en Île-de-France.`,
         image: product.img ? `${BASE}${product.img}` : undefined,
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
@@ -153,7 +153,7 @@ export default function ProductPage() {
 
             {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
             <div className="mad-hero" style={{ position: 'relative', width: '100%', height: 'clamp(360px, 42vw, 520px)', overflow: 'hidden' }}>
-              <Image fill priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature — L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
+              <Image fill priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature, L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
@@ -256,7 +256,7 @@ export default function ProductPage() {
                   L'atelier de la madeleine
                 </p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
-                  Fabriquées chaque jour dans leur atelier parisien, elles sont réputées comme les meilleures madeleines de Paris — c'est cette exigence qui nous a convaincus de les intégrer à notre sélection.
+                  Fabriquées chaque jour dans leur atelier parisien, elles sont réputées comme les meilleures madeleines de Paris, c'est cette exigence qui nous a convaincus de les intégrer à notre sélection.
                 </p>
               </div>
               {/* Cellule 4 : photo atelier */}
@@ -295,7 +295,7 @@ export default function ProductPage() {
           <DevisRapide
             defaultPrestation={product.categoryLabel?.includes('repas') ? 'Plateaux repas' : 'Petit-déjeuner'}
             titre="Un événement à Paris ou en Île-de-France ?"
-            sousTitre="Répondez en 30 secondes — devis personnalisé sous 24h."
+            sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
             <a href="/creations/petits-dejeuners-et-pauses" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
@@ -439,10 +439,10 @@ function GalleryFiche({ product }) {
   )
 }
 
-// ── Vitrine éditoriale — structure "plateau repas" ──
+// ── Vitrine éditoriale, structure "plateau repas" ──
 function EditorialHero({ product, breadcrumb }) {
-  const accroche = product.description?.includes('—')
-    ? product.description.split('—').slice(1).join('—').trim()
+  const accroche = product.description?.includes('·')
+    ? product.description.split('·').slice(1).join('·').trim()
     : product.description
 
   return (
@@ -477,14 +477,14 @@ function EditorialHero({ product, breadcrumb }) {
       {/* Composition : photo + carte papier */}
       <div className="editorial-grid" style={{ flex: 1, width: '100%', maxWidth: '1280px', margin: '0 auto', padding: '16px 72px 24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4vw', alignItems: 'center' }}>
 
-        {/* Gauche — photo posée sur le marbre */}
+        {/* Gauche, photo posée sur le marbre */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ position: 'relative', width: '100%', maxWidth: '560px', maxHeight: 'calc(100vh - var(--banner-h) - var(--nav-h) - 80px)', aspectRatio: '1 / 1', overflow: 'hidden', boxShadow: '0 26px 60px -24px rgba(60,48,34,0.5)' }}>
             <Image fill sizes="(max-width: 768px) 100vw, 560px" src={product.img} alt={product.name} style={{ objectFit: 'cover', display: 'block' }} />
           </div>
         </div>
 
-        {/* Droite — carte papier */}
+        {/* Droite, carte papier */}
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div style={{ position: 'relative', width: '100%', maxWidth: '480px' }}>
             <div style={{ position: 'absolute', inset: 0, backgroundColor: '#FEFCF8', backgroundImage: GRAIN, backgroundSize: '320px', boxShadow: '0 22px 48px rgba(60,48,34,0.12)' }} />
@@ -604,7 +604,7 @@ function ProductInfo({ product }) {
       </a>
 
       <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        {['Livraison dès 6h30 — Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
+        {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
           <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.5)', letterSpacing: '0.02em' }}>{t}</p>
         ))}
       </div>

@@ -48,7 +48,7 @@ export default function MobileCTA() {
     }
   }, [])
 
-  // Masqué sur la page devis — la nav est intégrée dans le formulaire
+  // Masqué sur la page devis, la nav est intégrée dans le formulaire
   if (pathname === '/devis') return null
 
   return (

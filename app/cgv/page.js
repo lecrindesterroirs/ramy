@@ -11,14 +11,14 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 1 — Champ d'application</h2>
+        <h2 style={h2Style}>Article 1, Champ d'application</h2>
         <p style={pStyle}>
           Les présentes Conditions Générales de Vente s'appliquent à toutes les prestations de restauration événementielle proposées par L'Écrin Traiteur (L'Écrin des Terroirs SASU, SIRET 100 102 672 00019) à destination de clients professionnels (entreprises, associations, collectivités) situés en Île-de-France. Elles régissent l'ensemble des relations contractuelles entre L'Écrin Traiteur et ses clients.
         </p>
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 2 — Offre de services</h2>
+        <h2 style={h2Style}>Article 2, Offre de services</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           L'Écrin Traiteur propose des prestations de restauration événementielle pour les entreprises : petits-déjeuners, pauses gourmandes, plateaux repas, cocktails, buffets et événements saisonniers, élaborés avec des artisans locaux sélectionnés.
         </p>
@@ -28,7 +28,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 3 — Modalités de commande</h2>
+        <h2 style={h2Style}>Article 3, Modalités de commande</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Les commandes peuvent être passées par téléphone au 01 74 54 23 10 ou par email à commercial@lecrin-traiteur.fr. Toute commande doit être validée avant <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>12h00 la veille</strong> de la livraison souhaitée.
         </p>
@@ -38,7 +38,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 4 — Hygiène et allergènes</h2>
+        <h2 style={h2Style}>Article 4, Hygiène et allergènes</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Les produits sont livrés conformément aux normes d'hygiène alimentaire en vigueur. À réception, les produits réfrigérés doivent être conservés entre 0°C et 4°C et consommés dans les <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>4 heures</strong> suivant la livraison. À température ambiante, la consommation ne doit pas excéder <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>2 heures</strong>.
         </p>
@@ -51,7 +51,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 5 — Tarifs et paiement</h2>
+        <h2 style={h2Style}>Article 5, Tarifs et paiement</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Tous les prix sont indiqués en euros hors taxes (HT) et s'entendent avec application de la TVA au taux en vigueur. Un <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>forfait fixe de 28 € HT</strong> est appliqué pour toute livraison à Paris intramuros et dans les communes limitrophes. Des frais spécifiques peuvent s'appliquer pour d'autres zones d'Île-de-France, communiqués lors du devis.
         </p>
@@ -64,7 +64,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 6 — Livraison</h2>
+        <h2 style={h2Style}>Article 6, Livraison</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           La livraison est effectuée selon le créneau convenu lors de la commande, avec une tolérance de <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>30 minutes</strong>. Les livraisons débutent dès <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>6h30</strong>.
         </p>
@@ -77,7 +77,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 7 — Annulation</h2>
+        <h2 style={h2Style}>Article 7, Annulation</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Toute annulation est sans frais jusqu'à <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>2 jours ouvrés avant la date de livraison, avant 10h00</strong>. Pour les commandes de boissons uniquement, l'annulation est possible jusqu'à la veille de la livraison avant 17h00.
         </p>
@@ -87,7 +87,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 8 — Matériel et force majeure</h2>
+        <h2 style={h2Style}>Article 8, Matériel et force majeure</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Tout matériel prêté par L'Écrin Traiteur (plats, présentoirs, thermos) doit être retourné propre dans un délai de <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>72 heures</strong>. Les dégradations ou pertes seront facturées au client à leur valeur de remplacement.
         </p>
@@ -97,7 +97,7 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9 — Données personnelles (RGPD)</h2>
+        <h2 style={h2Style}>Article 9, Données personnelles (RGPD)</h2>
         <p style={pStyle}>
           Les données personnelles collectées dans le cadre de la relation commerciale sont traitées conformément au Règlement Général sur la Protection des Données (RGPD). Le client dispose d'un droit d'accès, de rectification, de suppression et de portabilité de ses données. Pour exercer ces droits, contacter L'Écrin Traiteur à l'adresse : commercial@lecrin-traiteur.fr ou par courrier : 2, Allée des Bergeronnettes, 92150 Suresnes. Pour plus d'informations, consultez notre{' '}
           <a href="/confidentialite" style={{ color: 'var(--accent-deep)', textDecoration: 'none' }}>Politique de confidentialité</a>.
@@ -105,7 +105,7 @@ export default function CGV() {
       </div>
 
       <div style={{ ...sectionStyle, borderBottom: 'none', paddingBottom: 0, marginBottom: 0 }}>
-        <h2 style={h2Style}>Article 10 — Droit applicable et juridiction</h2>
+        <h2 style={h2Style}>Article 10, Droit applicable et juridiction</h2>
         <p style={pStyle}>
           Les présentes CGV sont soumises au droit français. En cas de litige entre L'Écrin Traiteur et un client professionnel, et à défaut de résolution amiable dans un délai de 30 jours, le <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Tribunal de Commerce de Nanterre</strong> sera seul compétent.
         </p>

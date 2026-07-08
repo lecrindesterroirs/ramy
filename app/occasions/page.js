@@ -21,7 +21,7 @@ export default function OccasionsListing() {
             Un traiteur pour chaque moment de votre entreprise
           </h1>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '540px', margin: '0 auto' }}>
-            CODIR, séminaire, accueil client, formation, team building — chaque occasion a ses propres besoins. Découvrez nos recommandations selon votre événement.
+            CODIR, séminaire, accueil client, formation, team building, chaque occasion a ses propres besoins. Découvrez nos recommandations selon votre événement.
           </p>
         </div>
 

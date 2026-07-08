@@ -22,9 +22,9 @@ export function generateMetadata({ params }) {
   const m = META[params.slug]
   const path = `/creations/pauses-gourmandes/${params.slug}`
   if (!m) {
-    return { title: "Pauses gourmandes — traiteur d'entreprise à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
+    return { title: "Pauses gourmandes, traiteur d'entreprise à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
-  const title = `${m.nom} — pause gourmande | L'Écrin Traiteur`
+  const title = `${m.nom}, pause gourmande | L'Écrin Traiteur`
   const description = `${m.d} Livraison de pauses gourmandes à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
     title: { absolute: title },

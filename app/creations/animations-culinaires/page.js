@@ -15,7 +15,7 @@ const SEO_ARTICLE = `
   <p>Une <strong>animation culinaire en entreprise</strong> transforme une prestation traiteur en moment mémorable : un stand qui s'installe, un artisan qui prépare devant vos équipes, une file d'attente qui devient un lieu de conversation. L'Écrin Traiteur organise vos animations à Paris et en Île-de-France, de la mise en place au dernier service.</p>
 
   <h2>Crêpes, bars à jus, stands gourmands : du spectacle et du goût</h2>
-  <p>Nos animations mettent le geste au centre : crêpes préparées à la minute, bars à boissons fraîches, stands de douceurs dressés sous les yeux de vos invités. La différence avec un buffet classique est immédiate — on ne se sert pas, on assiste, on choisit, on échange avec la personne qui prépare. C'est ce supplément d'humain qui reste en mémoire.</p>
+  <p>Nos animations mettent le geste au centre : crêpes préparées à la minute, bars à boissons fraîches, stands de douceurs dressés sous les yeux de vos invités. La différence avec un buffet classique est immédiate, on ne se sert pas, on assiste, on choisit, on échange avec la personne qui prépare. C'est ce supplément d'humain qui reste en mémoire.</p>
 
   <h2>Pour quels événements d'entreprise ?</h2>
   <p>Les animations culinaires trouvent leur place partout où l'on veut marquer le coup : <strong>fête de fin d'année</strong>, <strong>inauguration de locaux</strong>, <strong>journée collaborateurs</strong>, salon interne, semaine QVT. Elles s'adaptent au lieu et au flux : un stand pour 40 personnes en continu, plusieurs points d'animation pour un événement de plusieurs centaines d'invités.</p>
@@ -28,7 +28,7 @@ const SEO_ARTICLE = `
 
 const HERO = {
   label: 'Animations Culinaires',
-  description: 'Des ateliers et bars animés en direct par nos chefs et baristas — l\'expérience gourmande qui donne du relief à vos événements.',
+  description: 'Des ateliers et bars animés en direct par nos chefs et baristas · l\'expérience gourmande qui donne du relief à vos événements.',
   hero: '/hero-animations.webp',
 }
 
@@ -199,7 +199,7 @@ export default function AnimationsCulinaires() {
       <CategoryClosing
         eyebrow="Pensé pour marquer les esprits"
         title={"Plus qu'un traiteur.\nUne expérience en direct."}
-        body="Un stand qui s'installe, un artisan qui prépare devant vos équipes : l'animation culinaire transforme votre événement en souvenir partagé. Nous gérons tout — installation, service, démontage."
+        body="Un stand qui s'installe, un artisan qui prépare devant vos équipes : l'animation culinaire transforme votre événement en souvenir partagé. Nous gérons tout, installation, service, démontage."
         seoArticle={SEO_ARTICLE}
       />
 

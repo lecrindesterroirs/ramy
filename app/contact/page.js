@@ -203,7 +203,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* ── Colonne droite — Formulaire ── */}
+          {/* ── Colonne droite, Formulaire ── */}
           <div style={{ background: '#FFFFFF', padding: '36px 40px 32px', display: 'flex', flexDirection: 'column' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
               Parlez-nous de votre projet
@@ -333,7 +333,7 @@ export default function Contact() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageLd('/contact', 'Contact — L\'Écrin Traiteur')) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageLd('/contact', 'Contact, L\'Écrin Traiteur')) }}
       />
 
       <Footer />

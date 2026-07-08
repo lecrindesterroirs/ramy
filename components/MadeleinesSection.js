@@ -27,7 +27,7 @@ export default function MadeleinesSection() {
         {/* Image */}
         <div className="mad-img-col" style={{ position: 'relative', overflow: 'hidden', minHeight: '680px' }}>
           <img loading="lazy" src="/madeleine-home.webp"
-            alt="Madeleines artisanales — L'Écrin Traiteur"
+            alt="Madeleines artisanales, L'Écrin Traiteur"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
         </div>
@@ -41,7 +41,7 @@ export default function MadeleinesSection() {
             Madeleines artisanales
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '44px', maxWidth: '500px' }}>
-            Préparées chaque matin par Mado, notre partenaire historique — considérées comme les meilleures madeleines de Paris. Elle nous suit depuis le premier jour et est devenue, au fil du temps, le produit signature de la maison : texture moelleuse, bosse généreuse et des saveurs pensées pour surprendre.
+            Préparées chaque matin par Mado, notre partenaire historique, considérées comme les meilleures madeleines de Paris. Elle nous suit depuis le premier jour et est devenue, au fil du temps, le produit signature de la maison : texture moelleuse, bosse généreuse et des saveurs pensées pour surprendre.
           </p>
 
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>

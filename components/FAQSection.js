@@ -102,7 +102,7 @@ export default function FAQSection() {
           </p>
         </div>
 
-        {/* Accordion — 2 colonnes */}
+        {/* Accordion, 2 colonnes */}
         <div className="reveal faq-cols">
           {[0, 1].map(col => {
             const half = Math.ceil(faqs.length / 2)

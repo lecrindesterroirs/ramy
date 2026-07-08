@@ -46,7 +46,7 @@ export default function SelectionSection() {
           >
             <img loading="lazy" className="selection-img"
               src="/prod-macarons.webp"
-              alt="L'art de la sélection — L'Écrin Traiteur"
+              alt="L'art de la sélection, L'Écrin Traiteur"
               style={{
                 width: '100%',
                 height: '680px',
@@ -105,7 +105,7 @@ export default function SelectionSection() {
               Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Mariage Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.
             </p>
 
-            {/* 3 arguments — desktop */}
+            {/* 3 arguments, desktop */}
             <div
               className="selection-args-desktop"
               style={{
@@ -132,7 +132,7 @@ export default function SelectionSection() {
               ))}
             </div>
 
-            {/* 3 arguments — mobile accordion */}
+            {/* 3 arguments, mobile accordion */}
             <div className="selection-args-mobile">
               {args.map((item, i) => (
                 <div

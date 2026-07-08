@@ -1,4 +1,4 @@
-// Données animations culinaires — module plat (importable serveur + client)
+// Données animations culinaires, module plat (importable serveur + client)
 
 /* Tag court + couleur par univers. */
 export const UNIVERS = {
@@ -97,7 +97,7 @@ export const ANIMATIONS = [
 
   // ── Douceurs ──
   { id: 'do1', univers: 'douceurs', nom: 'Bar à Glaces Artisanales', img: '/prod-bar-glaces.webp',
-    description: 'Une animation parfaite pour l\'été — parfums et toppings au choix.',
+    description: 'Une animation parfaite pour l\'été · parfums et toppings au choix.',
     compo: ['Vanille', 'Chocolat', 'Pistache', 'Fraise', 'Citron', 'Café', 'Toppings : coulis, caramel beurre salé, fruits rouges, pistaches, cookies émiettés, chantilly'] },
   { id: 'do2', univers: 'douceurs', nom: 'Atelier Desserts', img: '/prod-atelier-desserts.webp',
     description: 'Dressage de pâtisseries individuelles et mignardises.',

@@ -22,10 +22,10 @@ const SEO_ARTICLE = `
   <p>Vos créations personnalisées trouvent leur place partout où vous voulez marquer les esprits : lancement de produit, séminaire d'équipe, cadeau client prestigieux, événement d'entreprise mémorable. Chaque occasion devient une opportunité de renforcer votre marque et d'impressionner vos invités.</p>
 
   <h2>Demander un projet de personnalisation à Paris</h2>
-  <p>Décrivez votre vision — format, volume, délai, budget — et nos équipes composent une proposition personnalisée sous <strong>24h</strong>. Facturation entreprise avec TVA. Aucun minimum, aucun engagement : nous travaillons au rythme de vos projets, du plus petit au plus ambitieux.</p>
+  <p>Décrivez votre vision, format, volume, délai, budget, et nos équipes composent une proposition personnalisée sous <strong>24h</strong>. Facturation entreprise avec TVA. Aucun minimum, aucun engagement : nous travaillons au rythme de vos projets, du plus petit au plus ambitieux.</p>
 `
 
-/* Ce que nous personnalisons — 6 familles */
+/* Ce que nous personnalisons, 6 familles */
 const FAMILLES = [
   { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.webp' },
   { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.webp' },
@@ -35,7 +35,7 @@ const FAMILLES = [
   { nom: 'Cartes & Messages', desc: 'Cartes de remerciement et messages sur-mesure.', img: '/perso-cartes.webp' },
 ]
 
-/* Accompagnement sur-mesure — 5 étapes */
+/* Accompagnement sur-mesure, 5 étapes */
 const ETAPES = [
   { n: '01', title: 'Votre logo et votre identité' },
   { n: '02', title: 'Le choix des saveurs' },
@@ -152,7 +152,7 @@ export default function Personnalisation() {
           <DevisRapide
             defaultPrestation="Personnalisation"
             titre="Un projet de personnalisation à Paris ou en Île-de-France ?"
-            sousTitre="Décrivez votre projet — nous revenons vers vous avec une proposition sous 24h."
+            sousTitre="Décrivez votre projet, nous revenons vers vous avec une proposition sous 24h."
           />
         </section>
 

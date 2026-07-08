@@ -1,7 +1,7 @@
 'use client'
 
 /*
-  Section témoignages — reproduction fidèle de la maquette :
+  Section témoignages, reproduction fidèle de la maquette :
   header + bandeau stats · bloc vedette (photo + citation) · 2 cartes photo+citation · barre logos.
 */
 
@@ -9,7 +9,7 @@ const FEATURED = {
   company: 'Le Monde',
   logo: '/logos/lemonde.png',
   context: 'Petit-déjeuner presse',
-  quote: "Je n'ai eu que d'excellents retours sur tous les produits — yaourts, viennoiseries, jus de fruits — avec une mention spéciale pour les madeleines qui étaient succulentes, ainsi que le nectar de fraise qui a énormément plu.",
+  quote: "Je n'ai eu que d'excellents retours sur tous les produits, yaourts, viennoiseries, jus de fruits, avec une mention spéciale pour les madeleines qui étaient succulentes, ainsi que le nectar de fraise qui a énormément plu.",
   author: 'Claire Renard',
   role: 'Office Manager, Direction numérique · Le Monde',
   img: '/temoignage-le-monde.webp',
@@ -19,7 +19,7 @@ const CARDS = [
   {
     company: 'SIA Partners',
     context: "Séminaire d'entreprise",
-    quote: "Les madeleines sont très bonnes, grand choix de parfums, viennoiseries, jus — et le service au top. Le livreur nous a même aidé à tout installer.",
+    quote: "Les madeleines sont très bonnes, grand choix de parfums, viennoiseries, jus, et le service au top. Le livreur nous a même aidé à tout installer.",
     author: 'Rose Jean',
     role: 'Office Manager · SIA Partners',
     img: '/creations-1.webp',
@@ -54,7 +54,7 @@ function QuoteMark({ size = 34 }) {
 }
 
 export default function TestimonialsSection() {
-  // NB : pas de JSON-LD Review/AggregateRating ici — les avis auto-attribués
+  // NB : pas de JSON-LD Review/AggregateRating ici, les avis auto-attribués
   // sur sa propre entité sont contraires aux règles Google (risque de flag).
   // Les vraies notes proviennent de la fiche Google Business Profile (5,0★ / 18 avis).
   return (
@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
         {/* ── Témoignages ── */}
         <div className="ts-grid" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '14px', alignItems: 'stretch' }}>
 
-          {/* Vedette — photo + carte texte côte à côte */}
+          {/* Vedette, photo + carte texte côte à côte */}
           <div className="ts-featured" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', border: '1px solid rgba(17,17,17,0.10)', background: '#FFFFFF', overflow: 'hidden' }}>
             <div className="ts-featured-img" style={{ overflow: 'hidden', background: 'var(--bg-secondary)' }}>
               <img loading="lazy" src={FEATURED.img} alt={`Événement ${FEATURED.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />

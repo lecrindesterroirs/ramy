@@ -35,7 +35,7 @@ export default function BoissonPage() {
       seoHtml={product.seoArticle}
       devisPrestation="Boissons"
       devisTitre="Un événement à Paris ou en Île-de-France ?"
-      devisSousTitre="Répondez en 30 secondes — devis personnalisé sous 24h."
+      devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
   )
 }

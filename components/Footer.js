@@ -48,7 +48,7 @@ export default function Footer() {
           {/* 4 colonnes centrées */}
           <div className="footer-cols" style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: '48px' }}>
 
-            {/* La Carte — par moments */}
+            {/* La Carte, par moments */}
             <div>
               <span style={colTitleStyle}>La Carte</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>

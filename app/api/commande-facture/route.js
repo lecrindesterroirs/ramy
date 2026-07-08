@@ -94,7 +94,7 @@ export async function POST(req) {
               </tfoot>
             </table>
 
-            <p style="font-size:12px;color:#aaa;font-style:italic;">Paiement sur facture — à envoyer sous 48h.</p>
+            <p style="font-size:12px;color:#aaa;font-style:italic;">Paiement sur facture, à envoyer sous 48h.</p>
           </div>
 
           <!-- Footer -->
@@ -110,7 +110,7 @@ export async function POST(req) {
     await resend.emails.send({
       from: "L'Écrin Traiteur <commercial@lecrin-traiteur.fr>",
       to: ['commercial@lecrin-traiteur.fr'],
-      subject: `Commande sur facture — ${customer.entreprise || customer.nom} — ${formatPrice(total)}`,
+      subject: `Commande sur facture, ${customer.entreprise || customer.nom}, ${formatPrice(total)}`,
       html,
     })
 
@@ -118,7 +118,7 @@ export async function POST(req) {
     await resend.emails.send({
       from: "L'Écrin Traiteur <commercial@lecrin-traiteur.fr>",
       to: [customer.email],
-      subject: "Votre commande a bien été reçue — L'Écrin Traiteur",
+      subject: "Votre commande a bien été reçue, L'Écrin Traiteur",
       html: `
         <!DOCTYPE html>
         <html lang="fr">

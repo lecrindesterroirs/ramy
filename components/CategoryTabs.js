@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 // Liste canonique des catégories créations affichées dans la barre d'onglets.
-// Source unique — réutilisée partout pour une barre identique.
+// Source unique, réutilisée partout pour une barre identique.
 export const CATEGORIES = [
   { label: 'Petits-déjeuners',   href: '/creations/petits-dejeuners-et-pauses' },
   { label: 'Pauses gourmandes',  href: '/creations/pauses-gourmandes' },
@@ -18,7 +18,7 @@ export const CATEGORIES = [
 
 export const DEFAULT_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
-// Extrait un prix numérique d'un label type « 5/6 pers — 14,90€ » ou « 28,90 ».
+// Extrait un prix numérique d'un label type « 5/6 pers, 14,90€ » ou « 28,90 ».
 export function priceFromLabel(label = '') {
   const s = String(label)
   // Nombre juste avant le « € » en priorité (ex. « 24 pièces, 64,00 € » → 64),
@@ -27,7 +27,7 @@ export function priceFromLabel(label = '') {
   return m ? parseFloat(m[1].replace(',', '.')) : 0
 }
 
-// Tri générique — getPrice(item) fournit le prix pour le tri par prix.
+// Tri générique, getPrice(item) fournit le prix pour le tri par prix.
 export function sortItems(list, value, getPrice = () => 0) {
   const arr = [...list]
   if (value === 'Prix croissant')  return arr.sort((a, b) => getPrice(a) - getPrice(b))
@@ -54,7 +54,7 @@ function tabStyle(active) {
 }
 
 // Barre d'onglets catégories. Optionnellement, tri + compteur à droite (même
-// ligne) quand on passe sort/onSort/count — reproduit exactement la barre de
+// ligne) quand on passe sort/onSort/count, reproduit exactement la barre de
 // la page petit-déjeuner (ProductsPageTemplate).
 export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORTS }) {
   const pathname = usePathname()
@@ -65,7 +65,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
     <div className="cat-tabs" style={{ background: '#FFFFFF' }}>
       <div className="cat-tabs-inner" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
 
-        {/* Onglets catégories — défilables horizontalement */}
+        {/* Onglets catégories, défilables horizontalement */}
         <nav className="cat-tabs-links" aria-label="Catégories" style={{ display: 'flex', alignItems: 'center', overflowX: 'auto', minWidth: 0 }}>
           {CATEGORIES.map(cat => {
             const active = pathname === cat.href
@@ -83,7 +83,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
           })}
         </nav>
 
-        {/* Tri + compteur — même ligne, à droite */}
+        {/* Tri + compteur, même ligne, à droite */}
         {showSort && (
           <div className="cat-tabs-sort" style={{ display: 'flex', alignItems: 'center', gap: '28px', flexShrink: 0 }}>
             <div style={{ position: 'relative' }}>

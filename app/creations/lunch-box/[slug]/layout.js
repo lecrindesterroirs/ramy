@@ -18,7 +18,7 @@ export function generateMetadata({ params }) {
   if (!m) {
     return { title: "Lunch box d'entreprise à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
-  const title = `${m.nom} — lunch box Paris | L'Écrin Traiteur`
+  const title = `${m.nom}, lunch box Paris | L'Écrin Traiteur`
   const description = `${m.d} Livraison à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
     title: { absolute: title },

@@ -8,14 +8,14 @@ import DevisRapide from './DevisRapide'
 import RelatedLinks from './RelatedLinks'
 
 /*
-  Fiche détail réutilisable — structure "Petit-déjeuner" (référence DA du site).
+  Fiche détail réutilisable, structure "Petit-déjeuner" (référence DA du site).
   Photo à gauche (galerie optionnelle si plusieurs visuels), logo + titre centrés
   à droite, description, composition/sections, puis prix + CTA centrés.
 
   Props :
    - title, subtitle       string
    - img                   string
-   - gallery               string[]  optionnel — si length > 1, affiche les miniatures
+   - gallery               string[]  optionnel, si length > 1, affiche les miniatures
    - description           string|null   paragraphe (ingrédients, présentation…)
    - sections              [{label, value}]  ex entrée/plat/dessert
    - listLabel / listItems string / string[]  ex recettes, accompagnements inclus
@@ -35,7 +35,7 @@ export default function GalleryFiche({
   breadcrumb = [], backHref, backLabel,
   seoEyebrow, seoTitle, seoHtml, devisPrestation = '',
   devisTitre = 'Un événement à Paris ou en Île-de-France ?',
-  devisSousTitre = 'Répondez en 30 secondes — devis personnalisé sous 24h.',
+  devisSousTitre = 'Répondez en 30 secondes, devis personnalisé sous 24h.',
   related = [], relatedTitle = 'Dans la même sélection',
 }) {
   const photos = gallery && gallery.length ? gallery : [img]
