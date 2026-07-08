@@ -127,9 +127,24 @@ function PauseCard({ produit }) {
         <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '8px', transition: 'color 0.25s ease', flex: 1 }}>
           {produit.nom}
         </h3>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#9B9590' }}>
-          {produit.prix || 'À partager, sur devis'}
-        </p>
+        {(() => {
+          if (!produit.prix) return (
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#9B9590' }}>À partager · sur devis</p>
+          )
+          const parts = produit.prix.split(', ')
+          const hasUnit = parts.length === 2
+          return (
+            <>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111' }}>
+                {hasUnit ? parts[1] : parts[0]}
+                <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>
+              </p>
+              {hasUnit && (
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', marginTop: '4px' }}>{parts[0]}</p>
+              )}
+            </>
+          )
+        })()}
       </div>
     </Link>
   )

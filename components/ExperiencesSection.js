@@ -61,7 +61,7 @@ export default function ExperiencesSection() {
         </p>
 
         <a
-          href="/creations/petits-dejeuners-et-pauses"
+          href="/creations/pauses-gourmandes"
           style={{
             display: 'inline-flex',
             alignItems: 'center',

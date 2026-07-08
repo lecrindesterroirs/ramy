@@ -102,14 +102,8 @@ export default function NosEngagements() {
                     borderTop: i === 0 ? 'none' : '1px solid rgba(169,128,59,0.2)',
                   }}
                 >
-                  <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '22px', color: GOLD, lineHeight: 1.3, flexShrink: 0 }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   <div>
-                    <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', serif", fontSize: '12px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(42,32,19,0.55)', marginBottom: '7px' }}>
-                      {e.titre}
-                    </p>
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.9vw, 19px)', lineHeight: 1.6, color: 'rgba(42,32,19,0.86)' }}>
+                    <p className="eng-texte" style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.9vw, 19px)', lineHeight: 1.6, color: 'rgba(42,32,19,0.86)' }}>
                       {e.texte}
                     </p>
                   </div>
@@ -130,6 +124,15 @@ export default function NosEngagements() {
       </main>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
+        .eng-texte::first-letter {
+          -webkit-initial-letter: 2 1;
+          initial-letter: 2 1;
+          color: ${GOLD};
+          font-style: normal;
+          font-weight: 400;
+          text-transform: uppercase;
+          margin-right: 12px;
+        }
         @media (max-width: 768px) {
           .pm-wrap { padding: 48px 18px 72px !important; }
           .pm-scroll { padding: 52px 26px 48px !important; }

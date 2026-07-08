@@ -41,15 +41,15 @@ export const MENUS = [
     prix: '37,50 € / pers.',
     featured: false,
     salees: [
-      "Houmous, huile d'olive & pain grillé",
-      "Caviar d'aubergine & focaccia romarin",
       'Salade grecque',
+      "Houmous, huile d'olive & focaccia romarin",
       'Wrap falafel & houmous',
       'Bruschetta tomates confites',
-      'Plateau de fromage',
+      "Caviar d'aubergine & focaccia",
+      'Plateau de fromages affinés',
     ],
     sucrees: [
-      'Panna cotta fruits rouges',
+      'Brownie Signature',
       'Verrine citron & lemon curd',
     ],
   },
@@ -62,14 +62,14 @@ export const MENUS = [
     featured: false,
     salees: [
       'Salade César au poulet rôti',
-      'Club sandwich poulet César',
+      "Pommes de terre rôties, crème d'Isigny & saumon fumé",
+      'Club sandwich Poulet César',
       'Mini baguette jambon de dinde',
-      "Pomme de terre rôtie, crème d'Isigny & saumon fumé",
-      'Mini bun saumon gravlax & mousse aux herbes',
+      'Plateau de saumon fumé',
       "Bruschetta caviar d'aubergine",
     ],
     sucrees: [
-      'Brownie signature',
+      'Panna cotta fruits rouges',
       'Tartelette citron',
     ],
   },
@@ -81,15 +81,15 @@ export const MENUS = [
     prix: '34,90 € / pers.',
     featured: false,
     salees: [
-      'Samoussa curry végétarien',
-      'Verrine houmous méditerranéen',
-      'Quinoa gourmand, falafels & sauce tahini',
-      'Wrap burrata & légumes grillés',
       'Salade de lentilles, feta & légumes rôtis',
-      'Bruschetta tomates confites',
+      'Houmous méditerranéen & focaccia romarin',
+      'Wrap burrata & légumes grillés',
+      'Bruschetta tomates confites & stracciatella',
+      'Falafels & crème tahini citronnée',
+      'Plateau de fromages affinés',
     ],
     sucrees: [
-      'Madeleines',
+      'Madeleines artisanales',
       'Fruits frais de saison',
     ],
   },
@@ -175,7 +175,7 @@ function MenuCard({ m }) {
             </p>
           )}
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)' }}>
-            {m.salees.length} recettes salées · {m.sucrees.length} sucrées — dressé en salades ou en verrines
+            {m.salees.length} recettes salées · {m.sucrees.length} sucrées
           </p>
         </div>
 
