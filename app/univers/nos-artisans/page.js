@@ -76,7 +76,7 @@ export default function NosArtisans() {
     <>
       <Navbar />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)', overflowX: 'hidden' }}>
 
         {/* ── Carte de France ── */}
         <ArtisansMapSection />
@@ -173,7 +173,9 @@ export default function NosArtisans() {
         @media (max-width: 768px) {
           .art-intro, .art-carousel-section, .artisans-cta { padding-left: 24px !important; padding-right: 24px !important; }
           .art-map > div { padding-left: 24px !important; padding-right: 24px !important; }
-          .art-engagement { padding: 56px 24px !important; }
+          .art-engagement-wrap { padding-left: 20px !important; padding-right: 20px !important; }
+          .art-engagement { padding: 44px 22px !important; }
+          .engagement-icons { flex-wrap: wrap; justify-content: center; gap: 22px 26px !important; }
           .artisans-cta p { flex-direction: column; gap: 12px; }
         }
       ` }} />

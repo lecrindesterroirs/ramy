@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
+import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/CategoryTabs'
 import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
 
 const SEO_ARTICLE = `
@@ -177,6 +178,7 @@ function TextTab({ label, active, onClick, size = '16px', gap = '10px', underlin
 export default function PlateauxRepas() {
   const [activeCollection, setActiveCollection] = useState('essentiel')
   const [activeFiltre, setActiveFiltre] = useState('tous')
+  const [sortLabel, setSortLabel] = useState('En vedette')
 
   const col = COLLECTIONS.find(c => c.key === activeCollection)
 
@@ -190,6 +192,7 @@ export default function PlateauxRepas() {
   const produitsFiltres = produitsCollection.filter(p =>
     activeFiltre === 'tous' ? true : p.categorie === activeFiltre
   )
+  const produitsAffiches = sortItems(produitsFiltres, sortLabel, p => priceFromLabel(prixMenu(p)))
 
   function handleCollectionChange(key) {
     setActiveCollection(key)
@@ -232,6 +235,8 @@ export default function PlateauxRepas() {
             </Reveal>
           </header>
         </div>
+
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={produitsAffiches.length} />
 
         {/* ── Navigation légère — deux niveaux de texte ─────────── */}
         <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
@@ -308,7 +313,7 @@ export default function PlateauxRepas() {
 
           {/* Grille 3 colonnes */}
           <div className="pr-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
-            {produitsFiltres.length === 0 ? (
+            {produitsAffiches.length === 0 ? (
               <div style={{ gridColumn: '1/-1', padding: '48px 0' }}>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', color: '#111111', marginBottom: '10px' }}>
                   Aucun menu dans cette catégorie
@@ -318,7 +323,7 @@ export default function PlateauxRepas() {
                 </p>
               </div>
             ) : (
-              produitsFiltres.map((p, i) => (
+              produitsAffiches.map((p, i) => (
                 <Reveal key={p.id} delay={(i % 3) * 90}>
                   <MenuCard produit={p} />
                 </Reveal>

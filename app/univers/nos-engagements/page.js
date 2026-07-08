@@ -125,13 +125,15 @@ export default function NosEngagements() {
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .eng-texte::first-letter {
-          -webkit-initial-letter: 2 1;
-          initial-letter: 2 1;
+          float: left;
           color: ${GOLD};
+          font-family: 'Baskerville Display PT', Georgia, serif;
           font-style: normal;
           font-weight: 400;
+          font-size: 3.3em;
+          line-height: 0.82;
+          margin: 0.04em 0.1em 0 0;
           text-transform: uppercase;
-          margin-right: 12px;
         }
         @media (max-width: 768px) {
           .pm-wrap { padding: 48px 18px 72px !important; }

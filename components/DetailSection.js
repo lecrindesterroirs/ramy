@@ -55,7 +55,7 @@ export default function DetailSection() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0) 75%)',
+              background: 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.62) 40%, rgba(0,0,0,0.24) 64%, rgba(0,0,0,0) 88%)',
             }}
           />
 
@@ -74,7 +74,7 @@ export default function DetailSection() {
               padding: '0 0 0 64px',
             }}
           >
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '10px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>
               Notre Signature
             </p>
             <span style={{ width: '32px', height: '1px', background: 'var(--accent)', display: 'block', marginBottom: '32px' }} />
@@ -82,7 +82,7 @@ export default function DetailSection() {
               Le détail<br />
               fait la différence.
             </h2>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'rgba(255,255,255,0.75)', maxWidth: '360px', marginBottom: '40px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'rgba(255,255,255,0.88)', maxWidth: '360px', marginBottom: '40px' }}>
               La différence se joue dans les détails.<br />
               Toujours.
             </p>

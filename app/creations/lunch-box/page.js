@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryTabs from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Lunch box entreprise à Paris : le déjeuner individuel, pratique et gourmand</h2>
@@ -219,16 +220,7 @@ export default function LunchBox() {
           </header>
         </div>
 
-        {/* ── Fil d'Ariane ──────────────────────────────────────── */}
-        <div className="lb-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px 0' }}>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#9B9590' }}>
-            <Link href="/" style={{ color: '#9B9590' }}>Accueil</Link>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span>Déjeuner</span>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span style={{ color: '#111111' }}>Lunch Box</span>
-          </nav>
-        </div>
+        <CategoryTabs />
 
         {/* ── Corps : filtres à gauche + grille 3 colonnes à droite ── */}
         <div className="lb-shell lb-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 72px', display: 'grid', gridTemplateColumns: '168px 1fr', gap: '52px', alignItems: 'start' }}>

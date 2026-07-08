@@ -6,6 +6,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryTabs from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Coffrets cadeaux d'entreprise gourmands, livrés à Paris</h2>
@@ -119,6 +120,8 @@ export default function CoffretsCadeaux() {
             </Reveal>
           </header>
         </div>
+
+        <CategoryTabs />
 
         {/* ── Grille des coffrets ── */}
         <div className="cc-shell cc-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 0', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px 24px' }}>

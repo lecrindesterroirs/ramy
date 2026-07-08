@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryTabs, { sortItems } from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Plateaux apéritifs pour entreprise : l'afterwork sans logistique</h2>
@@ -187,6 +188,7 @@ function PlateauCard({ produit }) {
 
 export default function PlateauxAperitifs() {
   const [activeFiltre, setActiveFiltre] = useState('tous')
+  const [sortLabel, setSortLabel] = useState('En vedette')
 
   const famillesDispo = new Set(PLATEAUX.map(p => p.famille))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || famillesDispo.has(f.key))
@@ -194,6 +196,7 @@ export default function PlateauxAperitifs() {
   const plateauxFiltres = PLATEAUX.filter(p =>
     activeFiltre === 'tous' ? true : p.famille === activeFiltre
   )
+  const plateauxAffiches = sortItems(plateauxFiltres, sortLabel)
 
   return (
     <>
@@ -222,16 +225,7 @@ export default function PlateauxAperitifs() {
           </header>
         </div>
 
-        {/* ── Fil d'Ariane ── */}
-        <div className="pa-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px 0' }}>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#9B9590' }}>
-            <Link href="/" style={{ color: '#9B9590' }}>Accueil</Link>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span>Cocktail</span>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span style={{ color: '#111111' }}>Plateaux Apéritifs</span>
-          </nav>
-        </div>
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={plateauxAffiches.length} sorts={['En vedette', 'Nouveautés']} />
 
         {/* ── Corps : familles à gauche + grille 3 colonnes ── */}
         <div className="pa-shell pa-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 96px', display: 'grid', gridTemplateColumns: '178px 1fr', gap: '52px', alignItems: 'start' }}>
@@ -270,7 +264,7 @@ export default function PlateauxAperitifs() {
           </aside>
 
           <div className="pa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
-            {plateauxFiltres.map((p, i) => (
+            {plateauxAffiches.map((p, i) => (
               <Reveal key={p.id} delay={(i % 3) * 90}>
                 <PlateauCard produit={p} />
               </Reveal>

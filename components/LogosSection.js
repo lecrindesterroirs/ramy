@@ -3,13 +3,13 @@
 const logos = [
   { name: 'Le Monde',         src: '/logos/lemonde.png', height: '40px' },
   { name: 'SNCF',             src: '/logos/sncf.png' },
-  { name: 'DS Automobiles',   src: '/logos/ds.png', height: '52px' },
+  { name: 'DS Automobiles',   src: '/logos/ds.png', height: '56px' },
   { name: 'Carglass',         src: '/logos/carglass.svg' },
   { name: 'Wella Company',    src: '/logos/wella.jpg' },
   { name: 'Coyote',           src: '/logos/coyote.png' },
   { name: 'TotalEnergies',    src: '/logos/totalenergies.png' },
   { name: 'Talan',            src: '/logos/talan.png' },
-  { name: 'SIA',              src: '/logos/sia.png', height: '68px' },
+  { name: 'SIA',              src: '/logos/sia.png', height: '44px' },
   { name: 'Ringover',         src: '/logos/ringover.png', height: '68px' },
 ]
 

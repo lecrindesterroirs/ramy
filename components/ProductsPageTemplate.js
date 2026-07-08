@@ -2,12 +2,12 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Reveal from './Reveal'
 import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
+import CategoryTabs from './CategoryTabs'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
@@ -38,8 +38,6 @@ export default function ProductsPageTemplate({
   basePath,
   editorial,
 }) {
-  const pathname = usePathname()
-  const [sortOpen, setSortOpen]     = useState(false)
   const [sortLabel, setSortLabel]   = useState('En vedette')
   const [baseProducts, setBaseProducts] = useState(fallbackProducts)
 
@@ -85,71 +83,8 @@ export default function ProductsPageTemplate({
           </div>
         </div>
 
-        {/* ── Barre filtre ── */}
-        <div className="products-filter-bar" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-
-          {/* Raccourcis catégories */}
-          <div className="filter-cats" style={{ display: 'flex', alignItems: 'center', gap: '0' }}>
-            {[
-              { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-              { label: 'Plateaux repas',             href: '/creations/plateaux-repas' },
-              { label: 'Cocktails',                  href: '/creations/cocktails' },
-              { label: 'Coffrets cadeaux',           href: '/creations/coffrets-cadeaux' },
-            ].map(cat => {
-              const active = pathname === cat.href
-              return (
-                <a
-                  key={cat.href}
-                  href={cat.href}
-                  style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
-                    fontSize: '11px',
-                    fontWeight: active ? 500 : 400,
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    color: active ? 'var(--text-primary)' : 'rgba(17,17,17,0.42)',
-                    textDecoration: 'none',
-                    padding: '20px 18px',
-                    borderBottom: active ? '2px solid var(--text-primary)' : '2px solid transparent',
-                    transition: 'color 0.2s ease, border-color 0.2s ease',
-                    whiteSpace: 'nowrap',
-                    display: 'inline-block',
-                  }}
-                  onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'rgba(17,17,17,0.2)' } }}
-                  onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(17,17,17,0.42)'; e.currentTarget.style.borderBottomColor = 'transparent' } }}
-                >
-                  {cat.label}
-                </a>
-              )
-            })}
-          </div>
-
-          {/* Tri + compteur */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '28px', flexShrink: 0 }}>
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={() => setSortOpen(!sortOpen)}
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', outline: 'none' }}
-              >
-                {sortLabel}
-                <span style={{ fontSize: '9px', opacity: 0.5 }}>▾</span>
-              </button>
-              {sortOpen && (
-                <div style={{ position: 'absolute', top: 'calc(100% + 12px)', right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.08)', padding: '8px 0', minWidth: '180px', boxShadow: '0 16px 32px rgba(17,17,17,0.06)', zIndex: 10 }}>
-                  {sorts.map(s => (
-                    <button key={s} onClick={() => { setSortLabel(s); setSortOpen(false) }} style={{ display: 'block', width: '100%', textAlign: 'left', padding: '10px 20px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.06em', color: s === sortLabel ? 'var(--accent)' : 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}>
-                      {s}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-            <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)' }}>
-              {products.length} produit{products.length > 1 ? 's' : ''}
-            </span>
-          </div>
-
-        </div>
+        {/* ── Barre catégories + tri (partagée avec toutes les pages) ── */}
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} />
 
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>

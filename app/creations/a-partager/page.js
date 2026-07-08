@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryTabs from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
@@ -235,16 +236,7 @@ export default function APartager() {
           </header>
         </div>
 
-        {/* ── Fil d'Ariane ── */}
-        <div className="ap-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px 0' }}>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#9B9590' }}>
-            <Link href="/" style={{ color: '#9B9590' }}>Accueil</Link>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span>Déjeuner</span>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span style={{ color: '#111111' }}>À Partager</span>
-          </nav>
-        </div>
+        <CategoryTabs />
 
         {/* ── Intro ── */}
         <div className="ap-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0', textAlign: 'center' }}>

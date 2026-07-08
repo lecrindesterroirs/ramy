@@ -12,7 +12,7 @@ export default function OccasionsListing() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        <div style={{ background: 'var(--bg-secondary)', padding: '100px 72px 80px', textAlign: 'center' }}>
+        <div className="occ-hero" style={{ background: 'var(--bg-secondary)', padding: '100px 72px 80px', textAlign: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '24px' }}>
             Pour votre entreprise
           </p>
@@ -24,7 +24,7 @@ export default function OccasionsListing() {
           </p>
         </div>
 
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '80px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div className="occ-grid" style={{ maxWidth: '1200px', margin: '0 auto', padding: '80px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
           {OCCASIONS.map(o => (
             <Link
               key={o.slug}
@@ -47,7 +47,11 @@ export default function OccasionsListing() {
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .occ-card:hover { background: #EDE8DE !important; }
         @media (max-width: 900px) {
-          div[style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+          .occ-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 768px) {
+          .occ-hero { padding: 72px 24px 56px !important; }
+          .occ-grid { padding: 56px 24px 88px !important; }
         }
       ` }} />
 

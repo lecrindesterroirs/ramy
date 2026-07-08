@@ -149,17 +149,6 @@ export default function AnimationsCulinaires() {
           </header>
         </div>
 
-        {/* ── Fil d'Ariane ── */}
-        <div className="aa-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px 0' }}>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#9B9590' }}>
-            <Link href="/" style={{ color: '#9B9590' }}>Accueil</Link>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span>Cocktail</span>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span style={{ color: '#111111' }}>Animations Culinaires</span>
-          </nav>
-        </div>
-
         {/* ── Corps : univers à gauche + grille 3 colonnes ── */}
         <div className="aa-shell aa-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 96px', display: 'grid', gridTemplateColumns: '196px 1fr', gap: '52px', alignItems: 'start' }}>
 

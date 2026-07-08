@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
+import Breadcrumb from '../../../../components/Breadcrumb'
 import { evenements } from '../evenementsData'
 import { articles } from '../../../../lib/journalData'
 
@@ -31,6 +32,8 @@ export default function EvenementDetail() {
       <Navbar showBanner={true} />
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+
+        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
 
         {/* Header */}
         <div

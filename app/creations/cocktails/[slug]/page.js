@@ -7,6 +7,7 @@ import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import Reveal from '../../../../components/Reveal'
 import RelatedLinks from '../../../../components/RelatedLinks'
+import Breadcrumb from '../../../../components/Breadcrumb'
 import { FORMULES } from '../page'
 
 const GALERIE = [
@@ -77,6 +78,8 @@ export default function CocktailDetail() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar showBanner={true} />
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+
+        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails', href: '/creations/cocktails' }, { label: nomFormule }]} />
 
         {/* ── Galerie éditoriale — l'ambiance (d'abord, pour créer l'envie) ── */}
         <section style={{ background: '#F5F1E8', padding: '56px 0 96px' }}>

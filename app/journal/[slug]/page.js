@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import RelatedLinks from '../../../components/RelatedLinks'
+import Breadcrumb from '../../../components/Breadcrumb'
 import { articles } from '../../../lib/journalData'
 import { PRODUCTS } from '../../../lib/productsData'
 
@@ -28,6 +29,8 @@ export default function ArticlePage() {
       <Navbar />
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
+
+        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Le Journal', href: '/journal' }, { label: article.titre }]} />
 
         {/* ── Hero image ── */}
         <div style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>

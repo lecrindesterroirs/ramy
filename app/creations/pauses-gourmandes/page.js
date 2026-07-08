@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
   <h2>Traiteur pause gourmande et goûter d'entreprise à Paris</h2>
@@ -153,6 +154,8 @@ function PauseCard({ produit }) {
 /* ─── Page ───────────────────────────────────────────────────────── */
 
 export default function PausesGourmandes() {
+  const [sortLabel, setSortLabel] = useState('En vedette')
+  const pausesAffichees = sortItems(PAUSES, sortLabel, p => priceFromLabel(p.prix))
   return (
     <>
       <Navbar showBanner={true} />
@@ -180,20 +183,11 @@ export default function PausesGourmandes() {
           </header>
         </div>
 
-        {/* ── Fil d'Ariane ── */}
-        <div className="pg-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px 0' }}>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#9B9590' }}>
-            <Link href="/" style={{ color: '#9B9590' }}>Accueil</Link>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span>Petit-déjeuner & Pauses</span>
-            <span style={{ color: 'rgba(17,17,17,0.2)' }}>›</span>
-            <span style={{ color: '#111111' }}>Pauses Gourmandes</span>
-          </nav>
-        </div>
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} />
 
         {/* ── Grille des douceurs ── */}
         <div className="pg-shell pg-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 104px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px 24px' }}>
-          {PAUSES.map((p, i) => (
+          {pausesAffichees.map((p, i) => (
             <Reveal key={p.id} delay={(i % 4) * 90}>
               <PauseCard produit={p} />
             </Reveal>
