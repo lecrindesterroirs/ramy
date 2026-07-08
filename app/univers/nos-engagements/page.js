@@ -45,7 +45,7 @@ const ENGAGEMENTS = [
   },
   {
     titre: 'Une livraison qui fait partie du service',
-    texte: "livrer et installer nous-mêmes, dès 6h30, avec une équipe interne formée à nos standards. Jamais de sous-traitance. Le dernier geste compte autant que le premier.",
+    texte: "livraison à partir de 6h30 par notre équipe interne, formée à nos standards, avec mise en place sur demande. Jamais de sous-traitance. Le dernier geste compte autant que le premier.",
   },
 ]
 
