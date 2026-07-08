@@ -93,7 +93,7 @@ export default function ProductsPageTemplate({
             {[
               { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
               { label: 'Plateaux repas',             href: '/creations/plateaux-repas' },
-              { label: 'Cocktails & Buffets',        href: '/creations/cocktails-et-buffets' },
+              { label: 'Cocktails',                  href: '/creations/cocktails' },
               { label: 'Coffrets cadeaux',           href: '/creations/coffrets-cadeaux' },
             ].map(cat => {
               const active = pathname === cat.href

@@ -28,7 +28,7 @@ const SEO_ARTICLE = `
 export const FORMULES = [
   {
     key: 'classique',
-    label: 'Apéro',
+    label: "L'Invitation",
     pieces: 8,
     prix: '29,90',
     accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.',
@@ -49,7 +49,7 @@ export const FORMULES = [
   },
   {
     key: 'signature',
-    label: 'Signature',
+    label: 'La Réception',
     pieces: 12,
     prix: '39,90',
     accroche: 'Une sélection raffinée de pièces généreuses, entre terre et mer.',
@@ -74,7 +74,7 @@ export const FORMULES = [
   },
   {
     key: 'prestige',
-    label: 'Prestige',
+    label: 'La Célébration',
     pieces: 16,
     prix: '51,90',
     accroche: 'L\'excellence gastronomique pour vos réceptions les plus soignées.',

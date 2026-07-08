@@ -1,13 +1,13 @@
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 const META = {
-  'lb1': { nom: 'La Parisienne',      d: 'Lunch box baguette Signature jambon beurre, entrée et dessert artisanal.' },
-  'lb2': { nom: 'La César',           d: 'Lunch box club poulet César, entrée et dessert artisanal.' },
+  'lb1': { nom: 'La Parisienne',      d: 'Lunch box baguette Signature jambon de dinde, entrée et dessert artisanal.' },
+  'lb2': { nom: "L'Impératrice",      d: 'Lunch box club poulet César, entrée et dessert artisanal.' },
   'lb4': { nom: 'La Nordique',        d: 'Lunch box baguette saumon fumé & cream cheese, entrée et dessert artisanal.' },
   'lb5': { nom: 'La Marine',          d: 'Lunch box club thon, entrée et dessert artisanal.' },
-  'lb6': { nom: 'La Deli',            d: 'Lunch box baguette pastrami & pickles, entrée et dessert artisanal.' },
-  'lb8': { nom: 'La César Baguette',  d: 'Lunch box baguette poulet César, entrée et dessert artisanal.' },
-  'lb9': { nom: 'La Thon Ciboulette', d: 'Lunch box baguette thon ciboulette, entrée et dessert artisanal.' },
+  'lb6': { nom: 'La New-Yorkaise',    d: 'Lunch box baguette pastrami & pickles, entrée et dessert artisanal.' },
+  'lb8': { nom: 'La Croustillante',   d: 'Lunch box baguette poulet César, entrée et dessert artisanal.' },
+  'lb9': { nom: "L'Océane",           d: 'Lunch box baguette thon ciboulette, entrée et dessert artisanal.' },
 }
 
 export const SLUGS = Object.keys(META)

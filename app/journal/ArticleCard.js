@@ -23,6 +23,7 @@ export default function ArticleCard({ article }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{
             objectFit: 'cover',
+            objectPosition: article.imgPosition || 'center',
             transition: 'transform 0.6s ease',
           }}
         />

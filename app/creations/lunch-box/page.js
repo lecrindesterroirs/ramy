@@ -52,13 +52,13 @@ const CATEGORIE_COLORS = {
 export const BOXES = [
   {
     id: 'lb1', categorie: 'viande', nom: 'La Parisienne', prix: '22,90', img: '/lunchbox-parisienne.webp',
-    sousTitre: 'Baguette Signature · Jambon Beurre',
+    sousTitre: 'Baguette Signature · Jambon de Dinde',
     entree: 'Salade de tomates anciennes & basilic',
-    plat: 'Baguette Jambon Beurre',
+    plat: 'Baguette Jambon de Dinde',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb2', categorie: 'poulet', nom: 'La César', prix: '23,90', img: '/lunchbox-cesar.webp',
+    id: 'lb2', categorie: 'poulet', nom: "L'Impératrice", prix: '23,90', img: '/lunchbox-cesar.webp',
     sousTitre: 'Club Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Club Poulet César',
@@ -79,21 +79,21 @@ export const BOXES = [
     dessert: 'Brownie',
   },
   {
-    id: 'lb6', categorie: 'viande', nom: 'La Deli', prix: '24,90', img: '/lunchbox-deli.webp',
+    id: 'lb6', categorie: 'viande', nom: 'La New-Yorkaise', prix: '24,90', img: '/lunchbox-deli.webp',
     sousTitre: 'Baguette Pastrami Pickles',
     entree: 'Part de pissaladière & jeunes pousses',
     plat: 'Baguette Pastrami Pickles',
     dessert: 'Cookie Signature',
   },
   {
-    id: 'lb8', categorie: 'poulet', nom: 'La César Baguette', prix: '23,90', img: '/lunchbox-cesar-baguette.webp',
+    id: 'lb8', categorie: 'poulet', nom: 'La Croustillante', prix: '23,90', img: '/lunchbox-cesar-baguette.webp',
     sousTitre: 'Baguette Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Baguette Poulet César',
     dessert: 'Brownie',
   },
   {
-    id: 'lb9', categorie: 'poisson', nom: 'La Thon Ciboulette', prix: '23,90', img: '/lunchbox-thon.webp',
+    id: 'lb9', categorie: 'poisson', nom: "L'Océane", prix: '23,90', img: '/lunchbox-thon.webp',
     sousTitre: 'Baguette Thon Ciboulette',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
     plat: 'Baguette Thon Ciboulette',

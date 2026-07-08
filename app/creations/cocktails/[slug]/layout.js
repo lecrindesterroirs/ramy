@@ -1,9 +1,9 @@
 /* Métadonnées SEO par formule — table locale (les données vivent dans la page 'use client',
    non importable côté serveur ; on garde une source légère ici). */
 const META = {
-  classique: { label: 'Apéro', pieces: 8, accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.', img: '/cocktail-classique.webp' },
-  signature: { label: 'Signature', pieces: 12, accroche: 'Une sélection raffinée de pièces généreuses, entre terre et mer.', img: '/cocktail-signature.webp' },
-  prestige: { label: 'Prestige', pieces: 16, accroche: "L'excellence gastronomique pour vos réceptions les plus soignées.", img: '/cocktail-prestige.webp' },
+  classique: { nom: "L'Invitation", kw: 'apéritif', pieces: 8, accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.', img: '/cocktail-classique.webp' },
+  signature: { nom: 'La Réception', kw: 'dînatoire', pieces: 12, accroche: 'Une sélection raffinée de pièces généreuses, entre terre et mer.', img: '/cocktail-signature.webp' },
+  prestige: { nom: 'La Célébration', kw: 'prestige', pieces: 16, accroche: "L'excellence gastronomique pour vos réceptions les plus soignées.", img: '/cocktail-prestige.webp' },
 }
 
 export const SLUGS = Object.keys(META)
@@ -13,12 +13,12 @@ export async function generateMetadata({ params }) {
   const f = META[slug]
   if (!f) return { title: "Cocktail introuvable | L'Écrin Traiteur" }
   return {
-    title: { absolute: `Cocktail ${f.label} Paris | L'Écrin Traiteur` },
-    description: `${f.accroche} Cocktail ${f.label} (${f.pieces} pièces/pers.), pièces artisanales livrées prêtes à servir à Paris et en Île-de-France. Devis personnalisé sous 24h.`,
+    title: { absolute: `Cocktail ${f.nom} — ${f.kw} Paris | L'Écrin Traiteur` },
+    description: `${f.accroche} Cocktail ${f.kw} (${f.pieces} pièces/pers.), pièces artisanales livrées prêtes à servir à Paris et en Île-de-France. Devis sous 24h.`,
     openGraph: {
-      title: `Cocktail ${f.label} | L'Écrin Traiteur`,
+      title: `Cocktail ${f.nom} | L'Écrin Traiteur`,
       description: f.accroche,
-      images: [{ url: f.img, width: 1200, height: 800, alt: `Cocktail ${f.label}` }],
+      images: [{ url: f.img, width: 1200, height: 800, alt: `Cocktail ${f.nom}` }],
       locale: 'fr_FR',
       type: 'website',
     },

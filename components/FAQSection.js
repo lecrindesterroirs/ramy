@@ -24,8 +24,8 @@ const fallbackFaqs = [
     reponse: "Plusieurs de nos produits sont adaptés à des régimes spécifiques : nos madeleines Mado Paris sont certifiées Bio, nos brochettes de fruits et compotes sont vegan, certains cakes sont disponibles sans gluten. Pour les régimes sans lactose, nous pouvons adapter la sélection selon les produits du jour. Pour les régimes halal, nous excluons les charcuteries et orientons la sélection en conséquence. Précisez vos contraintes lors de la commande et nous adaptons.",
   },
   {
-    question: "Livrez-vous dans les tours et immeubles sécurisés ?",
-    reponse: "Oui, c'est notre quotidien. La Défense, Boulogne, Issy : nos livreurs connaissent les procédures d'accès : réception, monte-charge, badge. Précisez vos contraintes à la commande.",
+    question: "Fournissez-vous les gobelets et serviettes ?",
+    reponse: "Oui, tout est compris dans la prestation : gobelets, serviettes, vaisselle et couverts jetables, présentation soignée. Chaque commande arrive prête à servir. Vous n'avez rien à gérer, juste à profiter du moment avec vos équipes.",
   },
   {
     question: "Peut-on modifier ou annuler une commande ?",

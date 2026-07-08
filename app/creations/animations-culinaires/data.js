@@ -20,7 +20,7 @@ export const UNIVERS_LABEL = {
 
 /* Slug URL déterministe à partir du nom (accents/esperluette gérés). */
 export const slugAnim = (nom) =>
-  nom.toLowerCase()
+  nom.toLowerCase().replace(/œ/g, 'oe').replace(/æ/g, 'ae')
     .normalize('NFD').replace(/[̀-ͯ]/g, '')
     .replace(/&/g, 'et')
     .replace(/[^a-z0-9]+/g, '-')
@@ -39,16 +39,16 @@ export const ANIMATIONS = [
   { id: 'b4', univers: 'brunch', nom: 'Brunch Gourmand', img: '/prod-brunch-gourmand.webp',
     description: 'Une animation complète de brunch servie en continu.',
     compo: ['Viennoiseries artisanales', 'Pain & brioches', 'Beurre & confitures', 'Fruits frais', 'Yaourts & granola', 'Jus frais', 'Café & thé'] },
-  { id: 'b5', univers: 'brunch', nom: 'Atelier Œufs', img: '/prod-atelier-oeufs.webp',
+  { id: 'b5', univers: 'brunch', nom: 'Œufs brouillés minute', img: '/prod-atelier-oeufs.webp',
     description: 'Œufs préparés minute selon les envies.',
-    compo: ['Œufs brouillés', 'Œufs au plat', 'Omelettes', 'Œufs aux fines herbes', 'Bacon (option)', 'Saumon fumé (option)'] },
+    compo: ['Œufs brouillés', 'Œufs au plat', 'Omelettes', 'Œufs aux fines herbes', 'Dinde fumée (option)', 'Saumon fumé (option)'] },
   { id: 'b6', univers: 'brunch', nom: 'Atelier Crêpes & Pancakes', img: '/prod-atelier-crepes.webp',
     description: 'Crêpes et pancakes préparés et dressés à la demande.',
     compo: ['Sirop d\'érable', 'Chocolat', 'Caramel beurre salé', 'Citron', 'Sucre', 'Fruits frais', 'Chantilly', 'Pistaches'] },
   { id: 'b7', univers: 'brunch', nom: 'Atelier Gaufres Belges', img: '/prod-atelier-gaufres.webp',
     description: 'Gaufres servies chaudes avec un large choix de toppings.',
     compo: [] },
-  { id: 'b8', univers: 'brunch', nom: 'Atelier Bagels', img: '/prod-atelier-bagels.webp',
+  { id: 'b8', univers: 'brunch', nom: 'Atelier Bagels de New York', img: '/prod-atelier-bagels.webp',
     description: 'Bagels garnis devant les invités.',
     compo: ['Saumon & Cream Cheese', 'Poulet César', 'Pastrami', 'Avocat & Feta', 'Burrata & Pesto'] },
   { id: 'b9', univers: 'brunch', nom: 'Bar à Yaourts & Granola', img: '/prod-bar-yaourts.webp',
@@ -56,13 +56,13 @@ export const ANIMATIONS = [
     compo: ['Skyr', 'Yaourt grec', 'Granola maison', 'Fruits frais', 'Fruits secs', 'Miel', 'Coulis'] },
 
   // ── Déjeuner Gourmet ──
-  { id: 'd1', univers: 'dejeuner', nom: 'Atelier Pasta', img: '/prod-atelier-pasta.webp',
+  { id: 'd1', univers: 'dejeuner', nom: 'Pasta italienne minute', img: '/prod-atelier-pasta.webp',
     description: 'Préparation minute de pâtes fraîches.',
     compo: ['Trofie au pesto', 'Parmesan', 'Burrata', 'Tomates confites'] },
   { id: 'd2', univers: 'dejeuner', nom: 'Atelier Focaccia & Burrata', img: '/prod-atelier-focaccia.webp',
     description: 'Focaccias artisanales et burrata crémeuse dressées devant les invités.',
-    compo: ['Focaccia', 'Burrata crémeuse', 'Jambon cru', 'Mortadelle', 'Tomates anciennes', 'Légumes grillés', 'Pesto', 'Basilic', 'Huile d\'olive'] },
-  { id: 'd3', univers: 'dejeuner', nom: 'Atelier Saumon', img: '/prod-atelier-saumon.webp',
+    compo: ['Focaccia', 'Burrata crémeuse', 'Bresaola', 'Dinde fumée', 'Tomates anciennes', 'Légumes grillés', 'Pesto', 'Basilic', 'Huile d\'olive'] },
+  { id: 'd3', univers: 'dejeuner', nom: 'Découpe de saumon frais', img: '/prod-atelier-saumon.webp',
     description: 'Découpe et dressage de saumon fumé & gravlax.',
     compo: ['Blinis', 'Crème citron-aneth', 'Câpres', 'Oignons rouges'] },
   { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/prod-atelier-fromages.webp',
@@ -81,10 +81,10 @@ export const ANIMATIONS = [
     compo: ['Homard', 'Crevettes', 'Crabe', 'Saumon fumé'] },
   { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/prod-atelier-burgers.webp',
     description: 'Montage minute de mini burgers.',
-    compo: ['Cheeseburger', 'Chicken Crispy', 'Pulled Beef BBQ', 'Truffe & Comté', 'Halloumi'] },
+    compo: ['Cheeseburger', 'Chicken Crispy', 'Bœuf Effiloché BBQ', 'Truffe & Comté', 'Halloumi'] },
   { id: 's5', univers: 'streetfood', nom: 'Atelier Mini Baguettes', img: '/prod-atelier-baguettes.webp',
     description: 'Découpe et dressage de mini baguettes artisanales.',
-    compo: ['Jambon Beurre', 'Poulet César', 'Thon Ciboulette', 'Burrata', 'Pastrami'] },
+    compo: ['Jambon de Dinde', 'Poulet César', 'Thon Ciboulette', 'Burrata', 'Pastrami'] },
   { id: 's6', univers: 'streetfood', nom: 'Atelier Tacos Gourmet', img: '/prod-atelier-tacos.webp',
     description: 'Mini tacos dressés à la minute.',
     compo: ['Poulet mariné', 'Bœuf effiloché', 'Crevettes', 'Falafel'] },
@@ -93,7 +93,7 @@ export const ANIMATIONS = [
     compo: ['Chawarma poulet', 'Chawarma bœuf', 'Falafel', 'Houmous', 'Taboulé'] },
   { id: 's9', univers: 'streetfood', nom: 'Atelier Loaded Fries', img: '/prod-atelier-loaded-fries.webp',
     description: 'Pommes de terre croustillantes garnies.',
-    compo: ['Cheddar & Bacon', 'Pulled Beef', 'Chicken Crispy', 'Truffe & Parmesan'] },
+    compo: ['Cheddar & Jambon de Dinde', 'Bœuf Effiloché', 'Chicken Crispy', 'Truffe & Parmesan'] },
 
   // ── Douceurs ──
   { id: 'do1', univers: 'douceurs', nom: 'Bar à Glaces Artisanales', img: '/prod-bar-glaces.webp',

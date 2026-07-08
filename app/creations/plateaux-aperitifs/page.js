@@ -28,7 +28,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Plateaux Apéritifs',
   description: 'De généreux plateaux à partager pour vos afterworks et réceptions — sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
-  hero: '/creations-3.webp',
+  hero: '/hero-plateaux-aperitifs-full.webp',
 }
 
 /* Filtres = familles de plateaux. */
@@ -53,63 +53,63 @@ const CATEGORIE_COLORS = {
 export const PLATEAUX = [
   // ── Sandwichs ──
   {
-    id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plat-cesar.webp',
+    id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plateau-baguettes.webp',
     description: 'Assortiment de mini baguettes artisanales garnies.',
-    recettes: ['Jambon Beurre', 'Poulet César', 'Saumon & Cream Cheese', 'Thon Ciboulette', 'Burrata & Pesto', 'Pastrami Pickles'],
+    recettes: ['Jambon de Dinde', 'Poulet César', 'Saumon & Cream Cheese', 'Thon Ciboulette', 'Burrata & Pesto', 'Pastrami Pickles'],
   },
   {
-    id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plat-thai.webp',
+    id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plateau-clubs.webp',
     description: 'Assortiment de clubs sandwichs moelleux découpés.',
-    recettes: ['Club Poulet César', 'Club Saumon & Cream Cheese', 'Club Thon', 'Club Jambon Beurre'],
+    recettes: ['Club Poulet César', 'Club Saumon & Cream Cheese', 'Club Thon', 'Club Jambon de Dinde'],
   },
   {
-    id: 'sw3', famille: 'sandwichs', nom: 'Wraps Gourmands', img: '/plat-grec.webp',
+    id: 'sw3', famille: 'sandwichs', nom: 'Wraps Gourmands', img: '/plateau-wraps.webp',
     description: 'Assortiment de wraps découpés en bouchées.',
     recettes: ['César Poulet', 'Saumon & Cream Cheese', 'Falafel & Houmous', 'Burrata & Légumes grillés', 'Thon Ciboulette'],
   },
   {
-    id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plat-boeuf.webp',
+    id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plateau-burgers.webp',
     description: 'Assortiment de mini burgers artisanaux.',
-    recettes: ['Cheeseburger', 'Chicken Crispy', 'Pulled Beef BBQ', 'Halloumi & Légumes grillés'],
+    recettes: ['Cheeseburger', 'Chicken Crispy', 'Steak Végétal'],
   },
   // ── Gourmands ──
   {
-    id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plat-fusion.webp',
+    id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plateau-fromages.webp',
     description: 'Sélection de fromages affinés accompagnés de fruits frais, fruits secs et pain artisanal.',
     recettes: [],
   },
   {
-    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plat-boeuf.webp',
-    description: 'Jambon de Parme, Coppa, Rosette, Bresaola, Chorizo doux, Cornichons & Condiments.',
+    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plateau-charcuterie.webp',
+    description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons & condiments — halal, sans porc.',
     recettes: [],
   },
   {
-    id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plat-saumon.webp',
+    id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plateau-saumon.webp',
     description: 'Saumon fumé, saumon gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.',
     recettes: [],
   },
   // ── Fraîcheur ──
   {
-    id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plat-grec.webp',
+    id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plateau-crudites.webp',
     description: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.',
     recettes: [],
   },
 
   // ── Signature ──
   {
-    id: 'si1', famille: 'signature', nom: 'Asiatique', img: '/plat-thai.webp',
+    id: 'si1', famille: 'signature', nom: 'Asiatique', img: '/plateau-asiatique.webp',
     description: 'Assortiment de bouchées d\'inspiration asiatique.',
     recettes: ['Makis', 'California Rolls', 'Spring Rolls', 'Gyozas', 'Brochettes Yakitori', 'Sauce soja, gingembre & wasabi'],
   },
 
   // ── Sucré ──
   {
-    id: 'si4', famille: 'sucre', nom: 'Douceurs', img: '/plat-roti.webp',
+    id: 'si4', famille: 'sucre', nom: 'Douceurs', img: '/plateau-douceurs.webp',
     description: 'Sélection de desserts artisanaux.',
     recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
   },
   {
-    id: 'fr3', famille: 'sucre', nom: 'Fruits Frais', img: '/plat-grec.webp',
+    id: 'fr3', famille: 'sucre', nom: 'Fruits Frais', img: '/plateau-fruits.webp',
     description: 'Sélection de fruits frais de saison découpés.',
     recettes: [],
   },
@@ -142,7 +142,7 @@ function PlateauCard({ produit }) {
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#F8F5EF', overflow: 'hidden' }}>
         <Image fill src={produit.img}
-          alt={produit.nom}
+          alt={`Plateau ${produit.nom} à partager — traiteur L'Écrin, Paris & Île-de-France`}
           sizes="(max-width: 900px) 50vw, 33vw"
           style={{ objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />

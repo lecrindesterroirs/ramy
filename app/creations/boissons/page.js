@@ -14,7 +14,7 @@ const SEO_ARTICLE = `
   <p>Pour un <strong>petit-déjeuner</strong> : jus froids + thermose de café ou thé. Pour une <strong>pause après-midi</strong> : boissons froides sans alcool — citronnade JOMO, jus de saison. Pour un <strong>cocktail</strong> : jus Alain Milliat premium + eaux pétillantes. Nos thermoses maintiennent vos boissons chaudes plusieurs heures après la livraison — pratique pour les séminaires de journée entière.</p>
 
   <h2>Commander vos boissons artisanales à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong>. Livraison dès <strong>6h30</strong>, du lundi au vendredi. Les boissons s'ajoutent facilement à une commande existante de viennoiseries ou de pâtisseries — une seule livraison, tout ensemble. Facturation entreprise avec TVA disponible.</p>
+  <p>Commandez avant <strong>14h la veille</strong>. Livraison dès <strong>6h30</strong>, du lundi au vendredi. Jus et boissons froides sont livrés <strong>avec gobelets</strong> — vous n'avez rien à prévoir. Les boissons s'ajoutent facilement à une commande existante de viennoiseries ou de pâtisseries — une seule livraison, tout ensemble. Facturation entreprise avec TVA disponible.</p>
 `
 
 export default function Boissons() {

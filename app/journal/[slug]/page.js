@@ -30,7 +30,7 @@ export default function ArticlePage() {
         <div style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>
           <Image fill priority sizes="100vw" src={article.img}
             alt={article.titre}
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            style={{ objectFit: 'cover', objectPosition: article.imgPosition || 'center' }}
           />
         </div>
 
@@ -402,6 +402,39 @@ export default function ArticlePage() {
           },
         }) }}
       />
+
+      {article.recipe && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Recipe',
+            'name': article.recipe.name,
+            'image': [article.img?.startsWith('http') ? article.img : `https://www.lecrin-traiteur.fr${article.img}`],
+            'description': article.recipe.description || article.extrait,
+            'author': {
+              '@type': 'Organization',
+              '@id': 'https://www.lecrin-traiteur.fr/#business',
+              'name': "L'Écrin Traiteur",
+              'url': 'https://www.lecrin-traiteur.fr',
+            },
+            'datePublished': article.isoDate || article.date,
+            'recipeCategory': article.recipe.category,
+            'recipeCuisine': article.recipe.cuisine,
+            'keywords': article.recipe.keywords,
+            'prepTime': article.recipe.prepTime,
+            'cookTime': article.recipe.cookTime,
+            'totalTime': article.recipe.totalTime,
+            'recipeYield': article.recipe.yield,
+            'recipeIngredient': article.recipe.ingredients,
+            'recipeInstructions': (article.recipe.steps || []).map((text, i) => ({
+              '@type': 'HowToStep',
+              'position': i + 1,
+              'text': text,
+            })),
+          }) }}
+        />
+      )}
 
       <Footer />
     </>

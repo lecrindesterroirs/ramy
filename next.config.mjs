@@ -48,6 +48,18 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Ancienne section « Cocktails & Buffets » supprimée → redirigée vers /creations/cocktails
+      { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
+      { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
+      // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
+      { source: '/creations/animations-culinaires/atelier-ufs', destination: '/creations/animations-culinaires/oeufs-brouilles-minute', permanent: true },
+      { source: '/creations/animations-culinaires/atelier-saumon', destination: '/creations/animations-culinaires/decoupe-de-saumon-frais', permanent: true },
+      { source: '/creations/animations-culinaires/atelier-pasta', destination: '/creations/animations-culinaires/pasta-italienne-minute', permanent: true },
+      { source: '/creations/animations-culinaires/atelier-bagels', destination: '/creations/animations-culinaires/atelier-bagels-de-new-york', permanent: true },
+    ]
+  },
   async headers() {
     return [
       // En-têtes de sécurité sur toutes les routes

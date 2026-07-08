@@ -17,13 +17,13 @@ const creations = [
     label: 'Cocktails',
     description: 'Des pièces salées et sucrées raffinées pour sublimer tous vos événements.',
     img: '/cocktail-signature.webp',
-    href: '/creations/cocktails-et-buffets',
+    href: '/creations/cocktails',
   },
   {
     label: 'Buffet à partager',
     description: 'Des buffets conviviaux et généreux pensés pour rassembler et marquer les esprits.',
     img: '/hero-a-partager.webp',
-    href: '/creations/plateaux-aperitifs',
+    href: '/creations/a-partager',
   },
   {
     label: 'Boissons',

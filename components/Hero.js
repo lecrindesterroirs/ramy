@@ -40,7 +40,7 @@ export default function Hero() {
         }}
       >
         <Image fill priority sizes="100vw" src="/hero-bg2.webp"
-          alt=""
+          alt="Petit-déjeuner et plateaux d'entreprise L'Écrin Traiteur livrés à Paris et en Île-de-France"
           style={{
             objectFit: 'cover',
             objectPosition: 'center center',

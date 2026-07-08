@@ -3,7 +3,6 @@ import { articles } from '../lib/journalData'
 import { PRODUCTS } from '../lib/productsData'
 import { CITIES } from '../lib/citiesData'
 import { OCCASIONS } from '../lib/occasionsData'
-import { FORMULES } from './creations/cocktails-et-buffets/formulesData'
 import { BOISSONS } from '../lib/boissonsData'
 import { PRODUITS as PLATEAUX_REPAS } from './creations/plateaux-repas/data'
 import { SLUGS as LUNCHBOX_SLUGS } from './creations/lunch-box/[slug]/layout'
@@ -42,7 +41,6 @@ export default function sitemap() {
     url('/creations/cocktails/prestige',                  0.82, 'monthly'),
     url('/creations/plateaux-aperitifs',                  0.84, 'monthly'),
     url('/creations/animations-culinaires',               0.84, 'monthly'),
-    url('/creations/cocktails-et-buffets',                0.80, 'monthly'),
     url('/creations/boissons',                            0.78, 'monthly'),
     url('/creations/personnalisation',                    0.72, 'monthly'),
     url('/creations/coffrets-cadeaux',                    0.70, 'monthly'),
@@ -81,12 +79,6 @@ export default function sitemap() {
   // ── Fiches produit petits-déjeuners ───────────────────────────────
   const productPages = PRODUCTS.map(p => url(
     `/creations/petits-dejeuners-et-pauses/${p.id}`,
-    0.85, 'monthly'
-  ))
-
-  // ── Formules cocktails & buffets ──────────────────────────────────
-  const formulePages = FORMULES.map(f => url(
-    `/creations/cocktails-et-buffets/${f.slug}`,
     0.85, 'monthly'
   ))
 
@@ -138,7 +130,6 @@ export default function sitemap() {
   return [
     ...staticPages,
     ...productPages,
-    ...formulePages,
     ...eventPages,
     ...leafPages,
     ...occasionPages,

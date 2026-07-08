@@ -45,7 +45,7 @@ const PRESTATIONS = [
   {
     label: 'Cocktails & Buffets',
     desc: 'Pièces salées et sucrées pour vos réceptions, avec options végé, vegan et sans gluten.',
-    href: '/creations/cocktails-et-buffets',
+    href: '/creations/cocktails',
     img: '/creations-3.webp',
   },
 ]
@@ -298,7 +298,7 @@ export default function TraiteurHalal() {
         items={[
           { href: '/creations/petits-dejeuners-et-pauses', title: 'Petits-Déjeuners & Pauses', meta: 'Livrés dès 6h30' },
           { href: '/creations/plateaux-repas', title: 'Plateaux Repas', meta: 'Déjeuners de travail' },
-          { href: '/creations/cocktails-et-buffets', title: 'Cocktails & Buffets', meta: 'Réceptions & afterworks' },
+          { href: '/creations/cocktails', title: 'Cocktails & Buffets', meta: 'Réceptions & afterworks' },
           { href: '/devis', title: 'Demander un devis', meta: 'Réponse rapide' },
         ]}
         columns={4}

@@ -19,7 +19,7 @@ const MOMENTS = {
     cards: [
       { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.webp' },
       { title: 'Lunch Box', href: '/creations/lunch-box', img: '/hero-lunch-box.webp' },
-      { title: 'À partager', href: '/creations/a-partager', img: '/hero-a-partager.webp' },
+      { title: 'Buffet à partager', href: '/creations/a-partager', img: '/hero-a-partager.webp' },
     ],
   },
   cocktail: {
@@ -27,7 +27,7 @@ const MOMENTS = {
     key: 'cocktail',
     cards: [
       { title: 'Cocktails', href: '/creations/cocktails', img: '/hero-cocktail.webp' },
-      { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/creations-3.webp' },
+      { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/hero-plateaux-aperitifs.webp' },
       { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/hero-animations.webp' },
     ],
   },

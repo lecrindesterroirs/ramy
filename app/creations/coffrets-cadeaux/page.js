@@ -24,7 +24,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Coffrets Cadeaux',
   description: 'Des coffrets gourmands prêts à offrir — madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, cakes maison. Idéal pour remercier un client ou marquer un moment d\'équipe.',
-  hero: '/hero-plateaux-essentiel.webp',
+  hero: '/hero-coffrets-cadeaux.webp',
 }
 
 const COFFRETS = [

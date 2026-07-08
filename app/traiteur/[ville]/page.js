@@ -29,7 +29,7 @@ const SERVICES = [
   {
     label: 'Cocktails & Buffets',
     desc: 'Pièces cocktail et buffets pour vos réceptions.',
-    href: '/creations/cocktails-et-buffets',
+    href: '/creations/cocktails',
     img: '/creations-3.webp',
   },
 ]
