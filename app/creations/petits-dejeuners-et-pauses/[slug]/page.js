@@ -18,8 +18,8 @@ const COFFRETS = [
 
 const MAD_EXIGENCE = [
   'Pur beurre et recettes artisanales, préparées chaque jour.',
-  'Des ingrédients de qualité sélectionnés avec soin.',
-  'Pour un moelleux incomparable et des saveurs authentiques.',
+  'Sans huile de palme, au zeste de citron frais.',
+  'La bosse franche et le moelleux d\'une cuisson maîtrisée.',
 ]
 
 /* ── Vitrine éditoriale (structure "plateau repas") — test sur 1 produit ── */

@@ -6,6 +6,7 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import Reveal from '../../../../components/Reveal'
+import RelatedLinks from '../../../../components/RelatedLinks'
 import { FORMULES } from '../page'
 
 const GALERIE = [
@@ -42,6 +43,9 @@ export default function CocktailDetail() {
   const { slug } = useParams()
   const f = FORMULES.find(x => x.key === slug)
   if (!f) notFound()
+
+  const related = FORMULES.filter(x => x.key !== f.key)
+    .map(x => ({ href: `/creations/cocktails/${x.key}`, title: `Cocktail ${x.label}`, meta: 'Formule cocktail' }))
 
   const BASE = 'https://www.lecrin-traiteur.fr'
   const nomFormule = `Cocktail ${f.label}`
@@ -146,6 +150,8 @@ export default function CocktailDetail() {
           .ckd-gallery { columns: 1 !important; padding-left: 24px !important; padding-right: 24px !important; }
         }
       ` }} />
+
+      <RelatedLinks eyebrow="Autres formules" title="Nos autres cocktails" items={related} columns={3} />
 
       <Footer />
     </>
