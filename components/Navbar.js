@@ -40,11 +40,8 @@ const MOMENTS = {
 
 const UNIVERS_ITEMS = [
   { label: 'Notre Maison', href: '/univers/notre-maison' },
-  { label: 'Notre Savoir-Faire', href: '/univers/notre-savoir-faire' },
-  { label: 'Notre Philosophie', href: '/univers/notre-philosophie' },
   { label: 'Nos Artisans', href: '/univers/nos-artisans' },
   { label: 'Nos Engagements', href: '/univers/nos-engagements' },
-  { label: 'À Propos', href: '/a-propos' },
 ]
 
 const JOURNAL_ITEMS = {

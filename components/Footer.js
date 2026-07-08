@@ -74,8 +74,6 @@ export default function Footer() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
                   { label: 'Notre Maison', href: '/univers/notre-maison' },
-                  { label: 'Notre Savoir-Faire', href: '/univers/notre-savoir-faire' },
-                  { label: 'Notre Philosophie', href: '/univers/notre-philosophie' },
                   { label: 'Nos Artisans', href: '/univers/nos-artisans' },
                   { label: 'Nos Engagements', href: '/univers/nos-engagements' },
                   { label: 'Le Journal', href: '/journal' },
@@ -93,7 +91,6 @@ export default function Footer() {
               <span style={colTitleStyle}>Entreprise</span>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                 {[
-                  { label: 'À Propos', href: '/a-propos' },
                   { label: 'Nos occasions', href: '/occasions' },
                   { label: 'Contact', href: '/contact' },
                   { label: 'Obtenir un devis', href: '/devis' },

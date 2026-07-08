@@ -49,13 +49,10 @@ export default function sitemap() {
 
     // L'Univers
     url('/univers/notre-maison',                          0.72, 'monthly'),
-    url('/univers/notre-savoir-faire',                    0.68, 'monthly'),
     url('/univers/nos-artisans',                          0.72, 'monthly'),
     url('/univers/nos-engagements',                       0.68, 'monthly'),
-    url('/univers/notre-philosophie',                     0.66, 'monthly'),
 
     // À propos
-    url('/a-propos',                                      0.70, 'monthly'),
 
     // Journal
     url('/journal',                                       0.70, 'weekly'),

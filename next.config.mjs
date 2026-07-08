@@ -58,6 +58,10 @@ const nextConfig = {
       { source: '/creations/animations-culinaires/atelier-saumon', destination: '/creations/animations-culinaires/decoupe-de-saumon-frais', permanent: true },
       { source: '/creations/animations-culinaires/atelier-pasta', destination: '/creations/animations-culinaires/pasta-italienne-minute', permanent: true },
       { source: '/creations/animations-culinaires/atelier-bagels', destination: '/creations/animations-culinaires/atelier-bagels-de-new-york', permanent: true },
+      // Pages supprimées → redirigées vers /univers/notre-maison
+      { source: '/a-propos', destination: '/univers/notre-maison', permanent: true },
+      { source: '/univers/notre-savoir-faire', destination: '/univers/notre-maison', permanent: true },
+      { source: '/univers/notre-philosophie', destination: '/univers/notre-maison', permanent: true },
     ]
   },
   async headers() {
