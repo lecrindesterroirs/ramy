@@ -6,6 +6,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import CategoryTabs from '../../../components/CategoryTabs'
 
 const SEO_ARTICLE = `
@@ -162,6 +163,8 @@ export default function CoffretsCadeaux() {
           .cc-grid { grid-template-columns: 1fr !important; }
         }
       ` }} />
+
+      <CategoryJsonLd name="Coffrets cadeaux" path="/creations/coffrets-cadeaux" />
 
       <Footer />
     </>

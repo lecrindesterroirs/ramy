@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd'
 import { CITIES } from '../../lib/citiesData'
 
 const DEPARTEMENTS = ['Paris', 'Hauts-de-Seine (92)', 'Yvelines (78)', 'Essonne (91)', 'Val-de-Marne (94)', 'Seine-Saint-Denis (93)']
@@ -195,6 +196,11 @@ export default function TraiteurPage() {
           .dept-head { gap: 16px !important; }
         }
       ` }} />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Traiteur en entreprise', path: '/traiteur' },
+      ]} />
 
       <Footer />
     </>

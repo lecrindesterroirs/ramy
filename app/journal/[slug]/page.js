@@ -30,8 +30,6 @@ export default function ArticlePage() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
-        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Le Journal', href: '/journal' }, { label: article.titre }]} />
-
         {/* ── Hero image ── */}
         <div style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>
           <Image fill priority sizes="100vw" src={article.img}
@@ -43,29 +41,32 @@ export default function ArticlePage() {
         {/* ── Article content ── */}
         <div
           className="article-page-content"
-          style={{ maxWidth: '760px', margin: '0 auto', padding: '64px 24px 120px' }}
+          style={{ maxWidth: '760px', margin: '0 auto', padding: '44px 24px 120px' }}
         >
-          {/* Meta */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-            <span style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '10px',
-              fontWeight: 500,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'var(--accent-deep)',
-            }}>
-              {article.categorie}
-            </span>
-            <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>—</span>
-            <span style={{
-              fontFamily: "'Neue Montreal', sans-serif",
-              fontSize: '11px',
-              color: 'rgba(17,17,17,0.45)',
-              letterSpacing: '0.04em',
-            }}>
-              {article.date}
-            </span>
+          {/* Fil d'Ariane + méta sur une seule ligne — compact sous le hero, au-dessus du titre */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginBottom: '24px' }}>
+            <Breadcrumb variant="inline" items={[{ label: 'Accueil', href: '/' }, { label: 'Le Journal', href: '/journal' }]} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '10px',
+                fontWeight: 500,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-deep)',
+              }}>
+                {article.categorie}
+              </span>
+              <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>—</span>
+              <span style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '11px',
+                color: 'rgba(17,17,17,0.45)',
+                letterSpacing: '0.04em',
+              }}>
+                {article.date}
+              </span>
+            </div>
           </div>
 
           {/* Titre */}

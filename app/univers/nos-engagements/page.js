@@ -2,6 +2,7 @@
 
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 
 /* Fond papier (grain léger) pour l'effet parchemin. */
 const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
@@ -140,6 +141,11 @@ export default function NosEngagements() {
           .pm-scroll { padding: 52px 26px 48px !important; }
         }
       ` }} />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Nos engagements', path: '/univers/nos-engagements' },
+      ]} />
 
       <Footer />
     </>

@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs from '../../../components/CategoryTabs'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 
 const SEO_ARTICLE = `
   <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
@@ -302,6 +303,8 @@ export default function APartager() {
           .ap-cards { padding-left: 24px !important; padding-right: 24px !important; }
         }
       ` }} />
+
+      <CategoryJsonLd name="À partager" path="/creations/a-partager" />
 
       <Footer />
     </>

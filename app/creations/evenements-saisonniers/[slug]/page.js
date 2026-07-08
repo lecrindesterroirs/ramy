@@ -6,6 +6,7 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import Breadcrumb from '../../../../components/Breadcrumb'
+import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { evenements } from '../evenementsData'
 import { articles } from '../../../../lib/journalData'
 
@@ -472,6 +473,12 @@ export default function EvenementDetail() {
         ]}
         columns={4}
       />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Événements saisonniers', path: '/creations/evenements-saisonniers' },
+        { name: ev.nom, path: `/creations/evenements-saisonniers/${ev.slug}` },
+      ]} />
 
       <Footer />
     </>

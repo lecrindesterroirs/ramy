@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { evenements } from './evenementsData'
 
 export default function EvenementsSaisonniers() {
@@ -212,6 +213,8 @@ export default function EvenementsSaisonniers() {
           .sais-cta { padding: 40px 40px !important; }
         }
       ` }} />
+
+      <CategoryJsonLd name="Événements saisonniers" path="/creations/evenements-saisonniers" />
 
       <Footer />
     </>

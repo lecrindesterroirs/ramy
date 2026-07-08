@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd'
 import { OCCASIONS } from '../../lib/occasionsData'
 
 export default function OccasionsListing() {
@@ -54,6 +55,11 @@ export default function OccasionsListing() {
           .occ-grid { padding: 56px 24px 88px !important; }
         }
       ` }} />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Occasions', path: '/occasions' },
+      ]} />
 
       <Footer />
     </>

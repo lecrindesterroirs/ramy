@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
+import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import ArtisansMapSection from '../../../components/ArtisansMapSection'
 import { ARTISANS } from '../../../lib/artisansData'
 
@@ -179,6 +180,11 @@ export default function NosArtisans() {
           .artisans-cta p { flex-direction: column; gap: 12px; }
         }
       ` }} />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Nos artisans', path: '/univers/nos-artisans' },
+      ]} />
 
       <Footer />
     </>

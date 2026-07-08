@@ -5,6 +5,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import LogosSection from '../../../components/LogosSection'
+import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import DevisRapide from '../../../components/DevisRapide'
 
 const SEO_ARTICLE = `
@@ -202,6 +203,8 @@ export default function Personnalisation() {
           .cat-seo-body h2 { font-size: 22px !important; }
         }
       ` }} />
+
+      <CategoryJsonLd name="Personnalisation" path="/creations/personnalisation" />
 
       <Footer />
     </>

@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import Reveal from '../../../../components/Reveal'
+import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { ARTISANS, getArtisanBySlug } from '../../../../lib/artisansData'
 
 export default function ArtisanDetail() {
@@ -142,6 +143,12 @@ export default function ArtisanDetail() {
           .art-creations-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
       ` }} />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Nos artisans', path: '/univers/nos-artisans' },
+        { name: artisan.nom, path: `/univers/nos-artisans/${artisan.slug}` },
+      ]} />
 
       <Footer />
     </>

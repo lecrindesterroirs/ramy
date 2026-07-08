@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Reveal from '../../components/Reveal'
+import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd'
 import ArticleCard from './ArticleCard'
 import { articles } from '../../lib/journalData'
 
@@ -164,6 +165,11 @@ export default function Journal() {
           .journal-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       ` }} />
+
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Journal', path: '/journal' },
+      ]} />
 
       <Footer />
     </>
