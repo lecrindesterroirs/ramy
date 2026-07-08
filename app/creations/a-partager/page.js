@@ -37,7 +37,8 @@ export const MENUS = [
     key: 'mediterraneen',
     nom: 'Le Méditerranéen',
     accroche: 'Le soleil au centre de la table : fraîcheur, herbes et huile d\'olive.',
-    img: '/prod-atelier-libanais.webp',
+    img: '/apartager-mediterraneen.webp',
+    prix: '37,50 € / pers.',
     featured: false,
     salees: [
       "Houmous, huile d'olive & pain grillé",
@@ -45,7 +46,7 @@ export const MENUS = [
       'Salade grecque',
       'Wrap falafel & houmous',
       'Bruschetta tomates confites',
-      'Mini bun tomates confites & mozzarella',
+      'Plateau de fromage',
     ],
     sucrees: [
       'Panna cotta fruits rouges',
@@ -57,6 +58,7 @@ export const MENUS = [
     nom: 'Le Parisien',
     accroche: 'Les classiques du bistrot, en pièces à partager.',
     img: '/hero-a-partager.webp',
+    prix: '37,90 € / pers.',
     featured: false,
     salees: [
       'Salade César au poulet rôti',
@@ -75,7 +77,8 @@ export const MENUS = [
     key: 'jardin',
     nom: 'Le Jardin',
     accroche: '100 % végétarien, sans concession sur la gourmandise.',
-    img: '/prod-atelier-focaccia.webp',
+    img: '/apartager-jardin.webp',
+    prix: '34,90 € / pers.',
     featured: false,
     salees: [
       'Samoussa curry végétarien',
@@ -166,6 +169,11 @@ function MenuCard({ m }) {
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.55, color: '#6E675F', maxWidth: '340px', margin: '0 auto 6px' }}>
             {m.accroche}
           </p>
+          {m.prix && (
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', fontWeight: 500, color: '#111111', margin: '10px 0 0' }}>
+              {m.prix}
+            </p>
+          )}
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)' }}>
             {m.salees.length} recettes salées · {m.sucrees.length} sucrées — dressé en salades ou en verrines
           </p>
