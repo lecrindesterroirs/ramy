@@ -9,6 +9,9 @@ import RelatedLinks from '../../../components/RelatedLinks'
 import { articles } from '../../../lib/journalData'
 import { PRODUCTS } from '../../../lib/productsData'
 
+// Complète une date "AAAA-MM-JJ" en datetime ISO 8601 avec fuseau (Paris) pour les données structurées
+const isoDateTime = (d) => (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) ? `${d}T09:00:00+02:00` : d
+
 export default function ArticlePage() {
   const { slug } = useParams()
   const article = articles.find(a => a.slug === slug)
@@ -366,8 +369,8 @@ export default function ArticlePage() {
           '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}#article`,
           'headline': article.titre,
           'description': article.extrait,
-          'datePublished': article.isoDate || article.date,
-          'dateModified': article.isoModified || article.isoDate || article.date,
+          'datePublished': isoDateTime(article.isoDate) || article.date,
+          'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
           'author': {
             '@type': 'Organization',
             '@id': 'https://www.lecrin-traiteur.fr/#business',
@@ -418,7 +421,7 @@ export default function ArticlePage() {
               'name': "L'Écrin Traiteur",
               'url': 'https://www.lecrin-traiteur.fr',
             },
-            'datePublished': article.isoDate || article.date,
+            'datePublished': isoDateTime(article.isoDate) || article.date,
             'recipeCategory': article.recipe.category,
             'recipeCuisine': article.recipe.cuisine,
             'keywords': article.recipe.keywords,
