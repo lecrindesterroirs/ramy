@@ -417,7 +417,7 @@ function Step2({ data, setData, showErrors }) {
           <div>
             <label style={labelStyle}>Budget estimé <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <div style={{ position: 'relative' }}>
-              <input inputMode="numeric" pattern="[0-9]*" value={data.budget} onChange={e => set('budget', e.target.value)} placeholder="Ex : 1000 € – 2000 €" style={fieldStyle} />
+              <input inputMode="numeric" pattern="[0-9]*" value={data.budget} onChange={e => set('budget', e.target.value)} placeholder="Ex : 1000 € à 2000 €" style={fieldStyle} />
               <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.3)' }}>€</span>
             </div>
           </div>

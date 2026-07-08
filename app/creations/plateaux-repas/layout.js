@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Plateaux Repas Traiteur Paris | L'Écrin Traiteur",
-    description: "Traiteur plateau repas Paris : produits artisanaux, livraison lundi–vendredi dès 6h30 dans toute l'Île-de-France.",
+    description: "Traiteur plateau repas Paris : produits artisanaux, livraison lundi à vendredi dès 6h30 dans toute l'Île-de-France.",
   },
   alternates: { canonical: '/creations/plateaux-repas' },
 }
