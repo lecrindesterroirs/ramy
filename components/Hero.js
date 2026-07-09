@@ -152,7 +152,7 @@ export default function Hero() {
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.85)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.5)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.55)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.35)' }}
           >
-            Découvrir notre catalogue <span>→</span>
+            Nos petits-déjeuners d'entreprise <span>→</span>
           </a>
         </div>
 

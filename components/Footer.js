@@ -45,89 +45,68 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* 4 colonnes centrées */}
-          <div className="footer-cols" style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: '48px' }}>
-
-            {/* La Carte, par moments */}
-            <div>
-              <span style={colTitleStyle}>La Carte</span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
-                {[
-                  { label: 'Petit-déjeuner & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-                  { label: 'Déjeuner', href: '/creations/plateaux-repas' },
-                  { label: 'Cocktail', href: '/creations/cocktails' },
-                  { label: 'Boissons', href: '/creations/boissons' },
-                  { label: 'Personnalisation', href: '/creations/personnalisation' },
-                  { label: 'Coffrets Cadeaux', href: '/creations/coffrets-cadeaux' },
-                ].map(l => (
-                  <a key={l.label} href={l.href} style={linkStyle}
-                    onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                  >{l.label}</a>
-                ))}
+          {/* Colonnes de liens — plan de site & maillage interne (présent sur toutes les pages) */}
+          <div className="footer-cols" style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '40px' }}>
+            {[
+              { title: 'La Carte', links: [
+                { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
+                { label: 'Pauses gourmandes', href: '/creations/pauses-gourmandes' },
+                { label: 'Plateaux repas', href: '/creations/plateaux-repas' },
+                { label: 'Lunch box', href: '/creations/lunch-box' },
+                { label: 'Cocktails', href: '/creations/cocktails' },
+                { label: 'Buffet à partager', href: '/creations/a-partager' },
+                { label: 'Animations culinaires', href: '/creations/animations-culinaires' },
+                { label: 'Boissons', href: '/creations/boissons' },
+                { label: 'Coffrets cadeaux', href: '/creations/coffrets-cadeaux' },
+              ]},
+              { title: 'Occasions', links: [
+                { label: "Petit-déjeuner d'entreprise", href: '/occasions/petit-dejeuner-entreprise' },
+                { label: 'Séminaire & réunion', href: '/occasions/seminaire-entreprise' },
+                { label: "Cocktail d'entreprise", href: '/occasions/cocktail-entreprise' },
+                { label: 'CODIR & COMEX', href: '/occasions/petit-dejeuner-codir' },
+                { label: "Déjeuner d'entreprise", href: '/occasions/dejeuner-entreprise' },
+                { label: 'Traiteur halal', href: '/traiteur-halal' },
+                { label: 'Toutes les occasions', href: '/occasions' },
+              ]},
+              { title: 'Traiteur à Paris & IDF', links: [
+                { label: 'Traiteur Paris', href: '/traiteur/paris' },
+                { label: 'Traiteur La Défense', href: '/traiteur/la-defense' },
+                { label: 'Traiteur Boulogne', href: '/traiteur/boulogne-billancourt' },
+                { label: 'Traiteur Neuilly', href: '/traiteur/neuilly-sur-seine' },
+                { label: 'Traiteur Levallois', href: '/traiteur/levallois-perret' },
+                { label: 'Traiteur Issy', href: '/traiteur/issy-les-moulineaux' },
+                { label: 'Toutes les zones', href: '/traiteur' },
+              ]},
+              { title: "L'Univers", links: [
+                { label: 'Notre Maison', href: '/univers/notre-maison' },
+                { label: 'Nos Artisans', href: '/univers/nos-artisans' },
+                { label: 'Nos Engagements', href: '/univers/nos-engagements' },
+                { label: 'Le Journal', href: '/journal' },
+              ]},
+              { title: 'Entreprise', links: [
+                { label: 'Contact', href: '/contact' },
+                { label: 'Obtenir un devis', href: '/devis' },
+                { label: '01 74 54 23 10', href: 'tel:+33174542310' },
+                { label: 'commercial@lecrin-traiteur.fr', href: 'mailto:commercial@lecrin-traiteur.fr' },
+                { label: '63 bis rue de Sèvres, Boulogne-Billancourt', href: 'https://www.google.com/maps/search/?api=1&query=63+bis+rue+de+Sèvres+92100+Boulogne-Billancourt' },
+              ]},
+            ].map(col => (
+              <div key={col.title}>
+                <span style={colTitleStyle}>{col.title}</span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+                  {col.links.map(l => {
+                    const ext = l.href.startsWith('http')
+                    return (
+                      <a key={l.label} href={l.href} style={linkStyle}
+                        target={ext ? '_blank' : undefined} rel={ext ? 'noopener noreferrer' : undefined}
+                        onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
+                      >{l.label}</a>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-
-            {/* L'Univers */}
-            <div>
-              <span style={colTitleStyle}>L'Univers</span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
-                {[
-                  { label: 'Notre Maison', href: '/univers/notre-maison' },
-                  { label: 'Nos Artisans', href: '/univers/nos-artisans' },
-                  { label: 'Nos Engagements', href: '/univers/nos-engagements' },
-                  { label: 'Le Journal', href: '/journal' },
-                ].map(l => (
-                  <a key={l.label} href={l.href} style={linkStyle}
-                    onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                  >{l.label}</a>
-                ))}
-              </div>
-            </div>
-
-            {/* Entreprise */}
-            <div className="footer-col-entreprise">
-              <span style={colTitleStyle}>Entreprise</span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
-                {[
-                  { label: 'Nos occasions', href: '/occasions' },
-                  { label: 'Contact', href: '/contact' },
-                  { label: 'Obtenir un devis', href: '/devis' },
-                ].map(l => (
-                  <a key={l.label} href={l.href}
-                    style={linkStyle}
-                    onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                  >{l.label}</a>
-                ))}
-              </div>
-            </div>
-
-            {/* Nous contacter */}
-            <div className="footer-col-contact">
-              <span style={colTitleStyle}>Nous contacter</span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <a href="tel:+33174542310" style={linkStyle}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >01 74 54 23 10</a>
-                <a href="mailto:commercial@lecrin-traiteur.fr" style={linkStyle}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >commercial@lecrin-traiteur.fr</a>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=63+bis+rue+de+Sèvres+92100+Boulogne-Billancourt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={linkStyle}
-                  onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                >63 bis rue de Sèvres,<br />92100 Boulogne-Billancourt</a>
-              <span style={{ ...linkStyle, cursor: 'default' }}>Toute Île-de-France</span>
-              </div>
-            </div>
-
+            ))}
           </div>
 
         </div>
@@ -168,15 +147,13 @@ export default function Footer() {
           .footer-main { padding: 60px 24px 48px !important; }
           .footer-grid { flex-direction: column !important; gap: 40px !important; }
           .footer-grid > div:first-child { width: 100% !important; }
-          .footer-cols { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 32px 48px !important; }
-          .footer-col-contact { order: 3 !important; }
-          .footer-col-entreprise { order: 4 !important; }
+          .footer-cols { grid-template-columns: 1fr 1fr !important; gap: 32px 40px !important; }
           .footer-bottom { flex-direction: column !important; align-items: center !important; gap: 16px !important; padding: 20px 24px !important; }
           .footer-bottom > div:first-child { flex-wrap: wrap !important; gap: 12px 20px !important; justify-content: center !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .footer-main { padding: 60px 40px 48px !important; }
-          .footer-cols { gap: 32px !important; flex-wrap: wrap !important; }
+          .footer-cols { grid-template-columns: repeat(3, 1fr) !important; gap: 28px !important; }
         }
       ` }} />
 

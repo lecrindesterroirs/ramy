@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><style>
+  @font-face{ font-family:'Baskerville Display PT'; src:url('__FONT_BASK__') format('woff2'); font-weight:400; font-style:normal; }
+  @font-face{ font-family:'Baskerville Display PT'; src:url('__FONT_BASK__') format('woff2'); font-weight:400; font-style:italic; }
+  @font-face{ font-family:'Neue Montreal'; src:url('__FONT_NM_R__') format('woff2'); font-weight:400; }
+  @font-face{ font-family:'Neue Montreal'; src:url('__FONT_NM_M__') format('woff2'); font-weight:500; }
+  :root{ --paper:#ECE4D4; --ink:#2A2318; --muted:#6E6552; --gold:#B0872F; --accent:#E0A126; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{ size:210mm 297mm; margin:0; }
+  html,body{ width:210mm; height:297mm; }
+  body{ font-family:'Neue Montreal',sans-serif; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .page{ position:relative; width:210mm; height:297mm; background:var(--paper); display:flex; overflow:hidden; }
+
+  .left{ width:47%; height:100%; padding:30mm 22mm 26mm; display:flex; flex-direction:column; justify-content:space-between; position:relative; z-index:2; }
+  .right{ width:53%; height:100%; position:relative; }
+  .right .img{ position:absolute; inset:0; background-image:url('__PHOTO__'); background-size:cover; background-position:center; }
+  /* fondu doux entre la photo et le papier */
+  .right::before{ content:""; position:absolute; top:0; bottom:0; left:0; width:26mm; background:linear-gradient(to right, var(--paper), rgba(236,228,212,0)); z-index:2; }
+
+  .brand{ }
+  .brand .mono{ width:21mm; height:auto; }
+  .brand .wm{ margin-top:7mm; font-family:'Baskerville Display PT',serif; font-size:16pt; letter-spacing:0.24em; text-transform:uppercase; color:var(--ink); line-height:1.3; }
+  .brand .sub{ margin-top:4mm; font-family:'Neue Montreal',sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:0.2em; font-size:7.5pt; color:var(--muted); }
+
+  .center .rule{ width:20mm; height:0.5mm; background:var(--accent); margin-bottom:8mm; }
+  .center .tag{ font-family:'Baskerville Display PT',serif; font-style:italic; font-weight:400; font-size:27pt; line-height:1.16; color:var(--ink); letter-spacing:0.2px; }
+  .center .tag em{ color:var(--gold); font-style:italic; }
+
+  .foot .cat{ font-family:'Neue Montreal',sans-serif; font-weight:500; text-transform:uppercase; letter-spacing:0.3em; font-size:9pt; color:var(--gold); }
+  .foot .loc{ margin-top:4mm; font-family:'Neue Montreal',sans-serif; font-weight:400; letter-spacing:0.16em; font-size:7.5pt; color:var(--muted); text-transform:uppercase; }
+</style></head>
+<body>
+  <div class="page">
+    <div class="left">
+      <div class="brand">
+        <img class="mono" src="__LOGO_DARK__" alt="L'Écrin Traiteur">
+        <div class="wm">L'&Eacute;crin Traiteur</div>
+        <div class="sub">Traiteur artisanal &middot; Paris &amp; Île-de-France</div>
+      </div>
+
+      <div class="center">
+        <div class="rule"></div>
+        <div class="tag">L'exigence du go&ucirc;t,<br>le sens du <em>d&eacute;tail</em>.</div>
+      </div>
+
+      <div class="foot">
+        <div class="cat">Catalogue 2026</div>
+        <div class="loc">Petits-d&eacute;jeuners &middot; Plateaux &middot; Cocktails &amp; buffets</div>
+      </div>
+    </div>
+
+    <div class="right"><div class="img"></div></div>
+  </div>
+</body></html>

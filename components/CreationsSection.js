@@ -2,16 +2,16 @@ import Image from 'next/image'
 
 const creations = [
   {
-    label: 'Petit-déjeuner & Pause',
+    label: 'Petit-déjeuner',
     description: 'Commencez la journée en douceur avec des produits frais et gourmands.',
     img: '/hero-petitdej.webp',
     href: '/creations/petits-dejeuners-et-pauses',
   },
   {
-    label: 'Plateaux repas',
-    description: 'Des recettes fraîches, de saison et équilibrées pour des déjeuners savoureux et responsables.',
-    img: '/plateau-mediterraneen.webp',
-    href: '/creations/plateaux-repas',
+    label: 'Pauses gourmandes',
+    description: 'Madeleines, cookies, cakes et fruits frais pour rythmer vos pauses et goûters d\'équipe.',
+    img: '/prod-tartes-fines.webp',
+    href: '/creations/pauses-gourmandes',
   },
   {
     label: 'Cocktails',
@@ -26,16 +26,16 @@ const creations = [
     href: '/creations/a-partager',
   },
   {
+    label: 'Plateaux repas',
+    description: 'Des recettes fraîches, de saison et équilibrées pour des déjeuners savoureux et responsables.',
+    img: '/plateau-mediterraneen.webp',
+    href: '/creations/plateaux-repas',
+  },
+  {
     label: 'Boissons',
     description: "Jus, softs, cafés et thés d'exception pour accompagner chaque moment.",
     img: '/creations-boissons.webp',
     href: '/creations/boissons',
-  },
-  {
-    label: 'Créations',
-    description: 'Des recettes de saison et des créations uniques imaginées pour éveiller les papilles.',
-    img: '/prod-tartes-fines.webp',
-    href: '/creations/evenements-saisonniers',
   },
 ]
 
