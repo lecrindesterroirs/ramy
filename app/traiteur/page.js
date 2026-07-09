@@ -41,7 +41,7 @@ export default function TraiteurPage() {
           </p>
           <span style={{ display: 'block', width: '38px', height: '1px', background: 'var(--accent)', opacity: 0.6, margin: '0 auto 26px' }} />
           <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 400, lineHeight: 1.06, color: 'var(--text-primary)', marginBottom: '24px', letterSpacing: '-0.015em' }}>
-            Traiteur Paris<br />& Île-de-France
+            Traiteur entreprise Paris<br />& Île-de-France
           </h1>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
             L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
