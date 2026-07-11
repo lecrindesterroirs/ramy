@@ -62,6 +62,14 @@ const nextConfig = {
       { source: '/a-propos', destination: '/univers/notre-maison', permanent: true },
       { source: '/univers/notre-savoir-faire', destination: '/univers/notre-maison', permanent: true },
       { source: '/univers/notre-philosophie', destination: '/univers/notre-maison', permanent: true },
+      // Ancienne boutique en ligne archivée (modèle passé au devis B2B) → accueil
+      { source: '/boutique', destination: '/', permanent: true },
+      { source: '/boutique/:path*', destination: '/', permanent: true },
+      // Variante racine de l'ancienne section cocktails & buffets → /creations/cocktails
+      { source: '/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
+      { source: '/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
+      // Ancien hub /creations (pas de page d'index) → catégorie principale
+      { source: '/creations', destination: '/creations/petits-dejeuners-et-pauses', permanent: true },
     ]
   },
   async headers() {
