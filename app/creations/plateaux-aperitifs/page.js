@@ -54,43 +54,59 @@ const CATEGORIE_COLORS = {
 export const PLATEAUX = [
   // ── Sandwichs ──
   {
+    seoTitle: `Plateau mini baguettes pour vos afterworks et réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de mini baguettes artisanales garnies est le format qui rassure : des sandwichs francs, faciles à attraper debout, qui plaisent à tout le monde lors d'un afterwork ou d'un pot de départ. Posé au centre de la table, il se partage sans chichi et cale les petites faims de fin de journée.</p><h2>Un assortiment à partager, net à manger debout</h2><p>Mini baguettes garnies en assortiment varié, découpées pour picorer, avec des recettes qui mêlent viande, poisson et options végétariennes. On équilibre les garnitures pour que chacun trouve la sienne, et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30 sur votre lieu de réception. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plateau-baguettes.webp',
     description: 'Assortiment de mini baguettes artisanales garnies.',
     recettes: ['Jambon de Dinde', 'Poulet César', 'Saumon & Cream Cheese', 'Thon Ciboulette', 'Burrata & Pesto', 'Pastrami Pickles'],
   },
   {
+    seoTitle: `Plateau club sandwichs pour vos afterworks et réunions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de clubs sandwichs moelleux, découpés en triangles, est un classique de l'apéritif d'entreprise qui ne déçoit jamais. Généreux et facile à partager, il accompagne un afterwork, un déjeuner de travail qui s'étire ou une réception, sans couverts ni logistique compliquée.</p><h2>Des clubs généreux, découpés à partager</h2><p>Assortiment de clubs moelleux aux garnitures variées, poulet, dinde et options végétariennes, découpés pour se servir d'une main. On mixe les recettes et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plateau-clubs.webp',
     description: 'Assortiment de clubs sandwichs moelleux découpés.',
     recettes: ['Club Poulet César', 'Club Saumon & Cream Cheese', 'Club Thon', 'Club Jambon de Dinde'],
   },
   {
+    seoTitle: `Plateau de wraps pour vos afterworks et pauses déjeuner d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de wraps découpés en bouchées apporte de la couleur et de la fraîcheur à un apéritif d'équipe. Roulés serrés, coupés net, les wraps se picorent facilement debout et offrent une alternative plus légère aux sandwichs classiques pour un afterwork ou une réunion de l'après-midi.</p><h2>Roulés, coupés, prêts à picorer</h2><p>Assortiment de wraps aux garnitures variées avec des options végétariennes, découpés en bouchées pour se partager sans effort. On équilibre les recettes et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'sw3', famille: 'sandwichs', nom: 'Wraps Gourmands', img: '/plateau-wraps.webp',
     description: 'Assortiment de wraps découpés en bouchées.',
     recettes: ['César Poulet', 'Saumon & Cream Cheese', 'Falafel & Houmous', 'Burrata & Légumes grillés', 'Thon Ciboulette'],
   },
   {
+    seoTitle: `Plateau de mini burgers pour vos afterworks et événements d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de mini burgers artisanaux met de l'ambiance sur un apéritif d'équipe. Format street food net à manger debout, il plaît à tous les âges et transforme un afterwork ou un pot de départ en moment convivial. Des bouchées généreuses, assemblées avec soin.</p><h2>Des mini burgers à partager</h2><p>Assortiment de mini burgers aux recettes variées, dont une option végétarienne, prêts à se servir d'une main. On mixe les garnitures et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plateau-burgers.webp',
     description: 'Assortiment de mini burgers artisanaux.',
     recettes: ['Cheeseburger', 'Chicken Crispy', 'Steak Végétal'],
   },
   // ── Gourmands ──
   {
+    seoTitle: `Plateau de fromages affinés pour vos apéritifs et réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de fromages affinés, accompagné de fruits frais, de fruits secs et de pain artisanal, pose tout de suite le ton d'une réception soignée. Posé au centre de la table, il invite au partage et accompagne parfaitement un afterwork, une soirée partenaires ou un cocktail dînatoire.</p><h2>Une sélection à composer soi-même</h2><p>Fromages affinés variés, fruits frais, fruits secs et pain artisanal pour construire chaque bouchée. On adapte la taille du plateau et l'assortiment à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plateau-fromages.webp',
     description: 'Sélection de fromages affinés accompagnés de fruits frais, fruits secs et pain artisanal.',
     recettes: [],
   },
   {
+    seoTitle: `Plateau de charcuterie halal, sans porc, pour vos apéritifs d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de charcuteries est halal et sans porc : bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, avec cornichons et condiments. Une planche généreuse qui n'exclut personne autour de la table, parfaite pour un afterwork, une inauguration ou une réception mixant les profils.</p><h2>Une planche généreuse, halal et sans porc</h2><p>Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons et condiments à partager, accompagnés de pain. On ajuste la taille du plateau à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plateau-charcuterie.webp',
     description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons & condiments · halal, sans porc.',
     recettes: [],
   },
   {
+    seoTitle: `Plateau de saumon fumé et gravlax pour vos réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de saumon réunit saumon fumé et gravlax, blinis, crème citron-aneth, câpres, oignons rouges et citron. Une bouchée nette et élégante qui pose le niveau d'un cocktail ou d'une réception, à monter soi-même au fil du service. Le genre de plateau qui se remarque sur un buffet.</p><h2>Saumon fumé, gravlax et accompagnements</h2><p>Saumon fumé et gravlax, blinis, crème citron-aneth, câpres et oignons rouges pour composer chaque bouchée. On adapte la taille du plateau à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'go4', famille: 'gourmands', nom: 'Saumon', img: '/plateau-saumon.webp',
     description: 'Saumon fumé, saumon gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.',
     recettes: [],
   },
   // ── Fraîcheur ──
   {
+    seoTitle: `Plateau de crudités et dips pour vos apéritifs et pauses d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de crudités et dips joue la fraîcheur et la légèreté : carottes, concombre, radis, chou-fleur, tomates cerises, avec houmous, tzatziki et tapenade. L'option saine d'un apéritif d'équipe, qui équilibre un buffet plus riche et plaît à ceux qui veulent picorer léger.</p><h2>Frais, coloré, à tremper</h2><p>Légumes croquants de saison taillés pour tremper, avec houmous, tzatziki et tapenade. On ajuste les quantités à votre effectif et on complète volontiers un buffet plus copieux.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'fr1', famille: 'fraicheur', nom: 'Crudités & Dips', img: '/plateau-crudites.webp',
     description: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.',
     recettes: [],
@@ -98,6 +114,8 @@ export const PLATEAUX = [
 
   // ── Signature ──
   {
+    seoTitle: `Plateau apéritif asiatique pour vos afterworks et réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau d'inspiration asiatique change des classiques de l'apéritif : un assortiment de bouchées parfumées qui apporte du relief à un afterwork ou une réception. Le genre de plateau qui lance la conversation et sort du sandwich habituel.</p><h2>Des bouchées parfumées à partager</h2><p>Assortiment de bouchées d'inspiration asiatique, à picorer du bout des doigts, avec des sauces pour accompagner. On équilibre l'assortiment et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'si1', famille: 'signature', nom: 'Asiatique', img: '/plateau-asiatique.webp',
     description: 'Assortiment de bouchées d\'inspiration asiatique.',
     recettes: ['Makis', 'California Rolls', 'Spring Rolls', 'Gyozas', 'Brochettes Yakitori', 'Sauce soja, gingembre & wasabi'],
@@ -105,11 +123,15 @@ export const PLATEAUX = [
 
   // ── Sucré ──
   {
+    seoTitle: `Plateau de douceurs pour vos apéritifs et réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de douceurs réunit une sélection de desserts artisanaux pour finir un afterwork ou une réception sur une note sucrée. Mignardises et petites pièces à picorer, il apporte la touche gourmande qui clôt agréablement un buffet salé.</p><h2>Des mignardises à partager</h2><p>Sélection de desserts artisanaux en petites pièces, à picorer sans couvert. On varie l'assortiment et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'si4', famille: 'sucre', nom: 'Douceurs', img: '/plateau-douceurs.webp',
     description: 'Sélection de desserts artisanaux.',
     recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
   },
   {
+    seoTitle: `Plateau de fruits frais découpés pour vos apéritifs et pauses d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de fruits frais de saison, découpés et dressés, apporte fraîcheur et couleur à un apéritif ou une pause d'équipe. Plus pratique que les fruits entiers pour un buffet, il se pose au centre de la table et se sert sans effort, en complément d'un plateau plus riche.</p><h2>Des fruits de saison, prêts à partager</h2><p>Sélection de fruits frais de saison découpés, dressés pour se servir facilement. On adapte la taille du plateau à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'fr3', famille: 'sucre', nom: 'Fruits Frais', img: '/plateau-fruits.webp',
     description: 'Sélection de fruits frais de saison découpés.',
     recettes: [],

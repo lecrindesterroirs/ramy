@@ -43,8 +43,8 @@ export default function PlateauAperitifDetail() {
       backHref="/creations/plateaux-aperitifs"
       backLabel="Retour aux plateaux apéritifs"
       seoEyebrow="Plateaux apéritifs · Afterworks & réceptions"
-      seoTitle="Le plateau apéritif qui fait le succès de vos afterworks"
-      seoHtml={SEO_HTML}
+      seoTitle={plateau.seoTitle || "Le plateau apéritif qui fait le succès de vos afterworks"}
+      seoHtml={plateau.seoHtml || SEO_HTML}
       devisPrestation="Cocktail déjeunatoire"
       devisTitre="Un afterwork ou une réception à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
