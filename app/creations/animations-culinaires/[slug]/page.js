@@ -51,7 +51,7 @@ export default function AnimationDetail() {
   }
 
   const nomLc = anim.nom.toLowerCase()
-  const seoArticle = `
+  const seoArticle = anim.article || `
     <h2>${anim.nom} : l'animation culinaire live pour vos événements d'entreprise à Paris</h2>
     <p>${anim.description} L'Écrin Traiteur installe cette animation dans vos locaux ou votre lieu d'événement, partout à Paris et en Île-de-France : un artisan prépare devant vos invités, pour un moment aussi beau à regarder qu'agréable à déguster.</p>
 
