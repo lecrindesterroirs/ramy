@@ -434,11 +434,18 @@ export default function ArticlePage() {
             'totalTime': article.recipe.totalTime,
             'recipeYield': article.recipe.yield,
             'recipeIngredient': article.recipe.ingredients,
-            'recipeInstructions': (article.recipe.steps || []).map((text, i) => ({
-              '@type': 'HowToStep',
-              'position': i + 1,
-              'text': text,
-            })),
+            'recipeInstructions': (article.recipe.steps || []).map((text, i) => {
+              const stepName = ((text.split(/[.:]/)[0] || '').trim().slice(0, 60) || `Étape ${i + 1}`)
+              const stepImg = article.img?.startsWith('http') ? article.img : `https://www.lecrin-traiteur.fr${article.img}`
+              return {
+                '@type': 'HowToStep',
+                'position': i + 1,
+                'name': stepName,
+                'text': text,
+                'url': `https://www.lecrin-traiteur.fr/journal/${article.slug}#etape-${i + 1}`,
+                'image': stepImg,
+              }
+            }),
           }) }}
         />
       )}
