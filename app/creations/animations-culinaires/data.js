@@ -43,13 +43,37 @@ export const ANIMATIONS = [
     ` },
   { id: 'b3', univers: 'brunch', nom: 'Bar à Jus Pressés', img: '/prod-bar-jus.webp',
     description: 'Jus de fruits et légumes préparés devant les invités.',
-    compo: ['Orange', 'Pamplemousse', 'Citronnade fraîche', 'Pomme', 'Carotte, Orange & Gingembre', 'Betterave, Pomme & Citron', 'Concombre, Menthe & Citron Vert'] },
+    compo: ['Orange', 'Pamplemousse', 'Citronnade fraîche', 'Pomme', 'Carotte, Orange & Gingembre', 'Betterave, Pomme & Citron', 'Concombre, Menthe & Citron Vert'],
+    article: `
+      <h2>Un bar à jus pressés pour vos petits-déjeuners et événements d'entreprise à Paris</h2>
+      <p>Des jus pressés devant vos invités, ça réveille une matinée de séminaire ou un petit-déjeuner d'accueil. Orange, pamplemousse, citronnade, mais aussi des mélanges plus toniques comme carotte-orange-gingembre ou betterave-pomme-citron, extraits à la minute. L'Écrin Traiteur installe ce bar à jus à Paris et en Île-de-France.</p>
+      <h2>Fruits et légumes pressés à la demande</h2>
+      <p>On presse au fil du service, jamais à l'avance : orange, pamplemousse, pomme, citronnade fraîche, et des associations fruits-légumes comme concombre-menthe-citron vert ou carotte-orange-gingembre. Chacun repart avec un verre net et vitaminé.</p>
+      <h2>Installer un bar à jus à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un petit-déjeuner d'accueil, une pause QVT ou un salon. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b4', univers: 'brunch', nom: 'Brunch Gourmand', img: '/prod-brunch-gourmand.webp',
     description: 'Une animation complète de brunch servie en continu.',
-    compo: ['Viennoiseries artisanales', 'Pain & brioches', 'Beurre & confitures', 'Fruits frais', 'Yaourts & granola', 'Jus frais', 'Café & thé'] },
+    compo: ['Viennoiseries artisanales', 'Pain & brioches', 'Beurre & confitures', 'Fruits frais', 'Yaourts & granola', 'Jus frais', 'Café & thé'],
+    article: `
+      <h2>Un brunch d'entreprise servi en continu à Paris</h2>
+      <p>Le brunch met tout le monde d'accord : viennoiseries, pain et brioches, œufs, fruits frais, yaourts et granola, jus pressés, café. Servi en continu, il laisse à chacun le temps d'arriver, de se servir et d'échanger. L'Écrin Traiteur installe ce brunch dans vos locaux, à Paris et en Île-de-France.</p>
+      <h2>Sucré, salé, chaud et frais au même endroit</h2>
+      <p>Viennoiseries artisanales, pains et brioches, beurre et confitures, fruits frais, yaourts et granola, jus frais, café et thé. On dresse un buffet généreux et on réassort au fil de la matinée, en calant les quantités sur votre effectif.</p>
+      <h2>Organiser votre brunch à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, nombre d'invités et créneau. Dressage soigné, installation et reprise du matériel compris. Idéal pour une matinée d'intégration, un lancement ou un week-end séminaire. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b5', univers: 'brunch', nom: 'Œufs brouillés minute', img: '/prod-atelier-oeufs.webp',
     description: 'Œufs préparés minute selon les envies.',
-    compo: ['Œufs brouillés', 'Œufs au plat', 'Omelettes', 'Œufs aux fines herbes', 'Dinde fumée (option)', 'Saumon fumé (option)'] },
+    compo: ['Œufs brouillés', 'Œufs au plat', 'Omelettes', 'Œufs aux fines herbes', 'Dinde fumée (option)', 'Saumon fumé (option)'],
+    article: `
+      <h2>Un atelier œufs préparés minute pour vos petits-déjeuners d'entreprise à Paris</h2>
+      <p>Des œufs brouillés, au plat ou en omelette, préparés devant vos invités : c'est le chaud qui manque à la plupart des petits-déjeuners livrés. Chacun choisit sa cuisson et sa garniture, servie à l'assiette au bon moment. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>À la cuisson et à la garniture de chacun</h2>
+      <p>Œufs brouillés, au plat, en omelette ou aux fines herbes, avec des options dinde fumée ou saumon fumé. On prépare au rythme des arrivées, pour que personne ne mange froid.</p>
+      <h2>Réserver votre atelier œufs à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès (électricité, espace). Installation et démontage inclus. Idéal pour un petit-déjeuner d'accueil ou une matinée de séminaire. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b6', univers: 'brunch', nom: 'Atelier Crêpes & Pancakes', img: '/prod-atelier-crepes.webp',
     description: 'Crêpes et pancakes préparés et dressés à la demande.',
     compo: ['Sirop d\'érable', 'Chocolat', 'Caramel beurre salé', 'Citron', 'Sucre', 'Fruits frais', 'Chantilly', 'Pistaches'],
@@ -63,24 +87,72 @@ export const ANIMATIONS = [
     ` },
   { id: 'b7', univers: 'brunch', nom: 'Atelier Gaufres Belges', img: '/prod-atelier-gaufres.webp',
     description: 'Gaufres servies chaudes avec un large choix de toppings.',
-    compo: [] },
+    compo: [],
+    article: `
+      <h2>Un atelier gaufres belges pour vos pauses et événements d'entreprise à Paris</h2>
+      <p>Des gaufres servies chaudes, croustillantes dehors et moelleuses dedans, garnies devant vos invités : voilà de quoi transformer une pause de l'après-midi. Sucre, chocolat, caramel, fruits frais, chantilly, chacun compose la sienne. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Servies chaudes, garnies à la demande</h2>
+      <p>Chaque gaufre est cuite minute et garnie au choix : sucre glace, chocolat, caramel beurre salé, fruits frais, chantilly, pâte à tartiner. On cale le rythme sur le nombre d'invités pour un service fluide.</p>
+      <h2>Organiser votre atelier gaufres à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un goûter d'équipe, une pause QVT ou un événement familial d'entreprise. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b8', univers: 'brunch', nom: 'Atelier Bagels de New York', img: '/prod-atelier-bagels.webp',
     description: 'Bagels garnis devant les invités.',
-    compo: ['Saumon & Cream Cheese', 'Poulet César', 'Pastrami', 'Avocat & Feta', 'Burrata & Pesto'] },
+    compo: ['Saumon & Cream Cheese', 'Poulet César', 'Pastrami', 'Avocat & Feta', 'Burrata & Pesto'],
+    article: `
+      <h2>Un atelier bagels new-yorkais pour vos déjeuners et cocktails d'entreprise à Paris</h2>
+      <p>Des bagels garnis devant vos invités, c'est un déjeuner qui a du caractère sans compliquer la logistique. Saumon et cream cheese, poulet César, pastrami, avocat-feta, burrata-pesto : chacun choisit, on assemble minute. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Garnis à la demande</h2>
+      <p>On garnit au fil du service, jamais à l'avance, avec des combinaisons franches : saumon-cream cheese, poulet César, pastrami, avocat-feta, burrata-pesto. Des options sans viande sont disponibles, et les quantités s'ajustent à votre effectif.</p>
+      <h2>Réserver votre atelier bagels à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un déjeuner d'équipe, un afterwork ou un cocktail. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b9', univers: 'brunch', nom: 'Bar à Yaourts & Granola', img: '/prod-bar-yaourts.webp',
     description: 'Création de bols personnalisés.',
-    compo: ['Skyr', 'Yaourt grec', 'Granola maison', 'Fruits frais', 'Fruits secs', 'Miel', 'Coulis'] },
+    compo: ['Skyr', 'Yaourt grec', 'Granola maison', 'Fruits frais', 'Fruits secs', 'Miel', 'Coulis'],
+    article: `
+      <h2>Un bar à yaourts et granola pour vos petits-déjeuners d'entreprise à Paris</h2>
+      <p>Un bar où chacun compose son bol : skyr ou yaourt grec, granola maison, fruits frais, fruits secs, miel, coulis. Léger, frais et personnalisable, il complète parfaitement un petit-déjeuner ou une pause matinale. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Chacun compose son bol</h2>
+      <p>Base de skyr ou yaourt grec, granola maison, fruits frais de saison, fruits secs, miel et coulis. Une option qui plaît autant à ceux qui veulent léger qu'à ceux qui veulent gourmand.</p>
+      <h2>Installer un bar à yaourts à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour un petit-déjeuner d'accueil ou une semaine QVT. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
 
   // ── Déjeuner Gourmet ──
   { id: 'd1', univers: 'dejeuner', nom: 'Pasta italienne minute', img: '/prod-atelier-pasta.webp',
     description: 'Préparation minute de pâtes fraîches.',
-    compo: ['Trofie au pesto', 'Parmesan', 'Burrata', 'Tomates confites'] },
+    compo: ['Trofie au pesto', 'Parmesan', 'Burrata', 'Tomates confites'],
+    article: `
+      <h2>Un atelier pâtes fraîches minute pour vos déjeuners d'entreprise à Paris</h2>
+      <p>Des pâtes fraîches sautées et dressées devant vos invités, c'est un déjeuner chaud et généreux qui change du plateau repas. Trofie au pesto, parmesan, burrata, tomates confites : préparé minute, servi à l'assiette. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Préparées et dressées à la demande</h2>
+      <p>On saute et on dresse au fil du service, jamais à l'avance : trofie au pesto, parmesan, burrata crémeuse, tomates confites. Le rythme s'adapte au nombre d'invités pour un service continu.</p>
+      <h2>Réserver votre atelier pâtes à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès (électricité, espace). Installation et démontage inclus. Idéal pour un déjeuner d'équipe ou une journée séminaire. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'd2', univers: 'dejeuner', nom: 'Atelier Focaccia & Burrata', img: '/prod-atelier-focaccia.webp',
     description: 'Focaccias artisanales et burrata crémeuse dressées devant les invités.',
-    compo: ['Focaccia', 'Burrata crémeuse', 'Bresaola', 'Dinde fumée', 'Tomates anciennes', 'Légumes grillés', 'Pesto', 'Basilic', 'Huile d\'olive'] },
+    compo: ['Focaccia', 'Burrata crémeuse', 'Bresaola', 'Dinde fumée', 'Tomates anciennes', 'Légumes grillés', 'Pesto', 'Basilic', 'Huile d\'olive'],
+    article: `
+      <h2>Un atelier focaccia et burrata pour vos réceptions d'entreprise à Paris</h2>
+      <p>Focaccia artisanale tiède, burrata crémeuse, tomates anciennes, légumes grillés et un filet d'huile d'olive, dressés devant vos invités : un atelier italien simple et généreux qui fait toujours son effet. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Dressée à la demande</h2>
+      <p>On tranche la focaccia, on dresse la burrata et les accompagnements au fil du service : bresaola, dinde fumée, tomates anciennes, légumes grillés, pesto, basilic. Options sans viande, quantités calées sur votre effectif.</p>
+      <h2>Organiser votre atelier focaccia à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail déjeunatoire, une soirée partenaires ou un afterwork. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'd3', univers: 'dejeuner', nom: 'Découpe de saumon frais', img: '/prod-atelier-saumon.webp',
     description: 'Découpe et dressage de saumon fumé & gravlax.',
-    compo: ['Blinis', 'Crème citron-aneth', 'Câpres', 'Oignons rouges'] },
+    compo: ['Blinis', 'Crème citron-aneth', 'Câpres', 'Oignons rouges'],
+    article: `
+      <h2>Un atelier découpe de saumon pour vos cocktails d'entreprise à Paris</h2>
+      <p>Saumon fumé et gravlax tranchés et dressés devant vos invités, sur blinis tièdes avec crème citron-aneth, câpres et oignons rouges : une bouchée nette et élégante qui pose le niveau d'une réception. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Tranché et dressé à la demande</h2>
+      <p>On tranche minute et on monte les bouchées au fil du service : blinis, crème citron-aneth, câpres, oignons rouges. Le rythme et les quantités s'ajustent au nombre d'invités.</p>
+      <h2>Réserver votre atelier saumon à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail, une inauguration ou une soirée partenaires. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/prod-atelier-fromages.webp',
     description: 'Découpe et présentation de fromages AOP, pains artisanaux, fruits frais et fruits secs.',
     compo: [],
@@ -129,35 +201,123 @@ export const ANIMATIONS = [
     ` },
   { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/prod-atelier-burgers.webp',
     description: 'Montage minute de mini burgers.',
-    compo: ['Cheeseburger', 'Chicken Crispy', 'Bœuf Effiloché BBQ', 'Truffe & Comté', 'Halloumi'] },
+    compo: ['Cheeseburger', 'Chicken Crispy', 'Bœuf Effiloché BBQ', 'Truffe & Comté', 'Halloumi'],
+    article: `
+      <h2>Un atelier mini burgers pour vos événements d'entreprise à Paris</h2>
+      <p>Des mini burgers montés minute devant vos invités : cheeseburger, chicken crispy, bœuf effiloché BBQ, truffe-comté, halloumi. Un format street food net à manger debout, qui plaît à tous les âges. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Montés à la demande</h2>
+      <p>On assemble et on sert au fil du service, jamais à l'avance. Recettes variées, dont une option végétarienne au halloumi, pour que chacun trouve la sienne. Quantités ajustées à votre effectif.</p>
+      <h2>Réserver votre atelier mini burgers à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 's5', univers: 'streetfood', nom: 'Atelier Mini Baguettes', img: '/prod-atelier-baguettes.webp',
     description: 'Découpe et dressage de mini baguettes artisanales.',
-    compo: ['Jambon de Dinde', 'Poulet César', 'Thon Ciboulette', 'Burrata', 'Pastrami'] },
+    compo: ['Jambon de Dinde', 'Poulet César', 'Thon Ciboulette', 'Burrata', 'Pastrami'],
+    article: `
+      <h2>Un atelier mini baguettes pour vos déjeuners et pauses d'entreprise à Paris</h2>
+      <p>Des mini baguettes artisanales garnies et dressées devant vos invités : jambon de dinde, poulet César, thon ciboulette, burrata, pastrami. Un déjeuner sur le pouce net et rassasiant, parfait pour une réunion qui déborde. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Garnies à la demande</h2>
+      <p>On garnit au fil du service des mini baguettes croustillantes, avec des recettes franches et une option sans viande. Le rythme et les quantités s'adaptent à votre effectif.</p>
+      <h2>Réserver votre atelier mini baguettes à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un déjeuner de réunion, une pause ou un cocktail. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 's6', univers: 'streetfood', nom: 'Atelier Tacos Gourmet', img: '/prod-atelier-tacos.webp',
     description: 'Mini tacos dressés à la minute.',
-    compo: ['Poulet mariné', 'Bœuf effiloché', 'Crevettes', 'Falafel'] },
+    compo: ['Poulet mariné', 'Bœuf effiloché', 'Crevettes', 'Falafel'],
+    article: `
+      <h2>Un atelier tacos pour vos événements d'entreprise à Paris</h2>
+      <p>Des mini tacos dressés à la minute devant vos invités : poulet mariné, bœuf effiloché, crevettes, falafel. Un format street food généreux et convivial qui met de l'ambiance sur un afterwork. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Garnis à la demande</h2>
+      <p>On garnit au fil du service, avec une option végétarienne au falafel et des sauces dressées à côté. Quantités et rythme calés sur votre effectif.</p>
+      <h2>Réserver votre atelier tacos à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 's7', univers: 'streetfood', nom: 'Atelier Libanais Wrap & Pita', img: '/prod-atelier-libanais.webp',
-    description: 'Wraps et pains pita libanais garnis à la minute, produits frais.',
-    compo: ['Chawarma poulet', 'Chawarma bœuf', 'Falafel', 'Houmous', 'Taboulé'] },
+    description: 'Wraps et pains pita libanais garnis à la minute.',
+    compo: ['Chawarma poulet', 'Chawarma bœuf', 'Falafel', 'Houmous', 'Taboulé'],
+    article: `
+      <h2>Un atelier libanais wrap et pita pour vos déjeuners d'entreprise à Paris</h2>
+      <p>Wraps et pains pita garnis à la minute devant vos invités : chawarma poulet, chawarma bœuf, falafel, houmous, taboulé. Un déjeuner généreux, parfumé et facile à manger debout, avec de vraies options végétariennes. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Garnis à la demande</h2>
+      <p>On garnit pitas et wraps au fil du service, avec houmous, taboulé et légumes pour accompagner. Options végétariennes au falafel, quantités ajustées à votre effectif.</p>
+      <h2>Réserver votre atelier libanais à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un déjeuner d'équipe, un afterwork ou un cocktail. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 's9', univers: 'streetfood', nom: 'Atelier Loaded Fries', img: '/prod-atelier-loaded-fries.webp',
     description: 'Pommes de terre croustillantes garnies.',
-    compo: ['Cheddar & Jambon de Dinde', 'Bœuf Effiloché', 'Chicken Crispy', 'Truffe & Parmesan'] },
+    compo: ['Cheddar & Jambon de Dinde', 'Bœuf Effiloché', 'Chicken Crispy', 'Truffe & Parmesan'],
+    article: `
+      <h2>Un atelier loaded fries pour vos afterworks et événements d'entreprise à Paris</h2>
+      <p>Des frites croustillantes garnies devant vos invités : cheddar et jambon de dinde, bœuf effiloché, chicken crispy, truffe-parmesan. Un format street food généreux et régressif qui met tout de suite l'ambiance. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Garnies à la demande</h2>
+      <p>On garnit au fil du service, jamais à l'avance, avec des recettes franches et une version truffe-parmesan plus fine. Quantités et rythme calés sur votre effectif.</p>
+      <h2>Réserver votre atelier loaded fries à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
 
   // ── Douceurs ──
   { id: 'do1', univers: 'douceurs', nom: 'Bar à Glaces Artisanales', img: '/prod-bar-glaces.webp',
     description: 'Une animation parfaite pour l\'été · parfums et toppings au choix.',
-    compo: ['Vanille', 'Chocolat', 'Pistache', 'Fraise', 'Citron', 'Café', 'Toppings : coulis, caramel beurre salé, fruits rouges, pistaches, cookies émiettés, chantilly'] },
+    compo: ['Vanille', 'Chocolat', 'Pistache', 'Fraise', 'Citron', 'Café', 'Toppings : coulis, caramel beurre salé, fruits rouges, pistaches, cookies émiettés, chantilly'],
+    article: `
+      <h2>Un bar à glaces pour vos événements d'été en entreprise à Paris</h2>
+      <p>Un bar à glaces installé devant vos invités, c'est la bonne surprise d'un événement d'été : vanille, chocolat, pistache, fraise, citron, café, à composer avec coulis, caramel beurre salé, fruits rouges et cookies émiettés. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Parfums et toppings au choix</h2>
+      <p>Chacun compose sa coupe : glaces au choix, coulis, caramel beurre salé, fruits rouges, pistaches, cookies émiettés, chantilly. On sert au fil de l'après-midi, en calant les quantités sur votre effectif.</p>
+      <h2>Installer un bar à glaces à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour un pot d'été, une fête des collaborateurs ou une journée portes ouvertes. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'do2', univers: 'douceurs', nom: 'Atelier Desserts', img: '/prod-atelier-desserts.webp',
     description: 'Dressage de pâtisseries individuelles et mignardises.',
-    compo: ['Tartelettes', 'Choux', 'Financiers', 'Madeleines', 'Mini desserts Signature'] },
+    compo: ['Tartelettes', 'Choux', 'Financiers', 'Madeleines', 'Mini desserts Signature'],
+    article: `
+      <h2>Un atelier desserts et mignardises pour vos réceptions d'entreprise à Paris</h2>
+      <p>Pâtisseries individuelles et mignardises dressées devant vos invités : tartelettes, choux, financiers, madeleines, mini desserts. De quoi finir un déjeuner ou animer une pause avec une touche gourmande et soignée. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Dressés à la demande</h2>
+      <p>On dresse les pièces au fil du service : tartelettes, choux, financiers, madeleines, mini desserts. Une sélection variée pour plaire au plus grand nombre, en quantités calées sur votre effectif.</p>
+      <h2>Organiser votre atelier desserts à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail, une pause gourmande ou une soirée partenaires. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'do4', univers: 'douceurs', nom: 'Bar à Fruits Frais', img: '/prod-bar-fruits.webp',
-    description: 'Découpe et dressage de fruits de saison.', compo: [] },
+    description: 'Découpe et dressage de fruits de saison.', compo: [],
+    article: `
+      <h2>Un bar à fruits frais pour vos pauses et événements d'entreprise à Paris</h2>
+      <p>Des fruits de saison découpés et dressés devant vos invités, c'est la pause simple et bonne qui fait du bien en milieu de journée. Frais, coloré et léger, ce bar complète un petit-déjeuner comme un après-midi de séminaire. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Découpés et dressés à la demande</h2>
+      <p>On découpe minute des fruits de saison, dressés en coupes ou en brochettes selon l'occasion. Une option fraîche et légère, en quantités ajustées à votre effectif.</p>
+      <h2>Installer un bar à fruits à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour une pause QVT, un petit-déjeuner ou une journée collaborateurs. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'do5', univers: 'douceurs', nom: 'Fontaine au Chocolat', img: '/prod-fontaine-chocolat.webp',
-    description: 'Fontaine de chocolat chaud et fruits à tremper.', compo: [] },
+    description: 'Fontaine de chocolat chaud et fruits à tremper.', compo: [],
+    article: `
+      <h2>Une fontaine au chocolat pour vos événements d'entreprise à Paris</h2>
+      <p>Une fontaine de chocolat chaud avec fruits et douceurs à tremper, c'est l'animation qui rassemble petits et grands autour d'un événement familial d'entreprise. Conviviale et généreuse, elle marque les esprits sans effort. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>À tremper, à volonté</h2>
+      <p>Chocolat chaud qui coule en continu, avec fruits frais, guimauves et petites douceurs à tremper. On réassort au fil du service et on cale les quantités sur votre effectif.</p>
+      <h2>Installer une fontaine au chocolat à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un arbre de Noël, une fête des collaborateurs ou une journée portes ouvertes. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
 
   // ── Bars & Boissons (100 % sans alcool) ──
   { id: 'ba1', univers: 'bars', nom: 'Bar à Mocktails', img: '/prod-bar-mocktails.webp',
-    description: 'Cocktails sans alcool préparés à la minute.', compo: [] },
+    description: 'Cocktails sans alcool préparés à la minute.', compo: [],
+    article: `
+      <h2>Un bar à mocktails sans alcool pour vos événements d'entreprise à Paris</h2>
+      <p>Des cocktails sans alcool préparés à la minute devant vos invités, c'est la façon élégante d'animer un afterwork ou une soirée sans exclure personne. Frais, colorés et travaillés, nos mocktails donnent le ton d'un moment convivial. L'Écrin Traiteur installe ce bar à Paris et en Île-de-France.</p>
+      <h2>Préparés à la demande</h2>
+      <p>Un barman prépare et dresse chaque mocktail au fil du service : agrumes, fruits frais, herbes et sirops maison. Une carte 100 % sans alcool, en quantités calées sur votre effectif.</p>
+      <h2>Installer un bar à mocktails à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'ba3', univers: 'bars', nom: 'Eaux Infusées', img: '/prod-eaux-infusees.webp',
-    description: 'Eaux infusées aux fruits et herbes fraîches.', compo: [] },
+    description: 'Eaux infusées aux fruits et herbes fraîches.', compo: [],
+    article: `
+      <h2>Un bar à eaux infusées pour vos réunions et événements d'entreprise à Paris</h2>
+      <p>Des eaux infusées aux fruits et herbes fraîches, dressées devant vos invités : concombre-menthe, agrumes, fruits rouges-basilic. Une alternative simple et rafraîchissante à la bouteille en plastique, parfaite pour une réunion ou un séminaire. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Fruits et herbes fraîches</h2>
+      <p>On prépare des carafes d'eaux infusées renouvelées au fil de la journée : combinaisons de fruits de saison, herbes fraîches et agrumes. Léger, sans sucre ajouté, et calé sur votre effectif.</p>
+      <h2>Installer un bar à eaux infusées à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour un séminaire, une journée de formation ou un événement estival. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
 ]
