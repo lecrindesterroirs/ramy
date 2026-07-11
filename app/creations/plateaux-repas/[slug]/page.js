@@ -50,8 +50,8 @@ export default function PlateauDetail() {
       backHref="/creations/plateaux-repas"
       backLabel="Retour aux plateaux repas"
       seoEyebrow="Plateaux repas · Traiteur entreprise"
-      seoTitle="Le plateau repas qui valorise vos déjeuners d'entreprise à Paris"
-      seoHtml={SEO_HTML}
+      seoTitle={produit.seoTitle || "Le plateau repas qui valorise vos déjeuners d'entreprise à Paris"}
+      seoHtml={produit.seoHtml || SEO_HTML}
       devisPrestation="Plateaux repas"
       devisTitre="Un déjeuner d'entreprise à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
