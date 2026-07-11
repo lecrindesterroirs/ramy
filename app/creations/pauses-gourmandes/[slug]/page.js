@@ -17,7 +17,7 @@ const pauseRelated = (produit) => PAUSES.filter(p => p.id !== produit.id).slice(
 const SEO_HTML = `
   <p>La <strong>pause gourmande</strong> est un moment fédérateur dans la journée de travail : un goûter d'équipe, une réunion de l'après-midi ou une attention pour marquer un événement. Quelques douceurs artisanales suffisent à transformer une pause en instant convivial.</p>
   <h2>Des pièces préparées par nos artisans pâtissiers</h2>
-  <p>Madeleines, macarons, tartelettes, choux, cakes, cookies ou brownies : chaque pièce est façonnée avec des <strong>produits de qualité</strong> et cuite au plus près de la livraison. Nous complétons volontiers l'assortiment de fruits frais découpés et de desserts individuels pour un équilibre entre gourmandise et fraîcheur.</p>
+  <p>Madeleines, macarons, tartelettes, choux, cakes, cookies ou brownies : chaque pièce est façonnée à la main et cuite au plus près de la livraison. Nous complétons volontiers l'assortiment de fruits frais découpés et de desserts individuels pour un équilibre entre gourmandise et fraîcheur.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
   <p>Effectif, format, allergènes : nous composons la sélection idéale pour votre pause et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe dans vos bureaux.</p>
 `
@@ -125,9 +125,9 @@ function CoffretDetail({ produit }) {
             Pauses Gourmandes · Traiteur entreprise
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
-            La pause gourmande qui réunit vos équipes l&apos;après-midi
+            {produit.seoTitle || "La pause gourmande qui réunit vos équipes l'après-midi"}
           </h2>
-          <div className="cf-article-body" dangerouslySetInnerHTML={{ __html: SEO_HTML }} />
+          <div className="cf-article-body" dangerouslySetInnerHTML={{ __html: produit.seoHtml || SEO_HTML }} />
         </section>
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '20px 72px 96px' }}>
           <DevisRapide defaultPrestation="Goûter" titre="Une pause gourmande à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
@@ -181,8 +181,8 @@ export default function PauseDetail() {
       backHref="/creations/pauses-gourmandes"
       backLabel="Retour aux pauses gourmandes"
       seoEyebrow="Pauses Gourmandes · Traiteur entreprise"
-      seoTitle="La pause gourmande qui réunit vos équipes l'après-midi"
-      seoHtml={SEO_HTML}
+      seoTitle={produit.seoTitle || "La pause gourmande qui réunit vos équipes l'après-midi"}
+      seoHtml={produit.seoHtml || SEO_HTML}
       devisPrestation="Goûter"
       devisTitre="Une pause gourmande à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
