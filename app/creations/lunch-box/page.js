@@ -52,6 +52,8 @@ const CATEGORIE_COLORS = {
    la grille n'affiche que nom · catégorie · prix. Photos placeholder. */
 export const BOXES = [
   {
+    seoTitle: `La Parisienne : la lunch box baguette jambon de dinde pour vos déjeuners d'entreprise à Paris`,
+    seoHtml: `<p>La Parisienne est notre lunch box la plus simple et la plus sûre : une baguette Signature au jambon de dinde, précédée d'une salade de tomates anciennes et basilic, suivie d'un cookie Signature. Un déjeuner complet dans un format compact, prêt à emporter en réunion ou à servir en salle.</p><h2>Un déjeuner complet en boîte individuelle</h2><p>Salade de tomates anciennes et basilic, baguette jambon de dinde, cookie Signature, avec serviette et couverts inclus. Tout est monté le matin même, pour un déjeuner net sans logistique de votre côté.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: 'lb1', categorie: 'viande', nom: 'La Parisienne', prix: '22,90', img: '/lunchbox-parisienne.webp',
     sousTitre: 'Baguette Signature · Jambon de Dinde',
     entree: 'Salade de tomates anciennes & basilic',
@@ -59,6 +61,8 @@ export const BOXES = [
     dessert: 'Cookie Signature',
   },
   {
+    seoTitle: `L'Impératrice : la lunch box club poulet César pour vos déjeuners de réunion à Paris`,
+    seoHtml: `<p>L'Impératrice mise sur un grand classique : un club sandwich au poulet César, avec houmous, huile d'olive et pain grillé en entrée, et un brownie en dessert. Une lunch box généreuse et rassasiante, parfaite pour une réunion qui déborde sur le déjeuner ou une journée de séminaire.</p><h2>Un club généreux en format individuel</h2><p>Houmous et pain grillé, club poulet César, brownie, avec serviette et couverts inclus. Monté le matin même, prêt à manger sans couverts compliqués ni service en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous 24h.</p>`,
     id: 'lb2', categorie: 'poulet', nom: "L'Impératrice", prix: '23,90', img: '/lunchbox-cesar.webp',
     sousTitre: 'Club Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
@@ -66,6 +70,8 @@ export const BOXES = [
     dessert: 'Brownie',
   },
   {
+    seoTitle: `La Nordique : la lunch box baguette saumon pour vos déjeuners d'entreprise à Paris`,
+    seoHtml: `<p>La Nordique apporte une touche plus fine : une baguette au saumon et cream cheese, précédée d'une salade de concombre au yaourt, menthe et aneth, terminée par un cookie Signature. Une lunch box fraîche et élégante, pour un déjeuner de travail qui sort du sandwich classique.</p><h2>Fraîche et raffinée</h2><p>Salade de concombre au yaourt et herbes, baguette saumon et cream cheese, cookie Signature, avec serviette et couverts inclus. Montée le matin même, prête à emporter.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: 'lb4', categorie: 'poisson', nom: 'La Nordique', prix: '24,90', img: '/lunchbox-nordique.webp',
     sousTitre: 'Baguette Saumon & Cream Cheese',
     entree: 'Salade de concombre au yaourt, menthe & aneth',
@@ -73,6 +79,8 @@ export const BOXES = [
     dessert: 'Cookie Signature',
   },
   {
+    seoTitle: `La Marine : la lunch box club thon pour vos déjeuners de réunion à Paris`,
+    seoHtml: `<p>La Marine joue la valeur sûre du club au thon : un sandwich moelleux et généreux, avec une salade de tomates anciennes et basilic en entrée et un brownie en dessert. Une lunch box rassasiante et sans surprise, idéale pour un déjeuner d'équipe ou une réunion de travail.</p><h2>Le club thon, simple et rassasiant</h2><p>Salade de tomates anciennes et basilic, club thon, brownie, avec serviette et couverts inclus. Monté le matin même, prêt à manger debout ou en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous 24h.</p>`,
     id: 'lb5', categorie: 'poisson', nom: 'La Marine', prix: '23,90', img: '/lunchbox-marine.webp',
     sousTitre: 'Club Thon',
     entree: 'Salade de tomates anciennes & basilic',
@@ -80,6 +88,8 @@ export const BOXES = [
     dessert: 'Brownie',
   },
   {
+    seoTitle: `La New-Yorkaise : la lunch box baguette pastrami pour vos déjeuners d'entreprise à Paris`,
+    seoHtml: `<p>La New-Yorkaise a du caractère : une baguette au pastrami et pickles, précédée d'une part de pissaladière et jeunes pousses, suivie d'un cookie Signature. Une lunch box qui change du sandwich habituel et réveille un déjeuner de travail avec un peu de mordant.</p><h2>Du caractère en format individuel</h2><p>Part de pissaladière et jeunes pousses, baguette pastrami pickles, cookie Signature, avec serviette et couverts inclus. Montée le matin même, prête à emporter en réunion.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: 'lb6', categorie: 'viande', nom: 'La New-Yorkaise', prix: '24,90', img: '/lunchbox-deli.webp',
     sousTitre: 'Baguette Pastrami Pickles',
     entree: 'Part de pissaladière & jeunes pousses',
@@ -87,6 +97,8 @@ export const BOXES = [
     dessert: 'Cookie Signature',
   },
   {
+    seoTitle: `La Croustillante : la lunch box baguette poulet César pour vos déjeuners de réunion à Paris`,
+    seoHtml: `<p>La Croustillante décline le poulet César en version baguette : plus nomade que le club, avec houmous, huile d'olive et pain grillé en entrée, et un brownie en dessert. Une lunch box franche et généreuse, facile à manger d'une main en réunion ou en déplacement.</p><h2>Le poulet César, version baguette</h2><p>Houmous et pain grillé, baguette poulet César, brownie, avec serviette et couverts inclus. Montée le matin même, pensée pour un déjeuner net et rapide.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous 24h.</p>`,
     id: 'lb8', categorie: 'poulet', nom: 'La Croustillante', prix: '23,90', img: '/lunchbox-cesar-baguette.webp',
     sousTitre: 'Baguette Poulet César',
     entree: 'Houmous, huile d\'olive & pain grillé',
@@ -94,6 +106,8 @@ export const BOXES = [
     dessert: 'Brownie',
   },
   {
+    seoTitle: `L'Océane : la lunch box baguette thon ciboulette pour vos déjeuners d'entreprise à Paris`,
+    seoHtml: `<p>L'Océane mise sur la fraîcheur : une baguette au thon et à la ciboulette, précédée d'une salade de concombre au yaourt, menthe et aneth, terminée par un cookie Signature. Une lunch box légère et parfumée, pour un déjeuner de travail sans lourdeur.</p><h2>Légère et parfumée</h2><p>Salade de concombre au yaourt et herbes, baguette thon ciboulette, cookie Signature, avec serviette et couverts inclus. Montée le matin même, prête à emporter.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: 'lb9', categorie: 'poisson', nom: "L'Océane", prix: '23,90', img: '/lunchbox-thon.webp',
     sousTitre: 'Baguette Thon Ciboulette',
     entree: 'Salade de concombre au yaourt, menthe & aneth',

@@ -47,8 +47,8 @@ export default function LunchBoxDetail() {
       backHref="/creations/lunch-box"
       backLabel="Retour aux lunch box"
       seoEyebrow="Lunch Box · Traiteur entreprise"
-      seoTitle="La lunch box parfaite pour vos déjeuners nomades et réunions"
-      seoHtml={SEO_HTML}
+      seoTitle={box.seoTitle || "La lunch box parfaite pour vos déjeuners nomades et réunions"}
+      seoHtml={box.seoHtml || SEO_HTML}
       devisPrestation="Lunch box"
       devisTitre="Des lunch box pour votre équipe ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
