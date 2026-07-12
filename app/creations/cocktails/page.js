@@ -29,6 +29,8 @@ const SEO_ARTICLE = `
 export const FORMULES = [
   {
     key: 'classique',
+    seoTitle: `Cocktail L'Invitation : la formule apéritive pour vos afterworks d'entreprise à Paris`,
+    seoHtml: `<p>La formule L'Invitation est notre cocktail apéritif le plus accessible : 8 pièces salées et sucrées par personne, façonnées à la main, pensées pour un afterwork ou une pause conviviale. Un format équilibré qui lance bien une fin de journée sans en faire trop, à Paris et en Île-de-France.</p><h2>8 pièces à partager, salé et sucré</h2><p>Côté salé : samoussa curry végétarien, mini quiche de saison, bruschetta tomates confites, verrine houmous, brochette poulet yakitori, mini bun tomates-mozzarella. Côté sucré : brownie Signature et tartelette citron. Tout est dressé et livré prêt à servir.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: "L'Invitation",
     pieces: 8,
     prix: '29,90',
@@ -50,6 +52,8 @@ export const FORMULES = [
   },
   {
     key: 'signature',
+    seoTitle: `Cocktail La Réception : la formule signature terre et mer pour vos événements d'entreprise à Paris`,
+    seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces généreuses par personne, entre terre et mer, façonnées à la main. C'est notre formule la plus choisie pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces raffinées, entre terre et mer</h2><p>Côté salé : tartare de saumon, tataki de bœuf, crevettes miso et œufs de truite, mini bun saumon gravlax, pomme de terre rôtie au saumon fumé, samoussa poulet, pissaladière, bruschetta caviar d'aubergine, verrine salade grecque. Côté sucré : tartelette praliné, cookie Signature, verrine citron.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur site, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Réception',
     pieces: 12,
     prix: '39,90',
@@ -75,6 +79,8 @@ export const FORMULES = [
   },
   {
     key: 'prestige',
+    seoTitle: `Cocktail La Célébration : la formule prestige pour vos grandes réceptions d'entreprise à Paris`,
+    seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Sashimi, tataki, pop-corn de poulet coréen, une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : sashimi de saumon gravlax aux trois agrumes, tataki de bœuf, crevettes miso et œufs de truite, mini bun saumon gravlax, pop-corn de poulet frit à la coréenne, samoussas, pissaladière, quiche, verrines et bruschetta. Côté sucré : tartelette citron, tartelette praliné, mousse chocolat, carrot cake.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Célébration',
     pieces: 16,
     prix: '51,90',

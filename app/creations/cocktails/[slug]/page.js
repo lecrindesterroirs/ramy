@@ -127,6 +127,21 @@ export default function CocktailDetail() {
           </div>
         </Reveal>
 
+        {/* ── Article SEO unique par formule ── */}
+        {f.seoHtml && (
+          <Reveal>
+            <section className="ckd-shell" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 0' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
+                Cocktails · Traiteur entreprise
+              </p>
+              <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '32px' }}>
+                {f.seoTitle}
+              </h2>
+              <div className="ckd-article-body" dangerouslySetInnerHTML={{ __html: f.seoHtml }} />
+            </section>
+          </Reveal>
+        )}
+
         {/* ── Devis + retour ── */}
         <section className="ckd-shell" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
           <DevisRapide defaultPrestation="Cocktail dînatoire" titre="Un cocktail à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
@@ -142,6 +157,9 @@ export default function CocktailDetail() {
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .ckd-gallery-item { border-radius: 4px !important; }
         .ckd-gallery-item:hover img { transform: scale(1.05); }
+        .ckd-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: #6E675F; margin-bottom: 18px; }
+        .ckd-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: #111111; margin: 40px 0 14px; line-height: 1.15; }
+        .ckd-article-body strong { color: #111111; font-weight: 500; }
         @media (max-width: 1100px) {
           .ckd-shell { padding-left: 48px !important; padding-right: 48px !important; }
           .ckd-compo { gap: 48px !important; }
