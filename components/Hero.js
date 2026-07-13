@@ -1,11 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReviewsBadge from './ReviewsBadge'
+import CatalogueModal from './CatalogueModal'
 
 export default function Hero() {
   const imageRef = useRef(null)
+  const [catalogueOpen, setCatalogueOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -130,8 +132,9 @@ export default function Hero() {
           >
             Obtenir un devis <span>→</span>
           </a>
-          <a
-            href="/creations/petits-dejeuners-et-pauses"
+          <button
+            type="button"
+            onClick={() => setCatalogueOpen(true)}
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
               fontWeight: 400,
@@ -147,13 +150,14 @@ export default function Hero() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '10px',
+              cursor: 'pointer',
               transition: 'border-color 0.3s ease, color 0.3s ease, background 0.3s ease',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.85)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.5)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.55)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.35)' }}
           >
-            Nos petits-déjeuners d'entreprise <span>→</span>
-          </a>
+            Découvrir notre catalogue <span>→</span>
+          </button>
         </div>
 
         {/* Preuve sociale, fiche Google */}
@@ -221,6 +225,8 @@ export default function Hero() {
           .hero-phone { display: none !important; }
         }
       ` }} />
+
+      <CatalogueModal open={catalogueOpen} onClose={() => setCatalogueOpen(false)} />
     </section>
   )
 }

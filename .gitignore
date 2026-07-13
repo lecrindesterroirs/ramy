@@ -35,7 +35,7 @@ Thumbs.db
 # Vercel
 .vercel
 
-# Catalogues PDF (marketing, hors site)
-catalogue*.pdf
-catalogue2-*.pdf
-catalogue/
+# Catalogues PDF (dossier de travail à la racine ; le PDF servi dans public/ est versionné)
+/catalogue*.pdf
+/catalogue2-*.pdf
+/catalogue/
