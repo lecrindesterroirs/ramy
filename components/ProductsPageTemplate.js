@@ -90,9 +90,18 @@ export default function ProductsPageTemplate({
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
           {products.map((p, i) => (
-            <Reveal key={p.id || i} delay={(i % 4) * 90}>
-              <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
-            </Reveal>
+            <>
+              {p.sectionTitle && (
+                <div style={{ gridColumn: '1 / -1', marginBottom: '0', paddingTop: '16px', paddingBottom: '8px' }}>
+                  <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>
+                    {p.sectionTitle}
+                  </h2>
+                </div>
+              )}
+              <Reveal key={p.id || i} delay={(i % 4) * 90}>
+                <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
+              </Reveal>
+            </>
           ))}
         </div>
 
@@ -190,7 +199,7 @@ function ProductCard({ product, basePath }) {
 
       {/* Contenu dans la carte, nom, prix, pièces */}
       <div style={{ padding: '16px 16px 16px', display: 'flex', flexDirection: 'column' }}>
-        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '9px', transition: 'color 0.25s ease' }}>
+        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '9px', transition: 'color 0.25s ease' }}>
           {product.name}
         </p>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '9px' : '0' }}>

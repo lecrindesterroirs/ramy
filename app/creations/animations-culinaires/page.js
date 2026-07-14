@@ -123,6 +123,14 @@ export default function AnimationsCulinaires() {
     activeFiltre === 'tous' ? true : a.univers === activeFiltre
   )
 
+  // Séparer animations sucrées et salées
+  const animationsSucrees = animationsFiltres.filter(a =>
+    ['brunch', 'douceurs'].includes(a.univers)
+  )
+  const animationsSalees = animationsFiltres.filter(a =>
+    ['dejeuner', 'streetfood', 'bars'].includes(a.univers)
+  )
+
   return (
     <>
       <Navbar showBanner={true} />
@@ -186,12 +194,38 @@ export default function AnimationsCulinaires() {
             })}
           </aside>
 
-          <div className="aa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
-            {animationsFiltres.map((a, i) => (
-              <Reveal key={a.id} delay={(i % 3) * 90}>
-                <AnimationCard produit={a} />
-              </Reveal>
-            ))}
+          <div>
+            {/* Animations Sucrées */}
+            {animationsSucrees.length > 0 && (
+              <div style={{ marginBottom: '80px' }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '32px', fontWeight: 400, letterSpacing: '-0.01em', color: '#111111', marginBottom: '40px' }}>
+                  Animations Sucrées
+                </h2>
+                <div className="aa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
+                  {animationsSucrees.map((a, i) => (
+                    <Reveal key={a.id} delay={(i % 3) * 90}>
+                      <AnimationCard produit={a} />
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Animations Salées */}
+            {animationsSalees.length > 0 && (
+              <div>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '32px', fontWeight: 400, letterSpacing: '-0.01em', color: '#111111', marginBottom: '40px' }}>
+                  Animations Salées
+                </h2>
+                <div className="aa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
+                  {animationsSalees.map((a, i) => (
+                    <Reveal key={a.id} delay={(i % 3) * 90}>
+                      <AnimationCard produit={a} />
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

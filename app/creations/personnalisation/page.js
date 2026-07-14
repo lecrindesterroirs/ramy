@@ -29,11 +29,11 @@ const SEO_ARTICLE = `
 /* Ce que nous personnalisons, 6 familles */
 const FAMILLES = [
   { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.webp' },
-  { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.webp' },
   { nom: 'Chocolats',         desc: 'Carrés, plaques et assortiments.',          img: '/perso-chocolats-bouygues.webp' },
+  { nom: 'Cookies',           desc: 'Saveurs, emballage et personnalisation.',   img: '/prod-cookie-personnalisation.png' },
+  { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.webp' },
   { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/perso-number-cake.webp' },
-  { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions.',    img: '/perso-packaging.webp' },
-  { nom: 'Cartes & Messages', desc: 'Cartes de remerciement et messages sur-mesure.', img: '/perso-cartes.webp' },
+  { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions + Cartes de remerciement et messages sur-mesure.', img: '/perso-packaging.webp' },
 ]
 
 /* Accompagnement sur-mesure, 5 étapes */

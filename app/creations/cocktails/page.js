@@ -75,7 +75,7 @@ export const FORMULES = [
     sucre: [
       'Tartelette Praliné',
       'Cookie Signature',
-      'Verrine Citron / Lemon Curd',
+      'Verrine Lemon Curd',
     ],
   },
   {

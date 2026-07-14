@@ -320,4 +320,26 @@ export const ANIMATIONS = [
       <h2>Installer un bar à eaux infusées à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour un séminaire, une journée de formation ou un événement estival. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
+
+  // ── Animations Sucrées (Pop Corn, Barbe à Papa) ──
+  { id: 'do6', univers: 'douceurs', nom: 'Atelier Pop Corn Sucré', img: '/prod-popcorn.png',
+    description: 'Pop corn frais préparé minute avec garnitures sucrées.', compo: ['Pop corn nature', 'Caramel', 'Chocolat', 'Cacahuète', 'Sucre glace'],
+    article: `
+      <h2>Un atelier pop corn sucré pour vos pauses et événements d'entreprise à Paris</h2>
+      <p>Du pop corn frais préparé devant vos invités, garni de caramel, chocolat ou sucre glace : c'est l'animation gourmande et ludique qui fédère une équipe autour d'une pause. Gourmand sans être lourd, c'est le complément parfait d'un petit-déjeuner ou d'un après-midi de séminaire. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Frais et savoureux</h2>
+      <p>Pop corn éclaté à la demande, garni à chaud : caramel beurre salé, chocolat, cacahuète grillée ou sucre glace. On prépare en continu et on cale les quantités sur votre effectif.</p>
+      <h2>Installer un atelier pop corn à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un petit-déjeuner convivial, une pause de l'après-midi ou un événement ludique. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
+  { id: 'do7', univers: 'douceurs', nom: 'Atelier Barbe à Papa', img: '/prod-barbe-papa.png',
+    description: 'Barbe à papa fraîche préparée devant les invités.', compo: ['Sucre rosé', 'Sucre bleu', 'Sucre blanc', 'Sucre jaune'],
+    article: `
+      <h2>Un atelier barbe à papa pour vos événements d'entreprise à Paris</h2>
+      <p>Une machine à barbe à papa avec sucres colorés, c'est l'animation gourmande et festive qui ramène l'enfance dans l'événement. Préparée devant vos invités, la barbe à papa crée une ambiance joyeuse et délicate. Parfaite pour un arbre de Noël, une fête des collaborateurs ou un événement familial d'entreprise. L'Écrin Traiteur l'installe à Paris et en Île-de-France.</p>
+      <h2>Préparée minute, sucres assortis</h2>
+      <p>Machine professionnelle qui prépare la barbe à papa devant vos invités, avec sucres colorés au choix : rose, bleu, blanc, jaune. On prépare en continu et on cale les portions sur votre effectif.</p>
+      <h2>Installer un atelier barbe à papa à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour une fête des collaborateurs, un arbre de Noël ou un événement familial d'entreprise. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
 ]

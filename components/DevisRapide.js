@@ -12,9 +12,19 @@ const PRESTATIONS = [
   'Événement sur mesure',
 ]
 
+const FAMILLES_PERSO = [
+  'Macarons',
+  'Chocolats',
+  'Cookies',
+  'Madeleines',
+  'Number Cake',
+  'Packaging',
+]
+
 export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }) {
   const [form, setForm] = useState({
     prestation: defaultPrestation,
+    famillePerso: '',
     convives: '',
     date: '',
     email: '',
@@ -125,29 +135,86 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.35)', pointerEvents: 'none' }}><polyline points="6,9 12,15 18,9"/></svg>
             </div>
           </div>
-          <div>
-            <label style={labelStyle}>Nombre de personnes</label>
-            <input
-              value={form.convives}
-              onChange={e => set('convives', e.target.value)}
-              placeholder="Ex : 25 personnes"
-              style={fieldStyle}
-            />
-          </div>
+          {form.prestation === 'Personnalisation' && (
+            <div>
+              <label style={labelStyle}>Famille de personnalisation</label>
+              <div style={{ position: 'relative' }}>
+                <select
+                  value={form.famillePerso}
+                  onChange={e => set('famillePerso', e.target.value)}
+                  style={{ ...fieldStyle, paddingRight: '32px', cursor: 'pointer' }}
+                >
+                  <option value="">Choisir…</option>
+                  {FAMILLES_PERSO.map(f => <option key={f} value={f}>{f}</option>)}
+                </select>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.35)', pointerEvents: 'none' }}><polyline points="6,9 12,15 18,9"/></svg>
+              </div>
+            </div>
+          )}
+          {form.prestation !== 'Personnalisation' && (
+            <div>
+              <label style={labelStyle}>Nombre de personnes</label>
+              <input
+                value={form.convives}
+                onChange={e => set('convives', e.target.value)}
+                placeholder="Ex : 25 personnes"
+                style={fieldStyle}
+              />
+            </div>
+          )}
         </div>
 
-        {/* Row 2, Date + Email */}
-        <div className="dr-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          <div>
-            <label style={labelStyle}>Date souhaitée</label>
-            <input
-              type="date"
-              value={form.date}
-              onChange={e => set('date', e.target.value)}
-              style={{ ...fieldStyle, colorScheme: 'light' }}
-            />
-          </div>
-          <div>
+        {/* Row 2, Date + Number / Perso + Date + Email */}
+        <div className="dr-row" style={{ display: 'grid', gridTemplateColumns: form.prestation === 'Personnalisation' ? '1fr 1fr' : '1fr 1fr', gap: '12px' }}>
+          {form.prestation === 'Personnalisation' ? (
+            <>
+              <div>
+                <label style={labelStyle}>Nombre de personnes</label>
+                <input
+                  value={form.convives}
+                  onChange={e => set('convives', e.target.value)}
+                  placeholder="Ex : 50 personnes"
+                  style={fieldStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Date souhaitée</label>
+                <input
+                  type="date"
+                  value={form.date}
+                  onChange={e => set('date', e.target.value)}
+                  style={{ ...fieldStyle, colorScheme: 'light' }}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <label style={labelStyle}>Date souhaitée</label>
+                <input
+                  type="date"
+                  value={form.date}
+                  onChange={e => set('date', e.target.value)}
+                  style={{ ...fieldStyle, colorScheme: 'light' }}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Email professionnel *</label>
+                <input
+                  type="email"
+                  value={form.email}
+                  onChange={e => set('email', e.target.value)}
+                  placeholder="marie@entreprise.com"
+                  style={fieldStyle}
+                  required
+                />
+              </div>
+            </>
+          )}
+        </div>
+
+        {form.prestation === 'Personnalisation' && (
+          <div className="dr-row">
             <label style={labelStyle}>Email professionnel *</label>
             <input
               type="email"
@@ -158,7 +225,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
               required
             />
           </div>
-        </div>
+        )}
 
         {/* CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginTop: '4px', flexWrap: 'wrap' }}>

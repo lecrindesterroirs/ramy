@@ -819,14 +819,14 @@ export default function Contact() {
         input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.45) !important; }
         select option { color: #111111; }
         @media (max-width: 768px) {
-          .devis-main { height: auto !important; min-height: 100vh !important; }
+          .devis-main { height: auto !important; min-height: 100vh !important; padding-top: 84px !important; }
           .devis-main form { overflow: visible !important; display: block !important; }
           .devis-content { padding-bottom: 4px !important; padding-top: 28px !important; }
           .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 20px !important; flex-wrap: wrap !important; gap: 0 !important; border-top: none !important; }
           .devis-nav-prev { order: 1 !important; display: flex !important; }
           .devis-nav-next { order: 2 !important; display: flex !important; }
           .nav-indicator { order: 3 !important; width: 100% !important; justify-content: center !important; padding-top: 12px !important; margin-top: 8px !important; border-top: none !important; border-bottom: none !important; }
-          .devis-progress-bar { padding: 16px 24px 0 !important; }
+          .devis-progress-bar { padding: 10px 24px 0 !important; }
           .progress-label { display: none !important; }
           .progress-line { margin: 0 12px !important; width: 40px !important; }
           .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
