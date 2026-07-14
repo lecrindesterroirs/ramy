@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
+import Breadcrumb from '../../../components/Breadcrumb'
 import { evenements } from './evenementsData'
 import ParallaxImage from '../../../components/ParallaxImage'
 
@@ -57,6 +58,9 @@ export default function EvenementsSaisonniers() {
             </div>
           </div>
         </div>
+
+        {/* Fil d'Ariane visible */}
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers' }]} />
 
         {/* Grille événements */}
         <div

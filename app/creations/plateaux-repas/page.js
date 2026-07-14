@@ -11,6 +11,7 @@ import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/CategoryTabs'
 import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Plateaux repas d'entreprise livrés à Paris : frais, individuels, équilibrés</h2>
@@ -236,6 +237,8 @@ export default function PlateauxRepas() {
             </Reveal>
           </header>
         </div>
+
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux repas' }]} />
 
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={produitsAffiches.length} />
 

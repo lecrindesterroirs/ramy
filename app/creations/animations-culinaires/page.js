@@ -10,6 +10,7 @@ import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { UNIVERS, UNIVERS_LABEL, slugAnim, ANIMATIONS } from './data'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Animations culinaires en entreprise à Paris : l'événement dont on parle</h2>
@@ -157,6 +158,9 @@ export default function AnimationsCulinaires() {
             </Reveal>
           </header>
         </div>
+
+        {/* Fil d'Ariane visible */}
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Animations culinaires' }]} />
 
         {/* ── Corps : univers à gauche + grille 3 colonnes ── */}
         <div className="aa-shell aa-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 96px', display: 'grid', gridTemplateColumns: '196px 1fr', gap: '52px', alignItems: 'start' }}>

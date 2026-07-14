@@ -10,6 +10,7 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs from '../../../components/CategoryTabs'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Lunch box entreprise à Paris : le déjeuner individuel, pratique et gourmand</h2>
@@ -234,6 +235,8 @@ export default function LunchBox() {
             </Reveal>
           </header>
         </div>
+
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Lunch Box' }]} />
 
         <CategoryTabs />
 

@@ -46,7 +46,7 @@ export default function CocktailDetail() {
   if (!f) notFound()
 
   const related = FORMULES.filter(x => x.key !== f.key)
-    .map(x => ({ href: `/creations/cocktails/${x.key}`, title: `Cocktail ${x.label}`, meta: 'Formule cocktail' }))
+    .map(x => ({ href: `/creations/cocktails/${x.key}`, title: `Cocktail ${x.label}`, meta: 'Formule cocktail', img: x.img }))
 
   const BASE = 'https://www.lecrin-traiteur.fr'
   const nomFormule = `Cocktail ${f.label}`

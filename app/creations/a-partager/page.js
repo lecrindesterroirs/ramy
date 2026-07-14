@@ -10,6 +10,7 @@ import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs from '../../../components/CategoryTabs'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
@@ -237,6 +238,8 @@ export default function APartager() {
             </Reveal>
           </header>
         </div>
+
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Buffet à partager' }]} />
 
         <CategoryTabs />
 

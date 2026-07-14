@@ -9,10 +9,11 @@ import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import RelatedLinks from '../../../../components/RelatedLinks'
+import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { PAUSES } from '../page'
 
 const pauseRelated = (produit) => PAUSES.filter(p => p.id !== produit.id).slice(0, 4)
-  .map(p => ({ href: `/creations/pauses-gourmandes/${p.id}`, title: p.nom, meta: 'Pause gourmande' }))
+  .map(p => ({ href: `/creations/pauses-gourmandes/${p.id}`, title: p.nom, meta: 'Pause gourmande', img: p.img }))
 
 const SEO_HTML = `
   <p>La <strong>pause gourmande</strong> est un moment fédérateur dans la journée de travail : un goûter d'équipe, une réunion de l'après-midi ou une attention pour marquer un événement. Quelques douceurs artisanales suffisent à transformer une pause en instant convivial.</p>
@@ -29,6 +30,11 @@ function CoffretDetail({ produit }) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', path: '' },
+        { name: 'Pauses Gourmandes', path: '/creations/pauses-gourmandes' },
+        { name: produit.nom, path: `/creations/pauses-gourmandes/${produit.id}` },
+      ]} />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

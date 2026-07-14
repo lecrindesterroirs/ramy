@@ -8,6 +8,7 @@ import LogosSection from '../../../components/LogosSection'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import DevisRapide from '../../../components/DevisRapide'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Personnalisation de créations gourmandes pour l'entreprise à Paris</h2>
@@ -76,6 +77,9 @@ export default function Personnalisation() {
             </div>
           </Reveal>
         </div>
+
+        {/* Fil d'Ariane visible */}
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Personnalisation' }]} />
 
         {/* ── Ce que nous personnalisons ── */}
         <div id="familles" style={{ textAlign: 'center', padding: '80px 24px 0' }}>

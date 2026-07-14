@@ -10,6 +10,7 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs, { sortItems } from '../../../components/CategoryTabs'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Plateaux apéritifs pour entreprise : l'afterwork sans logistique</h2>
@@ -247,6 +248,8 @@ export default function PlateauxAperitifs() {
             </Reveal>
           </header>
         </div>
+
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux apéritifs' }]} />
 
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={plateauxAffiches.length} sorts={['En vedette', 'Nouveautés']} />
 

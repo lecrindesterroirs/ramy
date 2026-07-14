@@ -6,6 +6,15 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import DevisRapide from './DevisRapide'
 import RelatedLinks from './RelatedLinks'
+import { BOISSONS } from '../lib/boissonsData'
+
+// Cross-sell « À servir avec » : sélection de boissons complémentaires, montrée sur
+// toutes les fiches SAUF les fiches boissons elles-mêmes. Sélection curée, repli sur
+// les 4 premières boissons si les ids curés n'existent plus.
+const COMPLEMENT_BOISSON_IDS = ['jus-orange-presse', 'jus-pomme-verger', 'jus-fraise', 'thermos-cafe']
+const curatedBoissons = COMPLEMENT_BOISSON_IDS.map(id => BOISSONS.find(b => b.id === id)).filter(Boolean)
+const COMPLEMENT_BOISSONS = (curatedBoissons.length ? curatedBoissons : BOISSONS.slice(0, 4))
+  .map(b => ({ href: `/creations/boissons/${b.id}`, title: b.name, meta: b.categoryLabel || 'Boisson', img: b.img }))
 
 /*
   Fiche détail réutilisable, structure "Petit-déjeuner" (référence DA du site).
@@ -40,6 +49,10 @@ export default function GalleryFiche({
 }) {
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
+
+  // Ne pas proposer « À servir avec [boissons] » sur une fiche boisson.
+  const isBoissonPage = backHref === '/creations/boissons'
+  const complements = isBoissonPage ? [] : COMPLEMENT_BOISSONS
 
   const BASE = 'https://www.lecrin-traiteur.fr'
   const canonicalPath = breadcrumb.length ? breadcrumb[breadcrumb.length - 1]?.href : undefined
@@ -210,6 +223,9 @@ export default function GalleryFiche({
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px' }}>
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
+
+        {/* Cross-sell « À servir avec » — placé avant l'article SEO */}
+        <RelatedLinks eyebrow="Pour accompagner" title="À servir avec" items={complements} columns={4} />
 
         {/* Article SEO + devis */}
         {(seoTitle || seoHtml) && (

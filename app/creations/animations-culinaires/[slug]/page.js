@@ -19,7 +19,7 @@ export default function AnimationDetail() {
   const related = [...ANIMATIONS].filter(a => a.id !== anim.id)
     .sort((a, b) => (b.univers === anim.univers) - (a.univers === anim.univers))
     .slice(0, 4)
-    .map(a => ({ href: `/creations/animations-culinaires/${slugAnim(a.nom)}`, title: a.nom, meta: UNIVERS_LABEL[a.univers] || 'Animation' }))
+    .map(a => ({ href: `/creations/animations-culinaires/${slugAnim(a.nom)}`, title: a.nom, meta: UNIVERS_LABEL[a.univers] || 'Animation', img: a.img }))
 
   const breadcrumb = [
     { label: 'Accueil', href: '/' },

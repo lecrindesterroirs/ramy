@@ -22,7 +22,7 @@ export default function PlateauAperitifDetail() {
   const related = [...PLATEAUX].filter(p => p.id !== plateau.id)
     .sort((a, b) => (b.famille === plateau.famille) - (a.famille === plateau.famille))
     .slice(0, 4)
-    .map(p => ({ href: `/creations/plateaux-aperitifs/${p.id}`, title: p.nom, meta: FILTRES.find(f => f.key === p.famille)?.label || 'Apéritif' }))
+    .map(p => ({ href: `/creations/plateaux-aperitifs/${p.id}`, title: p.nom, meta: FILTRES.find(f => f.key === p.famille)?.label || 'Apéritif', img: p.img }))
 
   return (
     <GalleryFiche

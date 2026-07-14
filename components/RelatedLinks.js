@@ -30,26 +30,32 @@ export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, 
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '10px',
                 background: '#FFFFFF',
-                padding: '28px 26px',
                 textDecoration: 'none',
+                overflow: 'hidden',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(17,17,17,0.08)' }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
             >
-              {it.meta && (
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                  {it.meta}
-                </span>
+              {it.img && (
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', background: '#F8F5EF' }}>
+                  <img src={it.img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
               )}
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.3, color: 'var(--text-primary)' }}>
-                {it.title}
-              </span>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--accent-deep)', marginTop: '2px' }}>
-                Découvrir →
-              </span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: it.img ? '22px 26px 26px' : '28px 26px' }}>
+                {it.meta && (
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                    {it.meta}
+                  </span>
+                )}
+                <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.3, color: 'var(--text-primary)' }}>
+                  {it.title}
+                </span>
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--accent-deep)', marginTop: '2px' }}>
+                  Découvrir →
+                </span>
+              </div>
             </a>
           ))}
         </div>

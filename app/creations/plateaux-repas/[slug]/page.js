@@ -29,7 +29,7 @@ export default function PlateauDetail() {
     .filter(p => p.id !== produit.id)
     .sort((a, b) => (b.collection === produit.collection) - (a.collection === produit.collection))
     .slice(0, 4)
-    .map(p => ({ href: `/creations/plateaux-repas/${p.id}`, title: p.nom, meta: COLLECTIONS.find(c => c.key === p.collection)?.label }))
+    .map(p => ({ href: `/creations/plateaux-repas/${p.id}`, title: p.nom, meta: COLLECTIONS.find(c => c.key === p.collection)?.label, img: p.img }))
 
   return (
     <GalleryFiche

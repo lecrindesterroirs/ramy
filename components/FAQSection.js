@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const fallbackFaqs = [
   {
@@ -58,14 +58,8 @@ const faqSchema = {
 
 export default function FAQSection() {
   const [open, setOpen]   = useState(null)
-  const [faqs, setFaqs]   = useState(fallbackFaqs)
-
-  useEffect(() => {
-    fetch('/api/faq')
-      .then(r => r.ok ? r.json() : null)
-      .then(data => { if (data && data.length > 0) setFaqs(data) })
-      .catch(() => {})
-  }, [])
+  // FAQ 100% locale (pas de WordPress) : fallbackFaqs est l'unique source.
+  const faqs = fallbackFaqs
 
   return (
     <section className="faq-section" style={{ background: 'var(--bg-primary)', padding: '120px 0' }}>

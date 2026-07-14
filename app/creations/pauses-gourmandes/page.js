@@ -10,6 +10,7 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/CategoryTabs'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Traiteur pause gourmande et goûter d'entreprise à Paris</h2>
@@ -252,6 +253,8 @@ export default function PausesGourmandes() {
             </Reveal>
           </header>
         </div>
+
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Pauses Gourmandes' }]} />
 
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} />
 

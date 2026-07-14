@@ -253,7 +253,7 @@ export const evenements = [
     mois: 'Octobre',
     nom: 'Octobre Rose',
     tags: ['Goûters', 'Pauses gourmandes'],
-    img: '/mado-pistache-framboise.webp',
+    img: '/cat-fruits-hero.jpg',
     descCourt: "Madeleines roses personnalisées, plateau macarons et cakes roses, ruban sur les emballages.",
     desc: "Un goûter pour sensibiliser vos équipes au dépistage du cancer du sein. Plateau full rose et rouge, madeleines personnalisées, ruban sur les emballages. Un geste simple, mais concret. Un moment de partage autour d'une cause qui compte.",
     produits: [
@@ -335,7 +335,7 @@ export const evenements = [
     mois: 'Décembre',
     nom: 'Noël',
     tags: ['Petits-déjeuners', 'Cocktails & Buffets', 'Pauses gourmandes'],
-    img: '/buffet-sale.webp',
+    img: '/grand-buffet-signature.webp',
     descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud Mariage Frères.",
     desc: "La prestation la plus attendue de l'année. Menu de fête complet avec les grands classiques de saison. Foie gras, saumon fumé, bûche artisanale, chocolats chauds, viennoiseries de Noël. Un buffet festif ou un plateau repas selon votre format et votre effectif.",
     produits: [

@@ -10,14 +10,17 @@
 const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com'
 // ADS doit aussi être dans script-src : le pixel de conversion charge un SCRIPT depuis googleads.g.doubleclick.net
 const ADS = 'https://*.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
+// Calendly (prise de rendez-vous /contact/rendez-vous) : widget.js depuis assets.calendly.com,
+// styles injectés depuis assets.calendly.com, iframe de réservation depuis calendly.com, avatars/images *.calendly.com
+const CALENDLY = 'https://assets.calendly.com https://*.calendly.com'
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GA_GTM} ${ADS}`,
-  "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${GA_GTM} ${ADS}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com ${GA_GTM} ${ADS}`,
+  "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
+  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${GA_GTM} ${ADS}`,
   "font-src 'self' data:",
-  `connect-src 'self' https://vitals.vercel-insights.com ${GA_GTM} ${ADS}`,
-  `frame-src https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
+  `connect-src 'self' https://vitals.vercel-insights.com ${CALENDLY} ${GA_GTM} ${ADS}`,
+  `frame-src https://calendly.com https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self'",

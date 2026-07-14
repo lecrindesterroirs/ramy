@@ -201,6 +201,21 @@ export default function Contact() {
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>Réponse sous 24h</p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>Livraison dès 6h30</p>
             </div>
+
+            <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px' }}>
+                Vous préférez en parler de vive voix ?
+              </p>
+              <a
+                href="/contact/rendez-vous"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--accent)', paddingBottom: '3px', transition: 'opacity 0.2s ease' }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.65' }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
+              >
+                Prendre 15 min avec nous
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+              </a>
+            </div>
           </div>
 
           {/* ── Colonne droite, Formulaire ── */}

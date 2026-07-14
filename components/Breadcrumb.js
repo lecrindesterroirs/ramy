@@ -6,7 +6,7 @@ import Link from 'next/link'
 // variant='bar' (défaut) : bandeau pleine largeur avec padding page (72px).
 // variant='inline'       : juste le fil, sans wrapper, pour s'aligner sur une
 //                          colonne parente (ex. article de blog, 760px centré).
-export default function Breadcrumb({ items = [], variant = 'bar' }) {
+export default function Breadcrumb({ items = [], variant = 'bar', maxWidth = '1280px' }) {
   if (!items.length) return null
 
   const nav = (
@@ -27,7 +27,7 @@ export default function Breadcrumb({ items = [], variant = 'bar' }) {
   if (variant === 'inline') return nav
 
   return (
-    <div className="breadcrumb-bar" style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px 72px 0' }}>
+    <div className="breadcrumb-bar" style={{ maxWidth, margin: '0 auto', padding: '24px 72px 0' }}>
       {nav}
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 1024px) and (min-width: 769px) { .breadcrumb-bar { padding: 20px 40px 0 !important; } }

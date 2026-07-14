@@ -8,6 +8,7 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import CategoryTabs from '../../../components/CategoryTabs'
+import Breadcrumb from '../../../components/Breadcrumb'
 import ParallaxImage from '../../../components/ParallaxImage'
 
 const SEO_ARTICLE = `
@@ -122,6 +123,9 @@ export default function CoffretsCadeaux() {
             </Reveal>
           </header>
         </div>
+
+        {/* Fil d'Ariane visible */}
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Coffrets cadeaux' }]} />
 
         <CategoryTabs />
 

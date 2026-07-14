@@ -1,13 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, Fragment } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Reveal from './Reveal'
 import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
 import CategoryTabs from './CategoryTabs'
+import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
 
@@ -40,19 +41,12 @@ export default function ProductsPageTemplate({
   editorial,
 }) {
   const [sortLabel, setSortLabel]   = useState('En vedette')
-  const [baseProducts, setBaseProducts] = useState(fallbackProducts)
-
-  useEffect(() => {
-    const url = categorieSlug
-      ? `/api/produits?categorie=${categorieSlug}`
-      : '/api/produits'
-    fetch(url)
-      .then(r => r.ok ? r.json() : null)
-      .then(data => { if (data && data.length > 0) setBaseProducts(data) })
-      .catch(() => {})
-  }, [categorieSlug])
-
-  const products = sortProducts(baseProducts, sortLabel)
+  // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
+  // fallbackProducts est l'unique source de vérité.
+  // Dédup par id : certains produits sont listés dans plusieurs catégories (même id),
+  // ce qui provoquait des clés React dupliquées et un double affichage.
+  const products = sortProducts(fallbackProducts, sortLabel)
+    .filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i)
 
   return (
     <>
@@ -84,13 +78,18 @@ export default function ProductsPageTemplate({
           </div>
         </div>
 
+        {/* ── Fil d'Ariane visible (Accueil › Catégorie) ── */}
+        <div className="page-breadcrumb" style={{ maxWidth: '1440px', margin: '0 auto', padding: '24px 72px 0' }}>
+          <Breadcrumb variant="inline" items={[{ label: 'Accueil', href: '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
+        </div>
+
         {/* ── Barre catégories + tri (partagée avec toutes les pages) ── */}
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} />
 
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
           {products.map((p, i) => (
-            <>
+            <Fragment key={p.id || i}>
               {p.sectionTitle && (
                 <div style={{ gridColumn: '1 / -1', marginBottom: '0', paddingTop: '16px', paddingBottom: '8px' }}>
                   <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>
@@ -98,10 +97,10 @@ export default function ProductsPageTemplate({
                   </h2>
                 </div>
               )}
-              <Reveal key={p.id || i} delay={(i % 4) * 90}>
+              <Reveal delay={(i % 4) * 90}>
                 <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
               </Reveal>
-            </>
+            </Fragment>
           ))}
         </div>
 
@@ -114,6 +113,7 @@ export default function ProductsPageTemplate({
         .pd-card { border-radius: 4px !important; }
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
+          .page-breadcrumb { padding: 20px 16px 0 !important; }
           .page-hero { height: 50vh !important; min-height: 340px !important; }
           .page-hero-text { padding: 0 24px !important; }
           .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
@@ -123,6 +123,7 @@ export default function ProductsPageTemplate({
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .page-hero-wrapper { padding: 24px 40px 0 !important; }
+          .page-breadcrumb { padding: 20px 40px 0 !important; }
           .products-filter-bar { padding: 0 40px !important; }
           .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
         }

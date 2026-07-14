@@ -55,8 +55,12 @@ export default function Footer() {
                 { label: 'Lunch box', href: '/creations/lunch-box' },
                 { label: 'Cocktails', href: '/creations/cocktails' },
                 { label: 'Buffet à partager', href: '/creations/a-partager' },
+                { label: 'Plateaux apéritifs', href: '/creations/plateaux-aperitifs' },
                 { label: 'Animations culinaires', href: '/creations/animations-culinaires' },
                 { label: 'Boissons', href: '/creations/boissons' },
+                { label: 'Personnalisation', href: '/creations/personnalisation' },
+                { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' },
+                { label: 'Réceptions sur-mesure', href: '/creations/receptions-sur-mesure' },
                 { label: 'Coffrets cadeaux', href: '/creations/coffrets-cadeaux' },
               ]},
               { title: 'Occasions', links: [

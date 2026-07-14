@@ -65,11 +65,16 @@ export default function ProductPage() {
   const product = PRODUCTS.find(p => p.id === slug)
   if (!product) notFound()
 
+  // category peut être une string ou un tableau (produit multi-catégories)
+  const catArr = c => Array.isArray(c) ? c : [c]
+  const curCats = catArr(product.category)
+  const sharesCat = p => catArr(p.category).some(c => curCats.includes(c))
+
   const related = [...PRODUCTS]
     .filter(p => p.id !== product.id)
-    .sort((a, b) => (b.category === product.category) - (a.category === product.category))
+    .sort((a, b) => sharesCat(b) - sharesCat(a))
     .slice(0, 4)
-    .map(p => ({ href: `/creations/petits-dejeuners-et-pauses/${p.id}`, title: p.shortName || p.name, meta: p.categoryLabel }))
+    .map(p => ({ href: `/creations/petits-dejeuners-et-pauses/${p.id}`, title: p.shortName || p.name, meta: p.categoryLabel, img: p.img }))
 
   // Galerie = fiche par défaut pour tous les produits (sauf coffrets madeleines)
   const isGallery = !product.isMadeleine

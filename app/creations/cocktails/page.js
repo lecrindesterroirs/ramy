@@ -10,6 +10,7 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs from '../../../components/CategoryTabs'
 import ParallaxImage from '../../../components/ParallaxImage'
+import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Traiteur cocktail d'entreprise à Paris : pièces salées et sucrées artisanales</h2>
@@ -250,6 +251,8 @@ export default function Cocktails() {
             </Reveal>
           </header>
         </div>
+
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails' }]} />
 
         <CategoryTabs />
 

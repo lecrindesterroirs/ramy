@@ -26,7 +26,7 @@ export default function LunchBoxDetail() {
   const related = [...BOXES].filter(b => b.id !== box.id)
     .sort((a, b2) => (b2.categorie === box.categorie) - (a.categorie === box.categorie))
     .slice(0, 4)
-    .map(b => ({ href: `/creations/lunch-box/${b.id}`, title: b.nom, meta: 'Lunch box' }))
+    .map(b => ({ href: `/creations/lunch-box/${b.id}`, title: b.nom, meta: 'Lunch box', img: b.img }))
 
   return (
     <GalleryFiche

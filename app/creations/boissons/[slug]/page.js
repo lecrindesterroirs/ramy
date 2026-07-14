@@ -10,7 +10,7 @@ export default function BoissonPage() {
   if (!product) notFound()
 
   const related = BOISSONS.filter(p => p.id !== product.id).slice(0, 4)
-    .map(p => ({ href: `/creations/boissons/${p.id}`, title: p.name, meta: 'Boisson' }))
+    .map(p => ({ href: `/creations/boissons/${p.id}`, title: p.name, meta: 'Boisson', img: p.img }))
 
   return (
     <GalleryFiche
