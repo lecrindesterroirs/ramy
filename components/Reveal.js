@@ -12,8 +12,14 @@ import { useEffect, useRef, useState } from 'react'
 export default function Reveal({ children, delay = 0, mode = 'scroll', y = 24, duration = 0.65, style }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
+  const [reduced, setReduced] = useState(false)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setReduced(true)
+      setVisible(true)
+      return
+    }
     if (mode === 'mount') {
       const raf = requestAnimationFrame(() => setVisible(true))
       return () => cancelAnimationFrame(raf)
@@ -38,7 +44,7 @@ export default function Reveal({ children, delay = 0, mode = 'scroll', y = 24, d
         ...style,
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : `translateY(${y}px)`,
-        transition: `opacity ${duration}s cubic-bezier(0.25,0.1,0.25,1) ${delay}ms, transform ${duration}s cubic-bezier(0.25,0.1,0.25,1) ${delay}ms`,
+        transition: reduced ? 'none' : `opacity ${duration}s cubic-bezier(0.25,0.1,0.25,1) ${delay}ms, transform ${duration}s cubic-bezier(0.25,0.1,0.25,1) ${delay}ms`,
         willChange: 'opacity, transform',
       }}
     >

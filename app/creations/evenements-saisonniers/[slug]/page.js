@@ -9,6 +9,7 @@ import Breadcrumb from '../../../../components/Breadcrumb'
 import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { evenements } from '../evenementsData'
 import { articles } from '../../../../lib/journalData'
+import ParallaxImage from '../../../../components/ParallaxImage'
 
 export default function EvenementDetail() {
   const { slug } = useParams()
@@ -109,9 +110,9 @@ export default function EvenementDetail() {
 
         {/* Image pleine largeur */}
         <div style={{ position: 'relative', width: '100%', height: '55vh', overflow: 'hidden', minHeight: '320px', maxHeight: '580px' }}>
-          <Image fill priority sizes="100vw" src={ev.img}
+          <ParallaxImage priority sizes="100vw" src={ev.img}
             alt={ev.nom}
-            style={{ objectFit: 'cover' }}
+            strength={0.05} style={{ position: 'absolute', inset: 0 }}
           />
         </div>
 

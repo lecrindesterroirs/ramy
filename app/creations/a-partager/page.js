@@ -9,6 +9,7 @@ import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs from '../../../components/CategoryTabs'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 const SEO_ARTICLE = `
   <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
@@ -219,7 +220,7 @@ export default function APartager() {
         {/* ── Hero ── */}
         <div className="ap-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="ap-hero" style={{ position: 'relative', width: '100%', height: '52vh', minHeight: '420px', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src={HERO.hero} alt="Menus à partager L'Écrin" style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <ParallaxImage priority sizes="100vw" src={HERO.hero} alt="Menus à partager L'Écrin" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="ap-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>

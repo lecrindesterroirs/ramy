@@ -9,6 +9,7 @@ import RelatedLinks from '../../../components/RelatedLinks'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { articles } from '../../../lib/journalData'
 import { PRODUCTS } from '../../../lib/productsData'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 // Complète une date "AAAA-MM-JJ" en datetime ISO 8601 avec fuseau (Paris) pour les données structurées
 const isoDateTime = (d) => (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) ? `${d}T09:00:00+02:00` : d
@@ -32,9 +33,9 @@ export default function ArticlePage() {
 
         {/* ── Hero image ── */}
         <div style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>
-          <Image fill priority sizes="100vw" src={article.img}
+          <ParallaxImage priority sizes="100vw" src={article.img}
             alt={article.titre}
-            style={{ objectFit: 'cover', objectPosition: article.imgPosition || 'center' }}
+            strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: article.imgPosition || 'center' }}
           />
         </div>
 

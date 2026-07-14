@@ -122,6 +122,9 @@ export default function ArtisansMapSection() {
       </div>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
+        /* Le halo de la carte (inset -10%) déborde du viewport sur mobile : on le
+           clippe à la section (zone débordante 100% transparente, aucun impact visuel). */
+        .amp-section { overflow-x: hidden; overflow-x: clip; }
         .pin-wrap { line-height: 0; }
         .pin-wrap:hover { z-index: 20 !important; }
         .map-pin { border-radius: 50% !important; transition: transform 0.25s ease; }

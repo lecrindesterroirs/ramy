@@ -7,6 +7,7 @@ import Reveal from '../../../components/Reveal'
 import LogosSection from '../../../components/LogosSection'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import DevisRapide from '../../../components/DevisRapide'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 const SEO_ARTICLE = `
   <h2>Personnalisation de créations gourmandes pour l'entreprise à Paris</h2>
@@ -53,7 +54,7 @@ export default function Personnalisation() {
 
         {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
         <div className="pz-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 46vw, 580px)', overflow: 'hidden' }}>
-          <Image fill priority sizes="100vw" src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
+          <ParallaxImage priority sizes="100vw" src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.82) 0%, rgba(16,12,9,0.62) 38%, rgba(16,12,9,0.2) 64%, rgba(16,12,9,0) 82%)' }} />
           <Reveal mode="mount" y={16}>
             <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>

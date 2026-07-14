@@ -14,7 +14,6 @@ import FAQSection from '../components/FAQSection'
 import VillesSection from '../components/VillesSection'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
-import ScrollRevealInit from '../components/ScrollRevealInit'
 
 export const metadata = {
   alternates: { canonical: '/' },
@@ -23,7 +22,6 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <ScrollRevealInit />
       <Navbar />
       <main>
         <Hero />

@@ -1,6 +1,8 @@
 import './globals.css'
 import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
+import SmoothScroll from '../components/SmoothScroll'
+import ScrollRevealInit from '../components/ScrollRevealInit'
 import { GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata = {
@@ -61,6 +63,8 @@ export default function RootLayout({ children }) {
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
         <link rel="preload" href="/fonts/BaskervilleDisplayPT.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <SmoothScroll />
+        <ScrollRevealInit />
         <CartProvider>
           <div id="main-content" style={{ display: 'contents' }}>{children}</div>
         </CartProvider>

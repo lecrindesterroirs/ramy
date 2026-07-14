@@ -10,6 +10,7 @@ export default function Hero() {
   const [catalogueOpen, setCatalogueOpen] = useState(false)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const onScroll = () => {
       if (imageRef.current) {
         imageRef.current.style.transform = `translateY(${window.scrollY * 0.22}px)`

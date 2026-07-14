@@ -1,6 +1,7 @@
 'use client'
 
 import { MADELEINE_FLAVORS } from '../lib/productsData'
+import ParallaxImage from './ParallaxImage'
 
 const INFOS = [
   {
@@ -26,14 +27,17 @@ export default function MadeleinesSection() {
 
         {/* Image */}
         <div className="mad-img-col" style={{ position: 'relative', overflow: 'hidden', minHeight: '680px' }}>
-          <img loading="lazy" src="/madeleine-home.webp"
+          <ParallaxImage
+            src="/madeleine-home.webp"
             alt="Madeleines artisanales, L'Écrin Traiteur"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            strength={0.06}
+            sizes="(max-width: 900px) 100vw, 46vw"
+            style={{ position: 'absolute', inset: 0 }}
           />
         </div>
 
         {/* Contenu */}
-        <div className="mad-content" style={{ padding: '88px 88px 80px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div className="mad-content reveal" style={{ padding: '88px 88px 80px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
             Les incontournables
           </p>
@@ -68,7 +72,7 @@ export default function MadeleinesSection() {
 
       {/* ── Bas : 3 colonnes d'infos ── */}
       <div className="mad-infos-wrap" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', background: '#FFFFFF' }}>
-        <div className="mad-infos" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
+        <div className="mad-infos reveal-stagger" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
           {INFOS.map(info => (
             <div key={info.title}>
               <span style={{ display: 'block', width: '24px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />

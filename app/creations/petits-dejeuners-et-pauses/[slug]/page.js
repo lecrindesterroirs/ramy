@@ -9,6 +9,7 @@ import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
 import DevisRapide from '../../../../components/DevisRapide'
+import ParallaxImage from '../../../../components/ParallaxImage'
 
 const COFFRETS = [
   { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.webp' },
@@ -153,7 +154,7 @@ export default function ProductPage() {
 
             {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
             <div className="mad-hero" style={{ position: 'relative', width: '100%', height: 'clamp(360px, 42vw, 520px)', overflow: 'hidden' }}>
-              <Image fill priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature, L'Écrin Traiteur" style={{ objectFit: 'cover', objectPosition: 'center right' }} />
+              <ParallaxImage priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature, L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>

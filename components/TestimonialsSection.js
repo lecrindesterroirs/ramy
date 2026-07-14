@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
       <div className="ts-inner" style={{ maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 72px 64px' }}>
 
         {/* ── Header ── */}
-        <div className="ts-top" style={{ marginBottom: '44px' }}>
+        <div className="ts-top reveal" style={{ marginBottom: '44px' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
             Ils nous font confiance
           </p>

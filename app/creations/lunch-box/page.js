@@ -9,6 +9,7 @@ import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs from '../../../components/CategoryTabs'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 const SEO_ARTICLE = `
   <h2>Lunch box entreprise à Paris : le déjeuner individuel, pratique et gourmand</h2>
@@ -210,9 +211,9 @@ export default function LunchBox() {
         {/* ── Hero, contenu + immersif, aligné sur les autres pages ── */}
         <div className="lb-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="lb-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src={HERO.hero}
+            <ParallaxImage priority sizes="100vw" src={HERO.hero}
               alt="Lunch Box L'Écrin"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }}
             />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>

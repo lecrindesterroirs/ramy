@@ -1,8 +1,16 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
+/*
+  Monté une seule fois dans app/layout.js : observe les classes .reveal /
+  .reveal-stagger sur tout le site. Ré-observe à chaque changement de route
+  (le layout ne se remonte pas en navigation client).
+*/
 export default function ScrollRevealInit() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -29,7 +37,7 @@ export default function ScrollRevealInit() {
       observer.disconnect()
       clearTimeout(t)
     }
-  }, [])
+  }, [pathname])
 
   return null
 }

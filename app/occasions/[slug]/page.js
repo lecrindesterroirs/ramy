@@ -12,6 +12,7 @@ import { FORMULES as COCKTAIL_FORMULES } from '../../creations/cocktails/page'
 import { CITIES } from '../../../lib/citiesData'
 import DevisRapide from '../../../components/DevisRapide'
 import { useState } from 'react'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 const PRODUCT_ROUTE_BY_CATEGORY = {
   'plateaux-repas': 'plateaux-repas',
@@ -72,9 +73,9 @@ export default function OccasionPage() {
         {/* ── Hero photo ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src={heroImg}
+            <ParallaxImage priority sizes="100vw" src={heroImg}
               alt={occasion.heroTitle}
-              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center 40%' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 30%, rgba(0,0,0,0.30) 58%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>

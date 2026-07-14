@@ -5,6 +5,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { evenements } from './evenementsData'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 export default function EvenementsSaisonniers() {
   return (
@@ -16,9 +17,9 @@ export default function EvenementsSaisonniers() {
         {/* Hero */}
         <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src="/creations-featured.webp"
+            <ParallaxImage priority sizes="100vw" src="/creations-featured.webp"
               alt="Événements Saisonniers, L'Écrin Traiteur"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }}
             />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>

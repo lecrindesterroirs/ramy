@@ -12,6 +12,7 @@ import RelatedLinks from '../../../components/RelatedLinks'
 import { CITIES } from '../../../lib/citiesData'
 import { CITY_NEIGHBORS } from '../../../lib/cityNeighbors'
 import { OCCASIONS } from '../../../lib/occasionsData'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 const SERVICES = [
   {
@@ -115,7 +116,7 @@ export default function CityPage() {
         {/* ── Hero image pleine largeur ── */}
         <div className="city-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="city-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src="/hero-bg.webp" alt={`Traiteur d'entreprise ${city.name}, L'Écrin Traiteur`} style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <ParallaxImage priority sizes="100vw" src="/hero-bg.webp" alt={`Traiteur d'entreprise ${city.name}, L'Écrin Traiteur`} strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.92) 0%, rgba(16,12,9,0.74) 44%, rgba(16,12,9,0.32) 72%, rgba(16,12,9,0) 92%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="city-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>

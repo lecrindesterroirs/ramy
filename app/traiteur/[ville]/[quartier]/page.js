@@ -9,6 +9,7 @@ import Reveal from '../../../../components/Reveal'
 import LogosSection from '../../../../components/LogosSection'
 import CategoryClosing from '../../../../components/CategoryClosing'
 import { CITIES } from '../../../../lib/citiesData'
+import ParallaxImage from '../../../../components/ParallaxImage'
 
 const SERVICES = [
   {
@@ -110,7 +111,7 @@ export default function QuartierPage() {
         {/* ── Hero image pleine largeur ── */}
         <div className="q-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="q-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 48vw, 560px)', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src="/hero-bg2.webp" alt={`Traiteur d'entreprise ${q.name}, ${city.name}, L'Écrin Traiteur`} style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <ParallaxImage priority sizes="100vw" src="/hero-bg2.webp" alt={`Traiteur d'entreprise ${q.name}, ${city.name}, L'Écrin Traiteur`} strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="q-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>

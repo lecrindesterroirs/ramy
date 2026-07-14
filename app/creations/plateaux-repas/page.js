@@ -10,6 +10,7 @@ import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/CategoryTabs'
 import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
+import ParallaxImage from '../../../components/ParallaxImage'
 
 const SEO_ARTICLE = `
   <h2>Plateaux repas d'entreprise livrés à Paris : frais, individuels, équilibrés</h2>
@@ -208,10 +209,10 @@ export default function PlateauxRepas() {
         {/* ── Hero, contenu + immersif, aligné sur petit-déjeuner ── */}
         <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pr-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" key={`hero-img-${col.key}`}
+            <ParallaxImage priority sizes="100vw" key={`hero-img-${col.key}`}
               src={col.hero}
               alt={`Plateaux repas ${col.label}`}
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }}
             />
             {/* Dégradé sombre gauche pour la lisibilité du texte blanc */}
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />

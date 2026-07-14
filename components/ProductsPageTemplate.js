@@ -9,6 +9,7 @@ import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
 import CategoryTabs from './CategoryTabs'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
+import ParallaxImage from './ParallaxImage'
 
 const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
@@ -62,9 +63,9 @@ export default function ProductsPageTemplate({
         {/* ── Hero ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '460px', overflow: 'hidden' }}>
-            <Image fill priority sizes="100vw" src={heroImg}
+            <ParallaxImage priority sizes="100vw" src={heroImg}
               alt={heroTitle}
-              style={{ objectFit: 'cover', objectPosition: heroImgPosition || 'center' }}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: heroImgPosition || 'center' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
