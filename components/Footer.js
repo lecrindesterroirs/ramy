@@ -139,7 +139,7 @@ export default function Footer() {
           {/* Droite */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.6)', letterSpacing: '0.03em' }}>
-              © 2026 L'Écrin Traiteur
+              © 2026 L'Écrin Traiteur — L'Écrin des Terroirs
             </p>
           </div>
 

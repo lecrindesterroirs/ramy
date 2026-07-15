@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "postbuild": "[ \"$VERCEL_ENV\" = production ] && node scripts/indexnow-submit.mjs || true",
+    "start": "next start",
+    "indexnow": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^14.2.5",

@@ -7,6 +7,7 @@ import Footer from './Footer'
 import DevisRapide from './DevisRapide'
 import RelatedLinks from './RelatedLinks'
 import { BOISSONS } from '../lib/boissonsData'
+import { productOfferPolicy } from '../lib/site'
 
 // Cross-sell « À servir avec » : sélection de boissons complémentaires, montrée sur
 // toutes les fiches SAUF les fiches boissons elles-mêmes. Sélection curée, repli sur
@@ -84,6 +85,7 @@ export default function GalleryFiche({
             seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
             areaServed: 'Île-de-France',
             url: `${BASE}/devis`,
+            ...productOfferPolicy(),
           },
         } : {}),
       },

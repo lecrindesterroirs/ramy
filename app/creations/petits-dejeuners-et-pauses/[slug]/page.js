@@ -8,6 +8,7 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
+import { productOfferPolicy } from '../../../../lib/site'
 import DevisRapide from '../../../../components/DevisRapide'
 import ParallaxImage from '../../../../components/ParallaxImage'
 
@@ -77,6 +78,10 @@ export default function ProductPage() {
   const isGallery = !product.isMadeleine
   const isEditorial = false
 
+  // Coffret madeleines spécifique (10/20/50) → différencie H1 + intro par URL
+  const coffret = COFFRETS.find(c => c.id === product.id)
+  const coffretMot = coffret ? coffret.titre.replace(/^Coffret\s+/i, '') : 'signature'
+
   const breadcrumb = [
     { label: 'Accueil', href: '/' },
     { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
@@ -112,6 +117,7 @@ export default function ProductPage() {
             url: pageUrl,
             areaServed: { '@type': 'State', name: 'Île-de-France' },
             seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+            ...productOfferPolicy(),
           },
         } : {}),
       },
@@ -160,12 +166,17 @@ export default function ProductPage() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
-                  Les madeleines<br /><em style={{ fontStyle: 'italic' }}>signature</em>
+                  Les madeleines<br /><em style={{ fontStyle: 'italic' }}>{coffretMot.toLowerCase()}</em>
                 </h1>
                 <span style={{ display: 'block', width: '36px', height: '1px', background: 'var(--accent)', marginBottom: '20px' }} />
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '380px' }}>
                   Une madeleine généreuse, préparée chaque jour par notre artisan partenaire et devenue l'une des créations les plus appréciées de nos événements.
                 </p>
+                {coffret && (
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-primary)', maxWidth: '380px', marginTop: '12px' }}>
+                    <strong style={{ fontWeight: 500 }}>Coffret {coffretMot} · {coffret.pieces} madeleines.</strong> {coffret.desc}
+                  </p>
+                )}
               </div>
             </div>
 
