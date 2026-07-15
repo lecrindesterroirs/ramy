@@ -7,7 +7,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import RelatedLinks from '../../../components/RelatedLinks'
 import Breadcrumb from '../../../components/Breadcrumb'
-import { articles } from '../../../lib/journalData'
+import { articles, articleAuthor } from '../../../lib/journalData'
 import { PRODUCTS } from '../../../lib/productsData'
 import ParallaxImage from '../../../components/ParallaxImage'
 
@@ -18,6 +18,8 @@ export default function ArticlePage() {
   const { slug } = useParams()
   const article = articles.find(a => a.slug === slug)
   if (!article) notFound()
+
+  const author = articleAuthor(slug)
 
   // Maillage latéral : 3 articles liés (même catégorie en priorité, complété par les plus récents)
   const related = [...articles]
@@ -66,6 +68,15 @@ export default function ArticlePage() {
                 letterSpacing: '0.04em',
               }}>
                 {article.date}
+              </span>
+              <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
+              <span style={{
+                fontFamily: "'Neue Montreal', sans-serif",
+                fontSize: '11px',
+                color: 'rgba(17,17,17,0.45)',
+                letterSpacing: '0.04em',
+              }}>
+                Par {author.name}
               </span>
             </div>
           </div>
@@ -376,12 +387,14 @@ export default function ArticlePage() {
           'description': article.extrait,
           'datePublished': isoDateTime(article.isoDate) || article.date,
           'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
-          'author': {
-            '@type': 'Organization',
-            '@id': 'https://www.lecrin-traiteur.fr/#business',
-            'name': "L'Écrin Traiteur",
-            'url': 'https://www.lecrin-traiteur.fr',
-          },
+          'author': author.isPerson
+            ? { '@type': 'Person', 'name': author.name }
+            : {
+                '@type': 'Organization',
+                '@id': 'https://www.lecrin-traiteur.fr/#business',
+                'name': "L'Écrin Traiteur",
+                'url': 'https://www.lecrin-traiteur.fr',
+              },
           'publisher': {
             '@type': 'Organization',
             '@id': 'https://www.lecrin-traiteur.fr/#business',
