@@ -178,7 +178,7 @@ export default function PauseDetail() {
       subtitle="Pause Gourmande · L'après-midi"
       img={produit.img}
       price={null}
-      description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi. Tarif au format et à l'effectif, sur devis.`}
+      description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi.`}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
         { label: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes' },
