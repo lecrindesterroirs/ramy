@@ -124,7 +124,7 @@ export default function sitemap() {
     ))
   )
 
-  return [
+  const all = [
     ...staticPages,
     ...productPages,
     ...eventPages,
@@ -134,4 +134,10 @@ export default function sitemap() {
     ...cityPages,
     ...quartierPages,
   ]
+
+  // Dédup par URL : certaines pages (cocktails/classique·signature·prestige,
+  // plateaux partagés) sont référencées à la fois en dur et via un slug généré.
+  // On garde la première occurrence (priorité la plus haute, listée en premier).
+  const seen = new Set()
+  return all.filter(e => (seen.has(e.url) ? false : (seen.add(e.url), true)))
 }

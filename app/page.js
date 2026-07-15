@@ -42,7 +42,7 @@ export default function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
+            '@type': ['LocalBusiness', 'FoodEstablishment'],
             '@id': 'https://www.lecrin-traiteur.fr/#business',
             'name': "L'Écrin Traiteur",
             'legalName': "L'Écrin des Terroirs",
@@ -67,7 +67,7 @@ export default function Home() {
             },
             'address': {
               '@type': 'PostalAddress',
-              'streetAddress': '63 bis Rue de Sèvres',
+              'streetAddress': '63 bis rue de Sèvres',
               'postalCode': '92100',
               'addressLocality': 'Boulogne-Billancourt',
               'addressRegion': 'Île-de-France',
@@ -99,6 +99,13 @@ export default function Home() {
                 { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Pauses café & mignardises' } },
                 { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Cocktail & Buffet d\'entreprise' } },
               ],
+            },
+            'aggregateRating': {
+              '@type': 'AggregateRating',
+              'ratingValue': '5.0',
+              'reviewCount': '18',
+              'bestRating': '5',
+              'worstRating': '1',
             },
             'sameAs': ['https://www.google.com/maps?cid=7256328868778850442'],
           }) }}

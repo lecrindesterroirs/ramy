@@ -4,6 +4,7 @@ import MobileCTA from '../components/MobileCTA'
 import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
 import { GoogleTagManager } from '@next/third-parties/google'
+import { websiteNode } from '../lib/site'
 
 export const metadata = {
   title: {
@@ -61,6 +62,10 @@ export default function RootLayout({ children }) {
       <GoogleTagManager gtmId="GTM-N22T3FZJ" />
       <body>
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', ...websiteNode() }) }}
+        />
         <link rel="preload" href="/fonts/BaskervilleDisplayPT.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <SmoothScroll />

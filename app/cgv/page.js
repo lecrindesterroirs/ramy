@@ -119,7 +119,7 @@ export default function CGV() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 5, Tarifs et paiement</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          Tous les prix sont indiqués en euros hors taxes (HT) et s'entendent avec application de la TVA au taux en vigueur. Un <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>forfait fixe de 28 € HT</strong> est appliqué pour toute livraison à Paris intramuros et dans les communes limitrophes. Des frais spécifiques peuvent s'appliquer pour d'autres zones d'Île-de-France, communiqués lors du devis.
+          Tous les prix sont indiqués en euros hors taxes (HT) et s'entendent avec application de la TVA au taux en vigueur. Un <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>forfait fixe de 29 € HT</strong> est appliqué pour toute livraison à Paris intramuros et dans les communes limitrophes. Des frais spécifiques peuvent s'appliquer pour d'autres zones d'Île-de-France, communiqués lors du devis.
         </p>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Le règlement s'effectue par virement bancaire ou carte bancaire. Les <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>factures sont payables à 30 jours fin de mois</strong> à compter de la date d'émission.

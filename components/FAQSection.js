@@ -13,7 +13,7 @@ const fallbackFaqs = [
   },
   {
     question: "Y a-t-il un minimum de commande et des frais de livraison ?",
-    reponse: "Le montant minimum de commande est de 50€ HT. Les frais de livraison sont de 28€ HT pour Paris et les communes proches. Contactez-nous pour les autres adresses en Île-de-France.",
+    reponse: "Le montant minimum de commande est de 50€ HT. Les frais de livraison sont de 29€ HT pour Paris et les communes proches. Contactez-nous pour les autres adresses en Île-de-France.",
   },
   {
     question: "Proposez-vous une facturation entreprise avec TVA ?",
