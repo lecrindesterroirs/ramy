@@ -1,5 +1,9 @@
 import { articles } from '../../../lib/journalData'
 
+export function generateStaticParams() {
+  return articles.map(a => ({ slug: a.slug }))
+}
+
 export async function generateMetadata({ params }) {
   const article = articles.find(a => a.slug === params.slug)
   if (!article) return {}

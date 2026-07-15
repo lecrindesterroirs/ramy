@@ -1,5 +1,9 @@
 import { CITIES } from '../../../../lib/citiesData'
 
+export function generateStaticParams() {
+  return CITIES.flatMap(c => (c.quartiers ?? []).map(q => ({ ville: c.slug, quartier: q.slug })))
+}
+
 export async function generateMetadata({ params }) {
   const { ville, quartier } = await params
   const city = CITIES.find(c => c.slug === ville)

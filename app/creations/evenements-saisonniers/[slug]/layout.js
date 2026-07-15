@@ -1,5 +1,9 @@
 import { evenements } from '../evenementsData'
 
+export function generateStaticParams() {
+  return evenements.map(e => ({ slug: e.slug }))
+}
+
 export async function generateMetadata({ params }) {
   const ev = evenements.find(e => e.slug === params.slug)
 

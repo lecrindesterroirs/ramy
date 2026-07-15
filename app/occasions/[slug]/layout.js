@@ -1,5 +1,9 @@
 import { OCCASIONS } from '../../../lib/occasionsData'
 
+export function generateStaticParams() {
+  return OCCASIONS.map(o => ({ slug: o.slug }))
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const o = OCCASIONS.find(o => o.slug === slug)

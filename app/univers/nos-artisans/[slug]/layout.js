@@ -1,4 +1,8 @@
-import { getArtisanBySlug } from '../../../../lib/artisansData'
+import { getArtisanBySlug, ARTISANS } from '../../../../lib/artisansData'
+
+export function generateStaticParams() {
+  return ARTISANS.map(a => ({ slug: a.slug }))
+}
 
 export async function generateMetadata({ params }) {
   const { slug } = await params

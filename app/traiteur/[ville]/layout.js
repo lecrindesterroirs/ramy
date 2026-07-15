@@ -1,5 +1,9 @@
 import { CITIES } from '../../../lib/citiesData'
 
+export function generateStaticParams() {
+  return CITIES.map(c => ({ ville: c.slug }))
+}
+
 export async function generateMetadata({ params }) {
   const { ville } = await params
   const city = CITIES.find(c => c.slug === ville)

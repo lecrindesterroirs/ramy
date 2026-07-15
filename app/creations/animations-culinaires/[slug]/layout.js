@@ -1,5 +1,9 @@
 import { ANIMATIONS, UNIVERS_LABEL, slugAnim } from '../data'
 
+export function generateStaticParams() {
+  return ANIMATIONS.map(a => ({ slug: slugAnim(a.nom) }))
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const a = ANIMATIONS.find(x => slugAnim(x.nom) === slug)

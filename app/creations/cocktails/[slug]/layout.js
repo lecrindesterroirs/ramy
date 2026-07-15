@@ -8,6 +8,10 @@ const META = {
 
 export const SLUGS = Object.keys(META)
 
+export function generateStaticParams() {
+  return SLUGS.map(slug => ({ slug }))
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const f = META[slug]

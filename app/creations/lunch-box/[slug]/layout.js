@@ -12,6 +12,10 @@ const META = {
 
 export const SLUGS = Object.keys(META)
 
+export function generateStaticParams() {
+  return SLUGS.map(slug => ({ slug }))
+}
+
 export function generateMetadata({ params }) {
   const m = META[params.slug]
   const path = `/creations/lunch-box/${params.slug}`

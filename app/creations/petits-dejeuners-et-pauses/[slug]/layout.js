@@ -1,5 +1,9 @@
 import { PRODUCTS } from '../../../../lib/productsData'
 
+export function generateStaticParams() {
+  return PRODUCTS.map(p => ({ slug: p.id }))
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const product = PRODUCTS.find(p => p.id === slug)
