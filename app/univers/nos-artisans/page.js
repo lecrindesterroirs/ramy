@@ -99,6 +99,11 @@ export default function NosArtisans() {
               </button>
             </div>
           </div>
+          <Reveal>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '620px', marginBottom: '36px' }}>
+              Nous ne référençons que des artisans que nous avons goûtés : les madeleines de Mado Paris, les cookies de Laura Todd, les macarons de Pierre Morel, les yaourts de la Ferme de Viltain, les jus d'Alain Milliat, les thés de Mariage Frères. Chacun entre dans notre sélection parce qu'il fait mieux que les autres sur son produit — pour aucune autre raison.
+            </p>
+          </Reveal>
           <div ref={scrollerRef} className="art-scroller" style={{ display: 'flex', gap: '24px', overflowX: 'auto', overflowY: 'hidden', scrollSnapType: 'x mandatory', paddingBottom: '8px' }}>
             {ARTISANS.map((a, i) => (
               <div key={a.slug} style={{ scrollSnapAlign: 'start' }}>

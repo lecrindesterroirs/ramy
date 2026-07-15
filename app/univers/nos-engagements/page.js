@@ -104,6 +104,9 @@ export default function NosEngagements() {
                   }}
                 >
                   <div>
+                    <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(17px, 1.9vw, 21px)', fontWeight: 400, color: '#2A2013', marginBottom: '8px' }}>
+                      {e.titre}
+                    </h2>
                     <p className="eng-texte" style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.9vw, 19px)', lineHeight: 1.6, color: 'rgba(42,32,19,0.86)' }}>
                       {e.texte}
                     </p>

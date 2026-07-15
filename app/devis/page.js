@@ -234,6 +234,9 @@ function Step1({ data, setData, onSelect }) {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
           <ReviewsBadge />
         </div>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '14px' }}>
+          Commande minimum 50&nbsp;€ HT · Livraison 29&nbsp;€ HT à Paris · Devis sous 24h
+        </p>
       </div>
 
       <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
