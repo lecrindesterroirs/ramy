@@ -141,7 +141,7 @@ export const PAUSES = [
   { id: 'crepes',
     seoTitle: `Crêpes pour vos pauses et goûters d'entreprise à Paris`,
     seoHtml: `<p>Nos crêpes sucrées sont préparées le jour même, avec des garnitures au choix. En pause d'après-midi ou lors d'un événement, elles rappellent le goûter d'enfance et rassemblent l'équipe autour d'un moment simple et convivial. Un format généreux, à partager sans façon.</p><h2>Commander vos crêpes à Paris et en Île-de-France</h2><p>Quantité selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h. Voir aussi notre atelier crêpes en version animation live.</p>`,
-    nom: 'Crêpes moelleuses maison',                      img: '/prod-crepes.webp',         prix: '20 crêpes, 58,90 €', description: 'Pâte traditionnelle reposée. Inclus : pots de confiture Alain Milliat et pâte à tartiner.' },
+    nom: 'Crêpes moelleuses maison',                      img: '/prod-crepes-v2.webp',         prix: '20 crêpes, 58,90 €', description: 'Pâte traditionnelle reposée. Inclus : pots de confiture Alain Milliat et pâte à tartiner.' },
 ]
 
 /* ─── Carte douceur ──────────────────────────────────────────────── */

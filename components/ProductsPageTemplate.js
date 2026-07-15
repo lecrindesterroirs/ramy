@@ -43,10 +43,10 @@ export default function ProductsPageTemplate({
   const [sortLabel, setSortLabel]   = useState('En vedette')
   // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
   // fallbackProducts est l'unique source de vérité.
-  // Dédup par id : certains produits sont listés dans plusieurs catégories (même id),
-  // ce qui provoquait des clés React dupliquées et un double affichage.
+  // Certains produits sont volontairement listés dans plusieurs sections (même id,
+  // ex. plateaux salés) : on garde les doublons d'affichage et on distingue les clés
+  // React par l'index (pas de dédup, sinon on vide la section « Petit Déjeuner Salé »).
   const products = sortProducts(fallbackProducts, sortLabel)
-    .filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i)
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function ProductsPageTemplate({
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
           {products.map((p, i) => (
-            <Fragment key={p.id || i}>
+            <Fragment key={`${p.id ?? 'p'}-${i}`}>
               {p.sectionTitle && (
                 <div style={{ gridColumn: '1 / -1', marginBottom: '0', paddingTop: '16px', paddingBottom: '8px' }}>
                   <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>

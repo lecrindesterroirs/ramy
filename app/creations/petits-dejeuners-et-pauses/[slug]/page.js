@@ -65,14 +65,11 @@ export default function ProductPage() {
   const product = PRODUCTS.find(p => p.id === slug)
   if (!product) notFound()
 
-  // category peut être une string ou un tableau (produit multi-catégories)
-  const catArr = c => Array.isArray(c) ? c : [c]
-  const curCats = catArr(product.category)
-  const sharesCat = p => catArr(p.category).some(c => curCats.includes(c))
-
   const related = [...PRODUCTS]
     .filter(p => p.id !== product.id)
-    .sort((a, b) => sharesCat(b) - sharesCat(a))
+    // un produit peut apparaître dans plusieurs sections (même id) : on ne le suggère qu'une fois
+    .filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i)
+    .sort((a, b) => (b.category === product.category) - (a.category === product.category))
     .slice(0, 4)
     .map(p => ({ href: `/creations/petits-dejeuners-et-pauses/${p.id}`, title: p.shortName || p.name, meta: p.categoryLabel, img: p.img }))
 

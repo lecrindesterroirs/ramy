@@ -46,7 +46,7 @@ export const evenements = [
     mois: 'Février',
     nom: 'Chandeleur',
     tags: ['Pauses gourmandes', 'Goûters'],
-    img: '/prod-crepes.webp',
+    img: '/prod-crepes-v2.webp',
     descCourt: "Crêpes maison avec toppings, confitures Alain Milliat. Stand crêpe sur place sur demande.",
     desc: "Des crêpes maison avec tous les toppings. Généreuses, à partager, sans chichi. Et pour les équipes qui veulent vivre le moment en live, on peut installer un stand crêpe directement dans vos locaux. Un vrai moment, pas juste un goûter.",
     produits: [
