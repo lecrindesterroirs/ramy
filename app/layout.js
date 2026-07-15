@@ -3,7 +3,7 @@ import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
 import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
-import { GoogleTagManager } from '@next/third-parties/google'
+import DeferredGTM from '../components/DeferredGTM'
 import { websiteNode } from '../lib/site'
 
 export const metadata = {
@@ -59,8 +59,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <GoogleTagManager gtmId="GTM-N22T3FZJ" />
       <body>
+        <DeferredGTM gtmId="GTM-N22T3FZJ" />
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
         <script
           type="application/ld+json"
