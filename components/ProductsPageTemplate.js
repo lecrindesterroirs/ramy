@@ -8,6 +8,7 @@ import Reveal from './Reveal'
 import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
 import CategoryTabs from './CategoryTabs'
+import { CATEGORY_FAQ } from '../lib/categoryFaq'
 import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
@@ -120,6 +121,7 @@ export default function ProductsPageTemplate({
           .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
           .filter-cats::-webkit-scrollbar { display: none; }
           .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 36px 16px !important; }
+          .cat-faq { padding: 8px 24px 72px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .page-hero-wrapper { padding: 24px 40px 0 !important; }
@@ -128,6 +130,23 @@ export default function ProductsPageTemplate({
           .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
         }
       ` }} />
+
+      {/* ── FAQ logistique visible (schema porté par CategoryJsonLd) ── */}
+      <section className="cat-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 88px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px' }}>
+          Questions fréquentes
+        </h2>
+        {CATEGORY_FAQ.map((f, i) => (
+          <div key={i} style={{ padding: '22px 0', borderTop: i === 0 ? '1px solid rgba(17,17,17,0.08)' : '1px solid rgba(17,17,17,0.08)' }}>
+            <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
+              {f.q}
+            </h3>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
+              {f.a}
+            </p>
+          </div>
+        ))}
+      </section>
 
       <CategoryJsonLd
         name={heroTitle}

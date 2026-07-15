@@ -1,5 +1,7 @@
 // JSON-LD réutilisable pour les pages catégories : fil d'Ariane + liste d'items.
 // Rendu côté serveur (SSR) même dans une page 'use client'.
+import { CATEGORY_FAQ } from '../lib/categoryFaq'
+
 const SITE = 'https://www.lecrin-traiteur.fr'
 
 export default function CategoryJsonLd({ name, path, items, serviceType }) {
@@ -38,6 +40,17 @@ export default function CategoryJsonLd({ name, path, items, serviceType }) {
       })),
     })
   }
+
+  // FAQ logistique (faits citables par les IA — cohérents avec /traiteur et la home)
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${SITE}${path}#faq`,
+    mainEntity: CATEGORY_FAQ.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  })
 
   return (
     <script
