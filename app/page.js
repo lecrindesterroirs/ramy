@@ -78,12 +78,10 @@ export default function Home() {
               'latitude': 48.8352,
               'longitude': 2.2409,
             },
-            'openingHoursSpecification': [{
-              '@type': 'OpeningHoursSpecification',
-              'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'],
-              'opens': '06:30',
-              'closes': '14:00',
-            }],
+            'openingHoursSpecification': [
+              { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], 'opens': '06:00', 'closes': '22:30' },
+              { '@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Sunday', 'opens': '09:00', 'closes': '21:00' },
+            ],
             'priceRange': '€€',
             'areaServed': {
               '@type': 'State',

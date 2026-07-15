@@ -68,12 +68,10 @@ export default function CityPage() {
     },
     priceRange: '€€',
     servesCuisine: 'Française artisanale',
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '06:30',
-      closes: '14:00',
-    },
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '06:00', closes: '22:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '09:00', closes: '21:00' },
+    ],
     hasMenu: {
       '@type': 'Menu',
       name: 'Prestations traiteur entreprise',

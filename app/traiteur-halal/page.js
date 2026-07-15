@@ -89,12 +89,10 @@ export default function TraiteurHalal() {
     areaServed: { '@type': 'State', name: 'Île-de-France' },
     priceRange: '€€',
     servesCuisine: ['Halal', 'Française artisanale', 'Végétarienne'],
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '06:30',
-      closes: '14:00',
-    },
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '06:00', closes: '22:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '09:00', closes: '21:00' },
+    ],
   }
 
   const breadcrumbLd = {
