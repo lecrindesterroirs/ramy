@@ -8,7 +8,8 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import { PRODUCTS, DIETARY_COLORS, MADELEINE_FLAVORS } from '../../../../lib/productsData'
-import { productOfferPolicy } from '../../../../lib/site'
+import { productOfferPolicy, BUSINESS_ID } from '../../../../lib/site'
+import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import DevisRapide from '../../../../components/DevisRapide'
 import ParallaxImage from '../../../../components/ParallaxImage'
 
@@ -116,7 +117,7 @@ export default function ProductPage() {
             availability: 'https://schema.org/InStock',
             url: pageUrl,
             areaServed: { '@type': 'State', name: 'Île-de-France' },
-            seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+            seller: { '@id': BUSINESS_ID },
             ...productOfferPolicy(),
           },
         } : {}),
@@ -127,6 +128,7 @@ export default function ProductPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BusinessJsonLd />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

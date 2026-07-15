@@ -7,7 +7,8 @@ import Footer from './Footer'
 import DevisRapide from './DevisRapide'
 import RelatedLinks from './RelatedLinks'
 import { BOISSONS } from '../lib/boissonsData'
-import { productOfferPolicy } from '../lib/site'
+import { productOfferPolicy, BUSINESS_ID } from '../lib/site'
+import BusinessJsonLd from './BusinessJsonLd'
 
 // Cross-sell « À servir avec » : sélection de boissons complémentaires, montrée sur
 // toutes les fiches SAUF les fiches boissons elles-mêmes. Sélection curée, repli sur
@@ -82,7 +83,7 @@ export default function GalleryFiche({
             availability: 'https://schema.org/InStock',
             priceCurrency: 'EUR',
             price: String(price).replace(',', '.'),
-            seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+            seller: { '@id': BUSINESS_ID },
             areaServed: 'Île-de-France',
             url: `${BASE}/devis`,
             ...productOfferPolicy(),
@@ -95,6 +96,7 @@ export default function GalleryFiche({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BusinessJsonLd />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

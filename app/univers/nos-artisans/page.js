@@ -7,6 +7,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
+import BusinessJsonLd from '../../../components/BusinessJsonLd'
 import ArtisansMapSection from '../../../components/ArtisansMapSection'
 import { ARTISANS } from '../../../lib/artisansData'
 
@@ -186,6 +187,7 @@ export default function NosArtisans() {
         }
       ` }} />
 
+      <BusinessJsonLd />
       <BreadcrumbJsonLd items={[
         { name: 'Accueil', path: '' },
         { name: 'Nos artisans', path: '/univers/nos-artisans' },

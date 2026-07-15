@@ -8,6 +8,7 @@ import DevisRapide from '../../../../components/DevisRapide'
 import Reveal from '../../../../components/Reveal'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import Breadcrumb from '../../../../components/Breadcrumb'
+import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import { FORMULES } from '../page'
 
 const GALERIE = [
@@ -76,6 +77,7 @@ export default function CocktailDetail() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BusinessJsonLd />
       <Navbar showBanner={true} />
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

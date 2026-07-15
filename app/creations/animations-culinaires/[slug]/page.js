@@ -7,6 +7,7 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import RelatedLinks from '../../../../components/RelatedLinks'
+import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
 export default function AnimationDetail() {
@@ -65,6 +66,7 @@ export default function AnimationDetail() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BusinessJsonLd />
       <Navbar showBanner={true} />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
