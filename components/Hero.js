@@ -162,7 +162,7 @@ export default function Hero() {
         </div>
 
         {/* Preuve sociale, fiche Google */}
-        <ReviewsBadge variant="onImage" showCount style={{ marginTop: '26px' }} />
+        <ReviewsBadge variant="onImage" style={{ marginTop: '26px' }} />
       </div>
 
       {/* Phone, bottom right */}
