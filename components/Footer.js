@@ -70,6 +70,8 @@ export default function Footer() {
                 { label: 'CODIR & COMEX', href: '/occasions/petit-dejeuner-codir' },
                 { label: "Déjeuner d'entreprise", href: '/occasions/dejeuner-entreprise' },
                 { label: 'Traiteur halal', href: '/traiteur-halal' },
+                { label: 'Traiteur éco-responsable', href: '/traiteur-eco-responsable' },
+                { label: 'Traiteur healthy', href: '/traiteur-healthy' },
                 { label: 'Toutes les occasions', href: '/occasions' },
               ]},
               { title: 'Traiteur à Paris & IDF', links: [

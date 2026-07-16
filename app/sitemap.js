@@ -65,6 +65,8 @@ export default function sitemap() {
 
     // SEO thématique, traiteur halal & inclusif
     url('/traiteur-halal',                                0.90, 'monthly'),
+    url('/traiteur-eco-responsable',                      0.88, 'monthly'),
+    url('/traiteur-healthy',                              0.88, 'monthly'),
 
     // Pages légales
     url('/mentions-legales',                              0.2,  'yearly'),
