@@ -41,6 +41,17 @@ export const ANIMATIONS = [
       <h2>Installer un bar à café à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès électrique. On installe la machine et le comptoir, on démonte à la fin, vous n'avez rien à gérer. Idéal pour un petit-déjeuner d'accueil, un salon ou une journée collaborateurs. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
+  { id: 'b2', univers: 'brunch', nom: 'Location de Machine Expresso Professionnelle', img: '/prod-machine-expresso.png',
+    description: 'Une machine à expresso professionnelle installée pour un café de qualité en libre-service.',
+    compo: ['Espresso', 'Lungo', 'Ristretto', 'Décaféiné', 'Sélection de capsules premium', 'Gobelets, sucres & touillettes'],
+    article: `
+      <h2>Une machine à expresso professionnelle pour vos bureaux et événements d'entreprise à Paris</h2>
+      <p>Un vrai café, tout de suite et sans effort : nous installons une machine à expresso professionnelle dans vos locaux ou sur votre lieu d'événement. Chacun se sert quand il veut, un espresso serré avant une réunion, un allongé pendant la pause. L'Écrin Traiteur met en place cette machine à Paris et en Île-de-France, avec les capsules, les gobelets et tout le nécessaire.</p>
+      <h2>Un café de qualité, en libre-service toute la journée</h2>
+      <p>Espresso, lungo, ristretto ou décaféiné, à partir d'une sélection de capsules premium. La machine reste à disposition pendant toute la prestation : on fournit gobelets, sucres et touillettes, on réassort si besoin, et on reprend le matériel à la fin. Idéal pour un petit-déjeuner d'accueil, un séminaire ou une journée collaborateurs.</p>
+      <h2>Louer une machine à expresso à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis : date, lieu, durée, nombre de personnes et accès électrique. Livraison, installation et reprise de la machine compris, vous n'avez rien à gérer. Une option simple pour garder vos équipes et vos invités au café toute la journée. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b3', univers: 'brunch', nom: 'Bar à Jus Pressés', img: '/prod-bar-jus.webp',
     description: 'Jus de fruits et légumes préparés devant les invités.',
     compo: ['Orange', 'Pamplemousse', 'Citronnade fraîche', 'Pomme', 'Carotte, Orange & Gingembre', 'Betterave, Pomme & Citron', 'Concombre, Menthe & Citron Vert'],
