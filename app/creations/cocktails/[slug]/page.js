@@ -69,7 +69,15 @@ export default function CocktailDetail() {
         ...(f.img ? { image: `${BASE}${f.img}` } : {}),
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
         category: "Cocktail & Buffet d'entreprise",
-        // Prestation sur devis (pas de prix fixe) → pas de bloc offers pour éviter un Offer invalide
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'EUR',
+          price: String(f.prix).replace(',', '.'),
+          seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
+          areaServed: 'Île-de-France',
+          url: `${BASE}/devis`,
+        },
       },
     ],
   }

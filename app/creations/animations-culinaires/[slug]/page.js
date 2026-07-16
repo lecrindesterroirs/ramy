@@ -39,15 +39,8 @@ export default function AnimationDetail() {
           ...(c.href ? { item: `${BASE}${c.href}` } : {}),
         })),
       },
-      {
-        '@type': 'Product',
-        name: anim.nom,
-        ...(anim.description ? { description: anim.description } : {}),
-        ...(anim.img ? { image: `${BASE}${anim.img}` } : {}),
-        category: universLabel,
-        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
-        // Prestation sur devis (pas de prix fixe) → pas de bloc offers pour éviter un Offer invalide
-      },
+      // Pas de Product : animation sur devis (pas de prix). Un Product sans offer,
+      // review ni aggregateRating est rejeté par Google (extrait produit invalide).
     ],
   }
 

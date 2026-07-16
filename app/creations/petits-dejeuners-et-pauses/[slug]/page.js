@@ -102,27 +102,27 @@ export default function ProductPage() {
           { '@type': 'ListItem', position: 3, name: product.name, item: pageUrl },
         ],
       },
-      {
+      // Product uniquement si prix (offer). Sans offer/review/aggregateRating,
+      // Google rejette l'extrait produit.
+      product.price ? {
         '@type': 'Product',
         name: `${product.name}, L'Écrin Traiteur`,
         description: product.ingredients || `${product.name}, spécialité artisanale livrée pour vos petits-déjeuners d'entreprise à Paris et en Île-de-France.`,
         image: product.img ? `${BASE}${product.img}` : undefined,
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
         category: "Petit-déjeuner d'entreprise",
-        ...(product.price ? {
-          offers: {
-            '@type': 'Offer',
-            priceCurrency: 'EUR',
-            price: product.price.toFixed(2),
-            availability: 'https://schema.org/InStock',
-            url: pageUrl,
-            areaServed: { '@type': 'State', name: 'Île-de-France' },
-            seller: { '@id': BUSINESS_ID },
-            ...productOfferPolicy(),
-          },
-        } : {}),
-      },
-    ],
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'EUR',
+          price: product.price.toFixed(2),
+          availability: 'https://schema.org/InStock',
+          url: pageUrl,
+          areaServed: { '@type': 'State', name: 'Île-de-France' },
+          seller: { '@id': BUSINESS_ID },
+          ...productOfferPolicy(),
+        },
+      } : null,
+    ].filter(Boolean),
   }
 
   return (

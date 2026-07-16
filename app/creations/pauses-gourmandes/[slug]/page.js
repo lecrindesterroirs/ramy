@@ -170,6 +170,9 @@ export default function PauseDetail() {
     return <CoffretDetail produit={produit} />
   }
 
+  // Prix extrait du libellé (ex. « 24 pièces, 64,00 € » → 64,00) pour un Offer valide.
+  const prixNum = (String(produit.prix || '').match(/(\d+,\d{2})/) || [])[1] || null
+
   return (
     <GalleryFiche
       title={produit.nom}
@@ -177,7 +180,7 @@ export default function PauseDetail() {
       relatedTitle="D'autres pauses gourmandes"
       subtitle="Pause Gourmande · L'après-midi"
       img={produit.img}
-      price={null}
+      price={prixNum}
       description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi.`}
       breadcrumb={[
         { label: 'Accueil', href: '/' },

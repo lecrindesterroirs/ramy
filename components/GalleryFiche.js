@@ -70,26 +70,25 @@ export default function GalleryFiche({
           ...(c.href ? { item: `${BASE}${c.href}` } : {}),
         })),
       },
-      {
+      // Product émis UNIQUEMENT si un vrai prix/Offer existe. Sans offer (ni
+      // review ni aggregateRating), Google rejette l'extrait produit.
+      price ? {
         '@type': 'Product',
         name: title,
         ...(description ? { description } : {}),
         ...(img ? { image: `${BASE}${img}` } : {}),
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
-        // Offer uniquement si un vrai prix existe (sinon prestation sur devis → pas d'Offer invalide)
-        ...(price ? {
-          offers: {
-            '@type': 'Offer',
-            availability: 'https://schema.org/InStock',
-            priceCurrency: 'EUR',
-            price: String(price).replace(',', '.'),
-            seller: { '@id': BUSINESS_ID },
-            areaServed: 'Île-de-France',
-            url: `${BASE}/devis`,
-            ...productOfferPolicy(),
-          },
-        } : {}),
-      },
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/InStock',
+          priceCurrency: 'EUR',
+          price: String(price).replace(',', '.'),
+          seller: { '@id': BUSINESS_ID },
+          areaServed: 'Île-de-France',
+          url: `${BASE}/devis`,
+          ...productOfferPolicy(),
+        },
+      } : null,
     ].filter(Boolean),
   }
 
