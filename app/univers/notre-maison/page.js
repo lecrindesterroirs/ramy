@@ -118,7 +118,7 @@ export default function NotreMaison() {
               L'Écrin n'a pas de cuisine centrale qui standardise tout. Nous partons de commerçants et d'artisans que nous avons goûtés un par un, les madeleines de Mado Paris, les viennoiseries de la Maison Marques, les yaourts de la Ferme de Viltain à Jouy-en-Josas, les jus d'Alain Milliat, puis nous assurons la mise en place, la présentation et la logistique du froid jusqu'à vos bureaux.
             </p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)', marginBottom: '20px' }}>
-              Basés à Boulogne-Billancourt, nous livrons Paris et l'Île-de-France par notre propre équipe, dès 6h30, jamais en sous-traitance. Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten. Le dernier geste, poser le plateau et aligner les verres, compte autant que le choix du producteur.
+              Basés à Boulogne-Billancourt, nous livrons Paris et l'Île-de-France par notre propre équipe, dès 6h30, jamais en sous-traitance. Toute la carte est halal par défaut, avec des options végétariennes, vegan et sans gluten, pour répondre aux contraintes de chacun. Le dernier geste, poser le plateau et aligner les verres, compte autant que le choix du producteur.
             </p>
           </section>
 
