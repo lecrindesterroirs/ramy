@@ -14,6 +14,7 @@ import FAQSection from '../components/FAQSection'
 import VillesSection from '../components/VillesSection'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
+import { GBP_RATING, GBP_REVIEWS } from '../lib/site'
 
 export const metadata = {
   alternates: { canonical: '/' },
@@ -100,8 +101,8 @@ export default function Home() {
             },
             'aggregateRating': {
               '@type': 'AggregateRating',
-              'ratingValue': '5.0',
-              'reviewCount': '18',
+              'ratingValue': String(GBP_RATING),
+              'reviewCount': String(GBP_REVIEWS),
               'bestRating': '5',
               'worstRating': '1',
             },
