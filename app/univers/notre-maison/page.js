@@ -77,7 +77,7 @@ export default function NotreMaison() {
             </p>
 
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(38px, 6vw, 62px)', fontWeight: 400, lineHeight: 1.05, color: '#2A2013', marginBottom: '10px' }}>
-              Qui nous sommes
+              Qui sommes-nous
             </h1>
 
             <Sprig />
@@ -115,10 +115,10 @@ export default function NotreMaison() {
               Notre modèle
             </h2>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)', marginBottom: '20px' }}>
-              L'Écrin n'a pas de cuisine centrale qui standardise tout. Nous partons de commerçants et d'artisans que nous avons goûtés un par un — les madeleines de Mado Paris, les viennoiseries de la Maison Marques, les yaourts de la Ferme de Viltain à Jouy-en-Josas, les jus d'Alain Milliat — puis nous assurons la mise en place, la présentation et la logistique du froid jusqu'à vos bureaux.
+              L'Écrin n'a pas de cuisine centrale qui standardise tout. Nous partons de commerçants et d'artisans que nous avons goûtés un par un, les madeleines de Mado Paris, les viennoiseries de la Maison Marques, les yaourts de la Ferme de Viltain à Jouy-en-Josas, les jus d'Alain Milliat, puis nous assurons la mise en place, la présentation et la logistique du froid jusqu'à vos bureaux.
             </p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)', marginBottom: '20px' }}>
-              Basés à Boulogne-Billancourt, nous livrons Paris et l'Île-de-France par notre propre équipe, dès 6h30, jamais en sous-traitance. Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten. Le dernier geste — poser le plateau, aligner les verres — compte autant que le choix du producteur.
+              Basés à Boulogne-Billancourt, nous livrons Paris et l'Île-de-France par notre propre équipe, dès 6h30, jamais en sous-traitance. Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten. Le dernier geste, poser le plateau et aligner les verres, compte autant que le choix du producteur.
             </p>
           </section>
 
@@ -131,7 +131,7 @@ export default function NotreMaison() {
               « J'ai commencé par chercher les meilleurs producteurs avant de chercher des clients. Un petit-déjeuner d'entreprise, ce n'est pas une contrainte logistique : c'est un moment qu'on offre à ses équipes. Je voulais qu'il soit à la hauteur. »
             </p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'rgba(42,32,19,0.7)' }}>
-              <strong style={{ fontWeight: 500, color: '#2A2013' }}>Ramy Abdelaty</strong> — fondateur de L'Écrin Traiteur
+              <strong style={{ fontWeight: 500, color: '#2A2013' }}>Ramy Abdelaty</strong>, fondateur de L'Écrin Traiteur
             </p>
           </section>
 
