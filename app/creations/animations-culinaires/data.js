@@ -41,7 +41,7 @@ export const ANIMATIONS = [
       <h2>Installer un bar à café à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès électrique. On installe la machine et le comptoir, on démonte à la fin, vous n'avez rien à gérer. Idéal pour un petit-déjeuner d'accueil, un salon ou une journée collaborateurs. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'b2', univers: 'brunch', nom: 'Location de Machine Expresso Professionnelle', img: '/prod-machine-expresso.png',
+  { id: 'b2', univers: 'brunch', nom: 'Location de Machine Expresso Professionnelle en Entreprise', img: '/prod-machine-expresso.png',
     description: 'Une machine à expresso professionnelle installée pour un café de qualité en libre-service.',
     compo: ['Espresso', 'Lungo', 'Ristretto', 'Décaféiné', 'Sélection de capsules premium', 'Gobelets, sucres & touillettes'],
     article: `
