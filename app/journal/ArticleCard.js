@@ -1,8 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { articleAuthor } from '../../lib/journalData'
 
 export default function ArticleCard({ article }) {
+  const author = articleAuthor(article.slug)
   return (
     <a
       href={article.slug && article.slug !== '#' ? `/journal/${article.slug}` : '#'}
@@ -54,6 +56,15 @@ export default function ArticleCard({ article }) {
           letterSpacing: '0.04em',
         }}>
           {article.date}
+        </span>
+        <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
+        <span style={{
+          fontFamily: "'Neue Montreal', sans-serif",
+          fontSize: '11px',
+          color: 'rgba(17,17,17,0.45)',
+          letterSpacing: '0.04em',
+        }}>
+          Par {author.name}
         </span>
       </div>
 

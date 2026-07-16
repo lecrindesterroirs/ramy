@@ -73,10 +73,10 @@ export default function ArticlePage() {
               <span style={{
                 fontFamily: "'Neue Montreal', sans-serif",
                 fontSize: '11px',
-                color: 'rgba(17,17,17,0.45)',
+                color: 'rgba(17,17,17,0.6)',
                 letterSpacing: '0.04em',
               }}>
-                Par {author.name}
+                Par <strong style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{author.name}</strong>
               </span>
             </div>
           </div>
