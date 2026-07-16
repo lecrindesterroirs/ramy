@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/fetch-gbp.mjs",
     "build": "next build",
     "postbuild": "[ \"$VERCEL_ENV\" = production ] && node scripts/indexnow-submit.mjs || true",
     "start": "next start",
