@@ -9,7 +9,21 @@ import RelatedLinks from '../../../components/RelatedLinks'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { articles, articleAuthor } from '../../../lib/journalData'
 import { PRODUCTS } from '../../../lib/productsData'
+import { PAUSES } from '../../creations/pauses-gourmandes/page'
 import ParallaxImage from '../../../components/ParallaxImage'
+
+// Résout un id de relatedProducts sur les deux sources possibles (Petits-Déjeuners & Pauses,
+// ou Pauses Gourmandes) et normalise le format (prix numérique + href) pour l'affichage.
+const resolveRelatedProduct = (id) => {
+  const p = PRODUCTS.find(x => x.id === id)
+  if (p) return { id: p.id, name: p.name, img: p.img, price: p.price, href: `/creations/petits-dejeuners-et-pauses/${p.id}` }
+  const pause = PAUSES.find(x => x.id === id)
+  if (pause) {
+    const priceNum = (String(pause.prix || '').match(/(\d+,\d{2})/) || [])[1]
+    return { id: pause.id, name: pause.nom, img: pause.img, price: priceNum ? parseFloat(priceNum.replace(',', '.')) : null, href: `/creations/pauses-gourmandes/${pause.id}` }
+  }
+  return null
+}
 
 // Complète une date "AAAA-MM-JJ" en datetime ISO 8601 avec fuseau (Paris) pour les données structurées
 const isoDateTime = (d) => (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) ? `${d}T09:00:00+02:00` : d
@@ -160,7 +174,7 @@ export default function ArticlePage() {
 
           {/* Produits recommandés */}
           {article.relatedProducts?.length > 0 && (() => {
-            const prods = article.relatedProducts.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
+            const prods = article.relatedProducts.map(resolveRelatedProduct).filter(Boolean)
             if (!prods.length) return null
             return (
               <div style={{ marginTop: '56px', paddingTop: '48px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
@@ -189,7 +203,7 @@ export default function ArticlePage() {
                   {prods.map(product => (
                     <a
                       key={product.id}
-                      href={`/creations/petits-dejeuners-et-pauses/${product.id}`}
+                      href={product.href}
                       style={{ background: 'var(--bg-secondary)', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}
                       onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
                       onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
