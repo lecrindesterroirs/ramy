@@ -44,9 +44,6 @@ export default function ProductsPageTemplate({
   const [sortLabel, setSortLabel]   = useState('En vedette')
   // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
   // fallbackProducts est l'unique source de vérité.
-  // Certains produits sont volontairement listés dans plusieurs sections (même id,
-  // ex. plateaux salés) : on garde les doublons d'affichage et on distingue les clés
-  // React par l'index (pas de dédup, sinon on vide la section « Petit Déjeuner Salé »).
   const products = sortProducts(fallbackProducts, sortLabel)
 
   return (
