@@ -1,14 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
-import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/CategoryTabs'
+import CategoryTabs, { sortItems, priceFromLabel, DEFAULT_SORTS } from '../../../components/CategoryTabs'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 
@@ -148,26 +148,33 @@ export const PAUSES = [
     nom: 'Crêpes moelleuses maison',                      img: '/prod-crepes-v2.webp',         prix: '20 crêpes, 58,90 €', description: 'Pâte traditionnelle reposée. Inclus : pots de confiture Alain Milliat et pâte à tartiner.' },
   // ─── Grands gâteaux à partager ────────────────────────────────────
   { id: 'tarte-framboise-grand-format',
+    sectionTitle: 'Gâteaux à partager',
+    section: 'gateaux-a-partager',
     seoTitle: `Grande tarte aux framboises, le gâteau à partager pour vos anniversaires d'entreprise à Paris`,
     seoHtml: `<p>Notre grande tarte aux framboises, pâte sablée et crémeux vanille, est pensée comme un vrai <strong>gâteau à partager</strong> : le format idéal pour un anniversaire d'entreprise, un pot de départ ou pour marquer un succès d'équipe. Dressée de framboises fraîches, elle se coupe en parts devant tout le monde, un vrai moment plutôt qu'une simple pâtisserie individuelle.</p><h2>Commander votre grand gâteau d'anniversaire à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Idéal pour un <strong>gâteau d'anniversaire en entreprise</strong>, un onboarding qui marque les esprits ou toute occasion à fêter en équipe. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Grande Tarte aux Framboises',   img: '/prod-tarte-framboise-partager.webp', prix: '10-12 pers, 64,90 €', description: 'Pâte sablée, crémeux vanille et framboises fraîches. Le grand gâteau à partager pour vos anniversaires et moments d\'équipe.' },
   { id: 'gateau-praline-noisette-partager',
+    section: 'gateaux-a-partager',
     seoTitle: `Grand gâteau praliné noisette à partager, pour vos anniversaires et onboarding en entreprise à Paris`,
     seoHtml: `<p>Notre grand gâteau praliné noisette, dacquoise croustillante, praliné généreux et mousse légère, est conçu comme <strong>un gâteau à partager</strong> plutôt qu'une pâtisserie individuelle. Son format rectangulaire, taillé en parts, en fait le grand gâteau idéal pour souligner un anniversaire d'entreprise, un onboarding réussi ou toute étape à célébrer en équipe.</p><h2>Commander votre grand gâteau d'anniversaire à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Un <strong>gâteau d'anniversaire en entreprise</strong> gourmand et spectaculaire, pensé pour être découpé et partagé. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Grand Gâteau Praliné Noisette',  img: '/prod-gateau-praline-partager.webp', prix: '10-12 pers, 69,90 €', description: 'Dacquoise croustillante, praliné généreux et mousse légère. Le grand gâteau à partager pour vos célébrations d\'équipe.' },
   { id: 'fraisier-grand-format',
+    section: 'gateaux-a-partager',
     seoTitle: `Fraisier à partager, le grand gâteau pour vos anniversaires d'entreprise à Paris`,
     seoHtml: `<p>Notre fraisier, biscuit léger, crème mousseline et fraises fraîches, est décliné en grand format pour devenir un vrai <strong>gâteau à partager</strong> en entreprise. C'est le classique gourmand qui fait toujours plaisir, taillé en parts pour un anniversaire, un pot de départ ou un moment convivial à célébrer en équipe.</p><h2>Commander votre grand gâteau d'anniversaire à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Le <strong>gâteau d'anniversaire en entreprise</strong> qui fait l'unanimité, pour un onboarding, une fête d'équipe ou toute occasion à marquer. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Fraisier à Partager',           img: '/prod-fraisier-partager.webp', prix: '10-12 pers, 64,90 €', description: 'Biscuit léger, crème mousseline et fraises fraîches. Le grand gâteau à partager pour vos anniversaires d\'équipe.' },
   { id: 'tarte-citron-meringuee-grande',
+    section: 'gateaux-a-partager',
     seoTitle: `Grande tarte au citron meringuée, le gâteau à partager pour vos anniversaires d'entreprise à Paris`,
     seoHtml: `<p>Notre grande tarte au citron meringuée, crémeux citron vif et meringue dorée à la torche, est pensée en <strong>grand format à partager</strong>. Son caractère acidulé change du sucré classique et surprend agréablement lors d'un anniversaire d'entreprise, d'un onboarding ou d'un moment à fêter en équipe.</p><h2>Commander votre grand gâteau d'anniversaire à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Un <strong>gâteau d'anniversaire en entreprise</strong> qui tranche avec l'ordinaire, à découper et partager en équipe. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Grande Tarte au Citron Meringuée', img: '/prod-tarte-citron-partager.webp', prix: '10-12 pers, 59,90 €', description: 'Crémeux citron vif et meringue dorée à la torche. Le grand gâteau à partager pour vos célébrations d\'équipe.' },
   { id: 'gateau-roule-fraise-partager',
+    section: 'gateaux-a-partager',
     seoTitle: `Gâteau roulé fraise vanille, le gâteau à partager pour vos goûters d'anniversaire en entreprise à Paris`,
     seoHtml: `<p>Notre gâteau roulé fraise et vanille, biscuit moelleux, crème légère et fraises fraîches, offre un format original de <strong>gâteau à partager</strong>. Plus léger qu'un gâteau à étages, il se tranche facilement et convient parfaitement à un goûter d'anniversaire d'entreprise ou à un moment de convivialité entre collègues.</p><h2>Commander votre gâteau d'anniversaire à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Un <strong>gâteau d'anniversaire en entreprise</strong> simple et gourmand, idéal pour un onboarding ou une fête d'équipe. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Gâteau Roulé Fraise & Vanille',  img: '/prod-buche-fraise-partager.webp', prix: '8-10 pers, 54,90 €', description: 'Biscuit moelleux, crème légère et fraises fraîches, roulé. Le gâteau à partager pour vos goûters d\'anniversaire d\'équipe.' },
   { id: 'panettone-artisanal-partager',
+    section: 'gateaux-a-partager',
     seoTitle: `Panettone artisanal, le grand gâteau à partager pour vos petits-déjeuners et fêtes d'entreprise à Paris`,
     seoHtml: `<p>Notre panettone artisanal, brioche italienne moelleuse aux fruits confits et raisins, cuite dans son moule doré traditionnel, est un <strong>grand gâteau à partager</strong> par excellence. Généreux et parfumé, il trouve sa place sur un petit-déjeuner festif, un goûter de fin d'année ou tout moment à célébrer en équipe, tranché devant tout le monde.</p><h2>Commander votre panettone à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Un <strong>gâteau à partager</strong> idéal pour un anniversaire d'entreprise, un onboarding ou les fêtes de fin d'année. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Panettone Artisanal',           img: '/prod-panettone-partager.webp', prix: '10-12 pers, 44,90 €', description: 'Brioche italienne moelleuse aux fruits confits et raisins. Le grand gâteau à partager pour vos petits-déjeuners et fêtes d\'équipe.' },
@@ -253,9 +260,14 @@ function PauseCard({ produit }) {
 
 /* ─── Page ───────────────────────────────────────────────────────── */
 
+const GATEAUX_LABEL = 'Gâteaux à partager'
+const SORTS = [...DEFAULT_SORTS, GATEAUX_LABEL]
+
 export default function PausesGourmandes() {
   const [sortLabel, setSortLabel] = useState('En vedette')
-  const pausesAffichees = sortItems(PAUSES, sortLabel, p => priceFromLabel(p.prix))
+  const pausesAffichees = sortLabel === GATEAUX_LABEL
+    ? PAUSES.filter(p => p.section === 'gateaux-a-partager')
+    : sortItems(PAUSES, sortLabel, p => priceFromLabel(p.prix))
   return (
     <>
       <Navbar showBanner={true} />
@@ -285,14 +297,23 @@ export default function PausesGourmandes() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Pauses Gourmandes' }]} />
 
-        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} />
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} sorts={SORTS} />
 
         {/* ── Grille des douceurs ── */}
         <div className="pg-shell pg-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 104px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px 24px' }}>
           {pausesAffichees.map((p, i) => (
-            <Reveal key={p.id} delay={(i % 4) * 90}>
-              <PauseCard produit={p} />
-            </Reveal>
+            <Fragment key={p.id}>
+              {p.sectionTitle && (
+                <div style={{ gridColumn: '1 / -1', marginBottom: '0', paddingTop: '16px', paddingBottom: '8px' }}>
+                  <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>
+                    {p.sectionTitle}
+                  </h2>
+                </div>
+              )}
+              <Reveal delay={(i % 4) * 90}>
+                <PauseCard produit={p} />
+              </Reveal>
+            </Fragment>
           ))}
         </div>
 

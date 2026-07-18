@@ -27,6 +27,8 @@ export default function PetitsDejeuners() {
       categorieSlug="petits-dejeuners"
       fallbackProducts={PRODUCTS}
       seoArticle={SEO_ARTICLE}
+      sectionFilterLabel="Petit Déjeuner Salé"
+      sectionFilterKey="petit-dejeuner-sale"
     />
   )
 }

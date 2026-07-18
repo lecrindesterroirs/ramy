@@ -13,7 +13,7 @@ import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
 
-const sorts = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
+const BASE_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
 const extractPrice = (label = '') => {
   const match = label.match(/(\d+[,.]?\d*)\s*€/)
@@ -21,7 +21,13 @@ const extractPrice = (label = '') => {
   return parseFloat(match[1].replace(',', '.'))
 }
 
-const sortProducts = (list, sortLabel) => {
+// sectionFilterLabel/-Key : entrée de tri optionnelle qui filtre la grille sur
+// une seule section (ex. « Petit Déjeuner Salé » → product.section === key),
+// plutôt que de trier l'ensemble du catalogue.
+const sortProducts = (list, sortLabel, sectionFilterLabel, sectionFilterKey) => {
+  if (sectionFilterLabel && sortLabel === sectionFilterLabel) {
+    return list.filter(p => p.section === sectionFilterKey)
+  }
   const arr = [...list]
   if (sortLabel === 'Prix croissant')  return arr.sort((a, b) => extractPrice(a.label) - extractPrice(b.label))
   if (sortLabel === 'Prix décroissant') return arr.sort((a, b) => extractPrice(b.label) - extractPrice(a.label))
@@ -40,11 +46,14 @@ export default function ProductsPageTemplate({
   seoArticle,
   basePath,
   editorial,
+  sectionFilterLabel,
+  sectionFilterKey,
 }) {
   const [sortLabel, setSortLabel]   = useState('En vedette')
+  const sorts = sectionFilterLabel ? [...BASE_SORTS, sectionFilterLabel] : BASE_SORTS
   // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
   // fallbackProducts est l'unique source de vérité.
-  const products = sortProducts(fallbackProducts, sortLabel)
+  const products = sortProducts(fallbackProducts, sortLabel, sectionFilterLabel, sectionFilterKey)
 
   return (
     <>
@@ -82,7 +91,7 @@ export default function ProductsPageTemplate({
         </div>
 
         {/* ── Barre catégories + tri (partagée avec toutes les pages) ── */}
-        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} />
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} sorts={sorts} />
 
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
