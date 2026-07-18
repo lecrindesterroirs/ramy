@@ -9,6 +9,7 @@ import Reveal from '../../../../components/Reveal'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import Breadcrumb from '../../../../components/Breadcrumb'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
+import { productOfferPolicy } from '../../../../lib/site'
 import { FORMULES } from '../page'
 
 const GALERIE = [
@@ -77,6 +78,7 @@ export default function CocktailDetail() {
           seller: { '@type': 'Organization', name: "L'Écrin Traiteur" },
           areaServed: 'Île-de-France',
           url: `${BASE}/devis`,
+          ...productOfferPolicy(),
         },
       },
     ],
