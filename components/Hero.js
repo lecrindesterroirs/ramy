@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import ReviewsBadge from './ReviewsBadge'
 import CatalogueModal from './CatalogueModal'
+import { trackPhoneClick } from '../lib/tracking'
 
 export default function Hero() {
   const imageRef = useRef(null)
@@ -188,6 +189,7 @@ export default function Hero() {
           Une question ?&nbsp;&nbsp;
           <a
             href="tel:+33174542310"
+            onClick={trackPhoneClick}
             style={{ borderBottom: '1px solid rgba(255,255,255,0.6)', paddingBottom: '1px', color: 'inherit', cursor: 'pointer' }}
           >
             01 74 54 23 10

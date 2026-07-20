@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
+import { trackPhoneClick } from '../../lib/tracking'
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -174,7 +175,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p style={labelStyle}>Téléphone</p>
-                  <a href="tel:+33174542310" style={infoStyle}>01 74 54 23 10</a>
+                  <a href="tel:+33174542310" onClick={trackPhoneClick} style={infoStyle}>01 74 54 23 10</a>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
