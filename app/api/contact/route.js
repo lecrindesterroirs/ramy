@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { logDemandeToOS } from '@/lib/os-demande'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -20,6 +21,13 @@ export async function POST(request) {
     if (!nom || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return Response.json({ error: 'Nom et email valides requis.' }, { status: 400 })
     }
+
+    // Enregistre la demande dans l'OS (registre « Demandes entrantes »). Best-effort.
+    await logDemandeToOS({
+      source: 'contact', nom, societe, email, telephone,
+      prestation: type, date_evenement: date, nb_personnes: personnes,
+      message, raw: body,
+    })
 
     await resend.emails.send({
       from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',

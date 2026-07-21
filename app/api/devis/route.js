@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { logDemandeToOS } from '@/lib/os-demande'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -36,6 +37,14 @@ export async function POST(request) {
     const dateLabel = date
       ? new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
       : 'Non renseigné'
+
+    // Enregistre la demande dans l'OS (registre « Demandes entrantes »),
+    // AVANT l'email pour ne rien perdre même si l'envoi échoue. Best-effort.
+    await logDemandeToOS({
+      source: 'devis', nom, societe, email, telephone,
+      prestation: prestationLabel, date_evenement: date, nb_personnes: convives,
+      ville, budget, message, raw: body,
+    })
 
     await resend.emails.send({
       from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',
