@@ -125,7 +125,7 @@ Texte À Propos       : paragraphes de 3-5 lignes. Aéré. Pas de blocs denses.
    ex : "Pour démarrer la journée avec les équipes, ou accueillir un client."
 
 2. Contenu typique : 3-4 produits nommés avec précision
-   ex : "Croissants au beurre AOP, pain au levain maison, jus d'orange pressé, 
+   ex : "Croissants pur beurre, pain au levain maison, jus d'orange pressé, 
          confitures en petits pots de la Maison Beillevaire."
 
 3. Origine (obligatoire) : au moins 1 producteur nommé

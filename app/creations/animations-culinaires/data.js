@@ -165,13 +165,13 @@ export const ANIMATIONS = [
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail, une inauguration ou une soirée partenaires. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
   { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/prod-atelier-fromages.webp',
-    description: 'Découpe et présentation de fromages AOP, pains artisanaux, fruits frais et fruits secs.',
+    description: 'Découpe et présentation de fromages affinés, pains artisanaux, fruits frais et fruits secs.',
     compo: [],
     article: `
       <h2>Un atelier fromages affinés pour vos réceptions d'entreprise à Paris</h2>
       <p>Un fromager qui découpe et présente devant vos invités, c'est autre chose qu'un plateau posé sur une table. Comté, chèvres, pâtes persillées et croûtes fleuries sont taillés à la demande, accompagnés de pains artisanaux, de fruits frais et de fruits secs. Une animation qui installe tout de suite une ambiance conviviale, à Paris et en Île-de-France.</p>
-      <h2>Fromages AOP, pains et accompagnements</h2>
-      <p>Sélection de fromages AOP à maturité, coupés minute et expliqués à ceux qui veulent en savoir plus. On dresse à côté pains artisanaux, miel, fruits de saison et fruits secs pour composer chaque bouchée. Les proportions s'ajustent à votre effectif et à la durée de la prestation.</p>
+      <h2>Fromages affinés, pains et accompagnements</h2>
+      <p>Sélection de fromages affinés à maturité, coupés minute et expliqués à ceux qui veulent en savoir plus. On dresse à côté pains artisanaux, miel, fruits de saison et fruits secs pour composer chaque bouchée. Les proportions s'ajustent à votre effectif et à la durée de la prestation.</p>
       <h2>Organiser votre atelier fromages à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, nombre d'invités et durée. On installe, on présente, on démonte. Idéal pour un cocktail dînatoire, une soirée partenaires ou un afterwork d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
