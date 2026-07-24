@@ -13,8 +13,8 @@ import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
-  <h2>Plateaux apéritifs pour entreprise : l'afterwork sans logistique</h2>
-  <p>Le <strong>plateau apéritif d'entreprise</strong> est le format des fins de journée réussies : afterwork d'équipe, célébration d'un projet livré, pot informel entre deux services. Pas de traiteur en cuisine, pas de vaisselle, des plateaux généreux posés sur la table, et la convivialité fait le reste. L'Écrin Traiteur livre vos apéritifs à Paris et en Île-de-France.</p>
+  <h2>Plateaux apéritifs pour entreprise : l'apéritif dinatoire sans logistique</h2>
+  <p>Le <strong>plateau apéritif d'entreprise</strong> est le format des fins de journée réussies : afterwork d'équipe, apéritif dinatoire, célébration d'un projet livré, pot informel entre deux services. Pas de traiteur en cuisine, pas de vaisselle, des plateaux généreux posés sur la table, et la convivialité fait le reste. L'Écrin Traiteur livre vos apéritifs à Paris et en Île-de-France.</p>
 
   <h2>Des planches pensées pour le partage</h2>
   <p>Nos plateaux réunissent le meilleur de nos artisans : bouchées salées, produits de caractère, douceurs à picorer. Le format « à partager » casse la distance entre collègues, on tend le plateau, on compare, on discute. C'est précisément ce qu'on attend d'un apéritif d'équipe, et c'est ce qui le distingue d'un buffet formel.</p>
@@ -30,7 +30,7 @@ const SEO_ARTICLE = `
 
 const HERO = {
   label: 'Plateaux Apéritifs',
-  description: 'De généreux plateaux à partager pour vos afterworks et réceptions · sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
+  description: 'De généreux plateaux à partager pour vos afterworks, apéritifs dinatoires et réceptions d\'entreprise · sandwichs, fromages & charcuteries, fraîcheur et créations signature.',
   hero: '/hero-plateaux-aperitifs-full.webp',
 }
 

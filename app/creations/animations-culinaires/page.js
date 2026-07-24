@@ -30,7 +30,7 @@ const SEO_ARTICLE = `
 
 const HERO = {
   label: 'Animations Culinaires',
-  description: 'Des ateliers et bars animés en direct par nos chefs et baristas · l\'expérience gourmande qui donne du relief à vos événements.',
+  description: 'Des ateliers et bars animés en direct par nos chefs et baristas · l\'expérience gourmande qui donne du relief à vos séminaires et événements d\'entreprise.',
   hero: '/hero-animations.webp',
 }
 

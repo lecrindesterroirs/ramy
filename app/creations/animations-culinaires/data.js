@@ -34,8 +34,8 @@ export const ANIMATIONS = [
     description: 'Préparation de cafés de spécialité à la demande.',
     compo: ['Espresso', 'Cappuccino', 'Latte', 'Flat White', 'Chocolat chaud', 'Thés premium'],
     article: `
-      <h2>Une animation barista pour vos petits-déjeuners et événements d'entreprise à Paris</h2>
-      <p>Un vrai barista qui prépare espresso, cappuccino, latte et flat white à la demande, c'est le détail qui réveille une matinée de séminaire ou un petit-déjeuner d'accueil. Chacun commande sa boisson, préparée devant lui, avec l'attention d'un comptoir de café de spécialité. L'Écrin Traiteur installe ce bar à café dans vos bureaux ou votre lieu d'événement, à Paris et en Île-de-France.</p>
+      <h2>Une animation dégustation de café pour vos petits-déjeuners et événements d'entreprise à Paris</h2>
+      <p>Un vrai barista qui prépare espresso, cappuccino, latte et flat white à la demande, c'est le détail qui réveille une matinée de séminaire ou un petit-déjeuner d'accueil. Chacun commande sa boisson, préparée devant lui, avec l'attention et la dégustation de café d'un comptoir de spécialité. L'Écrin Traiteur installe ce bar à café dans vos bureaux ou votre lieu d'événement, à Paris et en Île-de-France.</p>
       <h2>Cafés de spécialité et boissons chaudes</h2>
       <p>Espresso, cappuccino, latte, flat white, chocolat chaud et une sélection de thés, servis en continu pendant toute la prestation. On prévoit des laits végétaux pour s'adapter à chacun, et on cale le rythme sur le nombre d'invités.</p>
       <h2>Installer un bar à café à Paris et en Île-de-France</h2>

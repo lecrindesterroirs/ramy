@@ -127,7 +127,7 @@ export default function TraiteurHealthy() {
     <p>Manger équilibré au bureau ne devrait pas rimer avec ennui. Chez <strong>L'Écrin Traiteur</strong>, la version healthy, c'est du <strong>frais et de saison</strong> qui a du goût : fruits découpés, yaourts fermiers de la Ferme de Viltain, jus pressés Alain Milliat, compotes sans sucres ajoutés. On allège le sucré, on garde le plaisir.</p>
     <h2>Frais, de saison, sourcé chez des producteurs identifiés</h2>
     <p>Nos produits frais viennent de producteurs que nous nommons, en circuit court quand la proximité améliore vraiment le produit. Les fruits changent avec la saison, les laitiers sont fermiers, les jus sont pressés : une pause qui fait du bien à vos équipes sans passer par l'industriel.</p>
-    <h2>Léger et adapté à chaque régime</h2>
+    <h2>Traiteur vegan et végétarien, adapté à chaque régime</h2>
     <p>Au-delà du frais, nos prestations se déclinent en versions <strong>végétariennes et vegan</strong>, avec des adaptations <strong>sans gluten sur demande</strong>. Réunion matinale, petit-déjeuner d'équipe ou déjeuner de travail, de 10 à 300 personnes, livrés dès 6h30 à Paris et en Île-de-France. <a href="/devis">Demandez votre devis gratuit</a> et composez une pause saine et gourmande.</p>
   `
 
@@ -153,8 +153,8 @@ export default function TraiteurHealthy() {
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
                   Traiteur d'entreprise · Paris & Île-de-France
                 </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur<br />Healthy
+                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(30px, 4.2vw, 58px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
+                  Traiteur Healthy<br />Vegan & Végétarien
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
                   Un traiteur d'entreprise qui fait du bien : fruits de saison, yaourts fermiers, jus pressés et options légères, sans jamais sacrifier le plaisir. Livré dans vos bureaux dès 6h30.
