@@ -282,14 +282,21 @@ Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>
 
 ## RLS / sécurité
 
-Toutes les tables ont :
+⚠️ **La base est FERMÉE au rôle `anon` depuis la migration v35** (juin 2026). La clé `NEXT_PUBLIC_SUPABASE_ANON_KEY` est exposée dans le bundle navigateur : lui donner un accès `USING(true)` rend toute la table publiquement lisible et modifiable.
+
+Le bloc à ajouter à la fin de chaque migration créant une table est donc :
 ```sql
 ALTER TABLE public.<table> ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "anon full access <table>" ON public.<table> FOR ALL TO anon USING (true) WITH CHECK (true);
 CREATE POLICY "auth full access <table>" ON public.<table> FOR ALL TO authenticated USING (true) WITH CHECK (true);
 ```
 
-**Quand on crée une nouvelle table, TOUJOURS** ajouter ce bloc à la fin de la migration, sinon Supabase warning + risque d'incohérence.
+**Ne JAMAIS ajouter de policy `TO anon` ni `TO public` avec `USING (true)`.** C'est exactement ce qui a rouvert 12 tables entre v40 et v62 (dont `google_account`, qui stocke les tokens OAuth Gmail/Calendar) — nettoyé par la migration v63.
+
+Accès hors session utilisateur :
+- pages publiques (`/signer`, `/livraison`, `/print/*`, `/track/*`), routes API et crons → `SUPABASE_SERVICE_ROLE_KEY` (serveur uniquement) ;
+- écriture depuis un service externe (ex. le site qui dépose une demande) → policy anon **restreinte au seul verbe nécessaire** (`FOR INSERT WITH CHECK (true)`), jamais `FOR ALL`.
+
+Exception connue et assumée : les tables `crmapp_*` restent ouvertes à `anon`, parce que L'Écrin CRM (repo `lecrin-app`) est une SPA qui tape Supabase depuis le navigateur sans auth. À refermer le jour où le CRM gagne une vraie authentification.
 
 ---
 
