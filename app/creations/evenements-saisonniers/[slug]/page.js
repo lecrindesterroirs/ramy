@@ -470,7 +470,12 @@ export default function EvenementDetail() {
         title="Autres rendez-vous & lectures"
         items={[
           ...evenements.filter(e => e.slug !== ev.slug).slice(0, 2).map(e => ({ href: `/creations/evenements-saisonniers/${e.slug}`, title: e.nom, meta: 'Événement saisonnier' })),
-          ...articles.slice(0, 2).map(a => ({ href: `/journal/${a.slug}`, title: a.titre, meta: a.categorie })),
+          // `articles` de l'événement : les guides du cluster, dans l'ordre voulu.
+          // Sans liste déclarée, on retombe sur les 2 premiers articles du journal.
+          ...(ev.articles?.length
+            ? ev.articles.map(slug => articles.find(a => a.slug === slug)).filter(Boolean)
+            : articles.slice(0, 2)
+          ).map(a => ({ href: `/journal/${a.slug}`, title: a.metaTitle || a.titre, meta: a.categorie })),
         ]}
         columns={4}
       />

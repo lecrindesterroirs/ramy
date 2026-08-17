@@ -334,6 +334,14 @@ export const evenements = [
     slug: 'noel',
     mois: 'Décembre',
     nom: 'Noël',
+    // Guides du cluster Noël, lien hub → spokes.
+    articles: [
+      'menu-noel-livre-entreprise-paris',
+      'budget-repas-noel-entreprise',
+      'soiree-fin-annee-entreprise-paris',
+      'petit-dejeuner-noel-bureau-entreprise',
+      'arbre-de-noel-entreprise-cse-paris',
+    ],
     tags: ['Petits-déjeuners', 'Cocktails & Buffets', 'Pauses gourmandes'],
     img: '/grand-buffet-signature.webp',
     descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud Mariage Frères.",
