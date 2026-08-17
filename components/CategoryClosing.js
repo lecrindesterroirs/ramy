@@ -115,7 +115,9 @@ export default function CategoryClosing({
           font-weight: 500;
         }
         .cat-seo-body a {
-          color: var(--accent);
+          /* --accent (#E0A126) tombe à 2,26:1 en texte sur fond clair.
+             --accent-deep est le token prévu pour l'accent en texte (AA ≥ 4,5:1). */
+          color: var(--accent-deep);
           text-decoration: none;
           border-bottom: 1px solid var(--accent);
         }
