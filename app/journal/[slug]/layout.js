@@ -7,8 +7,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const article = articles.find(a => a.slug === params.slug)
   if (!article) return {}
+  // metaTitle : titre court (<= 60 car.) pour le SERP, le titre long restant
+  // affiché en H1 sur la page. Sans override, on garde le titre de l'article.
   return {
-    title: article.titre,
+    title: article.metaTitle || article.titre,
     description: article.extrait,
     alternates: { canonical: `/journal/${params.slug}` },
     openGraph: {

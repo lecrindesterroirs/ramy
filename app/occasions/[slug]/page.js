@@ -249,6 +249,8 @@ export default function OccasionPage() {
         .occasion-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 14px; line-height: 1.72; color: rgba(17,17,17,0.58); margin-bottom: 16px; }
         .occasion-article-body h2 { font-family: 'Neue Montreal', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin: 48px 0 12px; padding-top: 24px; border-top: 1px solid rgba(169,128,59,0.22); line-height: 1; }
         .occasion-article-body strong { color: rgba(17,17,17,0.82); font-weight: 500; }
+        .occasion-article-body a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+        .occasion-article-body a:hover { color: #111111; }
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
           .page-hero { height: 50vh !important; min-height: 300px !important; }

@@ -10,13 +10,19 @@ export async function generateMetadata({ params }) {
   if (!city) {
     return { title: 'Traiteur Île-de-France | L\'Écrin Traiteur' }
   }
+  // metaTitle / metaDescription : override par ville (titre absolu, marque incluse
+  // si elle tient sous ~60 car.). Sans override, on garde le gabarit historique.
+  const title = city.metaTitle || `${city.seoTitle} | L'Écrin Traiteur`
+  const description = city.metaDescription
+    || `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Artisans sélectionnés, devis sous 24h.`
+
   return {
-    title: { absolute: `${city.seoTitle} | L'Écrin Traiteur` },
-    description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Artisans sélectionnés, devis sous 24h.`,
+    title: { absolute: title },
+    description,
     openGraph: {
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-      title: `Traiteur entreprise ${city.name} | L'Écrin Traiteur`,
-      description: `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et réceptions. Artisans sélectionnés, livraison dès 6h30.`,
+      title,
+      description,
       locale: 'fr_FR',
       type: 'website',
     },
