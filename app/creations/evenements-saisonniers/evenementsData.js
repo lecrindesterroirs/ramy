@@ -209,6 +209,13 @@ export const evenements = [
   },
   {
     slug: 'rentree',
+    // Guides du cluster rentrée, lien hub → spokes.
+    articles: [
+      'traiteur-rentree-onboarding-entreprise-paris',
+      'petit-dejeuner-rentree-septembre-entreprise',
+      'boissons-petit-dejeuner-entreprise',
+      'petit-dejeuner-entreprise-paris',
+    ],
     mois: 'Septembre',
     nom: 'Rentrée',
     tags: ['Petits-déjeuners', 'Réunions'],
@@ -235,11 +242,23 @@ export const evenements = [
         },
         {
           heading: "Ce qui fait un bon petit-déjeuner de rentrée",
-          texte: "La qualité d'abord. Des viennoiseries d'une vraie boulangerie, pas des croissants industriels décongelés. Un café bien préparé, un thé de qualité. Et un élément de personnalisation : une plaque chocolat avec le message de l'équipe, quelque chose qui marque le retour comme un moment voulu et non subi. Ces petits détails comptent bien plus que le budget dépensé. Vos équipes s'en souviennent.",
+          texte: "Des viennoiseries d'une vraie boulangerie, pur beurre, façonnées le matin même, pas des croissants industriels décongelés. Un café bio en thermos et un thé Mariage Frères. Et un élément de personnalisation : une plaque chocolat avec le message de l'équipe, quelque chose qui marque le retour comme un moment voulu et non subi. Ces petits détails comptent bien plus que le budget dépensé. Vos équipes s'en souviennent.",
         },
         {
           heading: "Les nouvelles recrues méritent une attention particulière",
           texte: "Septembre est souvent une période de recrutement et d'onboarding. Un petit-déjeuner de rentrée est l'occasion parfaite d'intégrer les nouveaux arrivants dans la dynamique d'équipe. Un moment informel autour d'un café permet les présentations naturelles que les réunions formelles ne créent jamais vraiment. Si vous avez des arrivées prévues en septembre, organisez l'événement dans la première semaine du mois.",
+        },
+        {
+          heading: "Combien prévoir par personne",
+          texte: "Deux viennoiseries par personne si elles sont servies seules, une et demie s'il y a aussi des fruits et des yaourts. Sur le café, le repère qui compte : un thermos fait un litre, soit six à huit tasses. Pour une équipe de vingt personnes qui revient de congés, prévoyez donc deux à trois thermos, pas un seul. Sept personnes sur dix prennent un café le matin, et beaucoup reviennent pour une deuxième tasse quand le moment dure. Comptez enfin un litre de jus pour six à sept verres, soit deux litres pour vingt participants.",
+        },
+        {
+          heading: "Le budget d'une rentrée réussie",
+          texte: "Un petit-déjeuner de rentrée complet démarre à 6,90 euros HT par personne : viennoiseries, corbeille de fruits frais découpés, café et jus. Une formule plus simple, viennoiseries et café seulement, descend à 2,90 euros HT par personne. La plaque chocolat personnalisée se rajoute à la commande selon le message et le format souhaités. À cela s'ajoutent la livraison, 29 euros HT sur Paris et les communes proches, et un minimum de commande de 50 euros HT.",
+        },
+        {
+          heading: "Quand commander pour septembre",
+          texte: "Septembre est, avec décembre, le mois le plus chargé de l'année pour un traiteur d'entreprise. Les premières semaines partent en premier, et les mardis et mercredis avant tous les autres jours. Si votre date est fixée, réservez dès la fin août. Pour la plaque chocolat personnalisée, qui est fabriquée sur commande, comptez quelques jours de plus. Sur les formats simples, une commande avant 14h la veille reste possible.",
         },
         {
           heading: "Format et timing",
