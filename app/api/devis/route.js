@@ -1,8 +1,6 @@
 import { Resend } from 'resend'
 import { logDemandeToOS } from '@/lib/os-demande'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const PRESTATIONS = {
   'petit-dejeuner': 'Petit-déjeuner',
   'plateaux-repas': 'Plateaux repas',
@@ -45,6 +43,9 @@ export async function POST(request) {
       prestation: prestationLabel, date_evenement: date, nb_personnes: convives,
       ville, budget, message, raw: body,
     })
+
+    // Instanciation paresseuse : évite de casser le build quand RESEND_API_KEY est absente
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
       from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',

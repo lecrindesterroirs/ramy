@@ -1,7 +1,5 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req) {
   try {
     const { items, customer, total } = await req.json()
@@ -105,6 +103,9 @@ export async function POST(req) {
       </body>
       </html>
     `
+
+    // Instanciation paresseuse : évite de casser le build quand RESEND_API_KEY est absente
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     // Email to the team
     await resend.emails.send({

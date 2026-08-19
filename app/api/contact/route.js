@@ -1,8 +1,6 @@
 import { Resend } from 'resend'
 import { logDemandeToOS } from '@/lib/os-demande'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 // Échappement HTML pour éviter toute injection dans l'email de notification
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -28,6 +26,9 @@ export async function POST(request) {
       prestation: type, date_evenement: date, nb_personnes: personnes,
       message, raw: body,
     })
+
+    // Instanciation paresseuse : évite de casser le build quand RESEND_API_KEY est absente
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     await resend.emails.send({
       from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',
