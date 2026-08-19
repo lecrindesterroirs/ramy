@@ -20,7 +20,7 @@ const SEO_ARTICLE = `
   <p>Un menu posé au centre change la dynamique d'une salle : on se sert, on fait passer, on commente. Chaque menu équilibre pièces salées et douceurs, pour circuler de main en main, généreux, beau à regarder et pensé pour tous les goûts.</p>
 
   <h2>Choisir le bon menu</h2>
-  <p>Comptez un menu pour 8 à 12 personnes en le complétant selon l'appétit et l'horaire. Signature, Méditerranéen, Parisien ou Jardin (100 % végétarien) : nos équipes vous aident à composer et à dimensionner selon le nombre de convives.</p>
+  <p>Comptez un menu pour 8 à 12 personnes en le complétant selon l'appétit et l'horaire. Méditerranéen, Parisien ou Jardin (100 % végétarien) : nos équipes vous aident à composer et à dimensionner selon le nombre de convives.</p>
 
   <h2>Commander vos menus à partager à Paris</h2>
   <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA, et pour les moments récurrents, un devis cadre simplifie tout.</p>
@@ -246,7 +246,7 @@ export default function APartager() {
         {/* ── Intro ── */}
         <div className="ap-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0', textAlign: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
-            Quatre menus
+            Trois menus
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
             Choisissez votre menu à partager
