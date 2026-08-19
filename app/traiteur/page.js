@@ -29,6 +29,36 @@ const TRAITEUR_FAQ = [
   },
 ]
 
+// Prestations : le hub ne liait que les villes, jamais les pages produit.
+// Ces liens en font un vrai pivot et couvrent les requêtes « traiteur entreprise + format ».
+const PRESTATIONS = [
+  {
+    href: '/creations/petits-dejeuners-et-pauses',
+    titre: "Petit-déjeuner d'entreprise",
+    texte: "Viennoiseries pur beurre livrées le matin même par nos boulangers partenaires, corbeille de fruits frais découpés, jus Alain Milliat et café. Livraison dès 6h30, avant l'arrivée des équipes.",
+  },
+  {
+    href: '/creations/plateaux-repas',
+    titre: 'Plateaux repas et déjeuners de réunion',
+    texte: "Plateaux individuels complets, entrée, plat, dessert et pain, filmés et étiquetés. À partir de 28,90 € HT par personne, options végétariennes sur toutes les collections.",
+  },
+  {
+    href: '/creations/cocktails',
+    titre: 'Cocktails, afterworks et réceptions',
+    texte: "De 8 à 16 pièces par personne selon le format, dressées et prêtes à poser. De 29,90 à 51,90 € HT par personne, livrées à l'heure de votre événement.",
+  },
+  {
+    href: '/creations/pauses-gourmandes',
+    titre: 'Pauses gourmandes et goûters',
+    texte: "Madeleines, cookies, cakes et gâteaux à partager pour les pauses de l'après-midi, les séminaires et les moments d'équipe.",
+  },
+  {
+    href: '/creations/animations-culinaires',
+    titre: 'Animations culinaires en direct',
+    texte: "Atelier crêpes, gaufres, mini burgers, bar à glaces ou barista : une animation préparée devant vos équipes, pour un séminaire ou un événement interne.",
+  },
+]
+
 // Rattache une ville à son département (le champ region peut porter un suffixe «, La Défense »)
 const deptOf = city => DEPARTEMENTS.find(d => city.region.includes(d)) || city.region
 
@@ -91,6 +121,47 @@ export default function TraiteurPage() {
           </p>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
             Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.
+          </p>
+        </section>
+
+        {/* ── Prestations : hub → pages produit ── */}
+        <section className="traiteur-prestations" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px' }}>
+            Nos prestations de traiteur d'entreprise
+          </h2>
+          {PRESTATIONS.map((p, i) => (
+            <a
+              key={p.href}
+              href={p.href}
+              className="presta-row"
+              style={{
+                display: 'block', textDecoration: 'none', padding: '22px 0',
+                borderTop: i === 0 ? '1px solid rgba(17,17,17,0.08)' : '1px solid rgba(17,17,17,0.08)',
+              }}
+            >
+              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                {p.titre}
+              </h3>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
+                {p.texte}
+              </p>
+            </a>
+          ))}
+        </section>
+
+        {/* ── Bloc Paris / IDF ── */}
+        <section className="traiteur-zone" style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 40px 8px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '22px' }}>
+            Un traiteur d'entreprise qui connaît le terrain
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
+            Livrer un petit-déjeuner à 8h dans une tour de La Défense et le livrer dans un immeuble haussmannien du 8e arrondissement ne demandent pas la même préparation. Quai de livraison en sous-sol, badge visiteur déclaré la veille, accueil filtré, stationnement impossible : ce sont ces détails qui font qu'une commande arrive à l'heure ou après la réunion.
+          </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
+            Nous livrons avec notre propre équipe, jamais en sous-traitance. C'est ce qui nous permet de tenir un créneau précis plutôt qu'une plage de deux heures, et de connaître les accès de nos secteurs les plus demandés : Boulogne-Billancourt, où se trouve notre atelier, La Défense côté Puteaux, Neuilly-sur-Seine, Levallois et les Hauts-de-Seine nord.
+          </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
+            Choisissez votre commune ci-dessous pour les détails de livraison, ou <a href="/devis" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>demandez un devis</a> : vous l'avez sous 24h.
           </p>
         </section>
 
