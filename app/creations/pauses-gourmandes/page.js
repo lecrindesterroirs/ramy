@@ -162,7 +162,7 @@ export const PAUSES = [
     section: 'gateaux-a-partager',
     seoTitle: `Fraisier à partager, le grand gâteau pour vos anniversaires d'entreprise à Paris`,
     seoHtml: `<p>Notre fraisier, biscuit léger, crème mousseline et fraises fraîches, est décliné en grand format pour devenir un vrai <strong>gâteau à partager</strong> en entreprise. C'est le classique gourmand qui fait toujours plaisir, taillé en parts pour un anniversaire, un pot de départ ou un moment convivial à célébrer en équipe.</p><h2>Commander votre grand gâteau d'anniversaire à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Le <strong>gâteau d'anniversaire en entreprise</strong> qui fait l'unanimité, pour un onboarding, une fête d'équipe ou toute occasion à marquer. Facturation entreprise avec TVA, devis sous 24h.</p>`,
-    nom: 'Fraisier à Partager',           img: '/prod-fraisier-partager.webp', prix: '10-12 pers, 64,90 €', description: 'Biscuit léger, crème mousseline et fraises fraîches. Le grand gâteau à partager pour vos anniversaires d\'équipe.' },
+    nom: 'Fraisier à Partager',           img: '/prod-fraisier-partager.webp', prix: '6/8 pers, 64,90 €', description: 'Biscuit léger, crème mousseline et fraises fraîches. Le grand gâteau à partager pour vos anniversaires d\'équipe.' },
   { id: 'tarte-citron-meringuee-grande',
     section: 'gateaux-a-partager',
     seoTitle: `Grande tarte au citron meringuée, le gâteau à partager pour vos anniversaires d'entreprise à Paris`,
