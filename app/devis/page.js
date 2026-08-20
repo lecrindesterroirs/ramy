@@ -883,7 +883,7 @@ export default function Contact() {
         input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.45) !important; }
         select option { color: #111111; }
         @media (max-width: 768px) {
-          .devis-main { height: auto !important; min-height: 100vh !important; padding-top: 0 !important; }
+          .devis-main { height: auto !important; min-height: auto !important; padding-top: 0 !important; padding-bottom: 32px !important; }
           .devis-main form { overflow: visible !important; display: block !important; }
           .devis-content { padding-bottom: 4px !important; padding-top: 28px !important; padding-left: 20px !important; padding-right: 20px !important; }
           .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 20px !important; flex-wrap: wrap !important; gap: 0 !important; border-top: none !important; }
