@@ -247,19 +247,22 @@ function Step1({ data, setData, onSelect }) {
               key={p.id}
               onClick={() => { setData(d => ({ ...d, prestation: p.id })); onSelect() }}
               style={{
-                background: active ? 'rgba(224,161,38,0.06)' : 'var(--bg-secondary)',
-                border: `1px solid ${active ? '#E0A126' : 'rgba(17,17,17,0.1)'}`,
-                padding: '18px 18px',
+                background: active ? '#111111' : '#FFFFFF',
+                border: `1.5px solid #111111`,
+                padding: '20px 22px',
                 cursor: 'pointer',
-                transition: 'border-color 0.3s ease, background 0.3s ease, transform 0.2s ease',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '12px',
+                transition: 'background 0.25s ease, transform 0.2s ease',
                 transform: active ? 'translateY(-2px)' : 'translateY(0)',
               }}
-              onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(224,161,38,0.5)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
-              onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.1)'; e.currentTarget.style.transform = 'translateY(0)' } }}
+              onMouseEnter={e => { if (!active) e.currentTarget.style.transform = 'translateY(-1px)' }}
+              onMouseLeave={e => { if (!active) e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <div style={{ color: active ? '#E0A126' : 'rgba(17,17,17,0.4)', marginBottom: '8px', transition: 'color 0.3s ease' }}>{p.icon}</div>
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '4px', lineHeight: 1.2 }}>{p.titre}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', lineHeight: 1.55, color: 'var(--text-secondary)' }}>{p.desc}</p>
+              <div style={{ color: active ? '#FFFFFF' : '#111111', display: 'flex', transition: 'color 0.25s ease' }}>{p.icon}</div>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#FFFFFF' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease' }}>{p.titre}</p>
             </div>
           )
         })}
@@ -882,9 +885,9 @@ export default function Contact() {
         input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(224,161,38,0.45) !important; }
         select option { color: #111111; }
         @media (max-width: 768px) {
-          .devis-main { height: auto !important; min-height: 100vh !important; padding-top: 84px !important; }
+          .devis-main { height: auto !important; min-height: 100vh !important; padding-top: 0 !important; }
           .devis-main form { overflow: visible !important; display: block !important; }
-          .devis-content { padding-bottom: 4px !important; padding-top: 28px !important; }
+          .devis-content { padding-bottom: 4px !important; padding-top: 28px !important; padding-left: 20px !important; padding-right: 20px !important; }
           .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 20px !important; flex-wrap: wrap !important; gap: 0 !important; border-top: none !important; }
           .devis-nav-prev { order: 1 !important; display: flex !important; }
           .devis-nav-next { order: 2 !important; display: flex !important; }
@@ -892,7 +895,9 @@ export default function Contact() {
           .devis-progress-bar { padding: 10px 24px 0 !important; }
           .progress-label { display: none !important; }
           .progress-line { margin: 0 12px !important; width: 40px !important; }
-          .step1-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; padding: 0 16px !important; }
+          .step1-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; gap: 8px !important; padding: 0 !important; }
+          .step1-grid > div { padding: 14px 12px !important; gap: 8px !important; }
+          .step1-grid p { font-size: 14px !important; }
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }
           .step2-row { grid-template-columns: 1fr !important; }
           .step3-grid { grid-template-columns: 1fr !important; gap: 16px !important; padding: 0 16px !important; max-width: 100% !important; }
