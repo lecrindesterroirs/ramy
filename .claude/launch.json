@@ -19,6 +19,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "/Users/ramy/Desktop/lecrin-app", "run", "dev"],
       "port": 5200
+    },
+    {
+      "name": "le66-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/ramy/Desktop/le66-site", "run", "dev", "--", "-p", "3002"],
+      "port": 3002
     }
   ]
 }

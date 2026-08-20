@@ -1,6 +1,7 @@
 'use client'
 
-import { useParams, notFound } from 'next/navigation'
+import { useEffect } from 'react'
+import { useParams, notFound, useSearchParams } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PLATEAUX, FILTRES } from '../page'
 
@@ -14,15 +15,23 @@ const SEO_HTML = `
 
 export default function PlateauAperitifDetail() {
   const { slug } = useParams()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   const plateau = PLATEAUX.find(p => p.id === slug)
   if (!plateau) notFound()
+
+  const backHref = `/creations/plateaux-aperitifs${searchParams.toString() ? '?' + searchParams.toString() : ''}`
 
   const famille = FILTRES.find(f => f.key === plateau.famille)?.label ?? ''
 
   const related = [...PLATEAUX].filter(p => p.id !== plateau.id)
     .sort((a, b) => (b.famille === plateau.famille) - (a.famille === plateau.famille))
     .slice(0, 4)
-    .map(p => ({ href: `/creations/plateaux-aperitifs/${p.id}`, title: p.nom, meta: FILTRES.find(f => f.key === p.famille)?.label || 'Apéritif', img: p.img }))
+    .map(p => ({ href: `/creations/plateaux-aperitifs/${p.id}${searchParams.toString() ? '?' + searchParams.toString() : ''}`, title: p.nom, meta: FILTRES.find(f => f.key === p.famille)?.label || 'Apéritif', img: p.img }))
 
   return (
     <GalleryFiche
@@ -37,10 +46,10 @@ export default function PlateauAperitifDetail() {
       listItems={plateau.recettes ?? []}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
-        { label: 'Plateaux apéritifs', href: '/creations/plateaux-aperitifs' },
+        { label: 'Plateaux apéritifs', href: backHref },
         { label: `Plateau ${plateau.nom}` },
       ]}
-      backHref="/creations/plateaux-aperitifs"
+      backHref={backHref}
       backLabel="Retour aux plateaux apéritifs"
       seoEyebrow="Plateaux apéritifs · Afterworks & réceptions"
       seoTitle={plateau.seoTitle || "Le plateau apéritif qui fait le succès de vos afterworks"}

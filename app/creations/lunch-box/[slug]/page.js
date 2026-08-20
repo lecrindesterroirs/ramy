@@ -1,6 +1,7 @@
 'use client'
 
-import { useParams, notFound } from 'next/navigation'
+import { useEffect } from 'react'
+import { useParams, notFound, useSearchParams } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { BOXES } from '../page'
 
@@ -14,8 +15,16 @@ const SEO_HTML = `
 
 export default function LunchBoxDetail() {
   const { slug } = useParams()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   const box = BOXES.find(b => b.id === slug)
   if (!box) notFound()
+
+  const backHref = `/creations/lunch-box${searchParams.toString() ? '?' + searchParams.toString() : ''}`
 
   const sections = [
     box.entree && { label: 'Entrée', value: box.entree },
@@ -26,7 +35,7 @@ export default function LunchBoxDetail() {
   const related = [...BOXES].filter(b => b.id !== box.id)
     .sort((a, b2) => (b2.categorie === box.categorie) - (a.categorie === box.categorie))
     .slice(0, 4)
-    .map(b => ({ href: `/creations/lunch-box/${b.id}`, title: b.nom, meta: 'Lunch box', img: b.img }))
+    .map(b => ({ href: `/creations/lunch-box/${b.id}${searchParams.toString() ? '?' + searchParams.toString() : ''}`, title: b.nom, meta: 'Lunch box', img: b.img }))
 
   return (
     <GalleryFiche
@@ -41,10 +50,10 @@ export default function LunchBoxDetail() {
       sections={sections}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
-        { label: 'Lunch Box', href: '/creations/lunch-box' },
+        { label: 'Lunch Box', href: backHref },
         { label: box.nom },
       ]}
-      backHref="/creations/lunch-box"
+      backHref={backHref}
       backLabel="Retour aux lunch box"
       seoEyebrow="Lunch Box · Traiteur entreprise"
       seoTitle={box.seoTitle || "La lunch box parfaite pour vos déjeuners nomades et réunions"}

@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
@@ -178,9 +179,36 @@ function TextTab({ label, active, onClick, size = '16px', gap = '10px', underlin
 /* ─── Page principale ────────────────────────────────────────────── */
 
 export default function PlateauxRepas() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const [activeCollection, setActiveCollection] = useState('essentiel')
   const [activeFiltre, setActiveFiltre] = useState('tous')
   const [sortLabel, setSortLabel] = useState('En vedette')
+  const [hydrated, setHydrated] = useState(false)
+
+  // Au montage, initialiser depuis les search params
+  useEffect(() => {
+    const coll = searchParams.get('collection') || 'essentiel'
+    const filtre = searchParams.get('filtre') || 'tous'
+    setActiveCollection(coll)
+    setActiveFiltre(filtre)
+    setHydrated(true)
+  }, [searchParams])
+
+  // Chaque changement de collection/filtre → mettre à jour l'URL
+  function handleCollectionChange(key) {
+    setActiveCollection(key)
+    setActiveFiltre('tous')
+    router.push(`/creations/plateaux-repas?collection=${key}&filtre=tous`, { shallow: true })
+  }
+
+  function handleFilterChange(key) {
+    setActiveFiltre(key)
+    const coll = activeCollection || 'essentiel'
+    router.push(`/creations/plateaux-repas?collection=${coll}&filtre=${key}`, { shallow: true })
+  }
+
+  if (!hydrated) return null
 
   const col = COLLECTIONS.find(c => c.key === activeCollection)
 
@@ -195,11 +223,6 @@ export default function PlateauxRepas() {
     activeFiltre === 'tous' ? true : p.categorie === activeFiltre
   )
   const produitsAffiches = sortItems(produitsFiltres, sortLabel, p => priceFromLabel(prixMenu(p)))
-
-  function handleCollectionChange(key) {
-    setActiveCollection(key)
-    setActiveFiltre('tous')
-  }
 
   return (
     <>
@@ -291,7 +314,7 @@ export default function PlateauxRepas() {
               return (
                 <button
                   key={f.key}
-                  onClick={() => setActiveFiltre(f.key)}
+                  onClick={() => handleFilterChange(f.key)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
                     fontFamily: "'Neue Montreal', sans-serif",

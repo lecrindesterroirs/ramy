@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -211,8 +212,24 @@ function PlateauCard({ produit }) {
 /* ─── Page ───────────────────────────────────────────────────────── */
 
 export default function PlateauxAperitifs() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
   const [sortLabel, setSortLabel] = useState('En vedette')
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    const filtre = searchParams.get('filtre') || 'tous'
+    setActiveFiltre(filtre)
+    setHydrated(true)
+  }, [searchParams])
+
+  function handleFilterChange(key) {
+    setActiveFiltre(key)
+    router.push(`/creations/plateaux-aperitifs?filtre=${key}`)
+  }
+
+  if (!hydrated) return null
 
   const famillesDispo = new Set(PLATEAUX.map(p => p.famille))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || famillesDispo.has(f.key))
@@ -265,7 +282,7 @@ export default function PlateauxAperitifs() {
               return (
                 <button
                   key={f.key}
-                  onClick={() => setActiveFiltre(f.key)}
+                  onClick={() => handleFilterChange(f.key)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
                     fontFamily: "'Neue Montreal', sans-serif",

@@ -1,6 +1,7 @@
 'use client'
 
-import { useParams, notFound } from 'next/navigation'
+import { useEffect } from 'react'
+import { useParams, notFound, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
@@ -11,19 +12,27 @@ import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
 export default function AnimationDetail() {
   const { slug } = useParams()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   const anim = ANIMATIONS.find(a => slugAnim(a.nom) === slug)
   if (!anim) notFound()
+
+  const backHref = `/creations/animations-culinaires${searchParams.toString() ? '?' + searchParams.toString() : ''}`
 
   const universLabel = UNIVERS_LABEL[anim.univers] ?? 'Animation culinaire'
 
   const related = [...ANIMATIONS].filter(a => a.id !== anim.id)
     .sort((a, b) => (b.univers === anim.univers) - (a.univers === anim.univers))
     .slice(0, 4)
-    .map(a => ({ href: `/creations/animations-culinaires/${slugAnim(a.nom)}`, title: a.nom, meta: UNIVERS_LABEL[a.univers] || 'Animation', img: a.img }))
+    .map(a => ({ href: `/creations/animations-culinaires/${slugAnim(a.nom)}${searchParams.toString() ? '?' + searchParams.toString() : ''}`, title: a.nom, meta: UNIVERS_LABEL[a.univers] || 'Animation', img: a.img }))
 
   const breadcrumb = [
     { label: 'Accueil', href: '/' },
-    { label: 'Animations Culinaires', href: '/creations/animations-culinaires' },
+    { label: 'Animations Culinaires', href: backHref },
     { label: anim.nom },
   ]
 
@@ -104,7 +113,7 @@ export default function AnimationDetail() {
             sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <a href="/creations/animations-culinaires" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
+            <a href={backHref} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
               ← Retour aux animations
             </a>
           </div>

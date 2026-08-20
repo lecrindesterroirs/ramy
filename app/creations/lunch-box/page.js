@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -194,7 +195,23 @@ function MenuCard({ produit }) {
 /* ─── Page ───────────────────────────────────────────────────────── */
 
 export default function LunchBox() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    const filtre = searchParams.get('filtre') || 'tous'
+    setActiveFiltre(filtre)
+    setHydrated(true)
+  }, [searchParams])
+
+  function handleFilterChange(key) {
+    setActiveFiltre(key)
+    router.push(`/creations/lunch-box?filtre=${key}`)
+  }
+
+  if (!hydrated) return null
 
   const categoriesDispo = new Set(BOXES.map(b => b.categorie))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || categoriesDispo.has(f.key))
@@ -252,7 +269,7 @@ export default function LunchBox() {
               return (
                 <button
                   key={f.key}
-                  onClick={() => setActiveFiltre(f.key)}
+                  onClick={() => handleFilterChange(f.key)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
                     fontFamily: "'Neue Montreal', sans-serif",

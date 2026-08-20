@@ -1,6 +1,7 @@
 'use client'
 
-import { useParams, notFound } from 'next/navigation'
+import { useEffect } from 'react'
+import { useParams, notFound, useSearchParams } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PRODUITS, COLLECTIONS, prixMenu } from '../data'
 
@@ -14,10 +15,20 @@ const SEO_HTML = `
 
 export default function PlateauDetail() {
   const { slug } = useParams()
+  const searchParams = useSearchParams()
+
+  // Remonter en haut au montage
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   const produit = PRODUITS.find(p => p.id === slug)
   if (!produit) notFound()
 
   const col = COLLECTIONS.find(c => c.key === produit.collection)
+
+  // Construire le lien de retour avec les search params
+  const backHref = `/creations/plateaux-repas${searchParams.toString() ? '?' + searchParams.toString() : ''}`
 
   const sections = [
     produit.entree && { label: 'Entrée', value: produit.entree },
@@ -29,7 +40,7 @@ export default function PlateauDetail() {
     .filter(p => p.id !== produit.id)
     .sort((a, b) => (b.collection === produit.collection) - (a.collection === produit.collection))
     .slice(0, 4)
-    .map(p => ({ href: `/creations/plateaux-repas/${p.id}`, title: p.nom, meta: COLLECTIONS.find(c => c.key === p.collection)?.label, img: p.img }))
+    .map(p => ({ href: `/creations/plateaux-repas/${p.id}${searchParams.toString() ? '?' + searchParams.toString() : ''}`, title: p.nom, meta: COLLECTIONS.find(c => c.key === p.collection)?.label, img: p.img }))
 
   return (
     <GalleryFiche
@@ -44,10 +55,10 @@ export default function PlateauDetail() {
       sections={sections}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
-        { label: 'Plateaux repas', href: '/creations/plateaux-repas' },
+        { label: 'Plateaux repas', href: backHref },
         { label: produit.nom },
       ]}
-      backHref="/creations/plateaux-repas"
+      backHref={backHref}
       backLabel="Retour aux plateaux repas"
       seoEyebrow="Plateaux repas · Traiteur entreprise"
       seoTitle={produit.seoTitle || "Le plateau repas qui valorise vos déjeuners d'entreprise à Paris"}

@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -115,7 +116,23 @@ function AnimationCard({ produit }) {
 /* ─── Page ───────────────────────────────────────────────────────── */
 
 export default function AnimationsCulinaires() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    const filtre = searchParams.get('filtre') || 'tous'
+    setActiveFiltre(filtre)
+    setHydrated(true)
+  }, [searchParams])
+
+  function handleFilterChange(key) {
+    setActiveFiltre(key)
+    router.push(`/creations/animations-culinaires?filtre=${key}`)
+  }
+
+  if (!hydrated) return null
 
   const universDispo = new Set(ANIMATIONS.map(a => a.univers))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || universDispo.has(f.key))
@@ -174,7 +191,7 @@ export default function AnimationsCulinaires() {
               return (
                 <button
                   key={f.key}
-                  onClick={() => setActiveFiltre(f.key)}
+                  onClick={() => handleFilterChange(f.key)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
                     fontFamily: "'Neue Montreal', sans-serif",
