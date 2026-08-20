@@ -166,19 +166,14 @@ function DatePicker({ value, onChange }) {
 
 // ── Progress bar ──────────────────────────────────────────────────────────────
 
-function ProgressBar({ step, goTo }) {
+function ProgressBar({ step }) {
   const total = 3
   return (
     <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 32px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-      <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: '#111111', flex: '0 0 auto' }}>
-        L&apos;Écrin
-      </span>
-      <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', flex: '1 1 auto', textAlign: 'center' }}>
+      <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '26px', width: 'auto', flex: '0 0 auto' }} />
+      <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', flex: '1 1 auto', textAlign: 'right' }}>
         Étape {step} sur {total}
       </span>
-      <a href="/" aria-label="Fermer" style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '24px', height: '24px', color: 'rgba(17,17,17,0.5)', textDecoration: 'none' }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </a>
     </div>
   )
 }
@@ -489,12 +484,35 @@ export default function Contact() {
   const [showStep2Errors, setShowStep2Errors] = useState(false)
   const [bottomNavHidden, setBottomNavHidden] = useState(false)
   const [showLogo, setShowLogo] = useState(true)
+  const [showExitModal, setShowExitModal] = useState(false)
   const logosRef = useRef(null)
+  const stepForExitRef = useRef(step)
+  useEffect(() => { stepForExitRef.current = step }, [step])
 
   useEffect(() => {
     const timer = setTimeout(() => setShowLogo(false), 1500)
     return () => clearTimeout(timer)
   }, [])
+
+  // Intercepte le retour arrière : au lieu de quitter, on affiche
+  // un rappel du nombre d'étapes restantes avant le devis.
+  useEffect(() => {
+    window.history.pushState({ devisGuard: true }, '', window.location.href)
+    const onPopState = () => {
+      if (submitStatus === 'success') return
+      window.history.pushState({ devisGuard: true }, '', window.location.href)
+      setShowExitModal(true)
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [submitStatus])
+
+  function exitMessage() {
+    const s = stepForExitRef.current
+    if (s >= 3) return 'Vous y êtes presque, il ne reste que l\'envoi de votre demande.'
+    if (s === 2) return 'Encore une petite étape avant de recevoir votre devis.'
+    return 'Encore deux petites étapes avant de recevoir votre devis personnalisé.'
+  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -667,11 +685,15 @@ export default function Contact() {
             </a>
           </div>
         ) : (
-          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '24px 24px', maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 0, maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box', background: '#FFFFFF' }}>
 
-            <div style={{ maxWidth: '800px', margin: '0 auto', width: '100%', background: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 20px rgba(17,17,17,0.08)' }}>
+            <div className="devis-gauge" style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', background: 'rgba(17,17,17,0.08)', zIndex: 900 }}>
+              <div style={{ height: '100%', width: `${(step / 3) * 100}%`, background: '#111111', transition: 'width 0.4s ease' }} />
+            </div>
 
-              <ProgressBar step={step} goTo={setStep} />
+            <div style={{ maxWidth: '800px', margin: '0 auto', width: '100%', background: '#FFFFFF' }}>
+
+              <ProgressBar step={step} />
 
               {/* Step content */}
               <div className="devis-content" style={{ paddingBottom: '110px', paddingTop: '24px', paddingLeft: '40px', paddingRight: '40px' }}>
@@ -798,6 +820,33 @@ export default function Contact() {
           </form>
         )}
         </div>
+
+        {/* Pop-up de confirmation avant de quitter */}
+        {showExitModal && (
+          <div style={{ position: 'fixed', inset: 0, background: 'rgba(17,17,17,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '24px' }}>
+            <div style={{ background: '#FFFFFF', maxWidth: '380px', width: '100%', padding: '32px 28px', textAlign: 'center', borderRadius: '4px' }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.2 }}>
+                Attendez !
+              </p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13.5px', color: 'rgba(17,17,17,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
+                {exitMessage()}
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowExitModal(false)}
+                style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: '#E0A126', border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
+              >
+                Continuer mon devis
+              </button>
+              <a
+                href="/"
+                style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', color: 'rgba(17,17,17,0.45)', textDecoration: 'underline', padding: '4px' }}
+              >
+                Quitter quand même
+              </a>
+            </div>
+          </div>
+        )}
       </main>
 
       <LogosSection
