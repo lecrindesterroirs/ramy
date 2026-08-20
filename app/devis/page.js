@@ -169,9 +169,9 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step }) {
   const total = 3
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 32px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
-      <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '26px', width: 'auto', flex: '0 0 auto' }} />
-      <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', flex: '1 1 auto', textAlign: 'right' }}>
+    <div className="devis-progress-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '22px 28px' }}>
+      <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '28px', width: 'auto' }} />
+      <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
         Étape {step} sur {total}
       </span>
     </div>
@@ -687,7 +687,7 @@ export default function Contact() {
         ) : (
           <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 0, maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box', background: '#FFFFFF' }}>
 
-            <div className="devis-gauge" style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', background: 'rgba(17,17,17,0.08)', zIndex: 900 }}>
+            <div className="devis-gauge" style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '4px', background: 'rgba(17,17,17,0.07)', zIndex: 900 }}>
               <div style={{ height: '100%', width: `${(step / 3) * 100}%`, background: '#111111', transition: 'width 0.4s ease' }} />
             </div>
 
@@ -875,9 +875,7 @@ export default function Contact() {
           .devis-nav-prev { order: 1 !important; display: flex !important; }
           .devis-nav-next { order: 2 !important; display: flex !important; }
           .nav-indicator { order: 3 !important; width: 100% !important; justify-content: center !important; padding-top: 12px !important; margin-top: 8px !important; border-top: none !important; border-bottom: none !important; }
-          .devis-progress-bar { padding: 10px 24px 0 !important; }
-          .progress-label { display: none !important; }
-          .progress-line { margin: 0 12px !important; width: 40px !important; }
+          .devis-progress-bar { padding: 18px 20px !important; }
           .step1-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; gap: 8px !important; padding: 0 !important; }
           .step1-grid > div { padding: 14px 12px !important; gap: 8px !important; }
           .step1-grid p { font-size: 14px !important; }
