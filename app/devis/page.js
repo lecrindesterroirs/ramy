@@ -625,9 +625,7 @@ export default function Contact() {
 
   return (
     <>
-      <Navbar forceScrolled={true} />
-
-      <main className="devis-main" style={{ background: '#FFFFFF', height: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+      <main className="devis-main" style={{ background: '#FFFFFF', minHeight: '100vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
 
         <h1 style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
           Demander un devis traiteur d&apos;entreprise à Paris &amp; Île-de-France
@@ -650,15 +648,19 @@ export default function Contact() {
             </a>
           </div>
         ) : (
-          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', padding: '40px 24px', maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
 
-            <ProgressBar step={step} goTo={setStep} />
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', maxWidth: '800px', margin: '0 auto', width: '100%', background: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 20px rgba(17,17,17,0.08)', overflow: 'hidden' }}>
 
-            {/* Step content */}
-            <div className="devis-content" style={{ flex: 1, paddingBottom: '80px', paddingTop: '40px', overflowY: 'auto' }}>
-              {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
-              {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
-              {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
+              <ProgressBar step={step} goTo={setStep} />
+
+              {/* Step content */}
+              <div className="devis-content" style={{ flex: 1, paddingBottom: '40px', paddingTop: '40px', overflowY: 'auto', paddingLeft: '40px', paddingRight: '40px' }}>
+                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
+                {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
+                {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
+              </div>
+
             </div>
 
             {/* Bottom nav bar */}
