@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -178,7 +178,7 @@ function TextTab({ label, active, onClick, size = '16px', gap = '10px', underlin
 
 /* ─── Page principale ────────────────────────────────────────────── */
 
-export default function PlateauxRepas() {
+function PlateauxRepasInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [activeCollection, setActiveCollection] = useState('essentiel')
@@ -437,5 +437,13 @@ export default function PlateauxRepas() {
       />
       <Footer />
     </>
+  )
+}
+
+export default function PlateauxRepas() {
+  return (
+    <Suspense fallback={null}>
+      <PlateauxRepasInner />
+    </Suspense>
   )
 }

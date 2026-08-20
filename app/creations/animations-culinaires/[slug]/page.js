@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useParams, notFound, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
@@ -10,7 +10,7 @@ import RelatedLinks from '../../../../components/RelatedLinks'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
-export default function AnimationDetail() {
+function AnimationDetailInner() {
   const { slug } = useParams()
   const searchParams = useSearchParams()
 
@@ -142,6 +142,14 @@ export default function AnimationDetail() {
 
       <Footer />
     </>
+  )
+}
+
+export default function AnimationDetail() {
+  return (
+    <Suspense fallback={null}>
+      <AnimationDetailInner />
+    </Suspense>
   )
 }
 

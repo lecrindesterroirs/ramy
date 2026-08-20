@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useParams, notFound, useSearchParams } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PLATEAUX, FILTRES } from '../page'
@@ -13,7 +13,7 @@ const SEO_HTML = `
   <p>Nombre de convives, formats, régimes alimentaires : nous composons la sélection idéale et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe sur votre lieu de réception.</p>
 `
 
-export default function PlateauAperitifDetail() {
+function PlateauAperitifDetailInner() {
   const { slug } = useParams()
   const searchParams = useSearchParams()
 
@@ -58,5 +58,13 @@ export default function PlateauAperitifDetail() {
       devisTitre="Un afterwork ou une réception à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
+  )
+}
+
+export default function PlateauAperitifDetail() {
+  return (
+    <Suspense fallback={null}>
+      <PlateauAperitifDetailInner />
+    </Suspense>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useParams, notFound, useSearchParams } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PRODUITS, COLLECTIONS, prixMenu } from '../data'
@@ -13,7 +13,7 @@ const SEO_HTML = `
   <p>Commandez avant 14h la veille et recevez vos plateaux directement dans vos bureaux. Facturation entreprise, régimes alimentaires, effectifs variables : nous adaptons chaque prestation et vous adressons un devis personnalisé sous 24h.</p>
 `
 
-export default function PlateauDetail() {
+function PlateauDetailInner() {
   const { slug } = useParams()
   const searchParams = useSearchParams()
 
@@ -67,5 +67,13 @@ export default function PlateauDetail() {
       devisTitre="Un déjeuner d'entreprise à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
+  )
+}
+
+export default function PlateauDetail() {
+  return (
+    <Suspense fallback={null}>
+      <PlateauDetailInner />
+    </Suspense>
   )
 }

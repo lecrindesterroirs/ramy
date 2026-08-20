@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useParams, notFound, useSearchParams } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { BOXES } from '../page'
@@ -13,7 +13,7 @@ const SEO_HTML = `
   <p>Commandez avant 14h la veille et recevez vos lunch box directement sur site. Effectifs, régimes alimentaires, facturation entreprise : nous adaptons la sélection et vous adressons un devis personnalisé sous 24h.</p>
 `
 
-export default function LunchBoxDetail() {
+function LunchBoxDetailInner() {
   const { slug } = useParams()
   const searchParams = useSearchParams()
 
@@ -62,5 +62,13 @@ export default function LunchBoxDetail() {
       devisTitre="Des lunch box pour votre équipe ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
+  )
+}
+
+export default function LunchBoxDetail() {
+  return (
+    <Suspense fallback={null}>
+      <LunchBoxDetailInner />
+    </Suspense>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
@@ -194,7 +194,7 @@ function MenuCard({ produit }) {
 
 /* ─── Page ───────────────────────────────────────────────────────── */
 
-export default function LunchBox() {
+function LunchBoxInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
@@ -357,5 +357,13 @@ export default function LunchBox() {
       />
       <Footer />
     </>
+  )
+}
+
+export default function LunchBox() {
+  return (
+    <Suspense fallback={null}>
+      <LunchBoxInner />
+    </Suspense>
   )
 }
