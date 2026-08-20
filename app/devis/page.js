@@ -526,7 +526,14 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState('idle') // idle | loading | success | error
   const [showStep2Errors, setShowStep2Errors] = useState(false)
   const [bottomNavHidden, setBottomNavHidden] = useState(false)
+  const [showLogo, setShowLogo] = useState(true)
   const logosRef = useRef(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLogo(false), 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
   useEffect(() => {
     const onScroll = () => {
       const atBottom = document.body.scrollHeight - window.scrollY - window.innerHeight < 80
@@ -625,11 +632,40 @@ export default function Contact() {
 
   return (
     <>
-      <main className="devis-main" style={{ background: '#FFFFFF', minHeight: '100vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+      <main className="devis-main" style={{ background: '#FFFFFF', minHeight: '100vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', position: 'relative' }}>
 
         <h1 style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
           Demander un devis traiteur d&apos;entreprise à Paris &amp; Île-de-France
         </h1>
+
+        {/* Logo splash screen */}
+        {showLogo && (
+          <div style={{
+            position: 'fixed', inset: 0, background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
+            animation: `fadeInOut 1.5s ease-in-out forwards`,
+          }}>
+            <style>{`
+              @keyframes fadeInOut {
+                0% { opacity: 1 }
+                60% { opacity: 1 }
+                100% { opacity: 0 }
+              }
+            `}</style>
+            <div style={{ textAlign: 'center' }}>
+              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '20px', opacity: 0.8 }}>
+                <text x="50" y="60" fontSize="48" fontWeight="400" textAnchor="middle" fill="#E0A126" fontFamily="'Baskerville Display PT', Georgia, serif">
+                  L'Écrin
+                </text>
+              </svg>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590', marginTop: '20px' }}>
+                Devis personnalisé en cours…
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Form content avec fade in */}
+        <div style={{ opacity: showLogo ? 0 : 1, transition: 'opacity 0.5s ease-in 0.3s', pointerEvents: showLogo ? 'none' : 'auto' }}>
 
         {submitStatus === 'success' ? (
           /* ── Success screen ── */
@@ -803,6 +839,7 @@ export default function Contact() {
 
           </form>
         )}
+        </div>
       </main>
 
       <LogosSection
