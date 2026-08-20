@@ -15,27 +15,21 @@ export async function POST(req) {
       return new Response(JSON.stringify({ ok: true }), { status: 200 })
     }
 
-    // Upsert : si email existe, mettre à jour, sinon créer
-    const identifier = email || telephone
-    const { error } = await sb
-      .from('demandes_entrantes')
-      .upsert({
-        email: email || null,
-        telephone: telephone || null,
-        nom: data.nom || null,
-        societe: data.societe || null,
-        prestation: data.prestation || null,
-        date_evenement: data.date || null,
-        nb_personnes: data.convives ? parseInt(data.convives) : null,
-        ville: data.ville || null,
-        budget: data.budget || null,
-        message: data.message || null,
-        source: 'devis-rapide',
-        statut: 'nouvelle',
-        metadata: { draft_source: source, last_update: timestamp },
-      }, { onConflict: 'email' })
-
-    if (error) throw error
+    // Insérer le brouillon (silencieux si email existe déjà)
+    await sb.from('demandes_entrantes').insert({
+      email: email || null,
+      telephone: telephone || null,
+      nom: data.nom || null,
+      societe: data.societe || null,
+      prestation: data.prestation || null,
+      date_evenement: data.date || null,
+      nb_personnes: data.convives ? parseInt(data.convives) : null,
+      ville: data.ville || null,
+      budget: data.budget || null,
+      message: data.message || null,
+      source: 'devis-rapide',
+      statut: 'nouvelle',
+    }).catch(() => {}) // Silencieux, échec gracieux
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 })
   } catch (err) {
