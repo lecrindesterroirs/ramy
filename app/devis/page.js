@@ -547,6 +547,31 @@ export default function Contact() {
     nom: '', societe: '', email: '', telephone: '',
   })
 
+  // Sauvegarde auto des données en background (debounced)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (Object.values(data).some(v => v)) {
+        fetch('/api/devis/draft', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...data, source: 'devis-draft', timestamp: new Date().toISOString() }),
+        }).catch(() => {})
+      }
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [data])
+
+  // Capture on unload (client ferme l'onglet/quitte)
+  useEffect(() => {
+    const handleUnload = () => {
+      if (Object.values(data).some(v => v) && submitStatus === 'idle') {
+        navigator.sendBeacon('/api/devis/draft', JSON.stringify({ ...data, source: 'devis-unload', timestamp: new Date().toISOString() }))
+      }
+    }
+    window.addEventListener('beforeunload', handleUnload)
+    return () => window.removeEventListener('beforeunload', handleUnload)
+  }, [data, submitStatus])
+
   const step2Valid = () => !!(data.convives?.trim() && data.ville?.trim() && data.message?.trim())
 
   const canNext = () => {
