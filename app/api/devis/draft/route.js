@@ -1,22 +1,17 @@
-import { createClient } from '@supabase/supabase-js'
-
-const sb = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-)
+import { logDemandeToOS } from '@/lib/os-demande'
 
 export async function POST(req) {
   try {
     const data = await req.json()
-    const { email, telephone, source, timestamp } = data
+    const { email, telephone } = data
 
     // Besoin d'au moins un contact pour faire du suivi
     if (!email && !telephone) {
       return new Response(JSON.stringify({ ok: true }), { status: 200 })
     }
 
-    // Insérer le brouillon (silencieux si email existe déjà)
-    await sb.from('demandes_entrantes').insert({
+    // Insérer le brouillon en arrière-plan (silencieux)
+    await logDemandeToOS({
       email: email || null,
       telephone: telephone || null,
       nom: data.nom || null,
@@ -27,13 +22,12 @@ export async function POST(req) {
       ville: data.ville || null,
       budget: data.budget || null,
       message: data.message || null,
-      source: 'devis-rapide',
+      source: 'devis-draft',
       statut: 'nouvelle',
-    }).catch(() => {}) // Silencieux, échec gracieux
+    }).catch(() => {})
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 })
-  } catch (err) {
-    console.error('Devis draft save error:', err)
-    return new Response(JSON.stringify({ ok: true }), { status: 200 }) // Silencieux, pas d'erreur client
+  } catch {
+    return new Response(JSON.stringify({ ok: true }), { status: 200 }) // Silencieux
   }
 }
