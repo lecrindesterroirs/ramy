@@ -15,7 +15,7 @@ const prestations = [
     titre: 'Petit-déjeuner',
     desc: 'Viennoiseries, jus frais, pâtisseries artisanales, fruits et douceurs.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <path d="M17 8h1a4 4 0 010 8h-1"/>
         <path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/>
         <line x1="6" y1="2" x2="6" y2="4"/>
@@ -29,7 +29,7 @@ const prestations = [
     titre: 'Plateaux repas',
     desc: 'Plateaux individuels gourmands, équilibrés et de saison.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/>
         <path d="M7 2v20"/>
         <path d="M21 15V2a5 5 0 00-5 5v6h3.5c.8 0 1.5.7 1.5 1.5V22"/>
@@ -41,7 +41,7 @@ const prestations = [
     titre: 'Cocktail / Buffet',
     desc: 'Pièces petites et bouchées, buffets élaborés, champagne.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <path d="M8 22h8M12 11v11M3 3h18l-3 7H6L3 3z"/>
       </svg>
     ),
@@ -51,7 +51,7 @@ const prestations = [
     titre: 'Goûter',
     desc: 'Pâtisseries, gâteaux, boissons chaudes, moments sucrés et joyeux.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
         <circle cx="12" cy="7" r="4"/>
         <path d="M12 3v1M15.5 4.5l-.7.7M17 8h-1M15.5 11.5l-.7-.7"/>
@@ -63,7 +63,7 @@ const prestations = [
     titre: 'Événement sur mesure',
     desc: 'Une conception entièrement personnalisée pour vos envies.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
       </svg>
     ),
@@ -73,7 +73,7 @@ const prestations = [
     titre: 'Autre demande',
     desc: 'Une demande spécifique ? Décrivez-la, nous nous adaptons.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
       </svg>
     ),
@@ -169,7 +169,7 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step, goTo }) {
   const steps = ['Prestation', 'Votre projet', 'Vos coordonnées']
   return (
-    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
+    <div className="devis-progress-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '28px 48px 0', maxWidth: '640px', margin: '0 auto', width: '100%' }}>
       {steps.map((label, i) => {
         const idx = i + 1
         const clickable = idx < step
@@ -208,7 +208,7 @@ function ProgressBar({ step, goTo }) {
                 flex: 1,
                 height: '1px',
                 background: done ? 'rgba(17,17,17,0.2)' : 'rgba(17,17,17,0.1)',
-                margin: '0 20px 24px',
+                margin: '0 20px 16px',
                 transition: 'background 0.4s ease',
               }} />
             )}
@@ -223,23 +223,23 @@ function ProgressBar({ step, goTo }) {
 
 function Step1({ data, setData, onSelect }) {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '8px' }}>
+    <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '6px' }}>
           Pour quelle occasion ?
         </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', letterSpacing: '0.02em' }}>
           Appuyez sur votre choix
         </p>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
           <ReviewsBadge />
         </div>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '14px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '8px' }}>
           Commande minimum 50&nbsp;€ HT · Livraison 29&nbsp;€ HT à Paris · Devis sous 24h
         </p>
       </div>
 
-      <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+      <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
         {prestations.map(p => {
           const active = data.prestation === p.id
           return (
@@ -249,7 +249,7 @@ function Step1({ data, setData, onSelect }) {
               style={{
                 background: active ? 'rgba(224,161,38,0.06)' : 'var(--bg-secondary)',
                 border: `1px solid ${active ? '#E0A126' : 'rgba(17,17,17,0.1)'}`,
-                padding: '28px 26px',
+                padding: '18px 18px',
                 cursor: 'pointer',
                 transition: 'border-color 0.3s ease, background 0.3s ease, transform 0.2s ease',
                 transform: active ? 'translateY(-2px)' : 'translateY(0)',
@@ -257,9 +257,9 @@ function Step1({ data, setData, onSelect }) {
               onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(224,161,38,0.5)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
               onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.1)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <div style={{ color: active ? '#E0A126' : 'rgba(17,17,17,0.4)', marginBottom: '14px', transition: 'color 0.3s ease' }}>{p.icon}</div>
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '7px', lineHeight: 1.2 }}>{p.titre}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'var(--text-secondary)' }}>{p.desc}</p>
+              <div style={{ color: active ? '#E0A126' : 'rgba(17,17,17,0.4)', marginBottom: '8px', transition: 'color 0.3s ease' }}>{p.icon}</div>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '4px', lineHeight: 1.2 }}>{p.titre}</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', lineHeight: 1.55, color: 'var(--text-secondary)' }}>{p.desc}</p>
             </div>
           )
         })}
@@ -677,12 +677,8 @@ export default function Contact() {
               }
             `}</style>
             <div style={{ textAlign: 'center' }}>
-              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: '20px', opacity: 0.8 }}>
-                <text x="50" y="60" fontSize="48" fontWeight="400" textAnchor="middle" fill="#E0A126" fontFamily="'Baskerville Display PT', Georgia, serif">
-                  L'Écrin
-                </text>
-              </svg>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590', marginTop: '20px' }}>
+              <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '72px', width: 'auto', display: 'block', margin: '0 auto 20px' }} />
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590' }}>
                 Devis personnalisé en cours…
               </p>
             </div>
@@ -709,14 +705,14 @@ export default function Contact() {
             </a>
           </div>
         ) : (
-          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', padding: '40px 24px', maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '24px 24px', maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
 
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', maxWidth: '800px', margin: '0 auto', width: '100%', background: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 20px rgba(17,17,17,0.08)', overflow: 'hidden' }}>
+            <div style={{ maxWidth: '800px', margin: '0 auto', width: '100%', background: '#FFFFFF', borderRadius: '16px', boxShadow: '0 4px 20px rgba(17,17,17,0.08)' }}>
 
               <ProgressBar step={step} goTo={setStep} />
 
               {/* Step content */}
-              <div className="devis-content" style={{ flex: 1, paddingBottom: '40px', paddingTop: '40px', overflowY: 'auto', paddingLeft: '40px', paddingRight: '40px' }}>
+              <div className="devis-content" style={{ paddingBottom: '110px', paddingTop: '24px', paddingLeft: '40px', paddingRight: '40px' }}>
                 {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
