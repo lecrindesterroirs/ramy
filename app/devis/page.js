@@ -248,21 +248,19 @@ function Step1({ data, setData, onSelect }) {
               onClick={() => { setData(d => ({ ...d, prestation: p.id })); onSelect() }}
               style={{
                 background: active ? '#111111' : '#FFFFFF',
-                border: `1.5px solid #111111`,
-                padding: '20px 22px',
+                border: `1px solid ${active ? '#111111' : 'rgba(17,17,17,0.18)'}`,
+                padding: '22px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '12px',
-                transition: 'background 0.25s ease, transform 0.2s ease',
+                transition: 'background 0.25s ease, border-color 0.25s ease, transform 0.2s ease',
                 transform: active ? 'translateY(-2px)' : 'translateY(0)',
               }}
-              onMouseEnter={e => { if (!active) e.currentTarget.style.transform = 'translateY(-1px)' }}
-              onMouseLeave={e => { if (!active) e.currentTarget.style.transform = 'translateY(0)' }}
+              onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
+              onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <div style={{ color: active ? '#FFFFFF' : '#111111', display: 'flex', transition: 'color 0.25s ease' }}>{p.icon}</div>
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#FFFFFF' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease' }}>{p.titre}</p>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#FFFFFF' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{p.titre}</p>
             </div>
           )
         })}
@@ -689,7 +687,7 @@ export default function Contact() {
         )}
 
         {/* Form content avec fade in */}
-        <div style={{ opacity: showLogo ? 0 : 1, transition: 'opacity 0.5s ease-in 0.3s', pointerEvents: showLogo ? 'none' : 'auto' }}>
+        <div style={{ opacity: showLogo ? 0 : 1, transition: 'opacity 0.5s ease-in 0.3s', pointerEvents: showLogo ? 'none' : 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
 
         {submitStatus === 'success' ? (
           /* ── Success screen ── */
