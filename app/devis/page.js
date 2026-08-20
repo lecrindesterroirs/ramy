@@ -188,14 +188,11 @@ function ProgressBar({ step, goTo }) {
 function Step1({ data, setData, onSelect }) {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: '14px' }}>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '6px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
           Pour quelle occasion ?
         </h2>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', letterSpacing: '0.02em' }}>
-          Appuyez sur votre choix
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <ReviewsBadge />
         </div>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '8px' }}>
@@ -203,7 +200,7 @@ function Step1({ data, setData, onSelect }) {
         </p>
       </div>
 
-      <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+      <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px' }}>
         {prestations.map(p => {
           const active = data.prestation === p.id
           return (
@@ -213,7 +210,7 @@ function Step1({ data, setData, onSelect }) {
               style={{
                 background: active ? '#111111' : '#FFFFFF',
                 border: `1px solid ${active ? '#111111' : 'rgba(17,17,17,0.18)'}`,
-                padding: '22px',
+                padding: '26px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
