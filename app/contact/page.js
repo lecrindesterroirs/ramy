@@ -198,12 +198,12 @@ export default function Contact() {
               </div>
             </div>
 
-            <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+            <div style={{ marginTop: '24px', paddingTop: '20px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>Réponse sous 24h</p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>Livraison dès 6h30</p>
             </div>
 
-            <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+            <div style={{ marginTop: '24px', paddingTop: '20px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px' }}>
                 Vous préférez en parler de vive voix ?
               </p>
@@ -311,7 +311,7 @@ export default function Contact() {
       ` }} />
 
       {/* ── Section arguments ── */}
-      <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)', padding: '80px 72px' }}>
+      <section style={{ background: 'var(--bg-secondary)', padding: '80px 72px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
