@@ -203,8 +203,8 @@ function Step1({ data, setData, onSelect }) {
               key={p.id}
               onClick={() => { setData(d => ({ ...d, prestation: p.id })); onSelect() }}
               style={{
-                background: active ? '#111111' : '#FFFFFF',
-                border: `1px solid ${active ? '#111111' : 'rgba(17,17,17,0.18)'}`,
+                background: active ? '#E0A126' : '#FFFFFF',
+                border: `1px solid ${active ? '#E0A126' : 'rgba(17,17,17,0.18)'}`,
                 padding: '26px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -216,7 +216,7 @@ function Step1({ data, setData, onSelect }) {
               onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
               onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#FFFFFF' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{p.titre}</p>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{p.titre}</p>
             </div>
           )
         })}
@@ -400,18 +400,19 @@ function Step2({ data, setData, showErrors }) {
 
 // ── Step 3 ────────────────────────────────────────────────────────────────────
 
-function Step3({ data, setData, onEdit }) {
+function Step3({ data, setData, onEdit, onEditPrestation }) {
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
+  const [editing, setEditing] = useState(null)
 
   const prestationLabel = prestations.find(p => p.id === data.prestation)?.titre || 'Non renseigné'
   const dateLabel = data.date ? new Date(data.date + 'T00:00:00').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }) : 'Non renseigné'
 
   const recap = [
-    { icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>, label: 'Date souhaitée', value: dateLabel },
-    { icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>, label: 'Nombre de convives', value: data.convives || 'Non renseigné' },
-    { icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: 'Ville', value: data.ville || 'Non renseigné' },
-    { icon: <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'currentColor', lineHeight: 1 }}>€</span>, label: 'Budget estimé', value: data.budget || 'Non renseigné' },
-    { icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>, label: 'Détails de votre projet', value: data.message || 'Non renseigné' },
+    { key: 'date', type: 'date', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>, label: 'Date souhaitée', value: dateLabel },
+    { key: 'convives', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>, label: 'Nombre de convives', value: data.convives || 'Non renseigné' },
+    { key: 'ville', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: 'Ville', value: data.ville || 'Non renseigné' },
+    { key: 'budget', type: 'text', icon: <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'currentColor', lineHeight: 1 }}>€</span>, label: 'Budget estimé', value: data.budget || 'Non renseigné' },
+    { key: 'message', type: 'textarea', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>, label: 'Détails de votre projet', value: data.message || 'Non renseigné' },
   ]
 
   return (
@@ -450,17 +451,50 @@ function Step3({ data, setData, onEdit }) {
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
           Récapitulatif de votre projet
         </p>
-        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>
-          {prestationLabel}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>
+          <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', flex: 1 }}>
+            {prestationLabel}
+          </p>
+          <button type="button" onClick={onEditPrestation} aria-label="Modifier la prestation" style={pencilStyle}>
+            <PencilIcon />
+          </button>
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {recap.map((r, i) => (
-            <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+          {recap.map(r => (
+            <div key={r.key} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
               <div style={{ color: '#E0A126', marginTop: '1px', flexShrink: 0 }}>{r.icon}</div>
-              <div>
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '2px' }}>{r.label}</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-primary)', lineHeight: 1.5 }}>{r.value}</p>
+                {editing === r.key ? (
+                  r.type === 'textarea' ? (
+                    <textarea
+                      autoFocus
+                      rows={3}
+                      value={data[r.key]}
+                      onChange={e => set(r.key, e.target.value)}
+                      onBlur={() => setEditing(null)}
+                      style={recapEditStyle}
+                    />
+                  ) : (
+                    <input
+                      autoFocus
+                      type={r.type === 'date' ? 'date' : 'text'}
+                      value={data[r.key]}
+                      onChange={e => set(r.key, e.target.value)}
+                      onBlur={() => setEditing(null)}
+                      onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); setEditing(null) } }}
+                      style={recapEditStyle}
+                    />
+                  )
+                ) : (
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-primary)', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{r.value}</p>
+                )}
               </div>
+              {editing !== r.key && (
+                <button type="button" onClick={() => setEditing(r.key)} aria-label={`Modifier : ${r.label}`} style={pencilStyle}>
+                  <PencilIcon />
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -698,7 +732,7 @@ export default function Contact() {
               <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px 120px' }}>
                 {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
-                {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
+                {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} />}
               </div>
             </div>
 
@@ -892,6 +926,42 @@ export default function Contact() {
 }
 
 // ── Shared styles ─────────────────────────────────────────────────────────────
+
+function PencilIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z" />
+    </svg>
+  )
+}
+
+const pencilStyle = {
+  flexShrink: 0,
+  background: 'none',
+  border: 'none',
+  padding: '2px',
+  cursor: 'pointer',
+  color: 'rgba(17,17,17,0.3)',
+  display: 'flex',
+  alignItems: 'center',
+  outline: 'none',
+  transition: 'color 0.2s ease',
+}
+
+const recapEditStyle = {
+  width: '100%',
+  fontFamily: "'Neue Montreal', sans-serif",
+  fontSize: '12px',
+  color: 'var(--text-primary)',
+  background: '#FFFFFF',
+  border: '1px solid #E0A126',
+  padding: '6px 8px',
+  outline: 'none',
+  boxSizing: 'border-box',
+  resize: 'vertical',
+  lineHeight: 1.5,
+}
 
 const fieldStyle = {
   width: '100%',
