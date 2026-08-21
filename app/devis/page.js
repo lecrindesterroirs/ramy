@@ -169,8 +169,8 @@ function DatePicker({ value, onChange }) {
 function ProgressBar({ step }) {
   const total = 3
   return (
-    <div className="devis-progress-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '22px 28px' }}>
-      <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '28px', width: 'auto' }} />
+    <div className="devis-progress-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '26px 48px', width: '100%', boxSizing: 'border-box' }}>
+      <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '34px', width: 'auto' }} />
       <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
         Étape {step} sur {total}
       </span>
@@ -685,23 +685,21 @@ export default function Contact() {
             </a>
           </div>
         ) : (
-          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 0, maxWidth: '100%', margin: '0 auto', width: '100%', boxSizing: 'border-box', background: '#FFFFFF' }}>
+          <form onSubmit={submit} style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 0, width: '100%', boxSizing: 'border-box', background: '#FFFFFF' }}>
 
             <div className="devis-gauge" style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '4px', background: 'rgba(17,17,17,0.07)', zIndex: 900 }}>
               <div style={{ height: '100%', width: `${(step / 3) * 100}%`, background: '#111111', transition: 'width 0.4s ease' }} />
             </div>
 
-            <div style={{ maxWidth: '800px', margin: '0 auto', width: '100%', background: '#FFFFFF' }}>
+            <ProgressBar step={step} />
 
-              <ProgressBar step={step} />
-
-              {/* Step content */}
-              <div className="devis-content" style={{ paddingBottom: '110px', paddingTop: '24px', paddingLeft: '40px', paddingRight: '40px' }}>
+            {/* Step content : centré, hauteur stable d'une étape à l'autre */}
+            <div className="devis-stage" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+              <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px 120px' }}>
                 {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} />}
               </div>
-
             </div>
 
             {/* Bottom nav bar */}
@@ -870,7 +868,8 @@ export default function Contact() {
         @media (max-width: 768px) {
           .devis-main { height: auto !important; min-height: auto !important; padding-top: 0 !important; padding-bottom: 32px !important; }
           .devis-main form { overflow: visible !important; display: block !important; }
-          .devis-content { padding-bottom: 4px !important; padding-top: 28px !important; padding-left: 20px !important; padding-right: 20px !important; }
+          .devis-content { min-height: 0 !important; padding: 24px 20px 8px !important; }
+          .devis-stage { display: block !important; }
           .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 20px !important; flex-wrap: wrap !important; gap: 0 !important; border-top: none !important; }
           .devis-nav-prev { order: 1 !important; display: flex !important; }
           .devis-nav-next { order: 2 !important; display: flex !important; }

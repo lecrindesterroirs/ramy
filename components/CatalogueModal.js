@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 const CATALOGUE_URL = '/catalogue-lecrin-2026.pdf'
 
 export default function CatalogueModal({ open, onClose }) {
-  const [form, setForm] = useState({ prenom: '', email: '', entreprise: '', website: '' })
+  const [form, setForm] = useState({ email: '', website: '' })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
@@ -24,7 +24,7 @@ export default function CatalogueModal({ open, onClose }) {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    if (!form.prenom || !form.email || !form.entreprise) return
+    if (!form.email) return
     setStatus('loading')
     try {
       const res = await fetch('/api/catalogue', {
@@ -171,17 +171,6 @@ export default function CatalogueModal({ open, onClose }) {
               />
 
               <div>
-                <label style={labelStyle}>Prénom *</label>
-                <input
-                  value={form.prenom}
-                  onChange={e => set('prenom', e.target.value)}
-                  placeholder="Marie"
-                  style={fieldStyle}
-                  autoComplete="given-name"
-                  required
-                />
-              </div>
-              <div>
                 <label style={labelStyle}>Email professionnel *</label>
                 <input
                   type="email"
@@ -190,17 +179,6 @@ export default function CatalogueModal({ open, onClose }) {
                   placeholder="marie@entreprise.com"
                   style={fieldStyle}
                   autoComplete="email"
-                  required
-                />
-              </div>
-              <div>
-                <label style={labelStyle}>Entreprise *</label>
-                <input
-                  value={form.entreprise}
-                  onChange={e => set('entreprise', e.target.value)}
-                  placeholder="Nom de votre entreprise"
-                  style={fieldStyle}
-                  autoComplete="organization"
                   required
                 />
               </div>
