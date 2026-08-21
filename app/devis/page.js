@@ -693,7 +693,7 @@ export default function Contact() {
             <div style={{ textAlign: 'center' }}>
               <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '72px', width: 'auto', display: 'block', margin: '0 auto 20px' }} />
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590' }}>
-                Devis personnalisé en cours…
+                Vos équipes vont adorer.
               </p>
             </div>
           </div>
