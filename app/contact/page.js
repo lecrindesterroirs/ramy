@@ -138,7 +138,7 @@ export default function Contact() {
     <>
       <Navbar />
 
-      <main style={{ background: 'var(--bg-secondary)', height: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ background: 'var(--bg-secondary)', minHeight: '100vh', paddingTop: 'var(--header-h)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}>
         <div
           className="contact-wrap"
           style={{
@@ -146,7 +146,7 @@ export default function Contact() {
             width: '100%',
             maxWidth: '1440px',
             margin: '0 auto',
-            padding: '40px 72px',
+            padding: '24px 72px',
             display: 'grid',
             gridTemplateColumns: '1fr 1.6fr',
             gap: '80px',
@@ -198,12 +198,12 @@ export default function Contact() {
               </div>
             </div>
 
-            <div style={{ marginTop: '24px', paddingTop: '20px' }}>
+            <div style={{ marginTop: '20px', paddingTop: '14px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>Réponse sous 24h</p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>Livraison dès 6h30</p>
             </div>
 
-            <div style={{ marginTop: '24px', paddingTop: '20px' }}>
+            <div style={{ marginTop: '20px', paddingTop: '14px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px' }}>
                 Vous préférez en parler de vive voix ?
               </p>
