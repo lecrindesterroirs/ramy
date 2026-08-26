@@ -9,9 +9,9 @@ const logos = [
   { name: 'Coyote',           src: '/logos/coyote.png' },
   { name: 'TotalEnergies',    src: '/logos/totalenergies.png' },
   { name: 'Talan',            src: '/logos/talan.png' },
-  { name: 'SIA',              src: '/logos/sia.png', height: '46px' },
-  { name: 'Ringover',         src: '/logos/ringover.png', height: '56px' },
-  { name: 'VINCI',            src: '/logos/vinci.png', height: '46px', maxWidth: '200px' },
+  { name: 'SIA',              src: '/logos/sia-v2.png', height: '46px' },
+  { name: 'Ringover',         src: '/logos/ringover-v2.png', height: '56px' },
+  { name: 'VINCI',            src: '/logos/vinci-v2.png', height: '46px', maxWidth: '200px' },
 ]
 
 // On duplique pour le défilement infini
