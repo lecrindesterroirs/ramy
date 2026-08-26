@@ -10,7 +10,7 @@ const creations = [
   {
     label: 'Pauses gourmandes',
     description: 'Madeleines, cookies, cakes et fruits frais pour rythmer vos pauses et goûters d\'équipe.',
-    img: '/prod-tartes-fines.webp',
+    img: '/prod-cake-marbre.webp',
     href: '/creations/pauses-gourmandes',
   },
   {
