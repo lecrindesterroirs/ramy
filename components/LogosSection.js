@@ -9,9 +9,9 @@ const logos = [
   { name: 'Coyote',           src: '/logos/coyote.png' },
   { name: 'TotalEnergies',    src: '/logos/totalenergies.png' },
   { name: 'Talan',            src: '/logos/talan.png' },
-  { name: 'SIA',              src: '/logos/sia.png', height: '44px' },
-  { name: 'Ringover',         src: '/logos/ringover.png', height: '68px' },
-  { name: 'VINCI',            src: '/logos/vinci.png', height: '40px' },
+  { name: 'SIA',              src: '/logos/sia.png', height: '46px' },
+  { name: 'Ringover',         src: '/logos/ringover.png', height: '56px' },
+  { name: 'VINCI',            src: '/logos/vinci.png', height: '46px', maxWidth: '200px' },
 ]
 
 // On duplique pour le défilement infini
@@ -78,7 +78,7 @@ export default function LogosSection({ subtitle, style: extraStyle }) {
               style={{
                 height: logo.height || '36px',
                 width: 'auto',
-                maxWidth: '150px',
+                maxWidth: logo.maxWidth || '150px',
                 objectFit: 'contain',
                 filter: 'grayscale(1)',
                 mixBlendMode: 'multiply',
