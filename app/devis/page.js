@@ -561,24 +561,34 @@ export default function Contact() {
     nom: '', societe: '', email: '', telephone: '',
   })
 
-  // Sauvegarde auto des données en background (debounced)
+  // Sauvegarde auto des données en background (debounced). Throttlée : chaque
+  // pause de saisie ne doit PAS créer une nouvelle ligne dans l'OS (c'était le
+  // bug — un même prospect qui remplit le formulaire par étapes se retrouvait
+  // dupliqué jusqu'à 10+ fois dans « Demandes »). On envoie un 1er brouillon
+  // dès qu'un contact est saisi, puis au plus un de plus toutes les 60s.
+  const lastDraftSentAtRef = useRef(0)
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (Object.values(data).some(v => v)) {
-        fetch('/api/devis/draft', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...data, source: 'devis-draft', timestamp: new Date().toISOString() }),
-        }).catch(() => {})
-      }
+      const hasContact = !!(data.email || data.telephone)
+      if (!hasContact) return
+      const now = Date.now()
+      if (lastDraftSentAtRef.current && now - lastDraftSentAtRef.current < 60000) return
+      lastDraftSentAtRef.current = now
+      fetch('/api/devis/draft', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, source: 'devis-draft', timestamp: new Date().toISOString() }),
+      }).catch(() => {})
     }, 2000)
     return () => clearTimeout(timer)
   }, [data])
 
-  // Capture on unload (client ferme l'onglet/quitte)
+  // Capture on unload (client ferme l'onglet/quitte) — sauf si un brouillon
+  // vient déjà de partir il y a moins de 5s (évite un doublon immédiat).
   useEffect(() => {
     const handleUnload = () => {
       if (Object.values(data).some(v => v) && submitStatus === 'idle') {
+        if (Date.now() - lastDraftSentAtRef.current < 5000) return
         navigator.sendBeacon('/api/devis/draft', JSON.stringify({ ...data, source: 'devis-unload', timestamp: new Date().toISOString() }))
       }
     }
