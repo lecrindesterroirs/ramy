@@ -45,6 +45,10 @@ const ENGAGEMENTS = [
     texte: "privilégier les producteurs locaux quand la proximité améliore vraiment le produit : le verger des Yvelines, la Ferme de Viltain, la boulangerie de Boulogne. Pas comme argument, comme réalité.",
   },
   {
+    titre: 'Un emballage dont on connaît la provenance',
+    texte: "servir dans du bois de peuplier français non traité, certifié PEFC, fabriqué à Carcassonne par une entreprise qui travaille avec quatre ESAT de l'Aude depuis 1994. Un contenant se voit et se jette : autant savoir d'où il vient.",
+  },
+  {
     titre: 'Une livraison qui fait partie du service',
     texte: "livraison à partir de 6h30 par notre équipe interne, formée à nos standards, avec mise en place sur demande. Jamais de sous-traitance. Le dernier geste compte autant que le premier.",
   },
