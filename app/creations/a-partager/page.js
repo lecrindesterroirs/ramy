@@ -48,7 +48,7 @@ export const MENUS = [
       'Salade grecque',
       "Houmous, huile d'olive & focaccia romarin",
       'Wrap falafel & houmous',
-      'Bruschetta tomates confites',
+      'Navette saumon & cream cheese',
       "Caviar d'aubergine & focaccia",
       'Plateau de fromages affinés',
     ],

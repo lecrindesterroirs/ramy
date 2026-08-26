@@ -116,14 +116,14 @@ export const PRODUITS = [
     id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'La Dolce Vita', img: '/plat-trofie-burrata.webp',
     seoTitle: `La Dolce Vita : le plateau repas signature italien pour vos déjeuners d'entreprise à Paris`,
     seoHtml: `
-      <p>La Dolce Vita, c'est l'Italie en plateau signature : burrata, tomates anciennes et pesto en entrée, trofie au pesto, burrata et tomates confites en plat, tartelette praliné en dessert. Un menu végétarien élaboré par nos chefs, aux produits nobles et au dressage soigné, pour un déjeuner d'entreprise qui marque.</p>
+      <p>La Dolce Vita, c'est l'Italie en plateau signature : burrata, tomates anciennes et pesto en entrée, trofie au pesto et tomates confites en plat, tartelette praliné en dessert. Un menu végétarien élaboré par nos chefs, aux produits nobles et au dressage soigné, pour un déjeuner d'entreprise qui marque.</p>
       <h2>Un menu signature autour de la burrata</h2>
-      <p>Burrata et tomates anciennes au pesto, trofie au pesto avec burrata et tomates confites, tartelette praliné. Des recettes préparées le matin même, dressées avec soin, transformables en coffret Prestige pour les occasions importantes.</p>
+      <p>Burrata et tomates anciennes au pesto, trofie au pesto et tomates confites, tartelette praliné. Des recettes préparées le matin même, dressées avec soin, transformables en coffret Prestige pour les occasions importantes.</p>
       <h2>Commander La Dolce Vita à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Burrata, tomates anciennes & pesto',
-    plat: 'Trofie au pesto, burrata & tomates confites',
+    plat: 'Trofie au pesto & tomates confites',
     dessert: 'Tartelette Praliné',
   },
   {
@@ -184,15 +184,15 @@ export const PRODUITS = [
   },
   {
     id: 's6', collection: 'signature', categorie: 'poisson', nom: 'L\'Estivale', img: '/plat-gravlax.webp',
-    seoTitle: `L'Estivale : le plateau repas signature poisson et ceviche pour vos déjeuners à Paris`,
+    seoTitle: `L'Estivale : le plateau repas signature poisson et crevettes pour vos déjeuners à Paris`,
     seoHtml: `
-      <p>L'Estivale a le goût de l'été : ceviche de daurade, mangue et coriandre en entrée, saumon gravlax, pommes grenailles et crème d'Isigny en plat, tartelette citron en dessert. Un plateau repas signature frais et léger, pour un déjeuner d'entreprise ensoleillé.</p>
+      <p>L'Estivale a le goût de l'été : crevettes ail et persil en entrée, saumon gravlax, pommes grenailles et crème d'Isigny en plat, tartelette citron en dessert. Un plateau repas signature frais et léger, pour un déjeuner d'entreprise ensoleillé.</p>
       <h2>Un menu signature frais et iodé</h2>
-      <p>Ceviche de daurade à la mangue, saumon gravlax avec pommes grenailles et crème d'Isigny, tartelette citron. Des produits nobles, un dressage soigné, un plateau monté le matin de la livraison. Transformable en coffret Prestige.</p>
+      <p>Crevettes poêlées à l'ail et au persil, saumon gravlax avec pommes grenailles et crème d'Isigny, tartelette citron. Des produits nobles, un dressage soigné, un plateau monté le matin de la livraison. Transformable en coffret Prestige.</p>
       <h2>Commander L'Estivale à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
-    entree: 'Ceviche de daurade, mangue & coriandre',
+    entree: 'Crevettes ail & persil',
     plat: 'Saumon gravlax, pommes grenailles & crème d\'Isigny',
     dessert: 'Tartelette Citron',
   },
@@ -209,19 +209,5 @@ export const PRODUITS = [
     entree: 'Carpaccio de bœuf, parmesan & roquette',
     plat: 'Tataki de bœuf & chimichurri',
     dessert: 'Mousse Chocolat',
-  },
-  {
-    id: 's8', collection: 'signature', categorie: 'vegetarien', nom: 'La Divine', img: '/plat-trofie-prestige.webp',
-    seoTitle: `La Divine : le plateau repas signature végétarien italien pour vos déjeuners à Paris`,
-    seoHtml: `
-      <p>La Divine décline l'Italie en version épurée : burrata, tomates anciennes et pesto en entrée, trofie au pesto et burrata en plat, carrot cake en dessert. Un plateau repas signature végétarien, simple et abouti, pour un déjeuner d'entreprise soigné.</p>
-      <h2>Un menu signature végétarien autour de la burrata</h2>
-      <p>Burrata et tomates anciennes au pesto, trofie au pesto et burrata, carrot cake. Des produits nobles, un dressage soigné, un plateau monté le matin de la livraison. Transformable en coffret Prestige.</p>
-      <h2>Commander La Divine à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. On adapte aux effectifs et régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Burrata, tomates anciennes & pesto',
-    plat: 'Trofie au pesto & burrata',
-    dessert: 'Carrot Cake',
   },
 ]
