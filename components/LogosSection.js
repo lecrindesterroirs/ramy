@@ -11,6 +11,7 @@ const logos = [
   { name: 'Talan',            src: '/logos/talan.png' },
   { name: 'SIA',              src: '/logos/sia.png', height: '44px' },
   { name: 'Ringover',         src: '/logos/ringover.png', height: '68px' },
+  { name: 'VINCI',            src: '/logos/vinci.png', height: '40px' },
 ]
 
 // On duplique pour le défilement infini
