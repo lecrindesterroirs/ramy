@@ -38,15 +38,15 @@ const CARDS = [
 // Hauteurs calées pour un poids visuel équilibré : wordmarks larges plus bas,
 // emblèmes compacts plus hauts.
 const CLIENT_LOGOS = [
-  { name: 'Le Monde', src: '/logos/lemonde.png', height: '30px' },
-  { name: 'SNCF', src: '/logos/sncf.png', height: '34px' },
-  { name: 'DS Automobiles', src: '/logos/ds.png', height: '58px', opacity: 0.85 },
-  { name: 'Carglass', src: '/logos/carglass.svg', height: '30px' },
   { name: 'Wella Company', src: '/logos/wella.jpg', height: '40px' },
+  { name: 'SNCF', src: '/logos/sncf.png', height: '34px' },
+  { name: 'VINCI', src: '/logos/vinci-v2.png', height: '33px' },
+  { name: 'Carglass', src: '/logos/carglass.svg', height: '30px' },
+  { name: 'Le Monde', src: '/logos/lemonde.png', height: '30px' },
   { name: 'Coyote', src: '/logos/coyote.png', height: '34px' },
   { name: 'TotalEnergies', src: '/logos/totalenergies.png', height: '42px' },
   { name: 'Talan', src: '/logos/talan.png', height: '30px' },
-  { name: 'VINCI', src: '/logos/vinci-v2.png', height: '33px' },
+  { name: 'DS Automobiles', src: '/logos/ds.png', height: '58px', opacity: 0.85 },
 ]
 
 function QuoteMark({ size = 34 }) {

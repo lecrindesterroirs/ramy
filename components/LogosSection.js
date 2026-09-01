@@ -3,17 +3,17 @@
 const logos = [
   // Hauteurs calibrées sur la « masse d'encre » de chaque logo (surface
   // sombre réellement couverte au rendu), pour un poids visuel homogène.
-  { name: 'Le Monde',         src: '/logos/lemonde.png', height: '30px', maxWidth: '122px' },
-  { name: 'SNCF',             src: '/logos/sncf.png', height: '30px' },
-  { name: 'DS Automobiles',   src: '/logos/ds.png', height: '56px' },
-  { name: 'Carglass',         src: '/logos/carglass.svg', height: '36px' },
   { name: 'Wella Company',    src: '/logos/wella.jpg', height: '47px' },
+  { name: 'SNCF',             src: '/logos/sncf.png', height: '30px' },
+  { name: 'VINCI',            src: '/logos/vinci-v2.png', height: '40px', maxWidth: '153px' },
+  { name: 'Carglass',         src: '/logos/carglass.svg', height: '36px' },
+  { name: 'Le Monde',         src: '/logos/lemonde.png', height: '30px', maxWidth: '122px' },
   { name: 'Coyote',           src: '/logos/coyote.png', height: '53px' },
   { name: 'TotalEnergies',    src: '/logos/totalenergies.png', height: '45px' },
   { name: 'Talan',            src: '/logos/talan.png', height: '35px' },
   { name: 'SIA',              src: '/logos/sia-v2.png', height: '36px' },
   { name: 'Ringover',         src: '/logos/ringover-v2.png', height: '56px' },
-  { name: 'VINCI',            src: '/logos/vinci-v2.png', height: '40px', maxWidth: '153px' },
+  { name: 'DS Automobiles',   src: '/logos/ds.png', height: '56px' },
 ]
 
 // On duplique pour le défilement infini
