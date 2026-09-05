@@ -1,3 +1,10 @@
+import FAQSchema from '../../../components/FAQSchema'
+
+const faqs = [
+  { name: "Budget pause pour 20 personnes ?", answer: "Classique : 200-250 € HT. Signature : 300-350 € HT. Livraison 29 € HT." },
+  { name: "À quelle heure livrez-vous ?", answer: "Horaires au choix : 10h30, 15h, 16h. Commande avant 14h la veille." }
+]
+
 export const metadata = {
   alternates: { canonical: '/creations/pauses-gourmandes' },
   title: "Pause gourmande & goûter traiteur Paris",
@@ -10,5 +17,10 @@ export const metadata = {
 }
 
 export default function Layout({ children }) {
-  return children
+  return (
+    <>
+      <FAQSchema faqs={faqs} pageTitle="Pauses gourmandes" />
+      {children}
+    </>
+  )
 }
