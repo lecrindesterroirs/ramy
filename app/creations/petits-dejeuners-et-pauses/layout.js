@@ -5,7 +5,9 @@ import { CTADevis } from "@/components/CTADevis"
 export const metadata = {
   title: "Petits-déjeuners d'entreprise : livrés dès 6h30",
   description: "Petits-déj d'entreprise dès 12,50€/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
+  alternates: { canonical: '/creations/petits-dejeuners-et-pauses' },
   openGraph: {
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Petits-déjeuners d'entreprise : livrés dès 6h30",
     description: "Petits-déj d'entreprise dès 12,50€/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
   }

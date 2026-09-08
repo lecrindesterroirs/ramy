@@ -5,7 +5,9 @@ import { CTADevis } from "@/components/CTADevis"
 export const metadata = {
   title: "Cocktails d'entreprise : apéros & buffets livrés",
   description: "Cocktails d'entreprise dès 12€ HT/pers. Formules classique & signature. Buffet apéritif & afterwork. Livraison Paris IDF.",
+  alternates: { canonical: '/creations/cocktails' },
   openGraph: {
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Cocktails d'entreprise : apéros & buffets livrés",
     description: "Cocktails d'entreprise dès 12€ HT/pers. Formules classique & signature. Buffet apéritif & afterwork. Livraison Paris IDF.",
   }
