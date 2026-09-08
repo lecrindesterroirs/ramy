@@ -1,6 +1,5 @@
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
-import { CTADevis } from "@/components/CTADevis"
 
 export const metadata = {
   title: "Petits-déjeuners d'entreprise : livrés dès 6h30",
@@ -25,7 +24,6 @@ export default function Layout({ children }) {
       <FAQSchema faqs={faqs} pageTitle={metadata.title} />
       <PriceSchema productName="Petit-déjeuner d'entreprise" minPrice="12.50" />
       {children}
-      <CTADevis category="petits-dejeuners-et-pauses" phone="01 74 54 23 10" />
     </>
   )
 }

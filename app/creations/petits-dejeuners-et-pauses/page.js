@@ -1,6 +1,5 @@
 'use client'
 
-import { CTADevis } from '../../../components/CTADevis'
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { PRODUCTS } from '../../../lib/productsData'
 
@@ -21,7 +20,6 @@ const SEO_ARTICLE = `
 export default function PetitsDejeuners() {
   return (
     <>
-      <CTADevis category="petits-dejeuners" />
       <ProductsPageTemplate
       heroImg="/hero-petitdej.webp"
       heroTitle={"Petits-Déjeuners\n& Pauses"}

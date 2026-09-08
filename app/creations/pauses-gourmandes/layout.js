@@ -1,6 +1,5 @@
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
-import { CTADevis } from "@/components/CTADevis"
 
 export const metadata = {
   title: "Pauses gourmandes au bureau : café, thé & pâtisseries",
@@ -25,7 +24,6 @@ export default function Layout({ children }) {
       <FAQSchema faqs={faqs} pageTitle={metadata.title} />
       <PriceSchema productName="Pause gourmande" minPrice="6" />
       {children}
-      <CTADevis category="pauses-gourmandes" phone="01 74 54 23 10" />
     </>
   )
 }
