@@ -1,4 +1,4 @@
-export default function CTADevis({ category = 'general', phone = '01 74 54 23 10' }) {
+export function CTADevis({ category = 'general', phone = '01 74 54 23 10' }) {
   return (
     <div style={{
       backgroundColor: '#E0A126',

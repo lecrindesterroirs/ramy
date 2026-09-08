@@ -1,26 +1,29 @@
-import FAQSchema from '../../../components/FAQSchema'
-
-const faqs = [
-  { name: "Budget pause pour 20 personnes ?", answer: "Classique : 200-250 € HT. Signature : 300-350 € HT. Livraison 29 € HT." },
-  { name: "À quelle heure livrez-vous ?", answer: "Horaires au choix : 10h30, 15h, 16h. Commande avant 14h la veille." }
-]
+import { FAQSchema } from "@/components/FAQSchema"
+import { PriceSchema } from "@/components/PriceSchema"
+import { CTADevis } from "@/components/CTADevis"
 
 export const metadata = {
-  alternates: { canonical: '/creations/pauses-gourmandes' },
-  title: "Pause gourmande & goûter traiteur Paris",
-  description: "Pauses gourmandes d'entreprise à Paris : madeleines, macarons, tartelettes, choux, cakes et cookies artisanaux livrés dès 6h30.",
+  title: "Pauses gourmandes au bureau : café, thé & pâtisseries",
+  description: "Pauses gourmandes dès 6€/pers. Café, thé, pâtisseries Mado. Livraison quotidienne. Forfait entreprise possible.",
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-    title: "Pauses Gourmandes Traiteur Paris | L'Écrin Traiteur",
-    description: "Goûters et pauses sucrées artisanales pour vos équipes · madeleines, macarons, tartelettes, cookies… Livraison en Île-de-France.",
-  },
+    title: "Pauses gourmandes au bureau : café, thé & pâtisseries",
+    description: "Pauses gourmandes dès 6€/pers. Café, thé, pâtisseries Mado. Livraison quotidienne. Forfait entreprise possible.",
+  }
 }
+
+const faqs = [
+  { name: "Quel est le prix d'une pause gourmande par personne ?", answer: "À partir de 6€ HT/pers. Comprend : boisson + pâtisserie." },
+  { name: "Livrez-vous chaque jour ?", answer: "Oui, du lundi au vendredi. Commande dimanche avant 18h pour lundi-vendredi." },
+  { name: "Peux-tu proposer un forfait pour tout le mois ?", answer: "Oui, -10% à partir de 5 jours/semaine pendant 4 semaines." },
+]
 
 export default function Layout({ children }) {
   return (
     <>
-      <FAQSchema faqs={faqs} pageTitle="Pauses gourmandes" />
+      <FAQSchema faqs={faqs} pageTitle={metadata.title} />
+      <PriceSchema productName="Pause gourmande" minPrice="6" />
       {children}
+      <CTADevis category="pauses-gourmandes" phone="01 74 54 23 10" />
     </>
   )
 }

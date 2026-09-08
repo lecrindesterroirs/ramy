@@ -1,4 +1,4 @@
-export default function FAQSchema({ faqs, pageTitle }) {
+export function FAQSchema({ faqs, pageTitle }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",

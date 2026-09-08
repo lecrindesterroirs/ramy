@@ -1,6 +1,6 @@
 'use client'
 
-import CTADevis from '../../../components/CTADevis'
+import { CTADevis } from '../../../components/CTADevis'
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { PRODUCTS } from '../../../lib/productsData'
 

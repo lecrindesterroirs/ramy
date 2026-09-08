@@ -1,27 +1,29 @@
-import FAQSchema from '../../../components/FAQSchema'
-
-const faqs = [
-  { name: "Combien de viennoiseries par personne ?", answer: "2 par personne pour plateau classique. Avec pâtisseries : 1,5. Pour séminaire : 2,5-3 pièces." },
-  { name: "Quel budget pour un petit-déjeuner d'entreprise ?", answer: "À partir de 12,50 € HT/pers classique, 18 € HT premium. S'ajoute livraison 29 € HT." },
-  { name: "Livrez-vous avant 7h ?", answer: "Oui, dès 6h30 à Paris & IDF, lundi-vendredi. Commande avant 14h la veille." }
-]
+import { FAQSchema } from "@/components/FAQSchema"
+import { PriceSchema } from "@/components/PriceSchema"
+import { CTADevis } from "@/components/CTADevis"
 
 export const metadata = {
   title: "Petits-déjeuners d'entreprise : livrés dès 6h30",
-  description: "Petits-déjeuners sur mesure pour vos réunions. Viennoiseries artisanales, jus frais, service clés en main. Dès 6h30 à Paris & Île-de-France. Devis en 2h.",
+  description: "Petits-déj d'entreprise dès 12,50€/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-    title: "Petits-déjeuners d'entreprise : livrés dès 6h30 | L'Écrin Traiteur",
-    description: "Viennoiseries pur beurre, jus Alain Milliat, thés Mariage Frères. Livraison clés en main avant vos réunions à Paris & IDF.",
-  },
-  alternates: { canonical: '/creations/petits-dejeuners-et-pauses' },
+    title: "Petits-déjeuners d'entreprise : livrés dès 6h30",
+    description: "Petits-déj d'entreprise dès 12,50€/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
+  }
 }
+
+const faqs = [
+  { name: "Quel est le petit-déjeuner moins cher ?", answer: "Formule Classique à 12,50€ HT/pers : viennoiseries, jus, café, fruits." },
+  { name: "Livrez-vous avant 7h le matin ?", answer: "Oui, 6h30 possible. Commande avant 14h la veille pour 6h30 le lendemain." },
+  { name: "Combien de pièces par personne ?", answer: "Comptez 2-3 viennoiseries, 1 fruit, 1-2 boissons. Nous ajustons sur demande." },
+]
 
 export default function Layout({ children }) {
   return (
     <>
-      <FAQSchema faqs={faqs} pageTitle="Petits-déjeuners d'entreprise" />
+      <FAQSchema faqs={faqs} pageTitle={metadata.title} />
+      <PriceSchema productName="Petit-déjeuner d'entreprise" minPrice="12.50" />
       {children}
+      <CTADevis category="petits-dejeuners-et-pauses" phone="01 74 54 23 10" />
     </>
   )
 }
