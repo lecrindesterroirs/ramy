@@ -177,6 +177,8 @@ function ProductCard({ product, basePath }) {
   const pieces = hasPieces ? parts[0] : ''
   const priceRaw = hasPieces ? parts[1] : parts[0]
   const priceClean = (priceRaw || '').replace(/\s*ht\s*$/i, '').trim()
+  // « Sur devis » n'est pas un montant : pas de mention HT derrière
+  const isAmount = /\d/.test(priceClean)
 
   return (
     <a
@@ -230,7 +232,7 @@ function ProductCard({ product, basePath }) {
         </p>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '9px' : '0' }}>
           {priceClean}
-          <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>
+          {isAmount && <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>}
         </p>
         {hasPieces && (
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)' }}>

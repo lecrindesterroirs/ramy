@@ -157,7 +157,7 @@ export const PAUSES = [
   { id: 'plateau-fruits-frais',
     seoTitle: `Plateau de fruits frais découpés pour vos pauses et réceptions d'entreprise à Paris`,
     seoHtml: `<p>Notre plateau de fruits frais de saison, découpés et dressés, se pose au centre de la table pour se servir sans effort. Plus pratique que les fruits entiers pour un buffet ou une pause d'équipe, il apporte fraîcheur et couleur à une réception comme à un déjeuner. Composé selon la saison.</p><h2>Commander votre plateau de fruits à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
-    nom: 'Plateau de Fruits Frais', img: '/plateau-fruits.webp',   prix: '15-20 pers, 48,90 €', description: 'Sélection de fruits frais de saison découpés, à partager.' },
+    nom: 'Plateau de Fruits Frais', img: '/plateau-fruits.webp',   description: 'Sélection de fruits frais de saison découpés, à partager.' },
   { id: 'crepes',
     seoTitle: `Crêpes pour vos pauses et goûters d'entreprise à Paris`,
     seoHtml: `<p>Nos crêpes sucrées sont préparées le jour même, avec des garnitures au choix. En pause d'après-midi ou lors d'un événement, elles rappellent le goûter d'enfance et rassemblent l'équipe autour d'un moment simple et convivial. Un format généreux, à partager sans façon.</p><h2>Commander vos crêpes à Paris et en Île-de-France</h2><p>Quantité selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h. Voir aussi notre atelier crêpes en version animation live.</p>`,
