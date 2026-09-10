@@ -6,6 +6,7 @@ const logos = [
   { name: 'Wella Company',    src: '/logos/wella.jpg', height: '47px' },
   { name: 'SNCF',             src: '/logos/sncf.png', height: '30px' },
   { name: 'VINCI',            src: '/logos/vinci-v2.png', height: '40px', maxWidth: '153px' },
+  { name: 'Chanel',           src: '/logos/chanel.png', height: '42px' },
   { name: 'Carglass',         src: '/logos/carglass.svg', height: '36px' },
   { name: 'Le Monde',         src: '/logos/lemonde.png', height: '30px', maxWidth: '122px' },
   { name: 'Coyote',           src: '/logos/coyote.png', height: '53px' },
