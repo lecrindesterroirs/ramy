@@ -47,7 +47,6 @@ const CLIENT_LOGOS = [
   { name: 'TotalEnergies', src: '/logos/totalenergies.png', height: '42px' },
   { name: 'Talan', src: '/logos/talan.png', height: '30px' },
   { name: 'DS Automobiles', src: '/logos/ds.png', height: '58px', opacity: 0.85 },
-  { name: 'Chanel', src: '/logos/chanel.png', height: '36px' },
 ]
 
 function QuoteMark({ size = 34 }) {
