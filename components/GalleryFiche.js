@@ -165,7 +165,7 @@ export default function GalleryFiche({
                     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '5px' }}>
                       {s.label}
                     </p>
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, lineHeight: 1.4, color: 'var(--text-primary)' }}>
+                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, lineHeight: 1.4, color: 'var(--text-primary)', whiteSpace: 'pre-line' }}>
                       {s.value}
                     </p>
                   </div>

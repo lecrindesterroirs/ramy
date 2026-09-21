@@ -9,6 +9,7 @@ const META = {
   "lb9": { nom: "L'Océane", d: "Lunch box thon mayonnaise, entrée et dessert au choix." },
   "lb5": { nom: "La Marine", d: "Coffret déjeuner club saumon fumé, salade et dessert au choix, eau incluse." },
   "lb6": { nom: "La Piémontaise", d: "Coffret déjeuner wrap vitello tonnato, salade et dessert au choix, eau incluse." },
+  "lb10": { nom: "La Comtoise", d: "Coffret déjeuner pain aux céréales, jambon de dinde & comté, salade et dessert au choix, eau incluse." },
   "lb7": { nom: "La Jardinière", d: "Coffret déjeuner wrap légumes grillés, salade et dessert au choix, eau incluse." },
 }
 
