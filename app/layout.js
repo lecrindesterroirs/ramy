@@ -8,7 +8,7 @@ import { websiteNode } from '../lib/site'
 
 export const metadata = {
   title: {
-    default: "Traiteur d'entreprise à Paris : petits-déjeuners, cocktails, goûters | L'Écrin Traiteur",
+    default: "Traiteur d'entreprise à Paris : petits-déjeuners, cocktails",
     template: "%s | L'Écrin Traiteur",
   },
   description: "Traiteur d'entreprise à Paris & Île-de-France : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Devis sous 24h.",
