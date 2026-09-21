@@ -89,8 +89,8 @@ export default function Hero() {
             textShadow: '0 1px 26px rgba(249,246,239,0.75)',
           }}
         >
-          Traiteur d'entreprise à Paris,<br />
-          l'art de recevoir en entreprise.
+          Traiteur d'entreprise<br />
+          à Paris.
         </h1>
 
         {/* Body text */}
