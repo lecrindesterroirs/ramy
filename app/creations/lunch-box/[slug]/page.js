@@ -6,9 +6,9 @@ import GalleryFiche from '../../../../components/GalleryFiche'
 import { BOXES } from '../page'
 
 const SEO_HTML = `
-  <p>La <strong>lunch box d'entreprise</strong> est la formule idéale pour les déjeuners nomades, réunions de travail et journées séminaires à Paris. Compacte et complète, elle réunit une entrée, un sandwich signature et un dessert artisanal dans un format pratique, prêt à emporter ou à servir en salle.</p>
-  <h2>Des sandwichs façonnés maison, un dessert artisanal</h2>
-  <p>Chaque lunch box associe des pains travaillés (baguette Signature, club moelleux, wrap souple) garnis de produits frais, une entrée de saison et un dessert artisanal. Serviette et couverts sont inclus, la boisson est proposée en option, tout est pensé pour un déjeuner soigné, sans logistique côté client.</p>
+  <p>La <strong>lunch box d'entreprise</strong> est la formule idéale pour les déjeuners nomades, réunions de travail et journées séminaires à Paris. Compacte et complète, elle réunit une entrée, un sandwich et un dessert dans un format pratique, prêt à emporter ou à servir en salle.</p>
+  <h2>Des sandwichs de boulangerie, une entrée et un dessert au choix</h2>
+  <p>Nos box boulangerie associent un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette et couverts inclus. Nos coffrets Signature ajoutent club ou wrap, salade et dessert au choix, avec une bouteille d'eau.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
   <p>Commandez avant 14h la veille et recevez vos lunch box directement sur site. Effectifs, régimes alimentaires, facturation entreprise : nous adaptons la sélection et vous adressons un devis personnalisé sous 24h.</p>
 `
@@ -30,6 +30,7 @@ function LunchBoxDetailInner() {
     box.entree && { label: 'Entrée', value: box.entree },
     box.plat && { label: 'Sandwich', value: box.plat },
     box.dessert && { label: 'Dessert', value: box.dessert },
+    box.boisson && { label: 'Boisson', value: box.boisson },
   ].filter(Boolean)
 
   const related = [...BOXES].filter(b => b.id !== box.id)
@@ -46,7 +47,7 @@ function LunchBoxDetailInner() {
       img={box.img}
       price={box.prix}
       priceNote="HT · par personne"
-      description="Une lunch box individuelle complète, entrée, sandwich Signature, Club ou Wrap, dessert artisanal, serviette & couverts. Boisson en option."
+      description={box.description}
       sections={sections}
       breadcrumb={[
         { label: 'Accueil', href: '/' },

@@ -1,13 +1,15 @@
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 const META = {
-  'lb1': { nom: 'La Parisienne',      d: 'Lunch box baguette Signature jambon de dinde, entrée et dessert artisanal.' },
-  'lb2': { nom: "L'Impératrice",      d: 'Lunch box club poulet César, entrée et dessert artisanal.' },
-  'lb4': { nom: 'La Nordique',        d: 'Lunch box baguette saumon fumé & cream cheese, entrée et dessert artisanal.' },
-  'lb5': { nom: 'La Marine',          d: 'Lunch box club thon, entrée et dessert artisanal.' },
-  'lb6': { nom: 'La New-Yorkaise',    d: 'Lunch box baguette pastrami & pickles, entrée et dessert artisanal.' },
-  'lb8': { nom: 'La Croustillante',   d: 'Lunch box baguette poulet César, entrée et dessert artisanal.' },
-  'lb9': { nom: "L'Océane",           d: 'Lunch box baguette thon ciboulette, entrée et dessert artisanal.' },
+  "lb1": { nom: "La Parisienne", d: "Lunch box poulet mayonnaise, entrée et dessert au choix." },
+  "lb2": { nom: "L'Épicée", d: "Lunch box poulet curry, entrée et dessert au choix." },
+  "lb8": { nom: "La Croustillante", d: "Lunch box poulet croustillant, entrée et dessert au choix." },
+  "lb3": { nom: "La Fermière", d: "Lunch box œuf & emmental, entrée et dessert au choix." },
+  "lb4": { nom: "La Nordique", d: "Lunch box saumon & avocat, entrée et dessert au choix." },
+  "lb9": { nom: "L'Océane", d: "Lunch box thon mayonnaise, entrée et dessert au choix." },
+  "lb5": { nom: "La Marine", d: "Coffret déjeuner club saumon fumé, salade et dessert au choix, eau incluse." },
+  "lb6": { nom: "La Piémontaise", d: "Coffret déjeuner wrap vitello tonnato, salade et dessert au choix, eau incluse." },
+  "lb7": { nom: "La Jardinière", d: "Coffret déjeuner wrap légumes grillés, salade et dessert au choix, eau incluse." },
 }
 
 export const SLUGS = Object.keys(META)
