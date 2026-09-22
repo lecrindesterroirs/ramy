@@ -22,7 +22,7 @@ export default function PetitsDejeuners() {
     <>
       <ProductsPageTemplate
       heroImg="/hero-petitdej.webp"
-      heroTitle={"Petits-Déjeuners\n& Pauses"}
+      heroTitle={"Petits-Déjeuners & Pauses\nà Paris"}
       heroSubtitle="Des créations pensées pour les réunions, accueils et moments de partage."
       breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"
       categorieSlug="petits-dejeuners"
