@@ -107,7 +107,7 @@ export default function ProductPage() {
       product.price ? {
         '@type': 'Product',
         name: `${product.name}, L'Écrin Traiteur`,
-        description: product.ingredients || `${product.name}, spécialité artisanale livrée pour vos petits-déjeuners d'entreprise à Paris et en Île-de-France.`,
+        description: (product.ingredients || '').replace(/\n-\s*/g, ', ').replace(/\s*\n\s*/g, ' ').replace(/\s*:\s*,\s*/g, ' : ').trim() || `${product.name}, spécialité artisanale livrée pour vos petits-déjeuners d'entreprise à Paris et en Île-de-France.`,
         image: product.img ? `${BASE}${product.img}` : undefined,
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
         category: "Petit-déjeuner d'entreprise",
@@ -396,7 +396,7 @@ function GalleryFiche({ product }) {
 
         {/* Description (gauche) */}
         {product.ingredients && (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '22px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '22px', whiteSpace: 'pre-line' }}>
             {product.ingredients}
           </p>
         )}
@@ -528,7 +528,7 @@ function EditorialHero({ product, breadcrumb }) {
               {/* Composition */}
               <div style={{ textAlign: 'left', marginBottom: '14px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Composition</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'rgba(33,28,22,0.6)' }}>{product.ingredients}</p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'rgba(33,28,22,0.6)', whiteSpace: 'pre-line' }}>{product.ingredients}</p>
               </div>
 
               {/* Allergènes */}
@@ -579,7 +579,7 @@ function ProductInfo({ product }) {
       <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.5vw, 46px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '20px', letterSpacing: '-0.01em' }}>{product.name}</h1>
       <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '22px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '10px', letterSpacing: '-0.01em' }}>{product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</p>
       <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.04em', marginBottom: '28px' }}>{product.qty}</p>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>{product.ingredients}</p>
+      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)', whiteSpace: 'pre-line' }}>{product.ingredients}</p>
 
       {product.dietary?.length > 0 && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '28px' }}>
