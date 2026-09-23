@@ -2,6 +2,7 @@ import { evenements } from './creations/evenements-saisonniers/evenementsData'
 import { articles } from '../lib/journalData'
 import { PRODUCTS } from '../lib/productsData'
 import { CITIES } from '../lib/citiesData'
+import { PDJ_VILLES } from '../lib/pdjVillesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { BOISSONS } from '../lib/boissonsData'
 import { PRODUITS as PLATEAUX_REPAS } from './creations/plateaux-repas/data'
@@ -126,6 +127,12 @@ export default function sitemap() {
     ))
   )
 
+  // ── SEO local, petit-déjeuner + ville ─────────────────────────────
+  const pdjVillePages = PDJ_VILLES.map(c => url(
+    `/petit-dejeuner-entreprise/${c.slug}`,
+    0.85, 'monthly'
+  ))
+
   const all = [
     ...staticPages,
     ...productPages,
@@ -135,6 +142,7 @@ export default function sitemap() {
     ...journalPages,
     ...cityPages,
     ...quartierPages,
+    ...pdjVillePages,
   ]
 
   // Dédup par URL : certaines pages (cocktails/classique·signature·prestige,
