@@ -402,7 +402,13 @@ export default function ArticlePage() {
           'datePublished': isoDateTime(article.isoDate) || article.date,
           'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
           'author': author.isPerson
-            ? { '@type': 'Person', 'name': author.name }
+            ? {
+                '@type': 'Person',
+                'name': author.name,
+                'jobTitle': 'Fondateur',
+                'worksFor': { '@type': 'Organization', '@id': 'https://www.lecrin-traiteur.fr/#business', 'name': "L'Écrin Traiteur" },
+                'sameAs': ['https://www.linkedin.com/company/lecrin-traiteur/'],
+              }
             : {
                 '@type': 'Organization',
                 '@id': 'https://www.lecrin-traiteur.fr/#business',
