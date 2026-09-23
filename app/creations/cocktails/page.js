@@ -32,7 +32,7 @@ export const FORMULES = [
   {
     key: 'classique',
     seoTitle: `Cocktail L'Invitation : la formule apéritive pour vos afterworks d'entreprise à Paris`,
-    seoHtml: `<p>La formule L'Invitation est notre cocktail apéritif le plus accessible : 8 pièces salées et sucrées par personne, pensées pour un afterwork ou une pause conviviale. Un format équilibré qui lance bien une fin de journée sans en faire trop, à Paris et en Île-de-France.</p><h2>8 pièces à partager, salé et sucré</h2><p>Côté salé : gougères, chou craquelin à la tapenade, tomate et mozzarella, tartelette pissaladière, millefeuille betterave et chèvre, brochette de poulet tandoori et mini cheeseburger servi chaud. Côté sucré : tartelette tout chocolat et brochette de fruits frais. Tout est dressé et livré prêt à servir.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La formule L'Invitation est notre cocktail apéritif le plus accessible : 8 pièces salées et sucrées par personne, pensées pour un afterwork ou une pause conviviale. Un format équilibré qui lance bien une fin de journée sans en faire trop, à Paris et en Île-de-France.</p><h2>8 pièces à partager, salé et sucré</h2><p>Côté salé : gougères, chou craquelin à la tapenade, tomate et mozzarella, tartelette pissaladière, millefeuille betterave et chèvre, brochette de poulet tandoori et mini cheeseburger. Côté sucré : tartelette tout chocolat et brochette de fruits frais. Tout est dressé et livré prêt à servir.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: "L'Invitation",
     pieces: 8,
     prix: '29,90',
@@ -45,7 +45,7 @@ export const FORMULES = [
       'Tartelette Pissaladière aux Oignons Confits',
       'Millefeuille de Betterave au Chèvre',
       'Brochette de Poulet Mariné Tandoori',
-      'Mini Cheeseburger Servi Chaud',
+      'Mini Cheeseburger',
     ],
     sucre: [
       'Tartelette Tout Chocolat',
@@ -55,7 +55,7 @@ export const FORMULES = [
   {
     key: 'signature',
     seoTitle: `Cocktail La Réception : la formule signature terre et mer pour vos événements d'entreprise à Paris`,
-    seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces par personne, entre terre et mer. C'est notre formule la plus choisie pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces entre terre et mer</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, patate douce, feta et olive kalamata, brochette de poulet tandoori, mini cheeseburger servi chaud, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre. Côté sucré : dôme praliné, tartelette tout chocolat et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur site, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces par personne, entre terre et mer. C'est notre formule la plus choisie pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces entre terre et mer</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, patate douce, feta et olive kalamata, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre. Côté sucré : dôme praliné, tartelette tout chocolat et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur site, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Réception',
     pieces: 12,
     prix: '39,90',
@@ -69,7 +69,7 @@ export const FORMULES = [
       'Millefeuille de Betterave au Chèvre',
       'Bouchée de Patate Douce, Feta & Olive Kalamata',
       'Brochette de Poulet Mariné Tandoori',
-      'Mini Cheeseburger Servi Chaud',
+      'Mini Cheeseburger',
       'Saumon Mariné & Betterave Jaune',
       'Crevette Bio, Mangue & Radis Noir',
     ],
@@ -82,7 +82,7 @@ export const FORMULES = [
   {
     key: 'prestige',
     seoTitle: `Cocktail La Célébration : la formule prestige pour vos grandes réceptions d'entreprise à Paris`,
-    seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Saumon mariné, crevette à la mangue, melon à la feta et à la menthe : une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger servi chaud, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, melon, feta et menthe, focaccia au romarin et caviar d'aubergine. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Saumon mariné, crevette à la mangue, melon à la feta et à la menthe : une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, melon, feta et menthe, focaccia au romarin et caviar d'aubergine. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Célébration',
     pieces: 16,
     prix: '51,90',
@@ -96,7 +96,7 @@ export const FORMULES = [
       'Millefeuille de Betterave au Chèvre',
       'Bouchée de Patate Douce, Feta & Olive Kalamata',
       'Brochette de Poulet Mariné Tandoori',
-      'Mini Cheeseburger Servi Chaud',
+      'Mini Cheeseburger',
       'Saumon Mariné & Betterave Jaune',
       'Crevette Bio, Mangue & Radis Noir',
       'Moelleux de Carotte au Cerfeuil',
