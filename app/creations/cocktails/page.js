@@ -58,7 +58,7 @@ export const FORMULES = [
     seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces par personne, entre terre et mer. C'est notre formule la plus choisie pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces entre terre et mer</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, patate douce, feta et olive kalamata, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre. Côté sucré : dôme praliné, tartelette tout chocolat et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur site, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Réception',
     pieces: 12,
-    prix: '39,90',
+    prix: '40,90',
     accroche: 'Une sélection raffinée de pièces généreuses, entre terre et mer.',
     featured: true,
     img: '/cocktail-signature.webp',
