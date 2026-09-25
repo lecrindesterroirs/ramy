@@ -99,7 +99,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
       {/* ── Bandeau défilant (page produit uniquement) ── */}
       {showBanner && <div style={{
         position: 'fixed',
-        top: 0,
+        top: 'var(--promo-h)',
         left: 0,
         right: 0,
         zIndex: 101,
@@ -136,7 +136,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         className={scrolled ? 'nav-bar' : 'nav-bar nav-bar-hero'}
         style={{
           position: 'fixed',
-          top: showBanner ? 'var(--banner-h)' : 0,
+          top: showBanner ? 'calc(var(--promo-h) + var(--banner-h))' : 'var(--promo-h)',
           left: 0,
           right: 0,
           zIndex: 100,
@@ -647,7 +647,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         <div
           style={{
             position: 'fixed',
-            top: showBanner ? 'calc(var(--banner-h) + 58px)' : '58px',
+            top: showBanner ? 'calc(var(--promo-h) + var(--banner-h) + 58px)' : 'calc(var(--promo-h) + 58px)',
             left: 0,
             right: 0,
             bottom: 0,

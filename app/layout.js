@@ -1,6 +1,7 @@
 import './globals.css'
 import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
+import PromoBanner from '../components/PromoBanner'
 import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
 import DeferredGTM from '../components/DeferredGTM'
@@ -68,6 +69,7 @@ export default function RootLayout({ children }) {
         />
         <link rel="preload" href="/fonts/BaskervilleDisplayPT.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <PromoBanner />
         <SmoothScroll />
         <ScrollRevealInit />
         <CartProvider>

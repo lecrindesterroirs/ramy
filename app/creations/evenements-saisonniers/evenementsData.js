@@ -273,18 +273,19 @@ export const evenements = [
     nom: 'Octobre Rose',
     tags: ['Goûters', 'Pauses gourmandes'],
     img: '/cat-fruits-hero.jpg',
-    descCourt: "Madeleines roses personnalisées, plateau macarons et cakes roses, ruban sur les emballages.",
-    desc: "Un goûter pour sensibiliser vos équipes au dépistage du cancer du sein. Plateau full rose et rouge, madeleines personnalisées, ruban sur les emballages. Un geste simple, mais concret. Un moment de partage autour d'une cause qui compte.",
+    descCourt: "La Pause Rose : plateau rose et fruits rouges, madeleines personnalisées. 1 € reversé par convive à la recherche contre le cancer du sein.",
+    desc: "Un goûter pour sensibiliser vos équipes au dépistage du cancer du sein. Plateau rose et fruits rouges, madeleines personnalisées, ruban sur les emballages. Et un engagement chiffré : sur toutes nos commandes livrées en octobre, nous reversons 1 € par convive à la recherche contre le cancer du sein. Le montant total est publié en fin de mois.",
     produits: [
       'Madeleines roses personnalisées',
-      'Plateau macarons et cakes roses',
+      'Plateau macarons et cakes fruits rouges',
+      'Tartelettes framboise',
       'Emballages avec ruban rose',
       'Smoothie fruits rouges',
       'Thé Mariage Frères',
     ],
     differentiateur: {
-      label: 'Personnalisation',
-      text: "Madeleines roses à votre effigie, ruban sur chaque emballage. Un plateau pensé aux couleurs de la cause.",
+      label: 'Notre engagement',
+      text: "1 € reversé par convive sur toutes nos commandes d'octobre, pas seulement sur la Pause Rose. Montant total publié en fin de mois.",
     },
     article: {
       titre: "Octobre Rose en entreprise : comment s'engager concrètement ?",
@@ -304,6 +305,10 @@ export const evenements = [
         {
           heading: "Les détails qui font la différence",
           texte: "La personnalisation des produits est ce qui distingue un vrai engagement d'une action symbolique. Des madeleines avec un emballage rose aux couleurs de votre entreprise, un ruban sur chaque conditionnement, une présentation soignée : ces détails montrent que l'événement a été préparé avec soin. Communiquez l'événement en avance sur vos canaux internes pour que vos équipes l'anticipent et y participent activement.",
+        },
+        {
+          heading: "Notre engagement : 1 € reversé par convive",
+          texte: "Pendant tout le mois d'octobre, nous reversons 1 € par convive servi à la recherche contre le cancer du sein. Toutes les commandes comptent, pas seulement les goûters roses : un petit-déjeuner de 40 personnes, ce sont 40 € de don. Le montant total collecté est publié en fin de mois, et le reçu du don est disponible sur simple demande. Pour vos équipes, c'est une manière concrète de relier une pause gourmande à une cause, sans rien changer à votre organisation.",
         },
       ],
     },

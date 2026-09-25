@@ -54,16 +54,23 @@
   --accent: #E0A126;          /* jaune signature, fonds, ornements, filets */
   --accent-deep: #875E10;     /* accent en TEXTE sur fond clair, WCAG AA ≥4,5:1 même sur crème (#F8F5EF) */
   --banner-h: 36px;
-  --nav-h: 72px;
-  --header-h: 72px; /* nav seule, toutes pages sauf produit */
+  --promo-h: 0px;             /* bandeau campagne (Octobre Rose…), 0 quand inactif */
+  --nav-base: 72px;
+  --nav-h: calc(var(--nav-base) + var(--promo-h));
+  --header-h: calc(var(--nav-base) + var(--promo-h)); /* nav seule, toutes pages sauf produit */
 }
 
 @media (max-width: 768px) {
   :root {
     --banner-h: 40px;
-    --nav-h: 52px;
-    --header-h: 52px;
+    --nav-base: 52px;
   }
+}
+
+/* Activé par components/PromoBanner.js quand la campagne est en cours */
+html.promo-on { --promo-h: 44px; }
+@media (max-width: 768px) {
+  html.promo-on { --promo-h: 46px; }
 }
 
 html {
