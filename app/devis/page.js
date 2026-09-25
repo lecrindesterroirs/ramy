@@ -85,7 +85,7 @@ const JOURS = ['L','M','M','J','V','S','D']
 
 // ── DatePicker ────────────────────────────────────────────────────────────────
 
-function DatePicker({ value, onChange }) {
+function DatePicker({ value, onChange, accent = '#E0A126' }) {
   const today = new Date()
   const [open, setOpen] = useState(false)
   const [view, setView] = useState({ year: today.getFullYear(), month: today.getMonth() })
@@ -148,7 +148,7 @@ function DatePicker({ value, onChange }) {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1px' }}>
             {days.map((d, i) => (
-              <button key={i} type="button" onClick={() => pick(d)} disabled={!d || isPast(d)} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? '#E0A126' : 'transparent', color: isSelected(d) ? '#FFF' : isPast(d) ? 'rgba(17,17,17,0.18)' : isToday(d) ? '#E0A126' : d ? 'var(--text-primary)' : 'transparent', cursor: d && !isPast(d) ? 'pointer' : 'default', outline: 'none', fontWeight: isSelected(d) ? 500 : 400, transition: 'background 0.15s', textDecoration: isPast(d) ? 'line-through' : 'none' }}
+              <button key={i} type="button" onClick={() => pick(d)} disabled={!d || isPast(d)} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? accent : 'transparent', color: isSelected(d) ? '#FFF' : isPast(d) ? 'rgba(17,17,17,0.18)' : isToday(d) ? accent : d ? 'var(--text-primary)' : 'transparent', cursor: d && !isPast(d) ? 'pointer' : 'default', outline: 'none', fontWeight: isSelected(d) ? 500 : 400, transition: 'background 0.15s', textDecoration: isPast(d) ? 'line-through' : 'none' }}
                 onMouseEnter={e => { if (d && !isSelected(d) && !isPast(d)) e.currentTarget.style.background = 'rgba(224,161,38,0.1)' }}
                 onMouseLeave={e => { if (d && !isSelected(d) && !isPast(d)) e.currentTarget.style.background = 'transparent' }}
               >{d || ''}</button>
@@ -156,7 +156,7 @@ function DatePicker({ value, onChange }) {
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid rgba(17,17,17,0.06)' }}>
             <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>Effacer</button>
-            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#E0A126', fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>Aujourd'hui</button>
+            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: accent, fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>Aujourd'hui</button>
           </div>
         </div>
       )}
@@ -180,7 +180,7 @@ function ProgressBar({ step }) {
 
 // ── Step 1 ────────────────────────────────────────────────────────────────────
 
-function Step1({ data, setData, onSelect }) {
+function Step1({ data, setData, onSelect, accent = '#E0A126' }) {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -203,8 +203,8 @@ function Step1({ data, setData, onSelect }) {
               key={p.id}
               onClick={() => { setData(d => ({ ...d, prestation: p.id })); onSelect() }}
               style={{
-                background: active ? '#E0A126' : '#FFFFFF',
-                border: `1px solid ${active ? '#E0A126' : 'rgba(17,17,17,0.18)'}`,
+                background: active ? accent : '#FFFFFF',
+                border: `1px solid ${active ? accent : 'rgba(17,17,17,0.18)'}`,
                 padding: '26px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -227,7 +227,7 @@ function Step1({ data, setData, onSelect }) {
 
 // ── CityAutocomplete ──────────────────────────────────────────────────────────
 
-function CityAutocomplete({ value, onChange, hasError }) {
+function CityAutocomplete({ value, onChange, hasError, accent = '#E0A126' }) {
   const [suggestions, setSuggestions] = useState([])
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -313,7 +313,7 @@ function CityAutocomplete({ value, onChange, hasError }) {
         autoComplete="postal-code"
         style={{ ...fieldStyle, borderColor: hasError ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
       />
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: loading ? '#E0A126' : 'rgba(17,17,17,0.3)', pointerEvents: 'none', transition: 'color 0.2s' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: loading ? accent : 'rgba(17,17,17,0.3)', pointerEvents: 'none', transition: 'color 0.2s' }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       {open && (
         <div style={{ position: 'absolute', top: 'calc(100% + 2px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.1)', boxShadow: '0 8px 24px rgba(17,17,17,0.08)', zIndex: 200 }}>
           {suggestions.map((city, i) => (
@@ -336,7 +336,7 @@ function CityAutocomplete({ value, onChange, hasError }) {
 
 // ── Step 2 ────────────────────────────────────────────────────────────────────
 
-function Step2({ data, setData, showErrors }) {
+function Step2({ data, setData, showErrors, accent = '#E0A126' }) {
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
   const err = (k) => showErrors && !data[k]?.trim()
   const [isMobile, setIsMobile] = useState(false)
@@ -357,10 +357,10 @@ function Step2({ data, setData, showErrors }) {
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
             <label style={labelStyle}>Date souhaitée <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
-            <DatePicker value={data.date} onChange={v => set('date', v)} />
+            <DatePicker value={data.date} onChange={v => set('date', v)} accent={accent} />
           </div>
           <div>
-            <label style={labelStyle}>Nombre de convives <span style={{ color: '#E0A126' }}>*</span></label>
+            <label style={labelStyle}>Nombre de convives <span style={{ color: accent }}>*</span></label>
             <div style={{ position: 'relative' }}>
               <input inputMode="numeric" pattern="[0-9]*" value={data.convives} onChange={e => set('convives', e.target.value)} placeholder="Ex : 30 personnes" style={{ ...fieldStyle, borderColor: err('convives') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -370,8 +370,8 @@ function Step2({ data, setData, showErrors }) {
         </div>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
-            <label style={labelStyle}>Ville ou code postal <span style={{ color: '#E0A126' }}>*</span></label>
-            <CityAutocomplete value={data.ville} onChange={v => set('ville', v)} hasError={err('ville')} />
+            <label style={labelStyle}>Ville ou code postal <span style={{ color: accent }}>*</span></label>
+            <CityAutocomplete value={data.ville} onChange={v => set('ville', v)} hasError={err('ville')} accent={accent} />
             {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
           </div>
           <div>
@@ -383,7 +383,7 @@ function Step2({ data, setData, showErrors }) {
           </div>
         </div>
         <div>
-          <label style={labelStyle}>Détails de votre projet <span style={{ color: '#E0A126' }}>*</span></label>
+          <label style={labelStyle}>Détails de votre projet <span style={{ color: accent }}>*</span></label>
           <textarea
             value={data.message}
             onChange={e => set('message', e.target.value)}
@@ -400,7 +400,7 @@ function Step2({ data, setData, showErrors }) {
 
 // ── Step 3 ────────────────────────────────────────────────────────────────────
 
-function Step3({ data, setData, onEdit, onEditPrestation }) {
+function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) {
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
   const [editing, setEditing] = useState(null)
 
@@ -428,19 +428,19 @@ function Step3({ data, setData, onEdit, onEditPrestation }) {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div>
-            <label style={labelStyle}>Nom complet <span style={{ color: '#E0A126' }}>*</span></label>
+            <label style={labelStyle}>Nom complet <span style={{ color: accent }}>*</span></label>
             <input value={data.nom} onChange={e => set('nom', e.target.value)} placeholder="Ex : Marie Dupont" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Société <span style={{ color: '#E0A126' }}>*</span></label>
+            <label style={labelStyle}>Société <span style={{ color: accent }}>*</span></label>
             <input value={data.societe} onChange={e => set('societe', e.target.value)} placeholder="Ex : Entreprise SAS" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Email professionnel <span style={{ color: '#E0A126' }}>*</span></label>
+            <label style={labelStyle}>Email professionnel <span style={{ color: accent }}>*</span></label>
             <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="Ex : marie@entreprise.com" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Téléphone <span style={{ color: '#E0A126' }}>*</span></label>
+            <label style={labelStyle}>Téléphone <span style={{ color: accent }}>*</span></label>
             <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" style={fieldStyle} required />
           </div>
         </div>
@@ -462,7 +462,7 @@ function Step3({ data, setData, onEdit, onEditPrestation }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {recap.map(r => (
             <div key={r.key} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-              <div style={{ color: '#E0A126', marginTop: '1px', flexShrink: 0 }}>{r.icon}</div>
+              <div style={{ color: accent, marginTop: '1px', flexShrink: 0 }}>{r.icon}</div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '2px' }}>{r.label}</p>
                 {editing === r.key ? (
@@ -513,6 +513,15 @@ function Step3({ data, setData, onEdit, onEditPrestation }) {
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function Contact() {
+  // Thème rose Octobre Rose : activé via ?theme=octobre-rose sur le lien de devis
+  // (lu côté client pour ne pas nécessiter de Suspense boundary avec useSearchParams).
+  const [isOctobreRose, setIsOctobreRose] = useState(false)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('theme') === 'octobre-rose') setIsOctobreRose(true)
+  }, [])
+  const accent = isOctobreRose ? '#E27FA0' : '#E0A126'
+
   const [step, setStep] = useState(1)
   const [submitStatus, setSubmitStatus] = useState('idle') // idle | loading | success | error
   const [showStep2Errors, setShowStep2Errors] = useState(false)
@@ -740,9 +749,9 @@ export default function Contact() {
             {/* Step content : centré, hauteur stable d'une étape à l'autre */}
             <div className="devis-stage" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
               <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px 120px' }}>
-                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} />}
-                {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} />}
-                {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} />}
+                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} />}
+                {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} />}
+                {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} accent={accent} />}
               </div>
             </div>
 
@@ -819,7 +828,7 @@ export default function Contact() {
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     color: '#FFFFFF',
-                    background: '#E0A126',
+                    background: accent,
                     border: 'none',
                     padding: '12px 28px',
                     cursor: 'pointer',
@@ -843,7 +852,7 @@ export default function Contact() {
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     color: '#FFFFFF',
-                    background: '#E0A126',
+                    background: accent,
                     border: 'none',
                     padding: '12px 28px',
                     cursor: submitStatus === 'loading' ? 'default' : 'pointer',
@@ -876,7 +885,7 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={() => setShowExitModal(false)}
-                style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: '#E0A126', border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
+                style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: accent, border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
               >
                 Continuer mon devis
               </button>

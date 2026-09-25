@@ -27,7 +27,7 @@ const PROGRAMME = [
   { img: '/prod-tarte-framboise-partager.webp', label: 'Tartelettes framboise' },
   { img: '/bois-jus-framboise.webp', label: 'Jus pomme framboise' },
   { img: '/mariage-freres.webp', label: 'Thé Mariage Frères' },
-  { img: '/hero-coffrets-cadeaux.webp', label: 'Emballages avec ruban rose' },
+  { img: '/emballages-octobre-rose.webp', label: 'Emballages avec ruban rose' },
 ]
 
 function IconRuban({ color = ROSE }) {
@@ -165,7 +165,7 @@ export default function OctobreRosePage() {
               Le montant total est publié en fin de mois.
             </p>
             <a
-              href="/devis"
+              href="/devis?theme=octobre-rose"
               style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease', whiteSpace: 'nowrap' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
