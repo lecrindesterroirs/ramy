@@ -3,9 +3,11 @@
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { trackPhoneClick } from '../lib/tracking'
+import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 
 export default function MobileCTA() {
   const pathname = usePathname()
+  const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : undefined
   const [hidden, setHidden] = useState(true)
   const lastY = useRef(0)
   const barRef = useRef(null)
@@ -67,7 +69,7 @@ export default function MobileCTA() {
           </svg>
           01 74 54 23 10
         </a>
-        <a className="mobile-cta-devis" href="/devis" aria-label="Obtenir un devis">
+        <a className="mobile-cta-devis" href="/devis" aria-label="Obtenir un devis" style={devisAccent ? { background: devisAccent } : undefined}>
           Devis →
         </a>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
+import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 
 const MOMENTS = {
   petitDej: {
@@ -71,6 +72,7 @@ const JOURNAL_ITEMS = {
 export default function Navbar({ showBanner = false, forceScrolled = false }) {
   const pathname = usePathname()
   const alwaysScrolled = forceScrolled || pathname !== '/'
+  const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : 'var(--accent)'
 
   const [scrolled, setScrolled] = useState(alwaysScrolled)
   const [activeDropdown, setActiveDropdown] = useState(null)
@@ -591,8 +593,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
               color: '#1A1A18',
-              background: 'var(--accent)',
-              border: '1px solid var(--accent)',
+              background: devisAccent,
+              border: `1px solid ${devisAccent}`,
               padding: '9px 18px',
               display: 'flex',
               alignItems: 'center',
@@ -762,7 +764,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           <a
             href="/devis"
             onClick={() => setMobileOpen(false)}
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '16px', textDecoration: 'none', marginTop: '28px' }}
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: devisAccent, padding: '16px', textDecoration: 'none', marginTop: '28px' }}
           >
             Obtenir un devis <span>→</span>
           </a>

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
@@ -22,12 +23,12 @@ const BADGES = [
 ]
 
 const PROGRAMME = [
-  { img: '/prod-madeleines-octobre-rose.webp', label: 'Madeleines roses personnalisées' },
-  { img: '/macarons-octobre-rose.webp', label: 'Plateau macarons et cakes fruits rouges' },
-  { img: '/prod-tarte-framboise-partager.webp', label: 'Tartelettes framboise' },
-  { img: '/bois-jus-framboise.webp', label: 'Jus pomme framboise' },
-  { img: '/mariage-freres.webp', label: 'Thé Mariage Frères' },
-  { img: '/emballages-octobre-rose.webp', label: 'Emballages avec ruban rose' },
+  { img: '/prod-madeleines-octobre-rose.webp', label: 'Madeleines roses personnalisées', href: '/creations/petits-dejeuners-et-pauses/madeleines-octobre-rose' },
+  { img: '/macarons-octobre-rose.webp', label: 'Plateau macarons et cakes fruits rouges', href: '/creations/petits-dejeuners-et-pauses/macarons' },
+  { img: '/prod-tarte-framboise-partager.webp', label: 'Tartelettes framboise', href: '/creations/pauses-gourmandes/tarte-framboise-grand-format' },
+  { img: '/bois-jus-framboise.webp', label: 'Jus pomme framboise', href: '/creations/boissons' },
+  { img: '/mariage-freres.webp', label: 'Thé Mariage Frères', href: '/creations/boissons' },
+  { img: '/emballages-octobre-rose.webp', label: 'Emballages avec ruban rose', href: '/devis?theme=octobre-rose' },
 ]
 
 function IconRuban({ color = ROSE }) {
@@ -68,12 +69,11 @@ export default function OctobreRosePage() {
         { name: ev.nom, path: `/creations/evenements-saisonniers/${ev.slug}` },
       ]} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: ev.masquerBandeau ? 'var(--nav-h)' : 'calc(var(--banner-h) + var(--nav-h))' }}>
+      <main style={{ background: ROSE_PALE, minHeight: '100vh', paddingTop: ev.masquerBandeau ? 'var(--nav-h)' : 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
-
-        {/* ── Hero 2 colonnes ── */}
+        {/* ── Hero 2 colonnes (fil d'Ariane inclus, pas de bande blanche entre navbar et section rose) ── */}
         <div className="or-hero" style={{ background: ROSE_PALE, position: 'relative', overflow: 'hidden' }}>
+          <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
           <div className="or-hero-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
 
             <div>
@@ -90,6 +90,17 @@ export default function OctobreRosePage() {
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.72)', marginBottom: '40px', maxWidth: '460px' }}>
                 À travers une sélection de douceurs roses et de produits de saison, nous vous proposons une pause conviviale et solidaire. 1 € est reversé par convive à la recherche contre le cancer du sein, sur toutes nos commandes livrées en octobre.
               </p>
+
+              <div style={{ marginBottom: '36px' }}>
+                <Link
+                  href="/devis?theme=octobre-rose"
+                  style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                  onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                >
+                  Demander un devis Octobre Rose →
+                </Link>
+              </div>
 
               <div className="or-badges" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
                 {BADGES.map(b => {
@@ -115,35 +126,48 @@ export default function OctobreRosePage() {
           </div>
         </div>
 
-        {/* ── Au programme : grille produits ── */}
-        <div className="or-programme" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px' }}>
-          <div className="or-programme-head" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', marginBottom: '48px', alignItems: 'start' }}>
-            <div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '16px' }}>
-                Au programme
-              </p>
-              <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: ENCRE }}>
-                Une sélection gourmande<br />aux couleurs d'Octobre Rose
-              </h2>
-            </div>
-            <div style={{ borderLeft: `1px solid ${ROSE}`, paddingLeft: '28px', alignSelf: 'center' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.7)' }}>
-                Des créations sucrées et fraîches, pensées spécialement pour l'occasion, alliant plaisir et engagement. Chaque commande contribue directement à la recherche contre le cancer du sein.
-              </p>
-            </div>
-          </div>
-
-          <div className="or-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '18px' }}>
-            {PROGRAMME.map(p => (
-              <div key={p.label}>
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: ROSE_PALE, marginBottom: '12px' }}>
-                  <Image fill sizes="(max-width: 900px) 33vw, 16vw" src={p.img} alt={p.label} style={{ objectFit: 'cover' }} />
-                </div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.4, color: ENCRE, textAlign: 'center' }}>
-                  {p.label}
+        {/* ── Au programme : grille produits (fond blanc pleine largeur) ── */}
+        <div style={{ background: '#FFFFFF' }}>
+          <div className="or-programme" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px' }}>
+            <div className="or-programme-head" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', marginBottom: '48px', alignItems: 'start' }}>
+              <div>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '16px' }}>
+                  Au programme
+                </p>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: ENCRE }}>
+                  Une sélection gourmande<br />aux couleurs d'Octobre Rose
+                </h2>
+              </div>
+              <div style={{ borderLeft: `1px solid ${ROSE}`, paddingLeft: '28px', alignSelf: 'center' }}>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.7)' }}>
+                  Des créations sucrées et fraîches, pensées spécialement pour l'occasion, alliant plaisir et engagement. Chaque commande contribue directement à la recherche contre le cancer du sein.
                 </p>
               </div>
-            ))}
+            </div>
+
+            <div className="or-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '18px' }}>
+              {PROGRAMME.map(p => (
+                <Link key={p.label} href={p.href} className="or-programme-card" style={{ textDecoration: 'none', display: 'block' }}>
+                  <div className="or-programme-img" style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: ROSE_PALE, marginBottom: '12px', transition: 'box-shadow 0.3s ease' }}>
+                    <Image fill sizes="(max-width: 900px) 33vw, 16vw" src={p.img} alt={p.label} style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }} />
+                  </div>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.4, color: ENCRE, textAlign: 'center' }}>
+                    {p.label}
+                  </p>
+                </Link>
+              ))}
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '48px' }}>
+              <Link
+                href="/devis?theme=octobre-rose"
+                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              >
+                Composer ma sélection Octobre Rose →
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -200,7 +224,7 @@ export default function OctobreRosePage() {
         </div>
 
         {/* Retour */}
-        <div style={{ padding: '0 72px 40px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ background: '#FFFFFF', padding: '0 72px 40px', display: 'flex', justifyContent: 'center' }}>
           <a
             href="/creations/evenements-saisonniers"
             style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
@@ -212,6 +236,8 @@ export default function OctobreRosePage() {
       </main>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
+        .or-programme-card:hover .or-programme-img { box-shadow: 0 12px 32px rgba(226,127,160,0.28); }
+        .or-programme-card:hover .or-programme-img img { transform: scale(1.05); }
         @media (max-width: 900px) {
           .or-hero-grid { grid-template-columns: 1fr !important; padding: 40px 24px !important; gap: 32px !important; }
           .or-hero-img { aspect-ratio: 16/10 !important; order: -1; }

@@ -5,9 +5,11 @@ import { useEffect, useRef, useState } from 'react'
 import ReviewsBadge from './ReviewsBadge'
 import CatalogueModal from './CatalogueModal'
 import { trackPhoneClick } from '../lib/tracking'
+import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 
 export default function Hero() {
   const imageRef = useRef(null)
+  const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : 'var(--accent)'
   const [catalogueOpen, setCatalogueOpen] = useState(false)
 
   useEffect(() => {
@@ -121,8 +123,8 @@ export default function Hero() {
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
               padding: '11px 24px',
-              background: 'var(--accent)',
-              border: '1px solid var(--accent)',
+              background: devisAccent,
+              border: `1px solid ${devisAccent}`,
               color: '#1A1A18',
               display: 'inline-flex',
               alignItems: 'center',
