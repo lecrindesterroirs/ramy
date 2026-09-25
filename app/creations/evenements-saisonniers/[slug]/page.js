@@ -37,74 +37,58 @@ export default function EvenementDetail() {
 
         <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
 
-        {/* Header */}
-        <div
-          className="ev-header"
-          style={{
-            background: 'var(--bg-secondary)',
-            padding: '80px 72px 64px',
-          }}
-        >
-          <div style={{ marginBottom: '36px' }}>
-            <a
-              href="/creations/evenements-saisonniers"
-              style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '11px',
-                fontWeight: 400,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                color: 'var(--text-secondary)',
-                textDecoration: 'none',
-                transition: 'color 0.2s ease',
-              }}
-              onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-            >
-              ← Événements Saisonniers
-            </a>
-          </div>
+        {/* En-tête — écriture de fiche : monogramme, filet doré, titre serif */}
+        <div className="ev-header" style={{ background: 'var(--bg-secondary)', padding: '52px 72px 46px' }}>
+          <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
+            <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '30px', width: 'auto', margin: '0 auto 18px', opacity: 0.9, display: 'block' }} />
 
-          <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: 'var(--accent-deep)',
-            marginBottom: '16px',
-          }}>
-            {ev.mois}
-          </p>
+            <p style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '0.24em',
+              textTransform: 'uppercase',
+              color: 'var(--accent-deep)',
+              marginBottom: '14px',
+            }}>
+              {ev.mois}
+            </p>
 
-          <h1 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
-            fontSize: 'clamp(36px, 5vw, 72px)',
-            fontWeight: 400,
-            lineHeight: 1.0,
-            letterSpacing: '-0.01em',
-            color: 'var(--text-primary)',
-            marginBottom: '24px',
-            maxWidth: '700px',
-          }}>
-            {ev.nom}
-          </h1>
+            <h1 style={{
+              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontSize: 'clamp(34px, 4.4vw, 60px)',
+              fontWeight: 400,
+              lineHeight: 1.02,
+              letterSpacing: '-0.01em',
+              color: 'var(--text-primary)',
+            }}>
+              {ev.nom}
+            </h1>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
-            {ev.tags.map((tag, i) => (
-              <span key={i} style={{
-                fontFamily: "'Neue Montreal', sans-serif",
-                fontSize: '9px',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--text-secondary)',
-                border: '1px solid rgba(17,17,17,0.18)',
-                padding: '5px 10px',
-              }}>
-                {tag}
-              </span>
-            ))}
+            <span style={{ display: 'block', width: '44px', height: '1px', background: 'var(--accent)', margin: '22px auto' }} />
+
+            <p style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '14px',
+              lineHeight: 1.7,
+              color: 'var(--text-secondary)',
+              maxWidth: '560px',
+              margin: '0 auto',
+            }}>
+              {ev.descCourt}
+            </p>
+
+            <p style={{
+              fontFamily: "'Neue Montreal', sans-serif",
+              fontSize: '10px',
+              fontWeight: 500,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'rgba(17,17,17,0.38)',
+              marginTop: '20px',
+            }}>
+              {ev.tags.join('  ·  ')}
+            </p>
           </div>
         </div>
 
@@ -447,7 +431,7 @@ export default function EvenementDetail() {
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
-          .ev-header { padding: 48px 24px 40px !important; }
+          .ev-header { padding: 36px 24px 32px !important; }
           .ev-content {
             grid-template-columns: 1fr !important;
             padding: 48px 24px 60px !important;
@@ -458,7 +442,7 @@ export default function EvenementDetail() {
           .ev-nav { padding: 32px 24px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
-          .ev-header { padding: 64px 40px 48px !important; }
+          .ev-header { padding: 44px 40px 38px !important; }
           .ev-content { padding: 60px 40px 80px !important; gap: 48px !important; }
           .ev-article > div { padding: 64px 40px 80px !important; }
           .ev-footer-cta { padding: 56px 40px !important; }
