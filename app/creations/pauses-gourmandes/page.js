@@ -52,6 +52,10 @@ const COFFRETS_MACARONS = [
 /* Douceurs, images partagées avec Petit-déjeuner quand le produit existe déjà,
    sinon visuels générés dans la DA du site (planche bois, lumière naturelle). */
 export const PAUSES = [
+  { id: 'madeleines-octobre-rose',
+    seoTitle: `Coffret de 10 madeleines Octobre Rose : le goûter solidaire pour votre entreprise à Paris`,
+    seoHtml: `<p>Nos madeleines Mado Paris déclinées en édition Octobre Rose : glaçage rose et décor filet, préparées par notre partenaire pâtissier Mado. Pour tout achat de ce coffret, 1 € est reversé à l'association Ruban Rose, en plus de notre engagement général d'1 € par convive servi sur toutes les commandes du mois d'octobre. Voir notre <a href="/creations/evenements-saisonniers/octobre-rose">offre Octobre Rose complète</a>.</p><h2>Commander votre coffret Octobre Rose à Paris</h2><p>Coffret de 10 madeleines, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA.</p>`,
+    nom: 'Coffret de 10 madeleines Octobre Rose',   img: '/prod-madeleines-octobre-rose.webp', prix: '29,00 €', description: "Madeleines Mado Paris glaçage rose, édition Octobre Rose. 1 € reversé à Ruban Rose par coffret vendu." },
   { id: 'madeleines',
     seoTitle: `Madeleines artisanales : la pause gourmande pour vos goûters d'entreprise à Paris`,
     seoHtml: `<p>Nos madeleines Mado Paris, réputées parmi les meilleures madeleines de Paris, sont moelleuses et cuites du jour, nature ou parfumées. En pause d'après-midi, c'est la douceur simple qui réunit l'équipe autour d'un café, et un joli geste à offrir pour marquer un moment. Livrées en coffret, du format d'équipe au grand volume.</p><h2>Commander vos madeleines à Paris et en Île-de-France</h2><p>Choisissez la taille du coffret selon l'effectif, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA, devis sous 24h si besoin.</p>`,
