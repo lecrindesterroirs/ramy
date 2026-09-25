@@ -13,7 +13,7 @@ const CAMPAGNE = {
   debut: '2026-09-25',                     // affiché à partir de (inclus)
   fin: '2026-11-01',                       // masqué à partir de (exclu)
   href: '/creations/evenements-saisonniers/octobre-rose',
-  texte: "Octobre Rose — pour chaque convive servi en octobre, nous reversons 1 € à la recherche contre le cancer du sein.",
+  texte: "Octobre Rose — 1 € reversé par convive à la recherche contre le cancer du sein",
   texteMobile: "Octobre Rose — 1 € reversé par convive →",
   cta: "Découvrir l'offre",
   fond: '#EFC6D2',
@@ -149,7 +149,7 @@ export default function PromoBanner() {
         }
         .promo-banner-link:hover .promo-banner-cta { opacity: .65; }
         .promo-short { display: none; }
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
           .promo-banner { padding: 0 40px 0 14px; justify-content: flex-start; gap: 9px; }
           .promo-banner-link { gap: 0; flex-wrap: nowrap; align-items: center; }
           .promo-long { display: none; }
