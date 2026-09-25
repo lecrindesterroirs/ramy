@@ -274,6 +274,7 @@ export const evenements = [
     tags: ['Goûters', 'Pauses gourmandes'],
     img: '/octobre-rose-hero.webp',
     imgPos: 'center 14%',
+    masquerBandeau: true,
     imgAlt: "Buffet petit-déjeuner Octobre Rose : viennoiseries, madeleines framboise, macarons et jus, livré en entreprise par L'Écrin Traiteur",
     descCourt: "La Pause Rose : plateau rose et fruits rouges, madeleines personnalisées. 1 € reversé par convive à la recherche contre le cancer du sein.",
     desc: "Un goûter pour sensibiliser vos équipes au dépistage du cancer du sein. Plateau rose et fruits rouges, madeleines personnalisées, ruban sur les emballages. Et un engagement chiffré : sur toutes nos commandes livrées en octobre, nous reversons 1 € par convive à la recherche contre le cancer du sein. Le montant total est publié en fin de mois.",

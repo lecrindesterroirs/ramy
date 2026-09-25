@@ -29,11 +29,14 @@ export default function EvenementDetail() {
     )
   }
 
+  // Certains événements masquent le bandeau défilant (data : masquerBandeau)
+  const bandeau = !ev.masquerBandeau
+
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar showBanner={bandeau} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: bandeau ? 'calc(var(--banner-h) + var(--nav-h))' : 'var(--nav-h)' }}>
 
         <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
 
