@@ -111,8 +111,9 @@ export default function EvenementDetail() {
         {/* Image pleine largeur */}
         <div style={{ position: 'relative', width: '100%', height: '55vh', overflow: 'hidden', minHeight: '320px', maxHeight: '580px' }}>
           <ParallaxImage priority sizes="100vw" src={ev.img}
-            alt={ev.nom}
+            alt={ev.imgAlt || ev.nom}
             strength={0.05} style={{ position: 'absolute', inset: 0 }}
+            imgStyle={{ objectPosition: ev.imgPos || 'center' }}
           />
         </div>
 
