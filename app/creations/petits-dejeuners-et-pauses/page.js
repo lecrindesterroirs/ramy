@@ -19,6 +19,8 @@ const SEO_ARTICLE = `
   <h2>Commander votre petit-déjeuner d'équipe à Paris</h2>
   <p>Commandez avant <strong>14h la veille</strong>. Précisez votre adresse exacte, votre heure de livraison souhaitée (disponible dès 6h30) et le nombre de personnes. Facturation entreprise avec TVA disponible. Devis personnalisé sous 24h pour les groupes de plus de 20 personnes ou les commandes récurrentes.</p>
 
+  <p>En octobre, retrouvez notre sélection dédiée pour <a href="/journal/octobre-rose-entreprise-paris">Octobre Rose en entreprise</a> : macarons et madeleines parfum framboise pour marquer le mois de sensibilisation.</p>
+
   <p style="font-size: 13px; color: rgba(17,17,17,0.5); margin-top: 24px;">Petit-déjeuner de réunion, café croissant au bureau, brunch d'entreprise, plateau d'accueil client, petit-déjeuner de séminaire : quel que soit le nom que vous lui donnez, c'est le même savoir-faire artisanal livré à Paris dès 6h30.</p>
 `
 

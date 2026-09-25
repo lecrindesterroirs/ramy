@@ -24,6 +24,8 @@ const SEO_ARTICLE = `
 
   <h2>Commander votre goûter d'entreprise à Paris</h2>
   <p>Commandez avant <strong>14h la veille</strong> et recevez votre pause gourmande à l'heure exacte de votre programme. Conditionnement prêt à servir, facturation entreprise avec TVA. Pour les séminaires multi-jours ou les commandes récurrentes, demandez un devis personnalisé, réponse sous 24h.</p>
+
+  <p>En octobre, découvrez aussi notre sélection dédiée pour <a href="/journal/octobre-rose-entreprise-paris">Octobre Rose en entreprise</a> : macarons et madeleines aux teintes roses pour marquer le mois de sensibilisation.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
