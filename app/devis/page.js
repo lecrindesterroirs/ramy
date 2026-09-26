@@ -40,7 +40,7 @@ const prestations = [
   {
     id: 'cocktail-buffet',
     titre: 'Cocktail / Buffet',
-    desc: 'Pièces petites et bouchées, buffets élaborés, champagne.',
+    desc: 'Pièces petites et bouchées, buffets élaborés, bar sans alcool.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
         <path d="M8 22h8M12 11v11M3 3h18l-3 7H6L3 3z"/>

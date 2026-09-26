@@ -9,10 +9,10 @@ export const evenements = [
     desc: "Le rituel de janvier, fait sérieusement. Nos galettes sont préparées par nos boulangers partenaires avec une vraie pâte feuilletée maison. Fève et couronne incluses dans chaque galette. Quatre parfums disponibles pour satisfaire tous les goûts au bureau.",
     produits: [
       'Galette frangipane traditionnelle',
-      'Galette pommes cidre',
+      'Galette aux pommes',
       'Galette chocolat noisette',
       'Galette pistache',
-      'Cidre artisanal',
+      'Jus de pomme Alain Milliat',
       'Jus de pomme Alain Milliat',
     ],
     differentiateur: {
@@ -28,11 +28,11 @@ export const evenements = [
         },
         {
           heading: "Quelle quantité prévoir pour votre équipe ?",
-          texte: "Comptez une galette de 6 parts pour 5 à 6 collaborateurs pour que chacun ait une belle part. Pour un petit-déjeuner de 10 à 15 personnes, deux galettes de parfums différents permettent de varier les plaisirs. Pensez aussi aux boissons : cidre artisanal ou jus de pomme pour accompagner sans alcool. Pour les équipes plus larges, organisez plusieurs sessions de 10 à 15 personnes plutôt qu'un seul grand rassemblement : le moment est plus chaleureux.",
+          texte: "Comptez une galette de 6 parts pour 5 à 6 collaborateurs pour que chacun ait une belle part. Pour un petit-déjeuner de 10 à 15 personnes, deux galettes de parfums différents permettent de varier les plaisirs. Pensez aussi aux boissons : jus de pomme Alain Milliat ou Chardonnay 0 %, sans alcool, pour que tout le monde partage le même verre. Pour les équipes plus larges, organisez plusieurs sessions de 10 à 15 personnes plutôt qu'un seul grand rassemblement : le moment est plus chaleureux.",
         },
         {
           heading: "Quel parfum choisir ?",
-          texte: "La frangipane reste le parfum de référence, mais proposer une alternative change vraiment l'expérience. Une galette pommes-cidre pour les palais moins sucrés, une galette chocolat-noisette pour les amateurs de chocolat, une galette pistache pour ceux qui cherchent quelque chose de plus original. Évitez de commander plusieurs galettes identiques : la variété crée la surprise et les échanges. Certaines équipes organisent même un vote en amont pour choisir les parfums, ce qui crée déjà de l'anticipation.",
+          texte: "La frangipane reste le parfum de référence, mais proposer une alternative change vraiment l'expérience. Une galette aux pommes pour les palais moins sucrés, une galette chocolat-noisette pour les amateurs de chocolat, une galette pistache pour ceux qui cherchent quelque chose de plus original. Évitez de commander plusieurs galettes identiques : la variété crée la surprise et les échanges. Certaines équipes organisent même un vote en amont pour choisir les parfums, ce qui crée déjà de l'anticipation.",
         },
         {
           heading: "Anticiper la commande : pourquoi c'est essentiel",
@@ -178,7 +178,7 @@ export const evenements = [
       'Bouchées salées maison',
       'Verrines et tartines',
       'Jus Alain Milliat',
-      'Champagne ou eau pétillante',
+      'Chardonnay 0 % ou eau pétillante',
       'Desserts de saison',
     ],
     differentiateur: {
@@ -198,7 +198,7 @@ export const evenements = [
         },
         {
           heading: "Le menu : ce qui fait une bonne table de fête",
-          texte: "Une bonne table de fête d'entreprise, c'est la variété et la qualité. Charcuterie et fromages pour l'apéritif, bouchées chaudes, verrines fraîches pour l'été. Des desserts qui marquent. Et surtout des boissons bien pensées : jus Alain Milliat pour les non-buveurs, eau pétillante, champagne pour les amateurs. Évitez les plateaux trop standardisés : vos équipes remarquent quand des produits ont été choisis avec soin et ça change l'atmosphère de la soirée.",
+          texte: "Une bonne table de fête d'entreprise, c'est la variété et la qualité. Charcuterie et fromages pour l'apéritif, bouchées chaudes, verrines fraîches pour l'été. Des desserts qui marquent. Et surtout des boissons bien pensées : jus Alain Milliat, eau pétillante et un Chardonnay Blanc de Blancs 0 % pour trinquer, sans alcool pour que tout le monde partage le même verre. Évitez les plateaux trop standardisés : vos équipes remarquent quand des produits ont été choisis avec soin et ça change l'atmosphère de la soirée.",
         },
         {
           heading: "Organisation pratique",
@@ -381,7 +381,7 @@ export const evenements = [
       'Chocolats de Noël',
       'Viennoiseries de saison',
       'Chocolat chaud Mariage Frères',
-      'Champagne ou jus pétillant',
+      'Chardonnay 0 % ou jus pétillant',
     ],
     differentiateur: {
       label: 'Format au choix',
@@ -400,7 +400,7 @@ export const evenements = [
         },
         {
           heading: "Le menu idéal pour un repas de Noël d'entreprise",
-          texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons : champagne pour la convivialité, jus Alain Milliat pour les non-alcoolisés, chocolat chaud Mariage Frères pour finir.",
+          texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons, tout sans alcool : un Chardonnay Blanc de Blancs 0 % pour trinquer, jus Alain Milliat, chocolat chaud Mariage Frères pour finir.",
         },
         {
           heading: "Anticiper : la règle numéro un",
