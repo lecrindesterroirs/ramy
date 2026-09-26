@@ -24,7 +24,7 @@ const BADGES = [
 
 const PROGRAMME = [
   { img: '/prod-madeleines-octobre-rose.webp', label: 'Madeleines roses personnalisées', href: '/creations/petits-dejeuners-et-pauses/madeleines-octobre-rose' },
-  { img: '/macarons-octobre-rose.webp', label: 'Plateau macarons et cakes fruits rouges', href: '/creations/petits-dejeuners-et-pauses/macarons' },
+  { img: '/macarons-octobre-rose.webp', label: 'Plateau macarons et cake framboise', href: '/creations/petits-dejeuners-et-pauses/macarons' },
   { img: '/prod-tarte-framboise-partager.webp', label: 'Tartelettes framboise', href: '/creations/pauses-gourmandes/tarte-framboise-grand-format' },
   { img: '/bois-jus-framboise.webp', label: 'Jus pomme framboise', href: '/creations/boissons' },
   { img: '/mariage-freres.webp', label: 'Thé Mariage Frères', href: '/creations/boissons' },
