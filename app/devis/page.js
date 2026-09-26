@@ -180,7 +180,7 @@ function ProgressBar({ step }) {
 
 // ── Step 1 ────────────────────────────────────────────────────────────────────
 
-function Step1({ data, setData, onSelect, accent = '#E0A126' }) {
+function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = false }) {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -198,13 +198,15 @@ function Step1({ data, setData, onSelect, accent = '#E0A126' }) {
       <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px' }}>
         {prestations.map(p => {
           const active = data.prestation === p.id
+          const isRoseCard = isOctobreRose && p.id === 'autre'
+          const titre = isRoseCard ? 'Octobre Rose' : p.titre
           return (
             <div
               key={p.id}
               onClick={() => { setData(d => ({ ...d, prestation: p.id })); onSelect() }}
               style={{
-                background: active ? accent : '#FFFFFF',
-                border: `1px solid ${active ? accent : 'rgba(17,17,17,0.18)'}`,
+                background: active ? accent : isRoseCard ? '#F6E4EA' : '#FFFFFF',
+                border: `1px solid ${active ? accent : isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.18)'}`,
                 padding: '26px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -213,10 +215,10 @@ function Step1({ data, setData, onSelect, accent = '#E0A126' }) {
                 transition: 'background 0.25s ease, border-color 0.25s ease, transform 0.2s ease',
                 transform: active ? 'translateY(-2px)' : 'translateY(0)',
               }}
-              onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
-              onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
+              onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
+              onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{p.titre}</p>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{titre}</p>
             </div>
           )
         })}
@@ -749,7 +751,7 @@ export default function Contact() {
             {/* Step content : centré, hauteur stable d'une étape à l'autre */}
             <div className="devis-stage" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
               <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px 120px' }}>
-                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} />}
+                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} isOctobreRose={isOctobreRose} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} accent={accent} />}
               </div>
