@@ -24,6 +24,7 @@ const SEO_ARTICLE = `
 
   <h2>Commander vos menus à partager à Paris</h2>
   <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA, et pour les moments récurrents, un devis cadre simplifie tout.</p>
+  <p>Pour un format plus large avec plusieurs stands, notre <a href="/journal/buffet-entreprise-guide-complet-paris">guide complet du buffet d'entreprise</a> détaille budget, dressage et choix du traiteur.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */

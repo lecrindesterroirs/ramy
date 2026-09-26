@@ -24,7 +24,7 @@ const SEO_ARTICLE = `
   <p>Les animations culinaires trouvent leur place partout où l'on veut marquer le coup : <strong>fête de fin d'année</strong>, <strong>inauguration de locaux</strong>, <strong>journée collaborateurs</strong>, salon interne, semaine QVT. Elles s'adaptent au lieu et au flux : un stand pour 40 personnes en continu, plusieurs points d'animation pour un événement de plusieurs centaines d'invités.</p>
 
   <h2>Organiser votre animation culinaire à Paris</h2>
-  <p>Chaque animation se construit sur devis : date, lieu, nombre d'invités, durée et contraintes techniques (accès, électricité, espace). Notre équipe vous répond sous <strong>24h</strong> avec une proposition détaillée, installation et démontage inclus. Facturation entreprise avec TVA.</p>
+  <p>Chaque animation se construit sur devis : date, lieu, nombre d'invités, durée et contraintes techniques (accès, électricité, espace). Notre équipe vous répond sous <strong>24h</strong> avec une proposition détaillée, installation et démontage inclus. Facturation entreprise avec TVA. Pour vous inspirer, notre article <a href="/journal/animation-culinaire-entreprise-paris">idées d'animations culinaires pour vos événements</a> détaille les formats les plus demandés.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */

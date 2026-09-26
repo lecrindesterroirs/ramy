@@ -18,14 +18,14 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${ev.nom} en entreprise : idées et conseils`,
+    title: `Traiteur ${ev.nom} en entreprise à Paris, idées et conseils`,
     description: `${ev.descCourt} Prestation traiteur livrée à Paris et en Île-de-France.`,
     alternates: { canonical: `/creations/evenements-saisonniers/${params.slug}` },
     openGraph: {
       images: ev.img
         ? [{ url: ev.img, alt: ev.imgAlt || `${ev.nom}, L'Écrin Traiteur` }]
         : [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-      title: `${ev.nom} en entreprise | L'Écrin Traiteur`,
+      title: `Traiteur ${ev.nom} en entreprise | L'Écrin Traiteur`,
       description: ev.descCourt,
     },
   }
