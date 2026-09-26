@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import LogosSection from '../../components/LogosSection'
 import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
+import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -515,12 +516,13 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function Contact() {
-  // Thème rose Octobre Rose : activé via ?theme=octobre-rose sur le lien de devis
-  // (lu côté client pour ne pas nécessiter de Suspense boundary avec useSearchParams).
+  // Thème rose Octobre Rose : actif sur TOUTE visite du formulaire pendant la
+  // période de campagne (lib/campagneOctobreRose.js), quel que soit le point
+  // d'entrée — plus besoin du lien ?theme=octobre-rose pour l'obtenir.
   const [isOctobreRose, setIsOctobreRose] = useState(false)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    if (params.get('theme') === 'octobre-rose') setIsOctobreRose(true)
+    if (isOctobreRoseActive() || params.get('theme') === 'octobre-rose') setIsOctobreRose(true)
   }, [])
   const accent = isOctobreRose ? '#E27FA0' : '#E0A126'
 
