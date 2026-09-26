@@ -42,6 +42,11 @@ export default function PetitsDejeuners() {
         body: "Jus artisanaux Alain Milliat, thés Mariage Frères, thermos de café et de chocolat chaud : de quoi accompagner chaque plateau.",
         buttonLabel: 'Découvrir nos boissons',
         href: '/creations/boissons',
+        products: [
+          { id: 'thermos-cafe', name: 'Thermos de Café Bio', img: '/bois-thermos-cafe.webp', price: '19,50€' },
+          { id: 'jus-orange', name: "Jus d'Orange Alain Milliat", img: '/bois-jus-orange.webp', price: '9,50€' },
+          { id: 'jus-pomme', name: 'Jus de Pomme Alain Milliat', img: '/bois-jus-pomme.webp', price: '9,50€' },
+        ],
       }}
     />
     </>
