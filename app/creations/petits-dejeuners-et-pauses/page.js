@@ -30,7 +30,7 @@ export default function PetitsDejeuners() {
       <ProductsPageTemplate
       heroImg="/hero-petitdej.webp"
       heroTitle={"Petits-Déjeuners & Pauses\nà Paris"}
-      heroSubtitle="Des créations pensées pour les réunions, accueils et moments de partage."
+      heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Dès 8 € HT par personne, commande jusqu'à la veille 14h."
       breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"
       categorieSlug="petits-dejeuners"
       fallbackProducts={PRODUCTS}

@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer'
 import RelatedLinks from '../../../components/RelatedLinks'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { articles, articleAuthor } from '../../../lib/journalData'
+import { founderNode } from '../../../lib/site'
 import { PRODUCTS } from '../../../lib/productsData'
 import { PAUSES } from '../../creations/pauses-gourmandes/page'
 import ParallaxImage from '../../../components/ParallaxImage'
@@ -81,7 +82,7 @@ export default function ArticlePage() {
                 color: 'rgba(17,17,17,0.45)',
                 letterSpacing: '0.04em',
               }}>
-                {article.date}
+                <time dateTime={article.isoDate}>{article.date}</time>
               </span>
               <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
               <span style={{
@@ -402,13 +403,7 @@ export default function ArticlePage() {
           'datePublished': isoDateTime(article.isoDate) || article.date,
           'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
           'author': author.isPerson
-            ? {
-                '@type': 'Person',
-                'name': author.name,
-                'jobTitle': 'Fondateur',
-                'worksFor': { '@type': 'Organization', '@id': 'https://www.lecrin-traiteur.fr/#business', 'name': "L'Écrin Traiteur" },
-                'sameAs': ['https://www.linkedin.com/company/lecrin-traiteur/'],
-              }
+            ? founderNode()
             : {
                 '@type': 'Organization',
                 '@id': 'https://www.lecrin-traiteur.fr/#business',

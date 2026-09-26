@@ -91,7 +91,7 @@ export default function Hero() {
             textShadow: '0 1px 26px rgba(249,246,239,0.75)',
           }}
         >
-          Traiteur d'entreprise<br />
+          Traiteur d'entreprise{' '}<br />
           à Paris.
         </h1>
 
@@ -108,7 +108,7 @@ export default function Hero() {
             textShadow: '0 1px 18px rgba(249,246,239,0.7)',
           }}
         >
-          Nous sélectionnons les meilleurs artisans pour créer<br />
+          Nous sélectionnons les meilleurs artisans pour créer{' '}<br />
           des réceptions dont vos équipes se souviennent.
         </p>
 

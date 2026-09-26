@@ -10,6 +10,7 @@ import CategoryClosing from '../../../components/CategoryClosing'
 import ParallaxImage from '../../../components/ParallaxImage'
 import { FAQSchema } from '../../../components/FAQSchema'
 import { PDJ_VILLES } from '../../../lib/pdjVillesData'
+import { businessNode, BUSINESS_ID } from '../../../lib/site'
 
 export default function PdjVillePage() {
   const { ville } = useParams()
@@ -26,10 +27,29 @@ export default function PdjVillePage() {
     ],
   }
 
+  // Service localisé (ville) rattaché à l'entité #business
+  const serviceLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `https://www.lecrin-traiteur.fr/petit-dejeuner-entreprise/${city.slug}#service`,
+        name: `Petit-déjeuner d'entreprise à ${city.name}`,
+        serviceType: "Petit-déjeuner d'entreprise livré",
+        description: city.metaDescription,
+        url: `https://www.lecrin-traiteur.fr/petit-dejeuner-entreprise/${city.slug}`,
+        areaServed: { '@type': 'City', name: city.name },
+        provider: { '@id': BUSINESS_ID },
+      },
+      businessNode(),
+    ],
+  }
+
   return (
     <>
       <Navbar showBanner={true} />
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <FAQSchema faqs={city.faq} pageTitle={city.metaTitle} />
 
@@ -46,7 +66,7 @@ export default function PdjVillePage() {
                   Petit-déjeuner d'entreprise, {city.region}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4.2vw, 58px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Petit-déjeuner d'entreprise<br />à {city.name}
+                  Petit-déjeuner d'entreprise{' '}<br />à {city.name}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '32px' }}>
                   {city.heroDescription}

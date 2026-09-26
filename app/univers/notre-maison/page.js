@@ -38,6 +38,31 @@ const MANIFESTE = [
   "Le luxe, pour nous, n'est pas froid. Il est vivant, chaleureux, humain. C'est tout l'art de recevoir.",
 ]
 
+// Réponses courtes et autonomes : ce que Google et les IA reprennent pour
+// décrire L'Écrin. Uniquement des faits vérifiables.
+const FAITS = [
+  {
+    q: "Qu'est-ce que L'Écrin Traiteur ?",
+    a: "L'Écrin Traiteur est un traiteur d'entreprise basé à Boulogne-Billancourt, fondé en 2025 par Ramy Abdelaty. Nous livrons petits-déjeuners, plateaux repas, lunch box, pauses gourmandes, cocktails et animations culinaires dans les bureaux de Paris et d'Île-de-France. La société s'appelle L'Écrin des Terroirs, L'Écrin Traiteur est son nom commercial. Plus de 100 entreprises nous ont déjà confié leurs réunions, séminaires et réceptions, de 10 à 300 personnes.",
+  },
+  {
+    q: "D'où viennent les produits ?",
+    a: "Nous n'avons pas de cuisine centrale qui standardise tout. Chaque produit vient d'un artisan que nous avons goûté et choisi : les madeleines de Mado Paris, les viennoiseries de la Maison Marques, les yaourts de la Ferme de Viltain à Jouy-en-Josas, les jus d'Alain Milliat. Nous assurons la mise en place, la présentation et le transport au froid jusqu'à vos bureaux.",
+  },
+  {
+    q: "Comment se passe une commande ?",
+    a: "Vous commandez jusqu'à la veille 14h, nous livrons dès 6h30 avec notre propre équipe, jamais en sous-traitance. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches. Devis sous 24h, facture entreprise avec TVA.",
+  },
+  {
+    q: "Quels régimes alimentaires couvrez-vous ?",
+    a: "Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes. Chaque prestation existe en version végétarienne et vegan, et nous l'adaptons en sans gluten sur demande.",
+  },
+  {
+    q: "Où livrez-vous ?",
+    a: "Paris et une vingtaine de villes d'Île-de-France, dont Boulogne-Billancourt, Issy-les-Moulineaux, Neuilly-sur-Seine, Levallois-Perret, Puteaux et La Défense, Courbevoie, Nanterre, Suresnes, Gennevilliers et Versailles. Nos clients nous notent 5,0 sur 5 sur Google.",
+  },
+]
+
 export default function NotreMaison() {
   return (
     <>
@@ -76,7 +101,7 @@ export default function NotreMaison() {
               L'Écrin · Notre Maison
             </p>
 
-            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(38px, 6vw, 62px)', fontWeight: 400, lineHeight: 1.05, color: '#2A2013', marginBottom: '10px' }}>
+            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(38px, 6vw, 62px)', fontWeight: 400, lineHeight: 1.05, color: '#2A2013', marginBottom: '10px' }}>
               Qui sommes-nous
             </h1>
 
@@ -88,7 +113,6 @@ export default function NotreMaison() {
                   key={i}
                   style={{
                     fontFamily: "'Baskerville Display PT', Georgia, serif",
-                    fontStyle: 'italic',
                     fontSize: 'clamp(17px, 2vw, 20px)',
                     lineHeight: 1.7,
                     color: 'rgba(42,32,19,0.86)',
@@ -103,23 +127,24 @@ export default function NotreMaison() {
             <div style={{ marginTop: '40px' }}>
               <Sprig />
               <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '38px', width: 'auto', margin: '18px auto 8px', opacity: 0.85, display: 'block' }} />
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: GOLD }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', color: GOLD }}>
                 L'Écrin Traiteur · Paris
               </p>
             </div>
           </article>
 
-          {/* ── Notre modèle (faits, E-E-A-T) ── */}
+          {/* ── Qui est L'Écrin : questions-réponses factuelles (E-E-A-T + GEO) ── */}
           <section className="nm-facts" style={{ maxWidth: '620px', margin: '80px auto 0', textAlign: 'left' }}>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 34px)', fontWeight: 400, color: '#2A2013', marginBottom: '22px' }}>
-              Notre modèle
-            </h2>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)', marginBottom: '20px' }}>
-              L'Écrin n'a pas de cuisine centrale qui standardise tout. Nous partons de commerçants et d'artisans que nous avons goûtés un par un, les madeleines de Mado Paris, les viennoiseries de la Maison Marques, les yaourts de la Ferme de Viltain à Jouy-en-Josas, les jus d'Alain Milliat, puis nous assurons la mise en place, la présentation et la logistique du froid jusqu'à vos bureaux.
-            </p>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)', marginBottom: '20px' }}>
-              Basés à Boulogne-Billancourt, nous livrons Paris et l'Île-de-France par notre propre équipe, dès 6h30, jamais en sous-traitance. Toute la carte est halal par défaut, avec des options végétariennes, vegan et sans gluten, pour répondre aux contraintes de chacun. Le dernier geste, poser le plateau et aligner les verres, compte autant que le choix du producteur.
-            </p>
+            {FAITS.map((f, i) => (
+              <div key={f.q} style={{ marginBottom: i < FAITS.length - 1 ? '44px' : '0' }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.6vw, 30px)', fontWeight: 400, lineHeight: 1.2, color: '#2A2013', marginBottom: '16px' }}>
+                  {f.q}
+                </h2>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)' }}>
+                  {f.a}
+                </p>
+              </div>
+            ))}
           </section>
 
           {/* ── Le mot du fondateur ── */}
@@ -127,7 +152,7 @@ export default function NotreMaison() {
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: '18px' }}>
               Le mot du fondateur
             </p>
-            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(18px, 2vw, 22px)', lineHeight: 1.7, color: '#2A2013', marginBottom: '20px' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(18px, 2vw, 22px)', lineHeight: 1.7, color: '#2A2013', marginBottom: '20px' }}>
               « J'ai commencé par chercher les meilleurs producteurs avant de chercher des clients. Un petit-déjeuner d'entreprise, ce n'est pas une contrainte logistique : c'est un moment qu'on offre à ses équipes. Je voulais qu'il soit à la hauteur. »
             </p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'rgba(42,32,19,0.7)' }}>

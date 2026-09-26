@@ -8,6 +8,7 @@ import LogosSection from '../../components/LogosSection'
 import RelatedLinks from '../../components/RelatedLinks'
 import CategoryClosing from '../../components/CategoryClosing'
 import ParallaxImage from '../../components/ParallaxImage'
+import { businessNode, BUSINESS_ID } from '../../lib/site'
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
@@ -71,27 +72,22 @@ const FAQ = [
 ]
 
 export default function TraiteurHalal() {
+  // Service rattaché à l'entité #business (même @id partout), pas un second
+  // LocalBusiness : évite une entité dupliquée côté Google & IA/GEO.
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'FoodEstablishment'],
-    name: "L'Écrin Traiteur",
-    description: "Traiteur d'entreprise halal et sans porc à Paris et en Île-de-France, avec options végétariennes, vegan et sans gluten. Petits-déjeuners, plateaux repas et buffets livrés dès 6h30.",
-    url: `${BASE}/traiteur-halal`,
-    telephone: '+33174542310',
-    email: 'commercial@lecrin-traiteur.fr',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '63 bis rue de Sèvres',
-      addressLocality: 'Boulogne-Billancourt',
-      postalCode: '92100',
-      addressCountry: 'FR',
-    },
-    areaServed: { '@type': 'State', name: 'Île-de-France' },
-    priceRange: '€€',
-    servesCuisine: ['Halal', 'Française artisanale', 'Végétarienne'],
-    openingHoursSpecification: [
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '06:00', closes: '22:30' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '09:00', closes: '21:00' },
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${BASE}/traiteur-halal#service`,
+        name: "Traiteur d'entreprise halal et sans porc",
+        serviceType: "Traiteur d'entreprise",
+        description: "Traiteur d'entreprise halal et sans porc à Paris et en Île-de-France, avec options végétariennes, vegan et sans gluten. Petits-déjeuners, plateaux repas et buffets livrés dès 6h30.",
+        url: `${BASE}/traiteur-halal`,
+        areaServed: { '@type': 'State', name: 'Île-de-France' },
+        provider: { '@id': BUSINESS_ID },
+      },
+      businessNode(),
     ],
   }
 
@@ -152,7 +148,7 @@ export default function TraiteurHalal() {
                   Traiteur d'entreprise · Paris & Île-de-France
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur Halal<br />& Inclusif
+                  Traiteur Halal{' '}<br />& Inclusif
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
                   Le traiteur d'entreprise qui régale <em>toute</em> l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten, livré dans vos bureaux dès 6h30.
@@ -190,6 +186,19 @@ export default function TraiteurHalal() {
           </header>
         </div>
 
+        {/* ── Bloc-réponse : la question posée en clair (SEO + GEO) ── */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '72px 24px 0' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '22px' }}>
+            Vos prestations sont-elles halal ?
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
+            Oui. Toute la carte de L'Écrin Traiteur est halal et sans porc par défaut, sans alcool dans les recettes : petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets. Vous n'avez rien à préciser à la commande. Nous ne revendiquons pas de certification halal : c'est une offre halal-friendly, construite avec nos artisans.
+          </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
+            Des versions végétariennes et vegan existent sur chaque prestation, et nous adaptons en sans gluten sur demande. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
+          </p>
+        </section>
+
         {/* ── Régimes : une table pour toute l'équipe ── */}
         <div className="hl-regimes" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
@@ -197,7 +206,7 @@ export default function TraiteurHalal() {
               Une table où personne n'est mis de côté
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.12, color: 'var(--text-primary)' }}>
-              Le même moment,<br />partagé par tous
+              Le même moment,{' '}<br />partagé par tous
             </h2>
           </div>
           <div className="hl-regimes-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
@@ -227,7 +236,7 @@ export default function TraiteurHalal() {
               Nos prestations
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Halal du petit-déjeuner<br />au buffet
+              Halal du petit-déjeuner{' '}<br />au buffet
             </h2>
           </div>
           <div className="hl-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
