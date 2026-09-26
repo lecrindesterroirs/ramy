@@ -23,7 +23,7 @@ const SEO_ARTICLE = `
   <p>Nos assortiments alternent pièces froides raffinées, bouchées végétariennes et mignardises signées par nos artisans partenaires. L'objectif : que vos invités remarquent la différence dès la première bouchée, sans qu'aucun régime alimentaire ne soit laissé de côté. Chaque cocktail est équilibré pour tenir la durée réelle de votre événement.</p>
 
   <h2>Organiser votre cocktail d'entreprise à Paris</h2>
-  <p>Transmettez-nous la date, le nombre d'invités et le format souhaité : nous vous proposons un assortiment détaillé sous 24h. Livraison à l'heure exacte, présentation soignée prête à disposer. Commande avant <strong>14h la veille</strong>, facturation entreprise avec TVA.</p>
+  <p>Transmettez-nous la date, le nombre d'invités et le format souhaité : nous vous proposons un assortiment détaillé sous 24h. Livraison à l'heure exacte, présentation soignée prête à disposer. Commande avant <strong>14h la veille</strong>, facturation entreprise avec TVA. Pour un afterwork ou un pot de départ, nos repères d'organisation sont rassemblés dans ce <a href="/journal/traiteur-afterwork-pot-depart-entreprise-paris">guide dédié</a>.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
@@ -265,7 +265,7 @@ export default function Cocktails() {
             Choisissez votre cocktail
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
-            Un nombre de pièces par personne pensé pour chaque moment. Chaque formule se personnalise selon vos effectifs et régimes.
+            L&apos;Invitation, 8 pièces à 29,90 € HT par personne. La Réception, 12 pièces à 40,90 € HT. La Célébration, 16 pièces à 51,90 € HT. Halal et sans porc, livrées prêtes à servir à Paris et en Île-de-France, commande jusqu&apos;à la veille 14h.
           </p>
         </div>
 

@@ -2,13 +2,13 @@ import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 
 export const metadata = {
-  title: "Cocktails d'entreprise : apéros & buffets livrés",
-  description: "Cocktails d'entreprise dès 29,90€/pers. Formules L'Invitation, La Réception, La Célébration. Livraison Paris IDF, devis 24h.",
+  title: "Cocktail d'entreprise à Paris : livraison apéros & buffets",
+  description: "Cocktail d'entreprise dès 29,90€/pers. Formules L'Invitation, La Réception, La Célébration. Livraison Paris IDF, devis 24h.",
   alternates: { canonical: '/creations/cocktails' },
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-    title: "Cocktails d'entreprise : apéros & buffets livrés",
-    description: "Cocktails d'entreprise dès 29,90€/pers. Formules L'Invitation, La Réception, La Célébration. Livraison Paris IDF, devis 24h.",
+    title: "Cocktail d'entreprise à Paris : livraison apéros & buffets",
+    description: "Cocktail d'entreprise dès 29,90€/pers. Formules L'Invitation, La Réception, La Célébration. Livraison Paris IDF, devis 24h.",
   }
 }
 
