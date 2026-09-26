@@ -368,6 +368,7 @@ export const evenements = [
       'soiree-fin-annee-entreprise-paris',
       'petit-dejeuner-noel-bureau-entreprise',
       'arbre-de-noel-entreprise-cse-paris',
+      'bonbonniere-noel-entreprise-paris',
     ],
     tags: ['Petits-déjeuners', 'Cocktails & Buffets', 'Pauses gourmandes'],
     img: '/grand-buffet-signature.webp',
