@@ -4,7 +4,7 @@ import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { PRODUCTS } from '../../../lib/productsData'
 
 const SEO_ARTICLE = `
-  <h2>Traiteur petits-déjeuners d'entreprise à Paris, artisanal, livré dès 6h30</h2>
+  <h2>Livraison de petit-déjeuner d'entreprise à Paris, artisanal, dès 6h30</h2>
   <p>Le <strong>petit-déjeuner d'entreprise</strong> est le format le plus commandé en restauration B2B parisienne. CODIR, accueil client, onboarding, réunion de rentrée : c'est souvent la première impression que vous construisez. L'Écrin Traiteur livre vos sélections artisanales dès <strong>6h30</strong>, du lundi au vendredi, dans tout Paris et l'Île-de-France.</p>
 
   <h2>Viennoiseries, pâtisseries et jus : des artisans que vos équipes reconnaissent</h2>

@@ -2,12 +2,12 @@ import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 
 export const metadata = {
-  title: "Petits-déjeuners d'entreprise à Paris : livrés dès 6h30",
+  title: "Petit-déjeuner d'entreprise à Paris : livraison dès 6h30",
   description: "Petit-déjeuner d'entreprise à Paris dès 12,50€/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
   alternates: { canonical: '/creations/petits-dejeuners-et-pauses' },
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-    title: "Petits-déjeuners d'entreprise à Paris : livrés dès 6h30",
+    title: "Petit-déjeuner d'entreprise à Paris : livraison dès 6h30",
     description: "Petit-déjeuner d'entreprise à Paris dès 12,50€/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
   }
 }
