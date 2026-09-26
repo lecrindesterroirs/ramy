@@ -1,7 +1,10 @@
 import { evenements } from '../evenementsData'
 
 export function generateStaticParams() {
-  return evenements.map(e => ({ slug: e.slug }))
+  // 'octobre-rose' a sa propre route statique dédiée (app/.../octobre-rose/page.js) :
+  // l'exclure ici évite une collision de build où les deux routes écrivent
+  // le même fichier de sortie et où celle-ci gagnait par erreur.
+  return evenements.filter(e => e.slug !== 'octobre-rose').map(e => ({ slug: e.slug }))
 }
 
 export async function generateMetadata({ params }) {
