@@ -12,6 +12,7 @@ import { CATEGORY_FAQ } from '../lib/categoryFaq'
 import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
+import CrossSellBanner from './CrossSellBanner'
 
 const BASE_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
@@ -48,6 +49,7 @@ export default function ProductsPageTemplate({
   editorial,
   sectionFilterLabel,
   sectionFilterKey,
+  crossSell,
 }) {
   const [sortLabel, setSortLabel]   = useState('En vedette')
   const sorts = sectionFilterLabel ? [...BASE_SORTS, sectionFilterLabel] : BASE_SORTS
@@ -110,6 +112,8 @@ export default function ProductsPageTemplate({
             </Fragment>
           ))}
         </div>
+
+        {crossSell && <CrossSellBanner {...crossSell} />}
 
       </main>
 

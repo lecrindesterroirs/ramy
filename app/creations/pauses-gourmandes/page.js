@@ -11,6 +11,7 @@ import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryTabs, { sortItems, priceFromLabel, DEFAULT_SORTS } from '../../../components/CategoryTabs'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
+import CrossSellBanner from '../../../components/CrossSellBanner'
 
 const SEO_ARTICLE = `
   <h2>Traiteur pause gourmande et goûter d'entreprise à Paris</h2>
@@ -338,6 +339,13 @@ export default function PausesGourmandes() {
             </Fragment>
           ))}
         </div>
+
+        <CrossSellBanner
+          title="Complétez vos pauses gourmandes avec nos boissons"
+          body="Jus artisanaux Alain Milliat, thés Mariage Frères, thermos de café et de chocolat chaud : de quoi accompagner chaque pause."
+          buttonLabel="Découvrir nos boissons"
+          href="/creations/boissons"
+        />
 
       </main>
 

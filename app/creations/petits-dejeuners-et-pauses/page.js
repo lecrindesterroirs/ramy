@@ -37,6 +37,12 @@ export default function PetitsDejeuners() {
       seoArticle={SEO_ARTICLE}
       sectionFilterLabel="Petit Déjeuner Salé"
       sectionFilterKey="petit-dejeuner-sale"
+      crossSell={{
+        title: 'Complétez vos petits-déjeuners avec nos boissons',
+        body: "Jus artisanaux Alain Milliat, thés Mariage Frères, thermos de café et de chocolat chaud : de quoi accompagner chaque plateau.",
+        buttonLabel: 'Découvrir nos boissons',
+        href: '/creations/boissons',
+      }}
     />
     </>
   )
