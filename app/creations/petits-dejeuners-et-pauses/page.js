@@ -13,6 +13,12 @@ const SEO_ARTICLE = `
   <h2>Combien de pièces par personne ?</h2>
   <p>Règle de base : <strong>2 viennoiseries par personne</strong> pour un plateau classique. Avec pâtisseries et yaourts : 1,5 pièce. Pour un séminaire avec pause longue : 2,5 à 3 pièces. Pour un CODIR de 10 personnes : 20 viennoiseries + 10 madeleines + 2 bouteilles de jus. Prévoyez toujours 10 % de marge pour les imprévus.</p>
 
+  <h2>Petit-déjeuner buffet ou plateaux individuels : quel format choisir ?</h2>
+  <p>Le <strong>buffet petit-déjeuner</strong> convient aux grands effectifs et aux espaces de convivialité : viennoiseries, pâtisseries et fruits dressés sur table, chacun se sert à son rythme. Les <strong>plateaux individuels</strong> sont préférés pour les réunions restreintes ou les accueils clients, où chaque participant a sa propre sélection sans se lever. Les deux formats se commandent avec la même sélection de produits ; précisez votre préférence au moment du devis, nous adaptons le conditionnement.</p>
+
+  <h2>Combien coûte un petit-déjeuner d'entreprise ?</h2>
+  <p>Notre formule d'entrée démarre à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits). Le budget varie ensuite selon le nombre de pièces, la part de pâtisseries artisanales et les boissons choisies. Pas de prix affiché produit par produit sur commande complexe : nous établissons un devis clair sous 24h, sans ligne cachée sur la livraison.</p>
+
   <h2>Petit-déjeuner d'entreprise dans Paris et les principales villes d'Île-de-France</h2>
   <p>Nous livrons chaque matin dans tous les arrondissements de Paris, des quartiers d'affaires du <strong>8e</strong> et du <strong>9e</strong> aux sièges sociaux du <strong>13e</strong> et du <strong>15e</strong>, avec les mêmes délais et la même qualité qu'à La Défense. En dehors de la capitale, nous couvrons les principales villes d'entreprise d'Île-de-France : <a href="/petit-dejeuner-entreprise/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/versailles">Versailles</a>, <a href="/traiteur/puteaux">Puteaux</a>, <a href="/petit-dejeuner-entreprise/gennevilliers">Gennevilliers</a>, <a href="/traiteur/issy-les-moulineaux">Issy-les-Moulineaux</a> ou encore <a href="/traiteur/neuilly-sur-seine">Neuilly-sur-Seine</a>. Chaque secteur a ses propres contraintes d'accès (badges, quais de livraison, horaires de réception) que nous anticipons dès la prise de commande.</p>
 

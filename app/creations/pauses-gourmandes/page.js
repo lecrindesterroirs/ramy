@@ -23,6 +23,12 @@ const SEO_ARTICLE = `
   <h2>Quelle quantité prévoir pour une pause d'équipe ?</h2>
   <p>Comptez <strong>1,5 à 2 pièces sucrées par personne</strong> pour une pause de 20 à 30 minutes. Pour un après-midi complet de séminaire avec deux pauses, passez à 3 pièces en variant les familles : un cake tranché en début d'après-midi, madeleines et fruits frais vers 16h30. Ajoutez café, thé et jus pour une pause complète.</p>
 
+  <h2>Combien coûte un goûter d'entreprise ?</h2>
+  <p>Comptez entre <strong>6 € et 15 € HT par personne</strong> selon les produits choisis. Un goûter simple (cookies ou madeleines + boisson) tourne autour de 6 à 8 € ; un goûter premium (macarons, tartelettes, fruits frais et boissons chaudes) monte à 12-15 €. Pour des commandes régulières, un tarif préférentiel est possible sur devis.</p>
+
+  <h2>Goûter d'anniversaire ou de team building : nos guides dédiés</h2>
+  <p>Certaines occasions méritent une sélection pensée pour elles : voir notre guide <a href="/journal/gouter-anniversaire-entreprise-paris">goûter d'anniversaire en entreprise</a> pour fêter un collaborateur, ou <a href="/journal/gouter-entreprise-bureau">goûter d'entreprise au bureau</a> pour transformer une pause ordinaire en vrai moment d'équipe.</p>
+
   <h2>Commander votre goûter d'entreprise à Paris</h2>
   <p>Commandez avant <strong>14h la veille</strong> et recevez votre pause gourmande à l'heure exacte de votre programme. Conditionnement prêt à servir, facturation entreprise avec TVA. Pour les séminaires multi-jours ou les commandes récurrentes, demandez un devis personnalisé, réponse sous 24h.</p>
 
