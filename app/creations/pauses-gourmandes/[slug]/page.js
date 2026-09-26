@@ -32,7 +32,7 @@ function CoffretDetail({ produit }) {
     <>
       <BreadcrumbJsonLd items={[
         { name: 'Accueil', path: '' },
-        { name: 'Pauses Gourmandes', path: '/creations/pauses-gourmandes' },
+        { name: 'Pause Goûter', path: '/creations/pauses-gourmandes' },
         { name: produit.nom, path: `/creations/pauses-gourmandes/${produit.id}` },
       ]} />
       <Navbar showBanner={true} />
@@ -43,7 +43,7 @@ function CoffretDetail({ produit }) {
           <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <Link href="/" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Accueil</Link>
             <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>›</span>
-            <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Pauses Gourmandes</Link>
+            <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Pause Goûter</Link>
             <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>›</span>
             <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.75)' }}>{produit.nom}</span>
           </nav>
@@ -52,7 +52,7 @@ function CoffretDetail({ produit }) {
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '32px 72px 80px' }}>
 
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
-            Pause Gourmande · Coffret
+            Pause Goûter · Coffret
           </p>
           <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '16px' }}>
             {produit.nom}
@@ -128,7 +128,7 @@ function CoffretDetail({ produit }) {
         </div>
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 20px' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
-            Pauses Gourmandes · Traiteur entreprise
+            Pause Goûter · Traiteur entreprise
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
             {produit.seoTitle || "La pause gourmande qui réunit vos équipes l'après-midi"}
@@ -136,10 +136,10 @@ function CoffretDetail({ produit }) {
           <div className="cf-article-body" dangerouslySetInnerHTML={{ __html: produit.seoHtml || SEO_HTML }} />
         </section>
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '20px 72px 96px' }}>
-          <DevisRapide defaultPrestation="Goûter" titre="Une pause gourmande à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
+          <DevisRapide defaultPrestation="Goûter" titre="Une Pause Goûter à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
             <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
-              ← Retour aux pauses gourmandes
+              ← Retour à Pause Goûter
             </Link>
           </div>
         </section>
@@ -154,7 +154,7 @@ function CoffretDetail({ produit }) {
         }
       ` }} />
 
-      <RelatedLinks eyebrow="Produits similaires" title="D'autres pauses gourmandes" items={pauseRelated(produit)} columns={4} />
+      <RelatedLinks eyebrow="Produits similaires" title="D'autres douceurs pour la Pause Goûter" items={pauseRelated(produit)} columns={4} />
 
       <Footer />
     </>
@@ -177,23 +177,23 @@ export default function PauseDetail() {
     <GalleryFiche
       title={produit.nom}
       related={pauseRelated(produit)}
-      relatedTitle="D'autres pauses gourmandes"
-      subtitle="Pause Gourmande · L'après-midi"
+      relatedTitle="D'autres douceurs pour la Pause Goûter"
+      subtitle="Pause Goûter · L'après-midi"
       img={produit.img}
       price={prixNum}
       description={`${produit.description} Format à partager, idéal pour vos pauses, goûters d'équipe et réunions de l'après-midi.`}
       breadcrumb={[
         { label: 'Accueil', href: '/' },
-        { label: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes' },
+        { label: 'Pause Goûter', href: '/creations/pauses-gourmandes' },
         { label: produit.nom },
       ]}
       backHref="/creations/pauses-gourmandes"
-      backLabel="Retour aux pauses gourmandes"
-      seoEyebrow="Pauses Gourmandes · Traiteur entreprise"
+      backLabel="Retour à Pause Goûter"
+      seoEyebrow="Pause Goûter · Traiteur entreprise"
       seoTitle={produit.seoTitle || "La pause gourmande qui réunit vos équipes l'après-midi"}
       seoHtml={produit.seoHtml || SEO_HTML}
       devisPrestation="Goûter"
-      devisTitre="Une pause gourmande à organiser ?"
+      devisTitre="Une Pause Goûter à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
   )

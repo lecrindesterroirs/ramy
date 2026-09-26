@@ -8,7 +8,7 @@ const creations = [
     href: '/creations/petits-dejeuners-et-pauses',
   },
   {
-    label: 'Pauses gourmandes',
+    label: 'Pause Goûter',
     description: 'Madeleines, cookies, cakes et fruits frais pour rythmer vos pauses et goûters d\'équipe.',
     img: '/prod-cake-marbre.webp',
     href: '/creations/pauses-gourmandes',

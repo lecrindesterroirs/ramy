@@ -7,7 +7,7 @@ import { useState } from 'react'
 // Source unique, réutilisée partout pour une barre identique.
 export const CATEGORIES = [
   { label: 'Petits-déjeuners',   href: '/creations/petits-dejeuners-et-pauses' },
-  { label: 'Pauses gourmandes',  href: '/creations/pauses-gourmandes' },
+  { label: 'Pause Goûter',       href: '/creations/pauses-gourmandes' },
   { label: 'Plateaux repas',     href: '/creations/plateaux-repas' },
   { label: 'Lunch Box',          href: '/creations/lunch-box' },
   { label: 'À partager',         href: '/creations/a-partager' },

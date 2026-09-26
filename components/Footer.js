@@ -50,7 +50,7 @@ export default function Footer() {
             {[
               { title: 'La Carte', links: [
                 { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-                { label: 'Pauses gourmandes', href: '/creations/pauses-gourmandes' },
+                { label: 'Pause Goûter', href: '/creations/pauses-gourmandes' },
                 { label: 'Plateaux repas', href: '/creations/plateaux-repas' },
                 { label: 'Lunch box', href: '/creations/lunch-box' },
                 { label: 'Cocktails', href: '/creations/cocktails' },

@@ -10,7 +10,7 @@ const MOMENTS = {
     key: 'petitDej',
     cards: [
       { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.webp' },
-      { title: 'Pauses Gourmandes', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.webp' },
+      { title: 'Pause Goûter', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.webp' },
       { title: 'Personnalisation', href: '/creations/personnalisation', img: '/prod-cookie-personnalisation.png' },
     ],
   },

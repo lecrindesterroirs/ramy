@@ -32,7 +32,7 @@ const SEO_ARTICLE = `
 /* ─── Données ───────────────────────────────────────────────────── */
 
 const HERO = {
-  label: 'Pauses Gourmandes',
+  label: 'Pause Goûter',
   description: 'La touche sucrée de l\'après-midi · pâtisseries, biscuits et fruits frais préparés le jour même pour rythmer vos pauses et goûters d\'entreprise.',
   hero: '/hero-pauses-gourmandes.webp',
 }
@@ -300,7 +300,7 @@ export default function PausesGourmandes() {
         {/* ── Hero ── */}
         <div className="pg-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="pg-hero" style={{ position: 'relative', width: '100%', height: '54vh', minHeight: '420px', overflow: 'hidden' }}>
-            <ParallaxImage priority sizes="100vw" src={HERO.hero} alt="Pauses gourmandes L'Écrin" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
+            <ParallaxImage priority sizes="100vw" src={HERO.hero} alt="Pause Goûter L'Écrin" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="pg-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
@@ -318,7 +318,7 @@ export default function PausesGourmandes() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Pauses Gourmandes' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Pause Goûter' }]} />
 
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} sorts={SORTS} />
 
@@ -341,7 +341,7 @@ export default function PausesGourmandes() {
         </div>
 
         <CrossSellBanner
-          title="Complétez vos pauses gourmandes avec nos boissons"
+          title="Complétez votre Pause Goûter avec nos boissons"
           body="Jus artisanaux Alain Milliat, thés Mariage Frères, thermos de café et de chocolat chaud : de quoi accompagner chaque pause."
           buttonLabel="Découvrir nos boissons"
           href="/creations/boissons"
@@ -381,7 +381,7 @@ export default function PausesGourmandes() {
       ` }} />
 
       <CategoryJsonLd
-        name="Pauses gourmandes"
+        name="Pause Goûter"
         path="/creations/pauses-gourmandes"
         items={PAUSES.map(p => ({ name: p.nom, url: `/creations/pauses-gourmandes/${p.id}` }))}
       />
