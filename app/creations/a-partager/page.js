@@ -50,7 +50,7 @@ export const MENUS = [
       'Taboulé aux herbes fraîches & citron',
       'Falafels en brochette & crème tahini citronnée',
       'Navette saumon & cream cheese',
-      "Caviar d'aubergine & focaccia",
+      "Caviar d'aubergine & pains grillés",
       'Plateau de fromages affinés',
     ],
     sucrees: [
@@ -68,10 +68,10 @@ export const MENUS = [
     salees: [
       'Salade César au poulet rôti',
       "Pommes de terre rôties, crème d'Isigny & saumon fumé",
-      'Club sandwich Poulet César',
+      'Club sandwich dinde & emmental',
       'Mini baguette jambon de dinde',
       'Plateau de saumon fumé',
-      "Bruschetta caviar d'aubergine",
+      'Œufs mimosa',
     ],
     sucrees: [
       'Panna cotta fruits rouges',
