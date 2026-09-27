@@ -8,7 +8,7 @@ import { BOXES } from '../page'
 const SEO_HTML = `
   <p>La <strong>lunch box d'entreprise</strong> est la formule idéale pour les déjeuners nomades, réunions de travail et journées séminaires à Paris. Compacte et complète, elle réunit une entrée, un sandwich et un dessert dans un format pratique, prêt à emporter ou à servir en salle.</p>
   <h2>Des sandwichs de boulangerie, une entrée et un dessert au choix</h2>
-  <p>Nos box boulangerie associent un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette et couverts inclus. Nos coffrets Signature ajoutent club ou wrap, salade et dessert au choix, avec une bouteille d'eau.</p>
+  <p>Nos box associent un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette et couverts inclus. On adapte les garnitures aux régimes de votre équipe.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
   <p>Commandez avant 14h la veille et recevez vos lunch box directement sur site. Effectifs, régimes alimentaires, facturation entreprise : nous adaptons la sélection et vous adressons un devis personnalisé sous 24h.</p>
 `

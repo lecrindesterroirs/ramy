@@ -31,7 +31,7 @@ const SEO_ARTICLE = `
 
 const HERO = {
   label: 'Lunch Box',
-  description: 'Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Coffrets Signature avec bouteille d\'eau.',
+  description: 'Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts inclus.',
   prix: '19,90',
   hero: '/hero-lunch-box.webp',
 }
@@ -51,7 +51,7 @@ const CATEGORIE_COLORS = {
   poisson:    '#C4756B',
 }
 
-/* Deux gammes : box boulangerie (19,90) et coffrets Signature (24,90).
+/* Box boulangerie à 19,90 €.
    Entrée / sandwich / dessert (+ boisson) alimentent la fiche produit. */
 export const BOXES = [
   {
@@ -137,51 +137,6 @@ export const BOXES = [
     plat: "Thon Mayonnaise, au choix :\nEn baguette\nEn pain viennois",
     dessert: "Au choix :\nPart de cake\nMadeleine",
     description: "Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Boisson en option.",
-  },
-  {
-    seoTitle: `La Marine : le coffret déjeuner club saumon fumé pour vos réunions d'entreprise à Paris`,
-    seoHtml: `<p>La Marine est notre coffret Signature au poisson : un club sandwich au saumon fumé. Le coffret complet se compose de la salade et du dessert de votre choix, avec une bouteille d'eau, pour un déjeuner de travail plus soigné qu'un simple sandwich.</p><h2>Un club au saumon fumé, en coffret complet</h2><p>Salades au choix : semoule à l'orange et pois chiches, salade grecque, mafaldine aux tomates confites et mozzarella, avocat et grenade. Desserts au choix : tarte abricot-amande, Paris-Brest déstructuré, moelleux au chocolat, panna cotta aux fruits rouges.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
-    id: "lb5",
-    categorie: "poisson",
-    nom: "La Marine",
-    prix: "24,90",
-    img: "/lunchbox-lb5-marine.webp",
-    sousTitre: "Coffret Signature · Club Saumon Fumé",
-    entree: "Au choix :\nSemoule à l'orange & pois chiches\nSalade grecque\nMafaldine, tomates confites & mozzarella\nAvocat & grenade",
-    plat: "Club Saumon Fumé",
-    dessert: "Au choix :\nTarte abricot-amande\nParis-Brest déstructuré\nMoelleux au chocolat\nPanna cotta aux fruits rouges",
-    boisson: "Bouteille d'eau incluse",
-    description: "Un coffret individuel complet : un sandwich, une salade et un dessert au choix, bouteille d'eau incluse.",
-  },
-  {
-    seoTitle: `La Comtoise : le coffret déjeuner jambon de dinde & comté pour vos réunions d'entreprise à Paris`,
-    seoHtml: `<p>La Comtoise est notre coffret Signature le plus classique : un sandwich au pain aux céréales, jambon de dinde et comté. Le coffret complet se compose de la salade et du dessert de votre choix, avec une bouteille d'eau, pour un déjeuner de travail plus soigné qu'un simple sandwich.</p><h2>Jambon de dinde et comté, sur pain aux céréales</h2><p>Salades au choix : semoule à l'orange et pois chiches, salade grecque, mafaldine aux tomates confites et mozzarella, avocat et grenade. Desserts au choix : tarte abricot-amande, Paris-Brest déstructuré, moelleux au chocolat, panna cotta aux fruits rouges.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
-    id: "lb10",
-    categorie: "viande",
-    nom: "La Comtoise",
-    prix: "24,90",
-    img: "/lunchbox-lb10-comtoise.webp",
-    sousTitre: "Coffret Signature · Jambon de Dinde & Comté",
-    entree: "Au choix :\nSemoule à l'orange & pois chiches\nSalade grecque\nMafaldine, tomates confites & mozzarella\nAvocat & grenade",
-    plat: "Pain aux Céréales, Jambon de Dinde & Comté",
-    dessert: "Au choix :\nTarte abricot-amande\nParis-Brest déstructuré\nMoelleux au chocolat\nPanna cotta aux fruits rouges",
-    boisson: "Bouteille d'eau incluse",
-    description: "Un coffret individuel complet : un sandwich, une salade et un dessert au choix, bouteille d'eau incluse.",
-  },
-  {
-    seoTitle: `La Jardinière : le coffret déjeuner wrap légumes grillés pour vos réunions d'entreprise à Paris`,
-    seoHtml: `<p>La Jardinière est notre coffret Signature végétarien : un wrap aux légumes grillés. Le coffret complet se compose de la salade et du dessert de votre choix, avec une bouteille d'eau, pour un déjeuner de travail plus soigné qu'un simple sandwich.</p><h2>L'option végétarienne du coffret</h2><p>Salades au choix : semoule à l'orange et pois chiches, salade grecque, mafaldine aux tomates confites et mozzarella, avocat et grenade. Desserts au choix : tarte abricot-amande, Paris-Brest déstructuré, moelleux au chocolat, panna cotta aux fruits rouges.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
-    id: "lb7",
-    categorie: "vegetarien",
-    nom: "La Jardinière",
-    prix: "24,90",
-    img: "/lunchbox-lb7-jardiniere.webp",
-    sousTitre: "Coffret Signature · Wrap Légumes Grillés",
-    entree: "Au choix :\nSemoule à l'orange & pois chiches\nSalade grecque\nMafaldine, tomates confites & mozzarella\nAvocat & grenade",
-    plat: "Wrap Légumes Grillés",
-    dessert: "Au choix :\nTarte abricot-amande\nParis-Brest déstructuré\nMoelleux au chocolat\nPanna cotta aux fruits rouges",
-    boisson: "Bouteille d'eau incluse",
-    description: "Un coffret individuel complet : un sandwich, une salade et un dessert au choix, bouteille d'eau incluse.",
   },
 ]
 

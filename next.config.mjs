@@ -57,6 +57,8 @@ const nextConfig = {
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
+      // Gamme des coffrets Signature lunch box retirée (sept. 2026)
+      { source: '/creations/lunch-box/lb:n(5|7|10)', destination: '/creations/lunch-box', permanent: true },
       // Coffret La Piémontaise retiré de la carte (sept. 2026)
       { source: '/creations/lunch-box/lb6', destination: '/creations/lunch-box', permanent: true },
       // Citronnade JOMO retirée de la carte (sept. 2026) → infusion citron vert & gingembre
