@@ -142,6 +142,30 @@ export const BOXES = [
 
 /* ─── Carte menu ─────────────────────────────────────────────────── */
 
+/* Transforme "Au choix :\nA\nB" (ou "Titre, au choix :\nA\nB") en "A ou B". */
+function options(champ) {
+  if (!champ) return ''
+  const lignes = champ.split('\n').map(l => l.trim()).filter(Boolean)
+  const choix = lignes.filter(l => !/au choix\s*:?$/i.test(l))
+  return choix.join(' ou ')
+}
+
+/* Un bloc « SALADE / DESSERT » du menu, filet doré puis intitulé puis contenu. */
+function BlocMenu({ label, valeur }) {
+  if (!valeur) return null
+  return (
+    <div style={{ marginTop: '16px' }}>
+      <span style={{ display: 'block', width: '26px', height: '1px', background: 'rgba(169,128,59,0.45)', margin: '0 auto 14px' }} />
+      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>
+        {label}
+      </p>
+      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', lineHeight: 1.55, color: '#5A544C' }}>
+        {valeur}
+      </p>
+    </div>
+  )
+}
+
 function MenuCard({ produit }) {
   const [hovered, setHovered] = useState(false)
   const catColor = CATEGORIE_COLORS[produit.categorie] ?? '#6E675F'
@@ -153,7 +177,7 @@ function MenuCard({ produit }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        display: 'block', textDecoration: 'none',
+        display: 'flex', flexDirection: 'column', textDecoration: 'none',
         background: '#FFFFFF',
         overflow: 'hidden',
         cursor: 'pointer',
@@ -164,6 +188,7 @@ function MenuCard({ produit }) {
         transition: 'box-shadow 0.35s ease, transform 0.35s ease',
       }}
     >
+      {/* Photo du sandwich */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
         {produit.img && (
           <Image fill src={produit.img}
@@ -195,18 +220,27 @@ function MenuCard({ produit }) {
         </div>
       </div>
 
-      <div style={{ padding: '16px 16px 16px' }}>
-        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '6px', transition: 'color 0.25s ease' }}>
-          {produit.nom}
-        </h3>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#9B9590', marginBottom: '10px' }}>
-          {produit.sousTitre}
-        </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.13em', textTransform: 'uppercase', color: catColor, marginBottom: '12px' }}>
+      {/* Menu complet, à la façon d'une carte imprimée */}
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '26px 24px 24px', textAlign: 'center' }}>
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: catColor, marginBottom: '10px' }}>
           {catLabel}
         </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111' }}>
-          À partir de {produit.prix} €<span style={{ color: 'rgba(17,17,17,0.3)', fontSize: '11px', marginLeft: '3px' }}>HT</span>
+
+        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '23px', fontWeight: 400, lineHeight: 1.15, color: hovered ? '#E0A126' : '#111111', marginBottom: '8px', transition: 'color 0.25s ease' }}>
+          {produit.nom}
+        </h3>
+
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', lineHeight: 1.55, color: '#5A544C' }}>
+          {produit.sousTitre}
+        </p>
+
+        <BlocMenu label="Salade" valeur={options(produit.entree)} />
+        <BlocMenu label="Dessert" valeur={options(produit.dessert)} />
+
+        <div style={{ flex: 1 }} />
+
+        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111', marginTop: '22px', paddingTop: '16px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+          {produit.prix} €<span style={{ color: 'rgba(17,17,17,0.35)', fontSize: '11px', marginLeft: '4px' }}>HT · par personne</span>
         </p>
       </div>
     </Link>
@@ -368,6 +402,10 @@ function LunchBoxInner() {
           .lb-hero-text    { padding: 0 28px !important; max-width: 100% !important; }
           .lb-shell { padding-left: 24px !important; padding-right: 24px !important; }
           .lb-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 20px 14px !important; }
+        }
+        @media (max-width: 620px) {
+          /* La carte porte tout le menu : une colonne, sinon le texte se casse. */
+          .lb-grid  { grid-template-columns: 1fr !important; gap: 24px !important; max-width: 420px; margin: 0 auto; }
         }
       ` }} />
 
