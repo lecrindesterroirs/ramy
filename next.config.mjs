@@ -57,6 +57,8 @@ const nextConfig = {
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
+      // Citronnade JOMO retirée de la carte (sept. 2026) → infusion citron vert & gingembre
+      { source: '/creations/boissons/citronnade-gingembre', destination: '/creations/boissons/infusion-gingembre-1l', permanent: true },
       // Gamme Signature des plateaux repas supprimée (sept. 2026) → collection Essentiel
       { source: '/creations/plateaux-repas/s:n(\\d+)', destination: '/creations/plateaux-repas', permanent: true },
       // Plateau de fruits frais retiré de la carte (sept. 2026) → brochettes
