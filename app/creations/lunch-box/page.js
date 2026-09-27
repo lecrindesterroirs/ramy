@@ -117,7 +117,8 @@ export const BOXES = [
     categorie: "poisson",
     nom: "La Nordique",
     prix: "19,90",
-    img: "/lunchbox-lb4-nordique.webp",
+    img: "/sandwich-lb4-nordique.webp",
+    imgDetoure: true,
     sousTitre: "Saumon & Avocat · Baguette ou viennois",
     entree: "Au choix :\nSalade de concombre à la ciboulette\nSalade de tomate & mozzarella",
     plat: "Saumon & Avocat, au choix :\nEn baguette\nEn pain viennois",
@@ -197,13 +198,15 @@ function MenuCard({ produit }) {
       }}
     >
       {/* Photo du sandwich */}
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: produit.imgDetoure ? '#F8F5EF' : (produit.img ? '#F8F5EF' : 'radial-gradient(ellipse at 50% 40%, #F8F4EC 0%, #F1EBDF 100%)'), overflow: 'hidden' }}>
         {produit.img && (
           <Image fill src={produit.img}
             alt={produit.nom}
             sizes="(max-width: 768px) 50vw, 33vw"
             style={{
-              objectFit: 'cover', objectPosition: 'center',
+              objectFit: produit.imgDetoure ? 'contain' : 'cover',
+              objectPosition: 'center',
+              padding: produit.imgDetoure ? '14px' : 0,
               transition: 'transform 0.7s ease',
               transform: hovered ? 'scale(1.05)' : 'scale(1)',
             }}
