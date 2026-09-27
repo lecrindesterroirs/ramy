@@ -160,7 +160,7 @@ export default function Contact() {
               Contactez-nous
             </p>
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
-              Un échange simple<br />et rapide.
+              Un échange simple <br />et rapide.
             </h1>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '32px' }}>
               Notre équipe vous répond avec attention pour concevoir une prestation sur mesure, adaptée à vos besoins et à vos contraintes.
@@ -239,15 +239,15 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+              <form onSubmit={submit} method="post" style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
                 <input type="text" name="website" value={form.website} onChange={handle} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="nom" value={form.nom} onChange={handle} placeholder="Nom complet *" aria-label="Nom complet" required aria-required="true" style={inputStyle} />
-                  <input name="societe" value={form.societe} onChange={handle} placeholder="Société *" aria-label="Société" required aria-required="true" style={inputStyle} />
+                  <input name="nom" value={form.nom} onChange={handle} placeholder="Nom complet *" aria-label="Nom complet" autoComplete="name" required aria-required="true" style={inputStyle} />
+                  <input name="societe" value={form.societe} onChange={handle} placeholder="Société *" aria-label="Société" autoComplete="organization" required aria-required="true" style={inputStyle} />
                 </div>
-                <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email professionnel *" aria-label="Email professionnel" required aria-required="true" style={inputStyle} />
+                <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email professionnel *" aria-label="Email professionnel" autoComplete="email" inputMode="email" required aria-required="true" style={inputStyle} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="telephone" value={form.telephone} onChange={handle} placeholder="Téléphone *" aria-label="Téléphone" required aria-required="true" style={inputStyle} />
+                  <input name="telephone" type="tel" value={form.telephone} onChange={handle} placeholder="Téléphone *" aria-label="Téléphone" autoComplete="tel" inputMode="tel" required aria-required="true" style={inputStyle} />
                   <div style={{ position: 'relative' }}>
                     <select name="type" value={form.type} onChange={handle} required aria-required="true" aria-label="Type d'événement" style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
                       <option value="" disabled>Type d'événement *</option>
@@ -257,7 +257,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="personnes" type="number" value={form.personnes} onChange={handle} placeholder="Nombre de personnes *" aria-label="Nombre de personnes" required aria-required="true" style={inputStyle} />
+                  <input name="personnes" type="number" min="1" value={form.personnes} onChange={handle} placeholder="Nombre de personnes *" aria-label="Nombre de personnes" autoComplete="off" inputMode="numeric" required aria-required="true" style={inputStyle} />
                   <DatePicker value={form.date} onChange={setDate} required />
                 </div>
                 <textarea

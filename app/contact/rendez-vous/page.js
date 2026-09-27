@@ -72,7 +72,7 @@ export default function PrendreRendezVous() {
               Un échange direct
             </p>
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px', maxWidth: '640px' }}>
-              Prendre 15 min<br />avec nous.
+              Prendre 15 min <br />avec nous.
             </h1>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '480px' }}>
               Un échange sans engagement pour cadrer votre besoin, répondre à vos questions et voir comment nous pouvons vous accompagner. Choisissez le créneau qui vous convient.

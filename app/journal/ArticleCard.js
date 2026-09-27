@@ -105,9 +105,6 @@ export default function ArticleCard({ article }) {
         Lire l'article →
       </span>
 
-      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-        a:hover .article-card-img { transform: scale(1.04); }
-      ` }} />
     </a>
   )
 }

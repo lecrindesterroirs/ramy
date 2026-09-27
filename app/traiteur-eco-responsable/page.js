@@ -154,7 +154,7 @@ export default function TraiteurEcoResponsable() {
                   Traiteur d'entreprise · Paris & Île-de-France
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur<br />Éco-Responsable
+                  Traiteur <br />Éco-Responsable
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
                   Un traiteur d'entreprise qui régale sans gaspiller : circuit court, vaisselle compostable en bois et pulpe de canne, récupération de la vaisselle et des thermos, livré dans vos bureaux dès 6h30.
@@ -229,7 +229,7 @@ export default function TraiteurEcoResponsable() {
               Nos prestations
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Du petit-déjeuner<br />au buffet
+              Du petit-déjeuner <br />au buffet
             </h2>
           </div>
           <div className="hl-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>

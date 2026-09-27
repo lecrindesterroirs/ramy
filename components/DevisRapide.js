@@ -202,6 +202,8 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
                 <label style={labelStyle}>Email professionnel *</label>
                 <input
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
                   value={form.email}
                   onChange={e => set('email', e.target.value)}
                   placeholder="marie@entreprise.com"
@@ -218,6 +220,8 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
             <label style={labelStyle}>Email professionnel *</label>
             <input
               type="email"
+              autoComplete="email"
+              inputMode="email"
               value={form.email}
               onChange={e => set('email', e.target.value)}
               placeholder="marie@entreprise.com"

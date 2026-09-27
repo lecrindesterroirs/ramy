@@ -458,3 +458,7 @@ html.lenis body {
     font-size: 16px !important;
   }
 }
+
+/* Cartes article (Journal) — zoom de l'image au survol du lien.
+   Règle globale : un <style> placé DANS le <a> polluait le texte du lien. */
+a:hover .article-card-img { transform: scale(1.04); }

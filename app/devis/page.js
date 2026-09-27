@@ -432,19 +432,19 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div>
             <label style={labelStyle}>Nom complet <span style={{ color: accent }}>*</span></label>
-            <input value={data.nom} onChange={e => set('nom', e.target.value)} placeholder="Ex : Marie Dupont" style={fieldStyle} required />
+            <input value={data.nom} onChange={e => set('nom', e.target.value)} placeholder="Ex : Marie Dupont" autoComplete="name" style={fieldStyle} required />
           </div>
           <div>
             <label style={labelStyle}>Société <span style={{ color: accent }}>*</span></label>
-            <input value={data.societe} onChange={e => set('societe', e.target.value)} placeholder="Ex : Entreprise SAS" style={fieldStyle} required />
+            <input value={data.societe} onChange={e => set('societe', e.target.value)} placeholder="Ex : Entreprise SAS" autoComplete="organization" style={fieldStyle} required />
           </div>
           <div>
             <label style={labelStyle}>Email professionnel <span style={{ color: accent }}>*</span></label>
-            <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="Ex : marie@entreprise.com" style={fieldStyle} required />
+            <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="Ex : marie@entreprise.com" autoComplete="email" inputMode="email" style={fieldStyle} required />
           </div>
           <div>
             <label style={labelStyle}>Téléphone <span style={{ color: accent }}>*</span></label>
-            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" style={fieldStyle} required />
+            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" autoComplete="tel" inputMode="tel" style={fieldStyle} required />
           </div>
         </div>
       </div>

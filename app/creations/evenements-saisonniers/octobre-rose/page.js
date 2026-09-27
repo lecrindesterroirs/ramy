@@ -135,7 +135,7 @@ export default function OctobreRosePage() {
                   Au programme
                 </p>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: ENCRE }}>
-                  Une sélection gourmande<br />aux couleurs d'Octobre Rose
+                  Une sélection gourmande <br />aux couleurs d'Octobre Rose
                 </h2>
               </div>
               <div style={{ borderLeft: `1px solid ${ROSE}`, paddingLeft: '28px', alignSelf: 'center' }}>
@@ -181,7 +181,7 @@ export default function OctobreRosePage() {
                   Notre engagement
                 </p>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, color: ENCRE, lineHeight: 1.15 }}>
-                  1 € reversé par convive<br />sur toutes nos commandes d'octobre.
+                  1 € reversé par convive <br />sur toutes nos commandes d'octobre.
                 </p>
               </div>
             </div>

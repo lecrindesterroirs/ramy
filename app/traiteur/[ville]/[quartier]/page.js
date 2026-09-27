@@ -141,7 +141,7 @@ export default function QuartierPage() {
                   Traiteur d'entreprise, {city.name}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4.4vw, 60px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '20px' }}>
-                  Traiteur entreprise<br />{q.name}
+                  Traiteur entreprise <br />{q.name}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '30px' }}>
                   {q.heroDescription}
@@ -177,7 +177,7 @@ export default function QuartierPage() {
               Nos prestations à {q.name}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Des formats pensés<br />pour vos événements
+              Des formats pensés <br />pour vos événements
             </h2>
           </div>
           <div className="q-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>

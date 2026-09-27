@@ -154,7 +154,7 @@ export default function TraiteurHealthy() {
                   Traiteur d'entreprise · Paris & Île-de-France
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(30px, 4.2vw, 58px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur Healthy<br />Vegan & Végétarien
+                  Traiteur Healthy <br />Vegan & Végétarien
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
                   Un traiteur d'entreprise qui fait du bien : fruits de saison, yaourts fermiers, jus pressés et options légères, sans jamais sacrifier le plaisir. Livré dans vos bureaux dès 6h30.
@@ -199,7 +199,7 @@ export default function TraiteurHealthy() {
               Sain sans être triste
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.12, color: 'var(--text-primary)' }}>
-              Du frais qui fait<br />vraiment plaisir
+              Du frais qui fait <br />vraiment plaisir
             </h2>
           </div>
           <div className="hl-regimes-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
@@ -229,7 +229,7 @@ export default function TraiteurHealthy() {
               Nos prestations
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Le frais, du matin<br />au déjeuner
+              Le frais, du matin <br />au déjeuner
             </h2>
           </div>
           <div className="hl-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>

@@ -41,7 +41,7 @@ export default function Footer() {
             </a>
             <div style={{ width: '28px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '14px', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '200px' }}>
-              Des expériences pensées<br />pour marquer les esprits.
+              Des expériences pensées <br />pour marquer les esprits.
             </p>
           </div>
 

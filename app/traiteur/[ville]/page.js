@@ -122,7 +122,7 @@ export default function CityPage() {
                   Traiteur d'entreprise, {city.region}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur entreprise<br />{city.name}
+                  Traiteur entreprise <br />{city.name}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '32px' }}>
                   {city.heroDescription}
@@ -167,7 +167,7 @@ export default function CityPage() {
               Nos prestations à {city.name}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Des formats pensés<br />pour vos événements
+              Des formats pensés <br />pour vos événements
             </h2>
           </div>
           <div className="city-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
