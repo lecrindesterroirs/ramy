@@ -95,7 +95,7 @@ export const PLATEAUX = [
   {
     seoTitle: `Plateau de charcuterie halal, sans porc, pour vos apéritifs d'entreprise à Paris`,
     seoHtml: `<p>Notre plateau de charcuteries est halal et sans porc : bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, avec cornichons et condiments. Une planche généreuse qui n'exclut personne autour de la table, parfaite pour un afterwork, une inauguration ou une réception mixant les profils.</p><h2>Une planche généreuse, halal et sans porc</h2><p>Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons et condiments à partager, accompagnés de pain. On ajuste la taille du plateau à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
-    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plateau-charcuterie.webp',
+    id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plateau-charcuterie-v2.webp',
     description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons & condiments · halal, sans porc.',
     recettes: [],
   },
