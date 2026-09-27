@@ -142,26 +142,34 @@ export const BOXES = [
 
 /* ─── Carte menu ─────────────────────────────────────────────────── */
 
-/* Transforme "Au choix :\nA\nB" (ou "Titre, au choix :\nA\nB") en "A ou B". */
+/* Extrait les choix de "Au choix :\nA\nB" (ou "Titre, au choix :\nA\nB") → ['A', 'B']. */
 function options(champ) {
-  if (!champ) return ''
-  const lignes = champ.split('\n').map(l => l.trim()).filter(Boolean)
-  const choix = lignes.filter(l => !/au choix\s*:?$/i.test(l))
-  return choix.join(' ou ')
+  if (!champ) return []
+  return champ.split('\n').map(l => l.trim()).filter(Boolean)
+    .filter(l => !/au choix\s*:?$/i.test(l))
 }
 
 /* Un bloc « SALADE / DESSERT » du menu, filet doré puis intitulé puis contenu. */
-function BlocMenu({ label, valeur }) {
-  if (!valeur) return null
+function BlocMenu({ label, choix }) {
+  if (!choix || choix.length === 0) return null
   return (
     <div style={{ marginTop: '16px' }}>
       <span style={{ display: 'block', width: '26px', height: '1px', background: 'rgba(169,128,59,0.45)', margin: '0 auto 14px' }} />
       <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>
         {label}
       </p>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', lineHeight: 1.55, color: '#5A544C' }}>
-        {valeur}
-      </p>
+      {choix.map((c, i) => (
+        <span key={i}>
+          {i > 0 && (
+            <span style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontStyle: 'normal', color: '#9B9590', margin: '2px 0' }}>
+              ou
+            </span>
+          )}
+          <span style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', lineHeight: 1.5, color: '#5A544C' }}>
+            {c}
+          </span>
+        </span>
+      ))}
     </div>
   )
 }
@@ -234,8 +242,8 @@ function MenuCard({ produit }) {
           {produit.sousTitre}
         </p>
 
-        <BlocMenu label="Salade" valeur={options(produit.entree)} />
-        <BlocMenu label="Dessert" valeur={options(produit.dessert)} />
+        <BlocMenu label="Salade" choix={options(produit.entree)} />
+        <BlocMenu label="Dessert" choix={options(produit.dessert)} />
 
         <div style={{ flex: 1 }} />
 
