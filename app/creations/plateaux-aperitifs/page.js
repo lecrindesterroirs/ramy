@@ -58,10 +58,10 @@ export const PLATEAUX = [
   // ── Sandwichs ──
   {
     seoTitle: `Plateau mini baguettes pour vos afterworks et réceptions d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de mini baguettes artisanales garnies est le format qui rassure : des sandwichs francs, faciles à attraper debout, qui plaisent à tout le monde lors d'un afterwork ou d'un pot de départ. Posé au centre de la table, il se partage sans chichi et cale les petites faims de fin de journée.</p><h2>Un assortiment à partager, net à manger debout</h2><p>Mini baguettes garnies en assortiment varié, découpées pour picorer, avec des recettes qui mêlent viande, poisson et options végétariennes. On équilibre les garnitures pour que chacun trouve la sienne, et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30 sur votre lieu de réception. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de mini baguettes artisanales garnies est le format qui rassure : des sandwichs francs, faciles à attraper debout, qui plaisent à tout le monde lors d'un afterwork ou d'un pot de départ. Posé au centre de la table, il se partage sans chichi et cale les petites faims de fin de journée.</p><h2>Un assortiment à partager, net à manger debout</h2><p>Six garnitures : poulet au curry doux, poulet rôti et mayonnaise, poulet croustillant pané, œuf et emmental, saumon fumé et avocat, thon et mayonnaise. Découpées pour picorer, on équilibre l'assortiment pour que chacun trouve la sienne et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30 sur votre lieu de réception. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'sw1', famille: 'sandwichs', nom: 'Mini Baguettes Signature', img: '/plateau-baguettes.webp',
     description: 'Assortiment de mini baguettes artisanales garnies.',
-    recettes: ['Jambon de Dinde', 'Poulet César', 'Saumon & Cream Cheese', 'Thon Ciboulette', 'Burrata & Pesto', 'Pastrami Pickles'],
+    recettes: ['Poulet au Curry Doux', 'Poulet Rôti & Mayonnaise', 'Poulet Croustillant Pané', 'Œuf & Emmental', 'Saumon Fumé & Avocat', 'Thon & Mayonnaise'],
   },
   {
     seoTitle: `Plateau club sandwichs pour vos afterworks et réunions d'entreprise à Paris`,
@@ -79,10 +79,10 @@ export const PLATEAUX = [
   },
   {
     seoTitle: `Plateau de mini burgers pour vos afterworks et événements d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de mini burgers artisanaux met de l'ambiance sur un apéritif d'équipe. Format street food net à manger debout, il plaît à tous les âges et transforme un afterwork ou un pot de départ en moment convivial. Des bouchées généreuses, assemblées avec soin.</p><h2>Des mini burgers à partager</h2><p>Assortiment de mini burgers aux recettes variées, dont une option végétarienne, prêts à se servir d'une main. On mixe les garnitures et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de mini burgers artisanaux met de l'ambiance sur un apéritif d'équipe. Format street food net à manger debout, il plaît à tous les âges et transforme un afterwork ou un pot de départ en moment convivial. Des bouchées généreuses, assemblées avec soin.</p><h2>Des mini burgers à partager</h2><p>Deux recettes, cheeseburger et chicken crispy, prêtes à se servir d'une main. On mixe les garnitures et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plateau-burgers.webp',
     description: 'Assortiment de mini burgers artisanaux.',
-    recettes: ['Cheeseburger', 'Chicken Crispy', 'Steak Végétal'],
+    recettes: ['Cheeseburger', 'Chicken Crispy'],
   },
   // ── Gourmands ──
   {
