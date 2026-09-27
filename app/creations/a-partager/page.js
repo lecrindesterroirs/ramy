@@ -71,7 +71,7 @@ export const MENUS = [
       'Club sandwich dinde & emmental',
       'Mini baguette poulet curry',
       'Plateau de charcuteries artisanales',
-      'Céleri rémoulade',
+      'Salade de tomates anciennes & basilic',
     ],
     sucrees: [
       'Panna cotta fruits rouges',
