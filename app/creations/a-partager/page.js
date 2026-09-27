@@ -88,8 +88,8 @@ export const MENUS = [
     salees: [
       'Salade de lentilles, feta & légumes rôtis',
       'Houmous méditerranéen & focaccia romarin',
-      'Wrap burrata & légumes grillés',
-      'Bruschetta tomates confites & stracciatella',
+      'Mini quiches aux légumes',
+      'Salade de tomates & mozzarella au basilic',
       'Falafels & crème tahini citronnée',
       'Plateau de fromages affinés',
     ],
