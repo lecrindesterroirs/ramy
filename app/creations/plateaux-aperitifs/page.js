@@ -94,9 +94,9 @@ export const PLATEAUX = [
   },
   {
     seoTitle: `Plateau de charcuterie halal, sans porc, pour vos apéritifs d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de charcuteries est halal et sans porc : bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, avec cornichons et condiments. Une planche généreuse qui n'exclut personne autour de la table, parfaite pour un afterwork, une inauguration ou une réception mixant les profils.</p><h2>Une planche généreuse, halal et sans porc</h2><p>Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons et condiments à partager, accompagnés de pain. On ajuste la taille du plateau à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de charcuteries est halal et sans porc : bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, relevés d'olives vertes et de raisin frais. Une planche généreuse qui n'exclut personne autour de la table, parfaite pour un afterwork, une inauguration ou une réception mixant les profils.</p><h2>Une planche généreuse, halal et sans porc</h2><p>Bœuf séché, bresaola, viande des Grisons, dinde fumée et poulet fumé, roulés et dressés à la main, avec olives vertes et raisin frais pour la fraîcheur. Livré en barquette bois, prêt à poser au centre de la table. On ajuste la taille du plateau à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'go2', famille: 'gourmands', nom: 'Charcuteries Artisanales', img: '/plateau-charcuterie-v2.webp',
-    description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, cornichons & condiments · halal, sans porc.',
+    description: 'Bœuf séché, bresaola, viande des Grisons, dinde fumée, poulet fumé, olives & raisin frais · halal, sans porc.',
     recettes: [],
   },
   {
@@ -133,10 +133,10 @@ export const PLATEAUX = [
     recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
   },
   {
-    seoTitle: `Plateau de fruits frais découpés pour vos apéritifs et pauses d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de fruits frais de saison, découpés et dressés, apporte fraîcheur et couleur à un apéritif ou une pause d'équipe. Plus pratique que les fruits entiers pour un buffet, il se pose au centre de la table et se sert sans effort, en complément d'un plateau plus riche.</p><h2>Des fruits de saison, prêts à partager</h2><p>Sélection de fruits frais de saison découpés, dressés pour se servir facilement. On adapte la taille du plateau à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
-    id: 'fr3', famille: 'sucre', nom: 'Fruits Frais', img: '/plateau-fruits.webp',
-    description: 'Sélection de fruits frais de saison découpés.',
+    seoTitle: `Plateau de brochettes de fruits pour vos apéritifs et pauses d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de brochettes de fruits frais de saison apporte fraîcheur et couleur à un apéritif ou une pause d'équipe. Chacun attrape la sienne d'une main, sans couvert ni assiette : c'est ce qui le rend plus pratique qu'un plateau découpé sur un buffet debout.</p><h2>Des fruits de saison, prêts à picorer</h2><p>Fraises, ananas, melon, raisin, kiwi selon la saison, montés en brochettes. Vegan et sans gluten, donc accessible à toute l'équipe. On adapte le nombre de brochettes à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
+    id: 'fr3', famille: 'sucre', nom: 'Brochettes de Fruits', img: '/prod-brochettes.webp',
+    description: 'Brochettes de fruits frais de saison, à picorer. Vegan et sans gluten.',
     recettes: [],
   },
 ]
