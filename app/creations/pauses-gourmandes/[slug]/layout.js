@@ -1,7 +1,7 @@
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 const META = {
-  'madeleines':        { nom: 'Madeleines Mado Paris',                d: 'Madeleines moelleuses cuites du jour, nature ou parfumées.' },
+  'madeleines':        { nom: "Madeleines d'exception",               d: 'Madeleines moelleuses cuites du jour, nature ou parfumées.' },
   'macarons':          { nom: 'Macarons d\'exception',                  d: 'Macarons aux ganaches délicates, assortiment de saveurs.' },
   'brownie':           { nom: 'Brownie fondant maison',                   d: 'Brownie fondant au chocolat intense, servi à couper.' },
   'carrot-cake':       { nom: 'Carrot Cake',               d: 'Carrot cake moelleux aux épices, servi à couper.' },
@@ -13,7 +13,6 @@ const META = {
   'mousse-chocolat':   { nom: 'Mousse au chocolat maison',           d: 'Mousse au chocolat intense, texture aérienne.' },
   'panna-cotta':       { nom: 'Panna cotta maison',               d: 'Panna cotta vanille, dressée en verrine individuelle.' },
   'verrine-citron':    { nom: 'Verrine Citron', d: 'Verrine lemon curd, fraîcheur acidulée en fin de repas.' },
-  'plateau-fruits-frais': { nom: 'Plateau de Fruits Frais', d: 'Sélection de fruits frais de saison découpés, à partager.' },
 }
 
 export const SLUGS = Object.keys(META)

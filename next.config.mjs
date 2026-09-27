@@ -57,6 +57,9 @@ const nextConfig = {
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
+      // Plateau de fruits frais retiré de la carte (sept. 2026) → brochettes
+      { source: '/creations/pauses-gourmandes/plateau-fruits-frais', destination: '/creations/pauses-gourmandes/brochettes-fruits', permanent: true },
+      { source: '/creations/petits-dejeuners-et-pauses/plateau-fruits-frais', destination: '/creations/petits-dejeuners-et-pauses/brochettes-fruits', permanent: true },
       { source: '/creations/animations-culinaires/atelier-ufs', destination: '/creations/animations-culinaires/oeufs-brouilles-minute', permanent: true },
       { source: '/creations/animations-culinaires/atelier-saumon', destination: '/creations/animations-culinaires/decoupe-de-saumon-frais', permanent: true },
       { source: '/creations/animations-culinaires/atelier-pasta', destination: '/creations/animations-culinaires/pasta-italienne-minute', permanent: true },
