@@ -47,7 +47,7 @@ export const MENUS = [
     featured: false,
     salees: [
       'Salade grecque',
-      'Feuilles de vigne farcies au riz & citron',
+      'Taboulé aux herbes fraîches & citron',
       'Falafels en brochette & crème tahini citronnée',
       'Navette saumon & cream cheese',
       "Caviar d'aubergine & focaccia",
