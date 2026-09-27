@@ -3,7 +3,6 @@ const BASE = 'https://www.lecrin-traiteur.fr'
 const META = {
   "lb1": { nom: "La Parisienne", d: "Lunch box poulet mayonnaise, entrée et dessert au choix." },
   "lb2": { nom: "L'Épicée", d: "Lunch box poulet curry, entrée et dessert au choix." },
-  "lb8": { nom: "La Croustillante", d: "Lunch box poulet croustillant, entrée et dessert au choix." },
   "lb3": { nom: "La Fermière", d: "Lunch box œuf & emmental, entrée et dessert au choix." },
   "lb4": { nom: "La Nordique", d: "Lunch box saumon & avocat, entrée et dessert au choix." },
   "lb9": { nom: "L'Océane", d: "Lunch box thon mayonnaise, entrée et dessert au choix." },
