@@ -47,8 +47,8 @@ export const MENUS = [
     featured: false,
     salees: [
       'Salade grecque',
-      "Houmous, huile d'olive & focaccia romarin",
-      'Wrap falafel & houmous',
+      'Feuilles de vigne farcies au riz & citron',
+      'Falafels en brochette & crème tahini citronnée',
       'Navette saumon & cream cheese',
       "Caviar d'aubergine & focaccia",
       'Plateau de fromages affinés',
