@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import Reveal from './Reveal'
 import { ARTISANS } from '../lib/artisansData'
 
@@ -56,8 +57,8 @@ function FranceMap({ artisans }) {
 
       {artisans.map((a) => (
         <div key={a.slug} className="pin-wrap" style={{ position: 'absolute', left: `${a.map.x}%`, top: `${a.map.y}%`, transform: 'translate(-50%, -50%)' }}>
-          <Link href={`/univers/nos-artisans/${a.slug}`} className="map-pin" aria-label={a.nom} style={{ display: 'block', width: '34px', height: '34px', borderRadius: '50%', border: '2px solid #FFFFFF', boxShadow: '0 2px 8px rgba(17,17,17,0.25)', overflow: 'hidden', background: 'var(--accent)' }}>
-            <img loading="lazy" src={a.avatar || a.img} alt={a.nom} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+          <Link href={`/univers/nos-artisans/${a.slug}`} className="map-pin" aria-label={a.nom} style={{ display: 'block', position: 'relative', width: '34px', height: '34px', borderRadius: '50%', border: '2px solid #FFFFFF', boxShadow: '0 2px 8px rgba(17,17,17,0.25)', overflow: 'hidden', background: 'var(--accent)' }}>
+            <Image src={a.avatar || a.img} alt={a.nom} fill sizes="34px" style={{ objectFit: 'cover', objectPosition: 'center top' }} />
           </Link>
           <span className="pin-label">{a.nom}</span>
         </div>
