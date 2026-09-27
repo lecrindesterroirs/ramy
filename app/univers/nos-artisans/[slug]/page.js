@@ -66,7 +66,7 @@ export default function ArtisanDetail() {
 
           <Reveal mode="mount" delay={120}>
             <div className="art-thumb" style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={artisan.img} alt={artisan.nom} style={{ objectFit: 'cover' }} />
+              <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={artisan.img} alt={artisan.nom} style={{ objectFit: 'cover', objectPosition: artisan.imgPos || 'center' }} />
             </div>
           </Reveal>
         </div>
