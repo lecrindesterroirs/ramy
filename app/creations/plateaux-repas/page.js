@@ -53,16 +53,6 @@ const CATEGORIE_COLORS = {
 /* Prix : explicite sur le menu (Lunch Box) sinon dérivé de la table. */
 
 
-/* Options du coffret Prestige (upgrade d'un menu Signature). */
-const PRESTIGE_OPTIONS = [
-  'Coffret premium L\'Écrin',
-  'Vaisselle & couverts premium',
-  'Serviette en tissu',
-  'Petit pain artisanal',
-  'Sélection de 2 fromages affinés',
-  'Dessert Signature du Chef',
-  'Mignardise',
-]
 
 /* Menus, composition (entrée / plat / dessert) stockée pour la fiche
    produit ; la grille n'affiche que nom · catégorie · prix.
@@ -245,10 +235,10 @@ function PlateauxRepasInner() {
             <Reveal key={`hero-text-${col.key}`} mode="mount" y={16}>
               <div className="pr-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                  Collection {col.label}
+                  {COLLECTIONS.length > 1 ? `Collection ${col.label}` : 'Déjeuner · Paris & Île-de-France'}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                  {col.label}
+                  {COLLECTIONS.length > 1 ? col.label : 'Plateaux repas'}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px', marginBottom: '20px' }}>
                   {col.description}
@@ -268,7 +258,7 @@ function PlateauxRepasInner() {
         {/* ── Navigation légère, deux niveaux de texte ─────────── */}
         <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           {/* Niveau 1 : collections, barre pleine largeur, trait coloré sous l'actif */}
-          <div className="pr-scroll" style={{ display: 'flex', borderBottom: '1px solid rgba(17,17,17,0.1)', marginBottom: '20px' }}>
+          {COLLECTIONS.length > 1 && <div className="pr-scroll" style={{ display: 'flex', borderBottom: '1px solid rgba(17,17,17,0.1)', marginBottom: '20px' }}>
             {COLLECTIONS.map((c, i) => {
               const active = c.key === activeCollection
               return (
@@ -297,7 +287,7 @@ function PlateauxRepasInner() {
                 </button>
               )
             })}
-          </div>
+          </div>}
 
         </div>
 
@@ -359,32 +349,6 @@ function PlateauxRepasInner() {
           </div>
         </div>
 
-        {/* ── Option Prestige, upgrade d'un menu Signature ─────── */}
-        {activeCollection === 'signature' && (
-          <div className="pr-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 120px' }}>
-            <div style={{ background: '#F5F1E8', padding: '48px 56px', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', alignItems: 'center' }} className="pr-prestige">
-              <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#B07D10', marginBottom: '14px' }}>
-                  Option Prestige
-                </p>
-                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '28px', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
-                  Transformez votre menu Signature en coffret Prestige
-                </h2>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#5A544C' }}>
-                  Le même menu, sublimé dans un écrin d'exception, vaisselle premium, fromages affinés et attentions du Chef pour vos réceptions les plus soignées.
-                </p>
-              </div>
-              <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 32px' }} className="pr-prestige-list">
-                {PRESTIGE_OPTIONS.map(opt => (
-                  <li key={opt} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13.5px', lineHeight: 1.5, color: '#111111' }}>
-                    <span style={{ color: '#E0A126', flexShrink: 0, marginTop: '1px' }}>◆</span>
-                    {opt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
 
       </main>
 

@@ -28,7 +28,7 @@ export default function OccasionPage() {
   const isCocktails = occasion.productCategory === 'cocktails'
   const productRoute = PRODUCT_ROUTE_BY_CATEGORY[occasion.productCategory] || 'petits-dejeuners-et-pauses'
   const products = isPlateaux
-    ? occasion.linkedProducts.map(id => PLATEAUX_PRODUITS.find(p => p.id === id)).filter(Boolean).map(p => ({ id: p.id, img: p.img, name: p.nom, categoryLabel: p.collection === 'signature' ? 'Collection Signature' : 'Collection Essentiel' }))
+    ? occasion.linkedProducts.map(id => PLATEAUX_PRODUITS.find(p => p.id === id)).filter(Boolean).map(p => ({ id: p.id, img: p.img, name: p.nom, categoryLabel: 'Plateau repas' }))
     : isCocktails
     ? occasion.linkedProducts.map(id => COCKTAIL_FORMULES.find(f => f.key === id)).filter(Boolean).map(f => ({ id: f.key, img: f.img, name: `Cocktail ${f.label}`, categoryLabel: 'Formule cocktail' }))
     : occasion.linkedProducts.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)

@@ -8,18 +8,10 @@ export const COLLECTIONS = [
     prix: '28,90',
     hero: '/plateau-mediterraneen.webp',
   },
-  {
-    key: 'signature',
-    label: 'Signature',
-    description: 'Une sélection raffinée élaborée par nos chefs · produits nobles, dressage soigné, transformable en coffret Prestige.',
-    prix: '33,90',
-    hero: '/hero-plateau-signature.webp',
-  },
 ]
 
 export const PRIX = {
   essentiel: { vegetarien: '28,90', poulet: '29,90', poisson: '30,90' },
-  signature: { vegetarien: '33,90', poulet: '34,90', poisson: '35,90', viande: '35,90' },
 }
 
 export const prixMenu = (p) => p.prix ?? PRIX[p.collection]?.[p.categorie] ?? ''
@@ -111,103 +103,4 @@ export const PRODUITS = [
     dessert: 'Verrine Citron / Lemon Curd',
   },
 
-  // ── Collection Signature (à partir de 33,90 € HT) ──
-  {
-    id: 's1', collection: 'signature', categorie: 'vegetarien', nom: 'La Dolce Vita', img: '/plat-trofie-burrata.webp',
-    seoTitle: `La Dolce Vita : le plateau repas signature italien pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `
-      <p>La Dolce Vita, c'est l'Italie en plateau signature : burrata, tomates anciennes et pesto en entrée, trofie au pesto et tomates confites en plat, tartelette praliné en dessert. Un menu végétarien élaboré par nos chefs, aux produits nobles et au dressage soigné, pour un déjeuner d'entreprise qui marque.</p>
-      <h2>Un menu signature autour de la burrata</h2>
-      <p>Burrata et tomates anciennes au pesto, trofie au pesto et tomates confites, tartelette praliné. Des recettes préparées le matin même, dressées avec soin, transformables en coffret Prestige pour les occasions importantes.</p>
-      <h2>Commander La Dolce Vita à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Burrata, tomates anciennes & pesto',
-    plat: 'Trofie au pesto & tomates confites',
-    dessert: 'Tartelette Praliné',
-  },
-  {
-    id: 's2', collection: 'signature', categorie: 'poulet', nom: 'L\'Audacieuse', img: '/plat-poulet-coreen.webp',
-    seoTitle: `L'Audacieuse : le plateau repas signature poulet coréen pour vos déjeuners à Paris`,
-    seoHtml: `
-      <p>L'Audacieuse sort des sentiers battus : assiette mezzé en entrée, poulet coréen, riz au sésame et légumes pickles en plat, mousse chocolat en dessert. Un plateau repas signature qui apporte du relief à un déjeuner d'entreprise, pour les équipes qui aiment goûter autre chose.</p>
-      <h2>Du caractère dans un plateau signature</h2>
-      <p>Assiette mezzé, poulet coréen avec riz au sésame et légumes pickles, mousse chocolat. Des recettes élaborées par nos chefs, préparées le matin même et dressées avec soin. Un menu qui change de la salade classique.</p>
-      <h2>Commander L'Audacieuse à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Assiette mezzé',
-    plat: 'Poulet coréen, riz au sésame & légumes pickles',
-    dessert: 'Mousse Chocolat',
-  },
-  {
-    id: 's3', collection: 'signature', categorie: 'poisson', nom: 'Le Riviera', img: '/plat-gravlax-riviera.webp',
-    seoTitle: `Le Riviera : le plateau repas signature au saumon gravlax pour vos déjeuners à Paris`,
-    seoHtml: `
-      <p>Le Riviera respire la Méditerranée : tartare de saumon méditerranéen en entrée, saumon gravlax, pommes grenailles, crème d'Isigny et jeunes pousses en plat, tartelette citron en dessert. Un plateau repas signature élégant, pour un déjeuner d'affaires ou un comité de direction.</p>
-      <h2>Un menu signature autour du saumon</h2>
-      <p>Tartare de saumon, saumon gravlax avec pommes grenailles et crème d'Isigny, tartelette citron. Des produits nobles, un dressage soigné, un plateau monté le matin de la livraison. Transformable en coffret Prestige.</p>
-      <h2>Commander Le Riviera à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. On adapte aux effectifs et régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Tartare de saumon méditerranéen',
-    plat: 'Saumon gravlax, pommes grenailles, crème d\'Isigny & jeunes pousses',
-    dessert: 'Tartelette Citron',
-  },
-  {
-    id: 's4', collection: 'signature', categorie: 'viande', nom: 'La Parisienne', img: '/plat-tataki.webp',
-    seoTitle: `La Parisienne : le plateau repas signature au bœuf pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `
-      <p>La Parisienne met le bœuf en scène : carpaccio de bœuf, parmesan et roquette en entrée, tataki de bœuf, pommes grenailles rôties et chimichurri en plat, carrot cake en dessert. Un plateau repas signature généreux, pour un déjeuner d'affaires qui a du caractère.</p>
-      <h2>Un menu signature autour du bœuf</h2>
-      <p>Carpaccio de bœuf au parmesan et roquette, tataki de bœuf avec pommes grenailles et chimichurri, carrot cake. Des produits nobles, un dressage maîtrisé, un plateau préparé le matin même. Transformable en coffret Prestige.</p>
-      <h2>Commander La Parisienne à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Carpaccio de bœuf, parmesan & roquette',
-    plat: 'Tataki de bœuf, pommes grenailles rôties & chimichurri',
-    dessert: 'Carrot Cake',
-  },
-  {
-    id: 's5', collection: 'signature', categorie: 'vegetarien', nom: 'La Levantine', img: '/plat-levant.webp',
-    seoTitle: `La Levantine : le plateau repas signature végétarien pour vos déjeuners à Paris`,
-    seoHtml: `
-      <p>La Levantine voyage vers l'orient : assiette mezzé en entrée, quinoa gourmand aux falafels, feta, légumes grillés et tahini en plat, mousse chocolat en dessert. Un plateau repas signature végétarien, riche en saveurs, pour un déjeuner d'entreprise qui sort de l'ordinaire.</p>
-      <h2>Un menu signature végétarien et parfumé</h2>
-      <p>Assiette mezzé, quinoa aux falafels avec feta, légumes grillés et tahini, mousse chocolat. Des recettes élaborées par nos chefs, préparées le matin même et dressées avec soin. Une option végétarienne qui a du relief.</p>
-      <h2>Commander La Levantine à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. On gère effectifs et régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Assiette mezzé',
-    plat: 'Quinoa gourmand, falafels, feta, légumes grillés & tahini',
-    dessert: 'Mousse Chocolat',
-  },
-  {
-    id: 's6', collection: 'signature', categorie: 'poisson', nom: 'L\'Estivale', img: '/plat-gravlax.webp',
-    seoTitle: `L'Estivale : le plateau repas signature poisson et crevettes pour vos déjeuners à Paris`,
-    seoHtml: `
-      <p>L'Estivale a le goût de l'été : crevettes ail et persil en entrée, saumon gravlax, pommes grenailles et crème d'Isigny en plat, tartelette citron en dessert. Un plateau repas signature frais et léger, pour un déjeuner d'entreprise ensoleillé.</p>
-      <h2>Un menu signature frais et iodé</h2>
-      <p>Crevettes poêlées à l'ail et au persil, saumon gravlax avec pommes grenailles et crème d'Isigny, tartelette citron. Des produits nobles, un dressage soigné, un plateau monté le matin de la livraison. Transformable en coffret Prestige.</p>
-      <h2>Commander L'Estivale à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Crevettes ail & persil',
-    plat: 'Saumon gravlax, pommes grenailles & crème d\'Isigny',
-    dessert: 'Tartelette Citron',
-  },
-  {
-    id: 's7', collection: 'signature', categorie: 'viande', nom: 'La Souveraine', img: '/plat-tataki-prestige.webp',
-    seoTitle: `La Souveraine : le plateau repas signature au bœuf tataki pour vos déjeuners à Paris`,
-    seoHtml: `
-      <p>La Souveraine va à l'essentiel du raffinement : carpaccio de bœuf, parmesan et roquette en entrée, tataki de bœuf et chimichurri en plat, mousse chocolat en dessert. Un plateau repas signature épuré et généreux, pensé pour un déjeuner d'affaires ou un comité de direction.</p>
-      <h2>Un menu signature autour du bœuf tataki</h2>
-      <p>Carpaccio de bœuf au parmesan et roquette, tataki de bœuf au chimichurri, mousse chocolat. Des produits nobles, un dressage maîtrisé, un plateau préparé le matin même. Transformable en coffret Prestige pour vos occasions importantes.</p>
-      <h2>Commander La Souveraine à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
-    `,
-    entree: 'Carpaccio de bœuf, parmesan & roquette',
-    plat: 'Tataki de bœuf & chimichurri',
-    dessert: 'Mousse Chocolat',
-  },
 ]

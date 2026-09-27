@@ -57,6 +57,8 @@ const nextConfig = {
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
+      // Gamme Signature des plateaux repas supprimée (sept. 2026) → collection Essentiel
+      { source: '/creations/plateaux-repas/s:n(\\d+)', destination: '/creations/plateaux-repas', permanent: true },
       // Plateau de fruits frais retiré de la carte (sept. 2026) → brochettes
       { source: '/creations/pauses-gourmandes/plateau-fruits-frais', destination: '/creations/pauses-gourmandes/brochettes-fruits', permanent: true },
       { source: '/creations/petits-dejeuners-et-pauses/plateau-fruits-frais', destination: '/creations/petits-dejeuners-et-pauses/brochettes-fruits', permanent: true },
