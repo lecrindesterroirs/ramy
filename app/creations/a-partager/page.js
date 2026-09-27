@@ -69,9 +69,9 @@ export const MENUS = [
       'Salade César au poulet rôti',
       "Pommes de terre rôties, crème d'Isigny & saumon fumé",
       'Club sandwich dinde & emmental',
-      'Mini baguette jambon de dinde',
+      'Mini baguette poulet curry',
       'Plateau de saumon fumé',
-      'Œufs mimosa',
+      'Céleri rémoulade',
     ],
     sucrees: [
       'Panna cotta fruits rouges',
