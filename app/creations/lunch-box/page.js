@@ -32,7 +32,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Lunch Box',
   description: 'Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts inclus.',
-  prix: '19,90',
+  prix: '18,90',
   hero: '/hero-lunch-box.webp',
 }
 
@@ -51,7 +51,7 @@ const CATEGORIE_COLORS = {
   poisson:    '#C4756B',
 }
 
-/* Box boulangerie à 19,90 €.
+/* Box boulangerie de 18,90 à 22,90 € selon la garniture.
    Entrée / sandwich / dessert (+ boisson) alimentent la fiche produit. */
 export const BOXES = [
   {
@@ -90,7 +90,7 @@ export const BOXES = [
     id: "lb3",
     categorie: "vegetarien",
     nom: "La Fermière",
-    prix: "19,90",
+    prix: "18,90",
     img: "/sandwich-lb3-fermiere.webp",
     imgDetoure: true,
     sousTitre: "Œuf & Emmental · Baguette ou viennois",
@@ -105,7 +105,7 @@ export const BOXES = [
     id: "lb4",
     categorie: "poisson",
     nom: "La Nordique",
-    prix: "19,90",
+    prix: "22,90",
     img: "/sandwich-lb4-nordique.webp",
     imgDetoure: true,
     sousTitre: "Saumon & Avocat · Baguette ou viennois",
@@ -120,7 +120,7 @@ export const BOXES = [
     id: "lb9",
     categorie: "poisson",
     nom: "L'Océane",
-    prix: "19,90",
+    prix: "20,90",
     img: "/sandwich-lb9-oceane-v2.webp",
     imgDetoure: true,
     sousTitre: "Thon Mayonnaise · Baguette ou viennois",
