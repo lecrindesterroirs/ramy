@@ -66,7 +66,7 @@ export const BOXES = [
     sousTitre: "Poulet Mayonnaise · Baguette ou viennois",
     entree: "Au choix :\nSalade de concombre à la ciboulette\nSalade de tomate & mozzarella",
     plat: "Poulet Mayonnaise, au choix :\nEn baguette\nEn pain viennois",
-    dessert: "Au choix :\nPart de cake\nMadeleine",
+    dessert: "Au choix :\nPart de cake marbré\nMadeleine framboise",
     description: "Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Boisson en option.",
   },
   {
@@ -81,7 +81,7 @@ export const BOXES = [
     sousTitre: "Poulet Curry · Baguette ou viennois",
     entree: "Au choix :\nSalade de concombre à la ciboulette\nSalade de tomate & mozzarella",
     plat: "Poulet Curry, au choix :\nEn baguette\nEn pain viennois",
-    dessert: "Au choix :\nPart de cake\nMadeleine",
+    dessert: "Au choix :\nPart de cake marbré\nMadeleine framboise",
     description: "Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Boisson en option.",
   },
   {
@@ -96,7 +96,7 @@ export const BOXES = [
     sousTitre: "Œuf & Emmental · Baguette ou viennois",
     entree: "Au choix :\nSalade de concombre à la ciboulette\nSalade de tomate & mozzarella",
     plat: "Œuf & Emmental, au choix :\nEn baguette\nEn pain viennois",
-    dessert: "Au choix :\nPart de cake\nMadeleine",
+    dessert: "Au choix :\nPart de cake marbré\nMadeleine framboise",
     description: "Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Boisson en option.",
   },
   {
@@ -111,7 +111,7 @@ export const BOXES = [
     sousTitre: "Saumon & Avocat · Baguette ou viennois",
     entree: "Au choix :\nSalade de concombre à la ciboulette\nSalade de tomate & mozzarella",
     plat: "Saumon & Avocat, au choix :\nEn baguette\nEn pain viennois",
-    dessert: "Au choix :\nPart de cake\nMadeleine",
+    dessert: "Au choix :\nPart de cake marbré\nMadeleine framboise",
     description: "Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Boisson en option.",
   },
   {
@@ -126,7 +126,7 @@ export const BOXES = [
     sousTitre: "Thon Mayonnaise · Baguette ou viennois",
     entree: "Au choix :\nSalade de concombre à la ciboulette\nSalade de tomate & mozzarella",
     plat: "Thon Mayonnaise, au choix :\nEn baguette\nEn pain viennois",
-    dessert: "Au choix :\nPart de cake\nMadeleine",
+    dessert: "Au choix :\nPart de cake marbré\nMadeleine framboise",
     description: "Un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette & couverts. Boisson en option.",
   },
 ]
