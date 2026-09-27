@@ -120,7 +120,7 @@ export const FORMULES = [
     seoHtml: `<p>Le Menu du Chef Stuart est notre cocktail dînatoire d'auteur : 16 pièces par personne, dans un registre contemporain qui change des buffets classiques. Verrines, buns, tataki et tartelettes gravlax composent un vrai dîner debout, pour les réceptions où vous voulez marquer les esprits.</p><h2>16 pièces d'une cuisine contemporaine</h2><p>Côté salé : velouté de courges épicé aux noisettes torréfiées, crudités en mirepoix, buns au bœuf confit à la citronnelle, au saumon fumé, au poulet rôti et en version végétale, tataki de bœuf au sésame, brochette de shiitaké, tartelette de saumon gravlax aux œufs de lompe, tatin de carottes au caramel de ras el-hanout, beignet libanais épinards-feta et croquette de bœuf mijoté. Côté sucré : fondant chocolat cœur praliné, financier pistache, moelleux citron et tartelette exotique.</p><h2>Cinq pièces végétariennes sur douze</h2><p>C'est la carte la plus confortable pour une équipe mixte : verrine de crudités, bun végétal au miso, brochette de shiitaké, tatin de carottes et beignet aux épinards couvrent largement le tiers de convives végétariens qu'on observe en entreprise, sans rien demander de spécial.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'Le Menu du Chef Stuart',
     pieces: 16,
-    prix: '64,90',
+    prix: '59,90',
     accroche: "Une cuisine d'auteur en 16 pièces, pour les réceptions dont on reparle.",
     featured: false,
     img: '/cocktail-dinatoire.webp',
