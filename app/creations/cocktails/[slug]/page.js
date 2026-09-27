@@ -93,12 +93,12 @@ export default function CocktailDetail() {
 
         <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails', href: '/creations/cocktails' }, { label: nomFormule }]} />
 
-        {/* ── Galerie éditoriale, l'ambiance (d'abord, pour créer l'envie) ── */}
-        <section style={{ background: '#F5F1E8', padding: '56px 0 96px' }}>
+        {/* ── En-tête de la formule ── */}
+        <section style={{ background: '#F5F1E8', padding: '56px 0 64px' }}>
           <Reveal mode="mount" y={16}>
-            <div className="ckd-shell" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px 44px', textAlign: 'center' }}>
+            <div className="ckd-shell" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px', textAlign: 'center' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
-                En images
+                {f.occasion ? `${f.occasion} · ${f.pieces} pièces` : 'Cocktail'}
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
                 {nomFormule}, l&apos;art de recevoir
@@ -108,19 +108,9 @@ export default function CocktailDetail() {
               </p>
             </div>
           </Reveal>
-
-          <div className="ckd-gallery" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px', columns: 3, columnGap: '14px' }}>
-            {GALERIE.map((src, i) => (
-              <Reveal key={i} delay={(i % 3) * 90}>
-                <div className="ckd-gallery-item" style={{ breakInside: 'avoid', marginBottom: '14px', overflow: 'hidden' }}>
-                  <img src={src} alt="Réception L'Écrin" loading="lazy" style={{ width: '100%', display: 'block', transition: 'transform 0.7s ease' }} />
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </section>
 
-        {/* ── Composition : Salé / Sucré (sous la galerie) ── */}
+        {/* ── Composition : Salé / Sucré ── */}
         <Reveal>
           <div className="ckd-shell" style={{ maxWidth: '1280px', margin: '0 auto', padding: '72px 72px 0', textAlign: 'center' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
@@ -138,6 +128,30 @@ export default function CocktailDetail() {
             <Colonne titre="Sucré" items={f.sucre} accent="#C08A3E" />
           </div>
         </Reveal>
+
+        {/* ── Galerie, l'ambiance (après la carte : on montre le menu d'abord) ── */}
+        <section style={{ background: '#F5F1E8', padding: '72px 0 96px', marginTop: '80px' }}>
+          <Reveal>
+            <div className="ckd-shell" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px 44px', textAlign: 'center' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
+                En images
+              </p>
+              <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111' }}>
+                L&apos;esprit de nos réceptions
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="ckd-gallery" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px', columns: 3, columnGap: '14px' }}>
+            {GALERIE.map((src, i) => (
+              <Reveal key={i} delay={(i % 3) * 90}>
+                <div className="ckd-gallery-item" style={{ breakInside: 'avoid', marginBottom: '14px', overflow: 'hidden' }}>
+                  <img src={src} alt="Réception L'Écrin" loading="lazy" style={{ width: '100%', display: 'block', transition: 'transform 0.7s ease' }} />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
 
         {/* ── Article SEO unique par formule ── */}
         {f.seoHtml && (
