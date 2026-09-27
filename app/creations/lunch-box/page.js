@@ -51,7 +51,7 @@ const CATEGORIE_COLORS = {
   poisson:    '#C4756B',
 }
 
-/* Box boulangerie de 18,90 à 22,90 € selon la garniture.
+/* Box boulangerie de 18,90 à 21,90 € selon la garniture.
    Entrée / sandwich / dessert (+ boisson) alimentent la fiche produit. */
 export const BOXES = [
   {
@@ -105,7 +105,7 @@ export const BOXES = [
     id: "lb4",
     categorie: "poisson",
     nom: "La Nordique",
-    prix: "22,90",
+    prix: "21,90",
     img: "/sandwich-lb4-nordique.webp",
     imgDetoure: true,
     sousTitre: "Saumon & Avocat · Baguette ou viennois",
