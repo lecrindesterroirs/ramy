@@ -62,16 +62,16 @@ export const PRODUITS = [
   },
   {
     id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'La Champêtre', img: '/plateau-fermier.webp',
-    seoTitle: `La Champêtre : le plateau repas au poulet et légumes grillés pour vos déjeuners d'entreprise`,
+    seoTitle: `La Champêtre : le plateau repas au poulet rôti et boulgour pour vos déjeuners d'entreprise`,
     seoHtml: `
-      <p>La Champêtre joue la fraîcheur : salade de concombre au yaourt et ciboulette en entrée, émincé de poulet aux légumes grillés marinés et huile au basilic en plat, compote pomme et fève tonka en dessert. Un plateau repas de la collection Essentiel, léger et équilibré, idéal pour un déjeuner de travail.</p>
+      <p>La Champêtre joue la fraîcheur : salade de concombre au yaourt et ciboulette en entrée, émincé de poulet rôti au boulgour, herbes fraîches et citron confit en plat, compote pomme et fève tonka en dessert. Un plateau repas de la collection Essentiel, léger et équilibré, idéal pour un déjeuner de travail.</p>
       <h2>Léger, frais et rassasiant</h2>
-      <p>Salade de concombre au yaourt et ciboulette, émincé de poulet et légumes grillés, compote pomme-tonka. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
+      <p>Salade de concombre au yaourt et ciboulette, émincé de poulet rôti au boulgour et citron confit, compote pomme-tonka. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
       <h2>Commander La Champêtre à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30 dans vos locaux. On adapte aux effectifs et aux régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de concombre au yaourt & ciboulette',
-    plat: 'Émincé de Poulet, légumes grillés marinés & huile au basilic',
+    plat: 'Émincé de poulet rôti, boulgour aux herbes fraîches & citron confit',
     dessert: 'Compote pomme & fève tonka',
   },
   {
