@@ -66,11 +66,11 @@ export const MENUS = [
     prix: '37,90 € / pers.',
     featured: false,
     salees: [
-      'Salade César au poulet rôti',
-      "Pommes de terre rôties, crème d'Isigny & saumon fumé",
+      'Salade de trofie, mozzarella, concombre & croûtons, sauce ranch',
+      "Pommes de terre rôties, crème d'Isigny & ciboulette",
       'Club sandwich dinde & emmental',
       'Mini baguette poulet curry',
-      'Plateau de saumon fumé',
+      'Plateau de charcuteries artisanales',
       'Céleri rémoulade',
     ],
     sucrees: [
