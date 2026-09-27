@@ -15,11 +15,11 @@ const ADS = 'https://*.doubleclick.net https://*.googleadservices.com https://ww
 const CALENDLY = 'https://assets.calendly.com https://*.calendly.com'
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com ${GA_GTM} ${ADS}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${GA_GTM} ${ADS}`,
   "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
   `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${GA_GTM} ${ADS}`,
   "font-src 'self' data:",
-  `connect-src 'self' https://vitals.vercel-insights.com ${CALENDLY} ${GA_GTM} ${ADS}`,
+  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${GA_GTM} ${ADS}`,
   `frame-src https://calendly.com https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
   "frame-ancestors 'self'",
   "base-uri 'self'",

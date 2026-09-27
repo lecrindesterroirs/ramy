@@ -65,6 +65,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body>
         <DeferredGTM gtmId="GTM-N22T3FZJ" />
+        <script defer src="https://lecrin-analytics.vercel.app/script.js" data-website-id="6c18f6ab-c4b3-498e-b9ce-bf5ec85801b9" />
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
         <script
           type="application/ld+json"
