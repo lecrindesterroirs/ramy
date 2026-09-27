@@ -31,6 +31,7 @@ const SEO_ARTICLE = `
 export const FORMULES = [
   {
     key: 'classique',
+    occasion: 'Apéritif',
     seoTitle: `Cocktail L'Invitation : la formule apéritive pour vos afterworks d'entreprise à Paris`,
     seoHtml: `<p>La formule L'Invitation est notre cocktail apéritif le plus accessible : 8 pièces salées et sucrées par personne, pensées pour un afterwork ou une pause conviviale. Un format équilibré qui lance bien une fin de journée sans en faire trop, à Paris et en Île-de-France.</p><h2>8 pièces à partager, salé et sucré</h2><p>Côté salé : gougères, chou craquelin à la tapenade, tomate et mozzarella, tartelette pissaladière, millefeuille betterave et chèvre, brochette de poulet tandoori et mini cheeseburger. Côté sucré : tartelette tout chocolat et brochette de fruits frais. Tout est dressé et livré prêt à servir.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: "L'Invitation",
@@ -54,6 +55,7 @@ export const FORMULES = [
   },
   {
     key: 'signature',
+    occasion: 'Déjeunatoire',
     seoTitle: `Cocktail La Réception : la formule signature terre et mer pour vos événements d'entreprise à Paris`,
     seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces par personne, entre terre et mer. C'est notre formule la plus choisie pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces entre terre et mer</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, patate douce, feta et olive kalamata, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre. Côté sucré : dôme praliné, tartelette tout chocolat et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur site, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Réception',
@@ -81,6 +83,7 @@ export const FORMULES = [
   },
   {
     key: 'prestige',
+    occasion: 'Dînatoire',
     seoTitle: `Cocktail La Célébration : la formule prestige pour vos grandes réceptions d'entreprise à Paris`,
     seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Saumon mariné, crevette à la mangue, melon à la feta et à la menthe : une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, melon, feta et menthe, focaccia au romarin et caviar d'aubergine. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Célébration',
@@ -108,6 +111,38 @@ export const FORMULES = [
       'Brochette de Fruits Frais de Saison',
       'Dôme Praliné',
       'Tartelette aux Myrtilles',
+    ],
+  },
+  {
+    key: 'chef-stuart',
+    occasion: 'Dînatoire · Carte du chef',
+    seoTitle: `Le Menu du Chef Stuart : cocktail dînatoire d'auteur pour vos réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Le Menu du Chef Stuart est notre cocktail dînatoire d'auteur : 16 pièces par personne, dans un registre contemporain qui change des buffets classiques. Verrines, buns, tataki et tartelettes gravlax composent un vrai dîner debout, pour les réceptions où vous voulez marquer les esprits.</p><h2>16 pièces d'une cuisine contemporaine</h2><p>Côté salé : velouté de courges épicé aux noisettes torréfiées, crudités en mirepoix, buns au bœuf confit à la citronnelle, au saumon fumé, au poulet rôti et en version végétale, tataki de bœuf au sésame, brochette de shiitaké, tartelette de saumon gravlax aux œufs de lompe, tatin de carottes au caramel de ras el-hanout, beignet libanais épinards-feta et croquette de bœuf mijoté. Côté sucré : fondant chocolat cœur praliné, financier pistache, moelleux citron et tartelette exotique.</p><h2>Cinq pièces végétariennes sur douze</h2><p>C'est la carte la plus confortable pour une équipe mixte : verrine de crudités, bun végétal au miso, brochette de shiitaké, tatin de carottes et beignet aux épinards couvrent largement le tiers de convives végétariens qu'on observe en entreprise, sans rien demander de spécial.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    label: 'Le Menu du Chef Stuart',
+    pieces: 16,
+    prix: '64,90',
+    accroche: "Une cuisine d'auteur en 16 pièces, pour les réceptions dont on reparle.",
+    featured: false,
+    img: '/cocktail-dinatoire.webp',
+    sale: [
+      'Verrine de Velouté de Courges Épicé, Éclats de Noisettes Torréfiées',
+      'Verrine de Crudités en Mirepoix, Betterave, Concombre, Carotte & Pickles',
+      'Bun au Bœuf Confit à la Citronnelle, Pickles & Mayonnaise Gingembre',
+      'Bun au Saumon Fumé, Sauce aux Herbes & Pickles',
+      'Bun au Poulet Rôti, Mayonnaise Citron Confit & Pickles de Chou Rouge',
+      'Bun Végétal, Légumes Rôtis au Miso & Tahini Citronné',
+      'Tataki de Bœuf, Sésame Torréfié & Marinade Miso-Soja-Gingembre',
+      'Brochette de Shiitaké, Marinade Miso-Soja-Gingembre',
+      'Tartelette de Saumon Gravlax, Crème d\'Isigny & Œufs de Lompe',
+      'Tatin de Carottes Fondantes, Caramel au Ras el-Hanout',
+      'Beignet Libanais aux Épinards & Feta, Graines de Nigelle',
+      'Croquette de Bœuf Mijoté, Épices Douces & Cœur Fondant',
+    ],
+    sucre: [
+      'Fondant Chocolat, Cœur Praliné & Noisettes Caramélisées',
+      'Financier Pistache & Cerise Confite',
+      'Moelleux Citron, Cœur Crème Citron',
+      'Tartelette Exotique, Passion, Mangue & Chocolat Blanc',
     ],
   },
 ]
@@ -182,7 +217,7 @@ function FormuleCard({ f }) {
       {/* En-tête */}
       <div style={{ textAlign: 'center', paddingBottom: '24px', borderBottom: '1px solid rgba(17,17,17,0.09)', marginBottom: '26px' }}>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '10px' }}>
-          Cocktail
+          {f.occasion || 'Cocktail'}
         </p>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '30px', fontWeight: 400, color: '#111111', marginBottom: '14px' }}>
           {f.label}
@@ -270,7 +305,7 @@ export default function Cocktails() {
         </div>
 
         {/* ── 3 cartes formules ── */}
-        <div className="ck-shell ck-cards" style={{ maxWidth: '1320px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px', alignItems: 'stretch' }}>
+        <div className="ck-shell ck-cards" style={{ maxWidth: '1120px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', alignItems: 'stretch' }}>
           {FORMULES.map((f, i) => (
             <Reveal key={f.key} delay={i * 90}>
               <FormuleCard f={f} />
