@@ -40,7 +40,8 @@ export async function POST(request) {
             <a href="${CATALOGUE_URL}" style="display: inline-block; background: #E0A126; color: #1A1A18; font-family: sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: 14px 32px;">Découvrir le catalogue →</a>
           </p>
           <p style="font-family: sans-serif; font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 24px;">
-            Un projet en vue ? Répondez simplement à cet email ou appelez-nous au <a href="tel:+33174542310" style="color: #E0A126; text-decoration: none;">01 74 54 23 10</a> : devis personnalisé sous 24&nbsp;h.
+            Un projet en vue ? Répondez simplement à cet email ou appelez-nous au <a href="tel:+33174542310" style="color: #E0A126; text-decoration: none; white-space: nowrap;">01&nbsp;74&nbsp;54&nbsp;23&nbsp;10</a>.<br />
+            Devis personnalisé sous 24&nbsp;h.
           </p>
           <p style="font-family: Georgia, serif; font-size: 15px; color: #1A1A1A; margin: 0;">L'équipe L'Écrin Traiteur</p>
           <p style="font-family: sans-serif; font-size: 13px; margin: 10px 0 0;">
