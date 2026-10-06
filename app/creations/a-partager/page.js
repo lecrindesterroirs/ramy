@@ -66,7 +66,7 @@ export const MENUS = [
     prix: '37,90 € / pers.',
     featured: false,
     salees: [
-      'Salade de trofie, mozzarella, concombre & croûtons, sauce ranch',
+      'Salade de torti au pesto, tomates confites & mozzarella',
       "Pommes de terre rôties, crème d'Isigny & ciboulette",
       'Club sandwich dinde & emmental',
       'Mini baguette poulet curry',
