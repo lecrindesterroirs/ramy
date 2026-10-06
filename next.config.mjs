@@ -57,6 +57,8 @@ const nextConfig = {
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
+      // Formule cocktail du Chef Stuart retirée du site (oct. 2026)
+      { source: '/creations/cocktails/chef-stuart', destination: '/creations/cocktails', permanent: true },
       // Lunch box La Croustillante retirée de la carte (sept. 2026)
       { source: '/creations/lunch-box/lb8', destination: '/creations/lunch-box', permanent: true },
       // Gamme des coffrets Signature lunch box retirée (sept. 2026)

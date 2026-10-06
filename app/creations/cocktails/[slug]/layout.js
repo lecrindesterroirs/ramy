@@ -4,7 +4,6 @@ const META = {
   classique: { nom: "L'Invitation", kw: 'apéritif', pieces: 8, accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.', img: '/cocktail-classique.webp' },
   signature: { nom: 'La Réception', kw: 'déjeunatoire', pieces: 12, accroche: 'Une sélection raffinée de pièces généreuses, entre terre et mer.', img: '/cocktail-signature.webp' },
   prestige: { nom: 'La Célébration', kw: 'prestige', pieces: 16, accroche: "L'excellence gastronomique pour vos réceptions les plus soignées.", img: '/cocktail-prestige.webp' },
-  'chef-stuart': { nom: 'Le Menu du Chef Stuart', kw: 'dînatoire', pieces: 16, accroche: "Une cuisine d'auteur en 16 pièces, pour les réceptions dont on reparle.", img: '/cocktail-dinatoire.webp' },
 }
 
 export const SLUGS = Object.keys(META)

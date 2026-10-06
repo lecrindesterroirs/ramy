@@ -113,38 +113,6 @@ export const FORMULES = [
       'Tartelette aux Myrtilles',
     ],
   },
-  {
-    key: 'chef-stuart',
-    occasion: 'Dînatoire · Carte du chef',
-    seoTitle: `Le Menu du Chef Stuart : cocktail dînatoire d'auteur pour vos réceptions d'entreprise à Paris`,
-    seoHtml: `<p>Le Menu du Chef Stuart est notre cocktail dînatoire d'auteur : 16 pièces par personne, dans un registre contemporain qui change des buffets classiques. Verrines, buns, tataki et tartelettes gravlax composent un vrai dîner debout, pour les réceptions où vous voulez marquer les esprits.</p><h2>16 pièces d'une cuisine contemporaine</h2><p>Côté salé : velouté de courges épicé aux noisettes torréfiées, crudités en mirepoix, buns au bœuf confit à la citronnelle, au saumon fumé, au poulet rôti et en version végétale, tataki de bœuf au sésame, brochette de shiitaké, tartelette de saumon gravlax aux œufs de lompe, tatin de carottes au caramel de ras el-hanout, beignet libanais épinards-feta et croquette de bœuf mijoté. Côté sucré : fondant chocolat cœur praliné, financier pistache, moelleux citron et tartelette exotique.</p><h2>Cinq pièces végétariennes sur douze</h2><p>C'est la carte la plus confortable pour une équipe mixte : verrine de crudités, bun végétal au miso, brochette de shiitaké, tatin de carottes et beignet aux épinards couvrent largement le tiers de convives végétariens qu'on observe en entreprise, sans rien demander de spécial.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
-    label: 'Le Menu du Chef Stuart',
-    pieces: 16,
-    prix: '59,90',
-    accroche: "Une cuisine d'auteur en 16 pièces, pour les réceptions dont on reparle.",
-    featured: false,
-    img: '/cocktail-dinatoire.webp',
-    sale: [
-      'Verrine de Velouté de Courges Épicé, Éclats de Noisettes Torréfiées',
-      'Verrine de Crudités en Mirepoix, Betterave, Concombre, Carotte & Pickles',
-      'Bun au Bœuf Confit à la Citronnelle, Pickles & Mayonnaise Gingembre',
-      'Bun au Saumon Fumé, Sauce aux Herbes & Pickles',
-      'Bun au Poulet Rôti, Mayonnaise Citron Confit & Pickles de Chou Rouge',
-      'Bun Végétal, Légumes Rôtis au Miso & Tahini Citronné',
-      'Tataki de Bœuf, Sésame Torréfié & Marinade Miso-Soja-Gingembre',
-      'Brochette de Shiitaké, Marinade Miso-Soja-Gingembre',
-      'Tartelette de Saumon Gravlax, Crème d\'Isigny & Œufs de Lompe',
-      'Tatin de Carottes Fondantes, Caramel au Ras el-Hanout',
-      'Beignet Libanais aux Épinards & Feta, Graines de Nigelle',
-      'Croquette de Bœuf Mijoté, Épices Douces & Cœur Fondant',
-    ],
-    sucre: [
-      'Fondant Chocolat, Cœur Praliné & Noisettes Caramélisées',
-      'Financier Pistache & Cerise Confite',
-      'Moelleux Citron, Cœur Crème Citron',
-      'Tartelette Exotique, Passion, Mangue & Chocolat Blanc',
-    ],
-  },
 ]
 
 /* ─── Liste de pièces (Salé / Sucré) ─────────────────────────────── */
@@ -305,7 +273,7 @@ export default function Cocktails() {
         </div>
 
         {/* ── 3 cartes formules ── */}
-        <div className="ck-shell ck-cards" style={{ maxWidth: '1120px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', alignItems: 'stretch' }}>
+        <div className="ck-shell ck-cards" style={{ maxWidth: '1320px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px', alignItems: 'stretch' }}>
           {FORMULES.map((f, i) => (
             <Reveal key={f.key} delay={i * 90}>
               <FormuleCard f={f} />
