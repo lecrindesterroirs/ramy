@@ -75,7 +75,7 @@ export const MENUS = [
     ],
     sucrees: [
       'Panna cotta fruits rouges',
-      'Tartelette citron',
+      'Brochettes de fruits frais',
     ],
   },
   {
