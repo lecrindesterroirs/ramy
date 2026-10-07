@@ -11,7 +11,6 @@ const META = {
   'fr1': { nom: 'Crudités & Dips',             d: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.' },
   'fr3': { nom: 'Brochettes de Fruits',        d: 'Brochettes de fruits frais de saison, à picorer. Vegan et sans gluten.' },
   'si1': { nom: 'Asiatique',                   d: "Assortiment de bouchées d'inspiration asiatique." },
-  'si4': { nom: 'Douceurs',                    d: 'Sélection de desserts artisanaux à partager.' },
 }
 
 export const SLUGS = Object.keys(META)
