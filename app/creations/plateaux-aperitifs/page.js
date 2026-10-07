@@ -126,6 +126,13 @@ export const PLATEAUX = [
 
   // ── Sucré ──
   {
+    seoTitle: `Plateau de douceurs pour vos apéritifs et réceptions d'entreprise à Paris`,
+    seoHtml: `<p>Notre plateau de douceurs réunit une sélection de desserts artisanaux pour finir un afterwork ou une réception sur une note sucrée. Mignardises et petites pièces à picorer, il apporte la touche gourmande qui clôt agréablement un buffet salé.</p><h2>Des mignardises à partager</h2><p>Sélection de desserts artisanaux en petites pièces, à picorer sans couvert. On varie l'assortiment et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    id: 'si4', famille: 'sucre', nom: 'Douceurs', img: '/plateau-douceurs.webp',
+    description: 'Sélection de desserts artisanaux.',
+    recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
+  },
+  {
     seoTitle: `Plateau de brochettes de fruits pour vos apéritifs et pauses d'entreprise à Paris`,
     seoHtml: `<p>Notre plateau de brochettes de fruits frais de saison apporte fraîcheur et couleur à un apéritif ou une pause d'équipe. Chacun attrape la sienne d'une main, sans couvert ni assiette : c'est ce qui le rend plus pratique qu'un plateau découpé sur un buffet debout.</p><h2>Des fruits de saison, prêts à picorer</h2><p>Fraises, ananas, melon, raisin, kiwi selon la saison, montés en brochettes. Vegan et sans gluten, donc accessible à toute l'équipe. On adapte le nombre de brochettes à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'fr3', famille: 'sucre', nom: 'Brochettes de Fruits', img: '/plateau-brochettes-fruits-v2.webp',

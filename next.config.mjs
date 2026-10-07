@@ -59,8 +59,6 @@ const nextConfig = {
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
       // Formule cocktail du Chef Stuart retirée du site (oct. 2026)
       { source: '/creations/cocktails/chef-stuart', destination: '/creations/cocktails', permanent: true },
-      // Plateau de douceurs retiré de la carte (oct. 2026) → plateau sucré restant
-      { source: '/creations/plateaux-aperitifs/si4', destination: '/creations/plateaux-aperitifs/fr3', permanent: true },
       // Lunch box La Croustillante retirée de la carte (sept. 2026)
       { source: '/creations/lunch-box/lb8', destination: '/creations/lunch-box', permanent: true },
       // Gamme des coffrets Signature lunch box retirée (sept. 2026)
