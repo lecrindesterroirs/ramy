@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import LogosSection from '../../components/LogosSection'
 import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
+import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -590,7 +591,7 @@ export default function Contact() {
       fetch('/api/devis/draft', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, source: 'devis-draft', timestamp: new Date().toISOString() }),
+        body: JSON.stringify({ ...data, source: 'devis-draft', timestamp: new Date().toISOString(), attribution: getAttribution() }),
       }).catch(() => {})
     }, 2000)
     return () => clearTimeout(timer)
@@ -678,7 +679,7 @@ export default function Contact() {
       const res = await fetch('/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, attribution: getAttribution() }),
       })
       if (res.ok) {
         setSubmitStatus('success')

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { getAttribution } from '../lib/attribution'
 
 const PRESTATIONS = [
   'Petit-déjeuner',
@@ -41,7 +42,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
       const res = await fetch('/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'devis-rapide' }),
+        body: JSON.stringify({ ...form, source: 'devis-rapide', attribution: getAttribution() }),
       })
       setStatus(res.ok ? 'success' : 'error')
       if (res.ok) window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide' })

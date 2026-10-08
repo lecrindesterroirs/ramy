@@ -5,6 +5,7 @@ import PromoBanner from '../components/PromoBanner'
 import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
 import DeferredGTM from '../components/DeferredGTM'
+import AttributionCapture from '../components/AttributionCapture'
 import { websiteNode } from '../lib/site'
 
 export const metadata = {
@@ -65,6 +66,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body>
         <DeferredGTM gtmId="GTM-N22T3FZJ" />
+        <AttributionCapture />
         <script defer src="https://lecrin-analytics.vercel.app/script.js" data-website-id="6c18f6ab-c4b3-498e-b9ce-bf5ec85801b9" />
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
         <script

@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { trackPhoneClick } from '../../lib/tracking'
+import { getAttribution } from '../../lib/attribution'
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -121,7 +122,7 @@ export default function Contact() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, attribution: getAttribution() }),
       })
       if (res.ok) {
         setStatus('success')

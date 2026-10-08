@@ -24,6 +24,7 @@ export async function POST(req) {
       message: data.message || null,
       source: 'devis-draft',
       statut: 'nouvelle',
+      raw: data.attribution ? { attribution: data.attribution } : null,
     }).catch(() => {})
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 })
