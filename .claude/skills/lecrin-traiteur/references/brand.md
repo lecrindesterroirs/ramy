@@ -1,221 +1,106 @@
 # Brand System — L'Écrin Traiteur
 
-## Tokens CSS complets
+> Mis à jour le 9 octobre 2026 à partir du code réel du site (`app/globals.css`, `components/`).
+> L'ancienne charte (Cormorant Garamond, Source Serif 4, Jost, tokens `--ecrin-*`, Tailwind / shadcn)
+> n'a jamais été celle du site déployé : ne plus l'utiliser.
+
+## Polices
+
+| Rôle | Police | Fichier (`public/fonts/`) |
+|---|---|---|
+| Titres | **Baskerville Display PT**, poids 400 (repli Georgia) | `BaskervilleDisplayPT.woff2` |
+| Corps, labels, boutons, navigation | **Neue Montreal** (PP Neue Montreal), 400 et 500 (repli Helvetica Neue) | `PPNeueMontreal-Regular.woff2`, `PPNeueMontreal-Medium.woff2` |
+
+Chargées par `@font-face` dans `app/globals.css` (`font-display: swap`). Pas de Google Fonts, pas de `next/font/google`.
+
+**Règles**
+- **Jamais d'italique dans les titres.** Le site neutralise même `<em>` dans les titres (`font-style: normal`).
+  L'italique n'existe que sur de courtes citations éditoriales (manifeste, témoignages, signature du pied de page)
+  et, par exception admise par Ramy, un titre de la page « Qui nous sommes ». Ne pas en ajouter ailleurs.
+- Titres en poids 400 uniquement : la hiérarchie vient de la taille, pas de la graisse.
+- Labels et boutons : Neue Montreal 500, MAJUSCULES, interlettrage 0,10 à 0,12 em ; sur-titres de section 11px, interlettrage 0,18 à 0,22 em, couleur `--accent-deep`.
+- Pas de petites capitales, pas d'ornements « luxe générique » (losanges ◆, filets décoratifs en série).
+
+## Échelle typographique (classes de `globals.css`)
+
+| Classe | Police | Taille | Interligne | Interlettrage |
+|---|---|---|---|---|
+| `.hero-title` | Baskerville | `clamp(54px, 6.4vw, 92px)` | 1,08 | −0,02 em |
+| `.section-title-xl` | Baskerville | `clamp(40px, 4vw, 64px)` | 0,97 | 0,01 em |
+| `.section-title-md` | Baskerville | `clamp(28px, 3vw, 44px)` | 1,0 | 0,008 em |
+| `.body-lg` | Neue Montreal 400 | 18px | 1,65 | — |
+| `.body` (et `body`) | Neue Montreal 400 | 16px | 1,7 | — |
+| `.caption` | Neue Montreal 400 | 12px | — | 0,06 em |
+| `.label` | Neue Montreal 500, majuscules | 11px | — | 0,12 em |
+
+## Couleurs (variables de `:root`)
 
 ```css
 :root {
-  /* Couleurs */
-  --ecrin-white:  #FAFAF7;
-  --ecrin-cream:  #F5F0E6;
-  --ecrin-dark:   #1A1A18;
-  --ecrin-yellow: #E0A126;
-  --ecrin-green:  #3E5232;
-  --ecrin-stone:  #9B9590;
-  --ecrin-mist:   #EDE7D9;
-
-  /* Typographie */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Source Serif 4', Georgia, serif;
-  --font-ui:      'Jost', system-ui, sans-serif;
-
-  /* Échelle typographique fluid */
-  --text-display: clamp(3rem, 7vw, 6.5rem);
-  --text-h2:      clamp(2rem, 4vw, 3.25rem);
-  --text-h3:      clamp(1.4rem, 2.5vw, 2rem);
-  --text-body:    clamp(1rem, 1.2vw, 1.125rem);
-  --text-small:   0.875rem;
-  --text-ui:      0.9375rem;
-
-  /* Espacement (base 8px) */
-  --space-1:  8px;
-  --space-2:  16px;
-  --space-3:  24px;
-  --space-4:  32px;
-  --space-6:  48px;
-  --space-8:  64px;
-  --space-12: 96px;
-  --space-16: 128px;
-
-  /* Sections — padding vertical */
-  --section-desktop: 96px;
-  --section-tablet:  64px;
-  --section-mobile:  48px;
-
-  /* Bordures */
-  --radius-sm:  4px;
-  --radius-md:  8px;
-  --radius-lg:  16px;
-  --radius-full: 999px;
-
-  /* Ombres — discrètes, jamais dramatiques */
-  --shadow-sm: 0 1px 3px rgba(26, 26, 24, 0.06);
-  --shadow-md: 0 4px 16px rgba(26, 26, 24, 0.08);
-
-  /* Transitions */
-  --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --duration-fast: 0.2s;
-  --duration-base: 0.3s;
-  --duration-slow: 0.65s;
+  --bg-primary:     #FFFFFF;  /* fond de page */
+  --bg-secondary:   #F8F5EF;  /* crème : sections alternées */
+  --white:          #FFFFFF;
+  --text-primary:   #111111;  /* titres, texte fort */
+  --text-secondary: #605A4F;  /* corps de texte — WCAG AA, y compris sur crème */
+  --accent:         #E0A126;  /* jaune signature : fonds, filets, ornements */
+  --accent-deep:    #875E10;  /* jaune profond : l'accent EN TEXTE sur fond clair (WCAG AA) */
 }
 ```
 
----
+Autres teintes présentes dans le code : `#1C1614` (titre du hero), `#1A1A18` (texte sur fond jaune),
+`#151515` / `#171310` (fonds sombres).
 
-## Couleurs — règles détaillées
+**Règles**
+- **`#E0A126` ne s'utilise jamais en texte sur fond clair** (contraste insuffisant) : pour un mot ou un label
+  jaune, prendre `--accent-deep` `#875E10`.
+- Sur fond jaune : texte sombre `#1A1A18`, jamais blanc.
+- Le jaune reste un accent : filet de 40px × 1px (`.accent-line`), bordure du bouton accent, un bloc d'appel
+  à l'action (`.cta-yellow-box`). Pas de grandes sections jaunes, pas d'ombres colorées.
+- Pas de vert de marque, pas d'autre couleur d'accent.
 
-### `--ecrin-yellow` (#E0A126) — couleur signature
-- Contraste sur fond blanc/crème : texte foncé obligatoire (`--ecrin-dark`). Ratio avec texte foncé : ~8.5:1 (excellent). Jamais texte blanc.
-- Utilisations autorisées :
-  - Boutons CTA (fond jaune, texte sombre)
-  - Badges et labels ("Artisanal", "Nouveau", "Saison")
-  - Bordure gauche des citations et encarts mis en avant
-  - Soulignement actif dans la navigation
-  - Ornements typographiques (tirets, séparateurs)
-  - Réflexion de la couleur des boîtes packaging dans les photos
+## Formes, boutons, espacement
 
-- Utilisations interdites :
-  - Fonds de section de grande surface
-  - Texte courant
-  - Navigation background
-  - Ombres colorées
+- **Angles vifs partout** : `border-radius: 0 !important` est appliqué globalement (un `borderRadius` en ligne est
+  ignoré). Exceptions voulues, en CSS `!important` : pastilles rondes à 50 %, vignettes du menu à 4px.
+- **Boutons réellement utilisés** (Neue Montreal 500, 11–12px, majuscules, interlettrage 0,1 em) :
+  - bouton plein : fond `var(--accent)`, **texte sombre `#1A1A18`**, `padding: 14px 32px`, survol = opacité 0,85 ;
+  - lien souligné : texte + `borderBottom: 1px solid` + flèche `→` ;
+  - sur photo ou fond sombre : bordure blanche, texte blanc.
+  - Jamais de texte blanc sur fond jaune.
+  - Les classes `.btn-primary` / `.btn-secondary` / `.btn-accent` existent dans `globals.css` mais ne sont pas
+    utilisées par les composants (styles en ligne) ; ne pas s'appuyer dessus.
+- **Gouttières** : 72px ordinateur, 40px tablette, 24px mobile. Largeurs max : 1440px (sections larges), 1280px (`.container`, fiches), 760px (texte long).
+- **Sections** : grand rythme vertical (de l'ordre de 120px en haut et en bas sur ordinateur).
+- Focus clavier visible : contour 2px `#111111`.
 
-### `--ecrin-green` (#3E5232)
-- Toujours en accent secondaire, jamais dominant
-- Usage : tags d'origine géographique, labels "Local", "Producteur", hover states secondaires
-- Peut être utilisé en texte sur fond crème/white (contraste acceptable pour body)
+## Photographie
 
-### Contrastes validés (WCAG AA minimum)
-| Texte | Fond | Ratio |
-|---|---|---|
-| `--ecrin-dark` | `--ecrin-white` | 17.8:1 ✅ |
-| `--ecrin-dark` | `--ecrin-cream` | 14.2:1 ✅ |
-| `--ecrin-dark` | `--ecrin-yellow` | 8.5:1 ✅ |
-| `--ecrin-dark` | `--ecrin-mist` | 12.1:1 ✅ |
-| `--ecrin-stone` | `--ecrin-white` | 4.6:1 ✅ (texte normal 16px+) |
+- Vrais produits, sur **planches de bois**, en **lumière naturelle**. Ne pas flouter les photos produit :
+  elles sont l'argument de vente.
+- **Texte sur photo : texte nu**, avec un assombrissement en dégradé pleine largeur (ou un léger filtre
+  global, luminosité ≈ 0,80). **Jamais de bloc ou de cartouche sombre derrière le texte.**
+- Survol : zoom discret (`.img-zoom`, échelle 1,03 en 0,8 s).
+- Images via `next/image` ; formats `.webp` dans `public/`.
 
----
+## Mouvement
 
-## Typographie — règles détaillées
+- Défilement fluide **Lenis** sur tout le site (`components/SmoothScroll.js`) : ne jamais ajouter
+  `scroll-behavior: smooth`.
+- Apparitions et parallaxe : composants `Reveal`, `ScrollRevealInit`, `ParallaxImage` et classe `.reveal`.
+  Pas de Framer Motion.
 
-### Cormorant Garamond (Display)
-```
-Weights à charger : 300 (Light), 300 italic, 600 (SemiBold), 600 italic
-Variantes : Cormorant SC pour les small caps
-next/font config :
-  import { Cormorant_Garamond } from 'next/font/google'
-  const cormorant = Cormorant_Garamond({
-    subsets: ['latin'],
-    weight: ['300', '600'],
-    style: ['normal', 'italic'],
-    variable: '--font-display'
-  })
-```
+## Logo
 
-**Usage :**
-- H1 héros : Light Italic, `--text-display`, tracking normal (ne pas resserrer)
-- H2 sections : SemiBold, `--text-h2`
-- Noms de producteurs : SemiBold Italic pour l'emphase
-- Accroche sous-titre : Light, italique, légèrement réduit
+- `public/logo-lecrin.svg` (fond clair) et `public/logo-footer.svg` (pied de page).
+- Ne pas recomposer le logo en texte, ne pas le colorer en jaune.
 
-### Source Serif 4 (Body)
-```
-Weights : 400 (Regular), 500 (Medium)
-next/font config :
-  import { Source_Serif_4 } from 'next/font/google'
-  const sourceSerif = Source_Serif_4({
-    subsets: ['latin'],
-    weight: ['400', '500'],
-    variable: '--font-body'
-  })
-```
+## Technique (rappel)
 
-**Usage :**
-- Tout le corps de texte
-- Descriptions des offres
-- Témoignage (si présent)
-- Chapô de section
+Next.js 14 (App Router) en **JavaScript** (`.js`), React 18. Style par **classes CSS de `globals.css` +
+styles en ligne** dans les composants. Pas de Tailwind, pas de shadcn/ui, pas de TypeScript.
 
-### Jost (UI)
-```
-Weights : 400 (Regular), 500 (Medium), 600 (SemiBold)
-next/font config :
-  import { Jost } from 'next/font/google'
-  const jost = Jost({
-    subsets: ['latin'],
-    weight: ['400', '500', '600'],
-    variable: '--font-ui'
-  })
-```
+## Livrables hors site (catalogue PDF, documents)
 
-**Usage :**
-- Navigation (Medium 500, letterspacing +0.05em, uppercase)
-- Boutons (Medium 500)
-- Labels de formulaire (Regular 400)
-- Footer (Regular 400)
-- Prix/indicateurs numériques si présents
-
----
-
-## Traitement photographique
-
-Les photos actuelles sont "maison" et de qualité variable. Appliquer systématiquement :
-
-```css
-.ecrin-photo {
-  /* Grain warm pour unifier les photos hétérogènes */
-  filter: contrast(1.05) saturate(0.92) brightness(1.02);
-  position: relative;
-}
-
-.ecrin-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,..."); /* grain SVG */
-  opacity: 0.04;
-  pointer-events: none;
-}
-```
-
-**Règles de cadrage :**
-- Toujours recadrer serré sur le sujet (le produit, pas le contexte flou)
-- Privilégier le carré (1:1) ou le format paysage (16:9 / 3:2) selon le contexte
-- Éviter les photos avec fonds désordonnés — si inévitable, utiliser un overlay `--ecrin-cream` à 15% d'opacité
-- Sur mobile, utiliser `object-position: center` sur les images rognées
-
----
-
-## Espacements de section
-
-```tsx
-// Classe Tailwind réutilisable pour les sections
-const sectionClass = "py-24 md:py-16 px-6 md:px-12 lg:px-16 xl:px-24"
-
-// Section alternée (fond crème)
-const sectionAltClass = "bg-[var(--ecrin-cream)] py-24 md:py-16 ..."
-```
-
-Rythme recommandé des sections sur la page d'accueil :
-```
-Fond white → Fond crème → Fond white → Fond dark (optionnel pour impact) → Fond crème → Fond white
-```
-
----
-
-## Logo — règles d'usage
-
-En attendant un logo officiel, utiliser la typo comme logotype :
-
-```tsx
-// Logotype typographique
-<span className="font-[var(--font-display)] font-light italic text-2xl tracking-wide">
-  L'Écrin
-  <span className="font-[var(--font-ui)] font-medium not-italic text-xs tracking-[0.2em] uppercase ml-2 opacity-60">
-    Traiteur
-  </span>
-</span>
-```
-
-- Sur fond clair : texte `--ecrin-dark`
-- Sur fond sombre : texte `--ecrin-white`
-- L'accent jaune peut être appliqué sur l'apostrophe ou un élément décoratif, pas sur le mot entier
+- Mêmes polices, embarquées en base64 pour un fichier autonome.
+- Ne jamais mettre `box-shadow` sur un petit élément (pastille, icône) : utiliser `filter: drop-shadow(...)`.
+  `box-shadow` reste possible sur une grande carte rectangulaire.

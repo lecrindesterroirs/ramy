@@ -1,5 +1,11 @@
 # Structure des pages — L'Écrin Traiteur
 
+> ⚠ **Charte à jour dans `references/brand.md`, composants réels dans `references/components.md`.** Les extraits
+> de code de cette fiche sont des schémas d'intention écrits avant le site réel : le site n'utilise ni Tailwind ni shadcn/ui (classes de
+> `app/globals.css` + styles en ligne), les titres sont en Baskerville Display PT **sans italique**, le corps et
+> l'interface en Neue Montreal, et les couleurs sont `--bg-primary`, `--bg-secondary`, `--text-primary`,
+> `--text-secondary`, `--accent`, `--accent-deep`. Reprendre la structure, pas les classes.
+
 ## Principes communs à toutes les pages
 
 - Chaque page commence par la `NavigationBar`
@@ -41,10 +47,10 @@
 **5. Section preuve sociale** (fond : white)
 - 1 ou 2 témoignages d'entreprises clientes (citation + nom + entreprise + taille si possible)
 - Pas de carrousel. 1 ou 2 citations côte à côte, fixes.
-- Format : grande citation en Cormorant Garamond Italic, attribution en Jost small caps
+- Format : grande citation en Baskerville Display PT (sans italique), attribution en Neue Montreal majuscules
 
 **6. Section CTA finale** (fond : dark `--ecrin-dark`)
-- Titre en Cormorant Garamond Light sur fond sombre
+- Titre en Baskerville Display PT sur fond sombre
 - Sous-titre rassurant (ex : "Réponse sous 24h, sans engagement")
 - Bouton inverse : "Demander un devis"
 - Cette section dark crée le contraste visuel final avant le footer
@@ -80,7 +86,7 @@ Chaque OfferRow contient :
 
 **3. Section FAQ minimale** (fond : cream)
 ⚠️ PAS un accordion générique shadcn avec toggle chevron.  
-Structure : questions en Cormorant SemiBold, réponses en Source Serif 4, layout colonne unique espacé.
+Structure : questions en Baskerville Display PT, réponses en Neue Montreal, layout colonne unique espacé.
 
 Questions recommandées :
 - "Dans quelle zone livrez-vous ?"
@@ -106,7 +112,7 @@ Questions recommandées :
 **2. Section fondatrice** (fond : white)
 - Photo de l'équipe ou du fondateur **obligatoire** — pas que des valeurs abstraites
 - Texte : l'origine du projet, ce qui a déclenché L'Écrin, en quoi c'est différent des traiteurs classiques
-- 3-4 paragraphes max en Source Serif 4
+- 3-4 paragraphes max en Neue Montreal
 - Pas de liste à puces dans cette section — narration fluide
 
 **3. Section "Notre approche du sourcing"** (fond : cream)
@@ -120,7 +126,7 @@ Questions recommandées :
 
 **5. Section valeurs** (fond : dark)
 - 3 valeurs maximum — pas de liste à 6 items avec icônes
-- Chaque valeur : 1 mot en Cormorant Garamond grand + 2 phrases d'explication
+- Chaque valeur : 1 mot en Baskerville Display PT grand + 2 phrases d'explication
 - Préférer les valeurs concrètes et vérifiables aux mots vagues : pas "Passion" mais "Sourcing identifié"
 
 ---
@@ -152,7 +158,7 @@ Questions recommandées :
 
 **4. Section rassurance minimale** (fond : white)
 - 3 phrases courtes : sans engagement / réponse rapide / adapté à votre entreprise
-- Pas de badges, pas d'icônes — juste du texte bien espacé en Source Serif 4
+- Pas de badges, pas d'icônes — juste du texte bien espacé en Neue Montreal
 
 ---
 

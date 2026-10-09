@@ -364,3 +364,4 @@ Exception connue et assumée : les tables `crmapp_*` restent ouvertes à `anon`,
 - `references/integrations.md` — détails Pennylane endpoints + Gmail + SIRENE
 - `references/ui-patterns.md` — extraits de code des patterns (bulk select, throttle, retry)
 - `references/troubleshooting.md` — erreurs courantes et leurs fixes
+- `references/achats-plannings.md` — plannings Achats (achat, préparation, stock, récupération), règles par fournisseur et pilotage de l'OS par MCP

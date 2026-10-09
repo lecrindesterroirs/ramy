@@ -1,5 +1,11 @@
 # Anti-patterns — L'Écrin Traiteur
 
+> ⚠ **Charte à jour dans `references/brand.md`.** Les extraits de code de cette fiche sont des schémas
+> d'intention écrits avant le site réel : le site n'utilise ni Tailwind ni shadcn/ui (classes de
+> `app/globals.css` + styles en ligne), les titres sont en Baskerville Display PT **sans italique**, le corps et
+> l'interface en Neue Montreal, et les couleurs sont `--bg-primary`, `--bg-secondary`, `--text-primary`,
+> `--text-secondary`, `--accent`, `--accent-deep`. Reprendre la structure, pas les classes.
+
 Ce fichier liste ce qui est interdit. Vérifier ces règles avant de valider tout rendu.
 
 ---
@@ -186,7 +192,7 @@ Page entière qui "slide" à chaque scroll
 Avant de considérer un composant ou une page comme terminé, vérifier :
 
 - [ ] Aucune police de la liste interdite
-- [ ] Aucune couleur hors des tokens `--ecrin-*`
+- [ ] Aucune couleur hors des variables du site (`--bg-*`, `--text-*`, `--accent`, `--accent-deep`)
 - [ ] Texte clair sur fond clair : contraste vérifié (≥ 4.5:1)
 - [ ] Texte clair sur jaune `#E0A126` : uniquement `--ecrin-dark` (jamais blanc)
 - [ ] Au moins une mention d'origine/producteur dans les sections offres

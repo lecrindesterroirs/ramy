@@ -22,50 +22,43 @@ description: Skill maître pour construire et faire évoluer le site de L'Écrin
 
 ## Système de couleurs
 
-Utilise exclusivement ces tokens CSS. Ne jamais inventer une couleur hors de ce système.
+Variables réelles du site (`app/globals.css`). Ne pas inventer de couleur hors de ce système.
 
 ```css
 :root {
-  --ecrin-white:  #FAFAF7;  /* fond principal — blanc cassé chaud */
-  --ecrin-cream:  #F5F0E6;  /* fonds alternants, sections warm */
-  --ecrin-dark:   #1A1A18;  /* textes — presque noir chaud */
-  --ecrin-yellow: #E0A126;  /* ⭐ couleur signature — accents, CTA, packaging */
-  --ecrin-green:  #3E5232;  /* second accent — terroir, fraîcheur */
-  --ecrin-stone:  #9B9590;  /* textes secondaires, séparateurs */
-  --ecrin-mist:   #EDE7D9;  /* hover states, backgrounds légers */
+  --bg-primary:     #FFFFFF;  /* fond de page */
+  --bg-secondary:   #F8F5EF;  /* crème : sections alternées */
+  --text-primary:   #111111;  /* titres, texte fort */
+  --text-secondary: #605A4F;  /* corps de texte */
+  --accent:         #E0A126;  /* ⭐ jaune signature : fonds, filets, bordures */
+  --accent-deep:    #875E10;  /* jaune profond : l'accent en TEXTE sur fond clair */
 }
 ```
 
 **Règles d'usage des couleurs :**
-- `--ecrin-yellow` : boutons CTA, badges, accents de soulignement, ornements, bordures d'encart. Jamais sur de grandes surfaces. Toujours avec texte `--ecrin-dark` (jamais texte blanc).
-- `--ecrin-green` : tags d'origine, labels "local", "artisan", éléments secondaires de navigation.
-- `--ecrin-white` : fond de page par défaut.
-- `--ecrin-cream` : sections alternantes pour créer du rythme sans rupture agressive.
-- `--ecrin-dark` : tous les textes principaux, la navigation, le footer.
+- `--accent` : filets, bordure du bouton accent, un bloc d'appel à l'action. Jamais sur de grandes surfaces, jamais en texte sur fond clair.
+- `--accent-deep` : labels et mots mis en avant sur fond clair (contraste WCAG AA).
+- Sur fond jaune : texte sombre `#1A1A18`, jamais blanc.
+- Bouton principal : fond `#111111`, texte blanc. Pas de vert de marque.
 
 ---
 
 ## Système typographique
 
 ```
-Display / H1  → Cormorant Garamond, Light Italic (ou Regular Italic)
-               Google Fonts : https://fonts.google.com/specimen/Cormorant+Garamond
-               Usage : titres héros, grands accroches, noms de section
+Titres        → Baskerville Display PT, poids 400 (repli Georgia)
+               JAMAIS d'italique. Fichier : public/fonts/BaskervilleDisplayPT.woff2
+               Usage : titres héros, titres de section, titres de cartes
 
-H2 / H3       → Cormorant Garamond, SemiBold
-               Usage : sous-titres de section, titres de cartes
-
-Labels / tags → Cormorant SC (Small Caps)
-               Usage : origines ("Normandie · Artisan"), labels de catégorie
-
-Body          → Source Serif 4, Regular / Medium
-               Google Fonts : https://fonts.google.com/specimen/Source+Serif+4
+Corps         → Neue Montreal (PP Neue Montreal), 400
                Usage : tous les paragraphes, descriptions de produits
 
-UI / CTA      → Jost, Medium (500)
-               Google Fonts : https://fonts.google.com/specimen/Jost
-               Usage : boutons, navigation, formulaires, labels UI
+Labels / UI   → Neue Montreal 500, MAJUSCULES, interlettrage 0,10 à 0,12 em
+               Usage : labels, boutons, navigation, formulaires
 ```
+
+Polices chargées par `@font-face` dans `app/globals.css` (pas de Google Fonts).
+Pas de petites capitales ni d'ornements « luxe générique » (losanges, filets en série).
 
 **Échelle typographique (fluid, avec clamp) :**
 ```css
@@ -143,12 +136,12 @@ Formulaire → 2 colonnes desktop → 1 colonne mobile
 ## Stack technique
 
 ```
-Framework   → Next.js 14+ (App Router)
-Styling     → Tailwind CSS v3+ avec tokens CSS personnalisés
-Composants  → shadcn/ui (surchargé avec le design system L'Écrin)
-Animations  → Framer Motion pour les staggered reveals, CSS transitions pour micro-interactions
+Framework   → Next.js 14 (App Router), React 18
+Langage     → JavaScript (.js), pas de TypeScript
+Styling     → classes CSS de app/globals.css + styles en ligne (pas de Tailwind, pas de shadcn/ui)
+Animations  → Lenis (défilement fluide global) + composants Reveal / ParallaxImage ; jamais scroll-behavior: smooth
 Images      → next/image obligatoire (optimisation + lazy loading)
-Polices     → next/font/google (Cormorant Garamond, Source Serif 4, Jost)
+Polices     → @font-face locales : Baskerville Display PT (titres), Neue Montreal (corps et UI)
 Formulaire  → React Hook Form + Zod (validation)
 SEO         → Next.js Metadata API (generateMetadata par page)
 ```
@@ -160,7 +153,7 @@ SEO         → Next.js Metadata API (generateMetadata par page)
 | Tâche | Fichier à lire |
 |---|---|
 | Palette, typo, tokens CSS détaillés | `references/brand.md` |
-| Specs d'un composant (shadcn ou custom) | `references/components.md` |
+| Inventaire des composants réels, conventions de code, gabarit de section | `references/components.md` |
 | SEO — title, meta, schema, URLs | `references/seo.md` |
 | Vérifier qu'un rendu n'est pas générique | `references/anti-patterns.md` |
 | Construire ou réviser une page | `references/pages.md` |
