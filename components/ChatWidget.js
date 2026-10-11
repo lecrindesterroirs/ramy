@@ -268,15 +268,27 @@ function Bulle() {
   )
 }
 
-/* Rend les chemins du site en liens cliquables, sans jamais injecter de HTML :
- * l'assistant ne produit que du texte, on ne lui fait pas confiance pour du balisage. */
-const CHEMIN = /(\/(?:creations|occasions|journal|univers|traiteur|petit-dejeuner-entreprise)[\w\-/]*)/g
+/* Rend les liens de l'assistant sans jamais injecter de HTML : on ne lui fait
+ * pas confiance pour du balisage, donc on ne reconnaît que [libellé](/chemin)
+ * — et une URL nue en secours, s'il oublie la consigne. Un chemin doit partir
+ * d'une section connue du site : pas de lien vers l'extérieur. */
+const SECTIONS = 'creations|occasions|journal|univers|traiteur|petit-dejeuner-entreprise|contact|devis'
+const LIEN = new RegExp(`\\[([^\\]\n]{1,80})\\]\\((\\/(?:${SECTIONS})[\\w\\-/]*)\\)|(\\/(?:${SECTIONS})[\\w\\-/]*)`, 'g')
 
 function Texte({ contenu }) {
-  const bouts = contenu.split(CHEMIN)
-  return bouts.map((b, i) =>
-    i % 2 === 1
-      ? <a key={i} href={b}>{b}</a>
-      : <span key={i}>{b}</span>
+  const morceaux = []
+  let curseur = 0
+  for (const m of contenu.matchAll(LIEN)) {
+    if (m.index > curseur) morceaux.push(contenu.slice(curseur, m.index))
+    const href = m[2] || m[3]
+    morceaux.push({ href, libelle: m[1] || m[3] })
+    curseur = m.index + m[0].length
+  }
+  if (curseur < contenu.length) morceaux.push(contenu.slice(curseur))
+
+  return morceaux.map((x, i) =>
+    typeof x === 'string'
+      ? <span key={i}>{x}</span>
+      : <a key={i} href={x.href}>{x.libelle}</a>
   )
 }
