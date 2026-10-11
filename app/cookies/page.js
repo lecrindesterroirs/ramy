@@ -30,7 +30,7 @@ export default function Cookies() {
         </p>
         <p style={pStyle}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500, display: 'block', marginBottom: '6px' }}>Cookies de mesure publicitaire</strong>
-          Nous diffusons des annonces sur Google. Google Ads dépose un cookie qui nous indique si une visite venue d'une annonce a abouti à une demande de devis. Vous pouvez le refuser à tout moment (voir « Gérer vos préférences »).
+          Nous diffusons des annonces sur Google. Google Ads dépose un cookie qui nous indique si une visite venue d'une annonce a abouti à une demande de devis. Vous pouvez le refuser à tout moment (voir « Gérer vos préférences »). Nous utilisons aussi Leadfeeder et Leadinfo, qui reconnaissent l'entreprise à laquelle appartient le réseau d'un visiteur professionnel ; ils n'identifient pas les personnes.
         </p>
       </div>
 

@@ -16,16 +16,18 @@ const POSTHOG = 'https://eu.i.posthog.com https://eu-assets.i.posthog.com'
 // Interface PostHog : la barre d'outils (cartes de chaleur) lit ses données sur eu.posthog.com,
 // et la page « Heatmaps » de PostHog affiche le site dans un cadre.
 const POSTHOG_UI = 'https://eu.posthog.com'
+// Identification des entreprises visiteuses : Leadfeeder (posé dans le code) et Leadinfo (posé dans GTM).
+const LEADS = 'https://*.lfeeder.com https://*.leadfeeder.com https://*.leadinfo.net https://*.leadinfo.com'
 // Calendly (prise de rendez-vous /contact/rendez-vous) : widget.js depuis assets.calendly.com,
 // styles injectés depuis assets.calendly.com, iframe de réservation depuis calendly.com, avatars/images *.calendly.com
 const CALENDLY = 'https://assets.calendly.com https://*.calendly.com'
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${GA_GTM} ${ADS} ${POSTHOG}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${GA_GTM} ${ADS} ${POSTHOG} ${LEADS}`,
   "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
-  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${GA_GTM} ${ADS}`,
+  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${GA_GTM} ${ADS} ${LEADS}`,
   "font-src 'self' data:",
-  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${GA_GTM} ${ADS} ${POSTHOG} ${POSTHOG_UI}`,
+  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${GA_GTM} ${ADS} ${POSTHOG} ${POSTHOG_UI} ${LEADS}`,
   // L'enregistrement de sessions PostHog compresse dans un worker créé depuis un blob.
   "worker-src 'self' blob:",
   `frame-src https://calendly.com https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
