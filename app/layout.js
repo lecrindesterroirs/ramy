@@ -1,6 +1,7 @@
 import './globals.css'
 import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
+import ChatWidget from '../components/ChatWidget'
 import PromoBanner from '../components/PromoBanner'
 import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
@@ -90,6 +91,7 @@ export default function RootLayout({ children }) {
           <div id="main-content" style={{ display: 'contents' }}>{children}</div>
         </CartProvider>
         <MobileCTA />
+        <ChatWidget />
       </body>
     </html>
   )
