@@ -26,7 +26,7 @@ export default function Cookies() {
         </p>
         <p style={{ ...pStyle, marginBottom: '24px' }}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500, display: 'block', marginBottom: '6px' }}>Cookies de mesure d'audience (analytiques)</strong>
-          Ces cookies nous permettent de comprendre comment les visiteurs utilisent le site : pages consultées, durée de visite, provenance du trafic, parcours jusqu'à la demande de devis. Nous utilisons Google Analytics et PostHog (hébergé dans l'Union européenne), qui peut aussi enregistrer le déroulé d'une visite pour repérer ce qui gêne la navigation. Ils sont actifs par défaut ; vous pouvez les refuser à tout moment (voir « Gérer vos préférences »).
+          Ces cookies nous permettent de comprendre comment les visiteurs utilisent le site : pages consultées, durée de visite, provenance du trafic, parcours jusqu'à la demande de devis. Nous utilisons Google Analytics et PostHog (hébergé dans l'Union européenne), qui peut aussi enregistrer le déroulé d'une visite pour repérer ce qui gêne la navigation. Ils sont actifs par défaut ; vous pouvez les refuser à tout moment (voir « Gérer vos préférences »). Lorsque vous nous envoyez une demande (devis, contact, catalogue), votre parcours sur le site est rattaché à l'adresse e-mail que vous nous communiquez, afin de mieux préparer notre réponse. Votre localisation approximative (ville) est déduite de votre connexion ; votre adresse IP n'est pas conservée.
         </p>
         <p style={pStyle}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500, display: 'block', marginBottom: '6px' }}>Cookies de mesure publicitaire</strong>

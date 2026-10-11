@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { identifierVisiteur } from '../lib/posthog-identify'
 
 const CATALOGUE_URL = '/catalogue-lecrin-2026.pdf'
 
@@ -33,7 +34,10 @@ export default function CatalogueModal({ open, onClose }) {
         body: JSON.stringify(form),
       })
       setStatus(res.ok ? 'success' : 'error')
-      if (res.ok) window.dataLayer?.push({ event: 'catalogue_lead', form_location: 'hero' })
+      if (res.ok) {
+        window.dataLayer?.push({ event: 'catalogue_lead', form_location: 'hero' })
+        identifierVisiteur(form, 'catalogue')
+      }
     } catch {
       setStatus('error')
     }

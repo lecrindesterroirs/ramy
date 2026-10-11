@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { getAttribution } from '../lib/attribution'
+import { identifierVisiteur } from '../lib/posthog-identify'
 
 const PRESTATIONS = [
   'Petit-déjeuner',
@@ -45,7 +46,10 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
         body: JSON.stringify({ ...form, source: 'devis-rapide', attribution: getAttribution() }),
       })
       setStatus(res.ok ? 'success' : 'error')
-      if (res.ok) window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide' })
+      if (res.ok) {
+        window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide' })
+        identifierVisiteur(form, 'devis_rapide')
+      }
     } catch {
       setStatus('error')
     }

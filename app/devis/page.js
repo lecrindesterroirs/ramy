@@ -8,6 +8,7 @@ import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
+import { identifierVisiteur } from '../../lib/posthog-identify'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -684,6 +685,7 @@ export default function Contact() {
       if (res.ok) {
         setSubmitStatus('success')
         window.dataLayer?.push({ event: 'devis_submit', form_location: 'page_devis' })
+        identifierVisiteur(data, 'page_devis')
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         setSubmitStatus('error')

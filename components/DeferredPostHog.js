@@ -37,6 +37,22 @@ export default function DeferredPostHog() {
           disable_session_recording: !accord,
           capture_pageview: 'history_change',
           capture_pageleave: true,
+          // Ville, région et code postal d'après Vercel, joints à chaque événement.
+          loaded: instance => {
+            if (!accord) return
+            fetch('/api/geo')
+              .then(r => (r.ok ? r.json() : null))
+              .then(g => {
+                if (!g) return
+                const lieu = {}
+                if (g.ville) lieu.ville = g.ville
+                if (g.region) lieu.region = g.region
+                if (g.code_postal) lieu.code_postal = g.code_postal
+                if (g.pays) lieu.pays = g.pays
+                if (Object.keys(lieu).length) instance.register(lieu)
+              })
+              .catch(() => {})
+          },
         },
         'posthog',
       ])

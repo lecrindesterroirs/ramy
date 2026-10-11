@@ -7,6 +7,7 @@ import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { trackPhoneClick } from '../../lib/tracking'
 import { getAttribution } from '../../lib/attribution'
+import { identifierVisiteur } from '../../lib/posthog-identify'
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -127,6 +128,7 @@ export default function Contact() {
       if (res.ok) {
         setStatus('success')
         window.dataLayer?.push({ event: 'contact_submit', form_location: 'page_contact' })
+        identifierVisiteur(form, 'page_contact')
       } else {
         setStatus('error')
       }
