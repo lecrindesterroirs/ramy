@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
           <div id="main-content" style={{ display: 'contents' }}>{children}</div>
         </CartProvider>
         <MobileCTA />
-        <ChatWidget />
+        {process.env.ANTHROPIC_API_KEY ? <ChatWidget /> : null}
       </body>
     </html>
   )

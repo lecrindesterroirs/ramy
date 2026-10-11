@@ -4,7 +4,11 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAttribution } from '../lib/attribution'
 
-/* Assistant du site. Répond sur la carte et les règles de commande, puis
+/* Monté par app/layout.js uniquement si ANTHROPIC_API_KEY existe : sans clé,
+ * aucun bouton n'apparaît plutôt qu'un bouton qui répond « je ne suis pas
+ * joignable ». Un ajout de clé sur Vercel demande donc un redéploiement.
+ *
+ * Assistant du site. Répond sur la carte et les règles de commande, puis
  * transmet la demande dans l'OS (app/api/chat). Jamais sur /devis ni /panier :
  * sur ces pages la personne est déjà en train de commander, on ne la dérange pas.
  *
