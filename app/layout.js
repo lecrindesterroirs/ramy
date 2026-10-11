@@ -6,7 +6,7 @@ import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
 import DeferredGTM from '../components/DeferredGTM'
 import DeferredPostHog from '../components/DeferredPostHog'
-import DeferredLeadfeeder from '../components/DeferredLeadfeeder'
+import DeferredEntreprises from '../components/DeferredEntreprises'
 import { CONSENT_DEFAULT_SCRIPT } from '../lib/consent'
 import AttributionCapture from '../components/AttributionCapture'
 import { websiteNode } from '../lib/site'
@@ -72,7 +72,7 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }} />
         <DeferredGTM gtmId="GTM-N22T3FZJ" />
         <DeferredPostHog />
-        <DeferredLeadfeeder />
+        <DeferredEntreprises />
         <AttributionCapture />
         <script defer src="https://lecrin-analytics.vercel.app/script.js" data-website-id="6c18f6ab-c4b3-498e-b9ce-bf5ec85801b9" />
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>

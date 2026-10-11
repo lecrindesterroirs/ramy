@@ -16,7 +16,7 @@ const POSTHOG = 'https://eu.i.posthog.com https://eu-assets.i.posthog.com'
 // Interface PostHog : la barre d'outils (cartes de chaleur) lit ses données sur eu.posthog.com,
 // et la page « Heatmaps » de PostHog affiche le site dans un cadre.
 const POSTHOG_UI = 'https://eu.posthog.com'
-// Identification des entreprises visiteuses : Leadfeeder (posé dans le code) et Leadinfo (posé dans GTM).
+// Identification des entreprises visiteuses : Leadfeeder et Leadinfo (components/DeferredEntreprises.js).
 const LEADS = 'https://*.lfeeder.com https://*.leadfeeder.com https://*.leadinfo.net https://*.leadinfo.com'
 // Calendly (prise de rendez-vous /contact/rendez-vous) : widget.js depuis assets.calendly.com,
 // styles injectés depuis assets.calendly.com, iframe de réservation depuis calendly.com, avatars/images *.calendly.com
