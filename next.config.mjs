@@ -9,17 +9,22 @@
 // (le wildcard *.analytics.google.com ne matche PAS l'apex) → sinon page_view bloqué par le CSP.
 const GA_GTM = 'https://www.googletagmanager.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com'
 // ADS doit aussi être dans script-src : le pixel de conversion charge un SCRIPT depuis googleads.g.doubleclick.net
-const ADS = 'https://*.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr'
+// pagead2.googlesyndication.com : pings sans cookie du Consent Mode quand le visiteur refuse (bandeau cookies).
+const ADS = 'https://*.doubleclick.net https://*.googleadservices.com https://www.google.com https://www.google.fr https://pagead2.googlesyndication.com'
+// PostHog, hébergement Europe : script depuis eu-assets, événements vers eu.i.posthog.com.
+const POSTHOG = 'https://eu.i.posthog.com https://eu-assets.i.posthog.com'
 // Calendly (prise de rendez-vous /contact/rendez-vous) : widget.js depuis assets.calendly.com,
 // styles injectés depuis assets.calendly.com, iframe de réservation depuis calendly.com, avatars/images *.calendly.com
 const CALENDLY = 'https://assets.calendly.com https://*.calendly.com'
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${GA_GTM} ${ADS}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${GA_GTM} ${ADS} ${POSTHOG}`,
   "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
   `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${GA_GTM} ${ADS}`,
   "font-src 'self' data:",
-  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${GA_GTM} ${ADS}`,
+  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${GA_GTM} ${ADS} ${POSTHOG}`,
+  // L'enregistrement de sessions PostHog compresse dans un worker créé depuis un blob.
+  "worker-src 'self' blob:",
   `frame-src https://calendly.com https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
   "frame-ancestors 'self'",
   "base-uri 'self'",

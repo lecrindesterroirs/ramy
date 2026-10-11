@@ -5,6 +5,8 @@ import PromoBanner from '../components/PromoBanner'
 import SmoothScroll from '../components/SmoothScroll'
 import ScrollRevealInit from '../components/ScrollRevealInit'
 import DeferredGTM from '../components/DeferredGTM'
+import DeferredPostHog from '../components/DeferredPostHog'
+import { CONSENT_DEFAULT_SCRIPT } from '../lib/consent'
 import AttributionCapture from '../components/AttributionCapture'
 import { websiteNode } from '../lib/site'
 
@@ -65,7 +67,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>
+        {/* Pose le refus avant GTM si le visiteur a refusé la mesure (page Cookies) */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }} />
         <DeferredGTM gtmId="GTM-N22T3FZJ" />
+        <DeferredPostHog />
         <AttributionCapture />
         <script defer src="https://lecrin-analytics.vercel.app/script.js" data-website-id="6c18f6ab-c4b3-498e-b9ce-bf5ec85801b9" />
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>

@@ -1,10 +1,11 @@
 'use client'
 
 import LegalTemplate, { h2Style, pStyle, sectionStyle } from '../../components/LegalTemplate'
+import ConsentPreferencesButton from '../../components/ConsentPreferencesButton'
 
 export default function Cookies() {
   return (
-    <LegalTemplate title="Politique de Cookies" updated="Mai 2026">
+    <LegalTemplate title="Politique de Cookies" updated="Octobre 2026">
 
       <div style={{ ...pStyle, marginBottom: '48px', padding: '20px 24px', background: 'var(--bg-secondary)', borderLeft: '2px solid var(--accent)' }}>
         Lors de votre visite sur le site lecrin-traiteur.fr, des cookies peuvent être déposés sur votre navigateur. Cette page vous explique ce que sont les cookies, lesquels nous utilisons et comment les gérer.
@@ -25,18 +26,18 @@ export default function Cookies() {
         </p>
         <p style={{ ...pStyle, marginBottom: '24px' }}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500, display: 'block', marginBottom: '6px' }}>Cookies de mesure d'audience (analytiques)</strong>
-          Ces cookies nous permettent de comprendre comment les visiteurs interagissent avec notre site (pages les plus consultées, durée de visite, provenance du trafic). Les données collectées sont anonymisées et agrégées. Ils nous aident à améliorer notre site et nos contenus. Leur dépôt requiert votre consentement.
+          Ces cookies nous permettent de comprendre comment les visiteurs utilisent le site : pages consultées, durée de visite, provenance du trafic, parcours jusqu'à la demande de devis. Nous utilisons Google Analytics et PostHog (hébergé dans l'Union européenne), qui peut aussi enregistrer le déroulé d'une visite pour repérer ce qui gêne la navigation. Ils sont actifs par défaut ; vous pouvez les refuser à tout moment (voir « Gérer vos préférences »).
         </p>
         <p style={pStyle}>
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500, display: 'block', marginBottom: '6px' }}>Cookies tiers</strong>
-          Aucun cookie publicitaire ou de suivi comportemental à des fins de remarketing n'est déposé sur notre site. Nous ne partageons pas vos données de navigation avec des régies publicitaires.
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500, display: 'block', marginBottom: '6px' }}>Cookies de mesure publicitaire</strong>
+          Nous diffusons des annonces sur Google. Google Ads dépose un cookie qui nous indique si une visite venue d'une annonce a abouti à une demande de devis. Vous pouvez le refuser à tout moment (voir « Gérer vos préférences »).
         </p>
       </div>
 
       <div style={sectionStyle}>
         <h2 style={h2Style}>Durée de conservation</h2>
         <p style={pStyle}>
-          Les cookies analytiques sont conservés pour une durée maximale de <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>13 mois</strong> à compter de leur dépôt, conformément aux recommandations de la CNIL. À l'expiration de ce délai, votre consentement est à nouveau sollicité.
+          Les cookies de mesure sont conservés pour une durée maximale de <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>13 mois</strong> à compter de leur dépôt, conformément aux recommandations de la CNIL. Si vous les refusez, votre refus est conservé sur cet appareil sans limite de durée.
         </p>
       </div>
 
@@ -46,8 +47,10 @@ export default function Cookies() {
           Vous pouvez à tout moment modifier vos préférences en matière de cookies de plusieurs façons :
         </p>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
-          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Via notre bandeau de cookies :</strong> lors de votre première visite, un bandeau vous invite à accepter ou refuser les cookies non nécessaires. Vous pouvez revenir sur ce choix à tout moment.
-        </p>
+          <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Sur cette page :</strong> le bouton ci-dessous refuse les cookies de mesure d'audience et de publicité sur cet appareil, et efface ceux déjà déposés. Votre refus est conservé ; vous pouvez revenir dessus à tout moment.</p>
+        <div style={{ marginBottom: '24px' }}>
+          <ConsentPreferencesButton />
+        </div>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Via les paramètres de votre navigateur :</strong> vous pouvez configurer votre navigateur pour bloquer ou supprimer les cookies. Voici les liens vers les instructions des principaux navigateurs :<br />
           Google Chrome : chrome://settings/cookies<br />
