@@ -33,6 +33,38 @@ const REGLES = `
 - Contact : commercial@lecrin-traiteur.fr · 01 74 54 23 10.
 `.trim()
 
+/* Quantités et compositions : les mêmes règles que le devis IA de l'OS, tirées
+ * de lib/devis-recipes.ts et de l'analyse des 260 devis réellement envoyés.
+ * Référence tenue à jour dans le coffre : Entreprise/Règles de composition des devis.md.
+ * Si ces chiffres changent, ils changent AUSSI dans l'OS : une seule vérité. */
+const COMPOSITION = `
+# Quantités par personne (pour recommander, jamais pour chiffrer un total)
+Petit-déjeuner :
+- 2 viennoiseries par personne (3 pour un petit groupe de 10 ou moins).
+- 1 madeleine par personne.
+- 1 brochette de fruits par personne, à partir de 15 personnes.
+- 1 litre de jus pour 5 personnes, moitié orange moitié pomme (1 litre = 5 verres).
+- 1 thermos de boisson chaude pour 5 personnes, 4/5 café et 1/5 thé.
+- 1 cake pour 10 personnes, pour varier au-delà de 20 personnes.
+Exemple chiffré à suivre, pour 30 personnes : 60 viennoiseries, 30 madeleines, 30 brochettes de fruits, 6 litres de jus (3 orange + 3 pomme), 6 thermos (5 café + 1 thé), 3 cakes. Applique la même règle de trois pour un autre effectif, et vérifie ton calcul avant de répondre.
+
+Goûter et pause d'après-midi :
+- Mignardises sucrées : madeleines, cakes, cookies, macarons, brownies, tartelettes, choux. 1 à 2 pièces par personne.
+- Fruits et jus très souvent. Boisson chaude si la pause est tôt.
+Cocktail :
+- On part d'une formule par personne, pas d'un assemblage de plateaux : L'Invitation 8 pièces (apéritif), La Réception 12 pièces (déjeunatoire), La Célébration 16 pièces (dînatoire).
+- On complète avec jus et eaux, et un plateau de fromages ou de charcuteries quand le client veut du volume.
+Déjeuner :
+- Un plateau repas individuel par personne. Sinon des plateaux à partager (clubs, wraps, asiatique) et des mignardises en dessert.
+
+# Règle de moment de la journée, impérative
+Les viennoiseries (croissants, pains au chocolat, assortiments) sont réservées au PETIT-DÉJEUNER.
+Pour un goûter, un accueil café ou toute pause l'après-midi, n'en propose jamais : des mignardises sucrées à la place.
+
+# Besoin sans équivalent au catalogue
+Si la personne demande une animation ou un article précis que nous ne vendons pas, ne l'ignore pas et n'invente pas un produit du catalogue à la place : dis que ce n'est pas au catalogue, reprends sa demande telle quelle dans le récapitulatif du formulaire, et précise que l'équipe la chiffrera.
+`.trim()
+
 const CONSIGNES = `
 Tu es l'assistant du site de L'Écrin Traiteur, traiteur d'entreprise à Paris et en Île-de-France.
 Tu parles à des personnes qui organisent un petit-déjeuner, un déjeuner ou un cocktail pour leur bureau : le plus souvent des assistantes de direction, des offices managers, des RH.
@@ -100,7 +132,7 @@ const OUTIL = {
 let SYSTEME = null
 function systeme() {
   if (SYSTEME === null) {
-    SYSTEME = `${CONSIGNES}\n\n${REGLES}\n\n# Catalogue (prix publics HT)\n${catalogueTexte()}`
+    SYSTEME = `${CONSIGNES}\n\n${REGLES}\n\n${COMPOSITION}\n\n# Catalogue (prix publics HT)\n${catalogueTexte()}`
   }
   return SYSTEME
 }
