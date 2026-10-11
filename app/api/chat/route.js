@@ -8,7 +8,6 @@
 
 import Anthropic from '@anthropic-ai/sdk'
 import { catalogueTexte } from '@/lib/catalogueIA'
-import { logDemandeToOS } from '@/lib/os-demande'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -16,6 +15,7 @@ export const dynamic = 'force-dynamic'
 const MODEL = 'claude-haiku-4-5'
 const MAX_MESSAGES = 40          // garde-fou : une conversation ne dérive pas en boucle
 const MAX_CHARS = 2000           // par message utilisateur
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
 
 /* Les règles opérationnelles, reprises de la FAQ du site : elles doivent rester
  * identiques aux réponses publiques, sinon l'assistant dit autre chose que la page. */
@@ -64,37 +64,32 @@ Tu parles à des personnes qui organisent un petit-déjeuner, un déjeuner ou un
 - Si on te demande autre chose que la restauration d'entreprise, ramène poliment au sujet.
 
 # Transmettre la demande
-Dès que la personne a un besoin réel (une occasion, une date approximative ou un effectif), propose de transmettre sa demande à l'équipe.
-Pour cela il te faut au minimum : son email, et ce qu'elle veut. Le reste (nom, société, téléphone, date, effectif, ville) est utile mais pas bloquant.
-Demande les informations manquantes une ou deux à la fois, jamais sous forme de formulaire.
-Quand tu as l'email et le besoin, appelle l'outil enregistrer_demande, puis confirme en une phrase que l'équipe revient sous 24 h.
-N'appelle l'outil qu'une seule fois par conversation, sauf si la personne corrige une information.
+Tu ne collectes JAMAIS les coordonnées dans la conversation. Ne demande jamais l'email, le nom, la société ni le téléphone : un formulaire court s'en charge, en un seul écran.
+Dès que tu sais ce que la personne veut — même approximativement : une occasion, ou un type de prestation — appelle l'outil ouvrir_formulaire en y reportant tout ce que tu as compris (prestation, date, effectif, ville, récapitulatif). Les champs que tu remplis arrivent pré-remplis, la personne n'a plus qu'à ajouter son nom et son email.
+Mieux vaut l'ouvrir tôt avec deux champs pré-remplis que tard avec cinq : n'attends pas d'avoir tout. Une seule question d'affinage au maximum avant de l'ouvrir.
+N'appelle l'outil qu'une fois par conversation. Après, le formulaire est à l'écran : ne redemande rien, réponds simplement aux questions restantes.
 `.trim()
 
 const OUTIL = {
-  name: 'enregistrer_demande',
+  name: 'ouvrir_formulaire',
   description:
-    "Transmet la demande du visiteur à l'équipe de L'Écrin Traiteur : crée une demande dans l'outil interne. " +
-    "N'appelle cet outil que lorsque tu as au moins l'email du visiteur et la description de son besoin. " +
-    'Ne confirme jamais une commande : cet outil ne fait que transmettre une demande.',
+    "Affiche dans la conversation un formulaire de demande de devis court, pré-rempli avec ce que tu as compris du besoin. " +
+    "La personne n'aura plus qu'à compléter son nom et son email. N'écrit rien et n'envoie rien : c'est elle qui valide. " +
+    "Appelle-le dès que le besoin est identifiable, sans attendre d'avoir toutes les informations.",
   input_schema: {
     type: 'object',
     properties: {
-      email: { type: 'string', description: "Email du visiteur. Obligatoire." },
-      message: { type: 'string', description: "Le besoin, reformulé clairement et complètement pour l'équipe : prestation souhaitée, produits évoqués, contraintes de régime, précisions utiles." },
-      nom: { type: 'string', description: 'Nom et prénom du visiteur, si donné.' },
-      societe: { type: 'string', description: 'Nom de la société, si donné.' },
-      telephone: { type: 'string', description: 'Téléphone, si donné.' },
+      recapitulatif: { type: 'string', description: "Le besoin reformulé pour l'équipe, en deux ou trois phrases : prestation, produits évoqués, contraintes de régime, horaire, précisions utiles. Ce texte est affiché à la personne et modifiable par elle." },
       prestation: {
         type: 'string',
-        enum: ['Petit-déjeuner', 'Pause goûter', 'Plateaux repas', 'Lunch box', 'Buffet à partager', 'Cocktail', 'Plateaux apéritifs', 'Animation culinaire', 'Boissons', 'Autre demande'],
-        description: "Type de prestation. Choisis la valeur la plus proche du besoin ; ne mets « Autre demande » que si rien ne correspond.",
+        enum: ['petit-dejeuner', 'plateaux-repas', 'cocktail-buffet', 'gouter', 'evenement-sur-mesure', 'autre'],
+        description: "Type de prestation le plus proche du besoin.",
       },
-      date_evenement: { type: 'string', description: "Date de l'événement au format AAAA-MM-JJ, déduite de la date du jour donnée dans le contexte (« le 20 » = le prochain 20 à venir). Chaîne vide si aucune date n'a été évoquée." },
-      nb_personnes: { type: 'string', description: "Nombre de convives, si donné." },
-      ville: { type: 'string', description: "Ville ou arrondissement de livraison, si donné." },
+      date: { type: 'string', description: "Date de l'événement au format AAAA-MM-JJ, déduite de la date du jour donnée dans le contexte. Chaîne vide si aucune date n'a été évoquée." },
+      convives: { type: 'string', description: "Nombre de convives, en chiffres. Chaîne vide si inconnu." },
+      ville: { type: 'string', description: "Ville ou arrondissement de livraison. Chaîne vide si inconnu." },
     },
-    required: ['email', 'message', 'prestation', 'date_evenement'],
+    required: ['recapitulatif', 'prestation', 'date', 'convives', 'ville'],
     additionalProperties: false,
   },
   strict: true,
@@ -166,48 +161,33 @@ export async function POST(request) {
       messages,
     })
 
-    let demandeEnregistree = false
+    let formulaire = null
 
-    // Un seul aller-retour d'outil suffit : l'assistant transmet, puis conclut.
+    // Un seul aller-retour d'outil : l'assistant ouvre le formulaire, puis conclut.
     if (reponse.stop_reason === 'tool_use') {
       const appels = reponse.content.filter(b => b.type === 'tool_use')
       const resultats = []
 
       for (const appel of appels) {
-        if (appel.name !== 'enregistrer_demande') {
+        if (appel.name !== 'ouvrir_formulaire') {
           resultats.push({ type: 'tool_result', tool_use_id: appel.id, is_error: true, content: 'Outil inconnu.' })
           continue
         }
         const d = appel.input || {}
-        try {
-          await logDemandeToOS({
-            source: 'assistant-site',
-            nom: d.nom || null,
-            societe: d.societe || null,
-            email: d.email,
-            telephone: d.telephone || null,
-            prestation: d.prestation || 'Autre demande',
-            date_evenement: d.date_evenement || null,
-            nb_personnes: d.nb_personnes || null,
-            ville: d.ville || null,
-            message: d.message,
-            raw: { ...d, page, attribution, conversation: messages },
-          })
-          demandeEnregistree = true
-          resultats.push({
-            type: 'tool_result',
-            tool_use_id: appel.id,
-            content: "Demande transmise à l'équipe. Confirme en une phrase que quelqu'un revient vers la personne sous 24 h, et ne redemande plus ses coordonnées.",
-          })
-        } catch (e) {
-          console.error('api/chat: échec enregistrement demande', e)
-          resultats.push({
-            type: 'tool_result',
-            tool_use_id: appel.id,
-            is_error: true,
-            content: "Transmission impossible. Invite la personne à écrire à commercial@lecrin-traiteur.fr.",
-          })
+        formulaire = {
+          recapitulatif: String(d.recapitulatif || '').slice(0, 1200),
+          prestation: String(d.prestation || 'autre'),
+          date: ISO_DATE.test(d.date || '') ? d.date : '',
+          convives: String(d.convives || '').slice(0, 20),
+          ville: String(d.ville || '').slice(0, 120),
         }
+        resultats.push({
+          type: 'tool_result',
+          tool_use_id: appel.id,
+          content:
+            "Le formulaire est affiché sous ta réponse, pré-rempli. Dis en UNE phrase qu'il n'y a plus qu'à compléter " +
+            "le nom et l'email pour recevoir le devis sous 24 h. Ne redemande aucune coordonnée et ne répète pas le récapitulatif.",
+        })
       }
 
       reponse = await client.messages.create({
@@ -227,7 +207,7 @@ export async function POST(request) {
 
     return Response.json({
       reply: texte || "Je n'ai pas réussi à répondre. Écrivez-nous à commercial@lecrin-traiteur.fr, on revient vers vous sous 24 h.",
-      demandeEnregistree,
+      formulaire,
     })
   } catch (e) {
     if (e instanceof Anthropic.RateLimitError) {

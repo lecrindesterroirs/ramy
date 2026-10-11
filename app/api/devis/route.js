@@ -19,6 +19,9 @@ export async function POST(request) {
   try {
     const body = await request.json()
     const { prestation, date, convives, ville, budget, message, nom, societe, email, telephone, website } = body
+    // L'assistant du site poste ici aussi : même validation, même notification,
+    // seule l'origine change dans le registre de l'OS.
+    const source = body.source === 'assistant' ? 'assistant' : 'devis'
 
     // Honeypot : un bot remplit le champ caché "website" → on accepte sans envoyer
     if (website) {
@@ -39,7 +42,7 @@ export async function POST(request) {
     // Enregistre la demande dans l'OS (registre « Demandes entrantes »),
     // AVANT l'email pour ne rien perdre même si l'envoi échoue. Best-effort.
     await logDemandeToOS({
-      source: 'devis', nom, societe, email, telephone,
+      source, nom, societe, email, telephone,
       prestation: prestationLabel, date_evenement: date, nb_personnes: convives,
       ville, budget, message, raw: body,
     })
@@ -51,7 +54,7 @@ export async function POST(request) {
       from: 'L\'Écrin Traiteur <commercial@lecrin-traiteur.fr>',
       to: ['commercial@lecrin-traiteur.fr'],
       replyTo: email,
-      subject: `Nouvelle demande de devis, ${prestationLabel} · ${nomLabel}${societe ? ` (${societe})` : ''}`,
+      subject: `${source === 'assistant' ? 'Demande via l\'assistant' : 'Nouvelle demande de devis'}, ${prestationLabel} · ${nomLabel}${societe ? ` (${societe})` : ''}`,
       html: `
         <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #FDFBF7;">
           <h2 style="font-family: Georgia, serif; font-weight: 400; color: #1A1A1A; border-bottom: 1px solid #E8DFD0; padding-bottom: 16px; margin-bottom: 8px;">
@@ -82,7 +85,7 @@ export async function POST(request) {
           </table>
 
           <p style="font-family: sans-serif; font-size: 11px; color: #999; margin-top: 32px; padding-top: 16px; border-top: 1px solid #E8DFD0;">
-            Reçu depuis le formulaire de devis, L'Écrin Traiteur
+            Reçu depuis ${source === 'assistant' ? "l'assistant du site" : 'le formulaire de devis'}, L'Écrin Traiteur
           </p>
         </div>
       `,

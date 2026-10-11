@@ -13,7 +13,7 @@ import { getAttribution } from '../lib/attribution'
 const EXCLUS = ['/devis', '/panier', '/commande-confirmee']
 
 const ACCUEIL =
-  "Bonjour. Je peux vous renseigner sur la carte, les prix, les délais et les livraisons, et transmettre votre demande à l'équipe.\n\nQue préparez-vous ?"
+  "Bonjour, je suis votre assistant chez L'Écrin.\n\nJe réponds sur la carte, les prix, les délais et les livraisons, et je prépare votre demande de devis.\n\nQue préparez-vous ?"
 
 const SUGGESTIONS = [
   'Un petit-déjeuner pour 20 personnes',
@@ -27,6 +27,8 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState([{ role: 'assistant', content: ACCUEIL }])
   const [saisie, setSaisie] = useState('')
   const [enCours, setEnCours] = useState(false)
+  const [formulaire, setFormulaire] = useState(null)   // pré-rempli par l'assistant
+  const [envoye, setEnvoye] = useState(false)
   const filRef = useRef(null)
   const champRef = useRef(null)
 
@@ -68,6 +70,7 @@ export default function ChatWidget() {
         }),
       })
       const data = await res.json().catch(() => ({}))
+      if (data.formulaire && !envoye) setFormulaire(f => f || data.formulaire)
       setMessages(m => [...m, {
         role: 'assistant',
         content: res.ok && data.reply
@@ -82,26 +85,26 @@ export default function ChatWidget() {
     } finally {
       setEnCours(false)
     }
-  }, [messages, enCours, pathname])
+  }, [messages, enCours, pathname, envoye])
 
   if (exclu) return null
 
   return (
     <>
       {!ouvert && (
-        <button onClick={() => setOuvert(true)} className="chat-launcher" aria-label="Ouvrir l'assistant">
-          <Bulle />
-          <span className="chat-launcher-txt">Une question ?</span>
+        <button onClick={() => setOuvert(true)} className="chat-launcher" aria-label="Ouvrir le chat en direct">
+          <span className="chat-avatar"><Conseiller /><i className="chat-pastille" aria-hidden="true" /></span>
+          <span className="chat-launcher-txt">Chat en direct</span>
         </button>
       )}
 
       {ouvert && (
         <div className="chat-panneau" role="dialog" aria-label="Assistant L'Écrin Traiteur" aria-modal="false">
           <header className="chat-entete">
-            <img src="/logo-footer.svg" alt="" className="chat-mono" width="26" height="26" />
+            <span className="chat-avatar chat-avatar-lg"><Conseiller /><i className="chat-pastille" aria-hidden="true" /></span>
             <div className="chat-titre">
               <span className="chat-marque">L&apos;Écrin Traiteur</span>
-              <span className="chat-sous">Réponse immédiate · Devis sous 24 h</span>
+              <span className="chat-sous">En ligne · Devis sous 24 h</span>
             </div>
             <button onClick={() => setOuvert(false)} aria-label="Fermer l'assistant" className="chat-fermer">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -136,6 +139,16 @@ export default function ChatWidget() {
                 <div className="chat-points"><span /><span /><span /></div>
               </div>
             )}
+
+            {formulaire && !enCours && (
+              <Formulaire
+                pre={formulaire}
+                envoye={envoye}
+                page={pathname}
+                conversation={messages}
+                onEnvoye={() => { setEnvoye(true); setFormulaire(null) }}
+              />
+            )}
           </div>
 
           <form className="chat-barre" onSubmit={e => { e.preventDefault(); envoyer(saisie) }}>
@@ -164,17 +177,35 @@ export default function ChatWidget() {
       )}
 
       <style jsx global>{`
+        /* Lanceur : clair et posé, pas un bloc noir qui flotte au-dessus des photos. */
         .chat-launcher {
           position: fixed; right: 28px; bottom: 28px; z-index: 115;
           display: flex; align-items: center; gap: 11px;
-          padding: 14px 20px;
-          background: #111111; color: #FFFFFF; border: 1px solid #111111;
-          font-family: 'Neue Montreal', sans-serif; font-size: 11px; font-weight: 500;
-          text-transform: uppercase; letter-spacing: 0.14em;
-          cursor: pointer; transition: opacity .3s ease;
-          box-shadow: 0 10px 28px rgba(17,17,17,.16);
+          padding: 9px 18px 9px 9px;
+          background: #FFFFFF; color: #1C1614; border: 1px solid rgba(17,17,17,.12);
+          font-family: 'Neue Montreal', sans-serif; font-size: 11.5px; font-weight: 500;
+          text-transform: uppercase; letter-spacing: 0.12em;
+          cursor: pointer; transition: border-color .3s ease, box-shadow .3s ease;
+          box-shadow: 0 8px 26px rgba(17,17,17,.1);
         }
-        .chat-launcher:hover { opacity: .85; }
+        .chat-launcher:hover { border-color: rgba(17,17,17,.3); box-shadow: 0 10px 30px rgba(17,17,17,.15); }
+
+        /* Avatar conseiller + pastille « en ligne ». */
+        .chat-avatar {
+          position: relative; flex-shrink: 0;
+          width: 34px; height: 34px; border-radius: 50% !important;
+          background: #F8F5EF; color: #875E10;
+          display: flex; align-items: center; justify-content: center;
+        }
+        .chat-avatar svg { width: 19px; height: 19px; }
+        .chat-avatar-lg { width: 38px; height: 38px; }
+        .chat-avatar-lg svg { width: 21px; height: 21px; }
+        .chat-pastille {
+          position: absolute; right: -1px; bottom: -1px;
+          width: 9px; height: 9px; border-radius: 50% !important;
+          background: #2E9E5B; border: 2px solid #FFFFFF;
+        }
+        .chat-avatar-lg .chat-pastille { width: 10px; height: 10px; }
 
         .chat-panneau {
           position: fixed; right: 28px; bottom: 28px; z-index: 116;
@@ -193,7 +224,6 @@ export default function ChatWidget() {
           padding: 20px 20px 18px; background: #FFFFFF;
           border-bottom: 1px solid rgba(17,17,17,.09);
         }
-        .chat-mono { width: 26px; height: auto; flex-shrink: 0; opacity: .9; }
         .chat-titre { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
         .chat-marque {
           font-family: 'Baskerville Display PT', Georgia, serif; font-size: 17px; line-height: 1; color: #1C1614;
@@ -260,6 +290,50 @@ export default function ChatWidget() {
         .chat-suggestion:hover { color: #875E10; }
         .chat-suggestion:hover span { color: #875E10; transform: translateX(3px); }
 
+        /* ── Formulaire pré-rempli ── */
+        .chat-form { padding: 22px 0 6px; border-top: 1px solid rgba(17,17,17,.07); }
+        .chat-form-intro {
+          margin: -4px 0 16px; font-family: 'Neue Montreal', sans-serif;
+          font-size: 13px; line-height: 1.6; color: #605A4F;
+        }
+        .chat-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        .chat-chip {
+          padding: 7px 12px; background: none; border: 1px solid rgba(17,17,17,.14);
+          font-family: 'Neue Montreal', sans-serif; font-size: 11.5px; color: #605A4F;
+          cursor: pointer; transition: all .2s ease;
+        }
+        .chat-chip:hover { border-color: rgba(135,94,16,.5); color: #875E10; }
+        .chat-chip-on { border-color: #875E10; color: #875E10; background: rgba(224,161,38,.07); }
+
+        .chat-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .chat-champ { display: block; margin-bottom: 10px; }
+        .chat-champ > span {
+          display: block; margin-bottom: 5px;
+          font-family: 'Neue Montreal', sans-serif; font-size: 9.5px; font-weight: 500;
+          text-transform: uppercase; letter-spacing: 0.14em; color: #A39B8E;
+        }
+        .chat-champ input, .chat-champ textarea {
+          width: 100%; padding: 10px 12px; background: #FDFBF7;
+          border: 1px solid rgba(17,17,17,.1);
+          font-family: 'Neue Montreal', sans-serif; font-size: 14px; color: #1C1614;
+          resize: vertical;
+        }
+        .chat-champ input:focus-visible, .chat-champ textarea:focus-visible {
+          outline: 1px solid #875E10; outline-offset: -1px; background: #FFFFFF;
+        }
+        .chat-envoi {
+          width: 100%; margin-top: 14px; padding: 15px 20px;
+          background: #111111; color: #FFFFFF; border: 1px solid #111111;
+          font-family: 'Neue Montreal', sans-serif; font-size: 11.5px; font-weight: 500;
+          text-transform: uppercase; letter-spacing: 0.13em;
+          cursor: pointer; transition: opacity .25s ease;
+        }
+        .chat-envoi:hover:not(:disabled) { opacity: .85; }
+        .chat-envoi:disabled { opacity: .45; cursor: default; }
+        .chat-form-erreur {
+          margin-top: 10px; font-family: 'Neue Montreal', sans-serif; font-size: 12px; color: #9A3B2F;
+        }
+
         /* ── Saisie ── */
         .chat-barre { display: flex; align-items: center; border-top: 1px solid rgba(17,17,17,.09); background: #FFFFFF; }
         .chat-label-cache {
@@ -287,8 +361,9 @@ export default function ChatWidget() {
 
         @media (max-width: 768px) {
           /* La barre d'action mobile occupe déjà le bas de l'écran. */
-          .chat-launcher { right: 16px; bottom: 84px; padding: 13px 15px; }
+          .chat-launcher { right: 16px; bottom: 84px; padding: 7px; }
           .chat-launcher-txt { display: none; }
+          .chat-grille { grid-template-columns: 1fr; gap: 0; }
           .chat-panneau {
             right: 0; left: 0; bottom: 0; width: 100%; max-width: none; height: 84vh;
             border-left: none; border-right: none; border-bottom: none;
@@ -303,11 +378,130 @@ export default function ChatWidget() {
   )
 }
 
-function Bulle() {
+const PRESTATIONS = [
+  ['petit-dejeuner', 'Petit-déjeuner'],
+  ['plateaux-repas', 'Plateaux repas'],
+  ['cocktail-buffet', 'Cocktail / Buffet'],
+  ['gouter', 'Goûter'],
+  ['evenement-sur-mesure', 'Sur mesure'],
+  ['autre', 'Autre'],
+]
+
+/* Formulaire court ouvert par l'assistant, pré-rempli avec ce qu'il a compris.
+ * Poste sur /api/devis : même validation, même notification, même registre que
+ * le formulaire du site — seule la source change. */
+function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
+  const [v, setV] = useState({
+    prestation: pre.prestation || 'autre',
+    date: pre.date || '',
+    convives: pre.convives || '',
+    ville: pre.ville || '',
+    message: pre.recapitulatif || '',
+    nom: '', email: '', societe: '', telephone: '', website: '',
+  })
+  const [etat, setEtat] = useState('pret')   // pret | envoi | erreur
+  const maj = (k) => (e) => setV(x => ({ ...x, [k]: e.target.value }))
+
+  const soumettre = async (e) => {
+    e.preventDefault()
+    if (etat === 'envoi') return
+    setEtat('envoi')
+    try {
+      const res = await fetch('/api/devis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...v,
+          source: 'assistant',
+          attribution: getAttribution(),
+          pageOrigine: page,
+          conversation: conversation.map(m => `${m.role === 'user' ? 'Client' : 'Assistant'} : ${m.content}`).join('\n\n'),
+        }),
+      })
+      if (!res.ok) throw new Error('refus')
+      onEnvoye()
+    } catch {
+      setEtat('erreur')
+    }
+  }
+
+  if (envoye) return null
+
   return (
-    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <path d="M1.5 3.2A1.7 1.7 0 0 1 3.2 1.5h9.6a1.7 1.7 0 0 1 1.7 1.7v6.4a1.7 1.7 0 0 1-1.7 1.7H6.1L2.8 14.1V11.3h-.3a1 1 0 0 1-1-1V3.2Z"
-        stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+    <form className="chat-form" onSubmit={soumettre}>
+      <span className="chat-qui">Votre demande</span>
+      <p className="chat-form-intro">Vérifiez, complétez, et l&apos;équipe revient sous 24 h.</p>
+
+      <div className="chat-chips" role="group" aria-label="Type de prestation">
+        {PRESTATIONS.map(([k, label]) => (
+          <button
+            key={k}
+            type="button"
+            className={v.prestation === k ? 'chat-chip chat-chip-on' : 'chat-chip'}
+            aria-pressed={v.prestation === k}
+            onClick={() => setV(x => ({ ...x, prestation: k }))}
+          >{label}</button>
+        ))}
+      </div>
+
+      <div className="chat-grille">
+        <Champ id="cf-date" label="Date" type="date" value={v.date} onChange={maj('date')} autoComplete="off" />
+        <Champ id="cf-convives" label="Convives" type="number" min="1" value={v.convives} onChange={maj('convives')} placeholder="20" autoComplete="off" />
+      </div>
+      <Champ id="cf-ville" label="Ville ou arrondissement" value={v.ville} onChange={maj('ville')} placeholder="Paris 8e" autoComplete="address-level2" />
+
+      <div className="chat-grille">
+        <Champ id="cf-nom" label="Nom" value={v.nom} onChange={maj('nom')} required autoComplete="name" />
+        <Champ id="cf-societe" label="Société" value={v.societe} onChange={maj('societe')} autoComplete="organization" />
+      </div>
+      <div className="chat-grille">
+        <Champ id="cf-email" label="Email" type="email" value={v.email} onChange={maj('email')} required autoComplete="email" />
+        <Champ id="cf-tel" label="Téléphone" type="tel" value={v.telephone} onChange={maj('telephone')} autoComplete="tel" />
+      </div>
+
+      <label className="chat-champ">
+        <span>Votre demande</span>
+        <textarea rows={4} value={v.message} onChange={maj('message')} maxLength={2000} />
+      </label>
+
+      {/* Piège à robots, identique au formulaire du site */}
+      <input
+        type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
+        value={v.website} onChange={maj('website')}
+        style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
+      />
+
+      <button type="submit" className="chat-envoi" disabled={etat === 'envoi'}>
+        {etat === 'envoi' ? 'Envoi…' : 'Envoyer ma demande'}
+      </button>
+      {etat === 'erreur' && (
+        <p className="chat-form-erreur">
+          L&apos;envoi a échoué. Écrivez-nous à commercial@lecrin-traiteur.fr.
+        </p>
+      )}
+    </form>
+  )
+}
+
+function Champ({ label, id, ...props }) {
+  return (
+    <label className="chat-champ" htmlFor={id}>
+      <span>{label}{props.required ? ' *' : ''}</span>
+      <input id={id} {...props} />
+    </label>
+  )
+}
+
+/* Conseiller avec casque : un visage plutôt qu'une bulle de messagerie,
+   dessiné au trait comme les pictogrammes du site. */
+function Conseiller() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 12.5v-.9a7 7 0 0 1 14 0v.9" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M5 12.2h.6a1.4 1.4 0 0 1 1.4 1.4v1.8a1.4 1.4 0 0 1-1.4 1.4H5a1.4 1.4 0 0 1-1.4-1.4v-1.8A1.4 1.4 0 0 1 5 12.2ZM19 12.2h-.6a1.4 1.4 0 0 0-1.4 1.4v1.8a1.4 1.4 0 0 0 1.4 1.4h.6a1.4 1.4 0 0 0 1.4-1.4v-1.8a1.4 1.4 0 0 0-1.4-1.4Z"
+        stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+      <path d="M19 16.8v.8a2.4 2.4 0 0 1-2.4 2.4H13" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <circle cx="11.6" cy="20" r="1.3" stroke="currentColor" strokeWidth="1.3" />
     </svg>
   )
 }
