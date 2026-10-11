@@ -91,6 +91,10 @@ export default function RootLayout({ children }) {
           <div id="main-content" style={{ display: 'contents' }}>{children}</div>
         </CartProvider>
         <MobileCTA />
+        {/* Pas de clé, pas de bouton : mieux vaut rien qu'un assistant injoignable.
+            Attention au déploiement : l'ignoreCommand de vercel.json saute les builds
+            qui ne touchent aucun fichier surveillé — ajouter la variable sur Vercel ne
+            suffit donc pas, et un commit vide ne déclenche rien. */}
         {process.env.ANTHROPIC_API_KEY ? <ChatWidget /> : null}
       </body>
     </html>
