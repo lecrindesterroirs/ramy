@@ -146,7 +146,14 @@ export default function ChatWidget() {
                 envoye={envoye}
                 page={pathname}
                 conversation={messages}
-                onEnvoye={() => { setEnvoye(true); setFormulaire(null) }}
+                onEnvoye={(prenom) => {
+                  setEnvoye(true)
+                  setFormulaire(null)
+                  setMessages(m => [...m, {
+                    role: 'assistant',
+                    content: `C'est envoyé${prenom ? `, ${prenom}` : ''}. Vous recevez un accusé de réception par email, et l'équipe revient vers vous avec une proposition sous 24 h.\n\nSi vous voulez ajouter quelque chose, dites-le-moi, je le transmets.`,
+                  }])
+                }}
               />
             )}
           </div>
@@ -419,7 +426,7 @@ function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
         }),
       })
       if (!res.ok) throw new Error('refus')
-      onEnvoye()
+      onEnvoye(v.nom.trim().split(/\s+/)[0] || '')
     } catch {
       setEtat('erreur')
     }
