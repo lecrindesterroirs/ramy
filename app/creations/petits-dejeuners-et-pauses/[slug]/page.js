@@ -12,6 +12,8 @@ import { productOfferPolicy, BUSINESS_ID } from '../../../../lib/site'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import DevisRapide from '../../../../components/DevisRapide'
 import ParallaxImage from '../../../../components/ParallaxImage'
+import FicheAsavoir from '../../../../components/FicheAsavoir'
+import { asavoirProduit } from '../../../../lib/ficheAsavoir'
 
 const COFFRETS = [
   { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.webp' },
@@ -223,7 +225,7 @@ export default function ProductPage() {
             <div className="mad-flavors-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px', maxWidth: '1160px', margin: '0 auto', padding: '0 72px 8px' }}>
               {MADELEINE_FLAVORS.map(f => (
                 <div key={f.id} style={{ textAlign: 'center', padding: '10px 8px' }}>
-                  <img loading="lazy" src={f.img} alt={f.label} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
+                  <img loading="lazy" src={f.img} alt={`Madeleine ${f.label.toLowerCase()}`} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
                   <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '6px' }}>{f.label}</p>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{f.description}</p>
                 </div>
@@ -298,6 +300,9 @@ export default function ProductPage() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px' }}>
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
+
+        {/* ── À savoir : format, prix, régimes, délai, livraison (rendu serveur) ── */}
+        <FicheAsavoir {...asavoirProduit(product, { kind: 'pdj' })} />
 
         {/* ── Article SEO ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>

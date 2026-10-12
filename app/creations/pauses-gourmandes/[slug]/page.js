@@ -8,6 +8,8 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import GalleryFiche from '../../../../components/GalleryFiche'
+import FicheAsavoir from '../../../../components/FicheAsavoir'
+import { asavoirPause } from '../../../../lib/ficheAsavoir'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { PAUSES } from '../page'
@@ -126,6 +128,8 @@ function CoffretDetail({ produit }) {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px' }}>
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
+        {/* Bloc « À savoir » : formats, prix, régimes, délai, livraison (rendu serveur) */}
+        <FicheAsavoir {...asavoirPause(produit)} />
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 20px' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             Pause Goûter · Traiteur entreprise
@@ -192,6 +196,7 @@ export default function PauseDetail() {
       seoEyebrow="Pause Goûter · Traiteur entreprise"
       seoTitle={produit.seoTitle || "La pause gourmande qui réunit vos équipes l'après-midi"}
       seoHtml={produit.seoHtml || SEO_HTML}
+      asavoir={asavoirPause(produit)}
       devisPrestation="Goûter"
       devisTitre="Une Pause Goûter à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."

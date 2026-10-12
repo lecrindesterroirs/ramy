@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Traiteur Halal & Inclusif Entreprise, Paris & Île-de-France",
-  description: "Traiteur d'entreprise halal et sans porc à Paris & IDF. Options végétariennes, vegan et sans gluten. Petits-déjeuners, plateaux repas et buffets livrés dès 6h30. Devis gratuit.",
+  title: { absolute: "Traiteur halal d'entreprise à Paris : tout sans porc" },
+  description: "Traiteur d'entreprise tout halal et sans porc à Paris & IDF. Options végé, vegan et sans gluten, livraison dès 6h30. Devis gratuit sous 24h.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Traiteur Halal & Inclusif Entreprise | L'Écrin Traiteur",

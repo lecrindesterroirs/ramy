@@ -81,7 +81,7 @@ export default function NosArtisans() {
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)', overflowX: 'hidden' }}>
 
         {/* ── Carte de France ── */}
-        <ArtisansMapSection />
+        <ArtisansMapSection headingTag="h1" />
 
         {/* ── Carrousel artisans partenaires ── */}
         <div className="art-carousel-section" style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px' }}>

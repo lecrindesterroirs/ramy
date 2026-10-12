@@ -27,7 +27,11 @@ export function generateMetadata({ params }) {
     return { title: "Plateaux apéritifs à partager, traiteur à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
   const title = `${m.nom}, apéritif Paris | L'Écrin Traiteur`
-  const description = `${m.d} Plateau apéritif à partager livré à Paris et en Île-de-France dès 6h30, devis sous 24h.`
+  const description = [
+    `${m.d} Plateau apéritif à partager livré à Paris et en Île-de-France dès 6h30, devis sous 24h.`,
+    `${m.d} Plateau apéritif livré à Paris et en IDF dès 6h30, devis sous 24h.`,
+    `${m.d} Livré à Paris dès 6h30, devis sous 24h.`,
+  ].find(c => c.length <= 155) || `${m.d} Livré à Paris dès 6h30.`
   return {
     title: { absolute: title },
     description,

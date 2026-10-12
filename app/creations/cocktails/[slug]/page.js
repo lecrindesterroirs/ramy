@@ -9,19 +9,23 @@ import Reveal from '../../../../components/Reveal'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import Breadcrumb from '../../../../components/Breadcrumb'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
+import FicheAsavoir from '../../../../components/FicheAsavoir'
+import { asavoirCocktail } from '../../../../lib/ficheAsavoir'
 import { productOfferPolicy } from '../../../../lib/site'
 import { FORMULES } from '../page'
 
+// Photos d'ambiance : l'alt décrit ce que montre chaque visuel (vérifié sur les
+// photos), pour ne pas répéter le même texte sur les neuf images.
 const GALERIE = [
-  '/hero-cocktail.webp',
-  '/prod-atelier-charcuterie.webp',
-  '/prod-atelier-saumon.webp',
-  '/prod-atelier-lobster.webp',
-  '/prod-bar-mocktails.webp',
-  '/prod-atelier-fromages.webp',
-  '/prod-atelier-desserts.webp',
-  '/prod-bar-fruits.webp',
-  '/prod-fontaine-chocolat.webp',
+  { src: '/hero-cocktail.webp', alt: "Planche de bouchées apéritives, cocktail d'entreprise L'Écrin Traiteur" },
+  { src: '/prod-atelier-charcuterie.webp', alt: "Atelier charcuterie lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-atelier-saumon.webp', alt: "Atelier saumon fumé et gravlax lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-atelier-lobster.webp', alt: "Atelier lobster roll lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-bar-mocktails.webp', alt: "Bar à mocktails lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-atelier-fromages.webp', alt: "Atelier fromages affinés et pains artisanaux lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-atelier-desserts.webp', alt: "Atelier desserts lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-bar-fruits.webp', alt: "Bar à fruits lors d'une réception L'Écrin Traiteur" },
+  { src: '/prod-fontaine-chocolat.webp', alt: "Fontaine de chocolat lors d'une réception L'Écrin Traiteur" },
 ]
 
 function Colonne({ titre, items, accent }) {
@@ -129,6 +133,9 @@ export default function CocktailDetail() {
           </div>
         </Reveal>
 
+        {/* ── À savoir : pièces, prix, délai, livraison (rendu serveur) ── */}
+        <FicheAsavoir {...asavoirCocktail(f)} paddingBottom="0px" />
+
         {/* ── Galerie, l'ambiance (après la carte : on montre le menu d'abord) ── */}
         <section style={{ background: '#F5F1E8', padding: '72px 0 96px', marginTop: '80px' }}>
           <Reveal>
@@ -143,10 +150,10 @@ export default function CocktailDetail() {
           </Reveal>
 
           <div className="ckd-gallery" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 72px', columns: 3, columnGap: '14px' }}>
-            {GALERIE.map((src, i) => (
+            {GALERIE.map(({ src, alt }, i) => (
               <Reveal key={i} delay={(i % 3) * 90}>
                 <div className="ckd-gallery-item" style={{ breakInside: 'avoid', marginBottom: '14px', overflow: 'hidden' }}>
-                  <img src={src} alt="Réception L'Écrin" loading="lazy" style={{ width: '100%', display: 'block', transition: 'transform 0.7s ease' }} />
+                  <img src={src} alt={alt} loading="lazy" style={{ width: '100%', display: 'block', transition: 'transform 0.7s ease' }} />
                 </div>
               </Reveal>
             ))}

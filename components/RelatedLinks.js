@@ -40,7 +40,10 @@ export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, 
             >
               {it.img && (
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', background: '#F8F5EF' }}>
-                  <img src={it.img} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  {/* alt vide volontaire : la vignette est dans le même lien que le titre visible
+                      juste dessous (doublon pour les lecteurs d'écran). Un alt spécifique reste
+                      possible par carte via `imgAlt`. */}
+                  <img src={it.img} alt={it.imgAlt || ''} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               )}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: it.img ? '22px 26px 26px' : '28px 26px' }}>

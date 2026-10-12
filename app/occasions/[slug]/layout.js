@@ -9,8 +9,12 @@ export async function generateMetadata({ params }) {
   const o = OCCASIONS.find(o => o.slug === slug)
   if (!o) return {}
 
+  // Marque en suffixe seulement si le titre reste sous ~60 caractères (sinon tronqué dans Google).
+  const avecMarque = `${o.seoTitle} | L'Écrin Traiteur`
+  const title = avecMarque.length <= 60 ? avecMarque : o.seoTitle
+
   return {
-    title: `${o.seoTitle} | L'Écrin Traiteur`,
+    title: { absolute: title },
     description: o.seoDescription,
     openGraph: {
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],

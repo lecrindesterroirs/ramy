@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, Suspense } from 'react'
-import { useParams, notFound, useSearchParams } from 'next/navigation'
+import { useParams, notFound } from 'next/navigation'
+import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
@@ -12,7 +13,7 @@ import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
 function AnimationDetailInner() {
   const { slug } = useParams()
-  const searchParams = useSearchParams()
+  const searchParams = useUrlSearchParams()
 
   useEffect(() => {
     window.scrollTo(0, 0)

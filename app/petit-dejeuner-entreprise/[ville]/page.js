@@ -17,6 +17,8 @@ export default function PdjVillePage() {
   const city = PDJ_VILLES.find(c => c.slug === ville)
   if (!city) notFound()
 
+  const otherCities = PDJ_VILLES.filter(c => c.slug !== city.slug)
+
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -130,6 +132,22 @@ export default function PdjVillePage() {
         body={city.heroDescription}
         seoArticle={city.seoArticle}
       />
+
+      {/* ── Maillage : mêmes formules dans les autres communes servies ── */}
+      {otherCities.length > 0 && (
+        <nav aria-label="Petit-déjeuner d'entreprise dans d'autres communes" style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 40px', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '16px' }}>
+            Aussi livré dans les communes voisines
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 22px' }}>
+            {otherCities.map(c => (
+              <a key={c.slug} href={`/petit-dejeuner-entreprise/${c.slug}`} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                Petit-déjeuner d'entreprise à {c.name}
+              </a>
+            ))}
+          </div>
+        </nav>
+      )}
 
       <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 64px', textAlign: 'center' }}>
         <a

@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useUrlSearchParams } from '../../../lib/useUrlSearchParams'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
@@ -170,11 +171,10 @@ function TextTab({ label, active, onClick, size = '16px', gap = '10px', underlin
 
 function PlateauxRepasInner() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = useUrlSearchParams()
   const [activeCollection, setActiveCollection] = useState('essentiel')
   const [activeFiltre, setActiveFiltre] = useState('tous')
   const [sortLabel, setSortLabel] = useState('En vedette')
-  const [hydrated, setHydrated] = useState(false)
 
   // Au montage, initialiser depuis les search params
   useEffect(() => {
@@ -182,7 +182,6 @@ function PlateauxRepasInner() {
     const filtre = searchParams.get('filtre') || 'tous'
     setActiveCollection(coll)
     setActiveFiltre(filtre)
-    setHydrated(true)
   }, [searchParams])
 
   // Chaque changement de collection/filtre → mettre à jour l'URL
@@ -198,11 +197,10 @@ function PlateauxRepasInner() {
     router.push(`/creations/plateaux-repas?collection=${coll}&filtre=${key}`, { shallow: true })
   }
 
-  if (!hydrated) return null
 
-  const col = COLLECTIONS.find(c => c.key === activeCollection)
+  const col = COLLECTIONS.find(c => c.key === activeCollection) || COLLECTIONS[0]
 
-  const produitsCollection = PRODUITS.filter(p => p.collection === activeCollection)
+  const produitsCollection = PRODUITS.filter(p => p.collection === col.key)
 
   // Filtres affichés = uniquement les catégories réellement présentes
   // dans la collection active (ex : pas de « Viande » en Essentiel).

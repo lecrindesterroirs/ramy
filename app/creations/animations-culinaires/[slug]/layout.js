@@ -4,13 +4,41 @@ export function generateStaticParams() {
   return ANIMATIONS.map(a => ({ slug: slugAnim(a.nom) }))
 }
 
+/* Premier candidat qui tient dans la limite (titre ~60 car., meta ~155 car.). */
+const fit = (candidats, max) => candidats.find(c => c.length <= max) || candidats[candidats.length - 1]
+
+/* Titres et metas écrits à la main pour les fiches qui ressortent en recherche
+   ou dont le nom du catalogue est trop long pour le résultat Google. */
+const OVERRIDES = {
+  'atelier-mini-burgers': {
+    title: 'Animation traiteur mini burgers : atelier live à Paris',
+    description: "Atelier mini burgers monté minute devant vos invités : cheeseburger, chicken crispy, bœuf effiloché BBQ, truffe-comté, halloumi. Animation live à Paris.",
+  },
+  'location-de-machine-expresso-professionnelle-en-entreprise': {
+    title: 'Location de machine expresso en entreprise à Paris',
+    description: "Une machine à expresso installée pour un café de qualité en libre-service, pour vos petits-déjeuners et événements d'entreprise à Paris et en IDF.",
+  },
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const a = ANIMATIONS.find(x => slugAnim(x.nom) === slug)
   if (!a) return { title: "Animation culinaire entreprise Paris | L'Écrin Traiteur" }
+  const o = OVERRIDES[slug] || {}
+  const univers = UNIVERS_LABEL[a.univers] || 'événement'
+  const title = o.title || fit([
+    `${a.nom}, animation culinaire | L'Écrin Traiteur`,
+    `${a.nom}, animation culinaire`,
+  ], 60)
+  const description = o.description || fit([
+    `${a.description} Animation culinaire live (${univers}) pour vos événements d'entreprise à Paris et en Île-de-France.`,
+    `${a.description} Animation culinaire live (${univers}) pour vos événements d'entreprise à Paris.`,
+    `${a.description} Animation culinaire live pour vos événements d'entreprise à Paris et en IDF.`,
+    `${a.description} Animation culinaire live pour vos événements à Paris.`,
+  ], 155)
   return {
-    title: { absolute: `${a.nom}, animation culinaire | L'Écrin Traiteur` },
-    description: `${a.description} Animation culinaire live (${UNIVERS_LABEL[a.univers] || 'événement'}) pour vos événements d'entreprise à Paris et en Île-de-France.`,
+    title: { absolute: title },
+    description,
     alternates: { canonical: `/creations/animations-culinaires/${slug}` },
     openGraph: {
       title: `${a.nom}, animation culinaire | L'Écrin Traiteur`,

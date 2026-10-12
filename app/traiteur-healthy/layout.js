@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Traiteur Healthy, Vegan & Végétarien Entreprise",
-  description: "Traiteur d'entreprise healthy, vegan et végétarien à Paris & IDF : fruits de saison, yaourts fermiers, jus pressés, adaptations sans gluten. Petits-déjeuners équilibrés livrés dès 6h30. Devis gratuit.",
+  title: { absolute: "Traiteur healthy, vegan et végétarien en entreprise" },
+  description: "Fruits de saison, yaourts fermiers, jus pressés, adaptations sans gluten : petits-déjeuners healthy et végétariens livrés dès 6h30 à Paris et en IDF.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Traiteur Healthy, Vegan & Végétarien | L'Écrin Traiteur",

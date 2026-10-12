@@ -10,8 +10,10 @@ export async function generateMetadata({ params }) {
   if (!product) {
     return { title: "Boisson introuvable | L'Écrin Traiteur" }
   }
+  // Marque en suffixe seulement si le titre reste sous ~60 caractères.
+  const avecMarque = `${product.seoTitle || product.name} | L'Écrin Traiteur`
   return {
-    title: { absolute: `${product.seoTitle || product.name} | L'Écrin Traiteur` },
+    title: { absolute: avecMarque.length <= 60 ? avecMarque : (product.seoTitle || product.name) },
     description: product.description + '. Livraison dès 6h30 à Paris et en Île-de-France. Commandez avant 14h la veille.',
     openGraph: {
       title: `${product.name} | L'Écrin Traiteur`,

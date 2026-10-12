@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, Suspense } from 'react'
-import { useParams, notFound, useSearchParams } from 'next/navigation'
+import { useParams, notFound } from 'next/navigation'
+import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PRODUITS, COLLECTIONS, prixMenu } from '../data'
 
@@ -15,7 +16,7 @@ const SEO_HTML = `
 
 function PlateauDetailInner() {
   const { slug } = useParams()
-  const searchParams = useSearchParams()
+  const searchParams = useUrlSearchParams()
 
   // Remonter en haut au montage
   useEffect(() => {

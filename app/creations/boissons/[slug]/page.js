@@ -3,6 +3,7 @@
 import { useParams, notFound } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { BOISSONS } from '../../../../lib/boissonsData'
+import { asavoirProduit } from '../../../../lib/ficheAsavoir'
 
 export default function BoissonPage() {
   const { slug } = useParams()
@@ -33,6 +34,7 @@ export default function BoissonPage() {
       seoEyebrow={product.categoryLabel}
       seoTitle={product.seoTitle}
       seoHtml={product.seoArticle}
+      asavoir={asavoirProduit(product, { kind: 'boisson' })}
       devisPrestation="Boissons"
       devisTitre="Un événement à Paris ou en Île-de-France ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."

@@ -9,6 +9,7 @@ import RelatedLinks from './RelatedLinks'
 import { BOISSONS } from '../lib/boissonsData'
 import { productOfferPolicy, BUSINESS_ID } from '../lib/site'
 import BusinessJsonLd from './BusinessJsonLd'
+import FicheAsavoir from './FicheAsavoir'
 
 // Cross-sell « À servir avec » : sélection de boissons complémentaires, montrée sur
 // toutes les fiches SAUF les fiches boissons elles-mêmes. Sélection curée, repli sur
@@ -36,6 +37,8 @@ const COMPLEMENT_BOISSONS = (curatedBoissons.length ? curatedBoissons : BOISSONS
    - breadcrumb            [{label, href?}]
    - backHref / backLabel
    - seoEyebrow, seoTitle, seoHtml, devisPrestation, devisTitre, devisSousTitre
+   - asavoir               { titre, items, cta, more }  optionnel, bloc « À savoir »
+                           (lib/ficheAsavoir.js), rendu côté serveur sous la fiche
 */
 
 export default function GalleryFiche({
@@ -48,6 +51,7 @@ export default function GalleryFiche({
   devisTitre = 'Un événement à Paris ou en Île-de-France ?',
   devisSousTitre = 'Répondez en 30 secondes, devis personnalisé sous 24h.',
   related = [], relatedTitle = 'Dans la même sélection',
+  asavoir = null,
 }) {
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
@@ -128,7 +132,8 @@ export default function GalleryFiche({
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginTop: '18px' }}>
                 {photos.slice(0, 4).map((src, i) => (
                   <div key={i} style={{ position: 'relative', width: '100%', aspectRatio: '16 / 10', overflow: 'hidden', borderRadius: '3px', background: '#F8F5EF' }}>
-                    <Image fill sizes="(max-width: 900px) 25vw, 12vw" src={src} alt="" style={{ objectFit: 'cover' }} />
+                    {/* La 1re vignette reprend la photo principale (alt vide : doublon) ; les suivantes sont d'autres vues du produit. */}
+                    <Image fill sizes="(max-width: 900px) 25vw, 12vw" src={src} alt={i === 0 ? '' : `${title}, vue ${i + 1}`} style={{ objectFit: 'cover' }} />
                   </div>
                 ))}
               </div>
@@ -226,6 +231,9 @@ export default function GalleryFiche({
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px' }}>
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
+
+        {/* Bloc « À savoir » : format, prix, régimes, délai, livraison (rendu serveur) */}
+        {asavoir && <FicheAsavoir {...asavoir} paddingBottom="64px" />}
 
         {/* Cross-sell « À servir avec » — placé avant l'article SEO */}
         <RelatedLinks eyebrow="Pour accompagner" title="À servir avec" items={complements} columns={4} />

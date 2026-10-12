@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useUrlSearchParams } from '../../../lib/useUrlSearchParams'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -160,14 +161,12 @@ function MenuCard({ produit }) {
 
 function LunchBoxInner() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = useUrlSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
-  const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
     const filtre = searchParams.get('filtre') || 'tous'
     setActiveFiltre(filtre)
-    setHydrated(true)
   }, [searchParams])
 
   function handleFilterChange(key) {
@@ -175,7 +174,6 @@ function LunchBoxInner() {
     router.push(`/creations/lunch-box?filtre=${key}`)
   }
 
-  if (!hydrated) return null
 
   const categoriesDispo = new Set(BOXES.map(b => b.categorie))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || categoriesDispo.has(f.key))

@@ -23,7 +23,7 @@ const SEO_ARTICLE = `
   <p>Nos assortiments alternent pièces froides raffinées, bouchées végétariennes et mignardises signées par nos artisans partenaires. L'objectif : que vos invités remarquent la différence dès la première bouchée, sans qu'aucun régime alimentaire ne soit laissé de côté. Chaque cocktail est équilibré pour tenir la durée réelle de votre événement.</p>
 
   <h2>Organiser votre cocktail d'entreprise à Paris</h2>
-  <p>Transmettez-nous la date, le nombre d'invités et le format souhaité : nous vous proposons un assortiment détaillé sous 24h. Livraison à l'heure exacte, présentation soignée prête à disposer. Commande avant <strong>14h la veille</strong>, facturation entreprise avec TVA. Pour un afterwork ou un pot de départ, nos repères d'organisation sont rassemblés dans ce <a href="/journal/traiteur-afterwork-pot-depart-entreprise-paris">guide dédié</a>.</p>
+  <p>Transmettez-nous la date, le nombre d'invités et le format souhaité : nous vous proposons un assortiment détaillé sous 24h. Livraison à l'heure exacte, présentation soignée prête à disposer. Commande avant <strong>14h la veille</strong>, facturation entreprise avec TVA. Pour un afterwork ou un pot de départ, découvrez notre offre <a href="/occasions/afterwork-entreprise">traiteur afterwork d'entreprise à Paris</a> et notre <a href="/journal/traiteur-afterwork-pot-depart-entreprise-paris">guide pour organiser un afterwork ou un pot de départ</a>.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */

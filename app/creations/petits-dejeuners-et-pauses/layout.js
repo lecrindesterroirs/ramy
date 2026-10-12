@@ -1,14 +1,17 @@
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 
+const TITLE = "Petit-déjeuner d'entreprise à Paris dès 8 € HT par personne"
+const DESCRIPTION = "Viennoiseries, jus, café et fruits : formule Classique dès 8 € HT par personne. Livraison dès 6h30 à Paris et en Île-de-France, devis gratuit sous 24h."
+
 export const metadata = {
-  title: "Petit-déjeuner d'entreprise à Paris : livraison dès 6h30",
-  description: "Petit-déjeuner d'entreprise à Paris dès 8€ HT/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
   alternates: { canonical: '/creations/petits-dejeuners-et-pauses' },
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
-    title: "Petit-déjeuner d'entreprise à Paris : livraison dès 6h30",
-    description: "Petit-déjeuner d'entreprise à Paris dès 8€ HT/pers. Classique, bio, sucré-salé. Livraison 6h30-18h. Devis gratuit sous 24h.",
+    title: TITLE,
+    description: DESCRIPTION,
   }
 }
 
@@ -21,7 +24,7 @@ const faqs = [
 export default function Layout({ children }) {
   return (
     <>
-      <FAQSchema faqs={faqs} pageTitle={metadata.title} />
+      <FAQSchema faqs={faqs} pageTitle={TITLE} />
       <PriceSchema productName="Petit-déjeuner d'entreprise" minPrice="8.00" />
       {children}
     </>

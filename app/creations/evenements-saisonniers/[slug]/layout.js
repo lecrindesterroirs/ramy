@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `Traiteur ${ev.nom} en entreprise à Paris, idées et conseils`,
+    title: { absolute: `Traiteur ${ev.nom} en entreprise à Paris` },
     description: `${ev.descCourt} Prestation traiteur livrée à Paris et en Île-de-France.`,
     alternates: { canonical: `/creations/evenements-saisonniers/${params.slug}` },
     openGraph: {

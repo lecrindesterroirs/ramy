@@ -10,6 +10,7 @@ import LogosSection from '../../../components/LogosSection'
 import CategoryClosing from '../../../components/CategoryClosing'
 import RelatedLinks from '../../../components/RelatedLinks'
 import { CITIES } from '../../../lib/citiesData'
+import { PDJ_VILLES } from '../../../lib/pdjVillesData'
 import { CITY_NEIGHBORS } from '../../../lib/cityNeighbors'
 import { OCCASIONS } from '../../../lib/occasionsData'
 import ParallaxImage from '../../../components/ParallaxImage'
@@ -45,6 +46,9 @@ export default function CityPage() {
     .map(slug => CITIES.find(c => c.slug === slug))
     .filter(Boolean)
     .slice(0, 4)
+
+  // Page « petit-déjeuner d'entreprise + ville » dédiée, si elle existe (maillage contextuel)
+  const pdjPage = PDJ_VILLES.find(p => p.slug === city.slug)
 
   // JSON-LD LocalBusiness schema
   const jsonLd = {
@@ -200,6 +204,19 @@ export default function CityPage() {
           </div>
         </div>
 
+        {/* ── Lien contextuel vers la page petit-déjeuner de la ville (si elle existe) ── */}
+        {pdjPage && (
+          <div className="city-pdj" style={{ maxWidth: '1280px', margin: '0 auto', padding: '36px 72px 0' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center' }}>
+              Une réunion tôt le matin ? Notre page{' '}
+              <a href={`/petit-dejeuner-entreprise/${pdjPage.slug}`} style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                petit-déjeuner d'entreprise à {city.name}
+              </a>
+              {' '}détaille les formules dès 8€ HT par personne et la livraison dès 6h30.
+            </p>
+          </div>
+        )}
+
         {/* ── Ils nous font confiance ── */}
         <div style={{ marginTop: '88px' }}>
           <LogosSection />
@@ -352,6 +369,7 @@ export default function CityPage() {
           .city-hero { min-height: 560px !important; height: 72vh !important; }
           .city-hero-text { padding: 0 28px !important; max-width: 100% !important; }
           .city-services { padding: 56px 24px 0 !important; }
+          .city-pdj { padding: 28px 24px 0 !important; }
           .city-services-grid { grid-template-columns: 1fr !important; }
           .city-zones { padding: 36px 24px !important; }
           .city-occasions { padding: 40px 24px !important; }
@@ -360,6 +378,7 @@ export default function CityPage() {
           .city-hero-wrapper { padding: 32px 40px 0 !important; }
           .city-hero-text { padding: 0 40px !important; }
           .city-services { padding: 64px 40px 0 !important; }
+          .city-pdj { padding: 32px 40px 0 !important; }
           .city-services-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .city-zones { padding: 40px !important; }
           .city-occasions { padding: 48px 40px !important; }

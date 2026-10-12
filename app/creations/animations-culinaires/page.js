@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useUrlSearchParams } from '../../../lib/useUrlSearchParams'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -117,14 +118,12 @@ function AnimationCard({ produit }) {
 
 function AnimationsCulinairesInner() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = useUrlSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
-  const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
     const filtre = searchParams.get('filtre') || 'tous'
     setActiveFiltre(filtre)
-    setHydrated(true)
   }, [searchParams])
 
   function handleFilterChange(key) {
@@ -132,7 +131,6 @@ function AnimationsCulinairesInner() {
     router.push(`/creations/animations-culinaires?filtre=${key}`)
   }
 
-  if (!hydrated) return null
 
   const universDispo = new Set(ANIMATIONS.map(a => a.univers))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || universDispo.has(f.key))

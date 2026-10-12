@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useUrlSearchParams } from '../../../lib/useUrlSearchParams'
 import Link from 'next/link'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -111,15 +112,13 @@ function PlateauCard({ produit }) {
 
 function PlateauxAperitifsInner() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = useUrlSearchParams()
   const [activeFiltre, setActiveFiltre] = useState('tous')
   const [sortLabel, setSortLabel] = useState('En vedette')
-  const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
     const filtre = searchParams.get('filtre') || 'tous'
     setActiveFiltre(filtre)
-    setHydrated(true)
   }, [searchParams])
 
   function handleFilterChange(key) {
@@ -127,7 +126,6 @@ function PlateauxAperitifsInner() {
     router.push(`/creations/plateaux-aperitifs?filtre=${key}`)
   }
 
-  if (!hydrated) return null
 
   const famillesDispo = new Set(PLATEAUX.map(p => p.famille))
   const filtresDispo = FILTRES.filter(f => f.key === 'tous' || famillesDispo.has(f.key))

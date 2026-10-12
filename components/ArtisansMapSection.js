@@ -81,7 +81,7 @@ const AVANTAGES = [
 
 /* ─── Section réutilisable, page Nos Artisans + Accueil ──────────────── */
 
-export default function ArtisansMapSection() {
+export default function ArtisansMapSection({ headingTag: Heading = 'h2' }) {
   return (
     <section id="carte" className="amp-section" style={{ background: 'var(--bg-secondary)', padding: '96px 0' }}>
       <div className="amp-inner" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
@@ -91,9 +91,9 @@ export default function ArtisansMapSection() {
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
               Notre réseau d'artisans
             </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
+            <Heading style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
               Un réseau d'artisans <br />passionnés, proche de chez vous.
-            </h2>
+            </Heading>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '420px', marginBottom: '24px' }}>
               Nous réunissons les meilleurs savoir-faire français au sein d'une seule maison, pour simplifier l'organisation de vos événements.
             </p>
