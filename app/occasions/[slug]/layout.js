@@ -4,6 +4,12 @@ export function generateStaticParams() {
   return OCCASIONS.map(o => ({ slug: o.slug }))
 }
 
+/* Descriptions raccourcies (<= 155 car.) quand seoDescription de lib/occasionsData.js est trop longue. */
+const DESCRIPTIONS_COURTES = {
+  'seminaire-entreprise': "Traiteur séminaire d'entreprise à Paris : petit-déjeuner d'accueil, pauses et déjeuner en une seule commande. De 20 à 500 participants, devis sous 24h.",
+  'journee-formation': "Pauses café matin et après-midi pour vos journées de formation : viennoiseries, fruits, snacks artisanaux livrés à Paris et en IDF dès 6h30.",
+}
+
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const o = OCCASIONS.find(o => o.slug === slug)
@@ -12,14 +18,15 @@ export async function generateMetadata({ params }) {
   // Marque en suffixe seulement si le titre reste sous ~60 caractères (sinon tronqué dans Google).
   const avecMarque = `${o.seoTitle} | L'Écrin Traiteur`
   const title = avecMarque.length <= 60 ? avecMarque : o.seoTitle
+  const description = o.seoDescription.length > 155 && DESCRIPTIONS_COURTES[slug] ? DESCRIPTIONS_COURTES[slug] : o.seoDescription
 
   return {
     title: { absolute: title },
-    description: o.seoDescription,
+    description,
     openGraph: {
       images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
       title: o.seoTitle,
-      description: o.seoDescription,
+      description,
       locale: 'fr_FR',
       type: 'article',
     },

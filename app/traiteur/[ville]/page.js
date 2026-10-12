@@ -15,6 +15,7 @@ import { PLATEAUX_VILLES } from '../../../lib/plateauxVillesData'
 import { CITY_NEIGHBORS } from '../../../lib/cityNeighbors'
 import { OCCASIONS } from '../../../lib/occasionsData'
 import ParallaxImage from '../../../components/ParallaxImage'
+import HalalLine from '../../../components/HalalLine'
 
 const SERVICES = [
   {
@@ -321,6 +322,9 @@ export default function CityPage() {
             <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
           </section>
         )}
+
+        {/* ── Maillage vers l'offre halal ── */}
+        <HalalLine intro={`À ${city.name}, notre offre `} paddingTop="44px" />
 
       </main>
 

@@ -8,6 +8,7 @@ import Reveal from '../../../components/Reveal'
 import Breadcrumb from '../../../components/Breadcrumb'
 import CategoryClosing from '../../../components/CategoryClosing'
 import ParallaxImage from '../../../components/ParallaxImage'
+import HalalLine from '../../../components/HalalLine'
 import { FAQSchema } from '../../../components/FAQSchema'
 import { PDJ_VILLES } from '../../../lib/pdjVillesData'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
@@ -132,6 +133,9 @@ export default function PdjVillePage() {
         body={city.heroDescription}
         seoArticle={city.seoArticle}
       />
+
+      {/* ── Maillage vers l'offre halal ── */}
+      <HalalLine intro={`Pour vos petits-déjeuners à ${city.name}, notre offre `} paddingTop="0px" paddingBottom="36px" maxWidth="760px" />
 
       {/* ── Maillage : mêmes formules dans les autres communes servies ── */}
       {otherCities.length > 0 && (

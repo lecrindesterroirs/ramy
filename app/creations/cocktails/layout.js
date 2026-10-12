@@ -2,7 +2,7 @@ import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_CATALOGUE } from "./data"
 
-const TITLE = "Formules cocktail livrées à Paris dès 29,90 € HT par personne"
+const TITLE = "Formules cocktail à Paris dès 29,90 € HT par personne"
 const DESCRIPTION = "Formules L'Invitation (8 pièces), La Réception (12) et La Célébration (16) dès 29,90 € HT par personne. Livraison à Paris et en IDF, devis sous 24h."
 
 export const metadata = {

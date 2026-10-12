@@ -22,7 +22,7 @@ const PILIERS = [
   {
     label: 'La vaisselle',
     titre: 'Bois, carton, pulpe de canne',
-    desc: "Nous dressons dans une vaisselle en bois, carton et pulpe de canne, compostable, plutôt que du plastique jetable. La présentation reste soignée, l'empreinte s'allège.",
+    desc: "Nous dressons dans une vaisselle en bois, carton et pulpe de canne, qui se trie avec les biodéchets là où la collecte existe, plutôt que du plastique jetable. La présentation reste soignée, l'empreinte s'allège.",
   },
   {
     label: 'La boucle fermée',
@@ -34,7 +34,7 @@ const PILIERS = [
 const PRESTATIONS = [
   {
     label: 'Petits-Déjeuners & Pauses',
-    desc: 'Fruits de saison, yaourts fermiers et viennoiseries, dressés en vaisselle compostable, livrés dès 6h30.',
+    desc: 'Fruits de saison, yaourts fermiers et viennoiseries, dressés en vaisselle en bois, carton ou pulpe de canne, livrés dès 6h30.',
     href: '/creations/petits-dejeuners-et-pauses',
     img: '/creations-1.webp',
   },
@@ -55,15 +55,15 @@ const PRESTATIONS = [
 const FAQ = [
   {
     q: "Votre traiteur d'entreprise est-il vraiment éco-responsable ?",
-    a: "Concrètement, oui, et sans label acheté : circuit court avec des artisans et producteurs identifiés, vaisselle compostable en bois et pulpe de canne, récupération de la vaisselle réutilisable et des thermos, livraison assurée par notre équipe interne sans sous-traitance.",
+    a: "Concrètement, oui, et sans label acheté : circuit court avec des artisans et producteurs identifiés, vaisselle en bois et pulpe de canne, récupération de la vaisselle réutilisable et des thermos, livraison assurée par notre équipe interne sans sous-traitance.",
   },
   {
     q: 'Quelle vaisselle utilisez-vous ?',
-    a: "De la vaisselle en bois, carton et pulpe de canne, compostable, plutôt que du plastique jetable. Le dressage reste soigné pour vos réceptions comme pour vos petits-déjeuners.",
+    a: "De la vaisselle en bois, carton et pulpe de canne, qui se trie avec les biodéchets là où la collecte existe, plutôt que du plastique jetable. Le dressage reste soigné pour vos réceptions comme pour vos petits-déjeuners.",
   },
   {
     q: 'Récupérez-vous la vaisselle et les thermos après la prestation ?',
-    a: "Oui. Notre équipe reprend la vaisselle réutilisable et les thermos après votre événement, dans le cadre d'une boucle fermée qui limite les déchets.",
+    a: "Oui. Notre équipe reprend la vaisselle réutilisable et les thermos après votre événement, dans le cadre d'une boucle fermée qui limite les déchets. La récupération du matériel est facturée 19 € HT en plus de la livraison.",
   },
   {
     q: "D'où viennent vos produits ?",
@@ -83,7 +83,7 @@ const FAQ = [
   },
   {
     q: 'Quelle prestation choisir pour un séminaire éco-responsable ?',
-    a: "Pour une journée complète, un petit-déjeuner d'accueil (dès 6,90 € HT par personne), des plateaux repas (dès 28,90 € HT) et une pause de l'après-midi (dès 6 € HT) se livrent dans une seule commande. La reprise de la vaisselle réutilisable et des thermos se prévoit au devis.",
+    a: "Pour une journée complète, un petit-déjeuner d'accueil (dès 8 € HT par personne), des plateaux repas (dès 28,90 € HT) et une pause de l'après-midi (dès 6 € HT) se livrent dans une seule commande. La récupération de la vaisselle réutilisable et des thermos (19 € HT en plus de la livraison) se prévoit au devis.",
   },
 ]
 
@@ -92,7 +92,7 @@ export default function TraiteurEcoResponsable() {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FoodEstablishment'],
     name: "L'Écrin Traiteur",
-    description: "Traiteur d'entreprise éco-responsable à Paris et en Île-de-France : circuit court, artisans identifiés, vaisselle compostable en bois et pulpe de canne, récupération de la vaisselle et des thermos. Livré dès 6h30.",
+    description: "Traiteur d'entreprise éco-responsable à Paris et en Île-de-France : circuit court, artisans identifiés, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos. Livré dès 6h30.",
     url: `${BASE}/traiteur-eco-responsable`,
     telephone: '+33174542310',
     email: 'commercial@lecrin-traiteur.fr',
@@ -133,7 +133,7 @@ export default function TraiteurEcoResponsable() {
 
   const ARGS = [
     { icon: 'quality',  titre: 'Circuit court',            desc: "Producteurs et artisans identifiés, farines françaises, zéro arôme artificiel. On nomme, on trace." },
-    { icon: 'custom',   titre: 'Vaisselle compostable',    desc: "Bois, carton et pulpe de canne plutôt que du plastique jetable, sans rien perdre en présentation." },
+    { icon: 'custom',   titre: 'Vaisselle bois et pulpe de canne',    desc: "Bois, carton et pulpe de canne plutôt que du plastique jetable, sans rien perdre en présentation." },
     { icon: 'support',  titre: 'Boucle fermée',            desc: "Récupération de la vaisselle réutilisable et des thermos après votre événement." },
     { icon: 'delivery', titre: 'Livré par notre équipe',   desc: "Pas de sous-traitance : la même équipe livre et reprend, à Paris et en Île-de-France." },
   ]
@@ -154,8 +154,8 @@ export default function TraiteurEcoResponsable() {
     </table></div>
     <p>L'origine des boîtes en bois est détaillée dans notre article <a href="/journal/emballage-traiteur-bois-peuplier-francais">d'où vient la boîte de votre déjeuner</a>, et notre démarche générale sur la page <a href="/univers/nos-engagements">nos engagements</a>.</p>
 
-    <h2>Vaisselle compostable, vaisselle et thermos récupérés</h2>
-    <p>Nous dressons vos petits-déjeuners, plateaux repas et buffets dans une <strong>vaisselle en bois, carton et pulpe de canne</strong>, compostable, plutôt que du plastique jetable. Et pour ce qui est réutilisable, nous fonctionnons en boucle fermée : <strong>notre équipe récupère la vaisselle et les thermos</strong> après votre événement, pour que la fête ne finisse pas à la benne.</p>
+    <h2>Vaisselle en bois et pulpe de canne, vaisselle et thermos récupérés</h2>
+    <p>Nous dressons vos petits-déjeuners, plateaux repas et buffets dans une <strong>vaisselle en bois, carton et pulpe de canne</strong>, qui se trie avec les biodéchets là où la collecte existe, plutôt que du plastique jetable. Et pour ce qui est réutilisable, nous fonctionnons en boucle fermée : <strong>notre équipe récupère la vaisselle et les thermos</strong> après votre événement, pour que la fête ne finisse pas à la benne.</p>
 
     <h2>Séminaire ou démarche RSE : ce qu'il faut demander à son traiteur</h2>
     <ul>
@@ -205,7 +205,7 @@ export default function TraiteurEcoResponsable() {
                   Traiteur éco-responsable <br />Paris & Île-de-France
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
-                  Un traiteur d'entreprise qui régale sans gaspiller : circuit court, vaisselle compostable en bois et pulpe de canne, récupération de la vaisselle et des thermos, livré dans vos bureaux dès 6h30.
+                  Un traiteur d'entreprise qui régale sans gaspiller : circuit court, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos, livré dans vos bureaux dès 6h30.
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
@@ -370,7 +370,7 @@ export default function TraiteurEcoResponsable() {
       <CategoryClosing
         eyebrow="Traiteur éco-responsable entreprise"
         title={"Bien recevoir,\nsans gaspiller."}
-        body="Circuit court, vaisselle compostable en bois et pulpe de canne, récupération de la vaisselle et des thermos, livraison par notre propre équipe : chaque prestation est pensée pour régaler vos équipes en limitant les déchets, à Paris et en Île-de-France."
+        body="Circuit court, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos, livraison par notre propre équipe : chaque prestation est pensée pour régaler vos équipes en limitant les déchets, à Paris et en Île-de-France."
         args={ARGS}
         ctaQuestion="Une prestation responsable à organiser ?"
         seoArticle={seoArticle}

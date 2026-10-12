@@ -1,4 +1,5 @@
 import { BOISSONS } from '../../../../lib/boissonsData'
+import { descriptionProduit, detailCatalogue } from '../../../../lib/metaProduit'
 
 export function generateStaticParams() {
   return BOISSONS.map(p => ({ slug: p.id }))
@@ -10,14 +11,16 @@ export async function generateMetadata({ params }) {
   if (!product) {
     return { title: "Boisson introuvable | L'Écrin Traiteur" }
   }
+  const { nom, detail } = detailCatalogue(product)
+  const description = descriptionProduit({ nom, detail, prix: product.price })
   // Marque en suffixe seulement si le titre reste sous ~60 caractères.
   const avecMarque = `${product.seoTitle || product.name} | L'Écrin Traiteur`
   return {
     title: { absolute: avecMarque.length <= 60 ? avecMarque : (product.seoTitle || product.name) },
-    description: product.description + '. Livraison dès 6h30 à Paris et en Île-de-France. Commandez avant 14h la veille.',
+    description,
     openGraph: {
       title: `${product.name} | L'Écrin Traiteur`,
-      description: product.description + '. Commandez en ligne, livraison dès 6h30.',
+      description,
       images: [{ url: product.img, width: 800, height: 800, alt: product.name }],
       locale: 'fr_FR',
       type: 'website',

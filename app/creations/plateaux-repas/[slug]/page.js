@@ -5,6 +5,7 @@ import { useParams, notFound } from 'next/navigation'
 import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PRODUITS, COLLECTIONS, prixMenu } from '../data'
+import { asavoirPlateauRepas } from '../../../../lib/ficheAsavoir'
 
 const SEO_HTML = `
   <p>Le <strong>plateau repas d'entreprise</strong> est devenu la solution de référence pour les déjeuners de travail, comités de direction et séminaires à Paris. Individuel, équilibré et présenté avec soin, il permet à chacun de déjeuner sans quitter les locaux, tout en soignant l'image de l'entreprise auprès des collaborateurs et des clients.</p>
@@ -64,6 +65,7 @@ function PlateauDetailInner() {
       seoEyebrow="Plateaux repas · Traiteur entreprise"
       seoTitle={produit.seoTitle || "Le plateau repas qui valorise vos déjeuners d'entreprise à Paris"}
       seoHtml={produit.seoHtml || SEO_HTML}
+      asavoir={asavoirPlateauRepas(produit, { prix: prixMenu(produit), collection: col?.label })}
       devisPrestation="Plateaux repas"
       devisTitre="Un déjeuner d'entreprise à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."

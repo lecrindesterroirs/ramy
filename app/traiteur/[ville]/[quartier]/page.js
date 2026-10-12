@@ -10,6 +10,7 @@ import LogosSection from '../../../../components/LogosSection'
 import CategoryClosing from '../../../../components/CategoryClosing'
 import { CITIES } from '../../../../lib/citiesData'
 import ParallaxImage from '../../../../components/ParallaxImage'
+import HalalLine from '../../../../components/HalalLine'
 
 const SERVICES = [
   {
@@ -257,6 +258,9 @@ export default function QuartierPage() {
             <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
           </div>
         )}
+
+        {/* ── Maillage vers l'offre halal ── */}
+        <HalalLine intro={`À ${q.name}, notre offre `} paddingTop="44px" />
 
       </main>
 

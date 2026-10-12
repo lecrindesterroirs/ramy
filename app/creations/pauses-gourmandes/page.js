@@ -67,9 +67,7 @@ const COFFRETS_MADELEINES = [
   { id: 'madeleines-50', pieces: 50, price: 119.00, label: '50 pièces', sub: '25 à 30 pers.' },
 ]
 const COFFRETS_MACARONS = [
-  { id: 'macarons-12', pieces: 12, price: 29.90, label: '12 pièces', sub: '4 à 6 pers.' },
-  { id: 'macarons-24', pieces: 24, price: 54.90, label: '24 pièces', sub: '8 à 12 pers.', popular: true },
-  { id: 'macarons-48', pieces: 48, price: 99.90, label: '48 pièces', sub: '20 à 24 pers.' },
+  { id: 'macarons-24', pieces: 24, price: 64.00, label: '24 pièces', sub: '8 à 12 pers.', popular: true },
 ]
 
 /* Douceurs, images partagées avec Petit-déjeuner quand le produit existe déjà,

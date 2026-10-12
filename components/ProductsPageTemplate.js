@@ -71,7 +71,7 @@ export default function ProductsPageTemplate({
               alt={heroTitle}
               strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: heroImgPosition || 'center' }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
+            <div className="page-hero-veil" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
@@ -136,6 +136,7 @@ export default function ProductsPageTemplate({
           .page-answer { padding: 24px 16px 0 !important; }
           .page-hero { height: 50vh !important; min-height: 340px !important; }
           .page-hero-text { padding: 0 24px !important; }
+          .page-hero-veil { background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 100%) !important; }
           .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
           .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
           .filter-cats::-webkit-scrollbar { display: none; }

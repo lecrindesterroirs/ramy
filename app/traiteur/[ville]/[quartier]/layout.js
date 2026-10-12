@@ -7,6 +7,7 @@ export function generateStaticParams() {
 /* Descriptions écrites à la main (clé ville/quartier) : celles de lib/citiesData.js
    dépassent ~155 caractères et sont coupées dans Google. Prime sur citiesData.js. */
 const DESCRIPTION_OVERRIDES = {
+  "paris/14e-arrondissement": "Plateaux repas, lunch box, pauses et petits-déjeuners livrés dans le 14e : Tour Montparnasse, Alésia, Denfert. Devis sous 24h, livraison dès 6h30.",
   "paris/6e-arrondissement": "Plateaux repas, réceptions, cocktails et petits-déjeuners livrés dans le 6e : Saint-Germain-des-Prés, édition, avocats, luxe. Devis sous 24h, dès 6h30.",
   "paris/13e-arrondissement": "Plateaux repas, lunch box, pauses et petits-déjeuners livrés dans le 13e : Paris Rive Gauche, BNF, Tolbiac, Austerlitz. Options vegan, livraison dès 6h30.",
   "paris/16e-arrondissement": "Réceptions, cocktails, plateaux repas et petits-déjeuners d'entreprise dans le 16e : Trocadéro, Victor Hugo, Passy, La Muette. Livraison dès 6h30.",

@@ -543,7 +543,7 @@ export default function Contact() {
   useEffect(() => { stepForExitRef.current = step }, [step])
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowLogo(false), 1500)
+    const timer = setTimeout(() => setShowLogo(false), 600)
     return () => clearTimeout(timer)
   }, [])
 
@@ -570,7 +570,10 @@ export default function Contact() {
   useEffect(() => {
     const onScroll = () => {
       const atBottom = document.body.scrollHeight - window.scrollY - window.innerHeight < 80
-      setBottomNavHidden(atBottom)
+      // Mobile : la barre est fixe en bas, on la retire quand le pied de page
+      // entre dans l'écran (il porte ses propres liens).
+      const footerTop = logosRef.current ? logosRef.current.getBoundingClientRect().top : Infinity
+      setBottomNavHidden(atBottom || (window.innerWidth <= 768 && footerTop < window.innerHeight - 20))
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -711,7 +714,7 @@ export default function Contact() {
         {showLogo && (
           <div style={{
             position: 'fixed', inset: 0, background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
-            animation: `fadeInOut 1.5s ease-in-out forwards`,
+            animation: `fadeInOut 0.6s ease-in-out forwards`,
           }}>
             <style>{`
               @keyframes fadeInOut {
@@ -829,6 +832,7 @@ export default function Contact() {
                 <div style={{ width: '120px' }} />
               ) : step < 3 ? (
                 <button
+                  key="devis-nav-suivant"
                   type="button"
                   onClick={next}
                   className="devis-nav-next"
@@ -853,6 +857,7 @@ export default function Contact() {
                 </button>
               ) : (
                 <button
+                  key="devis-nav-envoyer"
                   type="submit"
                   disabled={submitStatus === 'loading'}
                   className="devis-nav-next"
@@ -932,10 +937,12 @@ export default function Contact() {
         @media (max-width: 768px) {
           .devis-main { height: auto !important; min-height: auto !important; padding-top: 0 !important; padding-bottom: 32px !important; }
           .devis-main form { overflow: visible !important; display: block !important; }
-          .devis-content { min-height: 0 !important; padding: 24px 20px 8px !important; }
+          .devis-content { min-height: 0 !important; padding: 24px 20px 96px !important; }
           .devis-stage { display: block !important; }
-          .devis-bottom-nav { position: relative !important; bottom: auto !important; padding: 14px 16px 20px !important; flex-wrap: wrap !important; gap: 0 !important; border-top: none !important; }
-          .devis-nav-prev { order: 1 !important; display: flex !important; }
+          .devis-bottom-nav { position: fixed !important; left: 0 !important; right: 0 !important; bottom: 0 !important; background: #FFFFFF !important; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)) !important; flex-wrap: wrap !important; gap: 0 !important; border-top: 1px solid rgba(17,17,17,0.08) !important; }
+          body.devis-step-1 .devis-bottom-nav { display: none !important; }
+          .nav-indicator:empty { display: none !important; }
+          .devis-nav-prev { order: 1 !important; display: flex !important; min-height: 44px !important; align-items: center !important; padding: 0 12px 0 0 !important; }
           .devis-nav-next { order: 2 !important; display: flex !important; }
           .nav-indicator { order: 3 !important; width: 100% !important; justify-content: center !important; padding-top: 12px !important; margin-top: 8px !important; border-top: none !important; border-bottom: none !important; }
           .devis-progress-bar { padding: 18px 20px !important; }

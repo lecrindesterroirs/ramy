@@ -13,6 +13,7 @@ import { FAQSchema } from '../../../components/FAQSchema'
 import { PLATEAUX_VILLES } from '../../../lib/plateauxVillesData'
 import { PRODUITS, prixMenu } from '../../creations/plateaux-repas/data'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
+import HalalLine from '../../../components/HalalLine'
 
 export default function PlateauxVillePage() {
   const { ville } = useParams()
@@ -188,6 +189,9 @@ export default function PlateauxVillePage() {
         body={city.heroDescription}
         seoArticle={city.seoArticle}
       />
+
+      {/* ── Maillage vers l'offre halal ── */}
+      <HalalLine intro={`Pour vos plateaux repas à ${city.name}, notre offre `} paddingTop="0px" paddingBottom="36px" maxWidth="760px" />
 
       {/* ── Maillage : mêmes plateaux dans les autres communes servies ── */}
       {otherCities.length > 0 && (

@@ -52,6 +52,25 @@ const PRESTATIONS = [
   },
 ]
 
+/* Sous-pages /traiteur-halal/[slug] (lib/halalPagesData.js) : ancres descriptives. */
+const SOUS_PAGES = [
+  {
+    href: '/traiteur-halal/paris',
+    label: 'Traiteur halal à Paris',
+    desc: "Petit-déjeuner dès 8 € HT, plateaux repas, cocktail : toute la carte halal et sans porc, livrée à Paris et en Île-de-France dès 6h30.",
+  },
+  {
+    href: '/traiteur-halal/buffet-entreprise',
+    label: "Buffet halal d'entreprise",
+    desc: "Cocktail de 8, 12 ou 16 pièces dès 29,90 € HT par personne, ou menu à partager : un seul buffet pour tous les invités.",
+  },
+  {
+    href: '/traiteur-halal/plateaux-repas',
+    label: "Plateau repas halal d'entreprise",
+    desc: "Six plateaux individuels, entrée, plat et dessert, de 28,90 à 30,90 € HT par personne, sans porc et sans alcool.",
+  },
+]
+
 const FAQ = [
   {
     q: "Votre traiteur d'entreprise est-il halal ?",
@@ -141,9 +160,9 @@ export default function TraiteurHalal() {
     <div class="tbl-wrap"><table>
       <thead><tr><th>Prestation</th><th>Ce que vous recevez</th><th>Prix HT</th></tr></thead>
       <tbody>
-        <tr><td><strong><a href="/creations/petits-dejeuners-et-pauses">Petit-déjeuner d'entreprise</a></strong></td><td>Viennoiseries, madeleines, fruits frais, jus, boissons chaudes</td><td>Dès 6,90 € par personne</td></tr>
+        <tr><td><strong><a href="/creations/petits-dejeuners-et-pauses">Petit-déjeuner d'entreprise</a></strong></td><td>Viennoiseries, madeleines, fruits frais, jus, boissons chaudes</td><td>Dès 8 € par personne</td></tr>
         <tr><td><strong><a href="/creations/pauses-gourmandes">Goûter et pause gourmande</a></strong></td><td>Madeleines, cookies, cakes, brochettes de fruits</td><td>Dès 6 € par personne</td></tr>
-        <tr><td><strong><a href="/creations/plateaux-repas">Plateau repas</a></strong></td><td>Entrée, plat, dessert et pain, en versions viande, poulet, poisson ou végétarienne</td><td>Dès 28,90 € par personne</td></tr>
+        <tr><td><strong><a href="/creations/plateaux-repas">Plateau repas</a></strong></td><td>Entrée, plat, dessert et pain, en versions poulet, saumon fumé ou végétarienne</td><td>Dès 28,90 € par personne</td></tr>
         <tr><td><strong><a href="/creations/cocktails">Cocktail, afterwork, réception</a></strong></td><td>8, 12 ou 16 pièces salées et sucrées par personne</td><td>De 29,90 à 51,90 € par personne</td></tr>
       </tbody>
     </table></div>
@@ -245,7 +264,7 @@ export default function TraiteurHalal() {
             Des versions végétariennes et vegan existent sur chaque prestation, et nous adaptons en sans gluten sur demande. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
           </p>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginTop: '22px' }}>
-            Repères de prix, tout en halal et sans porc : petit-déjeuner dès <strong style={{ fontWeight: 500 }}>6,90 € HT</strong> par personne, plateau repas dès <strong style={{ fontWeight: 500 }}>28,90 € HT</strong>, cocktail de <strong style={{ fontWeight: 500 }}>29,90 à 51,90 € HT</strong> selon la formule. La livraison est à 29 € HT à Paris et dans les communes proches.
+            Repères de prix, tout en halal et sans porc : petit-déjeuner dès <strong style={{ fontWeight: 500 }}>8 € HT</strong> par personne, plateau repas dès <strong style={{ fontWeight: 500 }}>28,90 € HT</strong>, cocktail de <strong style={{ fontWeight: 500 }}>29,90 à 51,90 € HT</strong> selon la formule. La livraison est à 29 € HT à Paris et dans les communes proches.
           </p>
         </section>
 
@@ -319,6 +338,38 @@ export default function TraiteurHalal() {
           </div>
         </div>
 
+        {/* ── Pages dédiées : Paris, buffet, plateaux repas ── */}
+        <nav aria-label="Nos pages traiteur halal d'entreprise" className="hl-subpages" style={{ maxWidth: '1100px', margin: '0 auto', padding: '88px 72px 0' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
+              Le détail, prestation par prestation
+            </p>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 36px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
+              Trois pages pour choisir votre menu halal
+            </h2>
+          </div>
+          <div className="hl-subpages-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            {SOUS_PAGES.map((s, i) => (
+              <Reveal key={s.href} delay={i * 90}>
+                <a
+                  href={s.href}
+                  style={{ display: 'block', textDecoration: 'none', background: 'var(--bg-secondary)', border: '1px solid rgba(17,17,17,0.08)', padding: '30px 26px', height: '100%' }}
+                >
+                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '21px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '12px', lineHeight: 1.2 }}>
+                    {s.label}
+                  </p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.65, color: 'var(--text-secondary)', marginBottom: '16px' }}>
+                    {s.desc}
+                  </p>
+                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                    Voir la page →
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </nav>
+
         {/* ── Ils nous font confiance ── */}
         <div style={{ marginTop: '88px' }}>
           <LogosSection />
@@ -382,6 +433,8 @@ export default function TraiteurHalal() {
           .hl-regimes-grid { grid-template-columns: 1fr !important; }
           .hl-services { padding: 56px 24px 0 !important; }
           .hl-services-grid { grid-template-columns: 1fr !important; }
+          .hl-subpages { padding: 56px 24px 0 !important; }
+          .hl-subpages-grid { grid-template-columns: 1fr !important; }
           .hl-faq { padding: 56px 24px 64px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -389,6 +442,7 @@ export default function TraiteurHalal() {
           .hl-hero-text { padding: 0 40px !important; }
           .hl-regimes { padding: 64px 40px 0 !important; }
           .hl-services { padding: 64px 40px 0 !important; }
+          .hl-subpages { padding: 64px 40px 0 !important; }
           .hl-services-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       ` }} />

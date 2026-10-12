@@ -5,6 +5,7 @@ import { useParams, notFound } from 'next/navigation'
 import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { PLATEAUX, FILTRES } from '../page'
+import { asavoirPlateauAperitif } from '../../../../lib/ficheAsavoir'
 
 const SEO_HTML = `
   <p>Le <strong>plateau apéritif à partager</strong> est l'allié des afterworks, pots de départ et réceptions d'entreprise à Paris. Posé au centre de la table, il crée du lien et rythme le moment, des plateaux sandwichs aux plateaux fromages & charcuteries, en passant par les créations signature.</p>
@@ -55,6 +56,7 @@ function PlateauAperitifDetailInner() {
       seoEyebrow="Plateaux apéritifs · Afterworks & réceptions"
       seoTitle={plateau.seoTitle || "Le plateau apéritif qui fait le succès de vos afterworks"}
       seoHtml={plateau.seoHtml || SEO_HTML}
+      asavoir={asavoirPlateauAperitif(plateau)}
       devisPrestation="Cocktail déjeunatoire"
       devisTitre="Un afterwork ou une réception à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."

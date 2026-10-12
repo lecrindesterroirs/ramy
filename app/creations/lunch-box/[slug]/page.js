@@ -5,6 +5,7 @@ import { useParams, notFound } from 'next/navigation'
 import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../components/GalleryFiche'
 import { BOXES } from '../page'
+import { asavoirLunchBox } from '../../../../lib/ficheAsavoir'
 
 const SEO_HTML = `
   <p>La <strong>lunch box d'entreprise</strong> est la formule idéale pour les déjeuners nomades, réunions de travail et journées séminaires à Paris. Compacte et complète, elle réunit une entrée, un sandwich et un dessert dans un format pratique, prêt à emporter ou à servir en salle.</p>
@@ -60,6 +61,7 @@ function LunchBoxDetailInner() {
       seoEyebrow="Lunch Box · Traiteur entreprise"
       seoTitle={box.seoTitle || "La lunch box parfaite pour vos déjeuners nomades et réunions"}
       seoHtml={box.seoHtml || SEO_HTML}
+      asavoir={asavoirLunchBox(box)}
       devisPrestation="Lunch box"
       devisTitre="Des lunch box pour votre équipe ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."

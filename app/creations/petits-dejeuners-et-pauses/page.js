@@ -2,6 +2,7 @@
 
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { PRODUCTS } from '../../../lib/productsData'
+import { trackPhoneClick } from '../../../lib/tracking'
 
 const SEO_ARTICLE = `
   <h2>Livraison de petit-déjeuner d'entreprise à Paris, artisanal, dès 6h30</h2>
@@ -38,6 +39,24 @@ const ANSWER_BLOCK = (
     <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
       Un petit-déjeuner d'entreprise commence à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France. Commande avant <strong>14h la veille</strong>. Livraison 29 € HT, minimum de commande 50 € HT. Toute la carte est halal et sans porc. Pour calibrer les quantités, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes" style={{ color: 'inherit', textDecoration: 'underline' }}>guide budget par nombre de personnes</a>, ou <a href="/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>demandez un devis sous 24h</a>.
     </p>
+    {/* Mobile uniquement : bouton devis + appel dès le premier écran de lecture (la barre fixe fait doublon sur le bas de l'écran, pas sur le texte). */}
+    <div className="answer-cta-row">
+      <a href="/devis" className="answer-cta">Demander un devis</a>
+      <a href="tel:+33174542310" className="answer-cta-tel" onClick={trackPhoneClick}>Appeler le 01 74 54 23 10</a>
+    </div>
+    <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
+      .answer-cta-row { display: none; }
+      @media (max-width: 768px) {
+        .answer-cta-row { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+        .answer-cta, .answer-cta-tel {
+          display: flex; align-items: center; justify-content: center; min-height: 48px;
+          font-family: 'Neue Montreal', sans-serif; font-size: 12px; font-weight: 500;
+          letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0 16px;
+        }
+        .answer-cta { background: #111111; color: #FFFFFF; }
+        .answer-cta-tel { background: #FFFFFF; color: #111111; border: 1px solid rgba(17,17,17,0.25); }
+      }
+    ` }} />
   </>
 )
 

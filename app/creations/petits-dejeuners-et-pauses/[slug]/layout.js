@@ -1,15 +1,16 @@
 import { PRODUCTS } from '../../../../lib/productsData'
+import { descriptionProduit, detailCatalogue } from '../../../../lib/metaProduit'
 
 export function generateStaticParams() {
   return PRODUCTS.map(p => ({ slug: p.id }))
 }
 
-/* Premier candidat qui tient dans la limite d'une meta description (~155 car.). */
-const fit = (candidats, max) => candidats.find(c => c.length <= max) || candidats[candidats.length - 1]
-
-/* Metas écrites à la main quand la description du catalogue n'est qu'une liste. */
-const OVERRIDES = {
-  macarons: "Macarons Pierre Morel en 12 parfums : café, caramel beurre salé, citron, framboise, pistache, yuzu. Livraison dès 6h30, commande avant 14h la veille.",
+/* Détails écrits à la main quand la donnée du catalogue n'est qu'une liste ou
+   se répète. Le nom, le prix HT et « livré dès 6h30 » sont ajoutés par
+   descriptionProduit (lib/metaProduit.js). */
+const DETAILS = {
+  'madeleines-octobre-rose': "madeleines d'exception à glaçage rose, édition Octobre Rose",
+  macarons: "24 macarons Pierre Morel en 12 parfums, dont café, caramel beurre salé, citron, framboise, pistache et yuzu",
 }
 
 export async function generateMetadata({ params }) {
@@ -20,17 +21,18 @@ export async function generateMetadata({ params }) {
       title: 'Produit introuvable | L\'Écrin Traiteur',
     }
   }
-  const base = product.description.replace(/\.+$/, '')
+  const { nom, detail } = detailCatalogue(product)
+  const description = descriptionProduit({
+    nom,
+    detail: DETAILS[product.id] || detail,
+    prix: product.price,
+  })
   return {
     title: product.seoTitle || `${product.name}, Livraison Paris & Île-de-France`,
-    description: OVERRIDES[product.id] || fit([
-      `${base}. Livraison dès 6h30 à Paris et en Île-de-France. Commandez avant 14h la veille.`,
-      `${base}. Livraison dès 6h30 à Paris et en IDF, commande avant 14h la veille.`,
-      `${base}. Livraison dès 6h30 à Paris, commande avant 14h la veille.`,
-    ], 155),
+    description,
     openGraph: {
       title: `${product.seoTitle || product.name} | L'Écrin Traiteur`,
-      description: product.description + '. Commandez en ligne, livraison dès 6h30.',
+      description,
       images: [{ url: product.img, width: 800, height: 800, alt: product.name }],
       locale: 'fr_FR',
       type: 'website',

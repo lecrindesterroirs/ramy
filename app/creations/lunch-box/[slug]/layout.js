@@ -1,3 +1,5 @@
+import { BOXES } from '../data'
+
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 const META = {
@@ -21,7 +23,13 @@ export function generateMetadata({ params }) {
     return { title: "Lunch box d'entreprise à Paris | L'Écrin Traiteur", alternates: { canonical: path } }
   }
   const title = `${m.nom}, lunch box Paris | L'Écrin Traiteur`
-  const description = `${m.d} Livraison à Paris et en Île-de-France dès 6h30, devis sous 24h.`
+  // Prix HT par personne : champ `prix` des données de la box (lunch-box/data.js).
+  const prix = BOXES.find(b => b.id === params.slug)?.prix
+  const corps = m.d.replace(/\.$/, '')
+  const description = (prix ? [
+    `${m.nom} : ${corps.charAt(0).toLowerCase()}${corps.slice(1)}. ${prix} € HT par personne, livrée dès 6h30 à Paris et en Île-de-France.`,
+    `${m.nom} : ${corps.charAt(0).toLowerCase()}${corps.slice(1)}. ${prix} € HT par personne, livrée dès 6h30 à Paris.`,
+  ] : []).find(c => c.length <= 155) || `${m.d} Livraison à Paris et en Île-de-France dès 6h30, devis sous 24h.`
   return {
     title: { absolute: title },
     description,

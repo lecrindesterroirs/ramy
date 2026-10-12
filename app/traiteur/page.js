@@ -29,7 +29,7 @@ const TRAITEUR_FAQ = [
   },
   {
     q: "Combien coûte un traiteur d'entreprise à Paris ?",
-    a: "Un petit-déjeuner d'accueil complet démarre à 6,90 € HT par personne, un goûter à 6 € HT, un plateau repas à 28,90 € HT et un cocktail va de 29,90 à 51,90 € HT selon la formule (8, 12 ou 16 pièces). Le minimum de commande est de 50 € HT et la livraison de 29 € HT à Paris et dans les communes proches.",
+    a: "Un petit-déjeuner démarre à 8 € HT par personne en formule Classique (12 à 16 € HT en formule complète), un goûter à 6 € HT, un plateau repas à 28,90 € HT et un cocktail va de 29,90 à 51,90 € HT selon la formule (8, 12 ou 16 pièces). Le minimum de commande est de 50 € HT et la livraison de 29 € HT à Paris et dans les communes proches.",
   },
   {
     q: "Quel est le meilleur traiteur pour une entreprise à Paris ?",
@@ -37,7 +37,7 @@ const TRAITEUR_FAQ = [
   },
   {
     q: "Livrez-vous un petit-déjeuner d'entreprise à Paris ?",
-    a: "Oui, du lundi au vendredi, dès 6h30, à Paris et en Île-de-France : viennoiseries, fruits frais, jus et boissons chaudes, à partir de 6,90 € HT par personne pour un petit-déjeuner d'accueil complet. Commande jusqu'à la veille 14h.",
+    a: "Oui, du lundi au vendredi, dès 6h30, à Paris et en Île-de-France : viennoiseries, fruits frais, jus et boissons chaudes, à partir de 8 € HT par personne en formule Classique. Commande jusqu'à la veille 14h.",
   },
   {
     q: "Comment obtenir un devis pour un buffet ou un cocktail de 80 personnes ?",
@@ -47,7 +47,7 @@ const TRAITEUR_FAQ = [
 
 // Repères de prix : une ligne par prestation (mêmes montants que les pages prestation).
 const PRIX = [
-  { href: '/creations/petits-dejeuners-et-pauses', titre: "Petit-déjeuner d'entreprise", prix: 'Dès 6,90 € HT', unite: 'par personne', detail: "Viennoiseries, fruits frais, jus et boissons chaudes, livrés dès 6h30" },
+  { href: '/creations/petits-dejeuners-et-pauses', titre: "Petit-déjeuner d'entreprise", prix: 'Dès 8 € HT', unite: 'par personne', detail: "Viennoiseries, fruits frais, jus et boissons chaudes, livrés dès 6h30" },
   { href: '/creations/pauses-gourmandes', titre: "Goûter d'entreprise", prix: 'Dès 6 € HT', unite: 'par personne', detail: "Une pâtisserie artisanale et une boisson, à l'heure de la pause" },
   { href: '/creations/plateaux-repas', titre: 'Plateau repas', prix: 'Dès 28,90 € HT', unite: 'par personne', detail: 'Entrée, plat, dessert et pain, avec options végétariennes' },
   { href: '/creations/cocktails', titre: 'Cocktail et afterwork', prix: 'De 29,90 à 51,90 € HT', unite: 'par personne', detail: '8, 12 ou 16 pièces salées et sucrées selon la formule' },

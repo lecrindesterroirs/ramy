@@ -24,8 +24,10 @@ export async function generateMetadata({ params }) {
   // si elle tient sous ~60 car.). Sans override, on garde le gabarit historique.
   const over = META_OVERRIDES[city.slug] || {}
   const title = over.title || city.metaTitle || `${city.seoTitle} | L'Écrin Traiteur`
-  const description = over.description || city.metaDescription
+  const brute = over.description || city.metaDescription
     || `Traiteur d'entreprise à ${city.name} : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Artisans sélectionnés, devis sous 24h.`
+  // Noms de ville longs (Issy-les-Moulineaux, Vélizy-Villacoublay) : on retire « livrés » pour tenir en 155 caractères.
+  const description = brute.length > 155 ? brute.replace(' livrés dès 6h30', ' dès 6h30') : brute
 
   return {
     title: { absolute: title },

@@ -36,7 +36,7 @@ export const evenements = [
         },
         {
           heading: "Anticiper la commande : pourquoi c'est essentiel",
-          texte: "En janvier, les bonnes boulangeries et traiteurs sont rapidement débordés. Commandez au minimum 5 à 7 jours à l'avance. Prévoyez la livraison le matin même pour que la galette soit fraîche. Pour l'organisation au bureau, une heure entre 9h30 et 10h30 en milieu de semaine fonctionne bien : les équipes sont là, pas encore dans le rush de fin de semaine. Évitez le lundi de la première semaine de janvier, souvent chaotique.",
+          texte: "Côté commande, la règle est la même toute l'année : jusqu'à la veille 14h, avec un préavis de 48 h conseillé à partir de 50 personnes ou pour plusieurs sites. Prévoyez la livraison le matin même pour que la galette soit fraîche. Pour l'organisation au bureau, une heure entre 9h30 et 10h30 en milieu de semaine fonctionne bien : les équipes sont là, pas encore dans le rush de fin de semaine. Évitez le lundi de la première semaine de janvier, souvent chaotique.",
         },
       ],
     },
@@ -160,7 +160,7 @@ export const evenements = [
         },
         {
           heading: "Timing et quantités",
-          texte: "Organisez l'événement la semaine avant Pâques, idéalement le jeudi ou vendredi matin, avant que les équipes partent en vacances. Pour les quantités, comptez environ 80 à 100g de chocolats par personne pour une pause, et ajoutez des viennoiseries pour ceux qui ne mangent pas de chocolat. Commandez au moins 5 jours à l'avance pour garantir la disponibilité des produits artisanaux qui partent vite à cette période.",
+          texte: "Organisez l'événement la semaine avant Pâques, idéalement le jeudi ou vendredi matin, avant que les équipes partent en vacances. Pour les quantités, comptez environ 80 à 100g de chocolats par personne pour une pause, et ajoutez des viennoiseries pour ceux qui ne mangent pas de chocolat. Commandez jusqu'à la veille 14h ; à partir de 50 personnes ou pour plusieurs sites, un préavis de 48 h est recommandé.",
         },
       ],
     },
@@ -254,11 +254,11 @@ export const evenements = [
         },
         {
           heading: "Le budget d'une rentrée réussie",
-          texte: "Un petit-déjeuner de rentrée complet démarre à 6,90 euros HT par personne : viennoiseries, corbeille de fruits frais découpés, café et jus. Une formule plus simple, viennoiseries et café seulement, descend à 2,90 euros HT par personne. La plaque chocolat personnalisée se rajoute à la commande selon le message et le format souhaités. À cela s'ajoutent la livraison, 29 euros HT sur Paris et les communes proches, et un minimum de commande de 50 euros HT.",
+          texte: "Un petit-déjeuner de rentrée en formule Classique démarre à 8 euros HT par personne : viennoiseries, corbeille de fruits frais découpés, café et jus. Le petit-déjeuner complet va de 12 à 16 euros HT par personne. Une formule plus simple, viennoiseries et café seulement, descend à 2,90 euros HT par personne. La plaque chocolat personnalisée se rajoute à la commande selon le message et le format souhaités. À cela s'ajoutent la livraison, 29 euros HT sur Paris et les communes proches, et un minimum de commande de 50 euros HT.",
         },
         {
           heading: "Quand commander pour septembre",
-          texte: "Septembre est, avec décembre, le mois le plus chargé de l'année pour un traiteur d'entreprise. Les premières semaines partent en premier, et les mardis et mercredis avant tous les autres jours. Si votre date est fixée, réservez dès la fin août. Pour la plaque chocolat personnalisée, qui est fabriquée sur commande, comptez quelques jours de plus. Sur les formats simples, une commande avant 14h la veille reste possible.",
+          texte: "La règle est la même qu'en toute saison : commande jusqu'à la veille 14h, livraison du lundi au vendredi dès 6h30. À partir de 50 personnes ou pour plusieurs sites, un préavis de 48 h est recommandé. Pour la plaque chocolat personnalisée, qui est fabriquée sur commande, comptez quelques jours de plus.",
         },
         {
           heading: "Format et timing",
@@ -372,15 +372,15 @@ export const evenements = [
     ],
     tags: ['Petits-déjeuners', 'Cocktails & Buffets', 'Pauses gourmandes'],
     img: '/grand-buffet-signature.webp',
-    descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud Mariage Frères.",
-    desc: "La prestation la plus attendue de l'année. Menu de fête complet avec les grands classiques de saison. Foie gras, saumon fumé, bûche artisanale, chocolats chauds, viennoiseries de Noël. Un buffet festif ou un plateau repas selon votre format et votre effectif.",
+    descCourt: "Menu de fête complet. Foie gras, saumon fumé, bûche artisanale, chocolat chaud artisanal en option.",
+    desc: "La prestation la plus attendue de l'année. Menu de fête complet avec les grands classiques de saison. Foie gras, saumon fumé, bûche artisanale, viennoiseries de Noël, chocolat chaud artisanal en option. Un buffet festif ou un plateau repas selon votre format et votre effectif.",
     produits: [
       'Foie gras et toasts',
       'Saumon fumé',
       'Bûche artisanale',
       'Chocolats de Noël',
       'Viennoiseries de saison',
-      'Chocolat chaud Mariage Frères',
+      'Chocolat chaud artisanal (en option)',
       'Chardonnay 0 % ou jus pétillant',
     ],
     differentiateur: {
@@ -400,7 +400,7 @@ export const evenements = [
         },
         {
           heading: "Le menu idéal pour un repas de Noël d'entreprise",
-          texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons, tout sans alcool : un Chardonnay Blanc de Blancs 0 % pour trinquer, jus Alain Milliat, chocolat chaud Mariage Frères pour finir.",
+          texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons, tout sans alcool : un Chardonnay Blanc de Blancs 0 % pour trinquer, jus Alain Milliat, et en option un thermos de chocolat chaud artisanal pour finir.",
         },
         {
           heading: "Anticiper : ce que ça change",

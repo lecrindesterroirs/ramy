@@ -1,4 +1,5 @@
-import { PRODUITS } from '../data'
+import { PRODUITS, prixMenu } from '../data'
+import { minuscules } from '../../../../lib/ficheAsavoir'
 
 export function generateStaticParams() {
   return PRODUITS.map(p => ({ slug: p.id }))
@@ -11,9 +12,20 @@ export async function generateMetadata({ params }) {
   const { slug } = await params
   const p = PRODUITS.find(x => x.id === slug)
   if (!p) return { title: "Plateau repas traiteur Paris | L'Écrin Traiteur" }
+  // Plats en minuscules (« & » devient « et ») et prix HT par personne (champ prix de la collection).
+  const bas = (s) => minuscules(s).replace(/\s*&\s*/g, ' et ')
+  const [e, pl, d] = [p.entree, p.plat, p.dessert].map(bas)
+  const px = prixMenu(p)
+  const avecPrix = px ? [
+    `${p.nom} : ${e}, ${pl}, ${d}. ${px} € HT par personne, livré dès 6h30 à Paris.`,
+    `${p.nom} : ${e}, ${pl}, ${d}. ${px} € HT par personne, livré dès 6h30.`,
+    `${p.nom} : ${pl}, ${d}. ${px} € HT par personne, livré dès 6h30 à Paris.`,
+    `${p.nom} : ${pl}, ${d}. ${px} € HT par personne, livré dès 6h30.`,
+  ] : []
   return {
     title: { absolute: `${p.nom}, plateau repas Paris | L'Écrin Traiteur` },
     description: fit([
+      ...avecPrix.filter(c => c.length <= 155),
       `${p.nom} : ${p.entree}, ${p.plat}, ${p.dessert}. Plateau repas individuel livré dès 6h30 à Paris et en Île-de-France.`,
       `${p.nom} : ${p.entree}, ${p.plat}, ${p.dessert}. Plateau repas livré dès 6h30 à Paris et en IDF.`,
       `${p.nom} : ${p.entree}, ${p.plat}, ${p.dessert}. Livré dès 6h30 à Paris et en IDF.`,

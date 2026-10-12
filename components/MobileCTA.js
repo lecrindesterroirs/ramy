@@ -8,48 +8,22 @@ import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobre
 export default function MobileCTA() {
   const pathname = usePathname()
   const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : undefined
-  const [hidden, setHidden] = useState(true)
-  const lastY = useRef(0)
+  // Barre visible dès le chargement et pendant tout le défilement : sur mobile
+  // (trafic Google Ads) elle restait masquée tant que le visiteur ne remontait
+  // pas, donc aucun accès au devis ni au téléphone en lisant la page. Seul le
+  // pied de page la masque (il porte déjà les mêmes liens).
+  const [hidden, setHidden] = useState(false)
   const barRef = useRef(null)
 
   useEffect(() => {
-    let footerVisible = false
-
     const footer = document.querySelector('footer')
-    let observer
-    if (footer) {
-      observer = new IntersectionObserver(([entry]) => {
-        footerVisible = entry.isIntersecting
-        if (footerVisible) setHidden(true)
-      }, { threshold: 0 })
-      observer.observe(footer)
-    }
-
-    const onScroll = () => {
-      const y = window.scrollY
-      if (footerVisible) {
-        lastY.current = y
-        return
-      }
-      if (y > lastY.current + 4) {
-        setHidden(true)
-      } else if (y < lastY.current - 4) {
-        setHidden(false)
-      }
-      lastY.current = y
-    }
-    const onTap = (e) => {
-      if (barRef.current && barRef.current.contains(e.target)) return
-      setHidden(true)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    document.addEventListener('touchstart', onTap, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      document.removeEventListener('touchstart', onTap)
-      if (observer) observer.disconnect()
-    }
-  }, [])
+    if (!footer) return undefined
+    const observer = new IntersectionObserver(([entry]) => {
+      setHidden(entry.isIntersecting)
+    }, { threshold: 0 })
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [pathname])
 
   // Masqué sur la page devis, la nav est intégrée dans le formulaire
   if (pathname === '/devis') return null
@@ -69,8 +43,8 @@ export default function MobileCTA() {
           </svg>
           01 74 54 23 10
         </a>
-        <a className="mobile-cta-devis" href="/devis" aria-label="Obtenir un devis" style={devisAccent ? { background: devisAccent } : undefined}>
-          Devis →
+        <a className="mobile-cta-devis" href="/devis" aria-label="Demander un devis" style={devisAccent ? { background: devisAccent } : undefined}>
+          Demander un devis
         </a>
       </div>
 
@@ -107,6 +81,7 @@ export default function MobileCTA() {
             color: var(--text-primary);
             text-decoration: none;
             border: 1px solid rgba(17,17,17,0.15);
+            min-height: 46px;
             padding: 12px 0;
             transition: border-color 0.2s ease;
           }
@@ -126,7 +101,9 @@ export default function MobileCTA() {
             color: #1A1A18;
             background: var(--accent);
             text-decoration: none;
-            padding: 12px 0;
+            white-space: nowrap;
+            min-height: 46px;
+            padding: 12px 4px;
             transition: opacity 0.2s ease;
           }
           .mobile-cta-devis:hover {

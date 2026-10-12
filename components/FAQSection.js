@@ -9,7 +9,7 @@ const fallbackFaqs = [
   },
   {
     question: "Acceptez-vous les commandes de dernière minute ?",
-    reponse: "Oui. Nous acceptons les commandes de dernière minute jusqu'à 10h le matin même, sur notre sélection disponible du jour : plateaux de petits-déjeuners et plateaux repas en quantité limitée. Pour garantir votre choix complet de produits artisanaux, nous recommandons de commander avant 14h la veille.",
+    reponse: "La règle reste la commande avant 14h la veille, pour une livraison dès 6h30. Pour une demande le matin même, appelez le 01 74 54 23 10 : la réponse dépend de la disponibilité du jour. À Boulogne-Billancourt, où se trouve notre atelier, les commandes sont acceptées jusqu'à 10h sur la sélection du jour.",
   },
   {
     question: "Y a-t-il un minimum de commande et des frais de livraison ?",
@@ -21,7 +21,7 @@ const fallbackFaqs = [
   },
   {
     question: "Comment gérez-vous les régimes alimentaires spécifiques ?",
-    reponse: "Plusieurs de nos produits sont adaptés à des régimes spécifiques : nos madeleines Mado Paris sont certifiées Bio, nos brochettes de fruits et compotes sont vegan, certains cakes sont disponibles sans gluten. Pour les régimes sans lactose, nous pouvons adapter la sélection selon les produits du jour. Pour les régimes halal, nous excluons les charcuteries et orientons la sélection en conséquence. Précisez vos contraintes lors de la commande et nous adaptons.",
+    reponse: "Plusieurs de nos produits sont adaptés à des régimes spécifiques : nos madeleines Mado Paris sont faites avec des ingrédients biologiques et sans huile de palme, nos brochettes de fruits et compotes sont vegan, certains cakes sont disponibles sans gluten. Pour les régimes sans lactose, nous pouvons adapter la sélection selon les produits du jour. Toute la carte est halal et sans porc par défaut, sans supplément. Précisez vos contraintes lors de la commande et nous adaptons.",
   },
   {
     question: "Fournissez-vous les gobelets et serviettes ?",

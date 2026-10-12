@@ -4,6 +4,7 @@ import { PRODUCTS } from '../lib/productsData'
 import { CITIES } from '../lib/citiesData'
 import { PDJ_VILLES } from '../lib/pdjVillesData'
 import { PLATEAUX_VILLES } from '../lib/plateauxVillesData'
+import { HALAL_PAGES } from '../lib/halalPagesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { BOISSONS } from '../lib/boissonsData'
 import { PRODUITS as PLATEAUX_REPAS } from './creations/plateaux-repas/data'
@@ -140,6 +141,14 @@ export default function sitemap() {
     0.85, 'monthly'
   ))
 
+  // ── SEO thématique, sous-pages du traiteur halal (/traiteur-halal/[slug]) ──
+  const halalPages = HALAL_PAGES.map(p => ({
+    url: `${BASE_URL}/traiteur-halal/${p.slug}`,
+    lastModified: '2026-10-13T00:00:00.000Z',
+    priority: 0.88,
+    changeFrequency: 'monthly',
+  }))
+
   const all = [
     ...staticPages,
     ...productPages,
@@ -151,6 +160,7 @@ export default function sitemap() {
     ...quartierPages,
     ...pdjVillePages,
     ...plateauxVillePages,
+    ...halalPages,
   ]
 
   // Dédup par URL : certaines pages (cocktails/classique·signature·prestige,

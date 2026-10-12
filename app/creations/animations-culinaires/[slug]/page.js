@@ -9,6 +9,8 @@ import Footer from '../../../../components/Footer'
 import DevisRapide from '../../../../components/DevisRapide'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
+import FicheAsavoir from '../../../../components/FicheAsavoir'
+import { asavoirAnimation } from '../../../../lib/ficheAsavoir'
 import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
 
 function AnimationDetailInner() {
@@ -98,6 +100,9 @@ function AnimationDetailInner() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px' }}>
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
+
+        {/* ── Bloc « À savoir » : format, composition, devis, régimes (rendu serveur) ── */}
+        <FicheAsavoir {...asavoirAnimation(anim)} paddingBottom="8px" />
 
         {/* ── Article SEO + devis rapide ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
