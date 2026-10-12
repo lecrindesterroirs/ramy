@@ -31,10 +31,10 @@ export const PLATEAUX = [
   },
   {
     seoTitle: `Plateau club sandwichs pour vos afterworks et réunions d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de clubs sandwichs moelleux, découpés en triangles, est un classique de l'apéritif d'entreprise qui ne déçoit jamais. Généreux et facile à partager, il accompagne un afterwork, un déjeuner de travail qui s'étire ou une réception, sans couverts ni logistique compliquée.</p><h2>Des clubs généreux, découpés à partager</h2><p>Deux garnitures : saumon fumé, cream cheese et avocat, et jambon de dinde, sur pain brioché moelleux découpé en triangles pour se servir d'une main. On cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de clubs sandwichs moelleux, découpés en triangles, est un classique de l'apéritif d'entreprise qui ne déçoit jamais. Généreux et facile à partager, il accompagne un afterwork, un déjeuner de travail qui s'étire ou une réception, sans couverts ni logistique compliquée.</p><h2>Des clubs généreux, découpés à partager</h2><p>Deux garnitures : saumon fumé et cream cheese, et jambon de dinde, sur pain brioché moelleux découpé en triangles pour se servir d'une main. On cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plateau-clubs.webp',
     description: 'Assortiment de clubs sandwichs moelleux découpés.',
-    recettes: ['Club Saumon Fumé, Cream Cheese & Avocat', 'Club Jambon de Dinde'],
+    recettes: ['Club Saumon Fumé & Cream Cheese', 'Club Jambon de Dinde'],
   },
   {
     seoTitle: `Plateau de wraps pour vos afterworks et pauses déjeuner d'entreprise à Paris`,
