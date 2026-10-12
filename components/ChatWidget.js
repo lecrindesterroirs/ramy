@@ -17,19 +17,54 @@ import { identifierVisiteur } from '../lib/posthog-identify'
  * chaque tour annoncé par un filet et une étiquette, comme une page du site. */
 const EXCLUS = ['/devis', '/panier', '/commande-confirmee']
 
-const ACCUEIL =
-  "Bonjour, je suis votre assistant chez L'Écrin.\n\nJe réponds sur la carte, les prix, les délais et les livraisons, et je prépare votre demande de devis.\n\nQue préparez-vous ?"
-
-const SUGGESTIONS = [
-  'Un petit-déjeuner pour 20 personnes',
-  'Quels délais de commande ?',
-  'Une option sans gluten',
-]
+/* Deux langues, tout au même endroit. Le français reste la langue par défaut :
+ * on ne devine pas d'après le navigateur, le visiteur bascule s'il le veut. */
+const T = {
+  fr: {
+    lanceur: 'Chat en direct', ouvrir: "Ouvrir le chat en direct", fermer: "Fermer l'assistant",
+    sous: 'En ligne · Devis sous 24 h', eux: "L'Écrin", moi: 'Vous',
+    accueil: "Bonjour, je suis votre assistant chez L'Écrin.\n\nJe réponds sur la carte, les prix, les délais et les livraisons, et je prépare votre demande de devis.\n\nQue préparez-vous ?",
+    suggestions: ['Un petit-déjeuner pour 20 personnes', 'Quels délais de commande ?', 'Une option sans gluten'],
+    champ: 'Écrivez votre question…', monMessage: 'Votre message', envoyer: 'Envoyer',
+    mention: "Assistant automatique. Les informations sont données à titre indicatif ; l'équipe confirme chaque commande.",
+    injoignable: "Je ne suis pas joignable pour le moment.\n\nÉcrivez-nous à commercial@lecrin-traiteur.fr, réponse sous 24 h.",
+    panne: "La connexion a échoué.\n\nÉcrivez-nous à commercial@lecrin-traiteur.fr, réponse sous 24 h.",
+    form: {
+      titre: 'Votre demande', intro: "Vérifiez, complétez, et l'équipe revient sous 24 h.",
+      date: 'Date', convives: 'Convives', ville: 'Ville ou arrondissement', nom: 'Nom',
+      societe: 'Société', email: 'Email', tel: 'Téléphone', message: 'Votre demande',
+      envoyer: 'Envoyer ma demande', envoi: 'Envoi…',
+      erreur: "L'envoi a échoué. Écrivez-nous à commercial@lecrin-traiteur.fr.",
+      prestations: [['petit-dejeuner','Petit-déjeuner'],['plateaux-repas','Plateaux repas'],['cocktail-buffet','Cocktail / Buffet'],['gouter','Goûter'],['evenement-sur-mesure','Sur mesure'],['autre','Autre']],
+      merci: (p) => `C'est envoyé${p ? `, ${p}` : ''}. Vous recevez un accusé de réception par email, et l'équipe revient vers vous avec une proposition sous 24 h.\n\nSi vous voulez ajouter quelque chose, dites-le-moi, je le transmets.`,
+    },
+  },
+  en: {
+    lanceur: 'Live chat', ouvrir: 'Open live chat', fermer: 'Close the assistant',
+    sous: 'Online · Quote within 24h', eux: "L'Écrin", moi: 'You',
+    accueil: "Hello, I'm your assistant at L'Écrin.\n\nI can help with our menu, prices, lead times and deliveries, and I'll prepare your quote request.\n\nWhat are you planning?",
+    suggestions: ['Breakfast for 20 people', 'What are your lead times?', 'A gluten-free option'],
+    champ: 'Type your question…', monMessage: 'Your message', envoyer: 'Send',
+    mention: 'Automated assistant. Information is indicative; our team confirms every order.',
+    injoignable: "I can't be reached right now.\n\nEmail us at commercial@lecrin-traiteur.fr and we'll reply within 24 hours.",
+    panne: "The connection failed.\n\nEmail us at commercial@lecrin-traiteur.fr and we'll reply within 24 hours.",
+    form: {
+      titre: 'Your request', intro: 'Check, complete, and our team will get back to you within 24 hours.',
+      date: 'Date', convives: 'Guests', ville: 'City or district', nom: 'Name',
+      societe: 'Company', email: 'Email', tel: 'Phone', message: 'Your request',
+      envoyer: 'Send my request', envoi: 'Sending…',
+      erreur: 'Sending failed. Please email us at commercial@lecrin-traiteur.fr.',
+      prestations: [['petit-dejeuner','Breakfast'],['plateaux-repas','Meal trays'],['cocktail-buffet','Cocktail / Buffet'],['gouter','Afternoon break'],['evenement-sur-mesure','Bespoke'],['autre','Other']],
+      merci: (p) => `It's sent${p ? `, ${p}` : ''}. You'll get a confirmation by email, and our team will come back to you with a proposal within 24 hours.\n\nIf you'd like to add anything, tell me and I'll pass it on.`,
+    },
+  },
+}
 
 export default function ChatWidget() {
   const pathname = usePathname()
   const [ouvert, setOuvert] = useState(false)
-  const [messages, setMessages] = useState([{ role: 'assistant', content: ACCUEIL }])
+  const [langue, setLangue] = useState('fr')
+  const [messages, setMessages] = useState([{ role: 'assistant', content: T.fr.accueil }])
   const [saisie, setSaisie] = useState('')
   const [enCours, setEnCours] = useState(false)
   const [formulaire, setFormulaire] = useState(null)   // pré-rempli par l'assistant
@@ -38,6 +73,24 @@ export default function ChatWidget() {
   const champRef = useRef(null)
 
   const exclu = EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
+  const t = T[langue]
+
+  // Langue retenue d'une visite à l'autre.
+  useEffect(() => {
+    try {
+      const m = window.localStorage.getItem('chat-langue')
+      if (m === 'en' || m === 'fr') basculer(m, true)
+    } catch (e) { /* mode privé */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  /* Changer de langue retraduit le message d'accueil tant que la conversation
+     n'a pas commencé ; une fois lancée, on ne réécrit pas ce qui a été dit. */
+  function basculer(vers, silencieux) {
+    setLangue(vers)
+    if (!silencieux) { try { window.localStorage.setItem('chat-langue', vers) } catch (e) { /* noop */ } }
+    setMessages(m => (m.length === 1 ? [{ role: 'assistant', content: T[vers].accueil }] : m))
+  }
 
   useEffect(() => {
     if (filRef.current) filRef.current.scrollTo({ top: filRef.current.scrollHeight, behavior: 'smooth' })
@@ -71,6 +124,7 @@ export default function ChatWidget() {
           // Le message d'accueil est écrit côté client : inutile de le renvoyer.
           messages: suite.slice(1).map(m => ({ role: m.role, content: m.content })),
           page: pathname,
+          langue,
           attribution: getAttribution(),
         }),
       })
@@ -80,26 +134,26 @@ export default function ChatWidget() {
         role: 'assistant',
         content: res.ok && data.reply
           ? data.reply
-          : "Je ne suis pas joignable pour le moment.\n\nÉcrivez-nous à commercial@lecrin-traiteur.fr, réponse sous 24 h.",
+          : t.injoignable,
       }])
     } catch {
       setMessages(m => [...m, {
         role: 'assistant',
-        content: "La connexion a échoué.\n\nÉcrivez-nous à commercial@lecrin-traiteur.fr, réponse sous 24 h.",
+        content: t.panne,
       }])
     } finally {
       setEnCours(false)
     }
-  }, [messages, enCours, pathname, envoye])
+  }, [messages, enCours, pathname, envoye, langue, t])
 
   if (exclu) return null
 
   return (
     <>
       {!ouvert && (
-        <button onClick={() => setOuvert(true)} className="chat-launcher" aria-label="Ouvrir le chat en direct">
+        <button onClick={() => setOuvert(true)} className="chat-launcher" aria-label={t.ouvrir}>
           <span className="chat-avatar"><Conseiller /><i className="chat-pastille" aria-hidden="true" /></span>
-          <span className="chat-launcher-txt">Chat en direct</span>
+          <span className="chat-launcher-txt">{t.lanceur}</span>
         </button>
       )}
 
@@ -109,9 +163,15 @@ export default function ChatWidget() {
             <span className="chat-avatar chat-avatar-lg"><Conseiller /><i className="chat-pastille" aria-hidden="true" /></span>
             <div className="chat-titre">
               <span className="chat-marque">L&apos;Écrin Traiteur</span>
-              <span className="chat-sous">En ligne · Devis sous 24 h</span>
+              <span className="chat-sous">{t.sous}</span>
             </div>
-            <button onClick={() => setOuvert(false)} aria-label="Fermer l'assistant" className="chat-fermer">
+            <div className="chat-langues" role="group" aria-label="Langue / Language">
+              <button type="button" onClick={() => basculer('fr')} aria-pressed={langue === 'fr'} aria-label="Français"
+                className={langue === 'fr' ? 'chat-drapeau chat-drapeau-on' : 'chat-drapeau'}><DrapeauFR /></button>
+              <button type="button" onClick={() => basculer('en')} aria-pressed={langue === 'en'} aria-label="English"
+                className={langue === 'en' ? 'chat-drapeau chat-drapeau-on' : 'chat-drapeau'}><DrapeauEN /></button>
+            </div>
+            <button onClick={() => setOuvert(false)} aria-label={t.fermer} className="chat-fermer">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" strokeWidth="1.1" />
               </svg>
@@ -123,14 +183,14 @@ export default function ChatWidget() {
           <div className="chat-fil" ref={filRef} data-lenis-prevent>
             {messages.map((m, i) => (
               <div key={i} className={m.role === 'user' ? 'chat-tour chat-tour-moi' : 'chat-tour'}>
-                <span className="chat-qui">{m.role === 'user' ? 'Vous' : "L'Écrin"}</span>
+                <span className="chat-qui">{m.role === 'user' ? t.moi : t.eux}</span>
                 <Texte contenu={m.content} />
               </div>
             ))}
 
             {messages.length === 1 && !enCours && (
               <div className="chat-suggestions">
-                {SUGGESTIONS.map(s => (
+                {t.suggestions.map(s => (
                   <button key={s} onClick={() => envoyer(s)} className="chat-suggestion">
                     {s}<span aria-hidden="true">→</span>
                   </button>
@@ -140,7 +200,7 @@ export default function ChatWidget() {
 
             {enCours && (
               <div className="chat-tour chat-attente" aria-live="polite">
-                <span className="chat-qui">L&apos;Écrin</span>
+                <span className="chat-qui">{t.eux}</span>
                 <div className="chat-points"><span /><span /><span /></div>
               </div>
             )}
@@ -148,6 +208,7 @@ export default function ChatWidget() {
             {formulaire && !enCours && (
               <Formulaire
                 pre={formulaire}
+                t={t.form}
                 envoye={envoye}
                 page={pathname}
                 conversation={messages}
@@ -156,7 +217,7 @@ export default function ChatWidget() {
                   setFormulaire(null)
                   setMessages(m => [...m, {
                     role: 'assistant',
-                    content: `C'est envoyé${prenom ? `, ${prenom}` : ''}. Vous recevez un accusé de réception par email, et l'équipe revient vers vous avec une proposition sous 24 h.\n\nSi vous voulez ajouter quelque chose, dites-le-moi, je le transmets.`,
+                    content: t.form.merci(prenom),
                   }])
                 }}
               />
@@ -164,18 +225,18 @@ export default function ChatWidget() {
           </div>
 
           <form className="chat-barre" onSubmit={e => { e.preventDefault(); envoyer(saisie) }}>
-            <label htmlFor="chat-saisie" className="chat-label-cache">Votre message</label>
+            <label htmlFor="chat-saisie" className="chat-label-cache">{t.monMessage}</label>
             <input
               id="chat-saisie"
               ref={champRef}
               value={saisie}
               onChange={e => setSaisie(e.target.value)}
-              placeholder="Écrivez votre question…"
+              placeholder={t.champ}
               autoComplete="off"
               maxLength={2000}
               disabled={enCours}
             />
-            <button type="submit" disabled={enCours || !saisie.trim()} aria-label="Envoyer">
+            <button type="submit" disabled={enCours || !saisie.trim()} aria-label={t.envoyer}>
               <svg width="17" height="11" viewBox="0 0 18 12" fill="none" aria-hidden="true">
                 <path d="M0 6h16M11.5 1 16.5 6l-5 5" stroke="currentColor" strokeWidth="1.3" />
               </svg>
@@ -183,7 +244,7 @@ export default function ChatWidget() {
           </form>
 
           <p className="chat-mention">
-            Assistant automatique. Les informations sont données à titre indicatif ; l&apos;équipe confirme chaque commande.
+            {t.mention}
           </p>
         </div>
       )}
@@ -244,6 +305,15 @@ export default function ChatWidget() {
           font-family: 'Neue Montreal', sans-serif; font-size: 9.5px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.14em; color: #875E10;
         }
+        .chat-langues { display: flex; gap: 5px; flex-shrink: 0; }
+        .chat-drapeau {
+          padding: 0; background: none; border: none; line-height: 0;
+          cursor: pointer; opacity: .32; transition: opacity .2s ease;
+        }
+        .chat-drapeau svg { width: 21px; height: 14px; display: block; }
+        .chat-drapeau:hover { opacity: .7; }
+        .chat-drapeau-on { opacity: 1; }
+
         .chat-fermer {
           background: none; border: none; padding: 6px; line-height: 0; color: #1C1614;
           opacity: .4; cursor: pointer; transition: opacity .2s ease; flex-shrink: 0;
@@ -390,19 +460,10 @@ export default function ChatWidget() {
   )
 }
 
-const PRESTATIONS = [
-  ['petit-dejeuner', 'Petit-déjeuner'],
-  ['plateaux-repas', 'Plateaux repas'],
-  ['cocktail-buffet', 'Cocktail / Buffet'],
-  ['gouter', 'Goûter'],
-  ['evenement-sur-mesure', 'Sur mesure'],
-  ['autre', 'Autre'],
-]
-
 /* Formulaire court ouvert par l'assistant, pré-rempli avec ce qu'il a compris.
  * Poste sur /api/devis : même validation, même notification, même registre que
  * le formulaire du site — seule la source change. */
-function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
+function Formulaire({ pre, t, envoye, page, conversation, onEnvoye }) {
   const [v, setV] = useState({
     prestation: pre.prestation || 'autre',
     date: pre.date || '',
@@ -444,11 +505,11 @@ function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
 
   return (
     <form className="chat-form" onSubmit={soumettre}>
-      <span className="chat-qui">Votre demande</span>
-      <p className="chat-form-intro">Vérifiez, complétez, et l&apos;équipe revient sous 24 h.</p>
+      <span className="chat-qui">{t.titre}</span>
+      <p className="chat-form-intro">{t.intro}</p>
 
-      <div className="chat-chips" role="group" aria-label="Type de prestation">
-        {PRESTATIONS.map(([k, label]) => (
+      <div className="chat-chips" role="group" aria-label={t.titre}>
+        {t.prestations.map(([k, label]) => (
           <button
             key={k}
             type="button"
@@ -460,22 +521,22 @@ function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
       </div>
 
       <div className="chat-grille">
-        <Champ id="cf-date" label="Date" type="date" value={v.date} onChange={maj('date')} autoComplete="off" />
-        <Champ id="cf-convives" label="Convives" type="number" min="1" value={v.convives} onChange={maj('convives')} placeholder="20" autoComplete="off" />
+        <Champ id="cf-date" label={t.date} type="date" value={v.date} onChange={maj('date')} autoComplete="off" />
+        <Champ id="cf-convives" label={t.convives} type="number" min="1" value={v.convives} onChange={maj('convives')} placeholder="20" autoComplete="off" />
       </div>
-      <Champ id="cf-ville" label="Ville ou arrondissement" value={v.ville} onChange={maj('ville')} placeholder="Paris 8e" autoComplete="address-level2" />
+      <Champ id="cf-ville" label={t.ville} value={v.ville} onChange={maj('ville')} placeholder="Paris 8e" autoComplete="address-level2" />
 
       <div className="chat-grille">
-        <Champ id="cf-nom" label="Nom" value={v.nom} onChange={maj('nom')} required autoComplete="name" />
-        <Champ id="cf-societe" label="Société" value={v.societe} onChange={maj('societe')} autoComplete="organization" />
+        <Champ id="cf-nom" label={t.nom} value={v.nom} onChange={maj('nom')} required autoComplete="name" />
+        <Champ id="cf-societe" label={t.societe} value={v.societe} onChange={maj('societe')} autoComplete="organization" />
       </div>
       <div className="chat-grille">
-        <Champ id="cf-email" label="Email" type="email" value={v.email} onChange={maj('email')} required autoComplete="email" />
-        <Champ id="cf-tel" label="Téléphone" type="tel" value={v.telephone} onChange={maj('telephone')} autoComplete="tel" />
+        <Champ id="cf-email" label={t.email} type="email" value={v.email} onChange={maj('email')} required autoComplete="email" />
+        <Champ id="cf-tel" label={t.tel} type="tel" value={v.telephone} onChange={maj('telephone')} autoComplete="tel" />
       </div>
 
       <label className="chat-champ">
-        <span>Votre demande</span>
+        <span>{t.message}</span>
         <textarea rows={4} value={v.message} onChange={maj('message')} maxLength={2000} />
       </label>
 
@@ -487,11 +548,11 @@ function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
       />
 
       <button type="submit" className="chat-envoi" disabled={etat === 'envoi'}>
-        {etat === 'envoi' ? 'Envoi…' : 'Envoyer ma demande'}
+        {etat === 'envoi' ? t.envoi : t.envoyer}
       </button>
       {etat === 'erreur' && (
         <p className="chat-form-erreur">
-          L&apos;envoi a échoué. Écrivez-nous à commercial@lecrin-traiteur.fr.
+          {t.erreur}
         </p>
       )}
     </form>
@@ -509,6 +570,31 @@ function Champ({ label, id, ...props }) {
 
 /* Conseiller avec casque : un visage plutôt qu'une bulle de messagerie,
    dessiné au trait comme les pictogrammes du site. */
+/* Drapeaux au trait, dessinés ici plutôt qu'en emoji : un emoji de drapeau
+   s'affiche en lettres (« FR », « GB ») sur Windows. */
+function DrapeauFR() {
+  return (
+    <svg viewBox="0 0 21 14" aria-hidden="true">
+      <rect width="7" height="14" fill="#0B3E8C" /><rect x="7" width="7" height="14" fill="#F4F4F2" />
+      <rect x="14" width="7" height="14" fill="#C8102E" />
+      <rect x="0.4" y="0.4" width="20.2" height="13.2" fill="none" stroke="rgba(17,17,17,.2)" strokeWidth="0.8" />
+    </svg>
+  )
+}
+
+function DrapeauEN() {
+  return (
+    <svg viewBox="0 0 21 14" aria-hidden="true">
+      <rect width="21" height="14" fill="#0B3E8C" />
+      <path d="M0 0l21 14M21 0L0 14" stroke="#F4F4F2" strokeWidth="2.8" />
+      <path d="M0 0l21 14M21 0L0 14" stroke="#C8102E" strokeWidth="1.4" />
+      <path d="M10.5 0v14M0 7h21" stroke="#F4F4F2" strokeWidth="4.2" />
+      <path d="M10.5 0v14M0 7h21" stroke="#C8102E" strokeWidth="2.4" />
+      <rect x="0.4" y="0.4" width="20.2" height="13.2" fill="none" stroke="rgba(17,17,17,.2)" strokeWidth="0.8" />
+    </svg>
+  )
+}
+
 function Conseiller() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">

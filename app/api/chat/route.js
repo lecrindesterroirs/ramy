@@ -111,17 +111,18 @@ const OUTIL = {
   input_schema: {
     type: 'object',
     properties: {
-      recapitulatif: { type: 'string', description: "Le besoin reformulé pour l'équipe, en deux ou trois phrases : prestation, produits évoqués, contraintes de régime, horaire, précisions utiles. Ce texte est affiché à la personne et modifiable par elle." },
+      recapitulatif: { type: 'string', description: "Le besoin reformulé pour l'équipe, TOUJOURS EN FRANÇAIS même si la conversation se tient en anglais (c'est l'équipe qui le lit), en deux ou trois phrases : prestation, produits évoqués, contraintes de régime, horaire, précisions utiles. Ce texte est affiché à la personne et modifiable par elle." },
       prestation: {
         type: 'string',
         enum: ['petit-dejeuner', 'plateaux-repas', 'cocktail-buffet', 'gouter', 'evenement-sur-mesure', 'autre'],
         description: "Type de prestation le plus proche du besoin.",
       },
-      date: { type: 'string', description: "Date de l'événement au format AAAA-MM-JJ, déduite de la date du jour donnée dans le contexte. Chaîne vide si aucune date n'a été évoquée." },
+      date_dite: { type: 'string', description: "Les mots EXACTS employés par la personne pour la date, recopiés tels quels : « jeudi prochain », « next Thursday », « le 20 », « demain », « 18 novembre ». Chaîne vide si elle n'a évoqué aucune date. Ne traduis pas, ne reformule pas, ne calcule rien." },
+      date: { type: 'string', description: "Ta meilleure estimation au format AAAA-MM-JJ, ou chaîne vide si tu n'es pas sûr. En cas de désaccord avec date_dite, c'est date_dite qui fait foi." },
       convives: { type: 'string', description: "Nombre de convives, en chiffres. Chaîne vide si inconnu." },
       ville: { type: 'string', description: "Ville ou arrondissement de livraison. Chaîne vide si inconnu." },
     },
-    required: ['recapitulatif', 'prestation', 'date', 'convives', 'ville'],
+    required: ['recapitulatif', 'prestation', 'date_dite', 'date', 'convives', 'ville'],
     additionalProperties: false,
   },
   strict: true,
@@ -140,6 +141,92 @@ function systeme() {
 /* Le modèle n'a aucune notion du jour : sans ça il date les demandes sur une
  * année au hasard. Bloc séparé et non mis en cache, pour ne pas invalider le
  * catalogue à chaque changement de date. */
+const JOURS = {
+  lundi: 1, monday: 1, mardi: 2, tuesday: 2, mercredi: 3, wednesday: 3, jeudi: 4, thursday: 4,
+  vendredi: 5, friday: 5, samedi: 6, saturday: 6, dimanche: 0, sunday: 0,
+}
+
+/* Le modèle sait recopier, il ne sait pas compter les jours : il a daté un
+ * « next Thursday » du lundi 12 octobre au samedi 17. On résout donc la date
+ * ici, à partir des mots employés par le visiteur, et on ne garde son
+ * estimation que si on ne reconnaît rien. */
+export function resoudreDate(dit, estimation, maintenant = new Date()) {
+  const iso = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(d)
+  const valide = (v) => (ISO_DATE.test(v || '') ? v : '')
+  const texte = String(dit || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  if (!texte) return valide(estimation)
+
+  const base = Math.floor(maintenant.getTime() / 86400000)
+  const dans = (n) => iso(new Date((base + n) * 86400000 + 43200000))
+
+  if (/apres.?demain|day after tomorrow/.test(texte)) return dans(2)
+  if (/\bdemain\b|\btomorrow\b/.test(texte)) return dans(1)
+  if (/aujourd|\btoday\b/.test(texte)) return dans(0)
+
+  const nom = Object.keys(JOURS).find(j => new RegExp(`\\b${j}\\b`).test(texte))
+  if (nom) {
+    // Toujours la prochaine occurrence a venir ; « jeudi » dit un jeudi = le jeudi suivant.
+    const actuel = new Date(dans(0) + 'T12:00:00Z').getUTCDay()
+    let ecart = (JOURS[nom] - actuel + 7) % 7
+    if (ecart === 0) ecart = 7
+    if (/\b(2|deux|two)\s+semaines?\b|\bin\s+(2|two)\s+weeks?\b/.test(texte)) ecart += 7
+    return dans(ecart)
+  }
+
+  // Date explicite avec un mois : « 18 novembre », « November 18 ».
+  const MOIS = {
+    janvier: 1, january: 1, fevrier: 2, february: 2, mars: 3, march: 3, avril: 4, april: 4,
+    mai: 5, may: 5, juin: 6, june: 6, juillet: 7, july: 7, aout: 8, august: 8,
+    septembre: 9, september: 9, octobre: 10, october: 10, novembre: 11, november: 11,
+    decembre: 12, december: 12,
+  }
+  const nomMois = Object.keys(MOIS).find(x => new RegExp(`\\b${x}\\b`).test(texte))
+  if (nomMois) {
+    const j = texte.match(/\b(\d{1,2})(?:er|eme|th|st|nd|rd)?\b/)
+    if (j) {
+      const jour = parseInt(j[1], 10)
+      const mois = MOIS[nomMois]
+      const annee = texte.match(/\b(20\d{2})\b/)
+      if (jour >= 1 && jour <= 31) {
+        const aujourdhui = dans(0)
+        let an = annee ? parseInt(annee[1], 10) : parseInt(aujourdhui.slice(0, 4), 10)
+        const candidat = `${an}-${String(mois).padStart(2, '0')}-${String(jour).padStart(2, '0')}`
+        // Sans année donnée, un mois déjà passé désigne l'année suivante.
+        if (!annee && candidat < aujourdhui) {
+          return `${an + 1}-${String(mois).padStart(2, '0')}-${String(jour).padStart(2, '0')}`
+        }
+        return candidat
+      }
+    }
+  }
+
+  // « le 20 », « the 20th » : le prochain 20 a venir.
+  const m = texte.match(/\b(?:le |the )?(\d{1,2})(?:er|eme|th|st|nd|rd)?\b/)
+  if (m && !/\d{4}/.test(texte)) {
+    const n = parseInt(m[1], 10)
+    if (n >= 1 && n <= 31) {
+      for (let i = 0; i <= 62; i++) {
+        const d = dans(i)
+        if (parseInt(d.slice(8), 10) === n) return d
+      }
+    }
+  }
+  return valide(estimation)
+}
+
+/* Le modèle se trompe de jour quand on lui dit « jeudi prochain » : on lui donne
+ * la correspondance jour/date toute faite plutôt que de le laisser compter. */
+function septJours() {
+  const fmt = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', weekday: 'long', day: 'numeric', month: 'long' })
+  const iso = (d) => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(d)
+  const out = []
+  for (let i = 1; i <= 7; i++) {
+    const d = new Date(Date.now() + i * 86400000)
+    out.push(`${fmt.format(d)} = ${iso(d)}`)
+  }
+  return out.join(', ')
+}
+
 function blocsSysteme() {
   const aujourdhui = new Intl.DateTimeFormat('fr-FR', {
     timeZone: 'Europe/Paris', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
@@ -147,9 +234,25 @@ function blocsSysteme() {
   const iso = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(new Date())
   return [
     { type: 'text', text: systeme(), cache_control: { type: 'ephemeral' } },
-    { type: 'text', text: `Nous sommes le ${aujourdhui} (${iso}). Calcule toujours les dates à partir de là ; « mardi prochain » ou « le 20 » se résolvent par rapport à aujourd'hui, jamais sur une autre année.` },
+    { type: 'text', text:
+      `Nous sommes le ${aujourdhui} (${iso}).\n` +
+      `Toute date se calcule à partir de là, jamais sur une autre année. Avant d'écrire une date, VÉRIFIE le jour de la semaine : ` +
+      `les sept prochains jours sont ${septJours()}. Si la personne dit « jeudi prochain » ou « next Thursday », prends le jeudi de cette liste. ` +
+      `Si tu hésites entre deux dates, ne devine pas : laisse la date vide et dis-le.` },
   ]
 }
+
+/* Le visiteur a basculé en anglais : on ne traduit ni le catalogue ni les règles
+ * (ce serait un deuxième prompt à maintenir et à repayer), on demande juste de
+ * répondre en anglais. Les noms de produits restent en français : ce sont des
+ * noms propres, et c'est ce qui figure sur le devis. */
+const CONSIGNE_EN = `
+RÉPONDS EXCLUSIVEMENT EN ANGLAIS, quelle que soit la langue de la question. Tu t'adresses à une personne anglophone.
+Garde les noms de produits et de formules en français, tels qu'ils sont au catalogue (ils figurent ainsi sur le devis) : « La Réception », « Coffret de 20 madeleines », « Brochettes de fruits frais ». Tu peux ajouter une courte traduction entre parenthèses la première fois si ce n'est pas évident.
+Les prix restent en euros HT ; précise « excl. VAT ».
+UNE SEULE EXCEPTION : le champ « recapitulatif » de l'outil ouvrir_formulaire s'écrit TOUJOURS EN FRANÇAIS, même ici. Ce texte n'est pas lu par le visiteur mais par l'équipe, qui travaille en français.
+Tout le reste de tes consignes reste valable à l'identique.
+`.trim()
 
 /* N'accepte que ce que le client a le droit d'envoyer : du texte, dans des
  * tours user/assistant. Les tool_result sont reconstruits côté serveur. */
@@ -179,6 +282,7 @@ export async function POST(request) {
     return Response.json({ error: 'requête invalide' }, { status: 400 })
   }
 
+  const langue = body.langue === 'en' ? 'en' : 'fr'
   const attribution = body.attribution && typeof body.attribution === 'object' ? body.attribution : null
   const page = typeof body.page === 'string' ? body.page.slice(0, 300) : null
 
@@ -188,17 +292,22 @@ export async function POST(request) {
     let reponse = await client.messages.create({
       model: MODEL,
       max_tokens: 1024,
-      system: blocsSysteme(),
+      system: langue === 'en' ? [...blocsSysteme(), { type: 'text', text: CONSIGNE_EN }] : blocsSysteme(),
       tools: [OUTIL],
       messages,
     })
 
     let formulaire = null
+    /* Ce que l'assistant a dit AVANT d'ouvrir le formulaire : c'est là qu'est sa
+     * recommandation. Après l'outil il ne sait plus que commenter le formulaire,
+     * quelle que soit la consigne — on garde donc les deux et on les recolle. */
+    let avant = ''
 
     // Un seul aller-retour d'outil : l'assistant ouvre le formulaire, puis conclut.
     if (reponse.stop_reason === 'tool_use') {
       const appels = reponse.content.filter(b => b.type === 'tool_use')
       const resultats = []
+      avant = reponse.content.filter(b => b.type === 'text').map(b => b.text).join('\n').trim()
 
       for (const appel of appels) {
         if (appel.name !== 'ouvrir_formulaire') {
@@ -209,7 +318,7 @@ export async function POST(request) {
         formulaire = {
           recapitulatif: String(d.recapitulatif || '').slice(0, 1200),
           prestation: String(d.prestation || 'autre'),
-          date: ISO_DATE.test(d.date || '') ? d.date : '',
+          date: resoudreDate(d.date_dite, d.date),
           convives: String(d.convives || '').slice(0, 20),
           ville: String(d.ville || '').slice(0, 120),
         }
@@ -217,15 +326,16 @@ export async function POST(request) {
           type: 'tool_result',
           tool_use_id: appel.id,
           content:
-            "Le formulaire est affiché sous ta réponse, pré-rempli. Dis en UNE phrase qu'il n'y a plus qu'à compléter " +
-            "le nom et l'email pour recevoir le devis sous 24 h. Ne redemande aucune coordonnée et ne répète pas le récapitulatif.",
+            "Le formulaire est affiché, pré-rempli. Réponds par UNE SEULE phrase disant qu'il n'y a plus qu'à " +
+            "compléter le nom et l'email pour recevoir le devis sous 24 h. Ne décris pas le formulaire, ne redemande " +
+            "aucune coordonnée, ne répète pas le récapitulatif.",
         })
       }
 
       reponse = await client.messages.create({
         model: MODEL,
         max_tokens: 1024,
-        system: blocsSysteme(),
+        system: langue === 'en' ? [...blocsSysteme(), { type: 'text', text: CONSIGNE_EN }] : blocsSysteme(),
         tools: [OUTIL],
         messages: [
           ...messages,
@@ -235,10 +345,13 @@ export async function POST(request) {
       })
     }
 
-    const texte = reponse.content.filter(b => b.type === 'text').map(b => b.text).join('\n').trim()
+    const apres = reponse.content.filter(b => b.type === 'text').map(b => b.text).join('\n').trim()
+    const texte = [avant, apres].filter(Boolean).join('\n\n')
 
     return Response.json({
-      reply: texte || "Je n'ai pas réussi à répondre. Écrivez-nous à commercial@lecrin-traiteur.fr, on revient vers vous sous 24 h.",
+      reply: texte || (langue === 'en'
+        ? "I couldn't answer. Please email us at commercial@lecrin-traiteur.fr and we'll reply within 24 hours."
+        : "Je n'ai pas réussi à répondre. Écrivez-nous à commercial@lecrin-traiteur.fr, on revient vers vous sous 24 h."),
       formulaire,
     })
   } catch (e) {
