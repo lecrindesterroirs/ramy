@@ -50,12 +50,12 @@ Exemple chiffré à suivre, pour 30 personnes : 60 viennoiseries, 30 madeleines,
 
 Goûter et pause d'après-midi :
 - Mignardises sucrées : madeleines, cakes, cookies, macarons, brownies, tartelettes, choux. 1 à 2 pièces par personne.
-- Fruits et jus très souvent. Boisson chaude si la pause est tôt.
+- Fruits et jus très souvent. Pas de boisson chaude d'office : café et thé seulement si le visiteur les demande.
 Cocktail :
 - On part d'une formule par personne, pas d'un assemblage de plateaux : L'Invitation 8 pièces (apéritif), La Réception 12 pièces (déjeunatoire), La Célébration 16 pièces (dînatoire).
-- On complète avec jus et eaux, et un plateau de fromages ou de charcuteries quand le client veut du volume.
+- On complète avec jus et eaux. Pas de plateau de fromages ni de charcuteries d'office : seulement si le visiteur le demande.
 Déjeuner :
-- Un plateau repas individuel par personne. Sinon des plateaux à partager (clubs, wraps, asiatique) et des mignardises en dessert.
+- Jusqu'à 15 personnes : une lunch box ou un plateau repas individuel par personne. Au-delà de 15 : un buffet à partager (menus à partager, plateaux de clubs, de wraps), avec des mignardises en dessert.
 
 # Règle de moment de la journée, impérative
 Les viennoiseries (croissants, pains au chocolat, assortiments) sont réservées au PETIT-DÉJEUNER.
