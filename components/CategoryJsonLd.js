@@ -4,7 +4,8 @@ import { CATEGORY_FAQ } from '../lib/categoryFaq'
 
 const SITE = 'https://www.lecrin-traiteur.fr'
 
-export default function CategoryJsonLd({ name, path, items, serviceType }) {
+// includeFaq={false} : la page porte déjà son propre FAQPage (layout.js) ; éviter deux FAQPage concurrents.
+export default function CategoryJsonLd({ name, path, items, serviceType, includeFaq = true }) {
   const graph = [
     {
       '@type': 'BreadcrumbList',
@@ -42,15 +43,17 @@ export default function CategoryJsonLd({ name, path, items, serviceType }) {
   }
 
   // FAQ logistique (faits citables par les IA — cohérents avec /traiteur et la home)
-  graph.push({
-    '@type': 'FAQPage',
-    '@id': `${SITE}${path}#faq`,
-    mainEntity: CATEGORY_FAQ.map(f => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  })
+  if (includeFaq) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${SITE}${path}#faq`,
+      mainEntity: CATEGORY_FAQ.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })
+  }
 
   return (
     <script

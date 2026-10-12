@@ -3,6 +3,7 @@ import { articles } from '../lib/journalData'
 import { PRODUCTS } from '../lib/productsData'
 import { CITIES } from '../lib/citiesData'
 import { PDJ_VILLES } from '../lib/pdjVillesData'
+import { PLATEAUX_VILLES } from '../lib/plateauxVillesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { BOISSONS } from '../lib/boissonsData'
 import { PRODUITS as PLATEAUX_REPAS } from './creations/plateaux-repas/data'
@@ -133,6 +134,12 @@ export default function sitemap() {
     0.85, 'monthly'
   ))
 
+  // ── SEO local, plateaux repas d'entreprise + ville ────────────────
+  const plateauxVillePages = PLATEAUX_VILLES.map(c => url(
+    `/plateaux-repas-entreprise/${c.slug}`,
+    0.85, 'monthly'
+  ))
+
   const all = [
     ...staticPages,
     ...productPages,
@@ -143,6 +150,7 @@ export default function sitemap() {
     ...cityPages,
     ...quartierPages,
     ...pdjVillePages,
+    ...plateauxVillePages,
   ]
 
   // Dédup par URL : certaines pages (cocktails/classique·signature·prestige,

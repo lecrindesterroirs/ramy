@@ -11,6 +11,7 @@ import CategoryClosing from '../../../components/CategoryClosing'
 import RelatedLinks from '../../../components/RelatedLinks'
 import { CITIES } from '../../../lib/citiesData'
 import { PDJ_VILLES } from '../../../lib/pdjVillesData'
+import { PLATEAUX_VILLES } from '../../../lib/plateauxVillesData'
 import { CITY_NEIGHBORS } from '../../../lib/cityNeighbors'
 import { OCCASIONS } from '../../../lib/occasionsData'
 import ParallaxImage from '../../../components/ParallaxImage'
@@ -49,6 +50,21 @@ export default function CityPage() {
 
   // Page « petit-déjeuner d'entreprise + ville » dédiée, si elle existe (maillage contextuel)
   const pdjPage = PDJ_VILLES.find(p => p.slug === city.slug)
+
+  // Page « plateaux repas d'entreprise + ville » dédiée, si elle existe (maillage contextuel)
+  const plateauxPage = (PLATEAUX_VILLES || []).find(p => p.slug === city.slug)
+
+  // FAQ propre à la ville (champ optionnel `faq` : tableau de { q, a })
+  const faq = Array.isArray(city.faq) ? city.faq.filter(f => f && f.q && f.a) : []
+  const faqLd = faq.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  } : null
 
   // JSON-LD LocalBusiness schema
   const jsonLd = {
@@ -112,6 +128,9 @@ export default function CityPage() {
       {/* JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      {faqLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      )}
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
@@ -204,16 +223,27 @@ export default function CityPage() {
           </div>
         </div>
 
-        {/* ── Lien contextuel vers la page petit-déjeuner de la ville (si elle existe) ── */}
-        {pdjPage && (
+        {/* ── Liens contextuels vers les pages petit-déjeuner et plateaux repas de la ville (si elles existent) ── */}
+        {(pdjPage || plateauxPage) && (
           <div className="city-pdj" style={{ maxWidth: '1280px', margin: '0 auto', padding: '36px 72px 0' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center' }}>
-              Une réunion tôt le matin ? Notre page{' '}
-              <a href={`/petit-dejeuner-entreprise/${pdjPage.slug}`} style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                petit-déjeuner d'entreprise à {city.name}
-              </a>
-              {' '}détaille les formules dès 8€ HT par personne et la livraison dès 6h30.
-            </p>
+            {pdjPage && (
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center' }}>
+                Une réunion tôt le matin ? Notre page{' '}
+                <a href={`/petit-dejeuner-entreprise/${pdjPage.slug}`} style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  petit-déjeuner d'entreprise à {city.name}
+                </a>
+                {' '}détaille les formules dès 8€ HT par personne et la livraison dès 6h30.
+              </p>
+            )}
+            {plateauxPage && (
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center', marginTop: pdjPage ? '10px' : 0 }}>
+                Un déjeuner de travail à servir sur place ? Notre page{' '}
+                <a href={`/plateaux-repas-entreprise/${plateauxPage.slug}`} style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                  plateaux repas d'entreprise à {city.name}
+                </a>
+                {' '}présente les menus individuels dès 28,90€ HT par personne.
+              </p>
+            )}
           </div>
         )}
 
@@ -275,6 +305,22 @@ export default function CityPage() {
             </div>
           </div>
         </div>
+
+        {/* ── FAQ propre à la ville (champ `faq` de citiesData.js) ── */}
+        {faq.length > 0 && (
+          <section className="city-faq" style={{ maxWidth: '800px', margin: '0 auto', padding: '80px 72px 0' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px', lineHeight: 1.2, textAlign: 'center' }}>
+              Questions fréquentes à {city.name}
+            </h2>
+            {faq.map((item, i) => (
+              <div key={i} style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '20px 0' }}>
+                <h3 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', margin: '0 0 8px', lineHeight: 1.5 }}>{item.q}</h3>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>{item.a}</p>
+              </div>
+            ))}
+            <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
+          </section>
+        )}
 
       </main>
 
@@ -373,6 +419,7 @@ export default function CityPage() {
           .city-services-grid { grid-template-columns: 1fr !important; }
           .city-zones { padding: 36px 24px !important; }
           .city-occasions { padding: 40px 24px !important; }
+          .city-faq { padding: 56px 24px 0 !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .city-hero-wrapper { padding: 32px 40px 0 !important; }
@@ -382,6 +429,7 @@ export default function CityPage() {
           .city-services-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .city-zones { padding: 40px !important; }
           .city-occasions { padding: 48px 40px !important; }
+          .city-faq { padding: 64px 40px 0 !important; }
         }
       ` }} />
 

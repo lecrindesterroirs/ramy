@@ -69,6 +69,22 @@ const FAQ = [
     q: 'Pour combien de personnes pouvez-vous livrer ?',
     a: "De 10 à 300 personnes et plus, petites équipes comme grands séminaires. Chaque commande est préparée le matin même.",
   },
+  {
+    q: 'Êtes-vous certifié halal ?',
+    a: "Non, nous ne revendiquons pas de certification halal délivrée par un organisme. Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes : c'est une offre halal-friendly, construite avec nos artisans. Pour les viandes, nous pouvons vous renseigner sur l'origine au moment du devis.",
+  },
+  {
+    q: 'Combien coûte un plateau repas halal ?',
+    a: "Les plateaux repas démarrent à 28,90 € HT par personne, entrée, plat, dessert et pain compris, tous halal et sans porc. La livraison est à 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT.",
+  },
+  {
+    q: 'Proposez-vous un cocktail ou un buffet halal pour une réception ?',
+    a: "Oui. Les formules cocktail sont halal et sans porc par défaut : 8 pièces à 29,90 € HT par personne, 12 pièces à 40,90 € HT, 16 pièces à 51,90 € HT. Pour 50 personnes, comptez de 1 495 à 2 595 € HT hors livraison.",
+  },
+  {
+    q: 'Y a-t-il de l\'alcool dans vos recettes ?',
+    a: "Non. Nos recettes sont sans alcool et nous ne livrons que des boissons sans alcool : jus Alain Milliat, eaux et, pour trinquer, un Chardonnay Blanc de Blancs 0 %.",
+  },
 ]
 
 export default function TraiteurHalal() {
@@ -120,12 +136,41 @@ export default function TraiteurHalal() {
   const seoArticle = `
     <h2>Un traiteur d'entreprise halal, pensé pour toute l'équipe</h2>
     <p>Dans une entreprise, une pause gourmande ne devrait jamais exclure personne. Chez <strong>L'Écrin Traiteur</strong>, l'ensemble de notre gamme est <strong>halal et sans porc par défaut</strong> : petits-déjeuners, plateaux repas, cocktails et buffets. Ce n'est pas une option cachée dans un coin de la carte, c'est notre référence sur chaque commande livrée à Paris et en Île-de-France.</p>
+
+    <h2>Ce que vous commandez en halal, et à quel prix</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Prestation</th><th>Ce que vous recevez</th><th>Prix HT</th></tr></thead>
+      <tbody>
+        <tr><td><strong><a href="/creations/petits-dejeuners-et-pauses">Petit-déjeuner d'entreprise</a></strong></td><td>Viennoiseries, madeleines, fruits frais, jus, boissons chaudes</td><td>Dès 6,90 € par personne</td></tr>
+        <tr><td><strong><a href="/creations/pauses-gourmandes">Goûter et pause gourmande</a></strong></td><td>Madeleines, cookies, cakes, brochettes de fruits</td><td>Dès 6 € par personne</td></tr>
+        <tr><td><strong><a href="/creations/plateaux-repas">Plateau repas</a></strong></td><td>Entrée, plat, dessert et pain, en versions viande, poulet, poisson ou végétarienne</td><td>Dès 28,90 € par personne</td></tr>
+        <tr><td><strong><a href="/creations/cocktails">Cocktail, afterwork, réception</a></strong></td><td>8, 12 ou 16 pièces salées et sucrées par personne</td><td>De 29,90 à 51,90 € par personne</td></tr>
+      </tbody>
+    </table></div>
+    <p>La livraison est à 29 € HT à Paris et dans les communes proches, le minimum de commande est de 50 € HT, et la facture est une facture entreprise avec TVA.</p>
+
+    <h2>Halal, sans porc, sans alcool : ce que nous affirmons</h2>
+    <p>Toute la carte est halal et sans porc par défaut, et nos recettes ne contiennent pas d'alcool. Nous ne revendiquons pas de certification halal délivrée par un organisme : notre offre est halal-friendly, construite avec nos artisans. Si l'origine d'une viande compte pour votre équipe, dites-le au moment du devis, nous pouvons vous renseigner sur le sourcing avant de valider la commande. Le détail est dans notre guide <a href="/journal/traiteur-halal-entreprise-paris">traiteur halal-friendly à Paris : options sans porc et sans alcool</a>.</p>
+
     <h2>Végétarien, vegan, sans gluten : chacun trouve sa place</h2>
     <p>Au-delà du halal, nous déclinons nos prestations en versions <strong>végétariennes et vegan</strong>, et réalisons des <strong>adaptations sans gluten sur demande</strong>. Vos collaborateurs, quelles que soient leurs habitudes alimentaires, partagent le même moment autour d'une table où personne n'est mis de côté.</p>
-    <h2>Livré dans vos bureaux dès 6h30</h2>
-    <p>Réunion matinale, séminaire, petit-déjeuner d'équipe ou pot de départ : nous livrons et installons dès 6h30, du lundi au vendredi, de 10 à 300 personnes. Les produits sont préparés le matin même, pour la fraîcheur, et notés 5/5 par nos clients sur Google. <a href="/devis">Demandez votre devis gratuit</a> et composez un menu qui régale toute votre équipe.</p>
-    <h2>Pour aller plus loin</h2>
-    <p>Deux guides pour préparer votre événement : <a href="/journal/cocktail-entreprise-halal-paris">cocktail d'entreprise halal à Paris, formules et budget</a>, et <a href="/journal/evenement-entreprise-halal-guide">organiser un séminaire ou un événement d'entreprise halal</a>.</p>
+    <ul>
+      <li><strong>Plateaux repas :</strong> La Solaire, La Provençale et La Potagère sont végétariens. Comptez environ un tiers de plateaux végétariens sur une équipe dont vous ne connaissez pas les préférences.</li>
+      <li><strong>Pauses :</strong> les brochettes et les corbeilles de fruits frais sont vegan et sans gluten, les compotes sont vegan, et le banana bread est sans gluten.</li>
+      <li><strong>Précision au devis :</strong> indiquez le nombre de personnes concernées par chaque régime, nous répartissons la commande en conséquence. Voir aussi nos guides <a href="/journal/traiteur-vegan-vegetarien-entreprise-paris">traiteur végétarien et vegan en entreprise</a> et <a href="/journal/traiteur-sans-gluten-entreprise-paris">traiteur sans gluten en entreprise</a>.</li>
+    </ul>
+
+    <h2>Halal pour un séminaire, un déjeuner ou un cocktail</h2>
+    <ul>
+      <li><strong>Séminaire :</strong> sur une journée qui réunit plusieurs équipes et des intervenants extérieurs, la carte halal par défaut évite de recenser les contraintes de chacun. Voir <a href="/occasions/seminaire-entreprise">traiteur séminaire d'entreprise</a>.</li>
+      <li><strong>Déjeuner de réunion :</strong> un plateau individuel complet par personne, halal et sans porc. Voir <a href="/occasions/dejeuner-entreprise">déjeuner d'entreprise</a>.</li>
+      <li><strong>Cocktail et afterwork :</strong> des pièces salées et sucrées sans porc ni alcool, avec des boissons sans alcool dans la même commande. Voir <a href="/occasions/cocktail-entreprise">cocktail d'entreprise à Paris</a> et <a href="/occasions/afterwork-entreprise">traiteur afterwork</a>.</li>
+      <li><strong>Petit-déjeuner d'équipe :</strong> viennoiseries, madeleines, fruits et jus, sans aménagement particulier. Voir <a href="/occasions/petit-dejeuner-entreprise">petit-déjeuner d'entreprise</a>.</li>
+    </ul>
+
+    <h2>Livraison halal à Paris et en Île-de-France</h2>
+    <p>Réunion matinale, séminaire, petit-déjeuner d'équipe ou pot de départ : nous livrons et installons dès 6h30, du lundi au vendredi, de 10 à 300 personnes, avec notre propre équipe. Nous desservons notamment <a href="/traiteur/paris">Paris</a>, <a href="/traiteur/la-defense">La Défense</a>, <a href="/traiteur/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/neuilly-sur-seine">Neuilly-sur-Seine</a>, <a href="/traiteur/levallois-perret">Levallois-Perret</a>, <a href="/traiteur/nanterre">Nanterre</a> et <a href="/traiteur/versailles">Versailles</a>, soit <a href="/traiteur">toutes les villes d'Île-de-France</a> de notre zone de livraison. Les produits sont préparés le matin même, pour la fraîcheur, et notés 5/5 par nos clients sur Google.</p>
+    <p>Commande jusqu'à la veille 14h pour une livraison le lendemain ; à partir de 50 personnes, prévenez au moins 48h avant. <a href="/devis">Demandez votre devis gratuit</a> et composez un menu qui régale toute votre équipe.</p>
   `
 
   return (
@@ -150,10 +195,10 @@ export default function TraiteurHalal() {
                   Traiteur d'entreprise · Paris & Île-de-France
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur Halal{' '}<br />& Inclusif
+                  Traiteur halal d'entreprise{' '}<br />Paris & Île-de-France
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
-                  Le traiteur d'entreprise qui régale <em>toute</em> l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten, livré dans vos bureaux dès 6h30.
+                  Le traiteur d'entreprise qui régale toute l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten, livré dans vos bureaux dès 6h30.
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
@@ -198,6 +243,9 @@ export default function TraiteurHalal() {
           </p>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
             Des versions végétariennes et vegan existent sur chaque prestation, et nous adaptons en sans gluten sur demande. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
+          </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginTop: '22px' }}>
+            Repères de prix, tout en halal et sans porc : petit-déjeuner dès <strong style={{ fontWeight: 500 }}>6,90 € HT</strong> par personne, plateau repas dès <strong style={{ fontWeight: 500 }}>28,90 € HT</strong>, cocktail de <strong style={{ fontWeight: 500 }}>29,90 à 51,90 € HT</strong> selon la formule. La livraison est à 29 € HT à Paris et dans les communes proches.
           </p>
         </section>
 

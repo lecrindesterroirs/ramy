@@ -88,3 +88,28 @@ export const FORMULES = [
     ],
   },
 ]
+
+// Questions du catalogue : rendues visibles dans la page ET servies en FAQPage (layout.js).
+// Les chiffres reprennent les formules ci-dessus ; livraison 29 € HT, minimum 50 € HT.
+export const FAQ_CATALOGUE = [
+  {
+    name: "Quel est le prix d'une formule cocktail par personne ?",
+    answer: "L'Invitation (8 pièces) est à 29,90 € HT par personne, La Réception (12 pièces) à 40,90 € HT et La Célébration (16 pièces) à 51,90 € HT. La livraison s'ajoute : 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT.",
+  },
+  {
+    name: 'Combien de pièces par personne dans chaque formule ?',
+    answer: "L'Invitation : 8 pièces, dont 6 salées et 2 sucrées. La Réception : 12 pièces, dont 9 salées et 3 sucrées. La Célébration : 16 pièces, dont 12 salées et 4 sucrées. La composition détaillée est affichée sur chaque carte.",
+  },
+  {
+    name: 'Quelle formule pour 20 personnes, pour 50 personnes ?',
+    answer: "Pour 20 personnes : 598 € HT en L'Invitation, 818 € HT en La Réception, 1 038 € HT en La Célébration. Pour 50 personnes : 1 495, 2 045 ou 2 595 € HT. Les totaux sont hors livraison, et le prix par personne reste fixe quel que soit l'effectif.",
+  },
+  {
+    name: 'Peut-on adapter une formule aux régimes alimentaires ?',
+    answer: "Toute la carte est halal et sans porc par défaut. Les options végétariennes, véganes et sans gluten se précisent au devis. La composition des trois formules est fixe : pour une demande particulière, envoyez un mail ou demandez un devis avant la commande.",
+  },
+  {
+    name: 'Jusqu\'à quand peut-on commander ?',
+    answer: "Jusqu'à la veille 14h pour une livraison le lendemain. À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48h avant. Le devis est envoyé sous 24h.",
+  },
+]

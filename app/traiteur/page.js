@@ -27,6 +27,67 @@ const TRAITEUR_FAQ = [
     q: 'Proposez-vous du halal et des régimes particuliers ?',
     a: "Toute la carte est halal et sans porc par défaut. Nous proposons aussi des options végétariennes, vegan et sans gluten, à préciser lors du devis.",
   },
+  {
+    q: "Combien coûte un traiteur d'entreprise à Paris ?",
+    a: "Un petit-déjeuner d'accueil complet démarre à 6,90 € HT par personne, un goûter à 6 € HT, un plateau repas à 28,90 € HT et un cocktail va de 29,90 à 51,90 € HT selon la formule (8, 12 ou 16 pièces). Le minimum de commande est de 50 € HT et la livraison de 29 € HT à Paris et dans les communes proches.",
+  },
+  {
+    q: "Quel est le meilleur traiteur pour une entreprise à Paris ?",
+    a: "Cela dépend du besoin, et cinq critères permettent de comparer : un créneau de livraison précis plutôt qu'une plage horaire, des produits d'artisans nommés, une livraison par une équipe interne plutôt qu'en sous-traitance, de la souplesse sur les effectifs et les délais, et une facturation entreprise avec TVA. Chez L'Écrin Traiteur : livraison dès 6h30 par notre propre équipe, produits d'artisans identifiés, commande jusqu'à la veille 14h.",
+  },
+  {
+    q: "Livrez-vous un petit-déjeuner d'entreprise à Paris ?",
+    a: "Oui, du lundi au vendredi, dès 6h30, à Paris et en Île-de-France : viennoiseries, fruits frais, jus et boissons chaudes, à partir de 6,90 € HT par personne pour un petit-déjeuner d'accueil complet. Commande jusqu'à la veille 14h.",
+  },
+  {
+    q: "Comment obtenir un devis pour un buffet ou un cocktail de 80 personnes ?",
+    a: "Demandez un devis en ligne en indiquant l'effectif, la date, l'adresse et le format souhaité : la réponse arrive sous 24h. À partir de 50 personnes, prévenez au moins 48h avant la livraison. À titre de repère, un cocktail de 80 personnes en formule La Réception (12 pièces) revient à 3 272 € HT, hors livraison.",
+  },
+]
+
+// Repères de prix : une ligne par prestation (mêmes montants que les pages prestation).
+const PRIX = [
+  { href: '/creations/petits-dejeuners-et-pauses', titre: "Petit-déjeuner d'entreprise", prix: 'Dès 6,90 € HT', unite: 'par personne', detail: "Viennoiseries, fruits frais, jus et boissons chaudes, livrés dès 6h30" },
+  { href: '/creations/pauses-gourmandes', titre: "Goûter d'entreprise", prix: 'Dès 6 € HT', unite: 'par personne', detail: "Une pâtisserie artisanale et une boisson, à l'heure de la pause" },
+  { href: '/creations/plateaux-repas', titre: 'Plateau repas', prix: 'Dès 28,90 € HT', unite: 'par personne', detail: 'Entrée, plat, dessert et pain, avec options végétariennes' },
+  { href: '/creations/cocktails', titre: 'Cocktail et afterwork', prix: 'De 29,90 à 51,90 € HT', unite: 'par personne', detail: '8, 12 ou 16 pièces salées et sucrées selon la formule' },
+]
+
+// Le bon format selon le moment de la journée : liens contextuels vers les pages occasion.
+const MOMENTS = [
+  { moment: 'Le matin', texte: "Accueil d'équipe, réunion de rentrée, séminaire dès 8h : un petit-déjeuner livré avant l'arrivée des équipes.", liens: [
+    { href: '/occasions/petit-dejeuner-entreprise', label: "petit-déjeuner d'entreprise" },
+    { href: '/occasions/seminaire-entreprise', label: "séminaire d'entreprise" },
+    { href: '/occasions/accueil-client', label: 'accueil client' },
+  ] },
+  { moment: 'Le midi', texte: "Une réunion qui déborde, une formation, un CODIR : un plateau individuel complet par personne, livré en salle à l'heure fixée.", liens: [
+    { href: '/occasions/dejeuner-entreprise', label: "déjeuner d'entreprise" },
+    { href: '/occasions/petit-dejeuner-codir', label: 'plateau repas CODIR et COMEX' },
+    { href: '/occasions/journee-formation', label: 'journée de formation' },
+  ] },
+  { moment: "L'après-midi", texte: "La pause de 16h : madeleines, cookies, gâteaux à partager et fruits frais, pour une équipe de cinq comme de cinq cents.", liens: [
+    { href: '/occasions/gouter-entreprise', label: "goûter d'entreprise" },
+    { href: '/occasions/team-building', label: 'team building' },
+  ] },
+  { moment: 'Le soir', texte: "Afterwork, pot de départ, lancement de produit ou vœux : 8, 12 ou 16 pièces par personne, livrées prêtes à servir.", liens: [
+    { href: '/occasions/afterwork-entreprise', label: 'afterwork' },
+    { href: '/occasions/cocktail-entreprise', label: "cocktail d'entreprise" },
+  ] },
+]
+
+const ETAPES = [
+  { titre: 'Demandez un devis', texte: "Effectif, date, adresse et prestation : vous recevez un devis personnalisé sous 24h." },
+  { titre: "Commandez jusqu'à la veille 14h", texte: "À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48h avant." },
+  { titre: 'Nous livrons dès 6h30', texte: "Notre équipe livre à l'heure fixée, du lundi au vendredi, et met en place sur demande." },
+  { titre: 'Vous recevez une facture entreprise', texte: "Facture avec TVA. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches." },
+]
+
+// Guides utiles pour choisir (maillage vers le journal).
+const GUIDES = [
+  { href: '/journal/choisir-traiteur-entreprise-paris', label: "Comment choisir un traiteur d'entreprise à Paris" },
+  { href: '/journal/comparatif-traiteur-entreprise-paris', label: "Comparatif des traiteurs d'entreprise à Paris" },
+  { href: '/journal/budget-traiteur-entreprise-paris', label: "Budget d'un traiteur d'entreprise à Paris" },
+  { href: '/journal/traiteur-seminaire-entreprise-paris', label: "Organiser la restauration d'un séminaire d'entreprise" },
 ]
 
 // Prestations : le hub ne liait que les villes, jamais les pages produit.
@@ -149,6 +210,78 @@ export default function TraiteurPage() {
           ))}
         </section>
 
+        {/* ── Repères de prix ── */}
+        <section className="traiteur-prix" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '18px' }}>
+            Combien coûte un traiteur d'entreprise à Paris ?
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '24px' }}>
+            Le prix se compte par personne et dépend de la prestation. À cela s'ajoutent un minimum de commande de 50 € HT et une livraison à 29 € HT à Paris et dans les communes proches. Le devis, personnalisé, est envoyé sous 24h.
+          </p>
+          {PRIX.map((p, i) => (
+            <a
+              key={p.href}
+              href={p.href}
+              className="prix-row"
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '24px', textDecoration: 'none', padding: '18px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === PRIX.length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}
+            >
+              <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', color: 'var(--text-primary)' }}>{p.titre}</span>
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>{p.detail}</span>
+              </span>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-primary)', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                {p.prix}
+                <span style={{ display: 'block', fontSize: '12px', color: 'var(--text-secondary)' }}>{p.unite}</span>
+              </span>
+            </a>
+          ))}
+        </section>
+
+        {/* ── Le bon format selon le moment ── */}
+        <section className="traiteur-moments" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
+            Quel traiteur pour quel moment de la journée ?
+          </h2>
+          {MOMENTS.map((m, i) => (
+            <div key={m.moment} style={{ padding: '20px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === MOMENTS.length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                {m.moment}
+              </h3>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '8px' }}>
+                {m.texte}
+              </p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+                Voir :{' '}
+                {m.liens.map((l, k) => (
+                  <span key={l.href}>
+                    {k > 0 && ', '}
+                    <a href={l.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{l.label}</a>
+                  </span>
+                ))}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        {/* ── Comment ça se passe ── */}
+        <section className="traiteur-etapes" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
+            Commander en quatre étapes
+          </h2>
+          {ETAPES.map((e, i) => (
+            <div key={e.titre} style={{ display: 'flex', gap: '20px', padding: '16px 0', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', color: 'var(--accent-deep)', paddingTop: '4px', flexShrink: 0 }}>0{i + 1}</span>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
+                <strong style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{e.titre}.</strong> {e.texte}
+              </p>
+            </div>
+          ))}
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginTop: '20px' }}>
+            Toute la carte est <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>halal et sans porc</a> par défaut. Notre démarche sur les contenants, la reprise du matériel et les produits est détaillée sur la page{' '}
+            <a href="/traiteur-eco-responsable" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur éco-responsable</a>.
+          </p>
+        </section>
+
         {/* ── Bloc Paris / IDF ── */}
         <section className="traiteur-zone" style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '22px' }}>
@@ -263,6 +396,20 @@ export default function TraiteurPage() {
           })}
         </div>
 
+        {/* ── Guides pour choisir ── */}
+        <section className="traiteur-guides" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 8px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '40px 0 20px' }}>
+            Nos guides pour bien choisir
+          </h2>
+          <ul style={{ margin: 0, paddingLeft: '22px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)' }}>
+            {GUIDES.map(g => (
+              <li key={g.href}>
+                <a href={g.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{g.label}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         {/* ── FAQ logistique ── */}
         <section className="traiteur-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '24px 40px 8px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '48px 0 28px' }}>
@@ -313,6 +460,9 @@ export default function TraiteurPage() {
           .traiteur-hero { padding: 56px 24px 48px !important; }
           .traiteur-intro { padding: 48px 24px 8px !important; }
           .traiteur-faq { padding: 24px 24px 8px !important; }
+          .traiteur-prix, .traiteur-moments, .traiteur-etapes, .traiteur-guides { padding-left: 24px !important; padding-right: 24px !important; }
+          .prix-row { flex-direction: column !important; gap: 6px !important; }
+          .prix-row > span:last-child { text-align: left !important; }
           .traiteur-filter { padding: 0 16px !important; gap: 18px !important; overflow-x: auto; justify-content: flex-start !important; }
           .traiteur-filter button { padding: 16px 0 !important; white-space: nowrap; }
           .traiteur-index { padding: 48px 24px 24px !important; }

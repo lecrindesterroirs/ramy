@@ -251,6 +251,12 @@ export default function OccasionPage() {
         .occasion-article-body strong { color: rgba(17,17,17,0.82); font-weight: 500; }
         .occasion-article-body a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
         .occasion-article-body a:hover { color: #111111; }
+        .occasion-article-body ul { font-family: 'Neue Montreal', sans-serif; font-size: 14px; line-height: 1.72; color: rgba(17,17,17,0.58); list-style: disc; padding-left: 22px; margin-bottom: 16px; }
+        .occasion-article-body li { margin-bottom: 8px; }
+        .occasion-article-body .tbl-wrap { overflow-x: auto; margin: 8px 0 20px; -webkit-overflow-scrolling: touch; }
+        .occasion-article-body table { width: 100%; border-collapse: collapse; font-family: 'Neue Montreal', sans-serif; font-size: 13px; line-height: 1.5; color: rgba(17,17,17,0.7); min-width: 520px; }
+        .occasion-article-body th { text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(17,17,17,0.5); padding: 10px 12px 10px 0; border-bottom: 1px solid rgba(17,17,17,0.18); vertical-align: bottom; }
+        .occasion-article-body td { padding: 12px 12px 12px 0; border-bottom: 1px solid rgba(17,17,17,0.08); vertical-align: top; }
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
           .page-hero { height: 50vh !important; min-height: 300px !important; }
@@ -292,11 +298,13 @@ function FaqItem({ item }) {
         </p>
         <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '18px', color: 'var(--accent-deep)', flexShrink: 0, lineHeight: 1, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s ease' }}>+</span>
       </button>
-      {open && (
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', paddingBottom: '22px' }}>
-          {item.a}
-        </p>
-      )}
+      {/* Réponse toujours présente dans le HTML (indexable), simplement masquée tant que la question est repliée. */}
+      <p
+        hidden={!open}
+        style={{ display: open ? 'block' : 'none', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', paddingBottom: '22px' }}
+      >
+        {item.a}
+      </p>
     </div>
   )
 }

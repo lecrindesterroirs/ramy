@@ -12,8 +12,12 @@ import CategoryTabs, { sortItems, priceFromLabel, DEFAULT_SORTS } from '../../..
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import CrossSellBanner from '../../../components/CrossSellBanner'
+import { FAQ_PAUSES } from './faq'
 
 const SEO_ARTICLE = `
+  <h2>Livraison de goûter d'entreprise à Paris : comment ça marche</h2>
+  <p>Vous choisissez les douceurs, le nombre de personnes et l'heure de votre pause : nous livrons du lundi au vendredi, à Paris et en Île-de-France, à 15h30, 16h ou plus tard dans l'après-midi. Commande jusqu'à <strong>14h la veille</strong>, minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches, facturation entreprise avec TVA, devis sous 24h. Pour les séminaires et les commandes régulières, un devis personnalisé est possible. Notre page <a href="/occasions/gouter-entreprise">goûter d'entreprise</a> détaille les formats et les produits les plus choisis, et la page <a href="/traiteur">traiteur entreprise Paris et Île-de-France</a> liste les villes desservies.</p>
+
   <h2>Traiteur pause gourmande et goûter d'entreprise à Paris</h2>
   <p>La <strong>pause gourmande d'entreprise</strong> est le moment le plus attendu de l'après-midi : entre deux sessions de séminaire, à la fin d'une formation ou pour célébrer une bonne nouvelle d'équipe. L'Écrin Traiteur livre vos goûters partout à Paris et en Île-de-France, avec des douceurs artisanales préparées le jour même.</p>
 
@@ -25,6 +29,18 @@ const SEO_ARTICLE = `
 
   <h2>Combien coûte un goûter d'entreprise ?</h2>
   <p>Comptez entre <strong>6 € et 15 € HT par personne</strong> selon les produits choisis. Un goûter simple (cookies ou madeleines + boisson) tourne autour de 6 à 8 € ; un goûter premium (macarons, tartelettes, fruits frais et boissons chaudes) monte à 12-15 €. Pour des commandes régulières, un tarif préférentiel est possible sur devis.</p>
+
+  <h2>Quel goûter pour quel moment ?</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Moment</th><th>Quantité</th><th>Ce qui fonctionne</th><th>Budget HT</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Pause café de 20 à 30 minutes</strong></td><td>1,5 à 2 pièces par personne</td><td>Madeleines, cookies, brochettes de fruits</td><td>6 à 8 € par personne</td></tr>
+      <tr><td><strong>Goûter premium</strong></td><td>Une sélection variée par personne et une boisson</td><td>Macarons, tartelettes, fruits frais, boissons chaudes</td><td>12 à 15 € par personne</td></tr>
+      <tr><td><strong>Après-midi de séminaire, deux pauses</strong></td><td>3 pièces par personne, variées</td><td>Un cake tranché en début d'après-midi, madeleines et fruits frais vers 16h30</td><td>Sur devis</td></tr>
+      <tr><td><strong>Anniversaire, pot de départ</strong></td><td>Un gâteau à partager pour 6 à 12 personnes</td><td>Tarte aux framboises, fraisier, praliné noisette, tarte au citron meringuée</td><td>De 44,90 à 69,90 € le gâteau</td></tr>
+    </tbody>
+  </table></div>
+  <p>Pour un pot de départ ou un afterwork en fin de journée, des plateaux salés et sucrés existent aussi : voir notre page <a href="/occasions/afterwork-entreprise">traiteur afterwork d'entreprise</a> et nos <a href="/creations/cocktails">formules cocktail livrées</a>. Pour accompagner la pause, <a href="/creations/boissons">nos boissons</a> (jus Alain Milliat, thés Mariage Frères, thermos de café) se commandent dans le même devis.</p>
 
   <h2>Goûter d'anniversaire ou de team building : nos guides dédiés</h2>
   <p>Certaines occasions méritent une sélection pensée pour elles : voir notre guide <a href="/journal/gouter-anniversaire-entreprise-paris">goûter d'anniversaire en entreprise</a> pour fêter un collaborateur, ou <a href="/journal/gouter-entreprise-bureau">goûter d'entreprise au bureau</a> pour transformer une pause ordinaire en vrai moment d'équipe.</p>
@@ -38,8 +54,8 @@ const SEO_ARTICLE = `
 /* ─── Données ───────────────────────────────────────────────────── */
 
 const HERO = {
-  label: 'Pause Goûter',
-  description: 'La touche sucrée de l\'après-midi · pâtisseries, biscuits et fruits frais préparés le jour même pour rythmer vos pauses et goûters d\'entreprise.',
+  label: 'Goûter d\'entreprise : livraison à Paris',
+  description: 'La touche sucrée de l\'après-midi · pâtisseries, biscuits et fruits frais préparés le jour même, livrés à Paris et en Île-de-France pour rythmer vos pauses et goûters d\'entreprise.',
   hero: '/hero-pauses-gourmandes.webp',
 }
 
@@ -326,6 +342,17 @@ export default function PausesGourmandes() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Pause Goûter' }]} />
 
+        {/* ── Réponse immédiate : prix, délai, heure ── */}
+        <div className="pg-shell" style={{ maxWidth: '840px', margin: '0 auto', padding: '40px 40px 8px', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
+            Un goûter d'entreprise livré dès 6 € HT par personne
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
+            Une pâtisserie artisanale et une boisson, livrées du lundi au vendredi à l'heure de votre pause : 15h30, 16h ou plus tard. Commande jusqu'à la veille 14h, minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches. Comptez 1,5 à 2 pièces sucrées par personne pour une pause de 20 à 30 minutes, et 6 à 15 € HT par personne selon les produits. Pour comparer les formats, voir notre page{' '}
+            <a href="/occasions/gouter-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>goûter d'entreprise</a>.
+          </p>
+        </div>
+
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} sorts={SORTS} />
 
         {/* ── Grille des douceurs ── */}
@@ -358,6 +385,23 @@ export default function PausesGourmandes() {
           ]}
         />
 
+        {/* ── FAQ visible (même contenu que le FAQPage du layout) ── */}
+        <section className="pg-shell" style={{ maxWidth: '820px', margin: '0 auto', padding: '72px 40px 96px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', textAlign: 'center', marginBottom: '36px' }}>
+            Goûter d'entreprise : vos questions
+          </h2>
+          {FAQ_PAUSES.map((f, i) => (
+            <div key={i} style={{ padding: '24px 0', borderTop: '1px solid rgba(17,17,17,0.1)' }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.25 }}>
+                {f.name}
+              </h3>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
+                {f.answer}
+              </p>
+            </div>
+          ))}
+        </section>
+
       </main>
 
       <CategoryClosing
@@ -389,6 +433,7 @@ export default function PausesGourmandes() {
       <CategoryJsonLd
         name="Pause Goûter"
         path="/creations/pauses-gourmandes"
+        includeFaq={false}
         items={PAUSES.map(p => ({ name: p.nom, url: `/creations/pauses-gourmandes/${p.id}` }))}
       />
       <Footer />

@@ -102,6 +102,36 @@ export default function CategoryClosing({
           margin: 40px 0 16px;
         }
         .cat-seo-body h2:first-child { margin-top: 0; }
+        .cat-seo-body h3 {
+          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-size: 20px;
+          font-weight: 400;
+          color: var(--text-primary);
+          margin: 28px 0 10px;
+        }
+        .cat-seo-body .tbl-wrap { overflow-x: auto; margin: 8px 0 24px; -webkit-overflow-scrolling: touch; }
+        .cat-seo-body table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: 'Neue Montreal', sans-serif;
+          font-size: 14px;
+          line-height: 1.55;
+          color: var(--text-secondary);
+          min-width: 520px;
+        }
+        .cat-seo-body th {
+          text-align: left;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--text-secondary);
+          padding: 10px 14px 10px 0;
+          border-bottom: 1px solid rgba(17,17,17,0.2);
+          vertical-align: bottom;
+        }
+        .cat-seo-body td { padding: 14px 14px 14px 0; border-bottom: 1px solid rgba(17,17,17,0.08); vertical-align: top; }
+        .cat-seo-body li { margin-bottom: 8px; }
         .cat-seo-body ul {
           font-family: 'Neue Montreal', sans-serif;
           font-size: 15px;

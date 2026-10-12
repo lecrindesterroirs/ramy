@@ -69,6 +69,22 @@ const FAQ = [
     q: "D'où viennent vos produits ?",
     a: "D'artisans et de producteurs identifiés en Île-de-France et en France : la Ferme de Viltain, le verger des Yvelines, des farines françaises, zéro arôme artificiel. Nous privilégions le circuit court quand la proximité améliore vraiment le produit.",
   },
+  {
+    q: 'Avez-vous un label ou une certification environnementale ?',
+    a: "Non, nous n'affichons pas de label qui nous soit propre, ni de mention « zéro déchet » ou « neutre en carbone ». Ce que nous documentons, c'est l'origine de nos produits et de nos contenants : les boîtes en bois de peuplier sont certifiées PEFC, et nous transmettons leurs références et leurs certifications sur demande.",
+  },
+  {
+    q: 'Pouvez-vous nous montrer les contenants avant de commander ?',
+    a: "Oui. Si l'emballage compte dans votre choix, dites-le au moment du devis : nous vous montrons les contenants prévus pour votre prestation avant de valider la commande.",
+  },
+  {
+    q: 'Comment limiter le gaspillage sur un séminaire ou un événement ?',
+    a: "En calant les quantités sur l'effectif réel : confirmez le nombre de participants 48h avant, ajoutez une marge de 10 % plutôt qu'un gros surplus, et profitez du dernier ajustement possible jusqu'à la veille 14h. Chaque commande est préparée le matin même, à la quantité demandée.",
+  },
+  {
+    q: 'Quelle prestation choisir pour un séminaire éco-responsable ?',
+    a: "Pour une journée complète, un petit-déjeuner d'accueil (dès 6,90 € HT par personne), des plateaux repas (dès 28,90 € HT) et une pause de l'après-midi (dès 6 € HT) se livrent dans une seule commande. La reprise de la vaisselle réutilisable et des thermos se prévoit au devis.",
+  },
 ]
 
 export default function TraiteurEcoResponsable() {
@@ -125,10 +141,42 @@ export default function TraiteurEcoResponsable() {
   const seoArticle = `
     <h2>Un traiteur d'entreprise éco-responsable, concret</h2>
     <p>Chez <strong>L'Écrin Traiteur</strong>, l'éco-responsabilité n'est pas un label affiché en bas de page : c'est une manière de travailler. Nous partons d'artisans et de producteurs identifiés, en circuit court quand la proximité améliore vraiment le produit : la Ferme de Viltain, le verger des Yvelines, des farines françaises, zéro arôme artificiel. Nommer nos sources, c'est déjà pouvoir en répondre.</p>
+
+    <h2>Ce que nous faisons, et ce que nous ne disons pas</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Poste</th><th>Ce que nous faisons</th><th>Précision</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Produits</strong></td><td>Des artisans et des producteurs nommés : yaourts de la Ferme de Viltain, jus Alain Milliat, madeleines Mado Paris, farines françaises, zéro arôme artificiel.</td><td>Le circuit court est retenu quand la proximité améliore vraiment le produit, pas comme un argument.</td></tr>
+        <tr><td><strong>Contenants</strong></td><td>Du bois de peuplier français non traité, certifié PEFC. Du carton ou de la pulpe de canne pour les préparations liquides ou chaudes.</td><td>Le bois non traité se trie avec les biodéchets là où la collecte existe. Nous disons d'où vient le contenant, pas qu'il n'y a aucun déchet.</td></tr>
+        <tr><td><strong>Vaisselle et thermos</strong></td><td>Notre équipe reprend la vaisselle réutilisable et les thermos après votre événement.</td><td>À prévoir au devis, selon la prestation.</td></tr>
+        <tr><td><strong>Livraison</strong></td><td>Notre équipe interne livre et reprend le matériel, jamais de sous-traitance.</td><td>Nous ne publions pas de chiffre d'émissions.</td></tr>
+      </tbody>
+    </table></div>
+    <p>L'origine des boîtes en bois est détaillée dans notre article <a href="/journal/emballage-traiteur-bois-peuplier-francais">d'où vient la boîte de votre déjeuner</a>, et notre démarche générale sur la page <a href="/univers/nos-engagements">nos engagements</a>.</p>
+
     <h2>Vaisselle compostable, vaisselle et thermos récupérés</h2>
     <p>Nous dressons vos petits-déjeuners, plateaux repas et buffets dans une <strong>vaisselle en bois, carton et pulpe de canne</strong>, compostable, plutôt que du plastique jetable. Et pour ce qui est réutilisable, nous fonctionnons en boucle fermée : <strong>notre équipe récupère la vaisselle et les thermos</strong> après votre événement, pour que la fête ne finisse pas à la benne.</p>
+
+    <h2>Séminaire ou démarche RSE : ce qu'il faut demander à son traiteur</h2>
+    <ul>
+      <li><strong>Les contenants prévus.</strong> Nous vous les montrons avant de valider la commande.</li>
+      <li><strong>Les références et les certifications.</strong> Elles sont transmises sur demande à votre service achats ou pour votre rapport RSE.</li>
+      <li><strong>La reprise du matériel.</strong> Thermos et vaisselle réutilisable : à préciser au devis.</li>
+      <li><strong>Les quantités.</strong> L'effectif se confirme 48h avant et les quantités peuvent encore être ajustées jusqu'à la veille 14h, pour commander au plus juste.</li>
+      <li><strong>Les régimes.</strong> Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten : voir <a href="/traiteur-halal">traiteur halal d'entreprise</a>.</li>
+    </ul>
+
+    <h2>Quelle prestation pour quel moment ?</h2>
+    <ul>
+      <li><strong>Accueil du matin :</strong> <a href="/creations/petits-dejeuners-et-pauses">petit-déjeuner d'entreprise</a>, livré dès 6h30.</li>
+      <li><strong>Déjeuner :</strong> <a href="/creations/plateaux-repas">plateaux repas</a> ou <a href="/creations/lunch-box">lunch box</a>, contenants en bois.</li>
+      <li><strong>Après-midi :</strong> <a href="/creations/pauses-gourmandes">goûter d'entreprise</a>, madeleines, cakes et fruits frais.</li>
+      <li><strong>Fin de journée :</strong> <a href="/creations/cocktails">formules cocktail</a> et <a href="/occasions/afterwork-entreprise">afterwork</a>.</li>
+      <li><strong>Journée complète :</strong> <a href="/occasions/seminaire-entreprise">traiteur séminaire d'entreprise</a>, tout en une seule commande.</li>
+    </ul>
+
     <h2>Livré et repris par notre équipe</h2>
-    <p>De la commande à la reprise du matériel, tout passe par notre équipe interne, jamais par de la sous-traitance. Nous livrons dès 6h30 à Paris et en Île-de-France, de 10 à 300 personnes. <a href="/devis">Demandez votre devis gratuit</a> et composez une prestation qui régale vos équipes sans gaspiller. Retrouvez aussi le détail de <a href="/univers/nos-engagements">nos engagements</a>.</p>
+    <p>De la commande à la reprise du matériel, tout passe par notre équipe interne, jamais par de la sous-traitance. Nous livrons dès 6h30 à Paris et en Île-de-France, de 10 à 300 personnes : <a href="/traiteur/paris">Paris</a>, <a href="/traiteur/la-defense">La Défense</a>, <a href="/traiteur/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/versailles">Versailles</a> et <a href="/traiteur">toutes les villes que nous desservons</a>. <a href="/devis">Demandez votre devis gratuit</a> et composez une prestation qui régale vos équipes sans gaspiller.</p>
   `
 
   return (
@@ -154,7 +202,7 @@ export default function TraiteurEcoResponsable() {
                   Traiteur d'entreprise · Paris & Île-de-France
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur <br />Éco-Responsable
+                  Traiteur éco-responsable <br />Paris & Île-de-France
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
                   Un traiteur d'entreprise qui régale sans gaspiller : circuit court, vaisselle compostable en bois et pulpe de canne, récupération de la vaisselle et des thermos, livré dans vos bureaux dès 6h30.
@@ -191,6 +239,19 @@ export default function TraiteurEcoResponsable() {
             </Reveal>
           </header>
         </div>
+
+        {/* ── Bloc-réponse : la question posée en clair (SEO + GEO) ── */}
+        <section style={{ maxWidth: '760px', margin: '0 auto', padding: '72px 24px 0' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '22px' }}>
+            Que fait concrètement un traiteur d'entreprise éco-responsable ?
+          </h2>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
+            Chez L'Écrin Traiteur, cela tient en quatre pratiques vérifiables : des produits d'artisans et de producteurs que nous nommons, des contenants en bois de peuplier français non traité, en carton ou en pulpe de canne plutôt qu'en plastique jetable, la reprise de la vaisselle réutilisable et des thermos après votre événement, et une livraison assurée par notre propre équipe, sans sous-traitance.
+          </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
+            Nous ne revendiquons ni label écologique, ni mention « zéro déchet » ou « neutre en carbone », et nous ne publions aucun chiffre d'impact : livrer des repas dans Paris produit des déchets et des émissions, et nous préférons dire ce que nous faisons plutôt qu'afficher ce que nous ne pourrions pas prouver. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
+          </p>
+        </section>
 
         {/* ── Les 3 piliers ── */}
         <div className="hl-regimes" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>

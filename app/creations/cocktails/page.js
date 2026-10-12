@@ -13,22 +13,22 @@ import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
-  <h2>Traiteur cocktail d'entreprise à Paris : pièces salées et sucrées artisanales</h2>
-  <p>Le <strong>cocktail d'entreprise</strong> est le format des moments qui comptent : lancement de produit, signature de partenariat, départ d'un collaborateur, vœux de début d'année. Debout, verre à la main, vos invités circulent et échangent, et chaque pièce servie parle de votre niveau d'exigence. L'Écrin Traiteur compose des cocktails livrés prêts à servir à Paris et en Île-de-France.</p>
+  <h2>Commander une formule cocktail livrée à Paris et en Île-de-France</h2>
+  <p>Cette page présente les trois formules cocktail de L'Écrin Traiteur, livrées prêtes à servir : <strong>L'Invitation</strong> (8 pièces, 29,90 € HT par personne), <strong>La Réception</strong> (12 pièces, 40,90 € HT) et <strong>La Célébration</strong> (16 pièces, 51,90 € HT). Chaque formule est un plateau complet de pièces salées et sucrées façonnées à la main : vous choisissez le nombre de personnes, nous composons et livrons. Pour savoir comment dimensionner votre événement, comparer les budgets pour 20 ou 50 personnes ou choisir selon l'occasion, voir notre page <a href="/occasions/cocktail-entreprise">cocktail d'entreprise à Paris</a>.</p>
 
-  <h2>Combien de pièces par personne pour un cocktail ?</h2>
-  <p>Tout dépend de l'horaire et de ce que le cocktail remplace. Pour un <strong>cocktail apéritif</strong> avant un dîner : 6 à 8 pièces par personne. Pour un <strong>cocktail déjeunatoire</strong> qui remplace le déjeuner : 12 à 14 pièces. Pour un <strong>cocktail dînatoire</strong> en soirée : 16 à 18 pièces, en incluant des pièces plus consistantes et un tiers de sucré en fin de parcours. Pour un format plus large avec plusieurs stands, voir notre <a href="/journal/buffet-entreprise-guide-complet-paris">guide du buffet d'entreprise</a>.</p>
+  <h2>Quelle formule pour quel moment ?</h2>
+  <p>L'Invitation est la formule apéritive : un afterwork, un pot de départ, un accueil avant un événement, pour une heure et demie à deux heures. La Réception, la plus choisie, associe terre et mer pour un cocktail déjeunatoire, une soirée partenaires ou une inauguration. La Célébration remplace le dîner : elle est pensée pour un cocktail dînatoire de deux heures et demie à trois heures. Pour un pot en fin de journée, voir aussi notre page <a href="/occasions/afterwork-entreprise">traiteur afterwork d'entreprise</a> et le <a href="/journal/traiteur-afterwork-pot-depart-entreprise-paris">guide pour organiser un afterwork ou un pot de départ</a>.</p>
 
-  <h2>Un équilibre salé-sucré qui raconte quelque chose</h2>
-  <p>Nos assortiments alternent pièces froides raffinées, bouchées végétariennes et mignardises signées par nos artisans partenaires. L'objectif : que vos invités remarquent la différence dès la première bouchée, sans qu'aucun régime alimentaire ne soit laissé de côté. Chaque cocktail est équilibré pour tenir la durée réelle de votre événement.</p>
+  <h2>Un équilibre salé-sucré, sans régime laissé de côté</h2>
+  <p>Nos assortiments alternent pièces froides, bouchées végétariennes et mignardises signées par nos artisans partenaires. Toute la carte est halal et sans porc par défaut ; les options végétariennes, véganes et sans gluten se précisent au devis. Pour un format plus large avec plusieurs stands, voir notre <a href="/journal/buffet-entreprise-guide-complet-paris">guide du buffet d'entreprise</a>.</p>
 
-  <h2>Organiser votre cocktail d'entreprise à Paris</h2>
-  <p>Transmettez-nous la date, le nombre d'invités et le format souhaité : nous vous proposons un assortiment détaillé sous 24h. Livraison à l'heure exacte, présentation soignée prête à disposer. Commande avant <strong>14h la veille</strong>, facturation entreprise avec TVA. Pour un afterwork ou un pot de départ, découvrez notre offre <a href="/occasions/afterwork-entreprise">traiteur afterwork d'entreprise à Paris</a> et notre <a href="/journal/traiteur-afterwork-pot-depart-entreprise-paris">guide pour organiser un afterwork ou un pot de départ</a>.</p>
+  <h2>Délais, livraison et facturation</h2>
+  <p>Commande jusqu'à <strong>14h la veille</strong> pour une livraison le lendemain, à l'heure exacte de votre événement, présentation prête à disposer. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches, facturation entreprise avec TVA, devis sous 24h. Pour 50 personnes et plus, prévenez au moins 48h avant. Le calcul des quantités est détaillé dans notre guide <a href="/journal/combien-pieces-cocktail-par-personne-entreprise">combien de pièces cocktail par personne</a>.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
 
-import { FORMULES } from './data'
+import { FORMULES, FAQ_CATALOGUE } from './data'
 export { FORMULES }
 
 /* ─── Liste de pièces (Salé / Sucré) ─────────────────────────────── */
@@ -161,10 +161,10 @@ export default function Cocktails() {
                 Cocktail
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                Cocktails
+                Formules cocktail livrées à Paris
               </h1>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
-                Des bouchées salées et sucrées façonnées à la main, servies par personne, de l&apos;afterwork décontracté à la réception d&apos;exception.
+                Trois formules de 8, 12 ou 16 pièces salées et sucrées par personne, façonnées à la main et livrées prêtes à servir, de l&apos;afterwork à la réception d&apos;exception.
               </p>
             </div>
             </Reveal>
@@ -186,6 +186,12 @@ export default function Cocktails() {
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
             L&apos;Invitation, 8 pièces à 29,90 € HT par personne. La Réception, 12 pièces à 40,90 € HT. La Célébration, 16 pièces à 51,90 € HT. Halal et sans porc, livrées prêtes à servir à Paris et en Île-de-France, commande jusqu&apos;à la veille 14h.
           </p>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '14px auto 0' }}>
+            Pour dimensionner votre événement et comparer les budgets pour 20 ou 50 personnes, voir notre page{' '}
+            <a href="/occasions/cocktail-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>cocktail d&apos;entreprise à Paris</a>.
+            Pour un pot en fin de journée, voir notre{' '}
+            <a href="/occasions/afterwork-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur afterwork d&apos;entreprise</a>.
+          </p>
         </div>
 
         {/* ── 3 cartes formules ── */}
@@ -196,6 +202,23 @@ export default function Cocktails() {
             </Reveal>
           ))}
         </div>
+
+        {/* ── FAQ visible (même contenu que le FAQPage du layout) ── */}
+        <section className="ck-shell" style={{ maxWidth: '820px', margin: '0 auto', padding: '0 40px 96px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', textAlign: 'center', marginBottom: '36px' }}>
+            Questions sur les formules cocktail
+          </h2>
+          {FAQ_CATALOGUE.map((f, i) => (
+            <div key={i} style={{ padding: '24px 0', borderTop: '1px solid rgba(17,17,17,0.1)' }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.25 }}>
+                {f.name}
+              </h3>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
+                {f.answer}
+              </p>
+            </div>
+          ))}
+        </section>
 
       </main>
 
@@ -239,6 +262,7 @@ export default function Cocktails() {
       <CategoryJsonLd
         name="Cocktails"
         path="/creations/cocktails"
+        includeFaq={false}
         items={FORMULES.map(f => ({ name: `Cocktail ${f.label}`, url: `/creations/cocktails/${f.key}` }))}
       />
       <Footer />
