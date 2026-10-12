@@ -183,6 +183,40 @@ export default function TraiteurPage() {
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
             Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.
           </p>
+                  <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
+            Combien coûte un traiteur d'entreprise à Paris ?
+          </h2>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'var(--text-primary)' }}>
+              <thead>
+                <tr>
+                  {['Prestation', 'Prix HT par personne', 'Ce qui est compris'].map(t => (
+                    <th key={t} style={{ textAlign: 'left', padding: '12px 10px', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-secondary)', borderBottom: '1px solid rgba(17,17,17,0.35)' }}>{t}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Petit-déjeuner', 'dès 8 €', 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
+                  ['Pause goûter', 'dès 6 €', 'Une boisson et une pâtisserie'],
+                  ['Lunch box', 'dès 19,90 €', 'Déjeuner individuel prêt à manger'],
+                  ['Plateau repas', 'dès 28,90 €', 'Entrée, plat, dessert et pain'],
+                  ['Cocktail 8 pièces', '29,90 €', "L'Invitation : apéritif, afterwork"],
+                  ['Cocktail 12 pièces', '40,90 €', 'La Réception : déjeunatoire, soirée partenaires'],
+                  ['Cocktail 16 pièces', '51,90 €', 'La Célébration : cocktail dînatoire'],
+                ].map(([a, b, c]) => (
+                  <tr key={a}>
+                    <td style={{ padding: '12px 10px', borderBottom: '1px solid rgba(17,17,17,0.1)', fontWeight: 500 }}>{a}</td>
+                    <td style={{ padding: '12px 10px', borderBottom: '1px solid rgba(17,17,17,0.1)', whiteSpace: 'nowrap' }}>{b}</td>
+                    <td style={{ padding: '12px 10px', borderBottom: '1px solid rgba(17,17,17,0.1)' }}>{c}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '14px' }}>
+            Prix 2026, hors taxes. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Devis détaillé sous 24h.
+          </p>
         </section>
 
         {/* ── Prestations : hub → pages produit ── */}
