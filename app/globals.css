@@ -67,6 +67,12 @@
   }
 }
 
+/* Posé par components/PromoBanner.js sur la page d'atterrissage Ads, en mobile :
+   le défilant « Commandez jusqu'à la veille… » est replié (tous les décalages lisent --banner-h). */
+@media (max-width: 768px) {
+  html.ads-mobile-epure { --banner-h: 0px; }
+}
+
 /* Activé par components/PromoBanner.js quand la campagne est en cours */
 html.promo-on { --promo-h: 44px; }
 @media (max-width: 768px) {

@@ -388,15 +388,17 @@ function Step2({ data, setData, showErrors, accent = '#E0A126' }) {
           </div>
         </div>
         <div>
-          <label style={labelStyle}>Détails de votre projet <span style={{ color: accent }}>*</span></label>
+          <label style={labelStyle}>Détails de votre projet {isMobile
+            ? <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span>
+            : <span style={{ color: accent }}>*</span>}</label>
           <textarea
             value={data.message}
             onChange={e => set('message', e.target.value)}
             placeholder={isMobile ? "Décrivez votre événement, vos contraintes alimentaires ou toute information utile…" : "Décrivez votre événement, vos contraintes alimentaires ou toute information utile…\nPlus nous en savons, plus notre proposition sera adaptée à vos besoins."}
-            rows={6}
-            style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
+            rows={isMobile ? 4 : 6}
+            style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: !isMobile && err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
-          {err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+          {!isMobile && err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
         </div>
       </div>
     </div>
@@ -618,7 +620,11 @@ export default function Contact() {
     return () => window.removeEventListener('beforeunload', handleUnload)
   }, [data, submitStatus])
 
-  const step2Valid = () => !!(data.convives?.trim() && data.ville?.trim() && data.message?.trim())
+  // Détails : obligatoires sur ordinateur, facultatifs sur téléphone (long à taper au pouce).
+  const step2Valid = () => {
+    const mobile = typeof window !== 'undefined' && window.innerWidth <= 768
+    return !!(data.convives?.trim() && data.ville?.trim() && (mobile || data.message?.trim()))
+  }
 
   const canNext = () => {
     if (step === 1) return !!data.prestation

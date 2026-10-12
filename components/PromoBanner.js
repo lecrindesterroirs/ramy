@@ -23,6 +23,10 @@ const CAMPAGNE = {
 /* Pages qui n'ont pas de navbar : pas de bandeau non plus */
 const EXCLUS = ['/devis']
 
+/* Pages d'atterrissage Google Ads : sur téléphone, ni ce bandeau ni le défilant
+   (« Commandez jusqu'à la veille… ») pour garder le devis dans le premier écran. */
+const PAGES_ADS_MOBILE = ['/creations/petits-dejeuners-et-pauses']
+
 export default function PromoBanner() {
   const pathname = usePathname()
   const [visible, setVisible] = useState(false)
@@ -30,7 +34,15 @@ export default function PromoBanner() {
   const exclu = EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
 
   useEffect(() => {
+    const html = document.documentElement
+    const epure = window.innerWidth <= 768 && PAGES_ADS_MOBILE.includes(pathname)
+    html.classList.toggle('ads-mobile-epure', epure)
+    return () => html.classList.remove('ads-mobile-epure')
+  }, [pathname])
+
+  useEffect(() => {
     if (exclu) return
+    if (window.innerWidth <= 768 && PAGES_ADS_MOBILE.includes(pathname)) { setVisible(false); return }
     const now = new Date()
     const dans = now >= new Date(CAMPAGNE.debut + 'T00:00:00') && now < new Date(CAMPAGNE.fin + 'T00:00:00')
     if (!dans) return
@@ -38,7 +50,7 @@ export default function PromoBanner() {
       if (window.localStorage.getItem('promo-dismissed') === CAMPAGNE.id) return
     } catch (e) { /* mode privé : on affiche quand même */ }
     setVisible(true)
-  }, [exclu])
+  }, [exclu, pathname])
 
   useEffect(() => {
     const html = document.documentElement
