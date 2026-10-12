@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import RelatedLinks from '../../../components/RelatedLinks'
+import { grappesCommunes, estGuide } from '../../../lib/guidesMaillage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { articles, articleAuthor } from '../../../lib/journalData'
 import { founderNode } from '../../../lib/site'
@@ -37,9 +38,11 @@ export default function ArticlePage() {
   const author = articleAuthor(slug)
 
   // Maillage latéral : 3 articles liés (même catégorie en priorité, complété par les plus récents)
+  // Grappes thématiques d'abord (lib/guidesMaillage.js), puis même catégorie.
+  const score = (a) => grappesCommunes(article.slug, a.slug) * 2 + (a.categorie === article.categorie ? 1 : 0) + (estGuide(a.slug) ? 1.5 : 0)
   const related = [...articles]
     .filter(a => a.slug !== article.slug)
-    .sort((a, b) => (b.categorie === article.categorie) - (a.categorie === article.categorie))
+    .sort((a, b) => score(b) - score(a))
     .slice(0, 3)
 
   return (

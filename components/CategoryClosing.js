@@ -1,5 +1,7 @@
 'use client'
 
+import GuidesPratiques from './GuidesPratiques'
+
 /*
   Section de clôture des pages catégorie :
   bande éditoriale (eyebrow + titre + corps) → 4 cartes arguments → CTA devis → article SEO.
@@ -85,6 +87,8 @@ export default function CategoryClosing({
           </div>
         </section>
       )}
+
+      <GuidesPratiques />
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cat-seo-body p {

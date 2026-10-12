@@ -11,6 +11,7 @@ import { PRODUITS as PLATEAUX_PRODUITS } from '../../creations/plateaux-repas/da
 import { FORMULES as COCKTAIL_FORMULES } from '../../creations/cocktails/page'
 import { CITIES } from '../../../lib/citiesData'
 import DevisRapide from '../../../components/DevisRapide'
+import GuidesPratiques from '../../../components/GuidesPratiques'
 import { useState } from 'react'
 import ParallaxImage from '../../../components/ParallaxImage'
 
@@ -279,6 +280,8 @@ export default function OccasionPage() {
           .occasion-faq { padding: 56px 40px !important; }
         }
       ` }} />
+
+      <GuidesPratiques />
 
       <Footer />
     </>
