@@ -124,6 +124,8 @@ export default function TraiteurHalal() {
     <p>Au-delà du halal, nous déclinons nos prestations en versions <strong>végétariennes et vegan</strong>, et réalisons des <strong>adaptations sans gluten sur demande</strong>. Vos collaborateurs, quelles que soient leurs habitudes alimentaires, partagent le même moment autour d'une table où personne n'est mis de côté.</p>
     <h2>Livré dans vos bureaux dès 6h30</h2>
     <p>Réunion matinale, séminaire, petit-déjeuner d'équipe ou pot de départ : nous livrons et installons dès 6h30, du lundi au vendredi, de 10 à 300 personnes. Les produits sont préparés le matin même, pour la fraîcheur, et notés 5/5 par nos clients sur Google. <a href="/devis">Demandez votre devis gratuit</a> et composez un menu qui régale toute votre équipe.</p>
+    <h2>Pour aller plus loin</h2>
+    <p>Deux guides pour préparer votre événement : <a href="/journal/cocktail-entreprise-halal-paris">cocktail d'entreprise halal à Paris, formules et budget</a>, et <a href="/journal/evenement-entreprise-halal-guide">organiser un séminaire ou un événement d'entreprise halal</a>.</p>
   `
 
   return (
