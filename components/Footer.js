@@ -135,6 +135,7 @@ export default function Footer() {
             {[
               { label: 'Mentions légales', href: '/mentions-legales' },
               { label: 'CGV', href: '/cgv' },
+              { label: 'English', href: '/corporate-catering-paris' },
               { label: 'Confidentialité', href: '/confidentialite' },
               { label: 'Cookies', href: '/cookies' },
             ].map(l => (

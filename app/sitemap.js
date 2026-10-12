@@ -57,6 +57,9 @@ export default function sitemap() {
 
     // À propos
 
+    // Page en anglais (GEO)
+    url('/corporate-catering-paris',                      0.70, 'monthly'),
+
     // Journal
     url('/journal',                                       0.70, 'weekly'),
 
