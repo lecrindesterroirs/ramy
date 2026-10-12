@@ -403,8 +403,8 @@ export const evenements = [
           texte: "Un menu de Noël d'entreprise réussi combine les grands classiques et quelques produits qui sortent de l'ordinaire. Foie gras et toasts pour commencer, saumon fumé, bouchées chaudes aux accents festifs. Bûche artisanale pour le dessert, loin des bûches industrielles que tout le monde reconnaît au premier coup de fourchette. Côté boissons, tout sans alcool : un Chardonnay Blanc de Blancs 0 % pour trinquer, jus Alain Milliat, chocolat chaud Mariage Frères pour finir.",
         },
         {
-          heading: "Anticiper : la règle numéro un",
-          texte: "Décembre est le mois où tous les traiteurs de qualité sont débordés. Si vous attendez le 1er décembre pour commander, vous risquez de vous retrouver sans option sérieuse. Idéalement, contactez votre traiteur dès octobre pour les grandes équipes, et au plus tard début novembre pour les petites. Bloquez la date dans les agendas dès septembre. Plus vous anticipez, plus vous avez de choix sur le menu et les formats.",
+          heading: "Anticiper : ce que ça change",
+          texte: "La commande reste possible jusqu'à la veille 14h pour une livraison dès 6h30. Pour 50 personnes et plus, ou plusieurs sites de livraison, prévenez au moins 48h avant. Anticiper sert surtout à valider le budget, les effectifs et les adresses en interne, et à laisser le temps de choisir le menu et les formats. Bloquez la date dans les agendas dès que le format est décidé.",
         },
       ],
     },

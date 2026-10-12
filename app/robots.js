@@ -3,7 +3,13 @@ export default function robots() {
   // Crawlers IA nommés : on garde explicitement l'accès ouvert (visibilité
   // ChatGPT / Perplexity / AI Overviews) pour qu'un futur blocage générique
   // ne le coupe pas par inadvertance.
-  const aiBots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'PerplexityBot', 'Google-Extended']
+  const aiBots = [
+    'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
+    'ClaudeBot', 'Claude-Web', 'anthropic-ai',
+    'PerplexityBot',
+    'Google-Extended', 'Applebot-Extended',
+    'Amazonbot', 'cohere-ai', 'Meta-ExternalAgent',
+  ]
   return {
     rules: [
       { userAgent: '*', allow: '/', disallow },

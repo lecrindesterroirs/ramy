@@ -400,6 +400,7 @@ export default function ArticlePage() {
           '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}#article`,
           'headline': article.titre,
           'description': article.extrait,
+          'inLanguage': 'fr-FR',
           'datePublished': isoDateTime(article.isoDate) || article.date,
           'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
           'author': author.isPerson
@@ -475,6 +476,35 @@ export default function ArticlePage() {
                 'image': stepImg,
               }
             }),
+          }) }}
+        />
+      )}
+
+      {/* HowTo : champ optionnel article.howto = { name, description, totalTime, steps: [{ name, text }] }.
+          JSON-LD uniquement, aucun rendu visible. totalTime au format ISO 8601 (ex. 'P42D'). */}
+      {article.howto?.steps?.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}#howto`,
+            'name': article.howto.name || article.titre,
+            'description': article.howto.description || article.extrait,
+            'inLanguage': 'fr-FR',
+            'image': article.img?.startsWith('http') ? article.img : `https://www.lecrin-traiteur.fr${article.img}`,
+            ...(article.howto.totalTime ? { 'totalTime': article.howto.totalTime } : {}),
+            'mainEntityOfPage': {
+              '@type': 'WebPage',
+              '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}`,
+            },
+            'step': article.howto.steps.map((s, i) => ({
+              '@type': 'HowToStep',
+              'position': i + 1,
+              'name': s.name || `Étape ${i + 1}`,
+              'text': s.text,
+              'url': `https://www.lecrin-traiteur.fr/journal/${article.slug}#etape-${i + 1}`,
+            })),
           }) }}
         />
       )}
