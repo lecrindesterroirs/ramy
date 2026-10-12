@@ -493,7 +493,8 @@ function Formulaire({ pre, t, envoye, page, conversation, onEnvoye }) {
       })
       if (!res.ok) throw new Error('refus')
       // Même mesure que les autres formulaires du site : sans ça les demandes
-      // venues de l'assistant étaient invisibles dans PostHog.
+      // venues de l'assistant étaient invisibles dans PostHog, Google Ads et GA4.
+      window.dataLayer?.push({ event: 'devis_submit', form_location: 'assistant' })
       identifierVisiteur(v, 'assistant')
       onEnvoye(v.nom.trim().split(/\s+/)[0] || '')
     } catch {
