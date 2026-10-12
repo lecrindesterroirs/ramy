@@ -445,8 +445,12 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
             <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="Ex : marie@entreprise.com" autoComplete="email" inputMode="email" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Téléphone <span style={{ color: accent }}>*</span></label>
-            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" autoComplete="tel" inputMode="tel" style={fieldStyle} required />
+            {/* Téléphone facultatif depuis le 12 octobre 2026. Sur les 25 formulaires
+                abandonnés, le nom était rempli à 100 %, la société à 76 %, l'email à
+                84 % — et le téléphone à 28 % seulement. Obligatoire, il bloquait
+                l'envoi de gens qui avaient tout rempli par ailleurs. */}
+            <label style={labelStyle}>Téléphone <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0, opacity: 0.6 }}>(facultatif)</span></label>
+            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" autoComplete="tel" inputMode="tel" style={fieldStyle} />
           </div>
         </div>
       </div>
