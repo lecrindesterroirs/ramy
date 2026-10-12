@@ -22,6 +22,9 @@ const SEO_ARTICLE = `
   <h2>Un équilibre salé-sucré, sans régime laissé de côté</h2>
   <p>Nos assortiments alternent pièces froides, bouchées végétariennes et mignardises signées par nos artisans partenaires. Toute la carte est halal et sans porc par défaut ; les options végétariennes, véganes et sans gluten se précisent au devis. Pour un format plus large avec plusieurs stands, voir notre <a href="/journal/buffet-entreprise-guide-complet-paris">guide du buffet d'entreprise</a>.</p>
 
+  <h2>Préparer votre cocktail : nos guides</h2>
+  <p>Pour dimensionner votre réception : le <a href="/journal/cocktail-dinatoire-entreprise-paris">cocktail dînatoire d'entreprise</a>, les quantités et le budget pour <a href="/journal/cocktail-entreprise-50-personnes">50 personnes</a> et pour <a href="/journal/cocktail-entreprise-100-personnes">100 personnes</a>, nos <a href="/journal/idees-pieces-cocktail-entreprise">idées de pièces cocktail</a>, le <a href="/journal/cocktail-entreprise-sans-alcool">cocktail sans alcool</a>, le <a href="/journal/cocktail-entreprise-halal-paris">cocktail halal</a> et le <a href="/journal/cocktail-inauguration-entreprise">cocktail d'inauguration</a>.</p>
+
   <h2>Délais, livraison et facturation</h2>
   <p>Commande jusqu'à <strong>14h la veille</strong> pour une livraison le lendemain, à l'heure exacte de votre événement, présentation prête à disposer. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches, facturation entreprise avec TVA, devis sous 24h. Pour 50 personnes et plus, prévenez au moins 48h avant. Le calcul des quantités est détaillé dans notre guide <a href="/journal/combien-pieces-cocktail-par-personne-entreprise">combien de pièces cocktail par personne</a>.</p>
 `
