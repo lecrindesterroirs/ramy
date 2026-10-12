@@ -37,6 +37,30 @@ export default function DeferredPostHog() {
           disable_session_recording: !accord,
           capture_pageview: 'history_change',
           capture_pageleave: true,
+          /* PostHog masque TOUS les champs de saisie par défaut : dans les
+             enregistrements, l'effectif et le budget s'affichaient « ** » et
+             « *** », donc on ne voyait rien de ce que le visiteur cherchait.
+             On lève le masque sur ce qui décrit le BESOIN (effectif, budget,
+             ville, date, message) et on le garde sur ce qui identifie la
+             PERSONNE (nom, société, email, téléphone, mot de passe).
+             Le masquage se fait dans le navigateur : ce qui est masqué ne
+             part jamais chez PostHog. Et on ne perd rien, ces coordonnées-là
+             arrivent de toute façon dans l'OS à l'envoi du formulaire. */
+          session_recording: {
+            maskAllInputs: true,
+            maskInputFn: (texte, element) => {
+              try {
+                const type = (element?.getAttribute?.('type') || '').toLowerCase()
+                const auto = (element?.getAttribute?.('autocomplete') || '').toLowerCase()
+                const perso =
+                  ['password', 'email', 'tel'].includes(type) ||
+                  /name|organization|email|tel|street-address|address-line|cc-/.test(auto)
+                return perso ? '*'.repeat(texte.length) : texte
+              } catch (e) {
+                return '*'.repeat(texte.length)   // dans le doute, on masque
+              }
+            },
+          },
           // Ville, région et code postal d'après Vercel, joints à chaque événement.
           loaded: instance => {
             if (!accord) return
