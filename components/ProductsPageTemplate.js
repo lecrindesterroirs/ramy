@@ -50,6 +50,7 @@ export default function ProductsPageTemplate({
   sectionFilterLabel,
   sectionFilterKey,
   crossSell,
+  answerBlock,
 }) {
   const [sortLabel, setSortLabel]   = useState('En vedette')
   const sorts = sectionFilterLabel ? [...BASE_SORTS, sectionFilterLabel] : BASE_SORTS
@@ -92,6 +93,13 @@ export default function ProductsPageTemplate({
           <Breadcrumb variant="inline" items={[{ label: 'Accueil', href: '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
         </div>
 
+        {/* ── Bloc réponse optionnel (prix, délai, commande) avant la grille ── */}
+        {answerBlock && (
+          <div className="page-answer" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 8px' }}>
+            <div style={{ maxWidth: '860px' }}>{answerBlock}</div>
+          </div>
+        )}
+
         {/* ── Barre catégories + tri (partagée avec toutes les pages) ── */}
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} sorts={sorts} />
 
@@ -125,6 +133,7 @@ export default function ProductsPageTemplate({
         @media (max-width: 768px) {
           .page-hero-wrapper { padding: 24px 16px 0 !important; }
           .page-breadcrumb { padding: 20px 16px 0 !important; }
+          .page-answer { padding: 24px 16px 0 !important; }
           .page-hero { height: 50vh !important; min-height: 340px !important; }
           .page-hero-text { padding: 0 24px !important; }
           .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
@@ -136,6 +145,7 @@ export default function ProductsPageTemplate({
         @media (max-width: 1024px) and (min-width: 769px) {
           .page-hero-wrapper { padding: 24px 40px 0 !important; }
           .page-breadcrumb { padding: 20px 40px 0 !important; }
+          .page-answer { padding: 28px 40px 0 !important; }
           .products-filter-bar { padding: 0 40px !important; }
           .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
         }

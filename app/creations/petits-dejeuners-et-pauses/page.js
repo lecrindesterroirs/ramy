@@ -30,17 +30,29 @@ const SEO_ARTICLE = `
   <p style="font-size: 13px; color: rgba(17,17,17,0.5); margin-top: 24px;">Petit-déjeuner de réunion, café croissant au bureau, brunch d'entreprise, plateau d'accueil client, petit-déjeuner de séminaire : quel que soit le nom que vous lui donnez, c'est le même savoir-faire artisanal livré à Paris dès 6h30.</p>
 `
 
+const ANSWER_BLOCK = (
+  <>
+    <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 28px)', fontWeight: 400, lineHeight: 1.2, color: 'var(--text-primary)', margin: '0 0 14px' }}>
+      Livraison de petit-déjeuner à Paris : prix, délai, commande
+    </h2>
+    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
+      Un petit-déjeuner d'entreprise commence à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France. Commande avant <strong>14h la veille</strong>. Livraison 29 € HT, minimum de commande 50 € HT. Toute la carte est halal et sans porc. Pour calibrer les quantités, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes" style={{ color: 'inherit', textDecoration: 'underline' }}>guide budget par nombre de personnes</a>, ou <a href="/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>demandez un devis sous 24h</a>.
+    </p>
+  </>
+)
+
 export default function PetitsDejeuners() {
   return (
     <>
       <ProductsPageTemplate
       heroImg="/hero-petitdej.webp"
-      heroTitle={"Petits-Déjeuners & Pauses\nà Paris"}
+      heroTitle={"Petit-déjeuner d'entreprise\nà Paris"}
       heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Dès 8 € HT par personne, commande jusqu'à la veille 14h."
       breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"
       categorieSlug="petits-dejeuners"
       fallbackProducts={PRODUCTS}
       seoArticle={SEO_ARTICLE}
+      answerBlock={ANSWER_BLOCK}
       sectionFilterLabel="Petit Déjeuner Salé"
       sectionFilterKey="petit-dejeuner-sale"
       crossSell={{

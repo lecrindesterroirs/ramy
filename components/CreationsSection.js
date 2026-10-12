@@ -2,8 +2,8 @@ import Image from 'next/image'
 
 const creations = [
   {
-    label: 'Petit-déjeuner',
-    description: 'Commencez la journée en douceur avec des produits frais et gourmands.',
+    label: "Petit-déjeuner d'entreprise",
+    description: 'Livraison dès 6h30 à Paris : viennoiseries, jus, café et fruits, dès 8 € HT par personne.',
     img: '/hero-petitdej.webp',
     href: '/creations/petits-dejeuners-et-pauses',
   },

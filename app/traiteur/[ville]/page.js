@@ -16,7 +16,7 @@ import ParallaxImage from '../../../components/ParallaxImage'
 
 const SERVICES = [
   {
-    label: 'Petits-Déjeuners',
+    label: "Petit-déjeuner d'entreprise",
     desc: 'Viennoiseries et coffrets artisanaux, livrés dès 6h30.',
     href: '/creations/petits-dejeuners-et-pauses',
     img: '/creations-1.webp',
