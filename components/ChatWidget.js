@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAttribution } from '../lib/attribution'
+import { identifierVisiteur } from '../lib/posthog-identify'
 
 /* Monté par app/layout.js uniquement si ANTHROPIC_API_KEY existe : sans clé,
  * aucun bouton n'apparaît plutôt qu'un bouton qui répond « je ne suis pas
@@ -430,6 +431,9 @@ function Formulaire({ pre, envoye, page, conversation, onEnvoye }) {
         }),
       })
       if (!res.ok) throw new Error('refus')
+      // Même mesure que les autres formulaires du site : sans ça les demandes
+      // venues de l'assistant étaient invisibles dans PostHog.
+      identifierVisiteur(v, 'assistant')
       onEnvoye(v.nom.trim().split(/\s+/)[0] || '')
     } catch {
       setEtat('erreur')
