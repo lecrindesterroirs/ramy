@@ -330,29 +330,33 @@ export const evenements = [
     ],
     tags: ['Goûters', 'Pauses gourmandes'],
     img: '/prod-cookies.webp',
-    descCourt: "Madeleines orange personnalisées, cookies Laura Todd décorés, bonbons et décors saisonniers.",
-    desc: "Un goûter festif qui sort vraiment de l'ordinaire. Madeleines orange personnalisées, décors saisonniers, bonbons. Vos équipes se souviendront que c'est vous qui avez organisé ça. Un moment décalé, bien exécuté.",
+    descCourt: "Madeleines personnalisées, cookies maison, brochettes de fruits frais et cocktail sans alcool pour Halloween.",
+    desc: "Un goûter festif qui sort de l'ordinaire : madeleines personnalisées aux couleurs d'Halloween, cookies maison, brochettes de fruits frais, ou un cocktail de 8 pièces en afterwork. Halal et sans porc, livré dès 6h30. Un moment décalé, bien exécuté.",
     produits: [
-      'Madeleines orange personnalisées',
-      'Cookies Laura Todd décorés',
-      'Bonbons et confiseries',
-      'Décors citrouilles et araignées',
-      'Boissons chaudes',
+      'Madeleines personnalisées aux couleurs d\'Halloween',
+      'Cookies maison',
+      'Brochettes de fruits frais',
+      'Carrot cake et cakes maison',
+      'Cocktail de 8 pièces, sans alcool',
     ],
     differentiateur: {
       label: 'Notre signature',
-      text: "Madeleines orange avec décors Halloween, faites maison. Chaque pièce est personnalisable à vos couleurs.",
+      text: "Des madeleines aux couleurs de la fête, orange et noir pour Halloween, personnalisables à vos couleurs.",
     },
     article: {
       titre: "Halloween en entreprise : et si on osait ?",
       sections: [
+        {
+          heading: "Halloween 2026 en bref",
+          texte: "Halloween 2026 tombe un samedi : fêtez-le le jeudi 29 ou le vendredi 30 octobre. Une pause gourmande revient à partir de 6 € HT par personne, un cocktail de 8 pièces à 29,90 € HT par personne, livraison de 29 € HT en plus. Commande jusqu'à la veille à 14h, livraison dès 6h30. Toute la carte est halal et sans porc, sans alcool.",
+        },
         {
           heading: "Halloween au bureau : une tendance qui s'installe",
           texte: "Halloween a longtemps été perçu comme une fête pour les enfants. Mais depuis quelques années, elle gagne du terrain en entreprise, notamment dans les équipes jeunes et les cultures d'entreprise qui valorisent la cohésion et la légèreté. Un goûter Halloween bien organisé est l'un des rares événements où l'humour et la fantaisie sont valorisés. Ce n'est pas anodin dans des environnements de travail souvent trop sérieux.",
         },
         {
           heading: "Ce qui marche vraiment (et ce qu'il vaut mieux éviter)",
-          texte: "L'erreur la plus courante : poser des bonbons de supermarché sur une table et appeler ça un événement. Ce qui marche, c'est un vrai goûter avec des produits spécifiques : des madeleines orange personnalisées, des cookies aux formes saisonnières, des décors cohérents. La clé est la qualité et la cohérence de l'ensemble. Vos équipes sentent immédiatement si quelqu'un a vraiment pris soin de préparer le moment ou si c'est une case cochée à la va-vite.",
+          texte: "L'erreur la plus courante : poser des bonbons de supermarché sur une table et appeler ça un événement. Ce qui marche, c'est un vrai goûter avec des produits soignés : des madeleines personnalisées aux couleurs de la fête, des cookies maison, des fruits frais, une table cohérente. La clé est la qualité et la cohérence de l'ensemble. Vos équipes sentent immédiatement si quelqu'un a vraiment pris soin de préparer le moment ou si c'est une case cochée à la va-vite.",
         },
         {
           heading: "Faut-il obliger les déguisements ?",
@@ -360,7 +364,7 @@ export const evenements = [
         },
         {
           heading: "Budget et timing",
-          texte: "Un goûter Halloween n'a pas besoin d'être coûteux. Entre 8 et 15 euros par personne, vous avez de quoi proposer un goûter de qualité avec des produits vraiment pensés pour l'événement. Organisez-le en milieu d'après-midi du 31 octobre si c'est un jour ouvrable, ou le vendredi le plus proche. Une durée de 30 à 45 minutes fonctionne bien pour que tout le monde participe avant de rentrer.",
+          texte: "Une pause gourmande démarre à 6 € HT par personne, soit 149 € HT livraison comprise pour 20 personnes ; le petit-déjeuner Classique est à 8 € HT et le cocktail de 8 pièces à 29,90 € HT par personne. Organisez-le en milieu d'après-midi du 31 octobre si c'est un jour ouvrable. En 2026, le 31 octobre tombe un samedi : choisissez le jeudi 29 ou le vendredi 30. Une durée de 30 à 45 minutes fonctionne bien pour que tout le monde participe avant de rentrer.",
         },
       ],
     },

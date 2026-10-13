@@ -28,6 +28,13 @@ const resolveRelatedProduct = (id) => {
 }
 
 // Complète une date "AAAA-MM-JJ" en datetime ISO 8601 avec fuseau (Paris) pour les données structurées
+// « 2026-10-13 » → « 13 octobre 2026 » (sans fuseau, identique serveur/client)
+const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+const dateFr = (iso) => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '')
+  return m ? `${parseInt(m[3], 10)} ${MOIS[parseInt(m[2], 10) - 1]} ${m[1]}` : iso
+}
+
 const isoDateTime = (d) => (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) ? `${d}T09:00:00+02:00` : d
 
 export default function ArticlePage() {
@@ -86,6 +93,9 @@ export default function ArticlePage() {
                 letterSpacing: '0.04em',
               }}>
                 <time dateTime={article.isoDate}>{article.date}</time>
+                {article.isoModified && article.isoModified !== article.isoDate && (
+                  <> · mis à jour le <time dateTime={article.isoModified}>{dateFr(article.isoModified)}</time></>
+                )}
               </span>
               <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
               <span style={{
@@ -124,6 +134,18 @@ export default function ArticlePage() {
           }}>
             {article.extrait}
           </p>
+
+          {/* En bref : faits chiffrés citables (champ optionnel article.enBref = [phrases]) */}
+          {article.enBref?.length > 0 && (
+            <aside aria-label="En bref" style={{ margin: '0 0 40px', padding: '24px 28px', background: 'var(--bg-secondary)', borderLeft: '3px solid var(--accent)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', margin: '0 0 12px' }}>
+                En bref
+              </p>
+              <ul style={{ margin: 0, paddingLeft: '18px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-primary)' }}>
+                {article.enBref.map((f, i) => <li key={i} style={{ marginBottom: '4px' }}>{f}</li>)}
+              </ul>
+            </aside>
+          )}
 
           {/* Corps de l'article */}
           <div
@@ -403,6 +425,8 @@ export default function ArticlePage() {
           '@id': `https://www.lecrin-traiteur.fr/journal/${article.slug}#article`,
           'headline': article.titre,
           'description': article.extrait,
+          ...(article.enBref?.length ? { 'abstract': article.enBref.join(' ') } : {}),
+          ...(article.about?.length ? { 'about': article.about.map(name => ({ '@type': 'Thing', name })) } : {}),
           'inLanguage': 'fr-FR',
           'datePublished': isoDateTime(article.isoDate) || article.date,
           'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
