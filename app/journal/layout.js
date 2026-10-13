@@ -1,7 +1,7 @@
 export const metadata = {
   alternates: { canonical: '/journal' },
-  title: "Le Journal",
-  description: "Conseils, inspirations et guides pour organiser vos événements d'entreprise à Paris : petit-déjeuner, cocktail, plateau repas. Le Journal.",
+  title: { absolute: "Guides traiteur d'entreprise : budgets, quantités, idées" },
+  description: "Plus de 100 guides pour organiser un petit-déjeuner, un déjeuner ou un cocktail d'entreprise à Paris : budgets chiffrés, quantités par personne, idées.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Le Journal | L'Écrin Traiteur",
