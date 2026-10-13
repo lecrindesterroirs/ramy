@@ -320,6 +320,14 @@ export const evenements = [
     slug: 'halloween',
     mois: 'Octobre',
     nom: 'Halloween',
+    // Guides du cluster Halloween, lien hub → spokes.
+    articles: [
+      'organiser-halloween-bureau-entreprise-date-programme-budget',
+      'halloween-entreprise-paris',
+      'afterwork-halloween-entreprise-cocktail-orange-noir-budget',
+      'desserts-halloween-bureau-idees-sans-porc-prix',
+      'halloween-bureau-regimes-alimentaires-halal-vegetarien-sans-gluten',
+    ],
     tags: ['Goûters', 'Pauses gourmandes'],
     img: '/prod-cookies.webp',
     descCourt: "Madeleines orange personnalisées, cookies Laura Todd décorés, bonbons et décors saisonniers.",
