@@ -152,7 +152,7 @@ export default function ChatWidget() {
     <>
       {!ouvert && (
         <button onClick={() => setOuvert(true)} className="chat-launcher" aria-label={t.ouvrir}>
-          <span className="chat-avatar"><Conseiller /><i className="chat-pastille" aria-hidden="true" /></span>
+          <i className="chat-launcher-dot" aria-hidden="true" />
           <span className="chat-launcher-txt">{t.lanceur}</span>
         </button>
       )}
@@ -250,18 +250,26 @@ export default function ChatWidget() {
       )}
 
       <style jsx global>{`
-        /* Lanceur : clair et posé, pas un bloc noir qui flotte au-dessus des photos. */
+        /* Lanceur : onglet vertical collé au bord droit, à mi-hauteur. Il ne
+           recouvre plus les textes du site (numéro du hero, bas de page). */
         .chat-launcher {
-          position: fixed; right: 28px; bottom: 28px; z-index: 115;
-          display: flex; align-items: center; gap: 11px;
-          padding: 9px 18px 9px 9px;
-          background: #FFFFFF; color: #1C1614; border: 1px solid rgba(17,17,17,.12);
-          font-family: 'Neue Montreal', sans-serif; font-size: 11.5px; font-weight: 500;
-          text-transform: uppercase; letter-spacing: 0.12em;
-          cursor: pointer; transition: border-color .3s ease, box-shadow .3s ease;
-          box-shadow: 0 8px 26px rgba(17,17,17,.1);
+          position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 115;
+          display: flex; flex-direction: column; align-items: center; gap: 9px;
+          padding: 14px 8px 16px;
+          background: #FFFFFF; color: #1C1614;
+          border: 1px solid rgba(17,17,17,.12); border-right: none;
+          font-family: 'Neue Montreal', sans-serif; font-size: 10.5px; font-weight: 500;
+          text-transform: uppercase; letter-spacing: 0.14em; line-height: 1;
+          cursor: pointer; transition: padding .3s ease, border-color .3s ease, box-shadow .3s ease;
+          box-shadow: -4px 6px 22px rgba(17,17,17,.08);
         }
-        .chat-launcher:hover { border-color: rgba(17,17,17,.3); box-shadow: 0 10px 30px rgba(17,17,17,.15); }
+        .chat-launcher:hover { padding-right: 12px; border-color: rgba(17,17,17,.3); box-shadow: -6px 8px 26px rgba(17,17,17,.14); }
+        /* Texte vertical, lu de bas en haut. */
+        .chat-launcher-txt { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+        .chat-launcher-dot {
+          width: 7px; height: 7px; border-radius: 50% !important;
+          background: #2E9E5B; flex-shrink: 0;
+        }
 
         /* Avatar conseiller + pastille « en ligne ». */
         .chat-avatar {
@@ -443,8 +451,7 @@ export default function ChatWidget() {
 
         @media (max-width: 768px) {
           /* La barre d'action mobile occupe déjà le bas de l'écran. */
-          .chat-launcher { right: 16px; bottom: 84px; padding: 7px; }
-          .chat-launcher-txt { display: none; }
+          .chat-launcher { padding: 11px 6px 12px; gap: 7px; font-size: 9.5px; letter-spacing: 0.12em; }
           .chat-grille { grid-template-columns: 1fr; gap: 0; }
           .chat-panneau {
             right: 0; left: 0; bottom: 0; width: 100%; max-width: none; height: 84vh;

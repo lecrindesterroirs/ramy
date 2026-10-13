@@ -174,8 +174,7 @@ export default function Hero() {
         style={{
           position: 'absolute',
           bottom: '36px',
-          // À gauche du bouton « Chat en direct » (fixe, 28px du bord, ~185px de large).
-          right: '240px',
+          right: '80px',
           zIndex: 2,
         }}
       >

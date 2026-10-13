@@ -13,8 +13,8 @@ const logos = [
   { name: 'Chanel',           src: '/logos/chanel.svg', height: '22px', maxWidth: '140px' },
   { name: 'TotalEnergies',    src: '/logos/totalenergies.png', height: '45px' },
   { name: 'Talan',            src: '/logos/talan.png', height: '35px' },
-  { name: 'SIA',              src: '/logos/sia-v2.png', height: '36px' },
-  { name: 'Ringover',         src: '/logos/ringover-v2.png', height: '56px' },
+  { name: 'SIA',              src: '/logos/sia-v3.svg', height: '36px' },
+  { name: 'Ringover',         src: '/logos/ringover-v3.svg', height: '30px' },
   { name: 'DS Automobiles',   src: '/logos/ds-v2.svg', height: '62px' },
 ]
 
