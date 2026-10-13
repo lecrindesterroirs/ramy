@@ -46,7 +46,7 @@ const CLIENT_LOGOS = [
   { name: 'Coyote', src: '/logos/coyote.png', height: '34px' },
   { name: 'TotalEnergies', src: '/logos/totalenergies.png', height: '42px' },
   { name: 'Talan', src: '/logos/talan.png', height: '30px' },
-  { name: 'DS Automobiles', src: '/logos/ds.png', height: '58px', opacity: 0.85 },
+  { name: 'DS Automobiles', src: '/logos/ds-v2.svg', height: '58px', opacity: 0.85 },
 ]
 
 function QuoteMark({ size = 34 }) {
