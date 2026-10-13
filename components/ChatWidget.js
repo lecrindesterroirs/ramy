@@ -69,13 +69,28 @@ export default function ChatWidget() {
   const [enCours, setEnCours] = useState(false)
   const [formulaire, setFormulaire] = useState(null)   // pré-rempli par l'assistant
   const [envoye, setEnvoye] = useState(false)
+  const [visible, setVisible] = useState(false)
   const filRef = useRef(null)
   const champRef = useRef(null)
 
   const exclu = EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
   const t = T[langue]
 
-  // Langue retenue d'une visite à l'autre.
+  // Le bouton n'est pas là dès l'arrivée : il apparaît après un début de
+  // défilement, pour laisser le premier écran (et le numéro du hero) dégagé.
+  // Sur une page trop courte pour défiler, il est affiché d'emblée.
+  useEffect(() => {
+    const juger = () => {
+      const seuil = Math.min(window.innerHeight * 0.4, 320)
+      const courte = document.documentElement.scrollHeight <= window.innerHeight + seuil
+      if (courte || window.scrollY > seuil) setVisible(true)
+    }
+    // Hauteur de page fiable seulement une fois le contenu monté.
+    const timer = setTimeout(juger, 1500)
+    window.addEventListener('scroll', juger, { passive: true })
+    return () => { clearTimeout(timer); window.removeEventListener('scroll', juger) }
+  }, [pathname])
+
   useEffect(() => {
     try {
       const m = window.localStorage.getItem('chat-langue')
@@ -151,7 +166,9 @@ export default function ChatWidget() {
   return (
     <>
       {!ouvert && (
-        <button onClick={() => setOuvert(true)} className="chat-launcher" aria-label={t.ouvrir}>
+        <button onClick={() => setOuvert(true)} className={visible ? 'chat-launcher chat-launcher-on' : 'chat-launcher'}
+          aria-label={t.ouvrir} tabIndex={visible ? 0 : -1}>
+          <Conseiller />
           <i className="chat-launcher-dot" aria-hidden="true" />
           <span className="chat-launcher-txt">{t.lanceur}</span>
         </button>
@@ -250,26 +267,36 @@ export default function ChatWidget() {
       )}
 
       <style jsx global>{`
-        /* Lanceur : onglet vertical collé au bord droit, à mi-hauteur. Il ne
-           recouvre plus les textes du site (numéro du hero, bas de page). */
+        /* Lanceur : pastille ronde en bas à droite, comme sur la plupart des
+           sites avec un chat (casque + point vert « en ligne »). Le libellé
+           ne sort qu'au survol, pour ne rien recouvrir en permanence. */
         .chat-launcher {
-          position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 115;
-          display: flex; flex-direction: column; align-items: center; gap: 9px;
-          padding: 14px 8px 16px;
-          background: #FFFFFF; color: #1C1614;
-          border: 1px solid rgba(17,17,17,.12); border-right: none;
-          font-family: 'Neue Montreal', sans-serif; font-size: 10.5px; font-weight: 500;
-          text-transform: uppercase; letter-spacing: 0.14em; line-height: 1;
-          cursor: pointer; transition: padding .3s ease, border-color .3s ease, box-shadow .3s ease;
-          box-shadow: -4px 6px 22px rgba(17,17,17,.08);
+          position: fixed; right: 24px; bottom: 24px; z-index: 115;
+          width: 56px; height: 56px; padding: 0; border-radius: 50% !important;
+          display: flex; align-items: center; justify-content: center;
+          background: #111111; color: #FFFFFF; border: none; cursor: pointer;
+          box-shadow: 0 10px 28px rgba(17,17,17,.22);
+          opacity: 0; transform: translateY(12px) scale(.92); pointer-events: none;
+          transition: opacity .35s ease, transform .35s cubic-bezier(.22,.61,.36,1), box-shadow .3s ease;
         }
-        .chat-launcher:hover { padding-right: 12px; border-color: rgba(17,17,17,.3); box-shadow: -6px 8px 26px rgba(17,17,17,.14); }
-        /* Texte vertical, lu de bas en haut. */
-        .chat-launcher-txt { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+        .chat-launcher-on { opacity: 1; transform: none; pointer-events: auto; }
+        .chat-launcher-on:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(17,17,17,.28); }
+        .chat-launcher > svg { width: 26px; height: 26px; }
         .chat-launcher-dot {
-          width: 7px; height: 7px; border-radius: 50% !important;
-          background: #2E9E5B; flex-shrink: 0;
+          position: absolute; right: 2px; top: 2px;
+          width: 13px; height: 13px; border-radius: 50% !important;
+          background: #2E9E5B; border: 2.5px solid #FFFFFF;
         }
+        .chat-launcher-txt {
+          position: absolute; right: 68px; top: 50%; transform: translateY(-50%) translateX(6px);
+          padding: 9px 13px; background: #FFFFFF; color: #1C1614; white-space: nowrap;
+          border: 1px solid rgba(17,17,17,.1); box-shadow: 0 8px 22px rgba(17,17,17,.1);
+          font-family: 'Neue Montreal', sans-serif; font-size: 10.5px; font-weight: 500;
+          text-transform: uppercase; letter-spacing: 0.12em; line-height: 1;
+          opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease;
+        }
+        .chat-launcher-on:hover .chat-launcher-txt,
+        .chat-launcher-on:focus-visible .chat-launcher-txt { opacity: 1; transform: translateY(-50%); }
 
         /* Avatar conseiller + pastille « en ligne ». */
         .chat-avatar {
@@ -451,7 +478,9 @@ export default function ChatWidget() {
 
         @media (max-width: 768px) {
           /* La barre d'action mobile occupe déjà le bas de l'écran. */
-          .chat-launcher { padding: 11px 6px 12px; gap: 7px; font-size: 9.5px; letter-spacing: 0.12em; }
+          .chat-launcher { right: 16px; bottom: 88px; width: 50px; height: 50px; }
+          .chat-launcher > svg { width: 23px; height: 23px; }
+          .chat-launcher-txt { display: none; }
           .chat-grille { grid-template-columns: 1fr; gap: 0; }
           .chat-panneau {
             right: 0; left: 0; bottom: 0; width: 100%; max-width: none; height: 84vh;
@@ -460,6 +489,7 @@ export default function ChatWidget() {
         }
         @media (prefers-reduced-motion: reduce) {
           .chat-panneau { animation: none; }
+          .chat-launcher { transition: opacity .2s ease; transform: none; }
           .chat-points span { animation: none; opacity: .5; }
         }
       `}</style>
