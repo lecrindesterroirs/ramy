@@ -9,6 +9,7 @@ import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
 import { identifierVisiteur } from '../../lib/posthog-identify'
+import { lireChemin, lireParcours, occasionPour } from '../../lib/parcours'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -339,9 +340,32 @@ function CityAutocomplete({ value, onChange, hasError, accent = '#E0A126' }) {
   )
 }
 
+// Produits de la carte ajoutés au message : une ligne par produit, sous un
+// intitulé commun, pour que la demande arrive lisible dans l'OS et par mail.
+const ENTETE_PRODUITS = 'Produits qui m\'intéressent :'
+const ligneProduit = nom => `- ${nom}`
+
+function basculerProduit(message, nom) {
+  const lignes = (message || '').split('\n')
+  const ligne = ligneProduit(nom)
+  if (lignes.includes(ligne)) {
+    const reste = lignes.filter(l => l !== ligne)
+    const i = reste.indexOf(ENTETE_PRODUITS)
+    // Plus aucun produit sous l'intitulé : on retire aussi l'intitulé.
+    if (i !== -1 && !(reste[i + 1] || '').startsWith('- ')) reste.splice(i, 1)
+    return reste.join('\n').replace(/^\n+/, '')
+  }
+  const i = lignes.indexOf(ENTETE_PRODUITS)
+  if (i === -1) return [ENTETE_PRODUITS, ligne, ...(message ? ['', message] : [])].join('\n')
+  let fin = i + 1
+  while ((lignes[fin] || '').startsWith('- ')) fin++
+  lignes.splice(fin, 0, ligne)
+  return lignes.join('\n')
+}
+
 // ── Step 2 ────────────────────────────────────────────────────────────────────
 
-function Step2({ data, setData, showErrors, accent = '#E0A126' }) {
+function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] }) {
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
   const err = (k) => showErrors && !data[k]?.trim()
   const [isMobile, setIsMobile] = useState(false)
@@ -391,6 +415,25 @@ function Step2({ data, setData, showErrors, accent = '#E0A126' }) {
           <label style={labelStyle}>Détails de votre projet {isMobile
             ? <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span>
             : <span style={{ color: accent }}>*</span>}</label>
+          {parcours.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'var(--text-secondary)' }}>Vous avez regardé :</span>
+              {parcours.map(f => {
+                const choisi = (data.message || '').split('\n').includes(ligneProduit(f.nom))
+                return (
+                  <button
+                    key={f.chemin}
+                    type="button"
+                    aria-pressed={choisi}
+                    onClick={() => set('message', basculerProduit(data.message, f.nom))}
+                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', color: '#1A1A18', background: choisi ? accent : '#FFFFFF', border: `1px solid ${choisi ? accent : 'rgba(17,17,17,0.18)'}`, padding: '7px 12px', cursor: 'pointer', outline: 'none', transition: 'background 0.2s ease, border-color 0.2s ease' }}
+                  >
+                    {choisi ? '✓ ' : '+ '}{f.nom}
+                  </button>
+                )
+              })}
+            </div>
+          )}
           <textarea
             value={data.message}
             onChange={e => set('message', e.target.value)}
@@ -585,6 +628,27 @@ export default function Contact() {
     nom: '', societe: '', email: '', telephone: '',
   })
 
+  // Produits regardés pendant la visite (lib/parcours.js), proposés à l'étape 2.
+  // Si le visiteur arrive d'une page de la carte, l'occasion est déjà choisie
+  // (étape 1 passée, modifiable par « Retour ») et la fiche d'origine est notée
+  // dans le message : il n'a plus à redécrire ce qu'il vient de regarder.
+  const [parcours, setParcours] = useState([])
+  useEffect(() => {
+    const liste = lireParcours()
+    setParcours(liste)
+    let origine = null
+    try {
+      const ref = new URL(document.referrer)
+      if (ref.origin === window.location.origin) origine = ref.pathname.replace(/\/$/, '')
+    } catch (e) { /* arrivée directe */ }
+    const lu = lireChemin(origine)
+    const occasion = lu ? occasionPour(lu.categorie) : ''
+    if (!occasion) return
+    const fiche = liste.find(f => f.chemin === origine)
+    setData(d => d.prestation ? d : { ...d, prestation: occasion, message: fiche && !d.message ? basculerProduit('', fiche.nom) : d.message })
+    setStep(s => (s === 1 ? 2 : s))
+  }, [])
+
   // Sauvegarde auto des données en background (debounced). Throttlée : chaque
   // pause de saisie ne doit PAS créer une nouvelle ligne dans l'OS (c'était le
   // bug — un même prospect qui remplit le formulaire par étapes se retrouvait
@@ -770,7 +834,7 @@ export default function Contact() {
             <div className="devis-stage" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
               <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px 120px' }}>
                 {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} isOctobreRose={isOctobreRose} />}
-                {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} />}
+                {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} parcours={parcours} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} accent={accent} />}
               </div>
             </div>
