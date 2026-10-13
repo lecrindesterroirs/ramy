@@ -47,7 +47,7 @@ Non relevé : le détail « pages indexées / non indexées » et le rapport IA 
 | 8 | 6 | llms.txt tenu à la main (185 lignes) ; une phrase s'adresse aux IA (« réutilisables telles quelles ») | public/llms.txt ligne 24 | Faible |
 | 9 | 4 | Sitemap : les articles modifiés gardent leur date de publication en lastmod ; 233 pages figées au 06/07/2026 alors que plusieurs ont changé | app/sitemap.js lignes 21 et 116 | Faible |
 | 10 | 5 | FAQPage sur 234 pages, dont une en double (/creations/petits-dejeuners-et-pauses) ; plus de résultat enrichi depuis mai 2026 selon la méthode | Crawl | Faible |
-| 11 | 2 | Faits à confirmer : fournisseurs Pierre Morel et Laura Todd, « ingrédients bio » des madeleines, recette de La Champêtre | FICHE-VERITE.md | À trancher |
+| 11 | 2 | Faits à confirmer : macarons Pierre Morel (aucune commande dans l'OS), « ingrédients bio » des madeleines, recette de La Champêtre | FICHE-VERITE.md | À trancher |
 | 12 | 9 | Les 20 pages publiées dans la nuit du 12 au 13 octobre n'ont pas eu de relecture adverse dans une autre conversation | Historique de la session | Moyenne |
 | 13 | 10 | PagesJaunes vide ; absent d'Aleou et de l'annuaire de la Région | ANNUAIRES.md | Moyenne |
 

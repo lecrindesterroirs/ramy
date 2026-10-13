@@ -45,7 +45,7 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 | Sujet | Ce que dit le site | Question |
 |---|---|---|
 | Nombre de clients | « Plus de 100 entreprises » (page Notre maison) | **Faux d'après l'OS : 54.** À corriger en « plus de 50 ». |
-| Macarons Pierre Morel, cookies Laura Todd | Cités dans plusieurs articles | Toujours fournisseurs ? |
+| Macarons Pierre Morel | Cités dans plusieurs articles | Fiche fournisseur dans l'OS, mais 0 commande et 0 facture (coffre, 13/10/2026). Toujours à la carte ? |
 | Madeleines « aux ingrédients bio, sans huile de palme » | Cité dans des articles | Exact, et vérifiable chez Mado ? |
 | Plateau « La Champêtre : terrine de campagne » | Guide déjeuner | Recette réelle, et sans porc ? |
 | Baromètre | Parts de prestations et paniers publiés | Ramy a choisi de le laisser (13/10/2026). |
@@ -65,4 +65,4 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 
 - **L'Écrin Traiteur** : écrit ainsi, avec l'accent et l'apostrophe. Variantes admises : L'Écrin, L'Écrin des Terroirs (société).
 - **Homonymes à écarter** : « L'écrin de saveurs » (autre traiteur, vu dans Google le 27/09/2026) ; le parc national des Écrins.
-- **Fournisseurs nommés sur le site** : Mado Paris, Alain Milliat, Maison Marques, Ferme de Viltain, Mariage Frères.
+- **Fournisseurs nommés sur le site** : Mado Paris, Alain Milliat, Maison Marques, Ferme de Viltain, Mariage Frères, Laura Todd (cookies ; fournisseur actif d'après le coffre, 4 commandes au 13/10/2026).
