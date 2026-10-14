@@ -93,10 +93,10 @@ export const PLATEAUX = [
   // ── Sucré ──
   {
     seoTitle: `Plateau de douceurs pour vos apéritifs et réceptions d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de douceurs réunit une sélection de desserts artisanaux pour finir un afterwork ou une réception sur une note sucrée. Mignardises et petites pièces à picorer, il apporte la touche gourmande qui clôt agréablement un buffet salé.</p><h2>Des mignardises à partager</h2><p>Sélection de desserts artisanaux en petites pièces, à picorer sans couvert. On varie l'assortiment et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de douceurs réunit une sélection de desserts artisanaux pour finir un afterwork ou une réception sur une note sucrée. Brownies, choux, muffins et macarons à picorer, il apporte la touche gourmande qui clôt agréablement un buffet salé.</p><h2>Des douceurs à partager</h2><p>Brownies, choux à la crème, mini muffins et macarons, en petites pièces à picorer sans couvert. On varie l'assortiment et on ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'si4', famille: 'sucre', nom: 'Douceurs', img: '/plateau-douceurs.webp',
-    description: 'Sélection de desserts artisanaux.',
-    recettes: ['Cookies Signature', 'Brownies', 'Madeleines', 'Tartelettes', 'Mignardises', 'Fruits frais'],
+    description: 'Brownies, choux, muffins et macarons.',
+    recettes: ['Brownies', 'Choux à la crème', 'Mini muffins', 'Macarons'],
   },
   {
     seoTitle: `Plateau de brochettes de fruits pour vos apéritifs et pauses d'entreprise à Paris`,
