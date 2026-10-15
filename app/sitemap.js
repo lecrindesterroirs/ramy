@@ -55,6 +55,7 @@ export default function sitemap() {
     url('/univers/nos-artisans',                          0.72, 'monthly'),
     url('/univers/nos-engagements',                       0.68, 'monthly'),
     url('/univers/notre-methode',                         0.50, 'yearly'),
+    url('/univers/cas-clients',                           0.60, 'monthly'),
 
     // À propos
 
