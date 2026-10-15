@@ -282,7 +282,7 @@ export default function TraiteurHalal() {
                 {[
                   ['Petit-déjeuner', 'dès 8 €', 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
                   ['Pause goûter', 'dès 6 €', 'Une boisson et une pâtisserie'],
-                  ['Lunch box', 'dès 19,90 €', 'Déjeuner individuel prêt à manger'],
+                  ['Lunch box', 'dès 18,90 €', 'Déjeuner individuel prêt à manger'],
                   ['Plateau repas', 'dès 28,90 €', 'Entrée, plat, dessert et pain'],
                   ['Cocktail 8 pièces', '29,90 €', "L'Invitation : apéritif, afterwork"],
                   ['Cocktail 12 pièces', '40,90 €', 'La Réception : déjeunatoire, soirée partenaires'],

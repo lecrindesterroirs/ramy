@@ -254,7 +254,7 @@ export const evenements = [
         },
         {
           heading: "Le budget d'une rentrée réussie",
-          texte: "Un petit-déjeuner de rentrée en formule Classique démarre à 8 euros HT par personne : viennoiseries, corbeille de fruits frais découpés, café et jus. Le petit-déjeuner complet va de 12 à 16 euros HT par personne. Une formule plus simple, viennoiseries et café seulement, descend à 2,90 euros HT par personne. La plaque chocolat personnalisée se rajoute à la commande selon le message et le format souhaités. À cela s'ajoutent la livraison, 29 euros HT sur Paris et les communes proches, et un minimum de commande de 50 euros HT.",
+          texte: "Un petit-déjeuner de rentrée en formule Classique démarre à 8 euros HT par personne : viennoiseries, corbeille de fruits frais découpés, café et jus. Le petit-déjeuner complet va de 12 à 16 euros HT par personne. Une formule plus simple, deux mini-viennoiseries et du café par personne, revient à environ 6,50 euros HT. La plaque chocolat personnalisée se rajoute à la commande selon le message et le format souhaités. À cela s'ajoutent la livraison, 29 euros HT sur Paris et les communes proches, et un minimum de commande de 50 euros HT.",
         },
         {
           heading: "Quand commander pour septembre",

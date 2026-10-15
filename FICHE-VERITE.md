@@ -21,12 +21,13 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 | Petit-déjeuner Classique | 8 € HT par personne, livraison en sus | Ramy, 26/09/2026 |
 | Petit-déjeuner complet | 12 à 16 € HT par personne, plus la livraison | Règles de devis de l'OS, tranché le 13/10/2026 |
 | Pause goûter | Dès 6 € HT par personne | Site |
-| Lunch box | Dès 19,90 € HT | Site |
+| Lunch box | Dès 18,90 € HT (La Fermière) | Catalogue, app/creations/lunch-box/data.js, lu le 15/10/2026 |
 | Plateaux repas | Dès 28,90 € HT | Site |
 | Cocktail | 29,90 € (8 pièces), 40,90 € (12), 51,90 € (16) HT par personne | Site |
 | Régimes | Tout halal et sans porc, sans alcool ; végétarien, vegan et sans gluten sur demande | Ramy |
 | Boissons | Carte sans alcool ; Chardonnay Blanc de Blancs 0 % à 16,90 € HT | Catalogue |
-| Quantités petit-déjeuner | 2 mini-viennoiseries par personne (3 si 10 ou moins), 1 mignardise, 1 thermos d'1 L pour 6, jus pour 1 personne sur 2 | Règles de devis de l'OS |
+| Quantités petit-déjeuner | 2 mini-viennoiseries par personne (3 si 10 ou moins), 1 mignardise (madeleines ; au-delà de 20 personnes, 1 à 2 cakes de 5 à 6 parts), 1 brochette de fruits au-delà de 15, 1 thermos d'1 L pour 6 (4 café pour 1 thé), 1 verre de jus de 20 cl par personne | Règles de devis de l'OS (jus : décision de Ramy du 11/10/2026, d'après 75 petits-déjeuners réels) |
+| Boissons d'un cocktail | 1 L de jus pour 4 personnes, 1 Evian 75 cl pour 5 ; Chardonnay 0 % en option (1 flûte par personne) | Règles de devis de l'OS, d'après 26 cocktails réels |
 | Quantités cocktail | 6 à 8 pièces (apéritif), 12 à 14 (déjeunatoire), 16 à 18 (dînatoire) | Page cocktails |
 
 ## Interdit
@@ -54,6 +55,9 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 
 | Date | Sujet | Décision |
 |---|---|---|
+| 15/10/2026 | Jus au petit-déjeuner : 1 verre pour 2 personnes (pages) ou 1 par personne (OS depuis le 11/10) | 1 verre par personne : budgets recalculés, 10 pers. = 160,80 € HT, 20 pers. = 340,80 € HT livraison comprise |
+| 15/10/2026 | Petit-déjeuner « viennoiseries + café dès 2,90 € » | Faux avec nos quantités : environ 6,50 € HT par personne |
+| 15/10/2026 | Lunch box dès 19,90 € | Dès 18,90 € (catalogue) |
 | 26/09/2026 | Prix du petit-déjeuner Classique (8 € ou 12,50 €) | 8 € HT par personne |
 | 26/09/2026 | Pièces cocktail dînatoire (12 à 15, 12 à 16, 16 à 18) | 16 à 18 |
 | 26/09/2026 | Alcool dans les conseils | Tout sans alcool |

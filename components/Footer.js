@@ -95,6 +95,7 @@ export default function Footer() {
                 { label: 'Notre Maison', href: '/univers/notre-maison' },
                 { label: 'Nos Artisans', href: '/univers/nos-artisans' },
                 { label: 'Nos Engagements', href: '/univers/nos-engagements' },
+                { label: 'Notre méthode', href: '/univers/notre-methode' },
                 { label: 'Le Journal', href: '/journal' },
               ]},
               { title: 'Entreprise', links: [

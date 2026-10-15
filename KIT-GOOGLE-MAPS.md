@@ -51,7 +51,7 @@ Chemin : Google Business Profile → Modifier le profil → Catégorie d'activit
 | Petit-déjeuner de réunion | Pour CODIR, onboarding, réunion d'équipe. Livré et installé avant le début. |
 | Petit-déjeuner de séminaire | De 30 à 300 personnes, composé selon l'effectif. |
 | Plateaux repas | Déjeuner de travail livré au bureau. Dès 28,90 € HT. |
-| Lunch box | Déjeuner individuel. Dès 19,90 € HT. |
+| Lunch box | Déjeuner individuel. Dès 18,90 € HT. |
 | Pause goûter | Madeleines, cakes, fruits et boissons pour l'après-midi. |
 | Cocktail d'entreprise | 8, 12 ou 16 pièces par personne, dès 29,90 € HT/pers. |
 | Plateaux apéritifs | Pour afterwork et pots de départ. |
@@ -74,7 +74,7 @@ Chemin : Google Business Profile → Modifier le profil → Catégorie d'activit
 | Brochettes de fruits | 2,45 € HT la pièce | `plateau-fruits.webp` | fiche brochettes |
 | Cocktail L'Invitation (8 pièces/pers.) | 29,90 € HT | `cocktail-signature.webp` | /creations/cocktails |
 | Plateau repas | dès 28,90 € HT | `plat-boeuf.webp` | /creations/plateaux-repas |
-| Lunch box | dès 19,90 € HT | `hero-lunch-box.webp` | /creations/lunch-box |
+| Lunch box | dès 18,90 € HT | `hero-lunch-box.webp` | /creations/lunch-box |
 
 Mets les 3 produits petit-déjeuner en premier : Google affiche d'abord les premiers.
 
@@ -95,7 +95,7 @@ Toujours avec **une vraie photo de livraison**, prise sur place avec un téléph
 
 - **À quelle heure livrez-vous les petits-déjeuners ?** Dès 6h30, du lundi au vendredi, à Paris et en Île-de-France. Commande jusqu'à la veille 14h.
 - **Vos produits sont-ils halal ?** Oui, toute la carte est halal et sans porc, sans alcool. Options végétariennes, vegan et sans gluten sur demande.
-- **Quel budget pour un petit-déjeuner de 20 personnes ?** Dès 8 € HT par personne en formule Classique. Un petit-déjeuner complet pour 20 personnes revient à 321,80 € HT, livraison comprise.
+- **Quel budget pour un petit-déjeuner de 20 personnes ?** Dès 8 € HT par personne en formule Classique. Un petit-déjeuner complet pour 20 personnes revient à 340,80 € HT, livraison comprise.
 - **Les gobelets et serviettes sont-ils fournis ?** Oui, livrés avec la commande.
 - **Y a-t-il un minimum de commande ?** 50 € HT, livraison 29 € HT à Paris et communes proches.
 

@@ -199,7 +199,7 @@ export default function TraiteurPage() {
                 {[
                   ['Petit-déjeuner', 'dès 8 €', 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
                   ['Pause goûter', 'dès 6 €', 'Une boisson et une pâtisserie'],
-                  ['Lunch box', 'dès 19,90 €', 'Déjeuner individuel prêt à manger'],
+                  ['Lunch box', 'dès 18,90 €', 'Déjeuner individuel prêt à manger'],
                   ['Plateau repas', 'dès 28,90 €', 'Entrée, plat, dessert et pain'],
                   ['Cocktail 8 pièces', '29,90 €', "L'Invitation : apéritif, afterwork"],
                   ['Cocktail 12 pièces', '40,90 €', 'La Réception : déjeunatoire, soirée partenaires'],
@@ -247,7 +247,7 @@ export default function TraiteurPage() {
         {/* ── Repères de prix ── */}
         <section className="traiteur-prix" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '18px' }}>
-            Combien coûte un traiteur d'entreprise à Paris ?
+            Nos prix par prestation
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '24px' }}>
             Le prix se compte par personne et dépend de la prestation. À cela s'ajoutent un minimum de commande de 50 € HT et une livraison à 29 € HT à Paris et dans les communes proches. Le devis, personnalisé, est envoyé sous 24h.

@@ -15,14 +15,14 @@ const SERIF = "'Baskerville Display PT', Georgia, serif"
 
 const OFFERS = [
   ['Office breakfast', 'From €8 per person', 'Butter pastries, Alain Milliat juices, coffee, fresh fruit. A full breakfast with madeleines, tea and fruit skewers runs €12 to €16 per person, plus delivery.', '/creations/petits-dejeuners-et-pauses'],
-  ['Afternoon break', 'From €6 per person', 'Madeleines, cakes, fruit and hot drinks for a meeting or a training day.', '/creations/pauses-gourmandes'],
-  ['Lunch boxes', 'From €19.90 per person', 'Individual lunches, ready to eat in a meeting room.', '/creations/lunch-box'],
-  ['Lunch trays', 'From €28.90 per person', 'Starter, main course, dessert and bread, individually packed and labelled.', '/creations/plateaux-repas'],
+  ['Afternoon break', 'From €6 per person', 'A pastry and a drink per person (madeleines, cookies or cakes) for a meeting or a training day.', '/creations/pauses-gourmandes'],
+  ['Lunch boxes', 'From €18.90 per person', 'Individual lunches, ready to eat in a meeting room.', '/creations/lunch-box'],
+  ['Lunch trays', 'From €28.90 per person', 'Starter, main course, dessert and bread, individually packed.', '/creations/plateaux-repas'],
   ['Cocktail reception', '€29.90, €40.90 or €51.90 per person', '8, 12 or 16 canapés per guest, savoury and sweet, delivered ready to serve.', '/creations/cocktails'],
 ]
 
 const FAQ = [
-  { name: 'How much does corporate catering cost in Paris?', answer: "At L'Écrin Traiteur: office breakfast from €8 per person, lunch boxes from €19.90, lunch trays from €28.90, and cocktail receptions at €29.90 (8 canapés), €40.90 (12) or €51.90 (16) per person. Prices exclude VAT. Delivery is €29 in Paris and nearby towns, with a €50 minimum order." },
+  { name: 'How much does corporate catering cost in Paris?', answer: "At L'Écrin Traiteur: office breakfast from €8 per person, lunch boxes from €18.90, lunch trays from €28.90, and cocktail receptions at €29.90 (8 canapés), €40.90 (12) or €51.90 (16) per person. Prices exclude VAT. Delivery is €29 in Paris and nearby towns, with a €50 minimum order." },
   { name: 'Is the food halal?', answer: "Yes. The whole menu is halal and pork-free by default, with no alcohol in the recipes. We do not claim a halal certification: it is a halal-friendly menu, the same for every guest. Vegetarian, vegan and gluten-free options are available on request." },
   { name: 'How far in advance should I order?', answer: 'Until 2 pm the day before for breakfast, lunch or a cocktail reception. For 50 guests or more, please allow at least 48 hours. Quotes are sent within 24 hours.' },
   { name: 'Where do you deliver?', answer: 'Paris and around twenty towns in Île-de-France, including La Défense, Boulogne-Billancourt, Neuilly-sur-Seine, Levallois-Perret, Issy-les-Moulineaux, Puteaux, Courbevoie, Nanterre and Versailles. Deliveries start at 6:30 am.' },
@@ -77,7 +77,7 @@ export default function CorporateCateringParis() {
 
         <section style={{ maxWidth: '820px', margin: '0 auto', padding: '64px 24px 100px' }}>
           <p style={p}>
-            L&apos;Écrin Traiteur is a corporate caterer based in Boulogne-Billancourt, just outside Paris. We deliver to offices for teams of 10 to 300 people: breakfast meetings, working lunches, afternoon breaks and cocktail receptions. Every product comes from a named artisan, such as Mado Paris madeleines and Alain Milliat juices, and deliveries are made by our own team.
+            L&apos;Écrin Traiteur is a corporate caterer based in Boulogne-Billancourt, just outside Paris. We deliver to offices of any size, with a €50 minimum order: breakfast meetings, working lunches, afternoon breaks and cocktail receptions. Our pastries and drinks come from named producers, such as Mado Paris madeleines and Alain Milliat juices, and deliveries are made by our own team.
           </p>
           <p style={p}>
             You order until <strong style={{ fontWeight: 500 }}>2 pm the day before</strong>, we deliver from <strong style={{ fontWeight: 500 }}>6:30 am</strong>. Minimum order €50, delivery €29 in Paris and nearby towns (prices exclude VAT). You receive a quote within 24 hours and a company invoice with VAT.
