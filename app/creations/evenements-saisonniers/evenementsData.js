@@ -329,10 +329,13 @@ export const evenements = [
       'halloween-bureau-regimes-alimentaires-halal-vegetarien-sans-gluten',
     ],
     tags: ['Goûters', 'Pauses gourmandes'],
-    img: '/prod-cookies.webp',
-    descCourt: "Madeleines personnalisées, cookies maison, brochettes de fruits frais et cocktail sans alcool pour Halloween.",
-    desc: "Un goûter festif qui sort de l'ordinaire : madeleines personnalisées aux couleurs d'Halloween, cookies maison, brochettes de fruits frais, ou un cocktail de 8 pièces en afterwork. Halal et sans porc, livré dès 6h30. Un moment décalé, bien exécuté.",
+    img: '/halloween-macaron-potiron.webp',
+    imgAlt: "Macaron noir d'Halloween, coque au cacao et cœur vanille potiron épicé",
+    imgPos: 'center 42%',
+    descCourt: "Le macaron noir vanille cœur potiron épicé, des madeleines aux couleurs de la fête, cookies maison et un cocktail sans alcool.",
+    desc: "Un goûter festif qui sort de l'ordinaire, mené par notre macaron noir à la vanille et au cœur de potiron épicé. Autour : des madeleines aux couleurs de la fête, des cookies maison, des brochettes de fruits frais, ou un cocktail de 8 pièces en afterwork. Halal et sans porc, livré dès 6h30. Un moment décalé, bien exécuté.",
     produits: [
+      'Macaron noir, vanille et cœur potiron épicé',
       'Madeleines personnalisées aux couleurs d\'Halloween',
       'Cookies maison',
       'Brochettes de fruits frais',
@@ -341,7 +344,7 @@ export const evenements = [
     ],
     differentiateur: {
       label: 'Notre signature',
-      text: "Des madeleines aux couleurs de la fête, orange et noir pour Halloween, personnalisables à vos couleurs.",
+      text: "Le macaron noir vanille cœur potiron épicé, créé pour la saison : une coque cacao, une ganache vanille et un cœur de potiron à la cannelle.",
     },
     article: {
       titre: "Halloween en entreprise : et si on osait ?",
@@ -349,6 +352,10 @@ export const evenements = [
         {
           heading: "Halloween 2026 en bref",
           texte: "Halloween 2026 tombe un samedi : fêtez-le le jeudi 29 ou le vendredi 30 octobre. Une pause gourmande revient à partir de 6 € HT par personne, un cocktail de 8 pièces à 29,90 € HT par personne, livraison de 29 € HT en plus. Commande jusqu'à la veille à 14h, livraison dès 6h30. Toute la carte est halal et sans porc, sans alcool.",
+        },
+        {
+          heading: "Le macaron noir, vanille et cœur potiron épicé",
+          texte: "C'est la pièce que nous avons créée pour la saison. Une coque au cacao, presque noire, une ganache à la vanille, et au centre un cœur de potiron relevé à la cannelle. Le potiron n'est pas là pour le décor : il apporte une rondeur qui équilibre la vanille, et l'épice réveille l'ensemble. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail. Comme tout le reste de la carte, il est sans porc et sans alcool.",
         },
         {
           heading: "Halloween au bureau : une tendance qui s'installe",
