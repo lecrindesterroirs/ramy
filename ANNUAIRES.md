@@ -26,7 +26,7 @@ Traiteur d'entreprise à Paris et en Île-de-France : petits-déjeuners, plateau
 
 ## Description longue
 
-L'Écrin Traiteur livre des petits-déjeuners, plateaux repas, lunch box, pauses goûter et cocktails dans les bureaux de Paris et d'Île-de-France. Basés à Boulogne-Billancourt, nous livrons dès 6h30, avec notre propre équipe, pour des équipes de 10 à 300 personnes. Viennoiseries pur beurre, madeleines de Mado Paris, jus Alain Milliat, yaourts de la Ferme de Viltain : chaque produit vient d'un artisan que nous avons choisi. Toute la carte est halal et sans porc, avec des options végétariennes, vegan et sans gluten. Commande jusqu'à la veille 14h, devis sous 24h, facture entreprise avec TVA.
+L'Écrin Traiteur livre des petits-déjeuners, plateaux repas, lunch box, pauses goûter et cocktails dans les bureaux de Paris et d'Île-de-France. Basés à Boulogne-Billancourt, nous livrons dès 6h30, avec notre propre équipe, sans minimum de personnes (minimum de commande 50 € HT). Viennoiseries pur beurre, madeleines de Mado Paris, jus Alain Milliat, yaourts de la Ferme de Viltain : nos produits du matin viennent d'artisans que nous avons choisis. Toute la carte est halal et sans porc, avec des options végétariennes, vegan et sans gluten. Commande jusqu'à la veille 14h, devis sous 24h, facture entreprise avec TVA.
 
 ## Où s'inscrire
 
