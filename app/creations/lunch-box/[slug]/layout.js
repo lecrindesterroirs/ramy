@@ -1,4 +1,5 @@
 import { BOXES } from '../data'
+import { ogImages } from '../../../../lib/og'
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
@@ -34,7 +35,7 @@ export function generateMetadata({ params }) {
     title: { absolute: title },
     description,
     alternates: { canonical: path },
-    openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
+    openGraph: { images: ogImages((BOXES.find(x => x.id === params.slug) || {}).img, m.nom), title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
   }
 }
 

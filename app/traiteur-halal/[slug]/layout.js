@@ -1,4 +1,5 @@
 import { HALAL_PAGES } from '../../../lib/halalPagesData'
+import { ogImages } from '../../../lib/og'
 
 export function generateStaticParams() {
   return HALAL_PAGES.map(p => ({ slug: p.slug }))
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }) {
     title: { absolute: title },
     description: page.metaDescription,
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+      images: ogImages(page.heroImg || '/hero-petitdej.webp'),
       title,
       description: page.metaDescription,
       locale: 'fr_FR',

@@ -1,3 +1,5 @@
+import { PLATEAUX } from '../data'
+import { ogImages } from '../../../../lib/og'
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 const META = {
@@ -36,7 +38,7 @@ export function generateMetadata({ params }) {
     title: { absolute: title },
     description,
     alternates: { canonical: path },
-    openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `Plateau ${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
+    openGraph: { images: ogImages((PLATEAUX.find(x => x.id === params.slug) || {}).img, m.nom), title: `Plateau ${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
   }
 }
 

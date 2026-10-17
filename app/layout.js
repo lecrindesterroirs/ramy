@@ -12,6 +12,7 @@ import DeferredEntreprises from '../components/DeferredEntreprises'
 import { CONSENT_DEFAULT_SCRIPT } from '../lib/consent'
 import AttributionCapture from '../components/AttributionCapture'
 import { websiteNode, GBP_RATING_LABEL } from '../lib/site'
+import { ogImage, ogImages } from '../lib/og'
 
 export const metadata = {
   title: {
@@ -30,20 +31,16 @@ export const metadata = {
     url: 'https://www.lecrin-traiteur.fr',
     title: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
     description: "Petits-déjeuners, plateaux repas et cocktails livrés pour vos événements d'entreprise. Plus de 100 entreprises clientes, artisans sélectionnés, livraison dès 6h30.",
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: "L'Écrin Traiteur, petits-déjeuners & pauses gourmandes d'entreprise",
-      },
-    ],
+    // Carte générée depuis la photo d'accueil (scripts/build-og.py) : l'ancienne
+    // og-image.jpg était une photo prise sur le vif, sans logotype, et servait
+    // de partage à 239 pages à la fois.
+    images: ogImages('/hero-bg2.webp', "L'Écrin Traiteur, petits-déjeuners & pauses gourmandes d'entreprise"),
   },
   twitter: {
     card: 'summary_large_image',
     title: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
     description: "Petits-déjeuners, plateaux repas et cocktails livrés pour vos événements d'entreprise. Plus de 100 entreprises clientes.",
-    images: ['/og-image.jpg'],
+    images: [ogImage('/hero-bg2.webp')],
   },
   robots: {
     index: true,

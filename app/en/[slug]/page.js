@@ -2,6 +2,16 @@ import { notFound } from 'next/navigation'
 import InfoPage from '../../../components/InfoPage'
 import { EN_PAGES } from '../../../lib/enPages'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
+import { ogImages } from '../../../lib/og'
+
+// Chaque page anglaise reprend le hero de son équivalent français.
+const EN_HEROS = {
+  'office-breakfast-paris': '/hero-petitdej.webp',
+  'office-lunch-paris': '/hero-plateaux-essentiel.webp',
+  'cocktail-reception-paris': '/hero-cocktail.webp',
+  'halal-catering-paris': '/hero-petitdej.webp',
+  'pricing': '/hero-plateaux-essentiel.webp',
+}
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
@@ -20,7 +30,7 @@ export function generateMetadata({ params }) {
     description: pg.description,
     alternates: { canonical: path, languages: { en: path, fr: pg.fr } },
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, corporate caterer in Paris" }],
+      images: ogImages(EN_HEROS[params.slug] || '/hero-bg2.webp', "L'Écrin Traiteur, corporate caterer in Paris"),
       title: pg.metaTitle,
       description: pg.description,
       locale: 'en_GB',
