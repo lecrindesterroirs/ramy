@@ -15,6 +15,7 @@ import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 
 const SEO_ARTICLE = `
   <h2>Plateaux repas d'entreprise livrés à Paris : frais, individuels, équilibrés</h2>
@@ -342,11 +343,12 @@ function PlateauxRepasInner() {
                 </p>
               </div>
             ) : (
-              produitsAffiches.map((p, i) => (
+              produitsAffiches.map((p, i) => [
                 <Reveal key={p.id} delay={(i % 3) * 90}>
                   <MenuCard produit={p} />
-                </Reveal>
-              ))
+                </Reveal>,
+                i === Math.min(3, produitsAffiches.length - 1) && <EncartDevisMobile key="encart-devis" />,
+              ])
             )}
           </div>
         </div>

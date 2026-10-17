@@ -39,6 +39,7 @@ const HERO = {
    dressé en salades ou en verrines. Photos = visuels maison L'Écrin. */
 import { MENUS, SALADES, FILTRES } from './data'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 export { MENUS, SALADES, FILTRES }
 
 /* ─── Liste de recettes (Salé / Sucré) ───────────────────────────── */
@@ -211,7 +212,8 @@ export default function APartager() {
         <div className="ap-shell ap-cards" style={{ maxWidth: '1180px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', alignItems: 'stretch' }}>
           {MENUS.map((m, i) => {
             const centered = i === MENUS.length - 1 && MENUS.length % 2 === 1
-            return centered ? (
+            const encart = i === Math.min(3, MENUS.length - 1) && <EncartDevisMobile key="encart-devis" />
+            return [centered ? (
               <div key={m.key} className="ap-center">
                 <Reveal delay={(i % 2) * 90}>
                   <MenuCard m={m} />
@@ -221,7 +223,7 @@ export default function APartager() {
               <Reveal key={m.key} delay={(i % 2) * 90}>
                 <MenuCard m={m} />
               </Reveal>
-            )
+            ), encart]
           })}
         </div>
 

@@ -14,6 +14,7 @@ import { UNIVERS, UNIVERS_LABEL, slugAnim, ANIMATIONS } from './data'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 
 const SEO_ARTICLE = `
   <h2>Animations culinaires en entreprise à Paris : l'événement dont on parle</h2>
@@ -224,11 +225,12 @@ function AnimationsCulinairesInner() {
                   Animations Sucrées
                 </h2>
                 <div className="aa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
-                  {animationsSucrees.map((a, i) => (
+                  {animationsSucrees.map((a, i) => [
                     <Reveal key={a.id} delay={(i % 3) * 90}>
                       <AnimationCard produit={a} />
-                    </Reveal>
-                  ))}
+                    </Reveal>,
+                    i === Math.min(3, animationsSucrees.length - 1) && <EncartDevisMobile key="encart-devis" />,
+                  ])}
                 </div>
               </div>
             )}

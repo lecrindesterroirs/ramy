@@ -23,7 +23,9 @@ const FAMILLES_PERSO = [
   'Packaging',
 ]
 
-export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }) {
+// compact : sans la grande marge du haut, pour la feuille de la barre mobile
+// (components/DevisSheet.js) et l'encart de la grille des pages de la carte.
+export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, compact = false }) {
   const [form, setForm] = useState({
     prestation: defaultPrestation,
     famillePerso: '',
@@ -58,7 +60,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
   if (status === 'success') {
     return (
       <div style={{
-        marginTop: '56px',
+        marginTop: compact ? 0 : '56px',
         padding: '36px 40px',
         background: 'rgba(58,124,58,0.05)',
         border: '1px solid rgba(58,124,58,0.2)',
@@ -83,8 +85,8 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre }
 
   return (
     <div style={{
-      marginTop: '56px',
-      padding: '40px 40px',
+      marginTop: compact ? 0 : '56px',
+      padding: compact ? '26px 20px' : '40px 40px',
       background: 'var(--bg-secondary)',
       borderLeft: '3px solid var(--accent)',
     }}>

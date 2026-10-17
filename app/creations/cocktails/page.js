@@ -33,6 +33,7 @@ const SEO_ARTICLE = `
 
 import { FORMULES, FAQ_CATALOGUE } from './data'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 export { FORMULES }
 
 /* ─── Liste de pièces (Salé / Sucré) ─────────────────────────────── */
@@ -213,11 +214,12 @@ export default function Cocktails() {
 
         {/* ── 3 cartes formules ── */}
         <div className="ck-shell ck-cards" style={{ maxWidth: '1320px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px', alignItems: 'stretch' }}>
-          {FORMULES.map((f, i) => (
+          {FORMULES.map((f, i) => [
             <Reveal key={f.key} delay={i * 90}>
               <FormuleCard f={f} />
-            </Reveal>
-          ))}
+            </Reveal>,
+            i === Math.min(3, FORMULES.length - 1) && <EncartDevisMobile key="encart-devis" />,
+          ])}
         </div>
 
         {/* ── FAQ visible (même contenu que le FAQPage du layout) ── */}

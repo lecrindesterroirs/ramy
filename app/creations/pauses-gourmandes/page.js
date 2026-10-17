@@ -64,6 +64,7 @@ const HERO = {
    sur la page Petit-déjeuner (FORMATS avec prix + « le plus choisi »). */
 export { COFFRETS_MADELEINES, COFFRETS_MACARONS, PAUSES } from './data'
 import { COFFRETS_MADELEINES, COFFRETS_MACARONS, PAUSES } from './data'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 
 
 /* ─── Carte douceur ──────────────────────────────────────────────── */
@@ -212,6 +213,7 @@ export default function PausesGourmandes() {
               <Reveal delay={(i % 4) * 90}>
                 <PauseCard produit={p} />
               </Reveal>
+              {i === Math.min(3, pausesAffichees.length - 1) && <EncartDevisMobile />}
             </Fragment>
           ))}
         </div>

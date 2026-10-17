@@ -39,6 +39,7 @@ const HERO = {
 /* Filtres = familles de plateaux. */
 import { FILTRES, CATEGORIE_COLORS, PLATEAUX } from './data'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 export { FILTRES, CATEGORIE_COLORS, PLATEAUX }
 
 /* ─── Carte plateau ──────────────────────────────────────────────── */
@@ -207,11 +208,12 @@ function PlateauxAperitifsInner() {
           </aside>
 
           <div className="pa-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
-            {plateauxAffiches.map((p, i) => (
+            {plateauxAffiches.map((p, i) => [
               <Reveal key={p.id} delay={(i % 3) * 90}>
                 <PlateauCard produit={p} />
-              </Reveal>
-            ))}
+              </Reveal>,
+              i === Math.min(3, plateauxAffiches.length - 1) && <EncartDevisMobile key="encart-devis" />,
+            ])}
           </div>
         </div>
 

@@ -39,6 +39,7 @@ const HERO = {
 
 import { FILTRES, CATEGORIE_COLORS, BOXES } from './data'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
+import EncartDevisMobile from '../../../components/EncartDevisMobile'
 export { FILTRES, CATEGORIE_COLORS, BOXES }
 
 /* ─── Carte menu ─────────────────────────────────────────────────── */
@@ -270,11 +271,12 @@ function LunchBoxInner() {
                 </p>
               </div>
             ) : (
-              boxesFiltres.map((b, i) => (
+              boxesFiltres.map((b, i) => [
                 <Reveal key={b.id} delay={(i % 3) * 90}>
                   <MenuCard produit={b} />
-                </Reveal>
-              ))
+                </Reveal>,
+                i === Math.min(3, boxesFiltres.length - 1) && <EncartDevisMobile key="encart-devis" />,
+              ])
             )}
           </div>
         </div>

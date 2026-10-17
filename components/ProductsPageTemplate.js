@@ -13,6 +13,7 @@ import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
 import CrossSellBanner from './CrossSellBanner'
+import EncartDevisMobile from './EncartDevisMobile'
 
 const BASE_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
@@ -118,6 +119,7 @@ export default function ProductsPageTemplate({
               <Reveal delay={(i % 4) * 90}>
                 <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
               </Reveal>
+              {i === Math.min(3, products.length - 1) && <EncartDevisMobile />}
             </Fragment>
           ))}
         </div>
