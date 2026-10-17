@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { slugsPlateauxAperitifsEn } from '../../../../lib/en/produits/plateauxAperitifs'
 import { PLATEAUX } from '../data'
 import { ogImages } from '../../../../lib/og'
 const BASE = 'https://www.lecrin-traiteur.fr'
@@ -37,7 +39,7 @@ export function generateMetadata({ params }) {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: path },
+    alternates: alternatesPour(path, { en: slugsPlateauxAperitifsEn().includes(params.slug) }),
     openGraph: { images: ogImages((PLATEAUX.find(x => x.id === params.slug) || {}).img, m.nom), title: `Plateau ${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
   }
 }

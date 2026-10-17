@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { idsAnimationsEn } from '../../../../lib/en/produits/animations'
 import { ANIMATIONS, UNIVERS_LABEL, slugAnim } from '../data'
 import { ogImages } from '../../../../lib/og'
 
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }) {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `/creations/animations-culinaires/${slug}` },
+    alternates: alternatesPour(`/creations/animations-culinaires/${slug}`, { en: idsAnimationsEn().includes(a.id) }),
     openGraph: {
       title: `${a.nom}, animation culinaire | L'Écrin Traiteur`,
       description: a.description,
