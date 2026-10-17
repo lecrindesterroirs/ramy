@@ -81,7 +81,7 @@ export default function Tarifs() {
             rows: [
               ['Pause gourmande pour 20 personnes (6 € par personne + livraison)', '149 €'],
               ['Goûter pour 10 personnes (20 madeleines, 1 litre de jus, livraison)', '87,50 €'],
-              ['Déjeuner de 20 plateaux repas végétariens, livraison comprise', '606,80 €'],
+              ['Déjeuner de 20 plateaux repas végétariens, livraison comprise', '607,00 €'],
               ['Cocktail La Réception pour 50 personnes (12 pièces), hors boissons et livraison', '2 045 €'],
             ],
           },
