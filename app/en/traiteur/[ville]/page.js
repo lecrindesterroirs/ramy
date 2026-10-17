@@ -347,6 +347,7 @@ export default async function EnCityPage({ params }) {
           meta: 'Nearby',
         }))}
         columns={4}
+        cta="Discover →"
       />
 
       {/* ── Éditorial + arguments + CTA + article SEO ── */}
