@@ -1,3 +1,4 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_PAUSES } from "./faq"
@@ -9,7 +10,7 @@ const DESCRIPTION = "Goûter d'entreprise à Paris dès 6 € HT par personne : 
 export const metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: '/creations/pauses-gourmandes' },
+  alternates: alternatesPour('/creations/pauses-gourmandes', { en: true }),
   openGraph: {
     images: ogImages('/hero-pauses-gourmandes.webp'),
     title: TITLE,

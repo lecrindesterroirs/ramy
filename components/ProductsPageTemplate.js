@@ -8,7 +8,7 @@ import Reveal from './Reveal'
 import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
 import CategoryTabs from './CategoryTabs'
-import { CATEGORY_FAQ } from '../lib/categoryFaq'
+import { CATEGORY_FAQ, CATEGORY_FAQ_EN } from '../lib/categoryFaq'
 import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
@@ -52,7 +52,9 @@ export default function ProductsPageTemplate({
   sectionFilterKey,
   crossSell,
   answerBlock,
+  lang = 'fr',
 }) {
+  const en = lang === 'en'
   const [sortLabel, setSortLabel]   = useState('En vedette')
   const sorts = sectionFilterLabel ? [...BASE_SORTS, sectionFilterLabel] : BASE_SORTS
   // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
@@ -92,7 +94,7 @@ export default function ProductsPageTemplate({
         {/* ── Fil d'Ariane visible (Accueil › Catégorie) ── */}
         <div className="page-breadcrumb" style={{ maxWidth: '1440px', margin: '0 auto', padding: '24px 72px 0' }}>
           {/* jsonLd={false} : le BreadcrumbList de ces pages est porté par CategoryJsonLd. */}
-          <Breadcrumb variant="inline" jsonLd={false} items={[{ label: 'Accueil', href: '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
+          <Breadcrumb variant="inline" jsonLd={false} items={[{ label: en ? 'Home' : 'Accueil', href: en ? '/en' : '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
         </div>
 
         {/* ── Bloc réponse optionnel (prix, délai, commande) avant la grille ── */}
@@ -103,7 +105,7 @@ export default function ProductsPageTemplate({
         )}
 
         {/* ── Barre catégories + tri (partagée avec toutes les pages) ── */}
-        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} sorts={sorts} />
+        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} sorts={sorts} lang={lang} />
 
         {/* ── Grille produits ── */}
         <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
@@ -117,9 +119,11 @@ export default function ProductsPageTemplate({
                 </div>
               )}
               <Reveal delay={(i % 4) * 90}>
-                <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} />
+                <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} lang={lang} />
               </Reveal>
-              {i === Math.min(3, products.length - 1) && <EncartDevisMobile />}
+              {/* L'encart mobile n'est pas encore traduit : pas d'encart en anglais
+                  plutôt qu'un formulaire français au milieu de la grille. */}
+              {!en && i === Math.min(3, products.length - 1) && <EncartDevisMobile />}
             </Fragment>
           ))}
         </div>
@@ -129,7 +133,7 @@ export default function ProductsPageTemplate({
       </main>
 
       {/* ── Section éditoriale + article SEO ── */}
-      <CategoryClosing {...(editorial || {})} seoArticle={seoArticle} />
+      <CategoryClosing {...(editorial || {})} seoArticle={seoArticle} lang={lang} />
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .pd-card { border-radius: 4px !important; }
@@ -158,9 +162,9 @@ export default function ProductsPageTemplate({
       {/* ── FAQ logistique visible (schema porté par CategoryJsonLd) ── */}
       <section className="cat-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 88px' }}>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px' }}>
-          Questions fréquentes
+          {en ? 'Frequently asked questions' : 'Questions fréquentes'}
         </h2>
-        {CATEGORY_FAQ.map((f, i) => (
+        {(en ? CATEGORY_FAQ_EN : CATEGORY_FAQ).map((f, i) => (
           <div key={i} style={{ padding: '22px 0', borderTop: i === 0 ? '1px solid rgba(17,17,17,0.08)' : '1px solid rgba(17,17,17,0.08)' }}>
             <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
               {f.q}
@@ -182,12 +186,12 @@ export default function ProductsPageTemplate({
   )
 }
 
-function ProductCard({ product, basePath }) {
+function ProductCard({ product, basePath, lang = 'fr' }) {
   const [hovered, setHovered] = useState(false)
 
   const href = product.id
     ? `${basePath}/${product.id}`
-    : '/devis'
+    : (lang === 'en' ? '/en/devis' : '/devis')
 
   // "16 pièces, 26,80€" → pièces + prix séparés
   const parts = (product.label || '').split('·').map(s => s.trim()).filter(Boolean)
@@ -238,7 +242,7 @@ function ProductCard({ product, basePath }) {
             transform: hovered ? 'translateY(0)' : 'translateY(6px)',
             transition: 'transform 0.4s ease',
           }}>
-            Découvrir
+            {lang === 'en' ? 'Discover' : 'Découvrir'}
           </span>
         </div>
       </div>
@@ -250,7 +254,7 @@ function ProductCard({ product, basePath }) {
         </p>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '9px' : '0' }}>
           {priceClean}
-          {isAmount && <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>}
+          {isAmount && <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>{lang === 'en' ? 'excl. VAT' : 'HT'}</span>}
         </p>
         {hasPieces && (
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)' }}>

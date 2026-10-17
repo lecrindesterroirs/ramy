@@ -1,3 +1,4 @@
+import SkipLink from '../components/SkipLink'
 import './globals.css'
 import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
@@ -76,7 +77,7 @@ export default function RootLayout({ children }) {
         <AttributionCapture />
         <ParcoursCapture />
         <script defer src="https://lecrin-analytics.vercel.app/script.js" data-website-id="6c18f6ab-c4b3-498e-b9ce-bf5ec85801b9" />
-        <a href="#main-content" className="skip-link">Aller au contenu principal</a>
+        <SkipLink />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', ...websiteNode() }) }}

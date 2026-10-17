@@ -75,6 +75,17 @@ export default function ProductPage() {
      anglaise se fusionne par-dessus les données françaises, un champ non
      traduit reste en français plutôt que de disparaître. */
   const langue = estAnglais(usePathname() || '/') ? 'en' : 'fr'
+  // Habillage de la fiche. La page sert les deux langues : sans ça,
+  // « Accueil », « Obtenir un devis » et « Contient : » restaient en
+  // français au milieu d'un texte anglais.
+  const en = langue === 'en'
+  const M = en
+    ? { accueil: 'Home', famille: 'Breakfasts & Breaks', devis: 'Get a quote →',
+        contient: 'Contains', similaires: 'Similar products', liees: 'In the same selection',
+        decouvrir: 'Discover →' }
+    : { accueil: 'Accueil', famille: 'Petits-Déjeuners & Pauses', devis: 'Obtenir un devis →',
+        contient: 'Contient', similaires: 'Produits similaires', liees: 'Dans la même sélection',
+        decouvrir: 'Découvrir →' }
   const product = produitLocalise(produitFr, langue)
 
   const related = [...PRODUCTS]
@@ -94,8 +105,8 @@ export default function ProductPage() {
   const coffretMot = coffret ? coffret.titre.replace(/^Coffret\s+/i, '') : 'signature'
 
   const breadcrumb = [
-    { label: 'Accueil', href: '/' },
-    { label: 'Petits-Déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
+    { label: M.accueil, href: en ? '/en' : '/' },
+    { label: M.famille, href: `${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses` },
     { label: product.name },
   ]
 
@@ -107,8 +118,8 @@ export default function ProductPage() {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${BASE}/` },
-          { '@type': 'ListItem', position: 2, name: 'Petits-Déjeuners & Pauses', item: `${BASE}/creations/petits-dejeuners-et-pauses` },
+          { '@type': 'ListItem', position: 1, name: M.accueil, item: `${BASE}${en ? '/en' : '/'}` },
+          { '@type': 'ListItem', position: 2, name: M.famille, item: `${BASE}${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses` },
           { '@type': 'ListItem', position: 3, name: product.name, item: pageUrl },
         ],
       },
@@ -165,9 +176,9 @@ export default function ProductPage() {
 
         {/* ── Layout principal ── */}
         {isGallery ? (
-          <GalleryFiche product={product} />
+          <GalleryFiche product={product} M={M} />
         ) : isEditorial ? (
-          <EditorialHero product={product} breadcrumb={breadcrumb} />
+          <EditorialHero product={product} breadcrumb={breadcrumb} M={M} />
         ) : product.isMadeleine ? (
           /* ═══ LAYOUT MADELEINES (reproduction maquette) ═══ */
           <div className="mad-page">
@@ -246,7 +257,7 @@ export default function ProductPage() {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Obtenir un devis →
+                {M.devis}
               </a>
             </div>
 
@@ -300,7 +311,7 @@ export default function ProductPage() {
                 <Image fill sizes="(max-width: 768px) 100vw, 50vw" src={product.img} alt={product.name} style={{ objectFit: 'cover' }} />
               </div>
             </div>
-            <ProductInfo product={product} />
+            <ProductInfo product={product} M={M} />
           </div>
         )}
 
@@ -309,8 +320,11 @@ export default function ProductPage() {
           <div style={{ width: '100%', height: '1px', background: 'rgba(17,17,17,0.07)' }} />
         </div>
 
-        {/* ── À savoir : format, prix, régimes, délai, livraison (rendu serveur) ── */}
-        <FicheAsavoir {...asavoirProduit(product, { kind: 'pdj' })} />
+        {/* ── À savoir : format, prix, régimes, délai, livraison (rendu serveur) ──
+            Pas rendu en anglais : lib/ficheAsavoir.js génère ses phrases en
+            français, et un bloc français au milieu d'une page anglaise est
+            pire que pas de bloc. À traduire, c'est le dernier morceau. ── */}
+        {!en && <FicheAsavoir {...asavoirProduit(product, { kind: 'pdj' })} />}
 
         {/* ── Article SEO ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
@@ -364,7 +378,7 @@ export default function ProductPage() {
         }
       ` }} />
 
-      <RelatedLinks eyebrow="Produits similaires" title="Dans la même sélection" items={related} columns={4} />
+      <RelatedLinks eyebrow={M.similaires} title={M.liees} items={related} columns={4} cta={M.decouvrir} />
 
       <Footer />
     </>
@@ -372,7 +386,7 @@ export default function ProductPage() {
 }
 
 // ── Fiche galerie (mockup crêpes) ──
-function GalleryFiche({ product }) {
+function GalleryFiche({ product, M }) {
   const gallery = product.gallery && product.gallery.length ? product.gallery : [product.img]
   const [active, setActive] = useState(0)
   const thumbSlots = 4
@@ -419,7 +433,7 @@ function GalleryFiche({ product }) {
           <div style={{ marginBottom: '18px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>Composition</p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
-              Contient : {product.allergens.join(', ').toLowerCase()}.
+              {M.contient} : {product.allergens.join(', ').toLowerCase()}.
             </p>
           </div>
         )}
@@ -460,7 +474,7 @@ function GalleryFiche({ product }) {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
           >
-            Obtenir un devis →
+            {M.devis}
           </a>
         </div>
       </div>
@@ -469,7 +483,7 @@ function GalleryFiche({ product }) {
 }
 
 // ── Vitrine éditoriale, structure "plateau repas" ──
-function EditorialHero({ product, breadcrumb }) {
+function EditorialHero({ product, breadcrumb, M }) {
   const accroche = product.description?.includes('·')
     ? product.description.split('·').slice(1).join('·').trim()
     : product.description
@@ -573,7 +587,7 @@ function EditorialHero({ product, breadcrumb }) {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Obtenir un devis →
+                {M.devis}
               </a>
 
             </div>
@@ -585,7 +599,7 @@ function EditorialHero({ product, breadcrumb }) {
 }
 
 // ── Fiche produit standard (non-madeleines) ──
-function ProductInfo({ product }) {
+function ProductInfo({ product, M }) {
   return (
     <div>
       <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>{product.categoryLabel}</p>
@@ -629,7 +643,7 @@ function ProductInfo({ product }) {
         onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
         onMouseLeave={e => e.currentTarget.style.opacity = '1'}
       >
-        Obtenir un devis →
+        {M.devis}
       </a>
 
       <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>

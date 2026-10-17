@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { clesCocktailsEn } from '../../../../lib/en/produits/cocktails'
 import { ogImages } from '../../../../lib/og'
 /* Métadonnées SEO par formule, table locale (les données vivent dans la page 'use client',
    non importable côté serveur ; on garde une source légère ici). */
@@ -8,6 +10,9 @@ const META = {
 }
 
 export const SLUGS = Object.keys(META)
+
+/* Un slug inventé répond 404, pas 200 : voir les autres fiches. */
+export const dynamicParams = false
 
 export function generateStaticParams() {
   return SLUGS.map(slug => ({ slug }))
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: { canonical: `/creations/cocktails/${slug}` },
+    alternates: alternatesPour(`/creations/cocktails/${slug}`, { en: clesCocktailsEn().includes(slug) }),
   }
 }
 

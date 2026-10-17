@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/creations/animations-culinaires' },
+  alternates: alternatesPour('/creations/animations-culinaires', { en: true }),
   title: "Animations culinaires traiteur Paris",
   description: "Animations culinaires live à Paris : barista, ateliers œufs, pancakes, pasta, street food pour vos séminaires et événements d'entreprise en Île-de-France.",
   openGraph: {

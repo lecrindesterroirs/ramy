@@ -6,17 +6,29 @@ import { useState } from 'react'
 // Liste canonique des catégories créations affichées dans la barre d'onglets.
 // Source unique, réutilisée partout pour une barre identique.
 export const CATEGORIES = [
-  { label: 'Petits-déjeuners',   href: '/creations/petits-dejeuners-et-pauses' },
-  { label: 'Pause Goûter',       href: '/creations/pauses-gourmandes' },
-  { label: 'Plateaux repas',     href: '/creations/plateaux-repas' },
-  { label: 'Lunch Box',          href: '/creations/lunch-box' },
-  { label: 'À partager',         href: '/creations/a-partager' },
-  { label: 'Cocktails',          href: '/creations/cocktails' },
-  { label: 'Plateaux apéritifs', href: '/creations/plateaux-aperitifs' },
-  { label: 'Boissons',           href: '/creations/boissons' },
+  { label: 'Petits-déjeuners',   labelEn: 'Breakfasts',        href: '/creations/petits-dejeuners-et-pauses' },
+  { label: 'Pause Goûter',       labelEn: 'Afternoon treats',  href: '/creations/pauses-gourmandes' },
+  { label: 'Plateaux repas',     labelEn: 'Lunch trays',       href: '/creations/plateaux-repas' },
+  { label: 'Lunch Box',          labelEn: 'Lunch boxes',       href: '/creations/lunch-box' },
+  { label: 'À partager',         labelEn: 'Sharing buffet',    href: '/creations/a-partager' },
+  { label: 'Cocktails',          labelEn: 'Cocktails',         href: '/creations/cocktails' },
+  { label: 'Plateaux apéritifs', labelEn: 'Aperitif platters', href: '/creations/plateaux-aperitifs' },
+  { label: 'Boissons',           labelEn: 'Drinks',            href: '/creations/boissons' },
 ]
 
 export const DEFAULT_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
+
+/*
+  Le tri garde ses valeurs FRANÇAISES comme identifiants : sortItems() et
+  ProductsPageTemplate comparent sur ces chaînes. Seul l'affichage est
+  traduit, par cette table. Traduire les valeurs casserait le tri.
+*/
+export const SORTS_EN = {
+  'En vedette': 'Featured',
+  'Nouveautés': 'New in',
+  'Prix croissant': 'Price, low to high',
+  'Prix décroissant': 'Price, high to low',
+}
 
 // Extrait un prix numérique d'un label type « 5/6 pers, 14,90€ » ou « 28,90 ».
 export function priceFromLabel(label = '') {
@@ -56,7 +68,10 @@ function tabStyle(active) {
 // Barre d'onglets catégories. Optionnellement, tri + compteur à droite (même
 // ligne) quand on passe sort/onSort/count, reproduit exactement la barre de
 // la page petit-déjeuner (ProductsPageTemplate).
-export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORTS }) {
+export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORTS, lang = 'fr' }) {
+  const en = lang === 'en'
+  const motTri = (v) => (en && SORTS_EN[v]) || v
+  const lien = (href) => (en ? `/en${href}` : href)
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const showSort = sort != null && typeof onSort === 'function'
@@ -66,18 +81,18 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
       <div className="cat-tabs-inner" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', borderBottom: '1px solid rgba(17,17,17,0.08)' }}>
 
         {/* Onglets catégories, défilables horizontalement */}
-        <nav className="cat-tabs-links" aria-label="Catégories" style={{ display: 'flex', alignItems: 'center', overflowX: 'auto', minWidth: 0 }}>
+        <nav className="cat-tabs-links" aria-label={en ? 'Categories' : 'Catégories'} style={{ display: 'flex', alignItems: 'center', overflowX: 'auto', minWidth: 0 }}>
           {CATEGORIES.map(cat => {
             const active = pathname === cat.href
             return (
               <a
                 key={cat.href}
-                href={cat.href}
+                href={lien(cat.href)}
                 style={tabStyle(active)}
                 onMouseEnter={e => { if (!active) { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderBottomColor = 'rgba(17,17,17,0.2)' } }}
                 onMouseLeave={e => { if (!active) { e.currentTarget.style.color = 'rgba(17,17,17,0.42)'; e.currentTarget.style.borderBottomColor = 'transparent' } }}
               >
-                {cat.label}
+                {(en && cat.labelEn) || cat.label}
               </a>
             )
           })}
@@ -91,7 +106,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
                 onClick={() => setOpen(!open)}
                 style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', outline: 'none' }}
               >
-                {sort}
+                {motTri(sort)}
                 <span style={{ fontSize: '9px', opacity: 0.5 }}>▾</span>
               </button>
               {open && (
@@ -102,7 +117,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
                       onClick={() => { onSort(s); setOpen(false) }}
                       style={{ display: 'block', width: '100%', textAlign: 'left', padding: '10px 20px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.06em', color: s === sort ? 'var(--accent)' : 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}
                     >
-                      {s}
+                      {motTri(s)}
                     </button>
                   ))}
                 </div>
@@ -110,7 +125,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
             </div>
             {count != null && (
               <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', whiteSpace: 'nowrap' }}>
-                {count} produit{count > 1 ? 's' : ''}
+                {en ? `${count} product${count > 1 ? 's' : ''}` : `${count} produit${count > 1 ? 's' : ''}`}
               </span>
             )}
           </div>

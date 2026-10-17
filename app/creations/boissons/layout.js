@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/creations/boissons' },
+  alternates: alternatesPour('/creations/boissons', { en: true }),
   title: "Boissons artisanales pour entreprises",
   description: "Boissons traiteur à Paris : jus Alain Milliat, thés Mariage Frères, cafés bio et eaux pour vos pauses et petits-déjeuners d'entreprise.",
   openGraph: {

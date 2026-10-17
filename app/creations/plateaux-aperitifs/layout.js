@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/creations/plateaux-aperitifs' },
+  alternates: alternatesPour('/creations/plateaux-aperitifs', { en: true }),
   title: "Plateaux apéritifs traiteur Paris",
   description: "Plateaux apéritifs à partager livrés à Paris et en Île-de-France : sandwichs, fromages, charcuteries et plateaux signature. Devis sous 24h.",
   openGraph: {

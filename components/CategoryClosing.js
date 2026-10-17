@@ -22,14 +22,33 @@ export const DEFAULT_ARGS = [
   { icon: 'support',  titre: 'Accompagnement dédié',   desc: 'Un interlocuteur unique, dédié et à l\'écoute, pour vous accompagner du devis à la réalisation.' },
 ]
 
+/* Mêmes quatre arguments, en anglais. */
+export const DEFAULT_ARGS_EN = [
+  { icon: 'quality',  titre: 'Ingredients that stand up', desc: 'Ingredients chosen with care and worked by hand, for food people remember.' },
+  { icon: 'delivery', titre: 'Delivered from 6:30 am',    desc: 'Logistics built for companies: delivered at the time you choose, across Paris and Île-de-France.' },
+  { icon: 'custom',   titre: 'Built around your event',   desc: 'We work to your dietary needs, your budget and what you actually want, every time.' },
+  { icon: 'support',  titre: 'One person, start to finish', desc: 'A single contact who knows your file, from the quote to the delivery.' },
+]
+
 export default function CategoryClosing({
-  eyebrow = "Pensé pour les réceptions d'entreprise",
-  title = 'Des produits qui ont du goût.\nUn service qui tient ses promesses.',
-  body = "Des prestations pensées pour les entreprises qui accordent de l'importance au goût. Petits-déjeuners, plateaux repas, cocktails, buffets : chaque produit est sélectionné, chaque livraison est soignée.",
-  args = DEFAULT_ARGS,
-  ctaQuestion = "Besoin d'une prestation sur mesure ?",
+  eyebrow,
+  title,
+  body,
+  args,
+  ctaQuestion,
   seoArticle,
+  lang = 'fr',
 }) {
+  const en = lang === 'en'
+  eyebrow = eyebrow || (en ? 'Built for corporate receptions' : "Pensé pour les réceptions d'entreprise")
+  title = title || (en
+    ? 'Food with real flavour.\nA service that keeps its word.'
+    : 'Des produits qui ont du goût.\nUn service qui tient ses promesses.')
+  body = body || (en
+    ? 'Catering built for companies that care how things taste. Breakfasts, lunch trays, cocktail receptions, buffets: every product is chosen, every delivery is handled properly.'
+    : "Des prestations pensées pour les entreprises qui accordent de l'importance au goût. Petits-déjeuners, plateaux repas, cocktails, buffets : chaque produit est sélectionné, chaque livraison est soignée.")
+  args = args || (en ? DEFAULT_ARGS_EN : DEFAULT_ARGS)
+  ctaQuestion = ctaQuestion || (en ? 'Need something built for your event?' : "Besoin d'une prestation sur mesure ?")
   const titleLines = title.split('\n')
   return (
     <>
@@ -68,12 +87,12 @@ export default function CategoryClosing({
             {ctaQuestion}
           </p>
           <a
-            href="/devis"
+            href={en ? '/en/devis' : '/devis'}
             style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Obtenir un devis →
+            {en ? 'Get a quote →' : 'Obtenir un devis →'}
           </a>
         </div>
 
@@ -88,7 +107,9 @@ export default function CategoryClosing({
         </section>
       )}
 
-      <GuidesPratiques />
+      {/* Les guides du Journal ne sont pas tous traduits : on ne les montre
+          pas en anglais plutôt que d'y envoyer vers des pages françaises. */}
+      {!en && <GuidesPratiques />}
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cat-seo-body p {

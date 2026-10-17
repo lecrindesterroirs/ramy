@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/creations/lunch-box' },
+  alternates: alternatesPour('/creations/lunch-box', { en: true }),
   title: "Lunch box traiteur Paris",
   description: "Lunch box individuelles fraîches livrées dans vos bureaux à Paris : entrée, sandwich, club ou wrap, dessert artisanal. Livraison dès 6h30.",
   openGraph: {
