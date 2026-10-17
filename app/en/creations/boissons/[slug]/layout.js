@@ -3,6 +3,10 @@ import { BOISSONS } from '../../../../../lib/boissonsData'
 import { enBoisson, qtyEn, slugsBoissonsEn } from '../../../../../lib/en/produits/boissons'
 import { ogImages } from '../../../../../lib/og'
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return slugsBoissonsEn().map(slug => ({ slug }))
 }

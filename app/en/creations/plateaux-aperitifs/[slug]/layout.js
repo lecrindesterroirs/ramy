@@ -3,6 +3,10 @@ import { PLATEAUX } from '../../../../creations/plateaux-aperitifs/data'
 import { enPlateauAperitif, slugsPlateauxAperitifsEn } from '../../../../../lib/en/produits/plateauxAperitifs'
 import { ogImages } from '../../../../../lib/og'
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return slugsPlateauxAperitifsEn().map(slug => ({ slug }))
 }

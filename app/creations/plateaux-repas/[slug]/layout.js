@@ -4,6 +4,15 @@ import { PRODUITS, prixMenu } from '../data'
 import { minuscules } from '../../../../lib/ficheAsavoir'
 import { ogImages } from '../../../../lib/og'
 
+/*
+  dynamicParams = false : un slug qui n'existe pas répond 404, au lieu de
+  rendre une page vide en 200. Un 200 sur une URL inventée est un soft 404 :
+  Google l'indexe, puis la déclasse. La liste de slugs est dérivée des
+  données, jamais tenue à la main, pour qu'un produit ajouté ne se mette
+  jamais à répondre 404.
+*/
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return PRODUITS.map(p => ({ slug: p.id }))
 }

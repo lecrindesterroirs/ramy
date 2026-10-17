@@ -9,6 +9,10 @@ import { ogImages } from '../../../../../lib/og'
   métadonnées à elle sans ce layout.
 */
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return slugsLunchBoxEn().map(slug => ({ slug }))
 }

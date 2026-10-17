@@ -9,6 +9,10 @@ import { ogImages } from '../../../../../lib/og'
   les métadonnées se déclarent ici.
 */
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return slugsPetitsDejeunersEn().map(slug => ({ slug }))
 }

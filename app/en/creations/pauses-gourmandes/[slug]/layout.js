@@ -3,6 +3,10 @@ import { PAUSES } from '../../../../creations/pauses-gourmandes/data'
 import { enPause, prixEn, slugsPausesEn } from '../../../../../lib/en/produits/pausesGourmandes'
 import { ogImages } from '../../../../../lib/og'
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return slugsPausesEn().map(slug => ({ slug }))
 }

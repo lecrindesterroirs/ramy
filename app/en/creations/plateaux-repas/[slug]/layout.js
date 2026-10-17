@@ -12,6 +12,10 @@ import { ogImages } from '../../../../../lib/og'
   renvoie que les identifiants de la surcouche.
 */
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return slugsPlateauxRepasEn().map(slug => ({ slug }))
 }

@@ -3,6 +3,10 @@ import { ANIMATIONS, slugAnim } from '../../../../creations/animations-culinaire
 import { enAnimation, idsAnimationsEn } from '../../../../../lib/en/produits/animations'
 import { ogImages } from '../../../../../lib/og'
 
+/* Toutes les fiches de cette famille sont traduites, donc un slug absent
+   d'ici est un slug inventé : il doit répondre 404, pas 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return ANIMATIONS
     .filter(a => idsAnimationsEn().includes(a.id))
