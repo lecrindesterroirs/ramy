@@ -17,6 +17,7 @@ import { ARTISANS } from '../lib/artisansData'
 import { enSlugs } from '../lib/en/journal'
 import { slugsLunchBoxEn } from '../lib/en/produits/lunchBox'
 import { slugsPlateauxRepasEn } from '../lib/en/produits/plateauxRepas'
+import { slugsPetitsDejeunersEn } from '../lib/en/produits/petitsDejeuners'
 import { EN_PAGES } from '../lib/enPages'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
@@ -173,6 +174,7 @@ export default function sitemap() {
     ...Object.values(EN_PAGES).map(pg => url(`/en${pg.fr}`, 0.80, 'monthly')),
     ...slugsLunchBoxEn().map(id => url(`/en/creations/lunch-box/${id}`, 0.74, 'monthly')),
     ...slugsPlateauxRepasEn().map(id => url(`/en/creations/plateaux-repas/${id}`, 0.76, 'monthly')),
+    ...slugsPetitsDejeunersEn().map(id => url(`/en/creations/petits-dejeuners-et-pauses/${id}`, 0.78, 'monthly')),
     url('/en/contact', 0.60, 'monthly'),
     url('/en/devis', 0.70, 'monthly'),
     url('/en/journal', 0.76, 'weekly'),

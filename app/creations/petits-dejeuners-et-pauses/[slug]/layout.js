@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { slugsPetitsDejeunersEn } from '../../../../lib/en/produits/petitsDejeuners'
 import { PRODUCTS } from '../../../../lib/productsData'
 import { descriptionProduit, detailCatalogue } from '../../../../lib/metaProduit'
 import { ogImages } from '../../../../lib/og'
@@ -38,9 +40,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/creations/petits-dejeuners-et-pauses/${product.id}`,
-    },
+    alternates: alternatesPour(`/creations/petits-dejeuners-et-pauses/${product.id}`, { en: slugsPetitsDejeunersEn().includes(product.id) }),
   }
 }
 

@@ -14,6 +14,9 @@ import DevisRapide from '../../../../components/DevisRapide'
 import ParallaxImage from '../../../../components/ParallaxImage'
 import FicheAsavoir from '../../../../components/FicheAsavoir'
 import { asavoirProduit } from '../../../../lib/ficheAsavoir'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../../lib/i18n'
+import { produitLocalise } from '../../../../lib/en/produits/petitsDejeuners'
 
 const COFFRETS = [
   { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.webp' },
@@ -66,8 +69,13 @@ function Sprig() {
 export default function ProductPage() {
   const { slug } = useParams()
 
-  const product = PRODUCTS.find(p => p.id === slug)
-  if (!product) notFound()
+  const produitFr = PRODUCTS.find(p => p.id === slug)
+  if (!produitFr) notFound()
+  /* La même page sert /creations/... et /en/creations/... : la surcouche
+     anglaise se fusionne par-dessus les données françaises, un champ non
+     traduit reste en français plutôt que de disparaître. */
+  const langue = estAnglais(usePathname() || '/') ? 'en' : 'fr'
+  const product = produitLocalise(produitFr, langue)
 
   const related = [...PRODUCTS]
     .filter(p => p.id !== product.id)
