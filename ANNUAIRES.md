@@ -30,15 +30,15 @@ L'Écrin Traiteur livre des petits-déjeuners, plateaux repas, lunch box, pauses
 
 ## Où s'inscrire
 
-| Annuaire | État au 13/10/2026 | Adresse | À faire |
+| Annuaire | État au 17/10/2026 | Adresse | À faire |
 |---|---|---|---|
 | Google Business Profile | ✅ Fiche à jour | — | Produits et publications (photos) |
 | Bing Places | ✅ Publiée, synchronisée avec Google | https://www.bing.com/forbusiness/ | E-mail et réseaux sociaux à compléter |
 | Wikidata | ✅ Q141715270 | https://www.wikidata.org/wiki/Q141715270 | — |
-| PagesJaunes | 🟡 Fiche existante mais vide (ni description, ni photo, ni avis) | https://manager.solocal.com | Créer le compte gratuit, revendiquer la fiche, coller la description et 5 photos |
+| PagesJaunes | 🟡 Compte Solocal actif (client 64402938). Fiche en ligne, vue le 17/10 : description dépassée (« livrés à domicile », « bio et locaux »), 1 seule image (logo), 0 avis | https://manager.solocal.com | Remplacer la description par celle d'ici, ajouter 5 photos, catégorie traiteur halal, demander des avis |
 | Annuaire Région Île-de-France (mescommerces.iledefrance.fr) | ❌ Absent | Alimenté par Solocal / PagesJaunes | Se fait depuis le même compte Solocal |
-| Aleou (traiteurs de séminaires) | ❌ Absent | https://auth.aleou.fr/inscription | Créer le compte prestataire, catégorie « Traiteur » |
-| Apple Plans (Apple Business Connect) | ❌ À vérifier | https://business.apple.com | Se connecter avec un identifiant Apple, revendiquer ou créer l'établissement |
+| Aleou (traiteurs de séminaires) | 🟡 Fiche créée le 4/09, complétée le 8/09 (mail à Vincent d'Aleou). Mise en ligne non confirmée : introuvable dans les moteurs le 17/10 | https://www.aleou.fr | Se connecter et vérifier le statut ; sinon relancer Vincent |
+| Apple Plans (Apple Business Connect) | ❌ Organisation supprimée par Apple le 13/09/2026 (validation non faite, domaine non validé) | https://business.apple.com | Recommencer avec un identifiant Apple personnel, sans domaine géré : seule la fiche Plans est utile |
 | 118 712 | ❌ Absent | Via le formulaire d'ajout du site | Même fiche |
 | Office du tourisme de Paris (annuaire convention) | ❌ Absent | Adhésion payante | À étudier plus tard |
 | GoCater | — | Activité fermée en France | Ne pas y passer de temps |

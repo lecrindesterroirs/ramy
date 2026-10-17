@@ -11,14 +11,14 @@ import ParcoursCapture from '../components/ParcoursCapture'
 import DeferredEntreprises from '../components/DeferredEntreprises'
 import { CONSENT_DEFAULT_SCRIPT } from '../lib/consent'
 import AttributionCapture from '../components/AttributionCapture'
-import { websiteNode } from '../lib/site'
+import { websiteNode, GBP_RATING_LABEL } from '../lib/site'
 
 export const metadata = {
   title: {
     default: "Traiteur d'entreprise à Paris : petits-déjeuners, cocktails",
     template: "%s | L'Écrin Traiteur",
   },
-  description: "Traiteur d'entreprise à Paris & Île-de-France : petits-déjeuners, plateaux repas, cocktails et buffets livrés dès 6h30. Devis sous 24h.",
+  description: `Traiteur d'entreprise à Paris & Île-de-France : petits-déjeuners, plateaux repas et cocktails livrés dès 6h30. Plus de 100 entreprises clientes, ${GBP_RATING_LABEL}/5 sur Google, tarifs publiés. Devis sous 24h.`,
   keywords: ["traiteur Paris", "traiteur entreprise Paris", "traiteur événementiel Paris", "cocktail entreprise Paris", "plateau repas entreprise", "buffet entreprise Paris", "livraison petit déjeuner Paris", "séminaire traiteur Paris", "traiteur RSE Paris", "réception entreprise Île-de-France"],
   authors: [{ name: "L'Écrin Traiteur" }],
   creator: "L'Écrin Traiteur",
@@ -29,7 +29,7 @@ export const metadata = {
     siteName: "L'Écrin Traiteur",
     url: 'https://www.lecrin-traiteur.fr',
     title: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
-    description: "Petits-déjeuners, plateaux repas, cocktails et buffets livrés pour vos événements d'entreprise. Artisans sélectionnés, livraison dès 6h30.",
+    description: "Petits-déjeuners, plateaux repas et cocktails livrés pour vos événements d'entreprise. Plus de 100 entreprises clientes, artisans sélectionnés, livraison dès 6h30.",
     images: [
       {
         url: '/og-image.jpg',
@@ -42,7 +42,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "L'Écrin Traiteur | Traiteur d'entreprise à Paris et Île-de-France",
-    description: "Petits-déjeuners, plateaux repas, cocktails et buffets livrés pour vos événements d'entreprise.",
+    description: "Petits-déjeuners, plateaux repas et cocktails livrés pour vos événements d'entreprise. Plus de 100 entreprises clientes.",
     images: ['/og-image.jpg'],
   },
   robots: {

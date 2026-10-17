@@ -102,6 +102,8 @@ export default function Footer() {
               { title: 'Entreprise', links: [
                 { label: 'Contact', href: '/contact' },
                 { label: 'Obtenir un devis', href: '/devis' },
+                { label: 'Tarifs 2026', href: '/tarifs' },
+                { label: 'Avis clients', href: '/univers/avis-clients' },
                 { label: '01 74 54 23 10', href: 'tel:+33174542310' },
                 { label: 'commercial@lecrin-traiteur.fr', href: 'mailto:commercial@lecrin-traiteur.fr' },
                 { label: '63 bis rue de Sèvres, Boulogne-Billancourt', href: 'https://www.google.com/maps/search/?api=1&query=63+bis+rue+de+Sèvres+92100+Boulogne-Billancourt' },

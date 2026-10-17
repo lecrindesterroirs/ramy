@@ -2,6 +2,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { FAQSchema } from '../../components/FAQSchema'
 import { businessNode, BUSINESS_ID, NAP, GBP_RATING_LABEL } from '../../lib/site'
+import ProofBar from '../../components/ProofBar'
 
 /*
   Page en anglais (GEO) : les entreprises internationales de Paris et de La Défense
@@ -75,6 +76,8 @@ export default function CorporateCateringParis() {
           </a>
         </div>
 
+        <ProofBar lang="en" />
+
         <section style={{ maxWidth: '820px', margin: '0 auto', padding: '64px 24px 100px' }}>
           <p style={p}>
             L&apos;Écrin Traiteur is a corporate caterer based in Boulogne-Billancourt, just outside Paris. We deliver to offices of any size, with a €50 minimum order: breakfast meetings, working lunches, afternoon breaks and cocktail receptions. Our pastries and drinks come from named producers, such as Mado Paris madeleines and Alain Milliat juices, and deliveries are made by our own team.
@@ -106,6 +109,10 @@ export default function CorporateCateringParis() {
           </div>
           <p style={{ ...p, marginTop: '20px' }}>
             Example: a cocktail reception for 50 guests with 12 canapés each costs €2,045, excluding drinks and delivery. A breakfast for 20 people costs €189 with delivery.
+          </p>
+
+          <p style={p}>
+            Detailed pages: <a href="/en/pricing" style={{ color: 'var(--text-primary)' }}>pricing 2026</a>, <a href="/en/office-breakfast-paris" style={{ color: 'var(--text-primary)' }}>office breakfast</a>, <a href="/en/office-lunch-paris" style={{ color: 'var(--text-primary)' }}>office lunch</a>, <a href="/en/cocktail-reception-paris" style={{ color: 'var(--text-primary)' }}>cocktail reception</a> and <a href="/en/halal-catering-paris" style={{ color: 'var(--text-primary)' }}>halal catering</a>.
           </p>
 
           <h2 style={h2}>Is the catering halal?</h2>

@@ -56,6 +56,13 @@ export default function sitemap() {
     url('/univers/nos-engagements',                       0.68, 'monthly'),
     url('/univers/notre-methode',                         0.50, 'yearly'),
     url('/univers/cas-clients',                           0.60, 'monthly'),
+    url('/univers/avis-clients',                          0.60, 'monthly'),
+    url('/tarifs',                                        0.80, 'monthly'),
+    url('/en/pricing',                                    0.60, 'monthly'),
+    url('/en/office-breakfast-paris',                     0.60, 'monthly'),
+    url('/en/cocktail-reception-paris',                   0.60, 'monthly'),
+    url('/en/halal-catering-paris',                       0.60, 'monthly'),
+    url('/en/office-lunch-paris',                         0.60, 'monthly'),
 
     // À propos
 
