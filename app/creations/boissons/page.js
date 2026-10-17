@@ -2,6 +2,7 @@
 
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { BOISSONS } from '../../../lib/boissonsData'
+import BlocReponse from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Boissons artisanales pour vos événements d'entreprise à Paris</h2>
@@ -17,6 +18,16 @@ const SEO_ARTICLE = `
   <p>Commandez avant <strong>14h la veille</strong>. Livraison dès <strong>6h30</strong>, du lundi au vendredi. Jus et boissons froides sont livrés <strong>avec gobelets</strong>, vous n'avez rien à prévoir. Les boissons s'ajoutent facilement à une commande existante de viennoiseries ou de pâtisseries, une seule livraison, tout ensemble. Facturation entreprise avec TVA disponible.</p>
 `
 
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Boissons pour vos événements d'entreprise : prix et livraison"
+    plusTitre="Quantités à prévoir, livraison et minimum de commande"
+    plus={<>Un thermos d'un litre sert 6 personnes, un litre de jus remplit 5 verres. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
+  >
+    Nos boissons démarrent <strong>à partir de 3,80 € HT</strong> : jus de fruits Alain Milliat, thés Mariage Frères, thermos de café bio, eaux plates et pétillantes. Livrées avec votre commande du lundi au vendredi à Paris et en Île-de-France, dès <strong>6h30</strong>, sur commande avant <strong>14h la veille</strong>.
+  </BlocReponse>
+)
+
 export default function Boissons() {
   return (
     <ProductsPageTemplate
@@ -26,6 +37,7 @@ export default function Boissons() {
       breadcrumb="Nos Créations, Boissons"
       categorieSlug="boissons"
       fallbackProducts={BOISSONS}
+      answerBlock={ANSWER_BLOCK}
       basePath="/creations/boissons"
       seoArticle={SEO_ARTICLE}
       editorial={{

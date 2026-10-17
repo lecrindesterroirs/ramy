@@ -10,6 +10,7 @@ import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import CategoryTabs from '../../../components/CategoryTabs'
 import Breadcrumb from '../../../components/Breadcrumb'
 import ParallaxImage from '../../../components/ParallaxImage'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Coffrets cadeaux d'entreprise gourmands, livrés à Paris</h2>
@@ -96,6 +97,16 @@ function CoffretCard({ produit }) {
   )
 }
 
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Coffrets cadeaux d'entreprise : prix et délai"
+    plusTitre="Personnalisation, volumes et livraison"
+    plus={<>Ruban, carte et message sont personnalisables, et nous livrons en une fois sur votre site ou en plusieurs adresses pour vos équipes à distance. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
+  >
+    Nos coffrets démarrent <strong>à partir de 17,90 € HT</strong> et vont jusqu'à 64 € HT selon le contenu : madeleines d'exception, macarons, assortiments à offrir. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+  </BlocReponse>
+)
+
 export default function CoffretsCadeaux() {
   return (
     <>
@@ -127,6 +138,8 @@ export default function CoffretsCadeaux() {
         {/* Fil d'Ariane visible */}
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Coffrets cadeaux' }]} />
 
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs />
 
         {/* ── Grille des coffrets ── */}

@@ -32,6 +32,7 @@ const SEO_ARTICLE = `
 /* ─── Données ───────────────────────────────────────────────────── */
 
 import { FORMULES, FAQ_CATALOGUE } from './data'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 export { FORMULES }
 
 /* ─── Liste de pièces (Salé / Sucré) ─────────────────────────────── */
@@ -146,6 +147,16 @@ function FormuleCard({ f }) {
 
 /* ─── Page ───────────────────────────────────────────────────────── */
 
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Cocktail d'entreprise à Paris : prix par personne"
+    plusTitre="Combien de pièces prévoir, livraison et minimum"
+    plus={<>Comptez 8 pièces par personne pour un pot d'une heure, 12 pièces pour remplacer un déjeuner, 16 pièces pour un dîner debout. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
+  >
+    Une formule cocktail se compte en pièces par personne : <strong>29,90 € HT</strong> pour 8 pièces, <strong>40,90 € HT</strong> pour 12 pièces, <strong>51,90 € HT</strong> pour 16 pièces. Le prix par personne reste le même quel que soit l'effectif. Commande avant <strong>14h la veille</strong>, livraison à Paris et en Île-de-France.
+  </BlocReponse>
+)
+
 export default function Cocktails() {
   return (
     <>
@@ -176,6 +187,9 @@ export default function Cocktails() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails' }]} />
 
+
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs />
 
         {/* ── Intro ── */}
@@ -187,7 +201,7 @@ export default function Cocktails() {
             Choisissez votre cocktail
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
-            L&apos;Invitation, 8 pièces à 29,90 € HT par personne. La Réception, 12 pièces à 40,90 € HT. La Célébration, 16 pièces à 51,90 € HT. Halal et sans porc, livrées prêtes à servir à Paris et en Île-de-France, commande jusqu&apos;à la veille 14h.
+            Trois volumes de pièces selon le moment : L&apos;Invitation pour un pot, La Réception pour remplacer un déjeuner, La Célébration pour un dîner debout. Pièces salées et sucrées façonnées à la main, halal et sans porc, livrées prêtes à servir.
           </p>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '14px auto 0' }}>
             Pour dimensionner votre événement et comparer les budgets pour 20 ou 50 personnes, voir notre page{' '}

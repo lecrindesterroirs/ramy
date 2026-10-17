@@ -14,6 +14,7 @@ import CategoryTabs, { sortItems, priceFromLabel } from '../../../components/Cat
 import { COLLECTIONS, PRIX, prixMenu, PRODUITS } from './data'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Plateaux repas d'entreprise livrés à Paris : frais, individuels, équilibrés</h2>
@@ -251,6 +252,9 @@ function PlateauxRepasInner() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux repas' }]} />
 
+
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={produitsAffiches.length} />
 
         {/* ── Navigation légère, deux niveaux de texte ─────────── */}
@@ -401,6 +405,16 @@ function PlateauxRepasInner() {
     </>
   )
 }
+
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Plateau repas livré à Paris : prix, délai, commande"
+    plusTitre="Livraison, minimum de commande et régimes"
+    plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Recettes végétariennes, poulet ou poisson au choix, toutes sans porc. Dites-nous vos contraintes alimentaires et nous adaptons la sélection : <a href="/devis">devis sous 24h</a>.</>}
+  >
+    Un plateau repas complet — entrée, plat et dessert — démarre à <strong>28,90 € HT par personne</strong> : 29,90 € en poulet, 30,90 € en poisson, couverts et serviette inclus. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+  </BlocReponse>
+)
 
 export default function PlateauxRepas() {
   return (

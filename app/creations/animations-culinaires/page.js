@@ -13,6 +13,7 @@ import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import { UNIVERS, UNIVERS_LABEL, slugAnim, ANIMATIONS } from './data'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Animations culinaires en entreprise à Paris : l'événement dont on parle</h2>
@@ -177,6 +178,8 @@ function AnimationsCulinairesInner() {
         {/* Fil d'Ariane visible */}
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Animations culinaires' }]} />
 
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         {/* ── Corps : univers à gauche + grille 3 colonnes ── */}
         <div className="aa-shell aa-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 96px', display: 'grid', gridTemplateColumns: '196px 1fr', gap: '52px', alignItems: 'start' }}>
 
@@ -296,6 +299,16 @@ function AnimationsCulinairesInner() {
     </>
   )
 }
+
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Animation culinaire en entreprise : prix et organisation"
+    plusTitre="Délai de réservation et ce que nous vérifions"
+    plus={<>Une animation se réserve au moins une semaine à l'avance : nous vérifions l'accès, le point d'eau et l'électricité, puis nous vous adressons une proposition sous 24h, mise en place et matériel compris. <a href="/devis">Demander un devis</a>.</>}
+  >
+    Nos animations culinaires sont chiffrées sur devis, <strong>à partir de 600 € HT</strong>, selon le nombre de convives et la mise en place sur votre site. Un artisan vient préparer devant vos équipes, à Paris et en Île-de-France.
+  </BlocReponse>
+)
 
 export default function AnimationsCulinaires() {
   return (

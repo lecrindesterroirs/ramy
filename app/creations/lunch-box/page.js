@@ -38,6 +38,7 @@ const HERO = {
 }
 
 import { FILTRES, CATEGORIE_COLORS, BOXES } from './data'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 export { FILTRES, CATEGORIE_COLORS, BOXES }
 
 /* ─── Carte menu ─────────────────────────────────────────────────── */
@@ -217,6 +218,9 @@ function LunchBoxInner() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Lunch Box' }]} />
 
+
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs />
 
         {/* ── Corps : filtres à gauche + grille 3 colonnes à droite ── */}
@@ -325,6 +329,16 @@ function LunchBoxInner() {
     </>
   )
 }
+
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Lunch box d'entreprise à Paris : prix, délai, commande"
+    plusTitre="Livraison, minimum de commande et régimes"
+    plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Les garnitures s'adaptent aux régimes de votre équipe : végétarien, sans porc, sans gluten sur demande. <a href="/devis">Demandez un devis sous 24h</a>.</>}
+  >
+    Une lunch box — entrée, sandwich et dessert — va de <strong>18,90 à 21,90 € HT par personne</strong>, serviette et couverts inclus, boisson en option. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+  </BlocReponse>
+)
 
 export default function LunchBox() {
   return (

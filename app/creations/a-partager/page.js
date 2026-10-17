@@ -38,6 +38,7 @@ const HERO = {
 /* Menus à partager : chacun équilibré (recettes salées + sucrées),
    dressé en salades ou en verrines. Photos = visuels maison L'Écrin. */
 import { MENUS, SALADES, FILTRES } from './data'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 export { MENUS, SALADES, FILTRES }
 
 /* ─── Liste de recettes (Salé / Sucré) ───────────────────────────── */
@@ -148,6 +149,16 @@ function MenuCard({ m }) {
 
 /* ─── Page ───────────────────────────────────────────────────────── */
 
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Buffet à partager en entreprise : prix, délai, commande"
+    plusTitre="Livraison, minimum de commande et présentation"
+    plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Présentation sur planches de bois et vaisselle réutilisable, sans jetable, récupérée après votre événement. <a href="/devis">Demandez un devis sous 24h</a>.</>}
+  >
+    Un buffet à partager démarre à <strong>34,90 € HT par personne</strong> et monte à 37,90 € selon le menu : plusieurs plats froids posés au centre de la table, que chacun se sert. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+  </BlocReponse>
+)
+
 export default function APartager() {
   return (
     <>
@@ -178,6 +189,9 @@ export default function APartager() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Buffet à partager' }]} />
 
+
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs />
 
         {/* ── Intro ── */}

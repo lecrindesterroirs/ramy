@@ -38,6 +38,7 @@ const HERO = {
 
 /* Filtres = familles de plateaux. */
 import { FILTRES, CATEGORIE_COLORS, PLATEAUX } from './data'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 export { FILTRES, CATEGORIE_COLORS, PLATEAUX }
 
 /* ─── Carte plateau ──────────────────────────────────────────────── */
@@ -164,6 +165,9 @@ function PlateauxAperitifsInner() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux apéritifs' }]} />
 
+
+
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={plateauxAffiches.length} sorts={['En vedette', 'Nouveautés']} />
 
         {/* ── Corps : familles à gauche + grille 3 colonnes ── */}
@@ -256,6 +260,16 @@ function PlateauxAperitifsInner() {
     </>
   )
 }
+
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Plateaux apéritifs pour vos afterworks : prix et délai"
+    plusTitre="Formats, quantités et livraison"
+    plus={<>Les navettes se commandent par plateaux de 20 (63,90 € HT) ou de 40 (124,90 € HT). Comptez 8 pièces par personne pour un pot d'une heure. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
+  >
+    Nos plateaux apéritifs démarrent <strong>à partir de 63,90 € HT le plateau</strong> : navettes, pains briochés salés, clubs, mini baguettes, wraps, mini burgers, fromages affinés. Chaque plateau se partage entre plusieurs convives. Commande avant <strong>14h la veille</strong>, livraison à Paris et en Île-de-France.
+  </BlocReponse>
+)
 
 export default function PlateauxAperitifs() {
   return (

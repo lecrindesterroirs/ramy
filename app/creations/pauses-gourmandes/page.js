@@ -13,6 +13,7 @@ import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import CrossSellBanner from '../../../components/CrossSellBanner'
 import { FAQ_PAUSES } from './faq'
+import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Livraison de goûter d'entreprise à Paris : comment ça marche</h2>
@@ -306,6 +307,16 @@ function PauseCard({ produit }) {
 const GATEAUX_LABEL = 'Gâteaux à partager'
 const SORTS = [...DEFAULT_SORTS, GATEAUX_LABEL]
 
+const ANSWER_BLOCK = (
+  <BlocReponse
+    titre="Un goûter d'entreprise livré à partir de 6 € HT par personne"
+    plusTitre="Quantités à prévoir, livraison et minimum de commande"
+    plus={<>Comptez 1,5 à 2 pièces sucrées par personne pour une pause de 20 à 30 minutes, soit 6 à 15 € HT par personne selon les produits. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour comparer les formats, voir notre page <a href="/occasions/gouter-entreprise">goûter d'entreprise</a>.</>}
+  >
+    Une pâtisserie artisanale et une boisson, livrées du lundi au vendredi à l'heure de votre pause : 15h30, 16h ou plus tard. Commande avant <strong>14h la veille</strong>, à Paris et en Île-de-France.
+  </BlocReponse>
+)
+
 export default function PausesGourmandes() {
   const [sortLabel, setSortLabel] = useState('En vedette')
   const pausesAffichees = sortLabel === GATEAUX_LABEL
@@ -340,16 +351,8 @@ export default function PausesGourmandes() {
 
         <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Pause Goûter' }]} />
 
-        {/* ── Réponse immédiate : prix, délai, heure ── */}
-        <div className="pg-shell" style={{ maxWidth: '840px', margin: '0 auto', padding: '40px 40px 8px', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
-            Un goûter d'entreprise livré dès 6 € HT par personne
-          </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
-            Une pâtisserie artisanale et une boisson, livrées du lundi au vendredi à l'heure de votre pause : 15h30, 16h ou plus tard. Commande jusqu'à la veille 14h, minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches. Comptez 1,5 à 2 pièces sucrées par personne pour une pause de 20 à 30 minutes, et 6 à 15 € HT par personne selon les produits. Pour comparer les formats, voir notre page{' '}
-            <a href="/occasions/gouter-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>goûter d'entreprise</a>.
-          </p>
-        </div>
+        {/* ── Réponse immédiate : l'essentiel visible, l'opératoire replié ── */}
+        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
 
         <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={pausesAffichees.length} sorts={SORTS} />
 

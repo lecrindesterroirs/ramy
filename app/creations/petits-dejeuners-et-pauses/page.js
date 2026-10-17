@@ -2,7 +2,7 @@
 
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
 import { PRODUCTS } from '../../../lib/productsData'
-import { trackPhoneClick } from '../../../lib/tracking'
+import BlocReponse from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Livraison de petit-déjeuner d'entreprise à Paris, artisanal, dès 6h30</h2>
@@ -32,65 +32,13 @@ const SEO_ARTICLE = `
 `
 
 const ANSWER_BLOCK = (
-  <>
-    <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 28px)', fontWeight: 400, lineHeight: 1.2, color: 'var(--text-primary)', margin: '0 0 14px' }}>
-      Livraison de petit-déjeuner à Paris : prix, délai, commande
-    </h2>
-    {/* L'essentiel reste visible : c'est lui que Google et les IA reprennent en
-        réponse directe. Le détail opératoire passe dans un dépliant <details>,
-        rendu côté serveur : le texte est dans le HTML même replié, donc indexé. */}
-    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
-      Un petit-déjeuner d'entreprise commence à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
-    </p>
-
-    <details className="answer-plus">
-      <summary>Tarifs de livraison, minimum de commande et quantités</summary>
-      <p>
-        Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour calibrer les quantités selon votre effectif, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes">guide budget par nombre de personnes</a>, ou <a href="/devis">demandez un devis sous 24h</a>.
-      </p>
-    </details>
-    {/* Mobile uniquement : bouton devis + appel dès le premier écran de lecture (la barre fixe fait doublon sur le bas de l'écran, pas sur le texte). */}
-    <div className="answer-cta-row">
-      <a href="/devis" className="answer-cta">Demander un devis</a>
-      <a href="tel:+33174542310" className="answer-cta-tel" onClick={trackPhoneClick}>Appeler le 01 74 54 23 10</a>
-    </div>
-    <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-      /* Dépliant : chevron qui pivote, filet fin, couleurs de la charte. */
-      .answer-plus { margin-top: 16px; border-top: 1px solid rgba(17,17,17,0.1); }
-      .answer-plus > summary {
-        list-style: none; cursor: pointer; padding: 13px 0;
-        display: flex; align-items: center; gap: 10px;
-        font-family: 'Neue Montreal', sans-serif; font-size: 11px; font-weight: 500;
-        text-transform: uppercase; letter-spacing: 0.1em; color: #875E10;
-      }
-      .answer-plus > summary::-webkit-details-marker { display: none; }
-      .answer-plus > summary::after {
-        content: ''; width: 7px; height: 7px; margin-left: 2px;
-        border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
-        transform: rotate(45deg) translate(-2px, -2px); transition: transform .25s ease;
-      }
-      .answer-plus[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
-      .answer-plus > p {
-        margin: 0 0 16px; font-family: 'Neue Montreal', sans-serif;
-        font-size: 14px; line-height: 1.7; color: var(--text-secondary);
-      }
-      .answer-plus a { color: #875E10; border-bottom: 1px solid rgba(135,94,16,0.4); }
-      .answer-plus a:hover { border-bottom-color: #875E10; }
-      @media (prefers-reduced-motion: reduce) { .answer-plus > summary::after { transition: none; } }
-
-      .answer-cta-row { display: none; }
-      @media (max-width: 768px) {
-        .answer-cta-row { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
-        .answer-cta, .answer-cta-tel {
-          display: flex; align-items: center; justify-content: center; min-height: 48px;
-          font-family: 'Neue Montreal', sans-serif; font-size: 12px; font-weight: 500;
-          letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0 16px;
-        }
-        .answer-cta { background: #111111; color: #FFFFFF; }
-        .answer-cta-tel { background: #FFFFFF; color: #111111; border: 1px solid rgba(17,17,17,0.25); }
-      }
-    ` }} />
-  </>
+  <BlocReponse
+    titre="Livraison de petit-déjeuner à Paris : prix, délai, commande"
+    plusTitre="Tarifs de livraison, minimum de commande et quantités"
+    plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour calibrer les quantités selon votre effectif, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes">guide budget par nombre de personnes</a>, ou <a href="/devis">demandez un devis sous 24h</a>.</>}
+  >
+    Un petit-déjeuner d'entreprise commence à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+  </BlocReponse>
 )
 
 export default function PetitsDejeuners() {
