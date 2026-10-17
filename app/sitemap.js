@@ -14,6 +14,8 @@ import { SLUGS as PAUSES_SLUGS } from './creations/pauses-gourmandes/[slug]/layo
 import { SLUGS as COCKTAILS_SLUGS } from './creations/cocktails/[slug]/layout'
 import { ANIMATIONS, slugAnim } from './creations/animations-culinaires/data'
 import { ARTISANS } from '../lib/artisansData'
+import { enSlugs } from '../lib/en/journal'
+import { EN_PAGES } from '../lib/enPages'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
 // Date de dernière mise à jour éditoriale, figée volontairement (ne pas remettre
@@ -167,6 +169,15 @@ export default function sitemap() {
     changeFrequency: 'monthly',
   }))
 
+  // ── Version anglaise ──────────────────────────────────────────────
+  // Seules les pages réellement traduites entrent au sitemap : annoncer à
+  // Google une adresse qui n'existe pas coûte plus cher que de l'omettre.
+  const enPages = [
+    ...Object.keys(EN_PAGES).map(slug => url(`/en/${slug}`, 0.80, 'monthly')),
+    url('/en/journal', 0.76, 'weekly'),
+    ...enSlugs().map(slug => url(`/en/journal/${slug}`, 0.70, 'monthly')),
+  ]
+
   const all = [
     ...staticPages,
     ...productPages,
@@ -179,6 +190,7 @@ export default function sitemap() {
     ...pdjVillePages,
     ...plateauxVillePages,
     ...halalPages,
+    ...enPages,
   ]
 
   // Dédup par URL : certaines pages (cocktails/classique·signature·prestige,

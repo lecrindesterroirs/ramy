@@ -5,6 +5,7 @@ import ParallaxImage from '../../../../components/ParallaxImage'
 import { founderNode } from '../../../../lib/site'
 import { ogImages } from '../../../../lib/og'
 import { enArticle, enSlugs, dateEn } from '../../../../lib/en/journal'
+import { reecrireLiensEn } from '../../../../lib/i18n'
 
 /*
   Guides du Journal en anglais (/en/journal/<slug FR>). Texte : surcouches
@@ -92,7 +93,11 @@ export default function EnArticlePage({ params }) {
             </aside>
           )}
 
-          <div className="article-body" dangerouslySetInnerHTML={{ __html: a.contenu }} />
+          {/* Les surcouches gardent les liens français : on les bascule ici vers
+              leur version anglaise quand elle existe, sinon on laisse le lien
+              français. Aucun lien ne peut casser, et les pages traduites plus
+              tard seront prises en compte sans rien retoucher. */}
+          <div className="article-body" dangerouslySetInnerHTML={{ __html: reecrireLiensEn(a.contenu, enSlugs()) }} />
 
           {showFaq && (
             <div className="article-body">

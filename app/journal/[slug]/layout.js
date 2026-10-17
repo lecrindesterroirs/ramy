@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+import { enSlugs } from '../../../lib/en/journal'
 import { ogImages } from '../../../lib/og'
 import { articles } from '../../../lib/journalData'
 
@@ -52,7 +54,9 @@ export async function generateMetadata({ params }) {
   return {
     title: titre,
     description,
-    alternates: { canonical: `/journal/${params.slug}` },
+    // hreflang : déclaré seulement si le guide existe vraiment en anglais.
+    // Un hreflang qui pointe vers une 404 est pire que pas de hreflang.
+    alternates: alternatesPour(`/journal/${params.slug}`, { en: enSlugs().includes(params.slug) }),
     openGraph: {
       images: ogImages(article.img),
       title: `${article.titre} | L'Écrin Traiteur`,
