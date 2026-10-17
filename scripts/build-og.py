@@ -10,7 +10,7 @@ Le logotype est rendu une fois par Chrome headless avec les vraies polices
     python3 scripts/build-og.py --tout     # tout régénère
 """
 import json, os, re, subprocess, sys, glob
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUBLIC = os.path.join(RACINE, 'public')
@@ -40,33 +40,114 @@ def lockup(cache='/tmp/lecrin-og-lockup.png'):
         im = Image.open(cache); im.crop(im.getchannel('A').getbbox()).save(cache)
     l = Image.open(cache).convert('RGBA')
     lw = 230
-    return l.resize((lw, round(lw * l.size[1] / l.size[0])), Image.LANCZOS)
+    l = l.resize((lw, round(lw * l.size[1] / l.size[0])), Image.LANCZOS)
+
+    # Ombre portée douce : sur une photo très claire, la ligne « TRAITEUR »,
+    # fine et blanche, disparaissait même avec le voile.
+    marge = 14
+    toile = Image.new('RGBA', (l.size[0] + marge * 2, l.size[1] + marge * 2), (0, 0, 0, 0))
+    ombre = Image.new('RGBA', toile.size, (0, 0, 0, 0))
+    ombre.paste((12, 10, 8, 190), (marge, marge + 2), l.getchannel('A'))
+    ombre = ombre.filter(ImageFilter.GaussianBlur(7))
+    toile = Image.alpha_composite(toile, ombre)
+    toile = Image.alpha_composite(toile, ombre)   # deux passes : ombre plus dense
+    toile.alpha_composite(l, (marge, marge))
+    return toile
+
+
+def _profils(im):
+    """Énergie des contours par ligne et par colonne : où est le sujet."""
+    import numpy as np
+    g = im.convert('L').resize((240, 480), Image.BILINEAR)
+    a = np.asarray(g, dtype=np.float32)
+    e = np.zeros_like(a)
+    e[:-1, :] += np.abs(np.diff(a, axis=0))
+    e[:, :-1] += np.abs(np.diff(a, axis=1))
+    return e.sum(axis=1), e.sum(axis=0)
+
+
+def _fenetre(profil, taille):
+    """Position de la fenêtre de `taille` qui capte le plus d'énergie."""
+    import numpy as np
+    n = len(profil)
+    if taille >= n:
+        return 0.0
+    c = np.concatenate([[0.0], np.cumsum(profil)])
+    scores = c[taille:] - c[:n - taille + 1]
+    return float(np.argmax(scores)) / n
+
+
+def _voile(im, lock):
+    """Dégradé en bas, calibré sur la luminosité derrière le logotype."""
+    z = im.convert('L').crop((40, H - 190, 40 + lock.size[0] + 40, H - 30))
+    clair = sum(z.getdata()) / (z.size[0] * z.size[1])
+    force = 120 if clair < 110 else (175 if clair < 160 else 215)
+    v = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(v)
+    for y in range(H):
+        t = max(0.0, (y - H * 0.50) / (H * 0.50))
+        d.line([(0, y), (W, y)], fill=(20, 17, 14, int(force * t * t)))
+    return Image.alpha_composite(im, v)
+
+
+# Au-delà de ce facteur d'agrandissement, l'image devient molle : on passe en
+# mode panneau (photo nette au centre, fond flou tiré de la même photo).
+AGRANDISSEMENT_MAX = 1.35
+# Au-delà de cette part rognée, un recadrage plein cadre ampute trop le sujet.
+PERTE_MAX = 0.42
 
 
 def carte(src, dest, lock):
     im = Image.open(src).convert('RGB')
     w, h = im.size
     cible = W / H
-    if w / h > cible:
-        nw = round(h * cible); x = (w - nw) // 2
-        im = im.crop((x, 0, x + nw, h))
+    r = w / h
+    perte = (1 - cible / r) if r > cible else (1 - r / cible)
+
+    if r > cible:
+        nw = round(h * cible)
+        _, col = _profils(im)
+        x = round(_fenetre(col, max(1, round(240 * nw / w))) * w)
+        x = max(0, min(x, w - nw))
+        decoupe = (x, 0, x + nw, h)
+        agrandi = W / nw
     else:
-        nh = round(w / cible); y = round((h - nh) * 0.38)   # le sujet est plutôt haut
-        im = im.crop((0, y, w, y + nh))
-    im = im.resize((W, H), Image.LANCZOS).convert('RGBA')
+        nh = round(w / cible)
+        ligne, _ = _profils(im)
+        y = round(_fenetre(ligne, max(1, round(480 * nh / h))) * h)
+        y = max(0, min(y, h - nh))
+        decoupe = (0, y, w, y + nh)
+        agrandi = W / w
 
-    z = im.convert('L').crop((40, H - 190, 40 + lock.size[0] + 40, H - 30))
-    clair = sum(z.getdata()) / (z.size[0] * z.size[1])
-    force = 120 if clair < 110 else (175 if clair < 160 else 215)
+    # Rogner les côtés ampute un sujet qui s'étend d'un bord à l'autre
+    # (un sandwich, une table dressée) : au-delà de 12 % de largeur perdue,
+    # on garde la photo entière.
+    perte_laterale = perte if r > cible else 0.0
+    if agrandi <= AGRANDISSEMENT_MAX and perte <= PERTE_MAX and perte_laterale <= 0.12:
+        plein = im.crop(decoupe).resize((W, H), Image.LANCZOS).convert('RGBA')
+    else:
+        # Panneau : la photo entière, nette, sur un fond flou tiré d'elle-même,
+        # assombri et réchauffé pour que le logotype blanc reste lisible et que
+        # le fond ne tire pas au gris sale.
+        fond = im.resize((W, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(34))
+        fond = Image.eval(fond, lambda v: int(v * 0.42))
+        teinte = Image.new('RGB', (W, H), (34, 26, 18))
+        fond = Image.blend(fond, teinte, 0.35).convert('RGBA')
+        # La photo prend toute la place disponible, sans jamais être agrandie
+        # au-delà de la limite : une photo panoramique (un sandwich pris de bout
+        # en bout) doit occuper la largeur, pas se retrouver en timbre-poste.
+        kx, ky = W * 0.94 / w, H * 0.88 / h
+        k = min(kx, ky, AGRANDISSEMENT_MAX)
+        wp, hp = max(1, round(w * k)), max(1, round(h * k))
+        px, py = (W - wp) // 2, (H - hp) // 2
+        ImageDraw.Draw(fond).rectangle([px - 1, py - 1, px + wp, py + hp],
+                                       outline=(255, 255, 255, 70), width=1)
+        fond.alpha_composite(im.resize((wp, hp), Image.LANCZOS).convert('RGBA'), (px, py))
+        plein = fond
 
-    voile = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(voile)
-    for y in range(H):
-        t = max(0.0, (y - H * 0.50) / (H * 0.50))
-        d.line([(0, y), (W, y)], fill=(20, 17, 14, int(force * t * t)))
-    im = Image.alpha_composite(im, voile)
-    im.alpha_composite(lock, (56, H - lock.size[1] - 48))
-    im.convert('RGB').save(dest, 'JPEG', quality=78, optimize=True, progressive=True)
+    plein = _voile(plein, lock)
+    plein.alpha_composite(lock, (56, H - lock.size[1] - 48))
+    plein.convert('RGB').save(dest, 'JPEG', quality=78, optimize=True, progressive=True)
 
 
 def photos_utilisees():
