@@ -69,6 +69,14 @@ export default function ChatWidget() {
   const [enCours, setEnCours] = useState(false)
   const [formulaire, setFormulaire] = useState(null)   // pré-rempli par l'assistant
   const [envoye, setEnvoye] = useState(false)
+
+  /* Quand le panneau est ouvert, la barre fixe du bas (téléphone + devis) le
+     recouvre sur téléphone. On le signale par une classe sur <body> : c'est
+     MobileCTA qui s'efface, le chat n'a pas à connaître son existence. */
+  useEffect(() => {
+    document.body.classList.toggle('chat-ouvert', ouvert)
+    return () => document.body.classList.remove('chat-ouvert')
+  }, [ouvert])
   const [visible, setVisible] = useState(false)
   const filRef = useRef(null)
   const champRef = useRef(null)

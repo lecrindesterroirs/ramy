@@ -52,6 +52,12 @@ export default function MobileCTA() {
         .mobile-cta-bar {
           display: none;
         }
+        /* Panneau de discussion ouvert : la barre le recouvrait sur
+           téléphone (téléphone + demander un devis par-dessus la saisie).
+           Elle s'efface tant que la conversation est à l'écran. */
+        body.chat-ouvert .mobile-cta-bar {
+          display: none !important;
+        }
         @media (max-width: 768px) {
           .mobile-cta-bar {
             display: flex;
