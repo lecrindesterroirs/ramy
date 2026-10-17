@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
+import SelecteurLangue from './SelecteurLangue'
 
 const MOMENTS = {
   petitDej: {
@@ -608,6 +609,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           >
             Obtenir un devis <span>→</span>
           </a>
+          {/* Ne s'affiche que si la page existe en anglais. */}
+          <SelecteurLangue />
         </div>
 
         {/* Hamburger, mobile only */}
@@ -768,6 +771,9 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           >
             Obtenir un devis <span>→</span>
           </a>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            <SelecteurLangue compact />
+          </div>
         </div>
       )}
 
