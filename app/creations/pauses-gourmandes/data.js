@@ -30,7 +30,7 @@ export const PAUSES = [
   { id: 'brownie',
     seoTitle: `Brownie fondant pour vos goûters et pauses d'entreprise à Paris`,
     seoHtml: `<p>Un brownie fondant signé notre chef pâtissier, préparé au chocolat français. Il se sert à couper, une part généreuse par personne : réconfortant, facile à partager et suffisamment riche pour caler une fin d'après-midi de travail. La valeur sûre d'un goûter d'équipe.</p><h2>Commander votre brownie à Paris et en Île-de-France</h2><p>Format à ajuster selon le nombre de gourmands, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA, devis sous 24h.</p>`,
-    nom: 'Brownie fondant maison',                     img: '/prod-brownie.webp', prix: '6 pièces, 19,90 €',        description: 'Brownie fondant signé notre chef pâtissier, au chocolat français.' },
+    nom: 'Brownie fondant',                     img: '/prod-brownie.webp', prix: '6 pièces, 19,90 €',        description: 'Brownie fondant signé notre chef pâtissier, au chocolat français.' },
   { id: 'carrot-cake',
     seoTitle: `Carrot cake pour vos pauses gourmandes d'entreprise à Paris`,
     seoHtml: `<p>Un carrot cake moelleux signé notre chef pâtissier, servi à couper, en tranches parfumées à la cannelle et aux fruits secs. Une part par personne. En pause d'après-midi, il change du chocolat et séduit ceux qui aiment les gâteaux un peu plus caractériels, et transforme une réunion en moment convivial.</p><h2>Commander votre carrot cake à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
