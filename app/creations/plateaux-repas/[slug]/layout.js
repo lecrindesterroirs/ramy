@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { slugsPlateauxRepasEn } from '../../../../lib/en/produits/plateauxRepas'
 import { PRODUITS, prixMenu } from '../data'
 import { minuscules } from '../../../../lib/ficheAsavoir'
 import { ogImages } from '../../../../lib/og'
@@ -33,7 +35,7 @@ export async function generateMetadata({ params }) {
       `${p.nom} : ${p.entree}, ${p.plat}, ${p.dessert}. Livré dès 6h30.`,
       `${p.nom} : ${p.plat}, ${p.dessert}. Livré dès 6h30.`,
     ], 155),
-    alternates: { canonical: `/creations/plateaux-repas/${p.id}` },
+    alternates: alternatesPour(`/creations/plateaux-repas/${p.id}`, { en: slugsPlateauxRepasEn().includes(p.id) }),
     openGraph: {
       title: `${p.nom}, plateau repas | L'Écrin Traiteur`,
       description: `Plateau repas ${p.nom}, préparé le matin même. Livraison entreprise dès 6h30 à Paris.`,
