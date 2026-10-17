@@ -15,6 +15,7 @@ import { SLUGS as COCKTAILS_SLUGS } from './creations/cocktails/[slug]/layout'
 import { ANIMATIONS, slugAnim } from './creations/animations-culinaires/data'
 import { ARTISANS } from '../lib/artisansData'
 import { enSlugs } from '../lib/en/journal'
+import { slugsLunchBoxEn } from '../lib/en/produits/lunchBox'
 import { EN_PAGES } from '../lib/enPages'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
@@ -169,6 +170,7 @@ export default function sitemap() {
   // Google une adresse qui n'existe pas coûte plus cher que de l'omettre.
   const enPages = [
     ...Object.values(EN_PAGES).map(pg => url(`/en${pg.fr}`, 0.80, 'monthly')),
+    ...slugsLunchBoxEn().map(id => url(`/en/creations/lunch-box/${id}`, 0.74, 'monthly')),
     url('/en/contact', 0.60, 'monthly'),
     url('/en/devis', 0.70, 'monthly'),
     url('/en/journal', 0.76, 'weekly'),
