@@ -112,7 +112,7 @@ export default function CorporateCateringParis() {
           </p>
 
           <p style={p}>
-            Detailed pages: <a href="/en/pricing" style={{ color: 'var(--text-primary)' }}>pricing 2026</a>, <a href="/en/office-breakfast-paris" style={{ color: 'var(--text-primary)' }}>office breakfast</a>, <a href="/en/office-lunch-paris" style={{ color: 'var(--text-primary)' }}>office lunch</a>, <a href="/en/cocktail-reception-paris" style={{ color: 'var(--text-primary)' }}>cocktail reception</a> and <a href="/en/halal-catering-paris" style={{ color: 'var(--text-primary)' }}>halal catering</a>.
+            Detailed pages: <a href="/en/pricing" style={{ color: 'var(--text-primary)' }}>pricing 2026</a>, <a href="/en/office-breakfast-paris" style={{ color: 'var(--text-primary)' }}>office breakfast</a>, <a href="/en/office-lunch-paris" style={{ color: 'var(--text-primary)' }}>office lunch</a>, <a href="/en/cocktail-reception-paris" style={{ color: 'var(--text-primary)' }}>cocktail reception</a> and <a href="/en/halal-catering-paris" style={{ color: 'var(--text-primary)' }}>halal catering</a>. Practical guides on quantities and budgets: <a href="/en/journal" style={{ color: 'var(--text-primary)' }}>the L'Écrin Journal in English</a>.
           </p>
 
           <h2 style={h2}>Is the catering halal?</h2>
