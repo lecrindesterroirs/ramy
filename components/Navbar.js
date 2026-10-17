@@ -4,74 +4,84 @@ import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 import SelecteurLangue from './SelecteurLangue'
+import { estAnglais, lienLocalise } from '../lib/i18n'
+import { enSlugs } from '../lib/en/journal'
+import { t } from '../lib/en/interface'
 
 const MOMENTS = {
   petitDej: {
-    label: 'Petit-déjeuner & Pauses',
+    label: 'Petit-déjeuner & Pauses', labelEn: 'Breakfast & Breaks',
     key: 'petitDej',
     cards: [
-      { title: 'Petit-déjeuner', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.webp' },
-      { title: 'Pause Goûter', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.webp' },
-      { title: 'Personnalisation', href: '/creations/personnalisation', img: '/prod-cookie-personnalisation.webp' },
+      { title: 'Petit-déjeuner', titleEn: 'Office breakfast', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.webp' },
+      { title: 'Pause Goûter', titleEn: 'Afternoon break', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.webp' },
+      { title: 'Personnalisation', titleEn: 'Personalisation', href: '/creations/personnalisation', img: '/prod-cookie-personnalisation.webp' },
     ],
   },
   dejeuner: {
-    label: 'Déjeuner',
+    label: 'Déjeuner', labelEn: 'Lunch',
     key: 'dejeuner',
     cards: [
-      { title: 'Plateaux repas', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.webp' },
-      { title: 'Lunch Box', href: '/creations/lunch-box', img: '/hero-lunch-box.webp' },
-      { title: 'Buffet à partager', href: '/creations/a-partager', img: '/hero-a-partager.webp' },
+      { title: 'Plateaux repas', titleEn: 'Lunch trays', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.webp' },
+      { title: 'Lunch Box', titleEn: 'Lunch boxes', href: '/creations/lunch-box', img: '/hero-lunch-box.webp' },
+      { title: 'Buffet à partager', titleEn: 'Sharing buffet', href: '/creations/a-partager', img: '/hero-a-partager.webp' },
     ],
   },
   cocktail: {
-    label: 'Cocktail',
+    label: 'Cocktail', labelEn: 'Cocktail',
     key: 'cocktail',
     cards: [
-      { title: 'Cocktails', href: '/creations/cocktails', img: '/hero-cocktail.webp' },
-      { title: 'Plateaux Apéritifs', href: '/creations/plateaux-aperitifs', img: '/hero-plateaux-aperitifs.webp' },
-      { title: 'Animations Culinaires', href: '/creations/animations-culinaires', img: '/hero-animations.webp' },
+      { title: 'Cocktails', titleEn: 'Cocktail receptions', href: '/creations/cocktails', img: '/hero-cocktail.webp' },
+      { title: 'Plateaux Apéritifs', titleEn: 'Canapé platters', href: '/creations/plateaux-aperitifs', img: '/hero-plateaux-aperitifs.webp' },
+      { title: 'Animations Culinaires', titleEn: 'Live food stations', href: '/creations/animations-culinaires', img: '/hero-animations.webp' },
     ],
   },
   boissons: {
-    label: 'Boissons',
+    label: 'Boissons', labelEn: 'Drinks',
     key: 'boissons',
     href: '/creations/boissons',
   },
 }
 
 const UNIVERS_ITEMS = [
-  { label: 'Notre Maison', href: '/univers/notre-maison' },
-  { label: 'Nos Artisans', href: '/univers/nos-artisans' },
-  { label: 'Nos Engagements', href: '/univers/nos-engagements' },
+  { label: 'Notre Maison', labelEn: 'Our story', href: '/univers/notre-maison' },
+  { label: 'Nos Artisans', labelEn: 'Our makers', href: '/univers/nos-artisans' },
+  { label: 'Nos Engagements', labelEn: 'Our commitments', href: '/univers/nos-engagements' },
 ]
 
 const JOURNAL_ITEMS = {
   main: [
-    { label: 'Le Journal', href: '/journal' },
-    { label: 'Tous les articles', href: '/journal' },
+    { label: 'Le Journal', labelEn: 'The Journal', href: '/journal' },
+    { label: 'Tous les articles', labelEn: 'All articles', href: '/journal' },
   ],
   categories: [
-    { label: 'QCVT', href: '/journal?categorie=QCVT' },
-    { label: 'Conseils', href: '/journal?categorie=Conseils' },
-    { label: 'Inspirations', href: '/journal?categorie=Inspirations' },
+    { label: 'QCVT', labelEn: 'Workplace wellbeing', href: '/journal?categorie=QCVT' },
+    { label: 'Conseils', labelEn: 'Advice', href: '/journal?categorie=Conseils' },
+    { label: 'Inspirations', labelEn: 'Inspiration', href: '/journal?categorie=Inspirations' },
   ],
   occasions: [
-    { label: 'CODIR & COMEX', href: '/occasions/petit-dejeuner-codir' },
-    { label: 'Séminaires d\'entreprise', href: '/occasions/seminaire-entreprise' },
-    { label: 'Accueil & Réception client', href: '/occasions/accueil-client' },
-    { label: 'Journées de formation', href: '/occasions/journee-formation' },
-    { label: 'Team Building', href: '/occasions/team-building' },
-    { label: 'Petit-déjeuner d\'entreprise', href: '/occasions/petit-dejeuner-entreprise' },
-    { label: 'Déjeuner d\'entreprise', href: '/occasions/dejeuner-entreprise' },
-    { label: 'Cocktail d\'entreprise', href: '/occasions/cocktail-entreprise' },
-    { label: 'Goûter d\'entreprise', href: '/occasions/gouter-entreprise' },
-    { label: 'Afterwork', href: '/occasions/afterwork-entreprise' },
+    { label: 'CODIR & COMEX', labelEn: 'Board & exec meetings', href: '/occasions/petit-dejeuner-codir' },
+    { label: 'Séminaires d\'entreprise', labelEn: 'Company offsites', href: '/occasions/seminaire-entreprise' },
+    { label: 'Accueil & Réception client', labelEn: 'Client welcome', href: '/occasions/accueil-client' },
+    { label: 'Journées de formation', labelEn: 'Training days', href: '/occasions/journee-formation' },
+    { label: 'Team Building', labelEn: 'Team building', href: '/occasions/team-building' },
+    { label: 'Petit-déjeuner d\'entreprise', labelEn: 'Corporate breakfast', href: '/occasions/petit-dejeuner-entreprise' },
+    { label: 'Déjeuner d\'entreprise', labelEn: 'Corporate lunch', href: '/occasions/dejeuner-entreprise' },
+    { label: 'Cocktail d\'entreprise', labelEn: 'Corporate cocktail', href: '/occasions/cocktail-entreprise' },
+    { label: 'Goûter d\'entreprise', labelEn: 'Corporate afternoon break', href: '/occasions/gouter-entreprise' },
+    { label: 'Afterwork', labelEn: 'Afterwork', href: '/occasions/afterwork-entreprise' },
   ],
 }
 
 export default function Navbar({ showBanner = false, forceScrolled = false }) {
   const pathname = usePathname()
+  /* Langue de la page courante. Les libellés basculent en anglais, et chaque
+     lien part vers sa version anglaise quand elle existe — sinon il reste en
+     français : on ne renvoie jamais vers une adresse qui n'existe pas. */
+  const langue = estAnglais(pathname || '/') ? 'en' : 'fr'
+  const slugsEn = enSlugs()
+  const lien = (href) => lienLocalise(href, langue, slugsEn)
+  const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
   const alwaysScrolled = forceScrolled || pathname !== '/'
   const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : 'var(--accent)'
 
@@ -166,7 +176,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               return (
                 <a
                   key={moment.key}
-                  href={moment.href}
+                  href={lien(moment.href)}
                   className="nav-moment-item"
                   style={{
                     fontFamily: "'Neue Montreal', sans-serif",
@@ -181,7 +191,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   onMouseEnter={e => { clearTimeout(closeTimer.current); setActiveDropdown(null); e.currentTarget.style.color = 'var(--accent)' }}
                   onMouseLeave={e => e.currentTarget.style.color = '#111111'}
                 >
-                  {moment.label}
+                  {mot(moment)}
                 </a>
               )
             }
@@ -207,7 +217,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   cursor: 'pointer',
                 }}
               >
-                {moment.label}
+                {mot(moment)}
                 <span aria-hidden="true" style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
               </button>
             )
@@ -245,8 +255,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 <div className="nav-mega-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, 320px)`, gap: '18px' }}>
                   {moment.cards.map(card => (
                     <a
-                      key={card.title}
-                      href={card.href}
+                      key={mot(card, 'title')}
+                      href={lien(card.href)}
                       style={{
                         textDecoration: 'none',
                         display: 'flex',
@@ -266,7 +276,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     >
                       <div className="card-img" style={{ width: '100%', height: '240px', overflow: 'hidden', borderRadius: '10px', background: '#F8F5EF', boxShadow: '0 10px 28px rgba(17,17,17,0.10)', transition: 'box-shadow 0.4s ease' }}>
                         <img loading="lazy" src={card.img}
-                          alt={card.title}
+                          alt={mot(card, 'title')}
                           style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease', display: 'block' }}
                         />
                       </div>
@@ -280,7 +290,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                         lineHeight: 1.3,
                         textAlign: 'center',
                       }}>
-                        {card.title}
+                        {mot(card, 'title')}
                       </p>
                     </a>
                   ))}
@@ -292,7 +302,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
         {/* LOGO CENTER */}
         <a
-          href="/"
+          href={lien('/')}
           className={scrolled ? 'nav-logo' : 'nav-logo nav-logo-hero'}
           style={{
             position: 'absolute',
@@ -361,7 +371,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
               onMouseLeave={e => e.currentTarget.style.color = '#111111'}
             >
-              L'Univers
+              {t('nav.univers', langue)}
               <span aria-hidden="true" style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
             </button>
 
@@ -385,8 +395,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               >
                 {UNIVERS_ITEMS.map(item => (
                   <a
-                    key={item.label}
-                    href={item.href}
+                    key={mot(item)}
+                    href={lien(item.href)}
                     style={{
                       fontFamily: "'Neue Montreal', sans-serif",
                       fontSize: '12px',
@@ -402,7 +412,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                     onMouseLeave={e => e.currentTarget.style.color = '#111111'}
                   >
-                    {item.label}
+                    {mot(item)}
                   </a>
                 ))}
               </div>
@@ -459,8 +469,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               >
                 {JOURNAL_ITEMS.main.map(item => (
                   <a
-                    key={item.label}
-                    href={item.href}
+                    key={mot(item)}
+                    href={lien(item.href)}
                     style={{
                       fontFamily: "'Neue Montreal', sans-serif",
                       fontSize: '12px',
@@ -476,7 +486,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                     onMouseLeave={e => e.currentTarget.style.color = '#111111'}
                   >
-                    {item.label}
+                    {mot(item)}
                   </a>
                 ))}
 
@@ -495,8 +505,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   </p>
                   {JOURNAL_ITEMS.categories.map(item => (
                     <a
-                      key={item.label}
-                      href={item.href}
+                      key={mot(item)}
+                      href={lien(item.href)}
                       style={{
                         fontFamily: "'Neue Montreal', sans-serif",
                         fontSize: '12px',
@@ -512,7 +522,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                       onMouseLeave={e => e.currentTarget.style.color = '#111111'}
                     >
-                      {item.label}
+                      {mot(item)}
                     </a>
                   ))}
                 </div>
@@ -532,8 +542,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   </p>
                   {JOURNAL_ITEMS.occasions.map(item => (
                     <a
-                      key={item.label}
-                      href={item.href}
+                      key={mot(item)}
+                      href={lien(item.href)}
                       style={{
                         fontFamily: "'Neue Montreal', sans-serif",
                         fontSize: '11px',
@@ -549,7 +559,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                       onMouseLeave={e => e.currentTarget.style.color = '#111111'}
                     >
-                      {item.label}
+                      {mot(item)}
                     </a>
                   ))}
                 </div>
@@ -558,7 +568,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
           {/* Contact */}
           <a
-            href="/contact"
+            href={lien('/contact')}
             className="nav-contact-link"
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
@@ -579,13 +589,12 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.5)'; e.currentTarget.style.color = '#111111' }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.2)'; e.currentTarget.style.color = 'rgba(17,17,17,0.65)' }}
-          >
-            Contact <span>→</span>
+          >{t('nav.contact', langue)} <span>→</span>
           </a>
 
           {/* CTA Devis */}
           <a
-            href="/devis"
+            href={lien('/devis')}
             className="nav-cta-link"
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
@@ -607,7 +616,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Obtenir un devis <span>→</span>
+            {t('nav.devis', langue)} <span>→</span>
           </a>
           {/* Ne s'affiche que si la page existe en anglais. */}
           <SelecteurLangue />
@@ -669,11 +678,11 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               return (
                 <a
                   key={moment.key}
-                  href={moment.href}
+                  href={lien(moment.href)}
                   onClick={() => setMobileOpen(false)}
                   style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
                 >
-                  {moment.label}
+                  {mot(moment)}
                 </a>
               )
             }
@@ -684,19 +693,19 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   onClick={() => setMobileExpanded(open ? null : moment.key)}
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
                 >
-                  <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{moment.label}</span>
+                  <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{mot(moment)}</span>
                   <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
                 </button>
                 {open && (
                   <div style={{ paddingBottom: '14px' }}>
                     {moment.cards.map(card => (
                       <a
-                        key={card.title}
-                        href={card.href}
+                        key={mot(card, 'title')}
+                        href={lien(card.href)}
                         onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
                         style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
                       >
-                        {card.title}
+                        {mot(card, 'title')}
                       </a>
                     ))}
                   </div>
@@ -711,19 +720,19 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onClick={() => setMobileExpanded(mobileExpanded === 'univers' ? null : 'univers')}
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>L'Univers</span>
+              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>{t('nav.univers', langue)}</span>
               <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
             </button>
             {mobileExpanded === 'univers' && (
               <div style={{ paddingBottom: '14px' }}>
                 {UNIVERS_ITEMS.map(item => (
                   <a
-                    key={item.label}
-                    href={item.href}
+                    key={mot(item)}
+                    href={lien(item.href)}
                     onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
                     style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
                   >
-                    {item.label}
+                    {mot(item)}
                   </a>
                 ))}
               </div>
@@ -736,19 +745,19 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onClick={() => setMobileExpanded(mobileExpanded === 'journal' ? null : 'journal')}
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>Le Journal</span>
+              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>{t('nav.journal', langue)}</span>
               <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
             </button>
             {mobileExpanded === 'journal' && (
               <div style={{ paddingBottom: '14px' }}>
                 {[...JOURNAL_ITEMS.main, ...JOURNAL_ITEMS.categories].map(item => (
                   <a
-                    key={item.label}
-                    href={item.href}
+                    key={mot(item)}
+                    href={lien(item.href)}
                     onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
                     style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
                   >
-                    {item.label}
+                    {mot(item)}
                   </a>
                 ))}
               </div>
@@ -757,7 +766,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
           {/* Contact + Devis */}
           <a
-            href="/contact"
+            href={lien('/contact')}
             onClick={() => setMobileOpen(false)}
             style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
           >
@@ -765,11 +774,11 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           </a>
 
           <a
-            href="/devis"
+            href={lien('/devis')}
             onClick={() => setMobileOpen(false)}
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: devisAccent, padding: '16px', textDecoration: 'none', marginTop: '28px' }}
           >
-            Obtenir un devis <span>→</span>
+            {t('nav.devis', langue)} <span>→</span>
           </a>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
             <SelecteurLangue compact />

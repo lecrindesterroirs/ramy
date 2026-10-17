@@ -1,5 +1,9 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocalise } from '../lib/i18n'
+import { enSlugs } from '../lib/en/journal'
+
 const linkStyle = {
   fontFamily: "'Neue Montreal', sans-serif",
   fontSize: '13px',
@@ -23,6 +27,15 @@ const colTitleStyle = {
 }
 
 export default function Footer() {
+  /* Langue de la page courante. Les libellés basculent, et chaque lien part
+     vers sa version anglaise quand elle existe — sinon il reste en français :
+     jamais de renvoi vers une adresse qui n'existe pas. */
+  const pathname = usePathname() || '/'
+  const langue = estAnglais(pathname) ? 'en' : 'fr'
+  const slugsEn = enSlugs()
+  const lien = (href) => lienLocalise(href, langue, slugsEn)
+  const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
+
   return (
     <footer style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
 
@@ -48,36 +61,36 @@ export default function Footer() {
           {/* Colonnes de liens — plan de site & maillage interne (présent sur toutes les pages) */}
           <div className="footer-cols" style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '40px' }}>
             {[
-              { title: 'La Carte', links: [
-                { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' },
-                { label: 'Pause Goûter', href: '/creations/pauses-gourmandes' },
-                { label: 'Plateaux repas', href: '/creations/plateaux-repas' },
-                { label: 'Lunch box', href: '/creations/lunch-box' },
-                { label: 'Cocktails', href: '/creations/cocktails' },
-                { label: 'Buffet à partager', href: '/creations/a-partager' },
-                { label: 'Plateaux apéritifs', href: '/creations/plateaux-aperitifs' },
-                { label: 'Animations culinaires', href: '/creations/animations-culinaires' },
-                { label: 'Boissons', href: '/creations/boissons' },
-                { label: 'Personnalisation', href: '/creations/personnalisation' },
-                { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' },
-                { label: 'Réceptions sur-mesure', href: '/creations/receptions-sur-mesure' },
-                { label: 'Coffrets cadeaux', href: '/creations/coffrets-cadeaux' },
+              { title: 'La Carte', titleEn: 'Our menu', links: [
+                { label: 'Petits-déjeuners & Pauses', labelEn: 'Breakfasts & Breaks', href: '/creations/petits-dejeuners-et-pauses' },
+                { label: 'Pause Goûter', labelEn: 'Afternoon break', href: '/creations/pauses-gourmandes' },
+                { label: 'Plateaux repas', labelEn: 'Lunch trays', href: '/creations/plateaux-repas' },
+                { label: 'Lunch box', labelEn: 'Lunch boxes', href: '/creations/lunch-box' },
+                { label: 'Cocktails', labelEn: 'Cocktail receptions', href: '/creations/cocktails' },
+                { label: 'Buffet à partager', labelEn: 'Sharing buffet', href: '/creations/a-partager' },
+                { label: 'Plateaux apéritifs', labelEn: 'Canapé platters', href: '/creations/plateaux-aperitifs' },
+                { label: 'Animations culinaires', labelEn: 'Live food stations', href: '/creations/animations-culinaires' },
+                { label: 'Boissons', labelEn: 'Drinks', href: '/creations/boissons' },
+                { label: 'Personnalisation', labelEn: 'Personalisation', href: '/creations/personnalisation' },
+                { label: 'Événements saisonniers', labelEn: 'Seasonal events', href: '/creations/evenements-saisonniers' },
+                { label: 'Réceptions sur-mesure', labelEn: 'Bespoke receptions', href: '/creations/receptions-sur-mesure' },
+                { label: 'Coffrets cadeaux', labelEn: 'Gift boxes', href: '/creations/coffrets-cadeaux' },
               ]},
-              { title: 'Occasions', links: [
-                { label: "Petit-déjeuner d'entreprise", href: '/occasions/petit-dejeuner-entreprise' },
-                { label: 'Séminaire & réunion', href: '/occasions/seminaire-entreprise' },
-                { label: "Cocktail d'entreprise", href: '/occasions/cocktail-entreprise' },
-                { label: 'CODIR & COMEX', href: '/occasions/petit-dejeuner-codir' },
-                { label: "Déjeuner d'entreprise", href: '/occasions/dejeuner-entreprise' },
-                { label: 'Traiteur halal', href: '/traiteur-halal' },
-                { label: 'Traiteur halal Paris', href: '/traiteur-halal/paris' },
-                { label: "Buffet halal d'entreprise", href: '/traiteur-halal/buffet-entreprise' },
-                { label: 'Plateaux repas halal', href: '/traiteur-halal/plateaux-repas' },
-                { label: 'Traiteur éco-responsable', href: '/traiteur-eco-responsable' },
-                { label: 'Traiteur healthy', href: '/traiteur-healthy' },
-                { label: 'Toutes les occasions', href: '/occasions' },
+              { title: 'Occasions', titleEn: 'Occasions', links: [
+                { label: "Petit-déjeuner d'entreprise", labelEn: 'Corporate breakfast', href: '/occasions/petit-dejeuner-entreprise' },
+                { label: 'Séminaire & réunion', labelEn: 'Offsites & meetings', href: '/occasions/seminaire-entreprise' },
+                { label: "Cocktail d'entreprise", labelEn: 'Corporate cocktail', href: '/occasions/cocktail-entreprise' },
+                { label: 'CODIR & COMEX', labelEn: 'Board & exec meetings', href: '/occasions/petit-dejeuner-codir' },
+                { label: "Déjeuner d'entreprise", labelEn: 'Corporate lunch', href: '/occasions/dejeuner-entreprise' },
+                { label: 'Traiteur halal', labelEn: 'Halal catering', href: '/traiteur-halal' },
+                { label: 'Traiteur halal Paris', labelEn: 'Halal catering in Paris', href: '/traiteur-halal/paris' },
+                { label: "Buffet halal d'entreprise", labelEn: 'Corporate halal buffet', href: '/traiteur-halal/buffet-entreprise' },
+                { label: 'Plateaux repas halal', labelEn: 'Halal lunch trays', href: '/traiteur-halal/plateaux-repas' },
+                { label: 'Traiteur éco-responsable', labelEn: 'Sustainable catering', href: '/traiteur-eco-responsable' },
+                { label: 'Traiteur healthy', labelEn: 'Healthy catering', href: '/traiteur-healthy' },
+                { label: 'Toutes les occasions', labelEn: 'All occasions', href: '/occasions' },
               ]},
-              { title: 'Traiteur à Paris & IDF', links: [
+              { title: 'Traiteur à Paris & IDF', titleEn: 'Catering in Paris & Île-de-France', links: [
                 { label: 'Traiteur Paris', href: '/traiteur/paris' },
                 { label: 'Traiteur La Défense', href: '/traiteur/la-defense' },
                 { label: 'Traiteur Boulogne', href: '/traiteur/boulogne-billancourt' },
@@ -89,37 +102,37 @@ export default function Footer() {
                 { label: 'Petit-déjeuner La Défense', href: '/petit-dejeuner-entreprise/la-defense' },
                 { label: 'Petit-déjeuner Suresnes', href: '/petit-dejeuner-entreprise/suresnes' },
                 { label: 'Petit-déjeuner Nanterre', href: '/petit-dejeuner-entreprise/nanterre' },
-                { label: 'Toutes les zones', href: '/traiteur' },
+                { label: 'Toutes les zones', labelEn: 'All areas', href: '/traiteur' },
               ]},
-              { title: "L'Univers", links: [
-                { label: 'Notre Maison', href: '/univers/notre-maison' },
-                { label: 'Nos Artisans', href: '/univers/nos-artisans' },
-                { label: 'Nos Engagements', href: '/univers/nos-engagements' },
-                { label: 'Cas clients', href: '/univers/cas-clients' },
-                { label: 'Notre méthode', href: '/univers/notre-methode' },
-                { label: 'Le Journal', href: '/journal' },
+              { title: "L'Univers", titleEn: 'About us', links: [
+                { label: 'Notre Maison', labelEn: 'Our story', href: '/univers/notre-maison' },
+                { label: 'Nos Artisans', labelEn: 'Our makers', href: '/univers/nos-artisans' },
+                { label: 'Nos Engagements', labelEn: 'Our commitments', href: '/univers/nos-engagements' },
+                { label: 'Cas clients', labelEn: 'Case studies', href: '/univers/cas-clients' },
+                { label: 'Notre méthode', labelEn: 'Our method', href: '/univers/notre-methode' },
+                { label: 'Le Journal', labelEn: 'The Journal', href: '/journal' },
               ]},
-              { title: 'Entreprise', links: [
-                { label: 'Contact', href: '/contact' },
-                { label: 'Obtenir un devis', href: '/devis' },
-                { label: 'Tarifs 2026', href: '/tarifs' },
-                { label: 'Avis clients', href: '/univers/avis-clients' },
+              { title: 'Entreprise', titleEn: 'Company', links: [
+                { label: 'Contact', labelEn: 'Contact', href: '/contact' },
+                { label: 'Obtenir un devis', labelEn: 'Get a quote', href: '/devis' },
+                { label: 'Tarifs 2026', labelEn: '2026 prices', href: '/tarifs' },
+                { label: 'Avis clients', labelEn: 'Reviews', href: '/univers/avis-clients' },
                 { label: '01 74 54 23 10', href: 'tel:+33174542310' },
                 { label: 'commercial@lecrin-traiteur.fr', href: 'mailto:commercial@lecrin-traiteur.fr' },
                 { label: '63 bis rue de Sèvres, Boulogne-Billancourt', href: 'https://www.google.com/maps/search/?api=1&query=63+bis+rue+de+Sèvres+92100+Boulogne-Billancourt' },
               ]},
             ].map(col => (
               <div key={col.title}>
-                <span style={colTitleStyle}>{col.title}</span>
+                <span style={colTitleStyle}>{mot(col, 'title')}</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                   {col.links.map(l => {
                     const ext = l.href.startsWith('http')
                     return (
-                      <a key={l.label} href={l.href} style={linkStyle}
+                      <a key={l.label} href={lien(l.href)} style={linkStyle}
                         target={ext ? '_blank' : undefined} rel={ext ? 'noopener noreferrer' : undefined}
                         onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                         onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
-                      >{l.label}</a>
+                      >{mot(l)}</a>
                     )
                   })}
                 </div>
@@ -147,7 +160,7 @@ export default function Footer() {
                 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em', transition: 'color 0.2s ease' }}
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.62)'}
-              >{l.label}</a>
+              >{mot(l)}</a>
             ))}
           </div>
 
