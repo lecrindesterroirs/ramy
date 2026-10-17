@@ -506,3 +506,14 @@ a:hover .article-card-img { transform: scale(1.04); }
 @supports (height: 100svh) {
   .hero-section { height: 100svh !important; }
 }
+
+/* Bandeau défilant des pages produit (components/Navbar.js). Ici plutôt que
+   dans un <style> au milieu de la page : le lecteur de vidéos de PostHog
+   affichait ce bloc en texte par-dessus le menu. */
+.banner-sole {
+  animation: bannerScroll 22s linear infinite;
+}
+@keyframes bannerScroll {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}

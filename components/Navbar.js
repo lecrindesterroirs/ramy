@@ -134,15 +134,6 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         }}>
           Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
         </div>
-        <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-          .banner-sole {
-            animation: bannerScroll 22s linear infinite;
-          }
-          @keyframes bannerScroll {
-            from { transform: translateX(100vw); }
-            to   { transform: translateX(-100%); }
-          }
-        ` }} />
       </div>}
 
       <nav
