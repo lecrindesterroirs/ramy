@@ -12,19 +12,40 @@ export default function Hero() {
   const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : 'var(--accent)'
   const [catalogueOpen, setCatalogueOpen] = useState(false)
 
+  /*
+    Parallaxe de l'image d'en-tête, désactivée au doigt.
+
+    Sur téléphone elle donnait un scroll saccadé : la transformation était
+    écrite à chaque événement de scroll, hors du rythme d'affichage et hors
+    du défilement fluide de Lenis, donc l'image accusait un retard visible
+    sur le reste de la page. Et le gain est nul sur un petit écran.
+
+    Sur ordinateur on la garde, mais calée sur requestAnimationFrame comme
+    ParallaxImage, pour n'écrire qu'une fois par image affichée.
+  */
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const onScroll = () => {
-      if (imageRef.current) {
-        imageRef.current.style.transform = `translateY(${window.scrollY * 0.22}px)`
-      }
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return
+
+    let rafId = null
+    const appliquer = () => {
+      rafId = null
+      const el = imageRef.current
+      if (el) el.style.transform = `translate3d(0, ${window.scrollY * 0.22}px, 0)`
     }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const planifier = () => { if (rafId === null) rafId = requestAnimationFrame(appliquer) }
+
+    window.addEventListener('scroll', planifier, { passive: true })
+    planifier()
+    return () => {
+      window.removeEventListener('scroll', planifier)
+      if (rafId !== null) cancelAnimationFrame(rafId)
+    }
   }, [])
 
   return (
     <section
+      className="hero-section"
       style={{
         position: 'relative',
         height: '100vh',

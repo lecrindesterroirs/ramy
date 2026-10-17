@@ -496,3 +496,13 @@ a:hover .article-card-img { transform: scale(1.04); }
   color: var(--text-secondary);
   margin: 10px 0 0;
 }
+
+/* En-tête d'accueil : 100svh au lieu de 100vh.
+   Sur téléphone, 100vh compte la barre d'adresse du navigateur. Elle se replie
+   dès qu'on défile, la hauteur change en plein mouvement et l'en-tête se
+   redimensionne sous le doigt — c'est le défilement « bugué » signalé le
+   17 octobre 2026. svh est la hauteur barre affichée, et elle ne bouge plus.
+   Le 100vh écrit en style inline reste le repli des navigateurs sans svh. */
+@supports (height: 100svh) {
+  .hero-section { height: 100svh !important; }
+}
