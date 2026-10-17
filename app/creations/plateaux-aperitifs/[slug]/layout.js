@@ -7,7 +7,7 @@ const META = {
   'sw2': { nom: 'Clubs Signature',             d: 'Assortiment de clubs sandwichs moelleux découpés.' },
   'sw3': { nom: 'Wraps Gourmands',             d: 'Assortiment de wraps découpés en bouchées.' },
   'sw4': { nom: 'Mini Burgers',                d: 'Assortiment de mini burgers artisanaux.' },
-  'go1': { nom: 'Fromages Affinés',            d: 'Sélection de fromages affinés, fruits frais, fruits secs et pain artisanal.' },
+  'go1': { nom: 'Fromages Affinés',            d: 'Sélection de fromages affinés, fruits frais et pain artisanal.' },
   'go2': { nom: 'Charcuteries Artisanales',    d: 'Bœuf séché, bresaola, dinde & poulet fumés, olives & raisin, halal, sans porc.' },
   'go4': { nom: 'Saumon',                      d: 'Saumon fumé, gravlax, blinis, crème citron-aneth, câpres, oignons rouges & citron.' },
   'fr1': { nom: 'Crudités & Dips',             d: 'Carottes, concombre, radis, chou-fleur, tomates cerises, houmous, tzatziki & tapenade.' },

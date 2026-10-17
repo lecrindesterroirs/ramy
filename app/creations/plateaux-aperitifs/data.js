@@ -53,9 +53,9 @@ export const PLATEAUX = [
   // ── Gourmands ──
   {
     seoTitle: `Plateau de fromages affinés pour vos apéritifs et réceptions d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de fromages affinés, accompagné de fruits frais, de fruits secs et de pain artisanal, pose tout de suite le ton d'une réception soignée. Posé au centre de la table, il invite au partage et accompagne parfaitement un afterwork, une soirée partenaires ou un cocktail dînatoire.</p><h2>Une sélection à composer soi-même</h2><p>Fromages affinés variés, fruits frais, fruits secs et pain artisanal pour construire chaque bouchée. On adapte la taille du plateau et l'assortiment à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de fromages affinés, accompagné de fruits frais et de pain artisanal, pose tout de suite le ton d'une réception soignée. Posé au centre de la table, il invite au partage et accompagne parfaitement un afterwork, une soirée partenaires ou un cocktail dînatoire.</p><h2>Une sélection à composer soi-même</h2><p>Fromages affinés variés, fruits frais et pain artisanal pour construire chaque bouchée. On adapte la taille du plateau et l'assortiment à votre effectif et à l'occasion.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'go1', famille: 'gourmands', nom: 'Fromages Affinés', img: '/plateau-fromages.webp',
-    description: 'Sélection de fromages affinés accompagnés de fruits frais, fruits secs et pain artisanal.',
+    description: 'Sélection de fromages affinés accompagnés de fruits frais et de pain artisanal.',
     recettes: [],
   },
   {
