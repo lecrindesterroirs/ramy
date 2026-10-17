@@ -51,7 +51,7 @@ export default function Tarifs() {
               [a('/creations/petits-dejeuners-et-pauses', 'Petit-déjeuner complet'), '12 à 16 €', 'La base Classique, plus madeleines ou cakes, thé, brochettes de fruits'],
               [a('/creations/pauses-gourmandes', 'Pause gourmande'), '6 à 15 €', 'Une pâtisserie et une boisson par personne, jusqu\'à une pause premium (macarons, fruits)'],
               [a('/creations/lunch-box', 'Lunch box'), '18,90 à 21,90 €', 'Déjeuner individuel prêt à manger'],
-              [a('/creations/plateaux-repas', 'Plateau repas'), '28,90 à 30,90 €', 'Entrée, plat, dessert : 28,90 € végétarien, 29,90 € poulet, 30,90 € saumon fumé'],
+              [a('/creations/plateaux-repas', 'Plateau repas'), '28,90 à 30,90 €', 'Entrée, plat, dessert : 28,90 € végétarien, 29,90 € poulet, 30,90 € saumon'],
               [a('/creations/cocktails', 'Cocktail L\'Invitation'), '29,90 €', '8 pièces salées et sucrées par personne'],
               [a('/creations/cocktails', 'Cocktail La Réception'), '40,90 €', '12 pièces par personne'],
               [a('/creations/cocktails', 'Cocktail La Célébration'), '51,90 €', '16 pièces par personne, format dînatoire'],

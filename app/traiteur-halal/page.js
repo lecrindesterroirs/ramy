@@ -162,7 +162,7 @@ export default function TraiteurHalal() {
       <tbody>
         <tr><td><strong><a href="/creations/petits-dejeuners-et-pauses">Petit-déjeuner d'entreprise</a></strong></td><td>Viennoiseries, madeleines, fruits frais, jus, boissons chaudes</td><td>Dès 8 € par personne</td></tr>
         <tr><td><strong><a href="/creations/pauses-gourmandes">Goûter et pause gourmande</a></strong></td><td>Madeleines, cookies, cakes, brochettes de fruits</td><td>Dès 6 € par personne</td></tr>
-        <tr><td><strong><a href="/creations/plateaux-repas">Plateau repas</a></strong></td><td>Entrée, plat, dessert et pain, en versions poulet, saumon fumé ou végétarienne</td><td>Dès 28,90 € par personne</td></tr>
+        <tr><td><strong><a href="/creations/plateaux-repas">Plateau repas</a></strong></td><td>Entrée, plat, dessert et pain, en versions poulet, saumon ou végétarienne</td><td>Dès 28,90 € par personne</td></tr>
         <tr><td><strong><a href="/creations/cocktails">Cocktail, afterwork, réception</a></strong></td><td>8, 12 ou 16 pièces salées et sucrées par personne</td><td>De 29,90 à 51,90 € par personne</td></tr>
       </tbody>
     </table></div>

@@ -48,13 +48,13 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 | Nombre de clients | « Plus de 100 entreprises » (page Notre maison) | **Faux d'après l'OS : 54.** À corriger en « plus de 50 ». |
 | Macarons Pierre Morel | Cités dans plusieurs articles | Fiche fournisseur dans l'OS, mais 0 commande et 0 facture (coffre, 13/10/2026). Toujours à la carte ? |
 | Madeleines « aux ingrédients bio, sans huile de palme » | Cité dans des articles | Exact, et vérifiable chez Mado ? |
-| Plateau « La Champêtre : terrine de campagne » | Guide déjeuner | Recette réelle, et sans porc ? |
 | Baromètre | Parts de prestations et paniers publiés | Ramy a choisi de le laisser (13/10/2026). |
 
 ## Contradictions tranchées
 
 | Date | Sujet | Décision |
 |---|---|---|
+| 17/10/2026 | Menus des plateaux repas (Champêtre, Provençale, Boréale, Potagère) | Nouveaux menus validés par Ramy ; La Boréale est « au saumon » (poêlé), plus « au saumon fumé ». Source : app/creations/plateaux-repas/data.js |
 | 15/10/2026 | Jus au petit-déjeuner : 1 verre pour 2 personnes (pages) ou 1 par personne (OS depuis le 11/10) | 1 verre par personne : budgets recalculés, 10 pers. = 160,80 € HT, 20 pers. = 340,80 € HT livraison comprise |
 | 15/10/2026 | Petit-déjeuner « viennoiseries + café dès 2,90 € » | Faux avec nos quantités : environ 6,50 € HT par personne |
 | 15/10/2026 | Lunch box dès 19,90 € | Dès 18,90 € (catalogue) |
