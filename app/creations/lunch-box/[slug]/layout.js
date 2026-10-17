@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { slugsLunchBoxEn } from '../../../../lib/en/produits/lunchBox'
 import { BOXES } from '../data'
 import { ogImages } from '../../../../lib/og'
 
@@ -34,7 +36,7 @@ export function generateMetadata({ params }) {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: path },
+    alternates: alternatesPour(path, { en: slugsLunchBoxEn().includes(params.slug) }),
     openGraph: { images: ogImages((BOXES.find(x => x.id === params.slug) || {}).img, m.nom), title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
   }
 }
