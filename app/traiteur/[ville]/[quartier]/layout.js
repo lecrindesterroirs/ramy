@@ -1,3 +1,4 @@
+import { ogImages } from '../../../../lib/og'
 import { CITIES } from '../../../../lib/citiesData'
 
 export function generateStaticParams() {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }) {
     title: `${q.seoTitle} | L'Écrin Traiteur`,
     description,
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+      images: ogImages('/hero-bg2.webp'),
       title: q.seoTitle,
       description,
       locale: 'fr_FR',

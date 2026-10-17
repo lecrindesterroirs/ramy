@@ -1,3 +1,4 @@
+import { ogImages } from '../../../lib/og'
 import { PDJ_VILLES } from '../../../lib/pdjVillesData'
 
 export function generateStaticParams() {
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }) {
     title: { absolute: title },
     description: city.metaDescription,
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+      images: ogImages('/hero-petitdej.webp'),
       title,
       description: city.metaDescription,
       locale: 'fr_FR',

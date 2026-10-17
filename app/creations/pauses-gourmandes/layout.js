@@ -1,6 +1,7 @@
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_PAUSES } from "./faq"
+import { ogImages } from '../../../lib/og'
 
 const TITLE = "Goûter d'entreprise à Paris : pauses gourmandes dès 6 € HT"
 const DESCRIPTION = "Goûter d'entreprise à Paris dès 6 € HT par personne : café, thé, pâtisseries artisanales. Livraison quotidienne, forfait entreprise possible."
@@ -10,7 +11,7 @@ export const metadata = {
   description: DESCRIPTION,
   alternates: { canonical: '/creations/pauses-gourmandes' },
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+    images: ogImages('/hero-pauses-gourmandes.webp'),
     title: TITLE,
     description: DESCRIPTION,
   }

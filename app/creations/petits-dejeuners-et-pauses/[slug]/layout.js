@@ -1,5 +1,6 @@
 import { PRODUCTS } from '../../../../lib/productsData'
 import { descriptionProduit, detailCatalogue } from '../../../../lib/metaProduit'
+import { ogImages } from '../../../../lib/og'
 
 export function generateStaticParams() {
   return PRODUCTS.map(p => ({ slug: p.id }))
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${product.seoTitle || product.name} | L'Écrin Traiteur`,
       description,
-      images: [{ url: product.img, width: 800, height: 800, alt: product.name }],
+      images: ogImages(product.img, product.name),
       locale: 'fr_FR',
       type: 'website',
     },

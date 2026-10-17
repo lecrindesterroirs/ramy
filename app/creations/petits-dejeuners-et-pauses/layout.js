@@ -1,5 +1,6 @@
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
+import { ogImages } from '../../../lib/og'
 
 const TITLE = "Petit-déjeuner d'entreprise à Paris dès 8 € HT par personne"
 const DESCRIPTION = "Viennoiseries, jus, café et fruits : formule Classique dès 8 € HT par personne. Livraison dès 6h30 à Paris et en Île-de-France, devis gratuit sous 24h."
@@ -9,7 +10,7 @@ export const metadata = {
   description: DESCRIPTION,
   alternates: { canonical: '/creations/petits-dejeuners-et-pauses' },
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+    images: ogImages('/hero-petitdej.webp'),
     title: TITLE,
     description: DESCRIPTION,
   }

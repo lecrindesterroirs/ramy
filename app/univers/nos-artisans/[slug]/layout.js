@@ -1,4 +1,5 @@
 import { getArtisanBySlug, ARTISANS } from '../../../../lib/artisansData'
+import { ogImages } from '../../../../lib/og'
 
 export function generateStaticParams() {
   return ARTISANS.map(a => ({ slug: a.slug }))
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: over.title ? `${over.title} | L'Écrin Traiteur` : `${artisan.nom} | Nos Artisans, L'Écrin Traiteur`,
       description,
-      images: [{ url: artisan.img, width: 800, height: 800, alt: artisan.nom }],
+      images: ogImages(artisan.img, artisan.nom),
       locale: 'fr_FR',
       type: 'website',
     },

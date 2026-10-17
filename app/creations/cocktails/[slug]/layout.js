@@ -1,3 +1,4 @@
+import { ogImages } from '../../../../lib/og'
 /* Métadonnées SEO par formule, table locale (les données vivent dans la page 'use client',
    non importable côté serveur ; on garde une source légère ici). */
 const META = {
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `Cocktail ${f.nom} | L'Écrin Traiteur`,
       description: f.accroche,
-      images: [{ url: f.img, width: 1200, height: 800, alt: `Cocktail ${f.nom}` }],
+      images: ogImages(f.img, `Cocktail ${f.nom}`),
       locale: 'fr_FR',
       type: 'website',
     },

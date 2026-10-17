@@ -1,6 +1,7 @@
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_CATALOGUE } from "./data"
+import { ogImages } from '../../../lib/og'
 
 const TITLE = "Formules cocktail à Paris dès 29,90 € HT par personne"
 const DESCRIPTION = "Formules L'Invitation (8 pièces), La Réception (12) et La Célébration (16) dès 29,90 € HT par personne. Livraison à Paris et en IDF, devis sous 24h."
@@ -10,7 +11,7 @@ export const metadata = {
   description: DESCRIPTION,
   alternates: { canonical: '/creations/cocktails' },
   openGraph: {
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+    images: ogImages('/hero-cocktail.webp'),
     title: TITLE,
     description: DESCRIPTION,
   }

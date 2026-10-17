@@ -1,5 +1,6 @@
 import { PRODUITS, prixMenu } from '../data'
 import { minuscules } from '../../../../lib/ficheAsavoir'
+import { ogImages } from '../../../../lib/og'
 
 export function generateStaticParams() {
   return PRODUITS.map(p => ({ slug: p.id }))
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${p.nom}, plateau repas | L'Écrin Traiteur`,
       description: `Plateau repas ${p.nom}, préparé le matin même. Livraison entreprise dès 6h30 à Paris.`,
-      images: p.img ? [{ url: p.img, width: 800, height: 800, alt: p.nom }] : undefined,
+      images: ogImages(p.img, p.nom),
       locale: 'fr_FR',
       type: 'website',
     },

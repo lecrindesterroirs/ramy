@@ -4,6 +4,7 @@ const BASE = 'https://www.lecrin-traiteur.fr'
 // tenue à la main : elle n'en déclarait que douze sur trente-cinq, donc
 // vingt-trois fiches en ligne restaient hors du sitemap et sans métadonnées.
 import { PAUSES } from '../data'
+import { ogImages } from '../../../../lib/og'
 
 const META = Object.fromEntries(PAUSES.map(p => [p.id, { nom: p.nom, d: p.description }]))
 
@@ -25,7 +26,7 @@ export function generateMetadata({ params }) {
     title: { absolute: title },
     description,
     alternates: { canonical: path },
-    openGraph: { images: [{ url: '/og-image.jpg', width: 1200, height: 630 }], title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
+    openGraph: { images: ogImages((PAUSES.find(x => x.id === params.slug) || {}).img, m.nom), title: `${m.nom} | L'Écrin Traiteur`, description: m.d, url: `${BASE}${path}`, locale: 'fr_FR', type: 'website' },
   }
 }
 

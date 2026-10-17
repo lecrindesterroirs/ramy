@@ -1,4 +1,5 @@
 import { ANIMATIONS, UNIVERS_LABEL, slugAnim } from '../data'
+import { ogImages } from '../../../../lib/og'
 
 export function generateStaticParams() {
   return ANIMATIONS.map(a => ({ slug: slugAnim(a.nom) }))
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${a.nom}, animation culinaire | L'Écrin Traiteur`,
       description: a.description,
-      images: a.img ? [{ url: a.img, width: 800, height: 800, alt: a.nom }] : undefined,
+      images: ogImages(a.img, a.nom),
       locale: 'fr_FR',
       type: 'website',
     },

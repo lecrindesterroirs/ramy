@@ -1,3 +1,4 @@
+import { ogImages } from '../../../lib/og'
 import { PLATEAUX_VILLES } from '../../../lib/plateauxVillesData'
 
 export function generateStaticParams() {
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }) {
     title: { absolute: title },
     description: city.metaDescription,
     openGraph: {
-      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
+      images: ogImages('/hero-plateaux-essentiel.webp'),
       title,
       description: city.metaDescription,
       locale: 'fr_FR',
