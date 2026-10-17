@@ -37,6 +37,14 @@ export default function DeferredPostHog() {
           disable_session_recording: !accord,
           capture_pageview: 'history_change',
           capture_pageleave: true,
+          /* Cartes de chaleur : PostHog ne les enregistre pas par défaut. Avec
+             cette option, il envoie les coordonnées des clics, des clics de
+             rage et de la profondeur de défilement, agrégées par page. */
+          enable_heatmaps: true,
+          /* Clics morts : un clic sur un élément qui ne réagit pas (une image
+             qu'on croit cliquable, un titre qu'on prend pour un lien). C'est
+             le signal qui dit où le site trompe le visiteur. */
+          capture_dead_clicks: true,
           /* PostHog masque TOUS les champs de saisie par défaut : dans les
              enregistrements, l'effectif et le budget s'affichaient « ** » et
              « *** », donc on ne voyait rien de ce que le visiteur cherchait.

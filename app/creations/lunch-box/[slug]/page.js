@@ -47,6 +47,9 @@ function LunchBoxDetailInner() {
       relatedTitle="D'autres lunch box"
       subtitle={box.sousTitre}
       img={box.img}
+      /* Les photos de sandwich sont panoramiques (1400x615) : dans le cadre 4/3
+         par défaut, `cover` en rognait 40 % et coupait les deux bouts du sandwich. */
+      imgRatio="1400 / 615"
       price={box.prix}
       priceNote="HT · par personne"
       description={box.description}

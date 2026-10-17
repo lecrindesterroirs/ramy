@@ -39,6 +39,10 @@ const COMPLEMENT_BOISSONS = (curatedBoissons.length ? curatedBoissons : BOISSONS
    - seoEyebrow, seoTitle, seoHtml, devisPrestation, devisTitre, devisSousTitre
    - asavoir               { titre, items, cta, more }  optionnel, bloc « À savoir »
                            (lib/ficheAsavoir.js), rendu côté serveur sous la fiche
+   - imgRatio              '4 / 3' par défaut. Le cadre recadre en `cover`, donc une
+                           photo au format très différent se fait rogner : une image
+                           panoramique perd ses bords (le sandwich sortait du cadre).
+                           Passer le format réel des photos de la famille.
 */
 
 export default function GalleryFiche({
@@ -52,6 +56,7 @@ export default function GalleryFiche({
   devisSousTitre = 'Répondez en 30 secondes, devis personnalisé sous 24h.',
   related = [], relatedTitle = 'Dans la même sélection',
   asavoir = null,
+  imgRatio = '4 / 3',
 }) {
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
@@ -124,7 +129,7 @@ export default function GalleryFiche({
 
           {/* ── Colonne gauche : photo ── */}
           <div className="gallery-col">
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: imgRatio, overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
               <Image fill priority sizes="(max-width: 900px) 100vw, 55vw" src={photos[0]} alt={title} style={{ objectFit: 'cover' }} />
             </div>
 

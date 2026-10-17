@@ -8,7 +8,7 @@ import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
-import { identifierVisiteur } from '../../lib/posthog-identify'
+import { identifierVisiteur, suivreEtapeDevis } from '../../lib/posthog-identify'
 import { lireChemin, lireParcours, occasionPour } from '../../lib/parcours'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -628,6 +628,10 @@ export default function Contact() {
     nom: '', societe: '', email: '', telephone: '',
   })
 
+  // Lu au changement d'étape pour la mesure, sans relancer l'effet à chaque frappe.
+  const dataRef = useRef(data)
+  useEffect(() => { dataRef.current = data }, [data])
+
   // Produits regardés pendant la visite (lib/parcours.js), proposés à l'étape 2.
   // Si le visiteur arrive d'une page de la carte, l'occasion est déjà choisie
   // (étape 1 passée, modifiable par « Retour ») et la fiche d'origine est notée
@@ -747,6 +751,7 @@ export default function Contact() {
       document.body.classList.remove('devis-step-1')
     }
     window.dispatchEvent(new CustomEvent('devis-step-change', { detail: step }))
+    suivreEtapeDevis(step, dataRef.current?.prestation)
     return () => document.body.classList.remove('devis-step-1')
   }, [step])
 

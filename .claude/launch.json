@@ -25,6 +25,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "/Users/ramy/Desktop/le66-site", "run", "dev", "--", "-p", "3002"],
       "port": 3002
+    },
+    {
+      "name": "oden-batiment",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/ramy/Desktop/oden_batiment/oden_batiment_website", "run", "dev", "--", "-p", "3003"],
+      "port": 3003
     }
   ]
 }
