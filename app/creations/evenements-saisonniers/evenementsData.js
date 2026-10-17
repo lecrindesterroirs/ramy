@@ -383,6 +383,53 @@ export const evenements = [
     },
   },
   {
+    slug: 'movember',
+    mois: 'Novembre',
+    nom: 'Movember',
+    // Guide du cluster Movember, lien hub → spoke.
+    articles: [
+      'movember-entreprise-organiser-petit-dejeuner-gouter-bureau',
+    ],
+    tags: ['Petits-déjeuners', 'Pauses gourmandes'],
+    img: '/hero-petits-dejeuners.webp',
+    imgAlt: "Cake marbré glacé au chocolat, tranché, et cookies aux pépites : un goûter livré en entreprise par L'Écrin Traiteur",
+    descCourt: "Lancement et clôture de Movember au bureau : petit-déjeuner et goûter livrés dès 6 € HT par personne.",
+    desc: "Movember dure tout le mois de novembre. Pour le lancement, un petit-déjeuner le lundi 2 novembre ; pour la clôture, un goûter avec remise des prix le vendredi 27 ou le lundi 30. Livré dès 6h30 à Paris et en Île-de-France, à partir de 6 € HT par personne, livraison de 29 € HT en plus.",
+    produits: [
+      'Petit-déjeuner Classique, 8 € HT par personne',
+      'Pause gourmande, dès 6 € HT par personne',
+      'Madeleines personnalisables, sur devis',
+      'Brochettes de fruits frais',
+      'Corbeille de fruits de saison',
+      'Banana bread sans gluten',
+    ],
+    differentiateur: {
+      label: 'Notre format',
+      text: "Deux temps forts calés sur le calendrier Movember : un lancement le lundi 2 novembre et une clôture le 27 ou le 30. Les dons se collectent sur la page de votre équipe Movember.",
+    },
+    article: {
+      titre: "Movember en entreprise : deux rendez-vous suffisent",
+      sections: [
+        {
+          heading: "Movember 2026 en bref",
+          texte: "Movember se vit tout le mois de novembre : les participants démarrent rasés le 1er novembre, un dimanche en 2026, et laissent pousser une moustache. Au bureau, comptez un petit-déjeuner de lancement le lundi 2 novembre, à 8 € HT par personne, et un goûter de clôture le vendredi 27 ou le lundi 30 novembre, à partir de 6 € HT par personne. Pour 20 personnes, cela fait 189 € HT et 149 € HT, livraison de 29 € HT comprise à chaque fois.",
+        },
+        {
+          heading: "Ce que soutient Movember",
+          texte: "Movember soutient trois causes : la santé mentale et la prévention du suicide, le cancer de la prostate et le cancer des testicules. Une entreprise peut s'inscrire en solo, créer une équipe ou lancer une compétition entre plusieurs bureaux. Les dons se collectent sur la page de l'équipe Movember, pas auprès du traiteur : la facture couvre uniquement le petit-déjeuner ou le goûter livré.",
+        },
+        {
+          heading: "Quelles actions organiser au bureau ?",
+          texte: "Le guide de Movember propose un rasage collectif pour le lancement, un quiz avec les entreprises voisines, des discussions santé, une boîte à dons dans la salle de pause et une remise des prix en fin de mois. Ceux qui ne veulent pas de moustache peuvent marcher ou courir 60 km dans le mois, ou inventer leur propre défi. La participation reste libre.",
+        },
+        {
+          heading: "Budget et timing",
+          texte: "Commandez jusqu'à la veille à 14h, avec une livraison dès 6h30 ; à partir de 50 personnes, prévoyez 48 h. Précisez à la demande de devis les régimes de l'équipe : végétarien, vegan, sans gluten. Les madeleines se personnalisent aux couleurs de l'événement, sur devis.",
+        },
+      ],
+    },
+  },
+  {
     slug: 'noel',
     mois: 'Décembre',
     nom: 'Noël',
