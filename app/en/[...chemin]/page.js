@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import InfoPage from '../../../components/InfoPage'
 import { EN_PAGES } from '../../../lib/enPages'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
@@ -37,11 +37,16 @@ export function generateStaticParams() {
   return Object.values(EN_PAGES).map(pg => ({ chemin: pg.fr.replace(/^\//, '').split('/') }))
 }
 
-export const dynamicParams = false
+/*
+  dynamicParams = true : une adresse /en qui n'a pas encore de page anglaise
+  ne tombe pas en 404, elle renvoie vers la page française (règle posée par
+  Ramy le 17 octobre 2026). Les pages traduites, elles, restent pré-rendues.
+*/
+export const dynamicParams = true
 
 export function generateMetadata({ params }) {
   const pg = PAR_CHEMIN[cheminDe(params)]
-  if (!pg) return {}
+  if (!pg) return {}   // la page redirige : pas de métadonnées à produire
   const path = `/en${pg.fr}`
   return {
     title: { absolute: pg.metaTitle },
@@ -58,8 +63,12 @@ export function generateMetadata({ params }) {
 }
 
 export default function EnPage({ params }) {
-  const pg = PAR_CHEMIN[cheminDe(params)]
-  if (!pg) notFound()
+  const chemin = cheminDe(params)
+  const pg = PAR_CHEMIN[chemin]
+  // Pas encore traduite : on renvoie vers le français plutôt que vers une
+  // page introuvable. Si la page française n'existe pas non plus, c'est elle
+  // qui affichera le 404, au bon endroit.
+  if (!pg) redirect(chemin)
   const path = `/en${pg.fr}`
   const jsonLd = {
     '@context': 'https://schema.org',
