@@ -61,11 +61,6 @@ export default function sitemap() {
     url('/univers/cas-clients',                           0.60, 'monthly'),
     url('/univers/avis-clients',                          0.60, 'monthly'),
     url('/tarifs',                                        0.80, 'monthly'),
-    url('/en/pricing',                                    0.60, 'monthly'),
-    url('/en/office-breakfast-paris',                     0.60, 'monthly'),
-    url('/en/cocktail-reception-paris',                   0.60, 'monthly'),
-    url('/en/halal-catering-paris',                       0.60, 'monthly'),
-    url('/en/office-lunch-paris',                         0.60, 'monthly'),
 
     // À propos
 
@@ -173,7 +168,7 @@ export default function sitemap() {
   // Seules les pages réellement traduites entrent au sitemap : annoncer à
   // Google une adresse qui n'existe pas coûte plus cher que de l'omettre.
   const enPages = [
-    ...Object.keys(EN_PAGES).map(slug => url(`/en/${slug}`, 0.80, 'monthly')),
+    ...Object.values(EN_PAGES).map(pg => url(`/en${pg.fr}`, 0.80, 'monthly')),
     url('/en/journal', 0.76, 'weekly'),
     ...enSlugs().map(slug => url(`/en/journal/${slug}`, 0.70, 'monthly')),
   ]

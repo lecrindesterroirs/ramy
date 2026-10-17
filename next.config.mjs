@@ -65,6 +65,15 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      /* Version anglaise : un seul schéma d'adresses, /en suivi du chemin
+         français (décision de Ramy, 17 octobre 2026). Les cinq adresses sur
+         mesure d'origine étaient déjà dans le sitemap et dans llms.txt : on
+         les redirige plutôt que de les laisser tomber en 404. */
+      { source: '/en/pricing', destination: '/en/tarifs', permanent: true },
+      { source: '/en/office-breakfast-paris', destination: '/en/creations/petits-dejeuners-et-pauses', permanent: true },
+      { source: '/en/office-lunch-paris', destination: '/en/creations/plateaux-repas', permanent: true },
+      { source: '/en/cocktail-reception-paris', destination: '/en/creations/cocktails', permanent: true },
+      { source: '/en/halal-catering-paris', destination: '/en/traiteur-halal', permanent: true },
       // Ancienne section « Cocktails & Buffets » supprimée → redirigée vers /creations/cocktails
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },

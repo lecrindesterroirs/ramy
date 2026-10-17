@@ -3,6 +3,21 @@ import InfoPage from '../../../components/InfoPage'
 import { EN_PAGES } from '../../../lib/enPages'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
 import { ogImages } from '../../../lib/og'
+import { alternatesPourEn } from '../../../lib/i18n'
+
+/*
+  Les adresses anglaises reprennent le chemin français sous /en, comme partout
+  ailleurs sur le site : /en/tarifs, /en/creations/plateaux-repas. Les cinq
+  adresses sur mesure d'origine (/en/pricing, /en/office-breakfast-paris…)
+  redirigent en 301 vers celles-ci (next.config.mjs) — Ramy a tranché le
+  17 octobre 2026 : un seul schéma d'adresses pour tout le site.
+
+  La clé interne de EN_PAGES reste le slug d'origine ; c'est son champ `fr`
+  qui donne l'adresse. On construit ici l'index chemin français → page.
+*/
+const PAR_CHEMIN = Object.fromEntries(
+  Object.entries(EN_PAGES).map(([slug, pg]) => [pg.fr, { ...pg, slug }])
+)
 
 // Chaque page anglaise reprend le hero de son équivalent français.
 const EN_HEROS = {
@@ -13,24 +28,27 @@ const EN_HEROS = {
   'pricing': '/hero-plateaux-essentiel.webp',
 }
 
+/** ['creations','plateaux-repas'] → '/creations/plateaux-repas' */
+const cheminDe = (params) => '/' + (params.chemin || []).join('/')
+
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 export function generateStaticParams() {
-  return Object.keys(EN_PAGES).map(slug => ({ slug }))
+  return Object.values(EN_PAGES).map(pg => ({ chemin: pg.fr.replace(/^\//, '').split('/') }))
 }
 
 export const dynamicParams = false
 
 export function generateMetadata({ params }) {
-  const pg = EN_PAGES[params.slug]
+  const pg = PAR_CHEMIN[cheminDe(params)]
   if (!pg) return {}
-  const path = `/en/${params.slug}`
+  const path = `/en${pg.fr}`
   return {
     title: { absolute: pg.metaTitle },
     description: pg.description,
-    alternates: { canonical: path, languages: { en: path, fr: pg.fr } },
+    alternates: alternatesPourEn(pg.fr),
     openGraph: {
-      images: ogImages(EN_HEROS[params.slug] || '/hero-bg2.webp', "L'Écrin Traiteur, corporate caterer in Paris"),
+      images: ogImages(EN_HEROS[pg.slug] || '/hero-bg2.webp', "L'Écrin Traiteur, corporate caterer in Paris"),
       title: pg.metaTitle,
       description: pg.description,
       locale: 'en_GB',
@@ -40,9 +58,9 @@ export function generateMetadata({ params }) {
 }
 
 export default function EnPage({ params }) {
-  const pg = EN_PAGES[params.slug]
+  const pg = PAR_CHEMIN[cheminDe(params)]
   if (!pg) notFound()
-  const path = `/en/${params.slug}`
+  const path = `/en${pg.fr}`
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
