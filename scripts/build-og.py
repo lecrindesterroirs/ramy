@@ -75,8 +75,9 @@ def photos_utilisees():
     for f in glob.glob(os.path.join(RACINE, 'app', '**', '*.js'), recursive=True) + \
              glob.glob(os.path.join(RACINE, 'lib', '*.js')):
         t = open(f, encoding='utf-8', errors='ignore').read()
-        vus |= set(re.findall(r"(?:img|heroImg|hero)\s*[:=]\s*[\"'](/[^\"']+\.webp)[\"']", t))
-        vus |= set(re.findall(r"heroImg=[\"'](/[^\"']+\.webp)[\"']", t))
+        # jpg/png/avif compris : les photos d'artisans ne sont pas toutes en webp
+        vus |= set(re.findall(r"(?:img|heroImg|hero)\s*[:=]\s*[\"'](/[^\"']+\.(?:webp|jpe?g|png|avif))[\"']", t))
+        vus |= set(re.findall(r"heroImg=[\"'](/[^\"']+\.(?:webp|jpe?g|png|avif))[\"']", t))
     return sorted(vus)
 
 
