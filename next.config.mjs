@@ -17,7 +17,9 @@ const POSTHOG = 'https://eu.i.posthog.com https://eu-assets.i.posthog.com'
 // et la page « Heatmaps » de PostHog affiche le site dans un cadre.
 const POSTHOG_UI = 'https://eu.posthog.com'
 // Identification des entreprises visiteuses : Leadfeeder et Leadinfo (components/DeferredEntreprises.js).
-const LEADS = 'https://*.lfeeder.com https://*.leadfeeder.com https://*.leadinfo.net https://*.leadinfo.com'
+// cdn.ldnfrpl.com est le CDN que Leadfeeder sert aujourd'hui : sans lui, son
+// script est bloqué par la CSP et l'outil ne remonte rien (constaté le 17/10/2026).
+const LEADS = 'https://*.lfeeder.com https://*.leadfeeder.com https://cdn.ldnfrpl.com https://*.ldnfrpl.com https://*.leadinfo.net https://*.leadinfo.com'
 // Calendly (prise de rendez-vous /contact/rendez-vous) : widget.js depuis assets.calendly.com,
 // styles injectés depuis assets.calendly.com, iframe de réservation depuis calendly.com, avatars/images *.calendly.com
 const CALENDLY = 'https://assets.calendly.com https://*.calendly.com'
