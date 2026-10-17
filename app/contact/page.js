@@ -8,6 +8,9 @@ import { contactPageLd } from '../../lib/site'
 import { trackPhoneClick } from '../../lib/tracking'
 import { getAttribution } from '../../lib/attribution'
 import { identifierVisiteur } from '../../lib/posthog-identify'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../lib/i18n'
+import { t } from '../../lib/en/interface'
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -74,11 +77,11 @@ function DatePicker({ value, onChange, required }) {
         </svg>
       </button>
       {open && (
-        <div role="dialog" aria-label="Choisir une date" style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.12)', boxShadow: '0 16px 40px rgba(17,17,17,0.12)', zIndex: 200, padding: '20px', minWidth: '260px' }}>
+        <div role="dialog" aria-label={T('form.choisirDate')} style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.12)', boxShadow: '0 16px 40px rgba(17,17,17,0.12)', zIndex: 200, padding: '20px', minWidth: '260px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <button type="button" onClick={prevMonth} aria-label="Mois précédent" style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg></button>
+            <button type="button" onClick={prevMonth} aria-label={T('form.moisPrecedent')} style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg></button>
             <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.05em', color: 'var(--text-primary)' }}>{MOIS[view.month]} {view.year}</span>
-            <button type="button" onClick={nextMonth} aria-label="Mois suivant" style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg></button>
+            <button type="button" onClick={nextMonth} aria-label={T('form.moisSuivant')} style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg></button>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px', marginBottom: '6px' }}>
             {JOURS.map((j, i) => <div key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textAlign: 'center', padding: '4px 0' }}>{j}</div>)}
@@ -96,8 +99,8 @@ function DatePicker({ value, onChange, required }) {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={footerBtn}>Effacer</button>
-            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ ...footerBtn, color: '#E0A126', fontWeight: 500 }}>Aujourd'hui</button>
+            <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={footerBtn}>{T('form.effacer')}</button>
+            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ ...footerBtn, color: '#E0A126', fontWeight: 500 }}>{T('form.aujourdhui')}</button>
           </div>
         </div>
       )}
@@ -106,6 +109,12 @@ function DatePicker({ value, onChange, required }) {
 }
 
 export default function Contact() {
+  /* Le même formulaire sert /contact et /en/contact : la langue vient du
+     chemin, les textes du dictionnaire d'interface. Les données envoyées
+     à l'OS ne changent pas. */
+  const langue = estAnglais(usePathname() || '/') ? 'en' : 'fr'
+  const T = (cle) => t(cle, langue)
+
   const [form, setForm] = useState({
     nom: '', societe: '', email: '', telephone: '',
     type: '', personnes: '', date: '', message: '',
@@ -177,7 +186,7 @@ export default function Contact() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                 </div>
                 <div>
-                  <p style={labelStyle}>Téléphone</p>
+                  <p style={labelStyle}>{T('form.telephone')}</p>
                   <a href="tel:+33174542310" onClick={trackPhoneClick} style={infoStyle}>01 74 54 23 10</a>
                 </div>
               </div>
@@ -186,7 +195,7 @@ export default function Contact() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 </div>
                 <div>
-                  <p style={labelStyle}>Email</p>
+                  <p style={labelStyle}>{T('form.email')}</p>
                   <a href="mailto:commercial@lecrin-traiteur.fr" style={infoStyle}>commercial@lecrin-traiteur.fr</a>
                 </div>
               </div>
@@ -195,15 +204,15 @@ export default function Contact() {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
-                  <p style={labelStyle}>Zone desservie</p>
-                  <p style={{ ...infoStyle, cursor: 'default' }}>Toute Île-de-France</p>
+                  <p style={labelStyle}>{T('info.zoneDesservie')}</p>
+                  <p style={{ ...infoStyle, cursor: 'default' }}>{T('info.toutIdf')}</p>
                 </div>
               </div>
             </div>
 
             <div style={{ marginTop: '20px', paddingTop: '14px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>Réponse sous 24h</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>Livraison dès 6h30</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>{T('info.reponse24h')}</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>{T('info.livraison')}</p>
             </div>
 
             <div style={{ marginTop: '20px', paddingTop: '14px' }}>
@@ -236,7 +245,7 @@ export default function Contact() {
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(224,161,38,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A126" strokeWidth="2" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
                 </div>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2 }}>Demande bien reçue.</p>
+                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2 }}>{T('form.recu')}</p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '300px' }}>
                   Nous vous répondons sous 24h avec une proposition personnalisée.
                 </p>
@@ -245,33 +254,33 @@ export default function Contact() {
               <form onSubmit={submit} method="post" style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
                 <input type="text" name="website" value={form.website} onChange={handle} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="nom" value={form.nom} onChange={handle} placeholder="Nom complet *" aria-label="Nom complet" autoComplete="name" required aria-required="true" style={inputStyle} />
-                  <input name="societe" value={form.societe} onChange={handle} placeholder="Société *" aria-label="Société" autoComplete="organization" required aria-required="true" style={inputStyle} />
+                  <input name="nom" value={form.nom} onChange={handle} placeholder={`${T('form.nom')} *`} aria-label={T('form.nom')} autoComplete="name" required aria-required="true" style={inputStyle} />
+                  <input name="societe" value={form.societe} onChange={handle} placeholder={`${T('form.societe')} *`} aria-label={T('form.societe')} autoComplete="organization" required aria-required="true" style={inputStyle} />
                 </div>
-                <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email professionnel *" aria-label="Email professionnel" autoComplete="email" inputMode="email" required aria-required="true" style={inputStyle} />
+                <input name="email" type="email" value={form.email} onChange={handle} placeholder={`${T('form.email')} *`} aria-label={T('form.email')} autoComplete="email" inputMode="email" required aria-required="true" style={inputStyle} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   {/* Facultatif, comme sur /devis : c'était la seule différence entre les
                       deux formulaires, et le téléphone est ce que les visiteurs
                       rechignent le plus à donner. On les rappelle par mail. */}
-                  <input name="telephone" type="tel" value={form.telephone} onChange={handle} placeholder="Téléphone (facultatif)" aria-label="Téléphone (facultatif)" autoComplete="tel" inputMode="tel" style={inputStyle} />
+                  <input name="telephone" type="tel" value={form.telephone} onChange={handle} placeholder={`${T('form.telephone')} ${T('form.facultatif')}`} aria-label={`${T('form.telephone')} ${T('form.facultatif')}`} autoComplete="tel" inputMode="tel" style={inputStyle} />
                   <div style={{ position: 'relative' }}>
-                    <select name="type" value={form.type} onChange={handle} required aria-required="true" aria-label="Type d'événement" style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
-                      <option value="" disabled>Type d'événement *</option>
+                    <select name="type" value={form.type} onChange={handle} required aria-required="true" aria-label={T('form.typeEvenement')} style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
+                      <option value="" disabled>{T('form.typeEvenement')} *</option>
                       {typesEvenement.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'rgba(17,17,17,0.38)' }}><polyline points="6,9 12,15 18,9"/></svg>
                   </div>
                 </div>
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="personnes" type="number" min="1" value={form.personnes} onChange={handle} placeholder="Nombre de personnes *" aria-label="Nombre de personnes" autoComplete="off" inputMode="numeric" required aria-required="true" style={inputStyle} />
+                  <input name="personnes" type="number" min="1" value={form.personnes} onChange={handle} placeholder={`${T('form.personnes')} *`} aria-label={T('form.personnes')} autoComplete="off" inputMode="numeric" required aria-required="true" style={inputStyle} />
                   <DatePicker value={form.date} onChange={setDate} required />
                 </div>
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={handle}
-                  placeholder="Votre message. Décrivez votre projet, vos envies, vos contraintes..."
-                  aria-label="Votre message"
+                  placeholder={T('form.messagePlaceholder')}
+                  aria-label={T('form.message')}
                   style={{ ...inputStyle, resize: 'none', lineHeight: 1.6, flex: 1, minHeight: '80px' }}
                 />
                 {status === 'error' && (
@@ -286,7 +295,7 @@ export default function Contact() {
                   onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.opacity = '0.85' }}
                   onMouseLeave={e => { if (status !== 'loading') e.currentTarget.style.opacity = '1' }}
                 >
-                  {status === 'loading' ? 'Envoi en cours…' : 'Envoyer la demande →'}
+                  {status === 'loading' ? 'Envoi en cours…' : `${T('form.envoyer')} →`}
                 </button>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)', textAlign: 'center' }}>
                   Vos données restent privées et ne sont jamais partagées.

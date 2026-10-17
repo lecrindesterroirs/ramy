@@ -169,6 +169,8 @@ export default function sitemap() {
   // Google une adresse qui n'existe pas coûte plus cher que de l'omettre.
   const enPages = [
     ...Object.values(EN_PAGES).map(pg => url(`/en${pg.fr}`, 0.80, 'monthly')),
+    url('/en/contact', 0.60, 'monthly'),
+    url('/en/devis', 0.70, 'monthly'),
     url('/en/journal', 0.76, 'weekly'),
     ...enSlugs().map(slug => url(`/en/journal/${slug}`, 0.70, 'monthly')),
   ]

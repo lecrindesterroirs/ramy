@@ -1,6 +1,7 @@
 import './globals.css'
 import { CartProvider } from '../context/CartContext'
 import MobileCTA from '../components/MobileCTA'
+import LangueDocument from '../components/LangueDocument'
 import ChatWidget from '../components/ChatWidget'
 import PromoBanner from '../components/PromoBanner'
 import SmoothScroll from '../components/SmoothScroll'
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <div id="main-content" style={{ display: 'contents' }}>{children}</div>
         </CartProvider>
+        <LangueDocument />
         <MobileCTA />
         {/* Pas de clé, pas de bouton : mieux vaut rien qu'un assistant injoignable.
             Attention au déploiement : l'ignoreCommand de vercel.json saute les builds

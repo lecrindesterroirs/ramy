@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import LogosSection from '../../components/LogosSection'
@@ -9,6 +10,15 @@ import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
 import { identifierVisiteur, suivreEtapeDevis } from '../../lib/posthog-identify'
+import { estAnglais } from '../../lib/i18n'
+import { t } from '../../lib/en/interface'
+
+/* Le même parcours sert /devis et /en/devis. La langue vient du chemin ; les
+   données envoyées à l'OS ne changent pas, seuls les textes affichés. */
+function useLangue() {
+  const chemin = usePathname() || '/'
+  return estAnglais(chemin) ? 'en' : 'fr'
+}
 import { lireChemin, lireParcours, occasionPour } from '../../lib/parcours'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -16,7 +26,7 @@ import { lireChemin, lireParcours, occasionPour } from '../../lib/parcours'
 const prestations = [
   {
     id: 'petit-dejeuner',
-    titre: 'Petit-déjeuner',
+    titre: 'Petit-déjeuner', cle: 'devis.petitDejeuner',
     desc: 'Viennoiseries, jus frais, pâtisseries artisanales, fruits et douceurs.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
@@ -30,7 +40,7 @@ const prestations = [
   },
   {
     id: 'plateaux-repas',
-    titre: 'Plateaux repas',
+    titre: 'Plateaux repas', cle: 'devis.plateauxRepas',
     desc: 'Plateaux individuels gourmands, équilibrés et de saison.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
@@ -42,7 +52,7 @@ const prestations = [
   },
   {
     id: 'cocktail-buffet',
-    titre: 'Cocktail / Buffet',
+    titre: 'Cocktail / Buffet', cle: 'devis.cocktail',
     desc: 'Pièces petites et bouchées, buffets élaborés, bar sans alcool.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
@@ -52,7 +62,7 @@ const prestations = [
   },
   {
     id: 'gouter',
-    titre: 'Goûter',
+    titre: 'Goûter', cle: 'devis.gouter',
     desc: 'Pâtisseries, gâteaux, boissons chaudes, moments sucrés et joyeux.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
@@ -64,7 +74,7 @@ const prestations = [
   },
   {
     id: 'evenement-sur-mesure',
-    titre: 'Événement sur mesure',
+    titre: 'Événement sur mesure', cle: 'devis.surMesure',
     desc: 'Une conception entièrement personnalisée pour vos envies.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
@@ -74,7 +84,7 @@ const prestations = [
   },
   {
     id: 'autre',
-    titre: 'Autre demande',
+    titre: 'Autre demande', cle: 'devis.autre',
     desc: 'Une demande spécifique ? Décrivez-la, nous nous adaptons.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
@@ -90,6 +100,8 @@ const JOURS = ['L','M','M','J','V','S','D']
 // ── DatePicker ────────────────────────────────────────────────────────────────
 
 function DatePicker({ value, onChange, accent = '#E0A126' }) {
+  const langue = useLangue()
+  const T = (cle) => t(cle, langue)
   const today = new Date()
   const [open, setOpen] = useState(false)
   const [view, setView] = useState({ year: today.getFullYear(), month: today.getMonth() })
@@ -159,8 +171,8 @@ function DatePicker({ value, onChange, accent = '#E0A126' }) {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid rgba(17,17,17,0.06)' }}>
-            <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>Effacer</button>
-            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: accent, fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>Aujourd'hui</button>
+            <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>{T('form.effacer')}</button>
+            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: accent, fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>{T('form.aujourdhui')}</button>
           </div>
         </div>
       )}
@@ -185,17 +197,19 @@ function ProgressBar({ step }) {
 // ── Step 1 ────────────────────────────────────────────────────────────────────
 
 function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = false }) {
+  const langue = useLangue()
+  const T = (cle) => t(cle, langue)
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
-          Pour quelle occasion ?
+          {T('devis.occasion')}
         </h2>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <ReviewsBadge />
         </div>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '8px' }}>
-          Commande minimum 50&nbsp;€ HT · Livraison 29&nbsp;€ HT à Paris · Devis sous 24h
+          {T('devis.conditions')}
         </p>
       </div>
 
@@ -222,7 +236,7 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
               onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
               onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{titre}</p>
+              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{isRoseCard ? titre : T(p.cle)}</p>
             </div>
           )
         })}
@@ -234,6 +248,8 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
 // ── CityAutocomplete ──────────────────────────────────────────────────────────
 
 function CityAutocomplete({ value, onChange, hasError, accent = '#E0A126' }) {
+  const langue = useLangue()
+  const T = (cle) => t(cle, langue)
   const [suggestions, setSuggestions] = useState([])
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -315,7 +331,7 @@ function CityAutocomplete({ value, onChange, hasError, accent = '#E0A126' }) {
         value={value}
         onChange={handleChange}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
-        placeholder="Ex : Paris, 92150, Suresnes..."
+        placeholder={T('ex.ville')}
         autoComplete="postal-code"
         style={{ ...fieldStyle, borderColor: hasError ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
       />
@@ -366,6 +382,8 @@ function basculerProduit(message, nom) {
 // ── Step 2 ────────────────────────────────────────────────────────────────────
 
 function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] }) {
+  const langue = useLangue()
+  const T = (cle) => t(cle, langue)
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
   const err = (k) => showErrors && !data[k]?.trim()
   const [isMobile, setIsMobile] = useState(false)
@@ -375,49 +393,49 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
     <div className="step2-inner" style={{ maxWidth: '860px', margin: '0 auto', padding: '0 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '36px' }}>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
-          Parlez-nous de votre projet
+          {T('devis.projet')}
         </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-          Ces informations nous permettent de vous proposer le devis le plus adapté à vos besoins.
+          {T('devis.sousTitre')}
         </p>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
-            <label style={labelStyle}>Date souhaitée <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
+            <label style={labelStyle}>{T('form.date')} <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <DatePicker value={data.date} onChange={v => set('date', v)} accent={accent} />
           </div>
           <div>
-            <label style={labelStyle}>Nombre de convives <span style={{ color: accent }}>*</span></label>
+            <label style={labelStyle}>{T('form.convives')} <span style={{ color: accent }}>*</span></label>
             <div style={{ position: 'relative' }}>
-              <input inputMode="numeric" pattern="[0-9]*" value={data.convives} onChange={e => set('convives', e.target.value)} placeholder="Ex : 30 personnes" style={{ ...fieldStyle, borderColor: err('convives') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
+              <input inputMode="numeric" pattern="[0-9]*" value={data.convives} onChange={e => set('convives', e.target.value)} placeholder={T('ex.convives')} style={{ ...fieldStyle, borderColor: err('convives') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            {err('convives') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+            {err('convives') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
           </div>
         </div>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
-            <label style={labelStyle}>Ville ou code postal <span style={{ color: accent }}>*</span></label>
+            <label style={labelStyle}>{T('form.ville')} <span style={{ color: accent }}>*</span></label>
             <CityAutocomplete value={data.ville} onChange={v => set('ville', v)} hasError={err('ville')} accent={accent} />
-            {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+            {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
           </div>
           <div>
-            <label style={labelStyle}>Budget estimé <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
+            <label style={labelStyle}>{T('form.budget')} <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <div style={{ position: 'relative' }}>
-              <input inputMode="numeric" pattern="[0-9]*" value={data.budget} onChange={e => set('budget', e.target.value)} placeholder="Ex : 1000 € à 2000 €" style={fieldStyle} />
+              <input inputMode="numeric" pattern="[0-9]*" value={data.budget} onChange={e => set('budget', e.target.value)} placeholder={T('ex.budget')} style={fieldStyle} />
               <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.3)' }}>€</span>
             </div>
           </div>
         </div>
         <div>
-          <label style={labelStyle}>Détails de votre projet {isMobile
+          <label style={labelStyle}>{T('form.details')} {isMobile
             ? <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span>
             : <span style={{ color: accent }}>*</span>}</label>
           {parcours.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'var(--text-secondary)' }}>Vous avez regardé :</span>
+              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'var(--text-secondary)' }}>{T('devis.vousAvezRegarde')}</span>
               {parcours.map(f => {
                 const choisi = (data.message || '').split('\n').includes(ligneProduit(f.nom))
                 return (
@@ -441,7 +459,7 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
             rows={isMobile ? 4 : 6}
             style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: !isMobile && err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
-          {!isMobile && err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>Champ requis</p>}
+          {!isMobile && err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
         </div>
       </div>
     </div>
@@ -451,18 +469,20 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
 // ── Step 3 ────────────────────────────────────────────────────────────────────
 
 function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) {
+  const langue = useLangue()
+  const T = (cle) => t(cle, langue)
   const set = (k, v) => setData(d => ({ ...d, [k]: v }))
   const [editing, setEditing] = useState(null)
 
-  const prestationLabel = prestations.find(p => p.id === data.prestation)?.titre || 'Non renseigné'
-  const dateLabel = data.date ? new Date(data.date + 'T00:00:00').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }) : 'Non renseigné'
+  const prestationLabel = prestations.find(p => p.id === data.prestation)?.titre || T('devis.nonRenseigne')
+  const dateLabel = data.date ? new Date(data.date + 'T00:00:00').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }) : T('devis.nonRenseigne')
 
   const recap = [
     { key: 'date', type: 'date', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>, label: 'Date souhaitée', value: dateLabel },
-    { key: 'convives', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>, label: 'Nombre de convives', value: data.convives || 'Non renseigné' },
-    { key: 'ville', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: 'Ville', value: data.ville || 'Non renseigné' },
-    { key: 'budget', type: 'text', icon: <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'currentColor', lineHeight: 1 }}>€</span>, label: 'Budget estimé', value: data.budget || 'Non renseigné' },
-    { key: 'message', type: 'textarea', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>, label: 'Détails de votre projet', value: data.message || 'Non renseigné' },
+    { key: 'convives', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>, label: 'Nombre de convives', value: data.convives || T('devis.nonRenseigne') },
+    { key: 'ville', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: 'Ville', value: data.ville || T('devis.nonRenseigne') },
+    { key: 'budget', type: 'text', icon: <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'currentColor', lineHeight: 1 }}>€</span>, label: 'Budget estimé', value: data.budget || T('devis.nonRenseigne') },
+    { key: 'message', type: 'textarea', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>, label: 'Détails de votre projet', value: data.message || T('devis.nonRenseigne') },
   ]
 
   return (
@@ -478,24 +498,24 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div>
-            <label style={labelStyle}>Nom complet <span style={{ color: accent }}>*</span></label>
-            <input value={data.nom} onChange={e => set('nom', e.target.value)} placeholder="Ex : Marie Dupont" autoComplete="name" style={fieldStyle} required />
+            <label style={labelStyle}>{T('form.nom')} <span style={{ color: accent }}>*</span></label>
+            <input value={data.nom} onChange={e => set('nom', e.target.value)} placeholder={T('ex.nom')} autoComplete="name" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Société <span style={{ color: accent }}>*</span></label>
-            <input value={data.societe} onChange={e => set('societe', e.target.value)} placeholder="Ex : Entreprise SAS" autoComplete="organization" style={fieldStyle} required />
+            <label style={labelStyle}>{T('form.societe')} <span style={{ color: accent }}>*</span></label>
+            <input value={data.societe} onChange={e => set('societe', e.target.value)} placeholder={T('ex.societe')} autoComplete="organization" style={fieldStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Email professionnel <span style={{ color: accent }}>*</span></label>
-            <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="Ex : marie@entreprise.com" autoComplete="email" inputMode="email" style={fieldStyle} required />
+            <label style={labelStyle}>{T('form.email')} <span style={{ color: accent }}>*</span></label>
+            <input type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder={T('ex.email')} autoComplete="email" inputMode="email" style={fieldStyle} required />
           </div>
           <div>
             {/* Téléphone facultatif depuis le 12 octobre 2026. Sur les 25 formulaires
                 abandonnés, le nom était rempli à 100 %, la société à 76 %, l'email à
                 84 % — et le téléphone à 28 % seulement. Obligatoire, il bloquait
                 l'envoi de gens qui avaient tout rempli par ailleurs. */}
-            <label style={labelStyle}>Téléphone <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0, opacity: 0.6 }}>(facultatif)</span></label>
-            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder="Ex : 06 12 34 56 78" autoComplete="tel" inputMode="tel" style={fieldStyle} />
+            <label style={labelStyle}>{T('form.telephone')} <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0, opacity: 0.6 }}>(facultatif)</span></label>
+            <input type="tel" value={data.telephone} onChange={e => set('telephone', e.target.value)} placeholder={T('ex.telephone')} autoComplete="tel" inputMode="tel" style={fieldStyle} />
           </div>
         </div>
       </div>
@@ -509,7 +529,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
           <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', flex: 1 }}>
             {prestationLabel}
           </p>
-          <button type="button" onClick={onEditPrestation} aria-label="Modifier la prestation" style={pencilStyle}>
+          <button type="button" onClick={onEditPrestation} aria-label={T('devis.modifier')} style={pencilStyle}>
             <PencilIcon />
           </button>
         </div>
@@ -567,6 +587,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function Contact() {
+  const langue = useLangue()
   // Thème rose Octobre Rose : actif sur TOUTE visite du formulaire pendant la
   // période de campagne (lib/campagneOctobreRose.js), quel que soit le point
   // d'entrée — plus besoin du lien ?theme=octobre-rose pour l'obtenir.
@@ -607,9 +628,9 @@ export default function Contact() {
 
   function exitMessage() {
     const s = stepForExitRef.current
-    if (s >= 3) return 'Vous y êtes presque, il ne reste que l\'envoi de votre demande.'
-    if (s === 2) return 'Encore une petite étape avant de recevoir votre devis.'
-    return 'Encore deux petites étapes avant de recevoir votre devis personnalisé.'
+    if (s >= 3) return t('devis.presque', langue)
+    if (s === 2) return t('devis.resteUne', langue)
+    return t('devis.resteDeux', langue)
   }
 
   useEffect(() => {
@@ -968,7 +989,7 @@ export default function Contact() {
           <div style={{ position: 'fixed', inset: 0, background: 'rgba(17,17,17,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '24px' }}>
             <div style={{ background: '#FFFFFF', maxWidth: '380px', width: '100%', padding: '32px 28px', textAlign: 'center', borderRadius: '4px' }}>
               <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.2 }}>
-                Attendez !
+                {t('devis.attendez', langue)}
               </p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13.5px', color: 'rgba(17,17,17,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
                 {exitMessage()}
@@ -978,13 +999,13 @@ export default function Contact() {
                 onClick={() => setShowExitModal(false)}
                 style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: accent, border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
               >
-                Continuer mon devis
+                {t('devis.continuer', langue)}
               </button>
               <a
                 href="/"
                 style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', color: 'rgba(17,17,17,0.45)', textDecoration: 'underline', padding: '4px' }}
               >
-                Quitter quand même
+                {t('devis.quitter', langue)}
               </a>
             </div>
           </div>
@@ -1010,10 +1031,10 @@ export default function Contact() {
       {/* Sur mobile, le pied de page complet est masqué : il commençait avant
           la fin du premier écran et offrait une sortie avant même que le
           visiteur ait choisi son occasion. On garde les liens obligatoires. */}
-      <nav className="devis-legal" aria-label="Informations légales">
-        <a href="/mentions-legales">Mentions légales</a>
-        <a href="/cgv">CGV</a>
-        <a href="/confidentialite">Confidentialité</a>
+      <nav className="devis-legal" aria-label={t('legal.infos', langue)}>
+        <a href="/mentions-legales">{t('legal.mentions', langue)}</a>
+        <a href="/cgv">{t('legal.cgv', langue)}</a>
+        <a href="/confidentialite">{t('legal.confidentialite', langue)}</a>
       </nav>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
