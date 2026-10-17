@@ -136,7 +136,7 @@ export default function CoffretsCadeaux() {
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Coffrets cadeaux' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Coffrets cadeaux' }]} jsonLd={false} />
 
 
         <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>

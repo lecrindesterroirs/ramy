@@ -187,7 +187,7 @@ export default function APartager() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Buffet à partager' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Buffet à partager' }]} jsonLd={false} />
 
 
 

@@ -60,7 +60,7 @@ export default function EvenementsSaisonniers() {
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers' }]} jsonLd={false} />
 
         {/* Grille événements */}
         <div

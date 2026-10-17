@@ -139,7 +139,14 @@ export default function PromoBanner() {
           background: 'none',
           border: 'none',
           cursor: 'pointer',
-          padding: '6px',
+          /* 44x44 de zone tactile (la croix reste visuellement petite) :
+             elle faisait 23x23, sous le minimum recommandé. */
+          padding: '0',
+          width: '44px',
+          height: '44px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           lineHeight: 0,
           color: CAMPAGNE.encre,
           opacity: 0.55,
@@ -167,7 +174,7 @@ export default function PromoBanner() {
           .promo-long { display: none; }
           .promo-short { display: inline; }
           .promo-banner-cta { display: none; }
-          .promo-banner-text { font-size: 10px !important; letter-spacing: .06em !important; }
+          .promo-banner-text { font-size: 11px !important; letter-spacing: .06em !important; }
           .promo-banner-close { right: 12px; }
         }
         @media (prefers-reduced-motion: reduce) {

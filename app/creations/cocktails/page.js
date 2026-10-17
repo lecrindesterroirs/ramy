@@ -185,7 +185,7 @@ export default function Cocktails() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails' }]} jsonLd={false} />
 
 
 

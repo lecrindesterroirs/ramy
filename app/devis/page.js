@@ -991,19 +991,30 @@ export default function Contact() {
         )}
       </main>
 
-      <LogosSection
-        subtitle="Et pourquoi pas vous ?"
-        style={{ paddingBottom: '56px' }}
-      />
+      <div className="devis-preuves">
+        <LogosSection
+          subtitle="Et pourquoi pas vous ?"
+          style={{ paddingBottom: '56px' }}
+        />
+      </div>
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageLd('/devis', 'Demander un devis, L\'Écrin Traiteur')) }}
       />
 
-      <div ref={logosRef}>
+      <div ref={logosRef} className="devis-pied">
         <Footer />
       </div>
+
+      {/* Sur mobile, le pied de page complet est masqué : il commençait avant
+          la fin du premier écran et offrait une sortie avant même que le
+          visiteur ait choisi son occasion. On garde les liens obligatoires. */}
+      <nav className="devis-legal" aria-label="Informations légales">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/cgv">CGV</a>
+        <a href="/confidentialite">Confidentialité</a>
+      </nav>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         input::placeholder, textarea::placeholder { color: rgba(17,17,17,0.55); }
@@ -1027,6 +1038,20 @@ export default function Contact() {
           .step2-inner { padding: 0 16px !important; max-width: 100% !important; }
           .step2-row { grid-template-columns: 1fr !important; }
           .step3-grid { grid-template-columns: 1fr !important; gap: 16px !important; padding: 0 16px !important; max-width: 100% !important; }
+          /* À l'étape 1 la barre fixe du bas est masquée : les 96px qui la
+             dégageaient ne servent plus qu'à creuser un trou sous les cartes. */
+          body.devis-step-1 .devis-content { padding-bottom: 24px !important; }
+          .devis-preuves, .devis-pied { display: none !important; }
+          .devis-legal { display: flex !important; }
+        }
+        .devis-legal {
+          display: none; gap: 20px; justify-content: center; flex-wrap: wrap;
+          padding: 28px 20px calc(28px + env(safe-area-inset-bottom, 0px));
+          border-top: 1px solid rgba(17,17,17,0.08);
+        }
+        .devis-legal a {
+          font-family: 'Neue Montreal', sans-serif; font-size: 11px;
+          letter-spacing: 0.06em; color: rgba(17,17,17,0.45); text-decoration: none;
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .step2-inner { max-width: 100% !important; padding: 0 40px !important; }

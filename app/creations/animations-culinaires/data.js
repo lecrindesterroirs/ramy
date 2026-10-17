@@ -41,7 +41,7 @@ export const ANIMATIONS = [
       <h2>Installer un bar à café à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès électrique. On installe la machine et le comptoir, on démonte à la fin, vous n'avez rien à gérer. Idéal pour un petit-déjeuner d'accueil, un salon ou une journée collaborateurs. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'b2', univers: 'brunch', nom: 'Location de Machine Expresso Professionnelle en Entreprise', img: '/prod-machine-expresso.png',
+  { id: 'b2', univers: 'brunch', nom: 'Location de Machine Expresso Professionnelle en Entreprise', img: '/prod-machine-expresso.webp',
     description: 'Une machine à expresso professionnelle installée pour un café de qualité en libre-service.',
     compo: ['Espresso', 'Lungo', 'Ristretto', 'Décaféiné', 'Sélection de capsules premium', 'Gobelets, sucres & touillettes'],
     article: `
@@ -333,7 +333,7 @@ export const ANIMATIONS = [
     ` },
 
   // ── Animations Sucrées (Pop Corn, Barbe à Papa) ──
-  { id: 'do6', univers: 'douceurs', nom: 'Atelier Pop Corn Sucré', img: '/prod-popcorn.png',
+  { id: 'do6', univers: 'douceurs', nom: 'Atelier Pop Corn Sucré', img: '/prod-popcorn.webp',
     description: 'Pop corn frais préparé minute avec garnitures sucrées.', compo: ['Pop corn nature', 'Caramel', 'Chocolat', 'Cacahuète', 'Sucre glace'],
     article: `
       <h2>Un atelier pop corn sucré pour vos pauses et événements d'entreprise à Paris</h2>
@@ -343,7 +343,7 @@ export const ANIMATIONS = [
       <h2>Installer un atelier pop corn à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un petit-déjeuner convivial, une pause de l'après-midi ou un événement ludique. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'do7', univers: 'douceurs', nom: 'Atelier Barbe à Papa', img: '/prod-barbe-papa.png',
+  { id: 'do7', univers: 'douceurs', nom: 'Atelier Barbe à Papa', img: '/prod-barbe-papa.webp',
     description: 'Barbe à papa fraîche préparée devant les invités.', compo: ['Sucre rosé', 'Sucre bleu', 'Sucre blanc', 'Sucre jaune'],
     article: `
       <h2>Un atelier barbe à papa pour vos événements d'entreprise à Paris</h2>

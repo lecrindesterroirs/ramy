@@ -6,8 +6,24 @@ import Link from 'next/link'
 // variant='bar' (défaut) : bandeau pleine largeur avec padding page (72px).
 // variant='inline'       : juste le fil, sans wrapper, pour s'aligner sur une
 //                          colonne parente (ex. article de blog, 760px centré).
-export default function Breadcrumb({ items = [], variant = 'bar', maxWidth = '1280px' }) {
+export default function Breadcrumb({ items = [], variant = 'bar', maxWidth = '1280px', jsonLd = true }) {
   if (!items.length) return null
+
+  // Balisage BreadcrumbList posé ici, avec le fil visible, plutôt que page par
+  // page : il n'était présent que sur 71 pages sur 344 alors que le fil, lui,
+  // s'affiche partout. C'est ce que Google utilise pour le chemin sous le
+  // titre dans les résultats, et ce que les IA lisent pour situer une page.
+  // jsonLd={false} sur les pages qui le déclarent déjà de leur côté.
+  const ld = jsonLd ? {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.label,
+      ...(c.href ? { item: `https://www.lecrin-traiteur.fr${c.href}` } : {}),
+    })),
+  } : null
 
   const nav = (
     <nav aria-label="Fil d'Ariane" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
@@ -24,11 +40,16 @@ export default function Breadcrumb({ items = [], variant = 'bar', maxWidth = '12
     </nav>
   )
 
-  if (variant === 'inline') return nav
+  const balisage = ld
+    ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+    : null
+
+  if (variant === 'inline') return <>{nav}{balisage}</>
 
   return (
     <div className="breadcrumb-bar" style={{ maxWidth, margin: '0 auto', padding: '24px 72px 0' }}>
       {nav}
+      {balisage}
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 1024px) and (min-width: 769px) { .breadcrumb-bar { padding: 20px 40px 0 !important; } }
         @media (max-width: 768px) { .breadcrumb-bar { padding: 20px 24px 0 !important; } }

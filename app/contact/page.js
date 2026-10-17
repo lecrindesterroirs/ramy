@@ -250,7 +250,10 @@ export default function Contact() {
                 </div>
                 <input name="email" type="email" value={form.email} onChange={handle} placeholder="Email professionnel *" aria-label="Email professionnel" autoComplete="email" inputMode="email" required aria-required="true" style={inputStyle} />
                 <div className="form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input name="telephone" type="tel" value={form.telephone} onChange={handle} placeholder="Téléphone *" aria-label="Téléphone" autoComplete="tel" inputMode="tel" required aria-required="true" style={inputStyle} />
+                  {/* Facultatif, comme sur /devis : c'était la seule différence entre les
+                      deux formulaires, et le téléphone est ce que les visiteurs
+                      rechignent le plus à donner. On les rappelle par mail. */}
+                  <input name="telephone" type="tel" value={form.telephone} onChange={handle} placeholder="Téléphone (facultatif)" aria-label="Téléphone (facultatif)" autoComplete="tel" inputMode="tel" style={inputStyle} />
                   <div style={{ position: 'relative' }}>
                     <select name="type" value={form.type} onChange={handle} required aria-required="true" aria-label="Type d'événement" style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
                       <option value="" disabled>Type d'événement *</option>

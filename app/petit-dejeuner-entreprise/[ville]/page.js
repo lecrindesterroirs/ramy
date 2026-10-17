@@ -93,7 +93,7 @@ export default function PdjVillePage() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' }, { label: city.name }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Petits-déjeuners & Pauses', href: '/creations/petits-dejeuners-et-pauses' }, { label: city.name }]} jsonLd={false} />
 
         {/* ── Formules & tarifs ── */}
         <div className="pdj-formules" style={{ maxWidth: '1024px', margin: '0 auto', padding: '64px 72px 0' }}>

@@ -31,7 +31,7 @@ const SEO_ARTICLE = `
 const FAMILLES = [
   { nom: 'Macarons',          desc: 'Couleurs, parfums et marquage.',            img: '/prod-macarons.webp' },
   { nom: 'Chocolats',         desc: 'Carrés, plaques et assortiments.',          img: '/perso-chocolats-bouygues.webp' },
-  { nom: 'Cookies',           desc: 'Saveurs, emballage et personnalisation.',   img: '/prod-cookie-personnalisation.png' },
+  { nom: 'Cookies',           desc: 'Saveurs, emballage et personnalisation.',   img: '/prod-cookie-personnalisation.webp' },
   { nom: 'Madeleines',        desc: 'Parfums, coffrets et étiquettes.',          img: '/madeleine-home.webp' },
   { nom: 'Number Cake',       desc: 'Chiffres et lettres en format sur-mesure.', img: '/perso-number-cake.webp' },
   { nom: 'Packaging',         desc: 'Boîtes, rubans, stickers et finitions + Cartes de remerciement et messages sur-mesure.', img: '/perso-packaging.webp' },
@@ -79,7 +79,7 @@ export default function Personnalisation() {
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Personnalisation' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Personnalisation' }]} jsonLd={false} />
 
         {/* ── Ce que nous personnalisons ── */}
         <div id="familles" style={{ textAlign: 'center', padding: '80px 24px 0' }}>

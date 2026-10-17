@@ -1,7 +1,7 @@
 export const metadata = {
   alternates: { canonical: '/univers/cas-clients' },
-  title: "Cas clients : petits-déjeuners et séminaires livrés",
-  description: "Trois prestations réelles de L'Écrin Traiteur : les petits-déjeuners de réunion de Bain & Company, 100 personnes chez Sia Partners, un séminaire de 3 jours dans le Val-d'Oise. Quantités et horaires.",
+  title: "Cas clients : nos prestations réelles",
+  description: "Trois prestations réelles : les petits-déjeuners de Bain & Company, 100 personnes chez Sia Partners, un séminaire de 3 jours. Quantités et horaires.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Cas clients | L'Écrin Traiteur",

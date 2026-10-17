@@ -102,7 +102,7 @@ export default function PlateauxVillePage() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux repas', href: '/creations/plateaux-repas' }, { label: city.name }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux repas', href: '/creations/plateaux-repas' }, { label: city.name }]} jsonLd={false} />
 
         {/* ── Trois niveaux de prix ── */}
         <div className="plv-formules" style={{ maxWidth: '1100px', margin: '0 auto', padding: '64px 72px 0' }}>

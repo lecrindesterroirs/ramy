@@ -250,7 +250,7 @@ function PlateauxRepasInner() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux repas' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Plateaux repas' }]} jsonLd={false} />
 
 
 

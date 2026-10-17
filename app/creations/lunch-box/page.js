@@ -216,7 +216,7 @@ function LunchBoxInner() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Lunch Box' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Lunch Box' }]} jsonLd={false} />
 
 
 

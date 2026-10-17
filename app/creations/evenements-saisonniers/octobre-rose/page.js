@@ -73,7 +73,7 @@ export default function OctobreRosePage() {
 
         {/* ── Hero 2 colonnes (fil d'Ariane inclus, pas de bande blanche entre navbar et section rose) ── */}
         <div className="or-hero" style={{ background: ROSE_PALE, position: 'relative', overflow: 'hidden' }}>
-          <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
+          <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} jsonLd={false} />
           <div className="or-hero-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
 
             <div>

@@ -332,7 +332,7 @@ export const evenements = [
     img: '/halloween-macaron-potiron.webp',
     imgAlt: "Macaron noir d'Halloween, coque au cacao et cœur vanille potiron épicé",
     imgPos: 'center 42%',
-    descCourt: "Le macaron noir vanille cœur potiron épicé, la madeleine citrouille au chocolat blanc et orange, cookies maison et un cocktail sans alcool.",
+    descCourt: "Le macaron noir vanille cœur potiron épicé, la madeleine citrouille chocolat blanc et orange, cookies maison, cocktail sans alcool.",
     desc: "Un goûter festif qui sort de l'ordinaire, mené par notre macaron noir à la vanille et au cœur de potiron épicé. Autour : la madeleine citrouille au chocolat blanc et à l'orange, des cookies maison, des brochettes de fruits frais, ou un cocktail de 8 pièces en afterwork. Halal et sans porc, livré dès 6h30. Un moment décalé, bien exécuté.",
     produits: [
       'Macaron noir, vanille et cœur potiron épicé',

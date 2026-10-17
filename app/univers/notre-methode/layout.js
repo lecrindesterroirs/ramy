@@ -1,7 +1,7 @@
 export const metadata = {
   alternates: { canonical: '/univers/notre-methode' },
-  title: "Notre méthode : comment nous écrivons nos guides",
-  description: "Qui écrit les guides du Journal de L'Écrin Traiteur, d'où viennent les prix et les quantités, avec quelle aide d'intelligence artificielle, et comment nous corrigeons.",
+  title: "Notre méthode d'écriture",
+  description: "Qui écrit nos guides, d'où viennent les prix et les quantités, quelle part revient à l'intelligence artificielle, et comment nous corrigeons.",
   openGraph: {
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: "L'Écrin Traiteur, traiteur d'entreprise à Paris & Île-de-France" }],
     title: "Notre méthode | L'Écrin Traiteur",

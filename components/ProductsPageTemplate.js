@@ -90,7 +90,8 @@ export default function ProductsPageTemplate({
 
         {/* ── Fil d'Ariane visible (Accueil › Catégorie) ── */}
         <div className="page-breadcrumb" style={{ maxWidth: '1440px', margin: '0 auto', padding: '24px 72px 0' }}>
-          <Breadcrumb variant="inline" items={[{ label: 'Accueil', href: '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
+          {/* jsonLd={false} : le BreadcrumbList de ces pages est porté par CategoryJsonLd. */}
+          <Breadcrumb variant="inline" jsonLd={false} items={[{ label: 'Accueil', href: '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
         </div>
 
         {/* ── Bloc réponse optionnel (prix, délai, commande) avant la grille ── */}

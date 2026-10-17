@@ -38,7 +38,7 @@ export default function EvenementDetail() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: bandeau ? 'calc(var(--banner-h) + var(--nav-h))' : 'var(--nav-h)' }}>
 
-        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} />
+        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} jsonLd={false} />
 
         {/* En-tête — écriture de fiche : monogramme, filet doré, titre serif */}
         <div className="ev-header" style={{ background: 'var(--bg-secondary)', padding: '52px 72px 46px' }}>

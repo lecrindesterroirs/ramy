@@ -114,7 +114,7 @@ export default function TraiteurHalalSousPage() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Traiteur halal', href: '/traiteur-halal' }, { label: page.breadcrumbLabel }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Traiteur halal', href: '/traiteur-halal' }, { label: page.breadcrumbLabel }]} jsonLd={false} />
 
         {/* ── Bloc-réponse : la question posée en clair (SEO + GEO) ── */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '64px 24px 0' }}>

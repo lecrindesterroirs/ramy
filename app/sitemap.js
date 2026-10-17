@@ -13,6 +13,7 @@ import { SLUGS as APERITIFS_SLUGS } from './creations/plateaux-aperitifs/[slug]/
 import { SLUGS as PAUSES_SLUGS } from './creations/pauses-gourmandes/[slug]/layout'
 import { SLUGS as COCKTAILS_SLUGS } from './creations/cocktails/[slug]/layout'
 import { ANIMATIONS, slugAnim } from './creations/animations-culinaires/data'
+import { ARTISANS } from '../lib/artisansData'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
 // Date de dernière mise à jour éditoriale, figée volontairement (ne pas remettre
@@ -111,6 +112,11 @@ export default function sitemap() {
     ...PAUSES_SLUGS.map(s => url(`/creations/pauses-gourmandes/${s}`, 0.80, 'monthly')),
     ...COCKTAILS_SLUGS.map(s => url(`/creations/cocktails/${s}`, 0.80, 'monthly')),
     ...ANIMATIONS.map(a => url(`/creations/animations-culinaires/${slugAnim(a.nom)}`, 0.78, 'monthly')),
+    // Fiches artisans : fournisseurs nommés et vérifiables (un MOF parmi eux),
+    // c'est le contenu que Google et les moteurs d'IA valorisent le plus. Elles
+    // étaient en ligne et liées, mais absentes du sitemap.
+    ...ARTISANS.map(a => url(`/univers/nos-artisans/${a.slug}`, 0.70, 'monthly')),
+    url('/contact/rendez-vous', 0.60, 'monthly'),
   ]
 
   // ── Occasions / Pour vos événements ──────────────────────────────

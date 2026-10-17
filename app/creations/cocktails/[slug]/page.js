@@ -95,7 +95,7 @@ export default function CocktailDetail() {
       <Navbar showBanner={true} />
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
-        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails', href: '/creations/cocktails' }, { label: nomFormule }]} />
+        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Cocktails', href: '/creations/cocktails' }, { label: nomFormule }]} jsonLd={false} />
 
         {/* ── En-tête de la formule ── */}
         <section style={{ background: '#F5F1E8', padding: '56px 0 64px' }}>

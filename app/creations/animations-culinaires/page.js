@@ -176,7 +176,7 @@ function AnimationsCulinairesInner() {
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Animations culinaires' }]} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Animations culinaires' }]} jsonLd={false} />
 
 
         <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
