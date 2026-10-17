@@ -2,6 +2,10 @@
 
 **17 octobre 2026** — 344 pages passées au crible en production, plus un contrôle visuel sur mobile (375 px), tablette (768 px) et ordinateur (1440 px).
 
+> **État au 17 octobre, fin de journée : tout est corrigé et en ligne, sauf les chiffres de confiance (A4), laissés en l'état sur décision de Ramy.**
+>
+> Deux points de la première version étaient de fausses alertes, levées en vérifiant le rendu réel plutôt que les fichiers sources. Ils sont barrés ci-dessous avec l'explication.
+
 Tout ce qui suit est mesuré, pas estimé. Chaque chiffre vient d'un relevé fait aujourd'hui sur le site en ligne, dans PostHog ou dans l'OS.
 
 ---
@@ -32,24 +36,13 @@ Tout ce qui suit est mesuré, pas estimé. Chaque chiffre vient d'un relevé fai
 
 ## A. Les quatre choses à corriger en priorité
 
-### A1. Le titre de l'accueil est illisible sur sa photo
+### ~~A1. Le titre de l'accueil est illisible sur sa photo~~ — FAUSSE ALERTE
 
-Mesuré sur chaque image de hero, en calculant le contraste du texte blanc sur la zone exacte où le titre se pose.
+J'avais mesuré la luminance des photos de hero **brutes**, en supposant un titre blanc posé directement dessus. En vérifiant le rendu réel : **les onze hero ont tous un voile**. L'accueil porte un voile crème à 95 % et son titre est **sombre**, pas blanc, avec une ombre claire. Les pages de la carte portent un dégradé noir (0,3 → 0,55 ou 0,68 → 0,5) sous un titre blanc.
 
-| Image | Contraste du titre blanc | Verdict |
-|---|---|---|
-| `hero-bg2.webp` (**accueil**) | **2,34** | sous le minimum de 3,0 |
-| `hero-plateaux-essentiel.webp` | 3,06 | passe pour le gros titre, pas pour le sur-titre |
-| `hero-petitdej.webp` | 3,08 | idem |
-| `img-reception.webp` | 3,31 | idem |
-| `hero-pauses-gourmandes.webp` | 3,45 | idem |
-| `hero-a-partager.webp` | 3,69 | idem |
-| `buffet-mediterraneen.webp` | 3,76 | idem |
-| Les 4 autres | 4,8 à 9,4 | bon |
+Recalculé sur le cas le plus défavorable — le sur-titre à 11 px, blanc à 65 % d'opacité, sur la photo la plus claire : **contraste de 4,9 à 6,3**, au-dessus du seuil de 4,5. Rien à corriger.
 
-Le sur-titre (« DÉJEUNER · PARIS & ÎLE-DE-FRANCE », 11 px blanc) demande 4,5 de contraste : **sept pages sur onze ne l'atteignent pas**. Sur l'accueil, même le grand titre est en dessous du seuil.
-
-**Correction** : un dégradé sombre discret au bas des images de hero (de transparent à `rgba(0,0,0,0.45)`), ou une ombre portée sur le texte. Invisible à l'œil sur les photos déjà sombres, décisif sur les claires.
+**Leçon** : mesurer le pixel affiché, pas le fichier source.
 
 ### A2. Sur mobile, le pied de page arrive avant la fin du formulaire de devis
 
@@ -64,7 +57,7 @@ Le visiteur qui ouvre le formulaire depuis son téléphone voit les cartes, puis
 
 Rappel du relevé PostHog : sur 41 visites de `/devis` en 60 jours, environ la moitié n'a jamais dépassé la première étape.
 
-**Correction** : retirer le pied de page et le bandeau de confiance de `/devis` sur mobile, resserrer l'espace sous les cartes. L'événement `devis_etape` posé ce matin dira dans une semaine si c'est bien là que ça casse.
+**✅ Corrigé et en ligne.** Pied de page et bandeau logos masqués sous 768 px, remplacés par une ligne de trois liens légaux. Les 96 px qui dégageaient la barre fixe du bas sont retirés à l'étape 1, où cette barre est masquée. Vérifié en production : la page passe de **2 422 px à 517 px**, les cartes finissent à 386 px et la ligne légale est à 442 px — tout tient dans le premier écran. L'événement `devis_etape` dira dans une semaine si c'était bien là que ça cassait.
 
 ### A3. 34 pages en ligne sont absentes du sitemap
 
@@ -78,7 +71,7 @@ La fiche `madeleines-octobre-rose` reçoit **17 liens internes** et n'est pas da
 
 C'est dommage deux fois. Les fiches artisans sont exactement le contenu que Google et les moteurs d'IA valorisent le plus : des fournisseurs nommés, vérifiables, un Meilleur Ouvrier de France parmi eux. C'est ce qui distingue un vrai traiteur d'un site de photos.
 
-**Correction** : ajouter ces deux familles de routes au générateur de sitemap.
+**✅ Corrigé et en ligne. Sitemap : 344 → 391 URLs.** Les fiches pause goûter étaient déclarées par une liste tenue à la main qui n'en connaissait que 12 sur 35 ; les données sont sorties de `page.js` (un `export const` dans un fichier `'use client'` revient en proxy côté serveur) vers un `data.js` dont le layout dérive slugs et métadonnées. Les 10 fiches artisans et `/contact/rendez-vous` ont été ajoutées. Au passage, 13 pages que le sitemap en ligne ignorait encore sont revenues, dont **les cinq pages anglaises** `/en/…` et `/tarifs`.
 
 ### A4. Les chiffres de confiance ne correspondent pas à l'OS
 
@@ -99,13 +92,15 @@ Je ne touche à rien : tu comptes peut-être autrement (devis envoyés, personne
 
 Ils sont centralisés dans `lib/site.js` (`PROOF`), un seul endroit à changer.
 
+**⏸ Laissé en l'état sur ta décision du 17 octobre.**
+
 ---
 
 ## B. Incohérences
 
-### B1. Le téléphone est obligatoire sur `/contact`, facultatif sur `/devis`
+### B1. ~~Le téléphone est obligatoire sur `/contact`~~ — ✅ corrigé
 
-Deux formulaires, deux règles. Le champ téléphone a été rendu facultatif sur `/devis` pour réduire la friction ; `/contact` l'exige toujours. Même remarque pour « Société », obligatoire des deux côtés.
+Il est désormais facultatif des deux côtés, avec le même libellé. Le serveur n'exigeait déjà que le nom et l'email. « Société » reste obligatoire sur les deux.
 
 ### B2. `llms.txt` ne porte que 3 des 10 prix de départ
 
@@ -113,9 +108,11 @@ Depuis aujourd'hui, chaque page de la carte affiche son prix de départ. `llms.t
 
 C'est précisément ce qu'une IA cherche quand on lui demande « combien coûte un plateau repas livré à Paris ».
 
-### B3. Une image étirée sur tablette
+**✅ Corrigé** : les sept prix manquants sont dans `llms.txt`, et les six familles concernées ont leur `Offer` dans le balisage `LocalBusiness`.
 
-`prod-cake-marbre.webp` est affichée sur 736 px alors que le fichier n'en fait que 491 : elle est floue à cette largeur.
+### ~~B3. Une image étirée sur tablette~~ — FAUSSE ALERTE
+
+Ma sonde avait attrapé l'image **en cours de chargement** : le navigateur affichait une variante basse définition le temps que la bonne arrive. Recontrôlé après chargement complet : **zéro image étirée** sur la page. Le fichier source fait 1024 × 1024, largement assez.
 
 ---
 
@@ -132,6 +129,14 @@ C'est précisément ce qu'une IA cherche quand on lui demande « combien coûte 
 | C7 | **9 images sources entre 1,6 et 2,9 Mo**, dont 8 en PNG (popcorn, barbe à papa, cookie géant, crêpes…) | `/public` |
 | C8 | Balisage sans `vatID`, `taxID`, `paymentAccepted`, `knowsLanguage` | `LocalBusiness` |
 | C9 | Contraste à 4,48 pour 4,5 requis sur les descriptions de catégorie (12 px) | accueil |
+
+**Fait** : C1 (zone tactile portée à 44 × 44), C2 (bandeau à 11 px), C3 (après décodage des entités HTML, 2 titres dépassaient, pas 15 — corrigés), C4 (4 descriptions ramenées sous 165), C5 (**71 → 382 pages sur 394**, zéro doublon), C7 (**19,9 Mo → 1,6 Mo**), C8 (`vatID`, `taxID`, `legalName`, `paymentAccepted`, `currenciesAccepted`, `knowsLanguage` + les 6 offres manquantes ; au passage le minimum lunch box passe de 19,90 à **18,90 €**, le vrai prix).
+
+**Reste** : C6, les 239 pages qui partagent la même image de partage — il faut produire des visuels, ce n'est pas qu'une ligne de code. C9, un contraste à 4,48 pour 4,5 requis : c'est le gris de la charte, à trancher avec toi.
+
+### Trouvé pendant les corrections : Leadfeeder était bloqué
+
+La console de production renvoyait une erreur de Content-Security-Policy à chaque page : le script de Leadfeeder est servi depuis `cdn.ldnfrpl.com`, un domaine absent de la politique. **Il était bloqué à chaque chargement, sans rien signaler au visiteur — l'outil ne collectait rien.** Domaine autorisé, vérifié en production : le script se charge et la balise de suivi part.
 
 ---
 
