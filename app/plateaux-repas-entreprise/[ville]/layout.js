@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+import { cheminsVillesEn } from '../../../lib/en/villes'
 import { ogImages } from '../../../lib/og'
 import { PLATEAUX_VILLES } from '../../../lib/plateauxVillesData'
 
@@ -27,9 +29,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/plateaux-repas-entreprise/${city.slug}`,
-    },
+    alternates: alternatesPour(`/plateaux-repas-entreprise/${city.slug}`, { en: cheminsVillesEn().includes(`/plateaux-repas-entreprise/${city.slug}`) }),
   }
 }
 

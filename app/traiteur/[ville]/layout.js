@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+import { cheminsVillesEn } from '../../../lib/en/villes'
 import { ogImages } from '../../../lib/og'
 import { CITIES } from '../../../lib/citiesData'
 
@@ -40,9 +42,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/traiteur/${city.slug}`,
-    },
+    alternates: alternatesPour(`/traiteur/${city.slug}`, { en: cheminsVillesEn().includes(`/traiteur/${city.slug}`) }),
   }
 }
 

@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+import { cheminsVillesEn } from '../../../lib/en/villes'
 import { ogImages } from '../../../lib/og'
 import { PDJ_VILLES } from '../../../lib/pdjVillesData'
 
@@ -33,9 +35,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/petit-dejeuner-entreprise/${city.slug}`,
-    },
+    alternates: alternatesPour(`/petit-dejeuner-entreprise/${city.slug}`, { en: cheminsVillesEn().includes(`/petit-dejeuner-entreprise/${city.slug}`) }),
   }
 }
 
