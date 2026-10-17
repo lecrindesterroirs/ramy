@@ -112,7 +112,7 @@ export default function CGV() {
           L'Écrin Traiteur décline toute responsabilité en cas de non-respect de ces conditions de conservation par le client.
         </p>
         <p style={pStyle}>
-          La liste des allergènes présents dans nos produits est disponible sur demande à l'adresse commercial@lecrin-traiteur.fr. Il appartient au client de nous informer de tout régime alimentaire particulier ou allergie lors de la commande.
+          Un tableau des allergènes présents dans les produits commandés (les 14 allergènes réglementaires) est joint au devis et au bon de livraison ; il est aussi disponible à l'adresse commercial@lecrin-traiteur.fr. Il appartient au client de nous informer de tout régime alimentaire particulier ou allergie lors de la commande.
         </p>
       </div>
 
