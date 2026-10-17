@@ -19,7 +19,7 @@ export const FAQ_PAUSES = [
     answer: "Oui, plusieurs équipes ont un goûter hebdomadaire. Pour les commandes régulières, un tarif préférentiel est possible sur devis : précisez la fréquence et l'effectif au moment de la demande.",
   },
   {
-    name: "Proposez-vous des goûters halal, vegan ou sans gluten ?",
-    answer: "Toute la carte est halal et sans porc par défaut. Les brochettes et les corbeilles de fruits frais sont vegan et sans gluten, les compotes sont vegan et le banana bread est sans gluten. Précisez vos contraintes au moment du devis.",
+    name: "Proposez-vous des goûters vegan ou sans gluten ?",
+    answer: "Oui. Les brochettes et les corbeilles de fruits frais sont vegan et sans gluten, les compotes sont vegan et le banana bread est sans gluten. Précisez vos contraintes au moment du devis.",
   },
 ]

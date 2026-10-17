@@ -69,4 +69,6 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 
 - **L'Écrin Traiteur** : écrit ainsi, avec l'accent et l'apostrophe. Variantes admises : L'Écrin, L'Écrin des Terroirs (société).
 - **Homonymes à écarter** : « L'écrin de saveurs » (autre traiteur, vu dans Google le 27/09/2026) ; le parc national des Écrins.
-- **Fournisseurs nommés sur le site** : Mado Paris, Alain Milliat, Maison Marques, Ferme de Viltain, Mariage Frères, Laura Todd (cookies ; fournisseur actif d'après le coffre, 4 commandes au 13/10/2026).
+- **Fournisseurs nommés sur le site** : Mado Paris, Alain Milliat, Maison Marques, Ferme de Viltain, Mariage Frères, Laura Todd (cookies ; fournisseur actif d'après le coffre, 4 commandes au 13/10/2026), Pierre Morel (macarons, confirmé par Ramy), Philippe Urraca (choux, MOF ; autorisé par Ramy le 17/10/2026), Options (location de vaisselle, autorisé le 17/10/2026).
+- **Halal et sans porc** : à mettre en avant sur le salé (cocktails, plateaux, lunch box, buffets). Sur le sucré (petit-déjeuner, goûter, pâtisseries) ce n'est pas pertinent : ne pas le répéter (dit par Ramy le 17/10/2026).
+- **Cookies Laura Todd** : extrêmement fins. **Crêpes** : mini pots de confiture Alain Milliat inclus.
