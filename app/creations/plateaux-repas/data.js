@@ -50,57 +50,57 @@ export const PRODUITS = [
     id: 'e3', collection: 'essentiel', categorie: 'vegetarien', nom: 'La Provençale', img: '/plateau-provencal.webp',
     seoTitle: `La Provençale : le plateau repas végétarien aux accents du sud pour vos déjeuners à Paris`,
     seoHtml: `
-      <p>La Provençale sent bon le sud : caviar d'aubergine et focaccia au romarin en entrée, pâtes au pesto, mozzarella et tomates confites en plat, panna cotta aux fruits rouges en dessert. Un plateau repas végétarien de la collection Essentiel, préparé le matin même, pour un déjeuner d'entreprise qui change de l'ordinaire.</p>
+      <p>La Provençale sent bon le sud : salade fraîcheur de tomates, concombre et oignon rouge à l'huile d'olive en entrée, pâtes au pesto, mozzarella et tomates confites en plat, panna cotta aux fruits rouges en dessert. Un plateau repas végétarien de la collection Essentiel, préparé le matin même, pour un déjeuner d'entreprise qui change de l'ordinaire.</p>
       <h2>Le sud dans un plateau individuel</h2>
-      <p>Caviar d'aubergine et focaccia romarin, pâtes au pesto avec mozzarella et tomates confites, panna cotta fruits rouges. Des recettes parfumées, dressées avec soin et montées le jour de la livraison.</p>
+      <p>Salade fraîcheur, pâtes au pesto avec mozzarella et tomates confites, panna cotta fruits rouges. Des recettes parfumées, dressées avec soin et montées le jour de la livraison.</p>
       <h2>Commander La Provençale à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
-    entree: 'Caviar d\'aubergine & focaccia romarin',
+    entree: 'Salade fraîcheur : tomates, concombre, oignon rouge & huile d\'olive',
     plat: 'Pâtes au pesto, mozzarella & tomates confites',
     dessert: 'Panna Cotta fruits rouges',
   },
   {
     id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'La Champêtre', img: '/plateau-fermier.webp',
-    seoTitle: `La Champêtre : le plateau repas au poulet rôti et boulgour pour vos déjeuners d'entreprise`,
+    seoTitle: `La Champêtre : le plateau repas au poulet et taboulé pour vos déjeuners d'entreprise`,
     seoHtml: `
-      <p>La Champêtre joue la fraîcheur : salade de concombre au yaourt et ciboulette en entrée, émincé de poulet rôti et boulgour aux herbes fraîches en plat, compote pomme et fève tonka en dessert. Un plateau repas de la collection Essentiel, léger et équilibré, idéal pour un déjeuner de travail.</p>
+      <p>La Champêtre joue la fraîcheur : salade de concombre au yaourt et ciboulette en entrée, émincé de poulet et taboulé en plat, salade de fruits frais en dessert. Un plateau repas de la collection Essentiel, léger et équilibré, idéal pour un déjeuner de travail.</p>
       <h2>Léger, frais et rassasiant</h2>
-      <p>Salade de concombre au yaourt et ciboulette, émincé de poulet rôti et boulgour aux herbes fraîches, compote pomme-tonka. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
+      <p>Salade de concombre au yaourt et ciboulette, émincé de poulet et taboulé, salade de fruits frais. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
       <h2>Commander La Champêtre à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30 dans vos locaux. On adapte aux effectifs et aux régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de concombre au yaourt & ciboulette',
-    plat: 'Émincé de poulet rôti & boulgour aux herbes fraîches',
-    dessert: 'Compote pomme & fève tonka',
+    plat: 'Émincé de poulet & taboulé',
+    dessert: 'Salade de fruits frais',
   },
   {
     id: 'e5', collection: 'essentiel', categorie: 'poisson', nom: 'La Boréale', img: '/plateau-nordique.webp',
-    seoTitle: `La Boréale : le plateau repas au saumon fumé pour vos déjeuners d'entreprise à Paris`,
+    seoTitle: `La Boréale : le plateau repas au saumon pour vos déjeuners d'entreprise à Paris`,
     seoHtml: `
-      <p>La Boréale met le saumon à l'honneur : salade de tomates anciennes et basilic en entrée, salade de pommes de terre au saumon fumé et crème citronnée en plat, mousse au chocolat du chef en dessert. Un plateau repas de la collection Essentiel, complet et soigné, pour un déjeuner d'entreprise.</p>
-      <h2>Un plateau autour du saumon fumé</h2>
-      <p>Tomates anciennes et basilic, salade de pommes de terre au saumon fumé et crème citronnée, mousse au chocolat. Des recettes de saison préparées le matin même et dressées en plateau individuel.</p>
+      <p>La Boréale met le saumon à l'honneur : céleri rémoulade en entrée, pommes de terre sautées et dés de saumon poêlés en plat, compote pomme-fraise en dessert. Un plateau repas de la collection Essentiel, complet et soigné, pour un déjeuner d'entreprise.</p>
+      <h2>Un plateau autour du saumon</h2>
+      <p>Céleri rémoulade, pommes de terre sautées et dés de saumon poêlés, compote pomme-fraise. Des recettes de saison préparées le matin même et dressées en plateau individuel.</p>
       <h2>Commander La Boréale à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
-    entree: 'Salade de tomates anciennes & basilic',
-    plat: 'Salade de pommes de terre, saumon fumé & crème citronnée',
-    dessert: 'Mousse au chocolat du Chef',
+    entree: 'Céleri rémoulade',
+    plat: 'Pommes de terre sautées & dés de saumon poêlés',
+    dessert: 'Compote pomme-fraise',
   },
   {
     id: 'e6', collection: 'essentiel', categorie: 'vegetarien', nom: 'La Potagère', img: '/plateau-gourmand.webp',
-    seoTitle: `La Potagère : le plateau repas végétarien aux légumes rôtis pour vos déjeuners à Paris`,
+    seoTitle: `La Potagère : le plateau repas végétarien à la tarte aux légumes pour vos déjeuners à Paris`,
     seoHtml: `
-      <p>La Potagère célèbre le végétal : tartelette pissaladière et jeunes pousses en entrée, salade de lentilles, feta et légumes rôtis en plat, verrine citron et lemon curd en dessert. Un plateau repas végétarien de la collection Essentiel, riche en goût et en textures, pour un déjeuner d'équipe équilibré.</p>
+      <p>La Potagère célèbre le végétal : salade de lentilles et feta en entrée, tarte aux légumes du soleil (courgette, aubergine, carotte, poivrons, oignon) en plat, fromage blanc et granola en dessert. Un plateau repas végétarien de la collection Essentiel, riche en goût et en textures, pour un déjeuner d'équipe équilibré.</p>
       <h2>Le végétal qui rassasie</h2>
-      <p>Tartelette pissaladière, salade de lentilles avec feta et légumes rôtis, verrine citron. Des recettes de saison préparées le matin même et dressées en plateau individuel. Une option végétarienne qui tient au corps.</p>
+      <p>Salade de lentilles et feta, tarte aux légumes du soleil, fromage blanc et granola. Des recettes de saison préparées le matin même et dressées en plateau individuel. Une option végétarienne qui tient au corps.</p>
       <h2>Commander La Potagère à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. On gère effectifs et régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
-    entree: 'Tartelette pissaladière & jeunes pousses',
-    plat: 'Salade de lentilles, feta & légumes rôtis',
-    dessert: 'Verrine Citron / Lemon Curd',
+    entree: 'Salade de lentilles & feta',
+    plat: 'Tarte aux légumes du soleil',
+    dessert: 'Fromage blanc & granola',
   },
 
 ]
