@@ -297,6 +297,12 @@ export default function EvenementDetail() {
                   }}>
                     {section.texte}
                   </p>
+                  {/* Photo facultative sous le paragraphe qu'elle illustre. */}
+                  {section.img && (
+                    <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', marginTop: '24px', overflow: 'hidden', background: '#F8F5EF' }}>
+                      <Image fill sizes="(max-width: 900px) 100vw, 720px" src={section.img} alt={section.imgAlt || ''} style={{ objectFit: 'cover' }} />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

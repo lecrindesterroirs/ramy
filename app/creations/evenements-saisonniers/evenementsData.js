@@ -332,11 +332,11 @@ export const evenements = [
     img: '/halloween-macaron-potiron.webp',
     imgAlt: "Macaron noir d'Halloween, coque au cacao et cœur vanille potiron épicé",
     imgPos: 'center 42%',
-    descCourt: "Le macaron noir vanille cœur potiron épicé, des madeleines aux couleurs de la fête, cookies maison et un cocktail sans alcool.",
-    desc: "Un goûter festif qui sort de l'ordinaire, mené par notre macaron noir à la vanille et au cœur de potiron épicé. Autour : des madeleines aux couleurs de la fête, des cookies maison, des brochettes de fruits frais, ou un cocktail de 8 pièces en afterwork. Halal et sans porc, livré dès 6h30. Un moment décalé, bien exécuté.",
+    descCourt: "Le macaron noir vanille cœur potiron épicé, la madeleine citrouille au chocolat blanc et orange, cookies maison et un cocktail sans alcool.",
+    desc: "Un goûter festif qui sort de l'ordinaire, mené par notre macaron noir à la vanille et au cœur de potiron épicé. Autour : la madeleine citrouille au chocolat blanc et à l'orange, des cookies maison, des brochettes de fruits frais, ou un cocktail de 8 pièces en afterwork. Halal et sans porc, livré dès 6h30. Un moment décalé, bien exécuté.",
     produits: [
       'Macaron noir, vanille et cœur potiron épicé',
-      'Madeleines personnalisées aux couleurs d\'Halloween',
+      'Madeleine citrouille, chocolat blanc et orange',
       'Cookies maison',
       'Brochettes de fruits frais',
       'Carrot cake et cakes maison',
@@ -356,6 +356,12 @@ export const evenements = [
         {
           heading: "Le macaron noir, vanille et cœur potiron épicé",
           texte: "C'est la pièce que nous avons créée pour la saison. Une coque au cacao, presque noire, une ganache à la vanille, et au centre un cœur de potiron relevé à la cannelle. Le potiron n'est pas là pour le décor : il apporte une rondeur qui équilibre la vanille, et l'épice réveille l'ensemble. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail. Comme tout le reste de la carte, il est sans porc et sans alcool.",
+        },
+        {
+          heading: "La madeleine citrouille, chocolat blanc et orange",
+          texte: "Une madeleine moelleuse au chocolat blanc, relevée d'une touche d'orange, moulée en citrouille et dessinée au chocolat noir. Elle se tient d'une main, elle se partage sans couverts, et elle fait son effet sur une table de goûter sans qu'on ait à décorer la salle. C'est la pièce la plus simple à servir de toute notre carte d'Halloween : elle arrive prête, elle ne fond pas, elle attend l'heure de la pause.",
+          img: '/halloween-madeleine-potiron.webp',
+          imgAlt: "Madeleine d'Halloween en forme de citrouille, chocolat blanc et orange, visage dessiné au chocolat noir",
         },
         {
           heading: "Halloween au bureau : une tendance qui s'installe",
