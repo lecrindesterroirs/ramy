@@ -58,8 +58,13 @@ export default function ArticlePage() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
 
-        {/* ── Hero image ── */}
-        <div style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>
+        {/* ── Hero image ──
+             Hauteur réduite sur mobile : à 520px fixes, le titre de l'article
+             tombait à 762px du haut, donc SOUS la ligne de flottaison d'un
+             téléphone. Quelqu'un qui arrivait de Google voyait un bloc vide et
+             repartait — c'est ce qui expliquait un rebond mobile proche de 100 %
+             sur les articles. */}
+        <div className="article-hero" style={{ position: 'relative', width: '100%', height: '520px', overflow: 'hidden' }}>
           <ParallaxImage priority sizes="100vw" src={article.img}
             alt={article.titre}
             strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: article.imgPosition || 'center' }}
@@ -393,6 +398,7 @@ export default function ArticlePage() {
         .article-products-grid a { transition: background 0.2s ease; }
         @media (max-width: 768px) {
           .article-page-content { padding: 48px 24px 80px !important; }
+          .article-hero { height: 240px !important; }
           .article-body table { font-size: 12px; }
           .article-body th, .article-body td { padding: 10px 10px; }
           .article-products-grid { grid-template-columns: 1fr !important; }
