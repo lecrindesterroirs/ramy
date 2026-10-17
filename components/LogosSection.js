@@ -27,7 +27,7 @@ const logos = [
 // On duplique pour le défilement infini
 const track = [...logos, ...logos, ...logos]
 
-export default function LogosSection({ subtitle, style: extraStyle }) {
+export default function LogosSection({ subtitle, style: extraStyle, label = 'Ils nous font confiance' }) {
   return (
     <section
       style={{
@@ -48,7 +48,7 @@ export default function LogosSection({ subtitle, style: extraStyle }) {
         textAlign: 'center',
         marginBottom: subtitle ? '10px' : '24px',
       }}>
-        Ils nous font confiance
+        {label}
       </p>
 
       {subtitle && (
