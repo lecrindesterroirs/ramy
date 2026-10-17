@@ -1,6 +1,8 @@
 import { BOISSONS } from '../../../../lib/boissonsData'
 import { descriptionProduit, detailCatalogue } from '../../../../lib/metaProduit'
 import { ogImages } from '../../../../lib/og'
+import { alternatesPour } from '../../../../lib/i18n'
+import { slugsBoissonsEn } from '../../../../lib/en/produits/boissons'
 
 export function generateStaticParams() {
   return BOISSONS.map(p => ({ slug: p.id }))
@@ -26,9 +28,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/creations/boissons/${product.id}`,
-    },
+    alternates: alternatesPour(`/creations/boissons/${product.id}`, { en: slugsBoissonsEn().includes(product.id) }),
   }
 }
 

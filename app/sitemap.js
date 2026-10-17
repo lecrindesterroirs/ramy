@@ -18,6 +18,8 @@ import { enSlugs } from '../lib/en/journal'
 import { slugsLunchBoxEn } from '../lib/en/produits/lunchBox'
 import { slugsPlateauxRepasEn } from '../lib/en/produits/plateauxRepas'
 import { slugsPetitsDejeunersEn } from '../lib/en/produits/petitsDejeuners'
+import { slugsPausesEn } from '../lib/en/produits/pausesGourmandes'
+import { slugsBoissonsEn } from '../lib/en/produits/boissons'
 import { cheminsVillesEn } from '../lib/en/villes'
 import { EN_PAGES } from '../lib/enPages'
 
@@ -176,6 +178,8 @@ export default function sitemap() {
     ...slugsLunchBoxEn().map(id => url(`/en/creations/lunch-box/${id}`, 0.74, 'monthly')),
     ...slugsPlateauxRepasEn().map(id => url(`/en/creations/plateaux-repas/${id}`, 0.76, 'monthly')),
     ...slugsPetitsDejeunersEn().map(id => url(`/en/creations/petits-dejeuners-et-pauses/${id}`, 0.78, 'monthly')),
+    ...slugsPausesEn().map(id => url(`/en/creations/pauses-gourmandes/${id}`, 0.74, 'monthly')),
+    ...slugsBoissonsEn().map(id => url(`/en/creations/boissons/${id}`, 0.68, 'monthly')),
     ...cheminsVillesEn().map(c => url(`/en${c}`, 0.70, 'monthly')),
     url('/en/contact', 0.60, 'monthly'),
     url('/en/devis', 0.70, 'monthly'),

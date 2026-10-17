@@ -7,6 +7,7 @@ import Footer from './Footer'
 import DevisRapide from './DevisRapide'
 import RelatedLinks from './RelatedLinks'
 import { BOISSONS } from '../lib/boissonsData'
+import { enBoisson } from '../lib/en/produits/boissons'
 import { productOfferPolicy, BUSINESS_ID } from '../lib/site'
 import BusinessJsonLd from './BusinessJsonLd'
 import FicheAsavoir from './FicheAsavoir'
@@ -18,6 +19,45 @@ const COMPLEMENT_BOISSON_IDS = ['jus-orange-presse', 'jus-pomme-verger', 'jus-fr
 const curatedBoissons = COMPLEMENT_BOISSON_IDS.map(id => BOISSONS.find(b => b.id === id)).filter(Boolean)
 const COMPLEMENT_BOISSONS = (curatedBoissons.length ? curatedBoissons : BOISSONS.slice(0, 4))
   .map(b => ({ href: `/creations/boissons/${b.id}`, title: b.name, meta: b.categoryLabel || 'Boisson', img: b.img }))
+
+/* Mêmes boissons en anglais, limitées à celles qui ont une fiche traduite :
+   on ne met jamais dans une page anglaise un lien vers une page qui n'existe
+   qu'en français. */
+const COMPLEMENT_BOISSONS_EN = (curatedBoissons.length ? curatedBoissons : BOISSONS.slice(0, 4))
+  .filter(b => enBoisson(b.id))
+  .map(b => ({ href: `/en/creations/boissons/${b.id}`, title: enBoisson(b.id).name, meta: 'Drink', img: b.img }))
+
+/*
+  Habillage de la fiche, par langue. Sans ça, une fiche anglaise affichait
+  « Obtenir un devis », « À servir avec » et « Contient » en français au
+  milieu d'un texte anglais.
+*/
+const TEXTES = {
+  fr: {
+    composition: 'Composition',
+    contient: (l) => `Contient : ${l}.`,
+    devis: 'Obtenir un devis →',
+    accompagnerEyebrow: 'Pour accompagner',
+    accompagnerTitre: 'À servir avec',
+    liees: 'Dans la même sélection',
+    similaires: 'Produits similaires',
+    decouvrir: 'Découvrir →',
+    devisTitre: 'Un événement à Paris ou en Île-de-France ?',
+    devisSousTitre: 'Répondez en 30 secondes, devis personnalisé sous 24h.',
+  },
+  en: {
+    composition: 'Composition',
+    contient: (l) => `Contains: ${l}.`,
+    devis: 'Get a quote →',
+    accompagnerEyebrow: 'To go with it',
+    accompagnerTitre: 'Serve it with',
+    liees: 'In the same selection',
+    similaires: 'Similar products',
+    decouvrir: 'Discover →',
+    devisTitre: 'An event in Paris or Île-de-France?',
+    devisSousTitre: 'Answer in 30 seconds, personalised quote within 24 hours.',
+  },
+}
 
 /*
   Fiche détail réutilisable, structure "Petit-déjeuner" (référence DA du site).
@@ -47,23 +87,32 @@ const COMPLEMENT_BOISSONS = (curatedBoissons.length ? curatedBoissons : BOISSONS
 
 export default function GalleryFiche({
   title, subtitle, img, gallery,
-  description, sections = [], listItems = [], listLabel = 'Composition',
+  description, sections = [], listItems = [], listLabel,
   allergens = [],
   price, priceNote = 'HT',
   breadcrumb = [], backHref, backLabel,
   seoEyebrow, seoTitle, seoHtml, devisPrestation = '',
-  devisTitre = 'Un événement à Paris ou en Île-de-France ?',
-  devisSousTitre = 'Répondez en 30 secondes, devis personnalisé sous 24h.',
-  related = [], relatedTitle = 'Dans la même sélection',
+  devisTitre,
+  devisSousTitre,
+  related = [], relatedTitle,
   asavoir = null,
   imgRatio = '4 / 3',
+  lang = 'fr',
+  complements: complementsProp,
 }) {
+  const T = TEXTES[lang] || TEXTES.fr
+  listLabel = listLabel || T.composition
+  devisTitre = devisTitre || T.devisTitre
+  devisSousTitre = devisSousTitre || T.devisSousTitre
+  relatedTitle = relatedTitle || T.liees
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
 
   // Ne pas proposer « À servir avec [boissons] » sur une fiche boisson.
-  const isBoissonPage = backHref === '/creations/boissons'
-  const complements = isBoissonPage ? [] : COMPLEMENT_BOISSONS
+  const isBoissonPage = backHref === '/creations/boissons' || backHref?.startsWith('/en/creations/boissons')
+  // En anglais, l'appelant fournit sa propre sélection ; sans elle, pas de
+  // cross-sell plutôt qu'une liste de liens vers des pages françaises.
+  const complements = isBoissonPage ? [] : (complementsProp ?? (lang === 'en' ? COMPLEMENT_BOISSONS_EN : COMPLEMENT_BOISSONS))
 
   const BASE = 'https://www.lecrin-traiteur.fr'
   const canonicalPath = breadcrumb.length ? breadcrumb[breadcrumb.length - 1]?.href : undefined
@@ -201,9 +250,9 @@ export default function GalleryFiche({
             {/* Allergènes */}
             {allergens.length > 0 && (
               <div style={{ marginBottom: '18px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>Composition</p>
+                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>{T.composition}</p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
-                  Contient : {allergens.join(', ').toLowerCase()}.
+                  {T.contient(allergens.join(', ').toLowerCase())}
                 </p>
               </div>
             )}
@@ -226,7 +275,7 @@ export default function GalleryFiche({
                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
               >
-                Obtenir un devis →
+                {T.devis}
               </a>
             </div>
           </div>
@@ -241,7 +290,9 @@ export default function GalleryFiche({
         {asavoir && <FicheAsavoir {...asavoir} paddingBottom="64px" />}
 
         {/* Cross-sell « À servir avec » — placé avant l'article SEO */}
-        <RelatedLinks eyebrow="Pour accompagner" title="À servir avec" items={complements} columns={4} />
+        {complements.length > 0 && (
+          <RelatedLinks eyebrow={T.accompagnerEyebrow} title={T.accompagnerTitre} items={complements} columns={4} cta={T.decouvrir} />
+        )}
 
         {/* Article SEO + devis */}
         {(seoTitle || seoHtml) && (
@@ -291,7 +342,7 @@ export default function GalleryFiche({
         }
       ` }} />
 
-      <RelatedLinks eyebrow="Produits similaires" title={relatedTitle} items={related} columns={4} />
+      <RelatedLinks eyebrow={T.similaires} title={relatedTitle} items={related} columns={4} cta={T.decouvrir} />
 
       <Footer />
     </>

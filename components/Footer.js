@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { estAnglais, lienLocalise } from '../lib/i18n'
+import { t } from '../lib/en/interface'
 import { enSlugs } from '../lib/en/journal'
 
 const linkStyle = {
@@ -54,7 +55,7 @@ export default function Footer() {
             </a>
             <div style={{ width: '28px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '14px', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '200px' }}>
-              Des expériences pensées <br />pour marquer les esprits.
+              {t('pied.signature1', langue)} <br />{t('pied.signature2', langue)}
             </p>
           </div>
 

@@ -3,7 +3,7 @@
 // Bloc de maillage latéral réutilisable, "À lire aussi", "Villes limitrophes",
 // "Produits similaires". Éditorial, fidèle à la DA L'Écrin.
 // items : [{ href, title, meta? }]  (meta = catégorie, département, sous-titre…)
-export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, background = 'var(--bg-secondary)' }) {
+export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, background = 'var(--bg-secondary)', cta }) {
   if (!items.length) return null
   const cols = Math.min(columns, items.length)
 
@@ -56,7 +56,7 @@ export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, 
                   {it.title}
                 </span>
                 <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--accent-deep)', marginTop: '2px' }}>
-                  Découvrir →
+                  {cta || 'Découvrir →'}
                 </span>
               </div>
             </a>

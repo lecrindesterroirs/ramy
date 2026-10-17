@@ -132,7 +132,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           whiteSpace: 'nowrap',
           position: 'absolute',
         }}>
-          Commandez jusqu'à la veille avant 14h &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Livraison dès 6h30 &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
+          {t('nav.bandeau', langue)} &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; {t('nav.bandeau.livraison', langue)} &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Paris &amp; Île-de-France
         </div>
       </div>}
 
@@ -492,7 +492,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     marginBottom: '6px',
                     margin: '0 0 6px 0',
                   }}>
-                    Catégories
+                    {t('nav.categories', langue)}
                   </p>
                   {JOURNAL_ITEMS.categories.map(item => (
                     <a
@@ -529,7 +529,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     marginBottom: '6px',
                     margin: '0 0 6px 0',
                   }}>
-                    Pour vos événements
+                    {t('nav.occasions', langue)}
                   </p>
                   {JOURNAL_ITEMS.occasions.map(item => (
                     <a
