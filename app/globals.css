@@ -522,3 +522,18 @@ a:hover .article-card-img { transform: scale(1.04); }
 @media (max-width: 767px) {
   .hero-br { display: none; }
 }
+
+/* Journal : survol des cartes produit d'un article (page serveur, donc plus de gestionnaires onMouseEnter). */
+.article-product-card:hover { background: #EDE8DE !important; }
+
+/* Révélation du titre des pages héros : animation CSS, visible sans attendre le JavaScript (voir components/Reveal.js). */
+.reveal-mount {
+  animation: revealMount var(--reveal-d, 0.65s) cubic-bezier(0.25, 0.1, 0.25, 1) var(--reveal-delay, 0ms) both;
+}
+@keyframes revealMount {
+  from { opacity: 0; transform: translateY(var(--reveal-y, 24px)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-mount { animation: none; }
+}

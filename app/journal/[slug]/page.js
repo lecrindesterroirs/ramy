@@ -1,6 +1,3 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
@@ -11,7 +8,7 @@ import Breadcrumb from '../../../components/Breadcrumb'
 import { articles, articleAuthor } from '../../../lib/journalData'
 import { founderNode } from '../../../lib/site'
 import { PRODUCTS } from '../../../lib/productsData'
-import { PAUSES } from '../../creations/pauses-gourmandes/page'
+import { PAUSES } from '../../creations/pauses-gourmandes/data'
 import ParallaxImage from '../../../components/ParallaxImage'
 
 // Résout un id de relatedProducts sur les deux sources possibles (Petits-Déjeuners & Pauses,
@@ -37,8 +34,8 @@ const dateFr = (iso) => {
 
 const isoDateTime = (d) => (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) ? `${d}T09:00:00+02:00` : d
 
-export default function ArticlePage() {
-  const { slug } = useParams()
+export default function ArticlePage({ params }) {
+  const { slug } = params
   const article = articles.find(a => a.slug === slug)
   if (!article) notFound()
 
@@ -235,9 +232,8 @@ export default function ArticlePage() {
                     <a
                       key={product.id}
                       href={product.href}
+                      className="article-product-card"
                       style={{ background: 'var(--bg-secondary)', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}
-                      onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
-                      onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
                     >
                       {product.img && (
                         <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>

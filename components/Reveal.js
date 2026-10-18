@@ -9,7 +9,27 @@ import { useEffect, useRef, useState } from 'react'
   mode="scroll" (défaut) : se déclenche à l'entrée dans le viewport (IntersectionObserver).
   mode="mount"  : se déclenche juste après le montage (pour le hero, déjà visible à l'écran).
 */
-export default function Reveal({ children, delay = 0, mode = 'scroll', y = 24, duration = 0.65, style }) {
+// mode="mount" : animation CSS pure (fade-up au chargement), sans état React. Avant, le
+// bloc restait à opacity 0 dans le HTML serveur jusqu'à l'hydratation du JavaScript :
+// le titre des pages héros (villes, halal, occasions…) n'apparaissait qu'après 1 à 2 s
+// sur mobile. Maintenant il est visible dès le premier affichage ; globals.css porte
+// le @keyframes (.reveal-mount).
+function RevealMount({ children, delay = 0, y = 24, duration = 0.65, style }) {
+  return (
+    <div
+      className="reveal-mount"
+      style={{ height: '100%', ...style, '--reveal-y': `${y}px`, '--reveal-d': `${duration}s`, '--reveal-delay': `${delay}ms` }}
+    >
+      {children}
+    </div>
+  )
+}
+
+export default function Reveal(props) {
+  return props.mode === 'mount' ? <RevealMount {...props} /> : <RevealScroll {...props} />
+}
+
+function RevealScroll({ children, delay = 0, mode = 'scroll', y = 24, duration = 0.65, style }) {
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
   const [reduced, setReduced] = useState(false)
