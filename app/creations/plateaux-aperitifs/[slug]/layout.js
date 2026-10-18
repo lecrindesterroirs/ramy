@@ -7,7 +7,7 @@ const BASE = 'https://www.lecrin-traiteur.fr'
 const META = {
   'sw1': { nom: 'Mini Baguettes Signature',    d: 'Assortiment de mini baguettes artisanales garnies.' },
   'sw2': { nom: 'Clubs Signature',             d: 'Assortiment de clubs sandwichs moelleux découpés.' },
-  'sw3': { nom: 'Wraps Gourmands',             d: 'Assortiment de wraps découpés en bouchées.' },
+  'sw3': { nom: 'Mini Wraps Roulés',           d: 'Assortiment de mini wraps roulés, découpés en bouchées.' },
   'sw4': { nom: 'Mini Burgers',                d: 'Assortiment de mini burgers artisanaux.' },
   'go1': { nom: 'Fromages Affinés',            d: 'Sélection de fromages affinés, fruits frais et pain artisanal.' },
   'go2': { nom: 'Charcuteries Artisanales',    d: 'Bœuf séché, bresaola, dinde & poulet fumés, olives & raisin, halal, sans porc.' },

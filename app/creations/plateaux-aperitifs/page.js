@@ -269,7 +269,7 @@ const ANSWER_BLOCK = (
     plusTitre="Formats, quantités et livraison"
     plus={<>Les navettes se commandent par plateaux de 20 (63,90 € HT) ou de 40 (124,90 € HT). Comptez 8 pièces par personne pour un pot d'une heure. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
   >
-    Nos plateaux apéritifs démarrent <strong>à partir de 63,90 € HT le plateau</strong> : navettes, pains briochés salés, clubs, mini baguettes, wraps, mini burgers, fromages affinés. Chaque plateau se partage entre plusieurs convives. Commande avant <strong>14h la veille</strong>, livraison à Paris et en Île-de-France.
+    Nos plateaux apéritifs démarrent <strong>à partir de 63,90 € HT le plateau</strong> : navettes, pains briochés salés, clubs, mini baguettes, mini wraps roulés, mini burgers, fromages affinés. Chaque plateau se partage entre plusieurs convives. Commande avant <strong>14h la veille</strong>, livraison à Paris et en Île-de-France.
   </BlocReponse>
 )
 

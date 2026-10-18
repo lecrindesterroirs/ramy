@@ -10,7 +10,7 @@ import { asavoirPlateauAperitif } from '../../../../lib/ficheAsavoir'
 const SEO_HTML = `
   <p>Le <strong>plateau apéritif à partager</strong> est l'allié des afterworks, pots de départ et réceptions d'entreprise à Paris. Posé au centre de la table, il crée du lien et rythme le moment, des plateaux sandwichs aux plateaux fromages & charcuteries, en passant par les créations signature.</p>
   <h2>Des assortiments artisanaux, à composer selon l'occasion</h2>
-  <p>Chaque plateau réunit une sélection de bouchées façonnées avec des <strong>produits sourcés</strong> : mini baguettes, clubs, wraps, focaccias, fromages affinés, charcuteries italiennes, mezzé ou plateaux du monde. On mixe salé et fraîcheur pour un buffet équilibré et généreux.</p>
+  <p>Chaque plateau réunit une sélection de bouchées façonnées avec des <strong>produits sourcés</strong> : mini baguettes, clubs, mini wraps roulés, focaccias, fromages affinés, charcuteries italiennes, mezzé ou plateaux du monde. On mixe salé et fraîcheur pour un buffet équilibré et généreux.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
   <p>Nombre de convives, formats, régimes alimentaires : nous composons la sélection idéale et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe sur votre lieu de réception.</p>
 `
