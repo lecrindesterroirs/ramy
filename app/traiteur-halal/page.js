@@ -13,6 +13,7 @@ import RelatedLinks from '../../components/RelatedLinks'
 import CategoryClosing from '../../components/CategoryClosing'
 import ParallaxImage from '../../components/ParallaxImage'
 import { businessNode, BUSINESS_ID } from '../../lib/site'
+import { exemplesHalalFr, exemplesHalalEn, EXEMPLES, eurFr } from '../../lib/exemplesChiffres'
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
@@ -97,6 +98,10 @@ const FAQ = [
     a: "Non, nous ne revendiquons pas de certification halal délivrée par un organisme. Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes : c'est une offre halal-friendly, construite avec nos artisans. Pour les viandes, nous pouvons vous renseigner sur l'origine au moment du devis.",
   },
   {
+    q: 'Le halal coûte-t-il plus cher chez L\'Écrin Traiteur ?',
+    a: `Non. Toute la carte est halal et sans porc, au même prix que n'importe quelle commande : il n'y a pas de carte halal à part ni de supplément. Par exemple, un petit-déjeuner complet pour 20 personnes revient à ${eurFr(EXEMPLES[0].total)} HT livré, et des plateaux repas pour 20 personnes à ${eurFr(EXEMPLES[2].total)} HT livrés.`,
+  },
+  {
     q: 'Combien coûte un plateau repas halal ?',
     a: "Les plateaux repas démarrent à 28,90 € HT par personne, entrée, plat, dessert et pain compris, tous halal et sans porc. La livraison est à 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT.",
   },
@@ -163,7 +168,10 @@ export default function TraiteurHalal() {
     { icon: 'support',  titre: 'Interlocuteur dédié',    desc: "Un contact unique pour composer vos menus, de 10 à 300 personnes, du devis à la livraison." },
   ]
 
-  const seoArticle = en ? reecrireLiensEn(E.seoArticle, enSlugs()) : `
+  // Exemples chiffrés (lib/exemplesChiffres.js) glissés sous le tableau des prix, dans les deux langues.
+  const MARQUE_EN = 'with a minimum order of €50 excl. VAT.</p>'
+  const articleEn = en ? (E.seoArticle.includes(MARQUE_EN) ? E.seoArticle.replace(MARQUE_EN, MARQUE_EN + exemplesHalalEn()) : E.seoArticle + exemplesHalalEn()) : ''
+  const seoArticle = en ? reecrireLiensEn(articleEn, enSlugs()) : `
     <h2>Un traiteur d'entreprise halal, pensé pour toute l'équipe</h2>
     <p>Dans une entreprise, une pause gourmande ne devrait jamais exclure personne. Chez <strong>L'Écrin Traiteur</strong>, l'ensemble de notre gamme est <strong>halal et sans porc par défaut</strong> : petits-déjeuners, plateaux repas, cocktails et buffets. Ce n'est pas une option cachée dans un coin de la carte, c'est notre référence sur chaque commande livrée à Paris et en Île-de-France.</p>
 
@@ -178,6 +186,7 @@ export default function TraiteurHalal() {
       </tbody>
     </table></div>
     <p>La livraison est à 29 € HT à Paris et dans les communes proches, le minimum de commande est de 50 € HT, et la facture est une facture entreprise avec TVA.</p>
+${exemplesHalalFr()}
 
     <h2>Halal, sans porc, sans alcool : ce que nous affirmons</h2>
     <p>Toute la carte est halal et sans porc par défaut, et nos recettes ne contiennent pas d'alcool. Nous ne revendiquons pas de certification halal délivrée par un organisme : notre offre est halal-friendly, construite avec nos artisans. Si l'origine d'une viande compte pour votre équipe, dites-le au moment du devis, nous pouvons vous renseigner sur le sourcing avant de valider la commande. Le détail est dans notre guide <a href="/journal/traiteur-halal-entreprise-paris">traiteur halal-friendly à Paris : options sans porc et sans alcool</a>.</p>
