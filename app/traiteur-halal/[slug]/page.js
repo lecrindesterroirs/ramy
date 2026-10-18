@@ -21,6 +21,14 @@ import { businessNode, BUSINESS_ID } from '../../../lib/site'
 const BASE = 'https://www.lecrin-traiteur.fr'
 
 // Arguments de clôture : uniquement des faits validés (offre halal-friendly, sans certification).
+// Même contenu en anglais : ce sont des arguments d'interface, pas de la donnée produit.
+const ARGS_EN = [
+  { icon: 'quality',  titre: 'Halal and pork-free',  desc: 'The whole menu, by default, with no alcohol in the recipes and at no extra cost. No halal certification is claimed.' },
+  { icon: 'custom',   titre: 'Options on request',   desc: 'Vegetarian, vegan and gluten-free are set when ordering, with the number of guests concerned.' },
+  { icon: 'delivery', titre: 'Delivery from 6:30 am', desc: 'Monday to Friday, in Paris and across the Paris region. Order until 2 pm the day before.' },
+  { icon: 'support',  titre: 'Quote within 24 hours', desc: 'Company invoice with VAT, purchase orders accepted, €50 excl. VAT minimum order.' },
+]
+
 const ARGS = [
   { icon: 'quality',  titre: 'Halal et sans porc',   desc: "Toute la carte, par défaut, sans alcool dans les recettes et sans supplément. Aucune certification halal n'est revendiquée." },
   { icon: 'custom',   titre: 'Options sur demande',  desc: "Végétarien, vegan et sans gluten se précisent à la commande, avec le nombre de personnes concernées." },
@@ -62,7 +70,9 @@ export default function TraiteurHalalSousPage() {
   const T = en ? T_HALAL.en : T_HALAL.fr
   const surcouche = pageFr && en ? enHalal(slug) : null
   if (!pageFr || (en && !surcouche)) notFound()
-  // Surcouche de texte : photo, zone desservie et sélection restent FR.
+  // Surcouche de texte : photo et zone desservie restent FR. La sélection
+  // garde ses ids (les produits sont lus dans la donnée FR) ; seules les
+  // notes sont traduites par la surcouche.
   const page = surcouche ? { ...pageFr, ...surcouche } : pageFr
   const lien = (href) => (en ? `/en${href}` : href)
   const article = en ? reecrireLiensEn(page.seoArticle, enSlugs()) : page.seoArticle
@@ -238,7 +248,7 @@ export default function TraiteurHalalSousPage() {
         eyebrow={page.closingEyebrow}
         title={page.closingTitle}
         body={page.closingBody}
-        args={ARGS}
+        args={en ? ARGS_EN : ARGS}
         ctaQuestion={page.ctaQuestion}
         lang={en ? 'en' : 'fr'}
         seoArticle={article}

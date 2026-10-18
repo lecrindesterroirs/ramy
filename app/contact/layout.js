@@ -1,5 +1,7 @@
+import { alternatesPour } from '../../lib/i18n'
+
 export const metadata = {
-  alternates: { canonical: '/contact' },
+  alternates: alternatesPour('/contact', { en: true }),
   title: "Contact",
   description: "Contactez L'Écrin Traiteur pour organiser votre prochain événement d'entreprise à Paris et en Île-de-France. Réponse sous 24h.",
   openGraph: {

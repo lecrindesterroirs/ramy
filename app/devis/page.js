@@ -11,7 +11,7 @@ import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
 import { identifierVisiteur, suivreEtapeDevis } from '../../lib/posthog-identify'
 import { estAnglais } from '../../lib/i18n'
-import { t } from '../../lib/en/interface'
+import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
 
 /* Le même parcours sert /devis et /en/devis. La langue vient du chemin ; les
    données envoyées à l'OS ne changent pas, seuls les textes affichés. */
@@ -94,14 +94,14 @@ const prestations = [
   },
 ]
 
-const MOIS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
-const JOURS = ['L','M','M','J','V','S','D']
 
 // ── DatePicker ────────────────────────────────────────────────────────────────
 
 function DatePicker({ value, onChange, accent = '#E0A126' }) {
   const langue = useLangue()
   const T = (cle) => t(cle, langue)
+  const MOIS = moisCalendrier(langue)
+  const JOURS = joursCalendrier(langue)
   const today = new Date()
   const [open, setOpen] = useState(false)
   const [view, setView] = useState({ year: today.getFullYear(), month: today.getMonth() })
@@ -141,7 +141,7 @@ function DatePicker({ value, onChange, accent = '#E0A126' }) {
   }
 
   const displayValue = selected
-    ? selected.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
+    ? dateLongue(selected, langue)
     : ''
 
   return (
@@ -475,7 +475,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
   const [editing, setEditing] = useState(null)
 
   const prestationLabel = prestations.find(p => p.id === data.prestation)?.titre || T('devis.nonRenseigne')
-  const dateLabel = data.date ? new Date(data.date + 'T00:00:00').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }) : T('devis.nonRenseigne')
+  const dateLabel = data.date ? dateLongue(data.date, langue) : T('devis.nonRenseigne')
 
   const recap = [
     { key: 'date', type: 'date', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>, label: 'Date souhaitée', value: dateLabel },

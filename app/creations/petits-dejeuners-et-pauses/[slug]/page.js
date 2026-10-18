@@ -24,6 +24,65 @@ const COFFRETS = [
   { id: 'madeleines-50', titre: 'Coffret Réception', pieces: 50, price: 119.00, desc: "Pensé pour les petits-déjeuners et cocktails d'entreprise.", img: '/coffret-madeleines-50-cut.webp' },
 ]
 
+/*
+  Textes du bloc madeleines, dans les deux langues. Les noms de coffrets
+  (Découverte, Signature, Réception) et les saveurs restent des noms de
+  produits : ils ne changent pas, seules les phrases sont traduites.
+*/
+const MAD_T = {
+  fr: {
+    chapeau: "Une madeleine généreuse, préparée chaque jour par notre artisan partenaire et devenue l'une des créations les plus appréciées de nos événements.",
+    coffretLigne: (mot, n) => `Coffret ${mot} · ${n} madeleines.`,
+    choisir: 'Choisissez votre coffret',
+    plusChoisi: 'Le plus choisi',
+    pieces: (n) => `${n} madeleines`,
+    saveurs: 'Nos saveurs',
+    exigenceEyebrow: 'Notre exigence',
+    exigenceTitre: ['Le goût du vrai,', "l'exigence en plus."],
+    artisanEyebrow: 'Notre artisan partenaire',
+    artisanBaseline: 'L\'atelier de la madeleine',
+    artisanTexte: "Fabriquées chaque jour dans leur atelier parisien, elles sont réputées comme les meilleures madeleines de Paris, c'est cette exigence qui nous a convaincus de les intégrer à notre sélection.",
+    titre: 'Les madeleines',
+  },
+  en: {
+    chapeau: 'A generous madeleine, baked every day by our partner artisan, and one of the creations our guests ask about most.',
+    coffretLigne: (mot, n) => `${mot} box · ${n} madeleines.`,
+    choisir: 'Choose your box',
+    plusChoisi: 'Most chosen',
+    pieces: (n) => `${n} madeleines`,
+    saveurs: 'Our flavours',
+    exigenceEyebrow: 'What we insist on',
+    exigenceTitre: ['The taste of the real thing,', 'and the standard on top.'],
+    artisanEyebrow: 'Our partner artisan',
+    artisanBaseline: 'The madeleine workshop',
+    artisanTexte: 'Baked every day in their Paris workshop, they have a reputation as the best madeleines in Paris; that standard is what convinced us to put them in our selection.',
+    titre: 'The madeleines',
+  },
+}
+
+const COFFRETS_DESC_EN = {
+  'madeleines-10': 'Right for a thank-you, a gift or a small meeting.',
+  'madeleines-20': 'The format for welcoming your teams.',
+  'madeleines-50': 'Made for company breakfasts and cocktail receptions.',
+}
+
+const COFFRETS_MOT_EN = { 'Découverte': 'Discovery', 'Signature': 'Signature', 'Réception': 'Reception' }
+
+const SAVEURS_DESC_EN = {
+  'pistache-framboise': 'The signature flavour: a green, fruity contrast.',
+  'ananas-coco-passion': 'Sunny, tropical, immediately memorable.',
+  'citron': 'Fresh, sharp and bright.',
+  'chocolat-lait': 'Generous, comforting, very effective at a reception.',
+  'chocolat-noir': 'Intense, elegant and deeper.',
+  'nature': 'The plainest, and often the best liked.',
+}
+
+const MAD_EXIGENCE_EN = [
+  'Pure butter and artisan recipes, baked fresh every day.',
+  'No palm oil, with fresh lemon zest.',
+  'The clean hump and soft crumb of a baking time under control.',
+]
+
 const MAD_EXIGENCE = [
   'Pur beurre et recettes artisanales, préparées chaque jour.',
   'Sans huile de palme, au zeste de citron frais.',
@@ -86,6 +145,8 @@ export default function ProductPage() {
     : { accueil: 'Accueil', famille: 'Petits-Déjeuners & Pauses', devis: 'Obtenir un devis →',
         contient: 'Contient', similaires: 'Produits similaires', liees: 'Dans la même sélection',
         decouvrir: 'Découvrir →' }
+  const MD = en ? MAD_T.en : MAD_T.fr
+  const motCoffret = (mot) => (en ? (COFFRETS_MOT_EN[mot] || mot) : mot)
   const product = produitLocalise(produitFr, langue)
 
   const related = [...PRODUCTS]
@@ -189,15 +250,15 @@ export default function ProductPage() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
-                  Les madeleines<br /><em style={{ fontStyle: 'italic' }}>{coffretMot.toLowerCase()}</em>
+                  {MD.titre}<br /><em style={{ fontStyle: 'italic' }}>{motCoffret(coffretMot).toLowerCase()}</em>
                 </h1>
                 <span style={{ display: 'block', width: '36px', height: '1px', background: 'var(--accent)', marginBottom: '20px' }} />
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '380px' }}>
-                  Une madeleine généreuse, préparée chaque jour par notre artisan partenaire et devenue l'une des créations les plus appréciées de nos événements.
+                  {MD.chapeau}
                 </p>
                 {coffret && (
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-primary)', maxWidth: '380px', marginTop: '12px' }}>
-                    <strong style={{ fontWeight: 500 }}>Coffret {coffretMot} · {coffret.pieces} madeleines.</strong> {coffret.desc}
+                    <strong style={{ fontWeight: 500 }}>{MD.coffretLigne(motCoffret(coffretMot), coffret.pieces)}</strong> {en ? (COFFRETS_DESC_EN[coffret.id] || coffret.desc) : coffret.desc}
                   </p>
                 )}
               </div>
@@ -206,7 +267,7 @@ export default function ProductPage() {
             {/* ── Choisissez votre coffret ── */}
             <div style={{ textAlign: 'center', padding: '68px 24px 0' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                Choisissez votre coffret
+                {MD.choisir}
               </p>
             </div>
             <div className="mad-coffrets-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px', maxWidth: '1160px', margin: '0 auto', padding: '40px 72px 24px' }}>
@@ -218,18 +279,18 @@ export default function ProductPage() {
                   <div style={{ height: '26px', marginBottom: '8px' }}>
                     {c.popular && (
                       <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 12px' }}>
-                        Le plus choisi
+                        {MD.plusChoisi}
                       </span>
                     )}
                   </div>
                   <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px' }}>
-                    {c.titre}
+                    {en ? `${motCoffret(c.titre.replace(/^Coffret\s+/i, ''))} box` : c.titre}
                   </p>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
-                    {c.pieces} madeleines
+                    {MD.pieces(c.pieces)}
                   </p>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: '240px', margin: '0 auto' }}>
-                    {c.desc}
+                    {en ? (COFFRETS_DESC_EN[c.id] || c.desc) : c.desc}
                   </p>
                 </div>
               ))}
@@ -238,7 +299,7 @@ export default function ProductPage() {
             {/* ── Nos saveurs ── */}
             <div style={{ textAlign: 'center', padding: '56px 24px 36px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                Nos saveurs
+                {MD.saveurs}
               </p>
             </div>
             <div className="mad-flavors-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '4px', maxWidth: '1160px', margin: '0 auto', padding: '0 72px 8px' }}>
@@ -246,7 +307,7 @@ export default function ProductPage() {
                 <div key={f.id} style={{ textAlign: 'center', padding: '10px 8px' }}>
                   <img loading="lazy" src={f.img} alt={`Madeleine ${f.label.toLowerCase()}`} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
                   <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '6px' }}>{f.label}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{f.description}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{en ? (SAVEURS_DESC_EN[f.id] || f.description) : f.description}</p>
                 </div>
               ))}
             </div>
@@ -266,13 +327,13 @@ export default function ProductPage() {
               {/* Cellule 1 : Notre exigence */}
               <div style={{ background: 'var(--bg-secondary)', padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
-                  Notre exigence
+                  {MD.exigenceEyebrow}
                 </p>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '20px' }}>
-                  Le goût du vrai,<br />l'exigence en plus.
+                  {MD.exigenceTitre[0]}<br />{MD.exigenceTitre[1]}
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {MAD_EXIGENCE.map(t => (
+                  {(en ? MAD_EXIGENCE_EN : MAD_EXIGENCE).map(t => (
                     <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'var(--text-secondary)' }}>{t}</p>
                   ))}
                 </div>
@@ -284,16 +345,16 @@ export default function ProductPage() {
               {/* Cellule 3 : Notre artisan partenaire */}
               <div style={{ padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
-                  Notre artisan partenaire
+                  {MD.artisanEyebrow}
                 </p>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '4px' }}>
                   Mado Paris
                 </h2>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '18px' }}>
-                  L'atelier de la madeleine
+                  {MD.artisanBaseline}
                 </p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
-                  Fabriquées chaque jour dans leur atelier parisien, elles sont réputées comme les meilleures madeleines de Paris, c'est cette exigence qui nous a convaincus de les intégrer à notre sélection.
+                  {MD.artisanTexte}
                 </p>
               </div>
               {/* Cellule 4 : photo atelier */}

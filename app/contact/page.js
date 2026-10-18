@@ -10,7 +10,23 @@ import { getAttribution } from '../../lib/attribution'
 import { identifierVisiteur } from '../../lib/posthog-identify'
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../../lib/i18n'
-import { t } from '../../lib/en/interface'
+import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
+
+/*
+  Les VALEURS envoyées restent françaises dans les deux langues : elles
+  arrivent telles quelles dans l'OS et sur le devis que Diego envoie.
+  Seul l'affichage est traduit (voir components/DevisRapide.js, même règle).
+*/
+const TYPES_EN = {
+  'Petit-déjeuner': 'Breakfast',
+  'Pause gourmande': 'Afternoon break',
+  'Cocktail & Buffet': 'Cocktail & buffet',
+  'Plateau repas': 'Lunch tray',
+  'Réception sur-mesure': 'Bespoke reception',
+  'Séminaire & Réunion': 'Offsite & meeting',
+  "Soirée d'entreprise": 'Company party',
+  'Autre': 'Other',
+}
 
 const typesEvenement = [
   'Petit-déjeuner',
@@ -23,10 +39,15 @@ const typesEvenement = [
   'Autre',
 ]
 
-const MOIS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
-const JOURS = ['L','M','M','J','V','S','D']
+
+function useLangue() {
+  const chemin = usePathname() || '/'
+  return estAnglais(chemin) ? 'en' : 'fr'
+}
 
 function DatePicker({ value, onChange, required }) {
+  const langue = useLangue()
+  const T = (cle) => t(cle, langue)
   const today = new Date()
   const [open, setOpen] = useState(false)
   const [view, setView] = useState({ year: today.getFullYear(), month: today.getMonth() })
@@ -58,7 +79,9 @@ function DatePicker({ value, onChange, required }) {
     setOpen(false)
   }
 
-  const displayValue = selected ? selected.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }) : ''
+  const MOIS = moisCalendrier(langue)
+  const JOURS = joursCalendrier(langue)
+  const displayValue = dateLongue(selected, langue)
 
   return (
     <div ref={ref} style={{ position: 'relative', width: '100%' }}>
@@ -68,10 +91,10 @@ function DatePicker({ value, onChange, required }) {
         onClick={() => setOpen(o => !o)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        aria-label={displayValue ? `Date de l'événement : ${displayValue}. Modifier` : "Date de l'événement (obligatoire)"}
+        aria-label={displayValue ? `${T('form.dateEvenement')} : ${displayValue}` : `${T('form.dateEvenement')} (${T('form.obligatoire')})`}
         style={{ ...inputStyle, textAlign: 'left', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', userSelect: 'none', color: value ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)' }}
       >
-        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px' }}>{displayValue || "Date de l'événement *"}</span>
+        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px' }}>{displayValue || `${T('form.dateEvenement')} *`}</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'rgba(17,17,17,0.38)', flexShrink: 0 }}>
           <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
@@ -112,7 +135,7 @@ export default function Contact() {
   /* Le même formulaire sert /contact et /en/contact : la langue vient du
      chemin, les textes du dictionnaire d'interface. Les données envoyées
      à l'OS ne changent pas. */
-  const langue = estAnglais(usePathname() || '/') ? 'en' : 'fr'
+  const langue = useLangue()
   const T = (cle) => t(cle, langue)
 
   const [form, setForm] = useState({
@@ -169,13 +192,13 @@ export default function Contact() {
           {/* ── Colonne gauche ── */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '24px' }}>
-              Contactez-nous
+              {T('contact.surtitre')}
             </p>
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
-              Un échange simple <br />et rapide.
+              {T('contact.titre1')} <br />{T('contact.titre2')}
             </h1>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '32px' }}>
-              Notre équipe vous répond avec attention pour concevoir une prestation sur mesure, adaptée à vos besoins et à vos contraintes.
+              {T('contact.chapeau')}
             </p>
 
             <ReviewsBadge style={{ marginBottom: '32px' }} />
@@ -217,7 +240,7 @@ export default function Contact() {
 
             <div style={{ marginTop: '20px', paddingTop: '14px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px' }}>
-                Vous préférez en parler de vive voix ?
+                {T('contact.vivevoix')}
               </p>
               <a
                 href="/contact/rendez-vous"
@@ -225,7 +248,7 @@ export default function Contact() {
                 onMouseEnter={e => { e.currentTarget.style.opacity = '0.65' }}
                 onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
               >
-                Prendre 15 min avec nous
+                {T('contact.rdv')}
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
               </a>
             </div>
@@ -234,10 +257,10 @@ export default function Contact() {
           {/* ── Colonne droite, Formulaire ── */}
           <div style={{ background: '#FFFFFF', padding: '36px 40px 32px', display: 'flex', flexDirection: 'column' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
-              Parlez-nous de votre projet
+              {T('contact.formTitre')}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.5vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
-              Envoyez-nous votre demande.
+              {T('contact.merci')}
             </h2>
 
             {status === 'success' ? (
@@ -247,7 +270,7 @@ export default function Contact() {
                 </div>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2 }}>{T('form.recu')}</p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '300px' }}>
-                  Nous vous répondons sous 24h avec une proposition personnalisée.
+                  {T('contact.formChapeau')}
                 </p>
               </div>
             ) : (
@@ -266,7 +289,7 @@ export default function Contact() {
                   <div style={{ position: 'relative' }}>
                     <select name="type" value={form.type} onChange={handle} required aria-required="true" aria-label={T('form.typeEvenement')} style={{ ...inputStyle, color: form.type ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)', paddingRight: '36px' }}>
                       <option value="" disabled>{T('form.typeEvenement')} *</option>
-                      {typesEvenement.map(t => <option key={t} value={t}>{t}</option>)}
+                      {typesEvenement.map(v => <option key={v} value={v}>{langue === 'en' ? (TYPES_EN[v] || v) : v}</option>)}
                     </select>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', color: 'rgba(17,17,17,0.38)' }}><polyline points="6,9 12,15 18,9"/></svg>
                   </div>
@@ -285,7 +308,7 @@ export default function Contact() {
                 />
                 {status === 'error' && (
                   <p role="alert" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#c0392b', textAlign: 'center', margin: '0' }}>
-                    Une erreur est survenue. Veuillez réessayer ou nous appeler directement.
+                    {T('contact.erreur')}
                   </p>
                 )}
                 <button
@@ -295,10 +318,10 @@ export default function Contact() {
                   onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.opacity = '0.85' }}
                   onMouseLeave={e => { if (status !== 'loading') e.currentTarget.style.opacity = '1' }}
                 >
-                  {status === 'loading' ? 'Envoi en cours…' : `${T('form.envoyer')} →`}
+                  {status === 'loading' ? T('form.envoiEnCours') : `${T('form.envoyer')} →`}
                 </button>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)', textAlign: 'center' }}>
-                  Vos données restent privées et ne sont jamais partagées.
+                  {T('contact.confidentiel')}
                 </p>
               </form>
             )}
@@ -330,21 +353,21 @@ export default function Contact() {
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
-              Pensé pour les entreprises
+              {T('contact.argsSurtitre')}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 44px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)' }}>
-              Un service exigeant,<br />adapté à votre quotidien.
+              {T('contact.argsTitre1')}<br />{T('contact.argsTitre2')}
             </h2>
           </div>
 
           <div className="args-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
             {[
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>, titre: 'Réponse rapide', desc: "Nous vous répondons sous 24h pour toute demande de devis ou d'information." },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>, titre: 'Prestation sur mesure', desc: 'Des offres adaptées à vos envies, à votre budget et aux besoins de votre entreprise.' },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>, titre: 'Livraison ponctuelle', desc: "Livraison dès 6h30 en Île-de-France, avec le respect de vos impératifs horaires." },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>, titre: 'Installation soignée', desc: "Mise en place élégante et discrète pour un service prêt à l'heure souhaitée." },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, titre: 'Interlocuteur unique', desc: 'Un contact dédié pour vous accompagner à chaque étape de votre événement.' },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>, titre: 'Règlement à 30 jours', desc: 'Conditions de règlement adaptées aux entreprises, sans avance de frais.' },
+              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>, titre: T('contact.arg1.titre'), desc: T('contact.arg1.desc') },
+              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>, titre: T('contact.arg2.titre'), desc: T('contact.arg2.desc') },
+              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>, titre: T('contact.arg3.titre'), desc: T('contact.arg3.desc') },
+              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>, titre: T('contact.arg4.titre'), desc: T('contact.arg4.desc') },
+              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, titre: T('contact.arg5.titre'), desc: T('contact.arg5.desc') },
+              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>, titre: T('contact.arg6.titre'), desc: T('contact.arg6.desc') },
             ].map((item, i) => (
               <div key={i} style={{
                 background: '#FFFFFF',

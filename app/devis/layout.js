@@ -1,5 +1,7 @@
+import { alternatesPour } from '../../lib/i18n'
+
 export const metadata = {
-  alternates: { canonical: '/devis' },
+  alternates: alternatesPour('/devis', { en: true }),
   title: "Obtenir un devis",
   description: "Décrivez votre événement et recevez un devis personnalisé sous 24h : petits-déjeuners, cocktails, buffets et plateaux repas à Paris.",
   openGraph: {
