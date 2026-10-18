@@ -1,6 +1,25 @@
 'use client'
 
-export default function ExperiencesSection() {
+const T_EXP = {
+  fr: {
+    t1: 'Des moments qui font', t2: 'du bien au bureau.',
+    c1: "Du petit-déjeuner de rentrée au cocktail de fin d'année,",
+    c2: "du déjeuner d'équipe au séminaire,",
+    c3: "on s'adapte à chacun de vos moments.",
+    cta: 'Découvrir nos créations',
+  },
+  en: {
+    t1: 'The moments that make', t2: 'an office worth coming to.',
+    c1: 'From the first breakfast back to the end-of-year reception,',
+    c2: 'from a team lunch to a two-day offsite,',
+    c3: 'we build around the moment you actually have.',
+    cta: 'See what we make',
+  },
+}
+
+export default function ExperiencesSection({ lang = 'fr' }) {
+  const T = T_EXP[lang] || T_EXP.fr
+  const en = lang === 'en'
   return (
     <section
       className="experiences-section"
@@ -40,8 +59,8 @@ export default function ExperiencesSection() {
             marginBottom: '24px',
           }}
         >
-          Des moments qui font<br />
-          du bien au bureau.
+          {T.t1}<br />
+          {T.t2}
         </h2>
 
         <p
@@ -55,13 +74,13 @@ export default function ExperiencesSection() {
             marginBottom: '48px',
           }}
         >
-          Du petit-déjeuner de rentrée au cocktail de fin d'année,<br />
-          du déjeuner d'équipe au séminaire,<br />
-          on s'adapte à chacun de vos moments.
+          {T.c1}<br />
+          {T.c2}<br />
+          {T.c3}
         </p>
 
         <a
-          href="/creations/pauses-gourmandes"
+          href={en ? '/en/creations/pauses-gourmandes' : '/creations/pauses-gourmandes'}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -80,7 +99,7 @@ export default function ExperiencesSection() {
           onMouseEnter={e => e.currentTarget.style.opacity = '0.45'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          Découvrir nos créations <span style={{ fontSize: '15px' }}>→</span>
+          {T.cta} <span style={{ fontSize: '15px' }}>→</span>
         </a>
       </div>
 

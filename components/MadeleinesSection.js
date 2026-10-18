@@ -18,7 +18,55 @@ const INFOS = [
   },
 ]
 
-export default function MadeleinesSection() {
+/* Parfums : les noms français sont ceux du devis, on ne traduit que ce qu'un
+   anglophone ne devine pas. « Nature » et « Chocolat Lait » sont opaques. */
+const PARFUMS_EN = {
+  'pistache-framboise': 'Pistachio & raspberry',
+  'ananas-coco-passion': 'Pineapple, coconut & passion fruit',
+  'citron': 'Lemon',
+  'chocolat-lait': 'Milk chocolate',
+  'chocolat-noir': 'Dark chocolate',
+  'nature': 'Plain',
+}
+
+const INFOS_EN = [
+  {
+    title: 'Baked every morning',
+    text: 'Our madeleines are made fresh each day, which is the only way to get that crumb and that lift.',
+  },
+  {
+    title: 'Flavours that surprise people',
+    text: 'Pistachio and raspberry, pineapple coconut passion fruit, orange blossom, rose and violet… recipes that are not the usual.',
+  },
+  {
+    title: "L'Écrin's best seller",
+    text: 'The most asked-for thing on our breakfasts, cocktail receptions and corporate events.',
+  },
+]
+
+const T_MADELEINES = {
+  fr: {
+    eyebrow: 'Les incontournables',
+    titre: 'Madeleines artisanales',
+    corps: 'Préparées chaque matin par Mado, notre partenaire historique, considérées comme les meilleures madeleines de Paris. Elle nous suit depuis le premier jour et est devenue, au fil du temps, le produit signature de la maison : texture moelleuse, bosse généreuse et des saveurs pensées pour surprendre.',
+    saveurs: 'Nos saveurs',
+    cta: 'Découvrir les coffrets',
+    infos: INFOS,
+  },
+  en: {
+    eyebrow: 'The ones people ask for',
+    titre: 'Artisan madeleines',
+    corps: 'Baked every morning by Mado, our partner since day one, and reckoned among the best madeleines in Paris. Over time they have become the thing the house is known for: a soft crumb, a generous hump, and flavours chosen to surprise.',
+    saveurs: 'Our flavours',
+    cta: 'See the boxes',
+    infos: INFOS_EN,
+  },
+}
+
+export default function MadeleinesSection({ lang = 'fr' }) {
+  const T = T_MADELEINES[lang] || T_MADELEINES.fr
+  const en = lang === 'en'
+  const parfum = (f) => (en && PARFUMS_EN[f.id]) || f.label
   return (
     <section className="mad-section" style={{ background: 'var(--bg-secondary)' }}>
 
@@ -39,32 +87,32 @@ export default function MadeleinesSection() {
         {/* Contenu */}
         <div className="mad-content reveal" style={{ padding: '88px 88px 80px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
-            Les incontournables
+            {T.eyebrow}
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 3.8vw, 56px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
-            Madeleines artisanales
+            {T.titre}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '44px', maxWidth: '500px' }}>
-            Préparées chaque matin par Mado, notre partenaire historique, considérées comme les meilleures madeleines de Paris. Elle nous suit depuis le premier jour et est devenue, au fil du temps, le produit signature de la maison : texture moelleuse, bosse généreuse et des saveurs pensées pour surprendre.
+            {T.corps}
           </p>
 
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
-            Nos saveurs
+            {T.saveurs}
           </p>
 
           <div className="mad-flavors" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '44px' }}>
             {MADELEINE_FLAVORS.map(f => (
               <div key={f.id} className="mad-flavor-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(17,17,17,0.08)', borderRadius: '6px', padding: '20px 12px 16px', textAlign: 'center' }}>
                 <div style={{ height: '88px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
-                  <img loading="lazy" src={f.img} alt={f.label} style={{ maxHeight: '88px', maxWidth: '85%', objectFit: 'contain', display: 'block' }} />
+                  <img loading="lazy" src={f.img} alt={parfum(f)} style={{ maxHeight: '88px', maxWidth: '85%', objectFit: 'contain', display: 'block' }} />
                 </div>
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: '#3A342C', lineHeight: 1.3 }}>{f.label}</span>
+                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: '#3A342C', lineHeight: 1.3 }}>{parfum(f)}</span>
               </div>
             ))}
           </div>
 
-          <a href="/creations/petits-dejeuners-et-pauses/madeleines-20" className="mad-cta" style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', transition: 'color 0.25s ease, border-color 0.25s ease' }}>
-            Découvrir les coffrets
+          <a href={`${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses/madeleines-20`} className="mad-cta" style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', transition: 'color 0.25s ease, border-color 0.25s ease' }}>
+            {T.cta}
             <span className="mad-arrow" style={{ display: 'inline-block', transition: 'transform 0.25s ease' }}>→</span>
           </a>
         </div>
@@ -73,7 +121,7 @@ export default function MadeleinesSection() {
       {/* ── Bas : 3 colonnes d'infos ── */}
       <div className="mad-infos-wrap" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', background: '#FFFFFF' }}>
         <div className="mad-infos reveal-stagger" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
-          {INFOS.map(info => (
+          {T.infos.map(info => (
             <div key={info.title}>
               <span style={{ display: 'block', width: '24px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '12px' }}>

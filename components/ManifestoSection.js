@@ -1,4 +1,18 @@
-export default function ManifestoSection() {
+const T_MANIFESTO = {
+  fr: {
+    l1: 'Nous préférons dix produits remarquables',
+    l2: 'à cent produits oubliables.',
+    tagline: "L'art de recevoir, avec justesse",
+  },
+  en: {
+    l1: 'We would rather have ten products worth remembering',
+    l2: 'than a hundred nobody mentions.',
+    tagline: 'The art of hosting, done right',
+  },
+}
+
+export default function ManifestoSection({ lang = 'fr' }) {
+  const T = T_MANIFESTO[lang] || T_MANIFESTO.fr
   return (
     <section
       className="manifesto-section"
@@ -48,8 +62,8 @@ export default function ManifestoSection() {
             marginBottom: '52px',
           }}
         >
-          Nous préférons dix produits remarquables<br />
-          à cent produits oubliables.
+          {T.l1}<br />
+          {T.l2}
         </blockquote>
 
         {/* Monogramme L'Écrin */}
@@ -75,7 +89,7 @@ export default function ManifestoSection() {
             margin: 0,
           }}
         >
-          L'art de recevoir, avec justesse
+          {T.tagline}
         </p>
       </div>
 

@@ -21,7 +21,44 @@ const args = [
   },
 ]
 
-export default function DetailSection() {
+const T_DETAIL = {
+  fr: {
+    eyebrow: 'Notre Signature',
+    t1: 'Le détail', t2: 'fait la différence.',
+    c1: 'La différence se joue dans les détails.', c2: 'Toujours.',
+    cta: 'Découvrir notre approche',
+    alt: "Le détail fait la différence, L'Écrin Traiteur",
+    items: args,
+  },
+  en: {
+    eyebrow: 'Our signature',
+    t1: 'The difference is', t2: 'in the detail.',
+    c1: 'It is always the details that decide', c2: 'how a reception is remembered.',
+    cta: 'See how we work',
+    alt: "The difference is in the detail, L'Écrin Traiteur",
+    items: [
+      {
+        num: '01.',
+        title: 'On time, every time',
+        body: 'Delivered from 6:30 am, at the time you asked for, so your meeting starts when it is meant to.',
+      },
+      {
+        num: '02.',
+        title: 'Nothing for you to carry',
+        body: 'Quote within 24 hours, invoicing built for companies, special requests handled. From the order to the setup, there is nothing for you to arrange.',
+      },
+      {
+        num: '03.',
+        title: 'Made by hand, sourced close by',
+        body: 'Artisan bakers, fruit in season, growers we have chosen ourselves. Food that actually tastes of something.',
+      },
+    ],
+  },
+}
+
+export default function DetailSection({ lang = 'fr' }) {
+  const T = T_DETAIL[lang] || T_DETAIL.fr
+  const en = lang === 'en'
   const [openIndex, setOpenIndex] = useState(null)
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
@@ -43,7 +80,7 @@ export default function DetailSection() {
           <Image fill className="detail-img"
             sizes="100vw"
             src="/detail-home.webp"
-            alt="Le détail fait la différence, L'Écrin Traiteur"
+            alt={T.alt}
             style={{
               objectFit: 'cover',
               display: 'block',
@@ -75,25 +112,29 @@ export default function DetailSection() {
             }}
           >
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>
-              Notre Signature
+              {T.eyebrow}
             </p>
             <span style={{ width: '32px', height: '1px', background: 'var(--accent)', display: 'block', marginBottom: '32px' }} />
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(42px, 4.8vw, 72px)', lineHeight: 1.0, letterSpacing: '-0.01em', fontWeight: 400, color: '#FFFFFF', marginBottom: '24px' }}>
-              Le détail<br />
-              fait la différence.
+              {T.t1}<br />
+              {T.t2}
             </h2>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'rgba(255,255,255,0.88)', maxWidth: '360px', marginBottom: '40px' }}>
-              La différence se joue dans les détails.<br />
-              Toujours.
+              {T.c1}<br />
+              {T.c2}
             </p>
-            <a
-              href="/univers/notre-maison"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#FFFFFF', borderBottom: '1px solid rgba(255,255,255,0.45)', paddingBottom: '4px', width: 'fit-content', transition: 'opacity 0.3s ease' }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '0.6'}
-              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-            >
-              Découvrir notre approche <span style={{ fontSize: '14px' }}>→</span>
-            </a>
+            {/* La page Notre Maison n'existe qu'en français : pas de lien en
+                anglais plutôt qu'un lien vers une page française. */}
+            {!en && (
+              <a
+                href="/univers/notre-maison"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#FFFFFF', borderBottom: '1px solid rgba(255,255,255,0.45)', paddingBottom: '4px', width: 'fit-content', transition: 'opacity 0.3s ease' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.6'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              >
+                {T.cta} <span style={{ fontSize: '14px' }}>→</span>
+              </a>
+            )}
           </div>
         </div>
 
@@ -106,7 +147,7 @@ export default function DetailSection() {
             padding: '56px 0 80px',
           }}
         >
-          {args.map((item, i) => (
+          {T.items.map((item, i) => (
             <div
               key={item.num}
               style={{
@@ -127,7 +168,7 @@ export default function DetailSection() {
 
         {/* ── 3 arguments bas, mobile accordion ── */}
         <div className="detail-args-mobile" style={{ padding: '32px 24px 32px' }}>
-          {args.map((item, i) => (
+          {T.items.map((item, i) => (
             <div
               key={item.num}
               style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}

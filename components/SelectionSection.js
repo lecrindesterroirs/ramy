@@ -20,7 +20,39 @@ const args = [
   },
 ]
 
-export default function SelectionSection() {
+const T_SELECTION = {
+  fr: {
+    eyebrow: 'Notre Approche',
+    t1: "L'art de", t2: 'la sélection.',
+    corps: "Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Mariage Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.",
+    args,
+  },
+  en: {
+    eyebrow: 'Our approach',
+    t1: 'The art of', t2: 'choosing well.',
+    corps: 'From Mado Paris madeleines to Alain Milliat juices, from Maison Marques pastries to Mariage Frères tea. Every product is picked for its quality, its consistency, and the fact that people enjoy it.',
+    args: [
+      {
+        num: '01',
+        title: 'Makers we choose by name',
+        body: 'Mado Paris, Maison Marques, Alain Milliat, Mariage Frères… every product comes from a maker chosen for what they do well, not for what they charge.',
+      },
+      {
+        num: '02',
+        title: 'The taste of real craft',
+        body: 'Behind each product is someone who puts the ingredients, the technique and the eating first.',
+      },
+      {
+        num: '03',
+        title: 'Rooted in Île-de-France',
+        body: 'Most of our makers work in Paris or just outside. Less distance, more freshness, and a direct line to the people who make the food.',
+      },
+    ],
+  },
+}
+
+export default function SelectionSection({ lang = 'fr' }) {
+  const T = T_SELECTION[lang] || T_SELECTION.fr
   const [openIndex, setOpenIndex] = useState(null)
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
@@ -71,7 +103,7 @@ export default function SelectionSection() {
                 marginBottom: '12px',
               }}
             >
-              Notre Approche
+              {T.eyebrow}
             </p>
             <span className="accent-line" style={{ marginBottom: '36px' }} />
 
@@ -87,8 +119,8 @@ export default function SelectionSection() {
                 marginBottom: '28px',
               }}
             >
-              L'art de<br />
-              la sélection.
+              {T.t1}<br />
+              {T.t2}
             </h2>
 
             {/* Corps */}
@@ -102,7 +134,7 @@ export default function SelectionSection() {
                 marginBottom: '52px',
               }}
             >
-              Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Mariage Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.
+              {T.corps}
             </p>
 
             {/* 3 arguments, desktop */}
@@ -114,7 +146,7 @@ export default function SelectionSection() {
                 gap: '12px',
               }}
             >
-              {args.map((item, i) => (
+              {T.args.map((item, i) => (
                 <div
                   key={item.num}
                   style={{
@@ -134,7 +166,7 @@ export default function SelectionSection() {
 
             {/* 3 arguments, mobile accordion */}
             <div className="selection-args-mobile">
-              {args.map((item, i) => (
+              {T.args.map((item, i) => (
                 <div
                   key={item.num}
                   style={{ borderBottom: '1px solid rgba(17,17,17,0.08)' }}

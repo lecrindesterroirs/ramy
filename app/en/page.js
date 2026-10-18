@@ -2,6 +2,12 @@ import Navbar from '../../components/Navbar'
 import Hero from '../../components/Hero'
 import LogosSection from '../../components/LogosSection'
 import CreationsSection from '../../components/CreationsSection'
+import ArtisansMapSection from '../../components/ArtisansMapSection'
+import MadeleinesSection from '../../components/MadeleinesSection'
+import ExperiencesSection from '../../components/ExperiencesSection'
+import SelectionSection from '../../components/SelectionSection'
+import ManifestoSection from '../../components/ManifestoSection'
+import DetailSection from '../../components/DetailSection'
 import TestimonialsSection from '../../components/TestimonialsSection'
 import FAQSection from '../../components/FAQSection'
 import VillesSection from '../../components/VillesSection'
@@ -19,10 +25,8 @@ import { alternatesPourEn } from '../../lib/i18n'
 
   Elle réutilise les sections de l'accueil français, par prop `lang`, pour
   que les deux pages restent la même page : mêmes photos, mêmes logos,
-  mêmes villes, mêmes faits. Les six sections encore franco-seules
-  (artisans, madeleines, expériences, sélection, manifeste, détail) ne sont
-  pas rendues ici : mieux vaut une page anglaise plus courte qu'une page
-  anglaise avec six blocs en français.
+  mêmes villes, mêmes faits, mêmes prix. Les treize sections sont dans le
+  même ordre que l'accueil français.
 */
 
 export const metadata = {
@@ -45,6 +49,12 @@ export default function HomeEn() {
         <Hero lang="en" />
         <LogosSection label="They trust us" />
         <CreationsSection lang="en" />
+        <ArtisansMapSection lang="en" />
+        <MadeleinesSection lang="en" />
+        <ExperiencesSection lang="en" />
+        <SelectionSection lang="en" />
+        <ManifestoSection lang="en" />
+        <DetailSection lang="en" />
         <TestimonialsSection lang="en" />
         <FAQSection lang="en" />
         <VillesSection lang="en" />

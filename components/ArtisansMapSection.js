@@ -79,9 +79,32 @@ const AVANTAGES = [
   'Tous les artisans sont sélectionnés avec soin par nos équipes.',
 ]
 
+const T_ARTISANS = {
+  fr: {
+    eyebrow: "Notre réseau d'artisans",
+    t1: "Un réseau d'artisans ", t2: 'passionnés, proche de chez vous.',
+    corps: "Nous réunissons les meilleurs savoir-faire français au sein d'une seule maison, pour simplifier l'organisation de vos événements.",
+    lien: 'Découvrir nos artisans',
+    avantages: AVANTAGES,
+  },
+  en: {
+    eyebrow: 'Our network of makers',
+    t1: 'A network of makers ', t2: 'who care, close to your office.',
+    corps: 'We bring the best French craft together under one roof, so you have one order to place and one person to call.',
+    lien: 'Meet our makers',
+    avantages: [
+      'Short supply chains wherever they are possible.',
+      'The best of each craft, in one order.',
+      'Every maker chosen by our own team, by name.',
+    ],
+  },
+}
+
 /* ─── Section réutilisable, page Nos Artisans + Accueil ──────────────── */
 
-export default function ArtisansMapSection({ headingTag: Heading = 'h2' }) {
+export default function ArtisansMapSection({ headingTag: Heading = 'h2', lang = 'fr' }) {
+  const T = T_ARTISANS[lang] || T_ARTISANS.fr
+  const en = lang === 'en'
   return (
     <section id="carte" className="amp-section" style={{ background: 'var(--bg-secondary)', padding: '96px 0' }}>
       <div className="amp-inner" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
@@ -89,22 +112,26 @@ export default function ArtisansMapSection({ headingTag: Heading = 'h2' }) {
         <Reveal>
           <div>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
-              Notre réseau d'artisans
+              {T.eyebrow}
             </p>
             <Heading style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
-              Un réseau d'artisans <br />passionnés, proche de chez vous.
+              {T.t1}<br />{T.t2}
             </Heading>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '420px', marginBottom: '24px' }}>
-              Nous réunissons les meilleurs savoir-faire français au sein d'une seule maison, pour simplifier l'organisation de vos événements.
+              {T.corps}
             </p>
 
-            <Link href="/univers/nos-artisans" className="amp-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', marginBottom: '36px', alignSelf: 'flex-start' }}>
-              Découvrir nos artisans
+            {/* La page Nos Artisans n'existe qu'en français : pas de lien en anglais
+                plutôt qu'un lien qui envoie un anglophone sur une page française. */}
+            {!en && (
+              <Link href="/univers/nos-artisans" className="amp-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', marginBottom: '36px', alignSelf: 'flex-start' }}>
+              {T.lien}
               <span className="amp-arrow" style={{ display: 'inline-block', transition: 'transform 0.25s ease' }}>→</span>
             </Link>
+            )}
 
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px', padding: 0, margin: 0, maxWidth: '440px' }}>
-              {AVANTAGES.map((t, i) => (
+              {T.avantages.map((t, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <span style={{ flexShrink: 0, color: 'var(--accent-deep)', marginTop: '2px' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
