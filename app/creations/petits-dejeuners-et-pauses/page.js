@@ -21,7 +21,7 @@ const SEO_ARTICLE = `
   <p>Le <strong>buffet petit-déjeuner</strong> convient aux grands effectifs et aux espaces de convivialité : viennoiseries, pâtisseries et fruits dressés sur table, chacun se sert à son rythme. Les <strong>plateaux individuels</strong> sont préférés pour les réunions restreintes ou les accueils clients, où chaque participant a sa propre sélection sans se lever. Les deux formats se commandent avec la même sélection de produits ; précisez votre préférence au moment du devis, nous adaptons le conditionnement.</p>
 
   <h2>Combien coûte un petit-déjeuner d'entreprise ?</h2>
-  <p>Notre formule d'entrée démarre à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits). Le budget varie ensuite selon le nombre de pièces, la part de pâtisseries artisanales et les boissons choisies. Pas de prix affiché produit par produit sur commande complexe : nous établissons un devis clair sous 24h, sans ligne cachée sur la livraison.</p>
+  <p>Nos viennoiseries et notre café démarrent à <strong>6,50 € HT par personne</strong> pour 30 personnes, hors livraison. Notre formule Classique est à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits). Le budget varie ensuite selon le nombre de pièces, la part de pâtisseries artisanales et les boissons choisies. Pas de prix affiché produit par produit sur commande complexe : nous établissons un devis clair sous 24h, sans ligne cachée sur la livraison.</p>
 
   <h2>Petit-déjeuner d'entreprise dans Paris et les principales villes d'Île-de-France</h2>
   <p>Nous livrons chaque matin dans tous les arrondissements de Paris, des quartiers d'affaires du <strong>8e</strong> et du <strong>9e</strong> aux sièges sociaux du <strong>13e</strong> et du <strong>15e</strong>, avec les mêmes délais et la même qualité qu'à La Défense. En dehors de la capitale, nous couvrons les principales villes d'entreprise d'Île-de-France : <a href="/petit-dejeuner-entreprise/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/versailles">Versailles</a>, <a href="/traiteur/puteaux">Puteaux</a>, <a href="/petit-dejeuner-entreprise/gennevilliers">Gennevilliers</a>, <a href="/traiteur/issy-les-moulineaux">Issy-les-Moulineaux</a> ou encore <a href="/traiteur/neuilly-sur-seine">Neuilly-sur-Seine</a>. Chaque secteur a ses propres contraintes d'accès (badges, quais de livraison, horaires de réception) que nous anticipons dès la prise de commande.</p>
@@ -33,7 +33,7 @@ const SEO_ARTICLE = `
   <div class="faq-block">
     <details>
       <summary><strong>Combien coûte un petit-déjeuner d'entreprise livré à Paris ?</strong></summary>
-      <p>La formule Classique démarre à 8 € HT par personne (viennoiseries, jus, café, fruits) et le petit-déjeuner complet coûte 12 à 16 € HT par personne, plus 29 € HT de livraison. Le minimum de commande est de 50 € HT. Pour 20 personnes, le petit-déjeuner complet revient à 340,80 € HT livraison comprise.</p>
+      <p>Viennoiseries et café reviennent dès 6,50 € HT par personne pour 30 personnes, hors livraison. La formule Classique est à 8 € HT par personne (viennoiseries, jus, café, fruits) et le petit-déjeuner complet coûte 12 à 16 € HT par personne, plus 29 € HT de livraison. Le minimum de commande est de 50 € HT. Pour 20 personnes, le petit-déjeuner complet revient à 340,80 € HT livraison comprise.</p>
     </details>
     <details>
       <summary><strong>À quelle heure livrez-vous et jusqu'à quand commander ?</strong></summary>
@@ -68,7 +68,7 @@ const ANSWER_BLOCK = (
     plusTitre="Tarifs de livraison, minimum de commande et quantités"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour calibrer les quantités selon votre effectif, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes">guide budget par nombre de personnes</a>, ou <a href="/devis">demandez un devis sous 24h</a>.</>}
   >
-    Un petit-déjeuner d'entreprise commence à <strong>8 € HT par personne</strong> (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Un petit-déjeuner d'entreprise commence à <strong>6,50 € HT par personne</strong> (viennoiseries et café, pour 30 personnes), <strong>8 € HT</strong> en formule Classique (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
   </BlocReponse>
 )
 
@@ -78,7 +78,7 @@ export default function PetitsDejeuners() {
       <ProductsPageTemplate
       heroImg="/hero-petitdej.webp"
       heroTitle={"Petit-déjeuner d'entreprise\nà Paris"}
-      heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Dès 8 € HT par personne, commande jusqu'à la veille 14h."
+      heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Viennoiseries et café dès 6,50 € HT par personne, commande jusqu'à la veille 14h."
       breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"
       categorieSlug="petits-dejeuners"
       fallbackProducts={PRODUCTS}
