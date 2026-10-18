@@ -38,10 +38,10 @@ export const PLATEAUX = [
   },
   {
     seoTitle: `Plateau de mini wraps roulés pour vos afterworks et pauses déjeuner d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de mini wraps roulés découpés en bouchées apporte de la couleur et de la fraîcheur à un apéritif d'équipe. Roulés serrés, coupés net, les mini wraps se picorent facilement debout et offrent une alternative plus légère aux sandwichs classiques pour un afterwork ou une réunion de l'après-midi.</p><h2>Roulés, coupés, prêts à picorer</h2><p>Deux garnitures : saumon fumé et cream cheese, et jambon de dinde. Roulés serrés puis découpés en bouchées pour se partager sans effort. On ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de mini wraps roulés découpés en bouchées apporte de la couleur et de la fraîcheur à un apéritif d'équipe. Roulés serrés, coupés net, les mini wraps se picorent facilement debout et offrent une alternative plus légère aux sandwichs classiques pour un afterwork ou une réunion de l'après-midi.</p><h2>Roulés, coupés, prêts à picorer</h2><p>Deux garnitures : saumon fumé et cream cheese, et blanc de poulet. Roulés serrés puis découpés en bouchées pour se partager sans effort. On ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'sw3', famille: 'sandwichs', nom: 'Mini Wraps Roulés', img: '/plateau-wraps.webp',
     description: 'Assortiment de mini wraps roulés, découpés en bouchées.',
-    recettes: ['Mini Wrap Roulé Saumon Fumé & Cream Cheese', 'Mini Wrap Roulé Jambon de Dinde'],
+    recettes: ['Mini Wrap Roulé Saumon Fumé & Cream Cheese', 'Mini Wrap Roulé Blanc de Poulet'],
   },
   {
     seoTitle: `Plateau de mini burgers pour vos afterworks et événements d'entreprise à Paris`,
