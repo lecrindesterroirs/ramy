@@ -1,5 +1,7 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18n'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
@@ -63,7 +65,75 @@ const FAITS = [
   },
 ]
 
+/*
+  Textes anglais. Les faits — 2025, Boulogne-Billancourt, veille 14h, 6h30,
+  50 € HT, 29 € HT, 5,0 sur Google — sont exactement les mêmes des deux
+  côtés : un écart entre les deux langues serait une contradiction lue par
+  les IA. Les chiffres de confiance restent ceux que Ramy a arrêtés.
+
+  Le mot du fondateur est une citation de Ramy : la version anglaise porte la
+  mention « Translated from French ».
+*/
+const MANIFESTE_EN = [
+  "L'Écrin started from one conviction: the moments a company shares deserve better than the ordinary.",
+  'We pick the best. Every maker, every product, every gesture is chosen for the craft behind it and for what it does to the people eating.',
+  'A breakfast delivered from 6:30 am, a cocktail reception dressed at the last minute, a break that brings people together: we put the same care into each detail, because the details are what your team remembers.',
+  'Luxury, to us, is not cold. It is warm, alive, human. That is the whole art of hosting.',
+]
+
+const FAITS_EN = [
+  {
+    q: "What is L'Écrin Traiteur?",
+    a: "L'Écrin Traiteur is a corporate caterer based in Boulogne-Billancourt, founded in 2025 by Ramy Abdelaty. We deliver breakfasts, lunch trays, lunch boxes, afternoon breaks, cocktail receptions and live food stations to offices across Paris and Île-de-France. The registered company is L'Écrin des Terroirs; L'Écrin Traiteur is its trading name. More than 100 companies have already trusted us with their meetings, offsites and receptions, from 10 to 300 people.",
+  },
+  {
+    q: 'Where does the food come from?',
+    a: 'We do not have a central kitchen that standardises everything. Every product comes from a maker we have tasted and chosen: Mado Paris madeleines, Maison Marques pastries, yoghurts from la Ferme de Viltain in Jouy-en-Josas, Alain Milliat juices. We handle the setup, the presentation and the chilled transport to your offices.',
+  },
+  {
+    q: 'How does ordering work?',
+    a: 'You order until 2 pm the day before, and we deliver from 6:30 am with our own team, never subcontracted. Minimum order €50 excl. VAT, delivery €29 excl. VAT in Paris and nearby towns. Quote within 24 hours, company invoice showing VAT.',
+  },
+  {
+    q: 'Which dietary needs do you cover?',
+    a: 'The whole menu is halal and pork-free as standard, with no alcohol in any recipe. Every package exists in a vegetarian and a vegan version, and we adapt it to gluten-free on request.',
+  },
+  {
+    q: 'Where do you deliver?',
+    a: 'Paris and around twenty towns across Île-de-France, including Boulogne-Billancourt, Issy-les-Moulineaux, Neuilly-sur-Seine, Levallois-Perret, Puteaux and La Défense, Courbevoie, Nanterre, Suresnes, Gennevilliers and Versailles. Our clients rate us 5.0 out of 5 on Google.',
+  },
+]
+
+const T_MAISON = {
+  fr: {
+    eyebrow: 'L\'Écrin · Notre Maison',
+    titre: 'Qui sommes-nous',
+    manifeste: MANIFESTE,
+    signature: "L'Écrin Traiteur · Paris",
+    faits: FAITS,
+    motEyebrow: 'Le mot du fondateur',
+    mot: "« J'ai commencé par chercher les meilleurs producteurs avant de chercher des clients. Un petit-déjeuner d'entreprise, ce n'est pas une contrainte logistique : c'est un moment qu'on offre à ses équipes. Je voulais qu'il soit à la hauteur. »",
+    fondateur: 'fondateur de L\'Écrin Traiteur',
+    traduit: null,
+    fil: ['Accueil', 'Notre maison'],
+  },
+  en: {
+    eyebrow: "L'Écrin · Our House",
+    titre: 'Who we are',
+    manifeste: MANIFESTE_EN,
+    signature: "L'Écrin Traiteur · Paris",
+    faits: FAITS_EN,
+    motEyebrow: 'A word from the founder',
+    mot: "“I went looking for the best producers before I went looking for clients. A corporate breakfast is not a logistics problem: it is something you give your team. I wanted it to be worth giving.”",
+    fondateur: "founder of L'Écrin Traiteur",
+    traduit: 'Translated from French',
+    fil: ['Home', 'Our house'],
+  },
+}
+
 export default function NotreMaison() {
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_MAISON.en : T_MAISON.fr
   return (
     <>
       <Navbar showBanner={true} />
@@ -98,17 +168,17 @@ export default function NotreMaison() {
             <span style={{ position: 'absolute', inset: '18px', border: '1px solid rgba(169,128,59,0.25)', pointerEvents: 'none' }} />
 
             <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, marginBottom: '22px' }}>
-              L'Écrin · Notre Maison
+              {T.eyebrow}
             </p>
 
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(38px, 6vw, 62px)', fontWeight: 400, lineHeight: 1.05, color: '#2A2013', marginBottom: '10px' }}>
-              Qui sommes-nous
+              {T.titre}
             </h1>
 
             <Sprig />
 
             <div style={{ maxWidth: '540px', margin: '26px auto 0' }}>
-              {MANIFESTE.map((p, i) => (
+              {T.manifeste.map((p, i) => (
                 <p
                   key={i}
                   style={{
@@ -128,15 +198,15 @@ export default function NotreMaison() {
               <Sprig />
               <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '38px', width: 'auto', margin: '18px auto 8px', opacity: 0.85, display: 'block' }} />
               <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', color: GOLD }}>
-                L'Écrin Traiteur · Paris
+                {T.signature}
               </p>
             </div>
           </article>
 
           {/* ── Qui est L'Écrin : questions-réponses factuelles (E-E-A-T + GEO) ── */}
           <section className="nm-facts" style={{ maxWidth: '620px', margin: '80px auto 0', textAlign: 'left' }}>
-            {FAITS.map((f, i) => (
-              <div key={f.q} style={{ marginBottom: i < FAITS.length - 1 ? '44px' : '0' }}>
+            {T.faits.map((f, i) => (
+              <div key={f.q} style={{ marginBottom: i < T.faits.length - 1 ? '44px' : '0' }}>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.6vw, 30px)', fontWeight: 400, lineHeight: 1.2, color: '#2A2013', marginBottom: '16px' }}>
                   {f.q}
                 </h2>
@@ -150,13 +220,14 @@ export default function NotreMaison() {
           {/* ── Le mot du fondateur ── */}
           <section className="nm-founder" style={{ maxWidth: '620px', margin: '48px auto 0', paddingTop: '40px', borderTop: '1px solid rgba(169,128,59,0.3)', textAlign: 'left' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: '18px' }}>
-              Le mot du fondateur
+              {T.motEyebrow}
             </p>
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(18px, 2vw, 22px)', lineHeight: 1.7, color: '#2A2013', marginBottom: '20px' }}>
-              « J'ai commencé par chercher les meilleurs producteurs avant de chercher des clients. Un petit-déjeuner d'entreprise, ce n'est pas une contrainte logistique : c'est un moment qu'on offre à ses équipes. Je voulais qu'il soit à la hauteur. »
+              {T.mot}
             </p>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'rgba(42,32,19,0.7)' }}>
-              <strong style={{ fontWeight: 500, color: '#2A2013' }}>Ramy Abdelaty</strong>, fondateur de L'Écrin Traiteur
+              <strong style={{ fontWeight: 500, color: '#2A2013' }}>Ramy Abdelaty</strong>, {T.fondateur}
+              {T.traduit && <><br /><span style={{ fontSize: '12px', color: 'rgba(42,32,19,0.5)' }}>{T.traduit}</span></>}
             </p>
           </section>
 
@@ -172,8 +243,8 @@ export default function NotreMaison() {
 
       <BusinessJsonLd />
       <BreadcrumbJsonLd items={[
-        { name: 'Accueil', path: '' },
-        { name: 'Notre maison', path: '/univers/notre-maison' },
+        { name: T.fil[0], path: en ? '/en' : '' },
+        { name: T.fil[1], path: `${en ? '/en' : ''}/univers/notre-maison` },
       ]} />
 
       <Footer />

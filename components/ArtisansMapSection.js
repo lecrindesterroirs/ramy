@@ -121,14 +121,11 @@ export default function ArtisansMapSection({ headingTag: Heading = 'h2', lang = 
               {T.corps}
             </p>
 
-            {/* La page Nos Artisans n'existe qu'en français : pas de lien en anglais
-                plutôt qu'un lien qui envoie un anglophone sur une page française. */}
-            {!en && (
-              <Link href="/univers/nos-artisans" className="amp-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', marginBottom: '36px', alignSelf: 'flex-start' }}>
+            <Link href={en ? '/en/univers/nos-artisans' : '/univers/nos-artisans'} className="amp-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', marginBottom: '36px', alignSelf: 'flex-start' }}>
               {T.lien}
               <span className="amp-arrow" style={{ display: 'inline-block', transition: 'transform 0.25s ease' }}>→</span>
             </Link>
-            )}
+
 
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px', padding: 0, margin: 0, maxWidth: '440px' }}>
               {T.avantages.map((t, i) => (

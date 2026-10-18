@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/univers/nos-artisans' },
+  alternates: alternatesPour('/univers/nos-artisans', { en: true }),
   title: "Nos Artisans Partenaires",
   description: "Alain Milliat, Mariage Frères, Laura Todd, Pierre Morel et nos autres artisans : ceux qui composent nos prestations traiteur d'entreprise.",
   openGraph: {

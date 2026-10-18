@@ -23,7 +23,8 @@ import { slugsBoissonsEn } from '../lib/en/produits/boissons'
 import { slugsPlateauxAperitifsEn } from '../lib/en/produits/plateauxAperitifs'
 import { cheminsAnimationsEn } from '../lib/en/produits/animationsChemins'
 import { clesCocktailsEn } from '../lib/en/produits/cocktails'
-import { INDEX_FAMILLES_EN } from '../lib/i18n'
+import { INDEX_FAMILLES_EN, UNIVERS_EN } from '../lib/i18n'
+import { slugsArtisansEn } from '../lib/en/univers/artisans'
 import { cheminsVillesEn } from '../lib/en/villes'
 import { EN_PAGES } from '../lib/enPages'
 
@@ -189,6 +190,8 @@ export default function sitemap() {
     ...clesCocktailsEn().map(k => url(`/en/creations/cocktails/${k}`, 0.78, 'monthly')),
     url('/en', 0.90, 'weekly'),   // accueil anglais
     ...INDEX_FAMILLES_EN.map(c => url(`/en${c}`, 0.80, 'weekly')),
+    ...UNIVERS_EN.map(c => url(`/en${c}`, 0.72, 'monthly')),
+    ...slugsArtisansEn().map(s => url(`/en/univers/nos-artisans/${s}`, 0.68, 'monthly')),
     ...cheminsVillesEn().map(c => url(`/en${c}`, 0.70, 'monthly')),
     url('/en/contact', 0.60, 'monthly'),
     url('/en/devis', 0.70, 'monthly'),

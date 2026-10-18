@@ -7,12 +7,46 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import Reveal from '../../../../components/Reveal'
 import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
+import { usePathname } from 'next/navigation'
 import { ARTISANS, getArtisanBySlug } from '../../../../lib/artisansData'
+import { estAnglais } from '../../../../lib/i18n'
+import { enArtisan, nomCreationEn } from '../../../../lib/en/univers/artisans'
+
+/*
+  Habillage de la fiche, par langue. La page sert les deux langues : elle lit
+  la sienne dans le chemin et fusionne lib/en/univers/artisans.js. Les noms
+  d'artisans et les villes ne sont jamais traduits.
+*/
+const T_ARTISAN = {
+  fr: {
+    retour: 'Retour à la carte',
+    produits: 'Voir les produits',
+    citation: (nom) => `Le temps, la patience et l'exigence du travail bien fait, c'est ce qui distingue ${nom}.`,
+    creations: 'Leurs créations dans nos prestations',
+    tous: 'Découvrez tous nos artisans partenaires',
+    retourCarte: 'Retour à la carte des artisans',
+  },
+  en: {
+    retour: 'Back to the map',
+    produits: 'See their products',
+    citation: (nom) => `Time, patience and a refusal to cut corners: that is what sets ${nom} apart.`,
+    creations: 'Their work in what we serve',
+    tous: 'Meet all our partner makers',
+    retourCarte: "Back to the makers' map",
+  },
+}
 
 export default function ArtisanDetail() {
   const { slug } = useParams()
-  const artisan = getArtisanBySlug(slug)
-  if (!artisan) notFound()
+  const artisanFr = getArtisanBySlug(slug)
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_ARTISAN.en : T_ARTISAN.fr
+  const surcouche = artisanFr && en ? enArtisan(artisanFr.slug) : null
+  // En anglais sans traduction, la page part sur le repli vers le français.
+  if (!artisanFr || (en && !surcouche)) notFound()
+  const artisan = surcouche ? { ...artisanFr, ...surcouche } : artisanFr
+  const lien = (href) => (en ? `/en${href}` : href)
+  const nomCreation = (c) => (en ? nomCreationEn(c.href, c.nom) : c.nom)
 
   const autres = ARTISANS.filter(a => a.slug !== artisan.slug).slice(0, 4)
 
@@ -24,9 +58,9 @@ export default function ArtisanDetail() {
 
         {/* ── Retour ── */}
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 0' }}>
-          <Link href="/univers/nos-artisans" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none' }}>
+          <Link href={lien('/univers/nos-artisans')} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none' }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5" /><path d="M11 18l-6-6 6-6" /></svg>
-            Retour à la carte
+            {T.retour}
           </Link>
         </div>
 
@@ -58,8 +92,8 @@ export default function ArtisanDetail() {
                 ))}
               </div>
 
-              <a href={artisan.creationsHref} style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '15px 28px', textDecoration: 'none' }}>
-                Voir les produits
+              <a href={lien(artisan.creationsHref)} style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '15px 28px', textDecoration: 'none' }}>
+                {T.produits}
               </a>
             </div>
           </Reveal>
@@ -80,7 +114,7 @@ export default function ArtisanDetail() {
             <Reveal delay={80}>
               <div>
                 <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(18px, 2.2vw, 26px)', lineHeight: 1.5, color: 'var(--text-primary)', marginBottom: '16px' }}>
-                  Le temps, la patience et l'exigence du travail bien fait, c'est ce qui distingue {artisan.nom}.
+                  {T.citation(artisan.nom)}
                 </p>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)' }}>
                   L'Écrin Traiteur
@@ -99,17 +133,17 @@ export default function ArtisanDetail() {
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px' }}>
           <Reveal>
             <p style={{ textAlign: 'center', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '40px' }}>
-              Leurs créations dans nos prestations
+              {T.creations}
             </p>
           </Reveal>
           <div className="art-creations-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(artisan.creations.length, 4)}, 1fr)`, gap: '24px', maxWidth: artisan.creations.length === 1 ? '460px' : artisan.creations.length === 2 ? '760px' : artisan.creations.length === 3 ? '1080px' : '100%', margin: '0 auto' }}>
             {artisan.creations.map((c, i) => (
               <Reveal key={c.id} delay={(i % 4) * 90}>
-                <Link href={c.href} className="art-creation-card" style={{ textDecoration: 'none', display: 'block' }}>
+                <Link href={lien(c.href)} className="art-creation-card" style={{ textDecoration: 'none', display: 'block' }}>
                   <div className="art-thumb" style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-                    <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={c.img} alt={c.nom} style={{ objectFit: 'cover', transition: 'transform 0.6s ease' }} />
+                    <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={c.img} alt={nomCreation(c)} style={{ objectFit: 'cover', transition: 'transform 0.6s ease' }} />
                   </div>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)', marginTop: '12px', textAlign: 'center' }}>{c.nom}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)', marginTop: '12px', textAlign: 'center' }}>{nomCreation(c)}</p>
                 </Link>
               </Reveal>
             ))}
@@ -119,10 +153,10 @@ export default function ArtisanDetail() {
         {/* ── CTA bas de page ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '56px 72px', textAlign: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-            Découvrez tous nos artisans partenaires
+            {T.tous}
           </p>
-          <Link href="/univers/nos-artisans#carte" style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.25)', padding: '15px 28px', textDecoration: 'none' }}>
-            Retour à la carte des artisans
+          <Link href={lien('/univers/nos-artisans') + '#carte'} style={{ display: 'inline-block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.25)', padding: '15px 28px', textDecoration: 'none' }}>
+            {T.retourCarte}
           </Link>
         </div>
 

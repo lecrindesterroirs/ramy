@@ -123,18 +123,14 @@ export default function DetailSection({ lang = 'fr' }) {
               {T.c1}<br />
               {T.c2}
             </p>
-            {/* La page Notre Maison n'existe qu'en français : pas de lien en
-                anglais plutôt qu'un lien vers une page française. */}
-            {!en && (
-              <a
-                href="/univers/notre-maison"
+            <a
+                href={en ? '/en/univers/notre-maison' : '/univers/notre-maison'}
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#FFFFFF', borderBottom: '1px solid rgba(255,255,255,0.45)', paddingBottom: '4px', width: 'fit-content', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.6'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
                 {T.cta} <span style={{ fontSize: '14px' }}>→</span>
               </a>
-            )}
           </div>
         </div>
 

@@ -1,5 +1,10 @@
+import { alternatesPour } from '../../../../lib/i18n'
+import { slugsArtisansEn } from '../../../../lib/en/univers/artisans'
 import { getArtisanBySlug, ARTISANS } from '../../../../lib/artisansData'
 import { ogImages } from '../../../../lib/og'
+
+/* Un slug inventé répond 404, pas 200 : même règle que les fiches produits. */
+export const dynamicParams = false
 
 export function generateStaticParams() {
   return ARTISANS.map(a => ({ slug: a.slug }))
@@ -56,9 +61,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/univers/nos-artisans/${artisan.slug}`,
-    },
+    alternates: alternatesPour(`/univers/nos-artisans/${artisan.slug}`, { en: slugsArtisansEn().includes(artisan.slug) }),
   }
 }
 
