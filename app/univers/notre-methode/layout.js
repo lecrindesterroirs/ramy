@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/univers/notre-methode' },
+  alternates: alternatesPour('/univers/notre-methode', { en: true }),
   title: "Notre méthode d'écriture",
   description: "Qui écrit nos guides, d'où viennent les prix et les quantités, quelle part revient à l'intelligence artificielle, et comment nous corrigeons.",
   openGraph: {

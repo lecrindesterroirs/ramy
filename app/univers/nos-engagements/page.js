@@ -4,6 +4,9 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import BusinessJsonLd from '../../../components/BusinessJsonLd'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18n'
+import { T_ENGAGEMENTS } from '../../../lib/en/pages/univers'
 
 /* Fond papier (grain léger) pour l'effet parchemin. */
 const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
@@ -55,6 +58,9 @@ const ENGAGEMENTS = [
 ]
 
 export default function NosEngagements() {
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_ENGAGEMENTS : null
+  const liste = en ? T.engagements : ENGAGEMENTS
   return (
     <>
       <Navbar showBanner={true} />
@@ -87,18 +93,18 @@ export default function NosEngagements() {
             <span style={{ position: 'absolute', inset: '18px', border: '1px solid rgba(169,128,59,0.25)', pointerEvents: 'none' }} />
 
             <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, marginBottom: '22px' }}>
-              L'Écrin · Nos Engagements
+              {en ? T.eyebrow : "L'Écrin · Nos Engagements"}
             </p>
 
             <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 400, lineHeight: 1.08, color: '#2A2013', marginBottom: '10px' }}>
-              Chez L'Écrin,<br />on s'engage à…
+              {en ? T.titreA : "Chez L'Écrin,"}<br />{en ? T.titreB : "on s'engage à…"}
             </h1>
 
             <Sprig />
 
             {/* Liste des engagements */}
             <div style={{ maxWidth: '560px', margin: '30px auto 0', textAlign: 'left' }}>
-              {ENGAGEMENTS.map((e, i) => (
+              {liste.map((e, i) => (
                 <div
                   key={i}
                   style={{
@@ -152,8 +158,8 @@ export default function NosEngagements() {
 
       <BusinessJsonLd />
       <BreadcrumbJsonLd items={[
-        { name: 'Accueil', path: '' },
-        { name: 'Nos engagements', path: '/univers/nos-engagements' },
+        { name: en ? T.fil[0] : 'Accueil', path: en ? '/en' : '' },
+        { name: en ? T.fil[1] : 'Nos engagements', path: `${en ? '/en' : ''}/univers/nos-engagements` },
       ]} />
 
       <Footer />

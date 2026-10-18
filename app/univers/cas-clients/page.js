@@ -1,6 +1,11 @@
+'use client'
+
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18n'
+import { T_CAS } from '../../../lib/en/pages/univers'
 
 const SERIF = "'Baskerville Display PT', Georgia, serif"
 const SANS = "'Neue Montreal', sans-serif"
@@ -40,44 +45,52 @@ const CAS = [
 ]
 
 export default function CasClients() {
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_CAS : null
+  const cas = en ? T.cas : CAS
+  const L = en ? T.labels : { contexte: 'Contexte.', demande: 'Demande.', livraison: 'Ce que nous livrons.', chiffres: 'En chiffres.' }
   return (
     <>
       <Navbar />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'var(--header-h)' }}>
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 24px 100px' }}>
           <p style={{ fontFamily: SANS, fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-            L&apos;Écrin · Cas clients
+            {en ? T.eyebrow : "L'Écrin · Cas clients"}
           </p>
           <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(34px, 5vw, 56px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '28px' }}>
-            Trois prestations, telles que nous les avons livrées
+            {en ? T.title : 'Trois prestations, telles que nous les avons livrées'}
           </h1>
           <p style={p}>
-            Les quantités et les horaires ci-dessous viennent de nos commandes livrées, relues le 15 octobre 2026. Les clients cités ont accepté d&apos;être nommés ; les autres restent anonymes.
+            {en ? T.intro : "Les quantités et les horaires ci-dessous viennent de nos commandes livrées, relues le 15 octobre 2026. Les clients cités ont accepté d'être nommés ; les autres restent anonymes."}
           </p>
 
-          {CAS.map((c) => (
+          {cas.map((c) => (
             <article key={c.titre}>
               <h2 style={h2}>{c.titre}</h2>
-              <p style={p}><span style={label}>Contexte.</span> {c.contexte}</p>
-              <p style={p}><span style={label}>Demande.</span> {c.demande}</p>
-              <p style={{ ...p, marginBottom: '6px' }}><span style={label}>Ce que nous livrons.</span></p>
+              <p style={p}><span style={label}>{L.contexte}</span> {c.contexte}</p>
+              <p style={p}><span style={label}>{L.demande}</span> {c.demande}</p>
+              <p style={{ ...p, marginBottom: '6px' }}><span style={label}>{L.livraison}</span></p>
               <ul style={{ paddingLeft: '20px', marginBottom: '14px' }}>
                 {c.livraison.map((l) => <li key={l} style={li}>{l}</li>)}
               </ul>
-              <p style={p}><span style={label}>En chiffres.</span> {c.chiffres}</p>
+              <p style={p}><span style={label}>{L.chiffres}</span> {c.chiffres}</p>
               <p style={{ ...p, color: 'rgba(17,17,17,0.72)' }}>{c.lecon}</p>
             </article>
           ))}
 
-          <h2 style={h2}>Votre prestation</h2>
+          <h2 style={h2}>{en ? T.votre : 'Votre prestation'}</h2>
           <p style={p}>
-            Donnez-nous votre effectif, votre date et vos contraintes : nous appliquons les mêmes règles de quantités et vous envoyons un <a href="/devis" style={{ color: 'var(--text-primary)' }}>devis sous 24h</a>. Les quantités par effectif sont détaillées dans notre <a href="/journal/budget-petit-dejeuner-equipe-personnes" style={{ color: 'var(--text-primary)' }}>guide du budget petit-déjeuner</a>.
+            {en ? (
+              <>{T.votreTexte1}<a href="/en/devis" style={{ color: 'var(--text-primary)' }}>{T.votreLien1}</a>{T.votreTexte2}<a href="/en/journal/budget-petit-dejeuner-equipe-personnes" style={{ color: 'var(--text-primary)' }}>{T.votreLien2}</a>{T.votreTexte3}</>
+            ) : (
+              <>Donnez-nous votre effectif, votre date et vos contraintes : nous appliquons les mêmes règles de quantités et vous envoyons un <a href="/devis" style={{ color: 'var(--text-primary)' }}>devis sous 24h</a>. Les quantités par effectif sont détaillées dans notre <a href="/journal/budget-petit-dejeuner-equipe-personnes" style={{ color: 'var(--text-primary)' }}>guide du budget petit-déjeuner</a>.</>
+            )}
           </p>
         </section>
       </main>
       <BreadcrumbJsonLd items={[
-        { name: 'Accueil', path: '' },
-        { name: 'Cas clients', path: '/univers/cas-clients' },
+        { name: en ? T.fil[0] : 'Accueil', path: en ? '/en' : '' },
+        { name: en ? T.fil[1] : 'Cas clients', path: `${en ? '/en' : ''}/univers/cas-clients` },
       ]} />
       <Footer />
     </>

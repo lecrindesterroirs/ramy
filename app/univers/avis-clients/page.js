@@ -1,6 +1,11 @@
+'use client'
+
 import InfoPage from '../../../components/InfoPage'
 import { testimonials } from '../../../lib/testimonialsData'
 import { businessNode, BUSINESS_ID, GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS, PROOF } from '../../../lib/site'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18n'
+import { T_AVIS, temoignageEn } from '../../../lib/en/pages/univers'
 
 // Page « Avis clients » : répond à « Que penser de L'Écrin Traiteur ? ». Que des faits
 // vérifiables : note Google (lib/gbpData.json), témoignages déjà publiés, clients nommés
@@ -15,6 +20,19 @@ const FAQ = [
 ]
 
 export default function AvisClients() {
+  const en = estAnglais(usePathname() || '/')
+  const note = en ? GBP_RATING_LABEL.replace(',', '.') : GBP_RATING_LABEL
+  const nbEnt = en ? PROOF.entreprises.en : PROOF.entreprises.fr
+  const nbPers = en ? PROOF.personnes.en : PROOF.personnes.fr
+  const temoins = en ? testimonials.map(temoignageEn) : testimonials
+
+  // Les trois réponses de la FAQ reprennent les mêmes faits qu'en français.
+  const FAQ_EN = [
+    { name: T_AVIS.faq[0].name, answer: `L'Écrin Traiteur is rated ${note} out of 5 on Google (${GBP_REVIEWS} reviews). This corporate caterer based in Boulogne-Billancourt has served ${nbPers} people for ${nbEnt} companies, among them Bain & Company, Chanel, AbbVie and Sia Partners. What clients single out: the quality of the artisan products, delivery on time from 6:30 am, and the service.` },
+    { name: T_AVIS.faq[1].name, answer: T_AVIS.faq[1].answer },
+    { name: T_AVIS.faq[2].name, answer: `On L'Écrin Traiteur's Google listing (${GBP_REVIEWS} reviews, ${note} out of 5). The reviews there are published by the clients themselves.` },
+  ]
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -25,13 +43,45 @@ export default function AvisClients() {
 
   return (
     <InfoPage
-      eyebrow="L'Écrin · Avis clients"
-      title="Ce que nos clients disent de L'Écrin Traiteur"
-      intro={`Noté <strong>${GBP_RATING_LABEL} sur 5 sur Google</strong> (${GBP_REVIEWS} avis). ${PROOF.personnes.fr.charAt(0).toUpperCase() + PROOF.personnes.fr.slice(1)} personnes servies pour ${PROOF.entreprises.fr} entreprises à Paris et en Île-de-France.`}
+      lang={en ? 'en' : 'fr'}
+      eyebrow={en ? T_AVIS.eyebrow : "L'Écrin · Avis clients"}
+      title={en ? T_AVIS.title : "Ce que nos clients disent de L'Écrin Traiteur"}
+      intro={en
+        ? `Rated <strong>${note} out of 5 on Google</strong> (${GBP_REVIEWS} reviews). ${nbPers.charAt(0).toUpperCase() + nbPers.slice(1)} people served for ${nbEnt} companies across Paris and Île-de-France.`
+        : `Noté <strong>${GBP_RATING_LABEL} sur 5 sur Google</strong> (${GBP_REVIEWS} avis). ${PROOF.personnes.fr.charAt(0).toUpperCase() + PROOF.personnes.fr.slice(1)} personnes servies pour ${PROOF.entreprises.fr} entreprises à Paris et en Île-de-France.`}
       jsonLd={jsonLd}
-      faq={FAQ}
-      breadcrumb={[{ name: 'Accueil', path: '' }, { name: 'Avis clients', path: '/univers/avis-clients' }]}
-      sections={[
+      faq={en ? FAQ_EN : FAQ}
+      breadcrumb={en
+        ? [{ name: T_AVIS.fil[0], path: '/en' }, { name: T_AVIS.fil[1], path: '/en/univers/avis-clients' }]
+        : [{ name: 'Accueil', path: '' }, { name: 'Avis clients', path: '/univers/avis-clients' }]}
+      sections={en ? [
+        {
+          h2: T_AVIS.noteH2,
+          before: [
+            `L'Écrin Traiteur is rated <strong>${note} out of 5</strong> on Google, across ${GBP_REVIEWS} reviews published by clients. ${a(GBP_URL, 'Read every review on Google', true)}.`,
+          ],
+        },
+        {
+          h2: T_AVIS.parlentH2,
+          before: [
+            ...temoins.map(t => `"${t.text}" <span style="color:var(--text-secondary)">${t.name}, ${t.role}, ${t.company} (${t.context.toLowerCase()})</span>`),
+            `<span style="color:var(--text-secondary)">${T_AVIS.traduit}</span>`,
+          ],
+        },
+        {
+          h2: T_AVIS.confianceH2,
+          before: [
+            `Among our clients: Bain & Company, Sia Partners, Chanel, AbbVie, Carglass, Valtech, Ringover and Coyote. Bain & Company trusted us with 46 deliveries in eight months; Sia Partners with breakfasts for 100 people set up by 7:30 am. The detail is in our ${a('/en/univers/cas-clients', 'client cases')}.`,
+          ],
+        },
+        {
+          h2: T_AVIS.releventH2,
+          table: {
+            head: T_AVIS.tableHead,
+            rows: T_AVIS.tableRows.map(([k, v], i) => [k, i === 3 ? `Order until 2 pm the day before, quote within 24 hours, ${a('/en/tarifs', 'prices published')}.` : v]),
+          },
+        },
+      ] : [
         {
           h2: 'La note Google',
           before: [

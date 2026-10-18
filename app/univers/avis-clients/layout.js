@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/univers/avis-clients' },
+  alternates: alternatesPour('/univers/avis-clients', { en: true }),
   title: { absolute: "Avis clients L'Écrin Traiteur : note Google et références" },
   description: "Que pensent les entreprises de L'Écrin Traiteur ? Note Google, témoignages d'office managers (Le Monde, Sia Partners, Stellantis), clients comme Bain & Company, Chanel et AbbVie.",
   openGraph: {

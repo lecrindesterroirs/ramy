@@ -57,7 +57,7 @@ export default function InfoPage({ lang = 'fr', eyebrow, title, intro, cta, sect
             {title}
           </h1>
           <p style={{ fontFamily: SANS, fontSize: '16px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '660px', margin: '0 auto 34px' }} dangerouslySetInnerHTML={{ __html: intro }} />
-          <a href="/devis" style={btn}>{ctaLabel}</a>
+          <a href={lang === 'en' ? '/en/devis' : '/devis'} style={btn}>{ctaLabel}</a>
         </div>
 
         <ProofBar lang={lang} />

@@ -1,3 +1,4 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   title: "Nos Engagements, artisans & qualité",
@@ -7,9 +8,7 @@ export const metadata = {
     title: "Nos Engagements | L'Écrin Traiteur",
     description: "Artisans sélectionnés, produits bio, circuits courts : les engagements qualité et responsabilité de L'Écrin Traiteur.",
   },
-  alternates: {
-    canonical: '/univers/nos-engagements',
-  },
+  alternates: alternatesPour('/univers/nos-engagements', { en: true }),
 }
 
 export default function Layout({ children }) {

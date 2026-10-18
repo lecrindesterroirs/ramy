@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/univers/cas-clients' },
+  alternates: alternatesPour('/univers/cas-clients', { en: true }),
   title: "Cas clients : nos prestations réelles",
   description: "Trois prestations réelles : les petits-déjeuners de Bain & Company, 100 personnes chez Sia Partners, un séminaire de 3 jours. Quantités et horaires.",
   openGraph: {
