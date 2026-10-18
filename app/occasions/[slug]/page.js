@@ -9,7 +9,7 @@ import { OCCASIONS, FAQ_DERNIERE_MINUTE } from '../../../lib/occasionsData'
 import { usePathname } from 'next/navigation'
 import { estAnglais, reecrireLiensEn } from '../../../lib/i18n'
 import { enOccasion, FAQ_DERNIERE_MINUTE_EN } from '../../../lib/en/pages/occasions'
-import { enSlugs } from '../../../lib/en/journal'
+import { useEnSlugs } from '../../../components/EnSlugsProvider'
 
 /* Habillage de la page, par langue. Elle sert les deux. */
 const T_OCC = {
@@ -64,6 +64,7 @@ export default function OccasionPage() {
   const { slug } = useParams()
   const occasionFr = OCCASIONS.find(o => o.slug === slug)
   const en = estAnglais(usePathname() || '/')
+  const slugsEn = useEnSlugs()
   const T = en ? T_OCC.en : T_OCC.fr
   const surcouche = occasionFr && en ? enOccasion(slug) : null
   if (!occasionFr || (en && !surcouche)) notFound()
@@ -72,7 +73,7 @@ export default function OccasionPage() {
   const lien = (href) => (en ? `/en${href}` : href)
   // Les liens de l'article gardent leur chemin FR : reecrireLiensEn ne les
   // bascule que là où une page anglaise existe.
-  const article = en ? reecrireLiensEn(occasion.seoArticle, enSlugs()) : occasion.seoArticle
+  const article = en ? reecrireLiensEn(occasion.seoArticle, slugsEn) : occasion.seoArticle
 
   const isPlateaux = occasion.productCategory === 'plateaux-repas'
   const isCocktails = occasion.productCategory === 'cocktails'

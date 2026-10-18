@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { estAnglais, reecrireLiensEn } from '../../lib/i18n'
 import { EN_HALAL_INDEX } from '../../lib/en/pages/halal'
-import { enSlugs } from '../../lib/en/journal'
+import { useEnSlugs } from '../../components/EnSlugsProvider'
 import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -117,6 +117,7 @@ const FAQ = [
 
 export default function TraiteurHalal() {
   const en = estAnglais(usePathname() || '/')
+  const slugsEn = useEnSlugs()
   const E = en ? EN_HALAL_INDEX : null
   const lien = (href) => (en ? `/en${href}` : href)
   const REGIMES_L = en ? E.regimes : REGIMES
@@ -171,7 +172,7 @@ export default function TraiteurHalal() {
   // Exemples chiffrés (lib/exemplesChiffres.js) glissés sous le tableau des prix, dans les deux langues.
   const MARQUE_EN = 'with a minimum order of €50 excl. VAT.</p>'
   const articleEn = en ? (E.seoArticle.includes(MARQUE_EN) ? E.seoArticle.replace(MARQUE_EN, MARQUE_EN + exemplesHalalEn()) : E.seoArticle + exemplesHalalEn()) : ''
-  const seoArticle = en ? reecrireLiensEn(articleEn, enSlugs()) : `
+  const seoArticle = en ? reecrireLiensEn(articleEn, slugsEn) : `
     <h2>Un traiteur d'entreprise halal, pensé pour toute l'équipe</h2>
     <p>Dans une entreprise, une pause gourmande ne devrait jamais exclure personne. Chez <strong>L'Écrin Traiteur</strong>, l'ensemble de notre gamme est <strong>halal et sans porc par défaut</strong> : petits-déjeuners, plateaux repas, cocktails et buffets. Ce n'est pas une option cachée dans un coin de la carte, c'est notre référence sur chaque commande livrée à Paris et en Île-de-France.</p>
 

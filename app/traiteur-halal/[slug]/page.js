@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { estAnglais, reecrireLiensEn } from '../../../lib/i18n'
 import { enHalal } from '../../../lib/en/pages/halal'
-import { enSlugs } from '../../../lib/en/journal'
+import { useEnSlugs } from '../../../components/EnSlugsProvider'
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -67,6 +67,7 @@ export default function TraiteurHalalSousPage() {
   const { slug } = useParams()
   const pageFr = HALAL_PAGES.find(p => p.slug === slug)
   const en = estAnglais(usePathname() || '/')
+  const slugsEn = useEnSlugs()
   const T = en ? T_HALAL.en : T_HALAL.fr
   const surcouche = pageFr && en ? enHalal(slug) : null
   if (!pageFr || (en && !surcouche)) notFound()
@@ -75,7 +76,7 @@ export default function TraiteurHalalSousPage() {
   // notes sont traduites par la surcouche.
   const page = surcouche ? { ...pageFr, ...surcouche } : pageFr
   const lien = (href) => (en ? `/en${href}` : href)
-  const article = en ? reecrireLiensEn(page.seoArticle, enSlugs()) : page.seoArticle
+  const article = en ? reecrireLiensEn(page.seoArticle, slugsEn) : page.seoArticle
 
   const otherPages = HALAL_PAGES.filter(p => p.slug !== page.slug)
   const pageUrl = `${BASE}${en ? '/en' : ''}/traiteur-halal/${page.slug}`
@@ -296,7 +297,7 @@ export default function TraiteurHalalSousPage() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 22px' }}>
               {page.liensUtiles.map(l => (
-                <a key={l.href} href={en ? (reecrireLiensEn(`href="${l.href}"`, enSlugs()).match(/href="([^"]*)"/) || [, l.href])[1] : l.href} style={linkStyle}>{l.label}</a>
+                <a key={l.href} href={en ? (reecrireLiensEn(`href="${l.href}"`, slugsEn).match(/href="([^"]*)"/) || [, l.href])[1] : l.href} style={linkStyle}>{l.label}</a>
               ))}
             </div>
           </>
