@@ -23,7 +23,9 @@ import { slugsBoissonsEn } from '../lib/en/produits/boissons'
 import { slugsPlateauxAperitifsEn } from '../lib/en/produits/plateauxAperitifs'
 import { cheminsAnimationsEn } from '../lib/en/produits/animationsChemins'
 import { clesCocktailsEn } from '../lib/en/produits/cocktails'
-import { INDEX_FAMILLES_EN, UNIVERS_EN } from '../lib/i18n'
+import { INDEX_FAMILLES_EN, UNIVERS_EN, INDEX_PAGES_EN } from '../lib/i18n'
+import { slugsOccasionsEn } from '../lib/en/pages/occasions'
+import { slugsHalalEn } from '../lib/en/pages/halal'
 import { slugsArtisansEn } from '../lib/en/univers/artisans'
 import { cheminsVillesEn } from '../lib/en/villes'
 import { EN_PAGES } from '../lib/enPages'
@@ -192,6 +194,9 @@ export default function sitemap() {
     ...INDEX_FAMILLES_EN.map(c => url(`/en${c}`, 0.80, 'weekly')),
     ...UNIVERS_EN.map(c => url(`/en${c}`, 0.72, 'monthly')),
     ...slugsArtisansEn().map(s => url(`/en/univers/nos-artisans/${s}`, 0.68, 'monthly')),
+    ...INDEX_PAGES_EN.map(c => url(`/en${c}`, 0.78, 'monthly')),
+    ...slugsOccasionsEn().map(s => url(`/en/occasions/${s}`, 0.74, 'monthly')),
+    ...slugsHalalEn().map(s => url(`/en/traiteur-halal/${s}`, 0.74, 'monthly')),
     ...cheminsVillesEn().map(c => url(`/en${c}`, 0.70, 'monthly')),
     url('/en/contact', 0.60, 'monthly'),
     url('/en/devis', 0.70, 'monthly'),

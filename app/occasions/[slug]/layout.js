@@ -1,5 +1,10 @@
+import { alternatesPour } from '../../../lib/i18n'
+import { slugsOccasionsEn } from '../../../lib/en/pages/occasions'
 import { ogImages } from '../../../lib/og'
 import { OCCASIONS } from '../../../lib/occasionsData'
+
+/* Un slug inventé répond 404, pas 200. */
+export const dynamicParams = false
 
 export function generateStaticParams() {
   return OCCASIONS.map(o => ({ slug: o.slug }))
@@ -31,9 +36,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'article',
     },
-    alternates: {
-      canonical: `/occasions/${slug}`,
-    },
+    alternates: alternatesPour(`/occasions/${slug}`, { en: slugsOccasionsEn().includes(slug) }),
   }
 }
 

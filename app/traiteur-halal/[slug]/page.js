@@ -1,5 +1,9 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais, reecrireLiensEn } from '../../../lib/i18n'
+import { enHalal } from '../../../lib/en/pages/halal'
+import { enSlugs } from '../../../lib/en/journal'
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -24,13 +28,47 @@ const ARGS = [
   { icon: 'support',  titre: 'Devis sous 24h',       desc: "Facture entreprise avec TVA, bon de commande accepté, minimum de commande de 50 € HT." },
 ]
 
+const T_HALAL = {
+  fr: {
+    devis: 'Obtenir un devis →',
+    tout: "Tout le halal d'entreprise",
+    fil: ['Accueil', 'Traiteur halal'],
+    carte: 'La carte complète',
+    sixPlateaux: 'Les six plateaux, tous halal et sans porc',
+    repond: (nom) => `${nom}, on vous répond`,
+    aussi: 'Aussi en halal et sans porc',
+    toutePage: "Traiteur halal d'entreprise, Paris et Île-de-France",
+    aLire: 'À lire aussi',
+    faqEyebrow: 'Questions fréquentes',
+  },
+  en: {
+    devis: 'Get a quote →',
+    tout: 'All our halal corporate catering',
+    fil: ['Home', 'Halal catering'],
+    carte: 'The full menu',
+    sixPlateaux: 'The six trays, all halal and pork-free',
+    repond: (nom) => `${nom}: your questions answered`,
+    aussi: 'Also halal and pork-free',
+    toutePage: 'Halal corporate catering, Paris and Île-de-France',
+    aLire: 'Also worth reading',
+    faqEyebrow: 'Frequently asked questions',
+  },
+}
+
 export default function TraiteurHalalSousPage() {
   const { slug } = useParams()
-  const page = HALAL_PAGES.find(p => p.slug === slug)
-  if (!page) notFound()
+  const pageFr = HALAL_PAGES.find(p => p.slug === slug)
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_HALAL.en : T_HALAL.fr
+  const surcouche = pageFr && en ? enHalal(slug) : null
+  if (!pageFr || (en && !surcouche)) notFound()
+  // Surcouche de texte : photo, zone desservie et sélection restent FR.
+  const page = surcouche ? { ...pageFr, ...surcouche } : pageFr
+  const lien = (href) => (en ? `/en${href}` : href)
+  const article = en ? reecrireLiensEn(page.seoArticle, enSlugs()) : page.seoArticle
 
   const otherPages = HALAL_PAGES.filter(p => p.slug !== page.slug)
-  const pageUrl = `${BASE}/traiteur-halal/${page.slug}`
+  const pageUrl = `${BASE}${en ? '/en' : ''}/traiteur-halal/${page.slug}`
 
   // Plateaux mis en avant : ids de la carte réelle (app/creations/plateaux-repas/data.js)
   const selection = (page.selection || [])
@@ -41,7 +79,7 @@ export default function TraiteurHalalSousPage() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: BASE },
+      { '@type': 'ListItem', position: 1, name: T.fil[0], item: `${BASE}${en ? '/en' : ''}` },
       { '@type': 'ListItem', position: 2, name: 'Traiteur halal & inclusif', item: `${BASE}/traiteur-halal` },
       { '@type': 'ListItem', position: 3, name: page.breadcrumbLabel, item: pageUrl },
     ],
@@ -97,16 +135,16 @@ export default function TraiteurHalalSousPage() {
                 </p>
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <a
-                    href="/devis"
+                    href={lien('/devis')}
                     style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
                   >
-                    Obtenir un devis →
+                    {T.devis}
                   </a>
                   <a
-                    href="/traiteur-halal"
+                    href={lien('/traiteur-halal')}
                     style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
                   >
-                    Tout le halal d'entreprise
+                    {T.tout}
                   </a>
                 </div>
               </div>
@@ -114,7 +152,7 @@ export default function TraiteurHalalSousPage() {
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Traiteur halal', href: '/traiteur-halal' }, { label: page.breadcrumbLabel }]} jsonLd={false} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: T.fil[0], href: en ? '/en' : '/' }, { label: T.fil[1], href: lien('/traiteur-halal') }, { label: page.breadcrumbLabel }]} jsonLd={false} />
 
         {/* ── Bloc-réponse : la question posée en clair (SEO + GEO) ── */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '64px 24px 0' }}>
@@ -157,14 +195,14 @@ export default function TraiteurHalalSousPage() {
         {selection.length > 0 && (
           <div className="hls-selection" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 0' }}>
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-              <p style={eyebrowStyle}>La carte complète</p>
-              <h2 style={{ ...h2Style, fontSize: 'clamp(24px, 2.6vw, 34px)' }}>Les six plateaux, tous halal et sans porc</h2>
+              <p style={eyebrowStyle}>{T.carte}</p>
+              <h2 style={{ ...h2Style, fontSize: 'clamp(24px, 2.6vw, 34px)' }}>{T.sixPlateaux}</h2>
             </div>
             <div className="hls-selection-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
               {selection.map(({ id, note, produit }, i) => (
                 <Reveal key={id} delay={(i % 3) * 90}>
                   <a
-                    href={`/creations/plateaux-repas/${id}`}
+                    href={lien(`/creations/plateaux-repas/${id}`)}
                     style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', height: '100%' }}
                   >
                     <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
@@ -202,15 +240,16 @@ export default function TraiteurHalalSousPage() {
         body={page.closingBody}
         args={ARGS}
         ctaQuestion={page.ctaQuestion}
-        seoArticle={page.seoArticle}
+        lang={en ? 'en' : 'fr'}
+        seoArticle={article}
       />
 
       {/* ── FAQ visible (même contenu que le FAQPage JSON-LD) ── */}
       <div style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
         <div className="hls-faq" style={{ maxWidth: '820px', margin: '0 auto', padding: '72px 40px 56px' }}>
-          <p style={{ ...eyebrowStyle, textAlign: 'center' }}>Questions fréquentes</p>
+          <p style={{ ...eyebrowStyle, textAlign: 'center' }}>{T.faqEyebrow}</p>
           <h2 style={{ ...h2Style, fontSize: 'clamp(24px, 2.6vw, 34px)', textAlign: 'center', marginBottom: '40px' }}>
-            {page.name}, on vous répond
+            {T.repond(page.name)}
           </h2>
           <div>
             {page.faq.map((f, i) => (
@@ -230,24 +269,24 @@ export default function TraiteurHalalSousPage() {
       {/* ── Maillage : autres pages halal + guides liés ── */}
       <nav aria-label="Autres pages traiteur halal d'entreprise" style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 40px', textAlign: 'center' }}>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '16px' }}>
-          Aussi en halal et sans porc
+          {T.aussi}
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 22px', marginBottom: '28px' }}>
           {otherPages.map(p => (
-            <a key={p.slug} href={`/traiteur-halal/${p.slug}`} style={linkStyle}>
+            <a key={p.slug} href={lien(`/traiteur-halal/${p.slug}`)} style={linkStyle}>
               {p.name}
             </a>
           ))}
-          <a href="/traiteur-halal" style={linkStyle}>Traiteur halal d'entreprise, Paris et Île-de-France</a>
+          <a href={lien('/traiteur-halal')} style={linkStyle}>{T.toutePage}</a>
         </div>
         {page.liensUtiles?.length > 0 && (
           <>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '16px' }}>
-              À lire aussi
+              {T.aLire}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 22px' }}>
               {page.liensUtiles.map(l => (
-                <a key={l.href} href={l.href} style={linkStyle}>{l.label}</a>
+                <a key={l.href} href={en ? (reecrireLiensEn(`href="${l.href}"`, enSlugs()).match(/href="([^"]*)"/) || [, l.href])[1] : l.href} style={linkStyle}>{l.label}</a>
               ))}
             </div>
           </>
@@ -256,7 +295,7 @@ export default function TraiteurHalalSousPage() {
 
       <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 64px', textAlign: 'center' }}>
         <a
-          href="/traiteur-halal"
+          href={lien('/traiteur-halal')}
           style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
         >
           ← Traiteur halal d'entreprise

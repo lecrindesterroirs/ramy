@@ -1,3 +1,4 @@
+import { alternatesPour } from '../../lib/i18n'
 import { ogImages } from '../../lib/og'
 export const metadata = {
   title: { absolute: "Traiteur halal d'entreprise à Paris : tout sans porc" },
@@ -7,9 +8,7 @@ export const metadata = {
     title: "Traiteur Halal & Inclusif Entreprise | L'Écrin Traiteur",
     description: "Le traiteur d'entreprise qui régale toute l'équipe : tout halal et sans porc, options végé, vegan et sans gluten. Livré dès 6h30 à Paris & en Île-de-France.",
   },
-  alternates: {
-    canonical: '/traiteur-halal',
-  },
+  alternates: alternatesPour('/traiteur-halal', { en: true }),
 }
 
 export default function Layout({ children }) {

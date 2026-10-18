@@ -6,6 +6,46 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { OCCASIONS, FAQ_DERNIERE_MINUTE } from '../../../lib/occasionsData'
+import { usePathname } from 'next/navigation'
+import { estAnglais, reecrireLiensEn } from '../../../lib/i18n'
+import { enOccasion, FAQ_DERNIERE_MINUTE_EN } from '../../../lib/en/pages/occasions'
+import { enSlugs } from '../../../lib/en/journal'
+
+/* Habillage de la page, par langue. Elle sert les deux. */
+const T_OCC = {
+  fr: {
+    eyebrow: 'Pour votre entreprise',
+    devis: 'Obtenir un devis →',
+    selection: 'Sélection recommandée',
+    nosProduits: (nom) => `Nos produits pour ${nom.toLowerCase()}`,
+    voirProduit: 'Voir le produit →',
+    tousProduits: 'Voir tous nos produits →',
+    tousPlateaux: 'Voir tous nos plateaux repas →',
+    livrons: 'Nous livrons notamment à',
+    toutesVilles: 'Toutes nos villes →',
+    faq: 'Questions fréquentes',
+    traduit: null,
+    fil: ['Accueil', 'Occasions'],
+    plateau: 'Plateau repas',
+    formule: 'Formule cocktail',
+  },
+  en: {
+    eyebrow: 'For your company',
+    devis: 'Get a quote →',
+    selection: 'What we recommend',
+    nosProduits: (nom) => `Our products for ${nom.toLowerCase()}`,
+    voirProduit: 'See the product →',
+    tousProduits: 'See all our products →',
+    tousPlateaux: 'See all our lunch trays →',
+    livrons: 'Towns we deliver to',
+    toutesVilles: 'All our towns →',
+    faq: 'Frequently asked questions',
+    traduit: 'Translated from French',
+    fil: ['Home', 'Occasions'],
+    plateau: 'Lunch tray',
+    formule: 'Cocktail menu',
+  },
+}
 import { PRODUCTS } from '../../../lib/productsData'
 import { PRODUITS as PLATEAUX_PRODUITS } from '../../creations/plateaux-repas/data'
 import { FORMULES as COCKTAIL_FORMULES } from '../../creations/cocktails/page'
@@ -22,23 +62,32 @@ const PRODUCT_ROUTE_BY_CATEGORY = {
 
 export default function OccasionPage() {
   const { slug } = useParams()
-  const occasion = OCCASIONS.find(o => o.slug === slug)
-  if (!occasion) notFound()
+  const occasionFr = OCCASIONS.find(o => o.slug === slug)
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_OCC.en : T_OCC.fr
+  const surcouche = occasionFr && en ? enOccasion(slug) : null
+  if (!occasionFr || (en && !surcouche)) notFound()
+  // Surcouche de texte : photos, produits liés et villes liées restent FR.
+  const occasion = surcouche ? { ...occasionFr, ...surcouche } : occasionFr
+  const lien = (href) => (en ? `/en${href}` : href)
+  // Les liens de l'article gardent leur chemin FR : reecrireLiensEn ne les
+  // bascule que là où une page anglaise existe.
+  const article = en ? reecrireLiensEn(occasion.seoArticle, enSlugs()) : occasion.seoArticle
 
   const isPlateaux = occasion.productCategory === 'plateaux-repas'
   const isCocktails = occasion.productCategory === 'cocktails'
   const productRoute = PRODUCT_ROUTE_BY_CATEGORY[occasion.productCategory] || 'petits-dejeuners-et-pauses'
   const products = isPlateaux
-    ? occasion.linkedProducts.map(id => PLATEAUX_PRODUITS.find(p => p.id === id)).filter(Boolean).map(p => ({ id: p.id, img: p.img, name: p.nom, categoryLabel: 'Plateau repas' }))
+    ? occasion.linkedProducts.map(id => PLATEAUX_PRODUITS.find(p => p.id === id)).filter(Boolean).map(p => ({ id: p.id, img: p.img, name: p.nom, categoryLabel: T.plateau }))
     : isCocktails
-    ? occasion.linkedProducts.map(id => COCKTAIL_FORMULES.find(f => f.key === id)).filter(Boolean).map(f => ({ id: f.key, img: f.img, name: `Cocktail ${f.label}`, categoryLabel: 'Formule cocktail' }))
+    ? occasion.linkedProducts.map(id => COCKTAIL_FORMULES.find(f => f.key === id)).filter(Boolean).map(f => ({ id: f.key, img: f.img, name: `Cocktail ${f.label}`, categoryLabel: T.formule }))
     : occasion.linkedProducts.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
 
   const cities = occasion.linkedCities
     .map(s => CITIES.find(c => c.slug === s))
     .filter(Boolean)
 
-  const allFaq = [...occasion.faq, FAQ_DERNIERE_MINUTE]
+  const allFaq = [...occasion.faq, en ? FAQ_DERNIERE_MINUTE_EN : FAQ_DERNIERE_MINUTE]
 
   const faqLd = {
     '@context': 'https://schema.org',
@@ -54,9 +103,9 @@ export default function OccasionPage() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.lecrin-traiteur.fr' },
-      { '@type': 'ListItem', position: 2, name: 'Occasions', item: 'https://www.lecrin-traiteur.fr/occasions' },
-      { '@type': 'ListItem', position: 3, name: occasion.name, item: `https://www.lecrin-traiteur.fr/occasions/${occasion.slug}` },
+      { '@type': 'ListItem', position: 1, name: T.fil[0], item: `https://www.lecrin-traiteur.fr${en ? '/en' : ''}` },
+      { '@type': 'ListItem', position: 2, name: T.fil[1], item: `https://www.lecrin-traiteur.fr${en ? '/en' : ''}/occasions` },
+      { '@type': 'ListItem', position: 3, name: occasion.name, item: `https://www.lecrin-traiteur.fr${en ? '/en' : ''}/occasions/${occasion.slug}` },
     ],
   }
 
@@ -81,7 +130,7 @@ export default function OccasionPage() {
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 30%, rgba(0,0,0,0.30) 58%, rgba(0,0,0,0) 80%)' }} />
             <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', marginBottom: '16px', textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
-                Pour votre entreprise
+                {T.eyebrow}
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.8vw, 52px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px', textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}>
                 {occasion.heroTitle}
@@ -90,12 +139,12 @@ export default function OccasionPage() {
                 {occasion.heroDescription}
               </p>
               <a
-                href="/devis"
+                href={lien('/devis')}
                 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease', alignSelf: 'flex-start' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Obtenir un devis →
+                {T.devis}
               </a>
             </div>
           </div>
@@ -122,7 +171,7 @@ export default function OccasionPage() {
 
         {/* ── Article SEO ── */}
         <section className="occasion-article" style={{ maxWidth: '800px', margin: '0 auto', padding: '64px 72px' }}>
-          <div className="occasion-article-body" dangerouslySetInnerHTML={{ __html: occasion.seoArticle }} />
+          <div className="occasion-article-body" dangerouslySetInnerHTML={{ __html: article }} />
         </section>
 
         {/* ── Témoignage ── */}
@@ -138,6 +187,7 @@ export default function OccasionPage() {
               </p>
               <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 {occasion.testimonial.role}, {occasion.testimonial.company}
+                {T.traduit && <><br /><span style={{ opacity: 0.6 }}>{T.traduit}</span></>}
               </p>
             </div>
           </div>
@@ -147,16 +197,16 @@ export default function OccasionPage() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="occasion-products" style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '8px' }}>
-              Sélection recommandée
+              {T.selection}
             </p>
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 34px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '40px', lineHeight: 1.15 }}>
-              Nos produits pour {occasion.name.toLowerCase()}
+              {T.nosProduits(occasion.name)}
             </p>
             <div className="occasion-products-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
               {products.map(product => (
                 <a
                   key={product.id}
-                  href={`/creations/${productRoute}/${product.id}`}
+                  href={lien(`/creations/${productRoute}/${product.id}`)}
                   style={{ background: 'var(--bg-secondary)', textDecoration: 'none', display: 'flex', flexDirection: 'column', transition: 'background 0.2s ease' }}
                   onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
                   onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
@@ -172,15 +222,15 @@ export default function OccasionPage() {
                       {product.name}
                     </p>
                     <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                      Voir le produit →
+                      {T.voirProduit}
                     </span>
                   </div>
                 </a>
               ))}
             </div>
             <div style={{ marginTop: '32px' }}>
-              <a href={`/creations/${productRoute}`} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
-                {isPlateaux ? 'Voir tous nos plateaux repas →' : 'Voir tous nos produits →'}
+              <a href={lien(`/creations/${productRoute}`)} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
+                {isPlateaux ? T.tousPlateaux : T.tousProduits}
               </a>
             </div>
           </div>
@@ -190,11 +240,11 @@ export default function OccasionPage() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)', background: 'var(--bg-secondary)' }}>
           <div className="occasion-cities" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '20px' }}>
-              Nous livrons notamment à
+              {T.livrons}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {cities.map(city => (
-                <a key={city.slug} href={`/traiteur/${city.slug}`}
+                <a key={city.slug} href={lien(`/traiteur/${city.slug}`)}
                   style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-primary)', background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.1)', padding: '7px 16px', textDecoration: 'none', transition: 'border-color 0.2s ease, color 0.2s ease', letterSpacing: '0.02em' }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)' }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.1)'; e.currentTarget.style.color = 'var(--text-primary)' }}
@@ -202,12 +252,12 @@ export default function OccasionPage() {
                   {city.name}
                 </a>
               ))}
-              <a href="/traiteur"
+              <a href={lien('/traiteur')}
                 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent-deep)', border: '1px solid rgba(224,161,38,0.35)', padding: '7px 16px', textDecoration: 'none', letterSpacing: '0.02em', transition: 'border-color 0.2s ease' }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(224,161,38,0.35)'}
               >
-                Toutes nos villes →
+                {T.toutesVilles}
               </a>
             </div>
           </div>
@@ -217,7 +267,7 @@ export default function OccasionPage() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="occasion-faq" style={{ maxWidth: '800px', margin: '0 auto', padding: '64px 72px' }}>
             <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 34px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '40px', lineHeight: 1.15 }}>
-              Questions fréquentes
+              {T.faq}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {allFaq.map((item, i) => (

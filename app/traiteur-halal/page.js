@@ -1,5 +1,9 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais, reecrireLiensEn } from '../../lib/i18n'
+import { EN_HALAL_INDEX } from '../../lib/en/pages/halal'
+import { enSlugs } from '../../lib/en/journal'
 import Image from 'next/image'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -107,6 +111,13 @@ const FAQ = [
 ]
 
 export default function TraiteurHalal() {
+  const en = estAnglais(usePathname() || '/')
+  const E = en ? EN_HALAL_INDEX : null
+  const lien = (href) => (en ? `/en${href}` : href)
+  const REGIMES_L = en ? E.regimes : REGIMES
+  const PRESTATIONS_L = en ? PRESTATIONS.map((p, i) => ({ ...p, ...E.prestations[i] })) : PRESTATIONS
+  const SOUS_PAGES_L = en ? E.sousPages : SOUS_PAGES
+  const FAQ_L = en ? E.faq : FAQ
   // Service rattaché à l'entité #business (même @id partout), pas un second
   // LocalBusiness : évite une entité dupliquée côté Google & IA/GEO.
   const jsonLd = {
@@ -138,21 +149,21 @@ export default function TraiteurHalal() {
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ.map(f => ({
+    mainEntity: FAQ_L.map(f => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   }
 
-  const ARGS = [
+  const ARGS = en ? E.args : [
     { icon: 'quality',  titre: 'Halal par défaut',      desc: "Toute la gamme est halal et sans porc, pas une carte à part, mais notre standard sur chaque prestation." },
     { icon: 'custom',   titre: 'Options claires',        desc: "Végétarien, vegan, sans gluten : chaque contrainte alimentaire est prise en compte, sans supplément d'effort pour vous." },
     { icon: 'delivery', titre: 'Livraison dès 6h30',     desc: "Livré et installé par notre équipe à Paris et en Île-de-France, chaque matin en semaine." },
     { icon: 'support',  titre: 'Interlocuteur dédié',    desc: "Un contact unique pour composer vos menus, de 10 à 300 personnes, du devis à la livraison." },
   ]
 
-  const seoArticle = `
+  const seoArticle = en ? reecrireLiensEn(E.seoArticle, enSlugs()) : `
     <h2>Un traiteur d'entreprise halal, pensé pour toute l'équipe</h2>
     <p>Dans une entreprise, une pause gourmande ne devrait jamais exclure personne. Chez <strong>L'Écrin Traiteur</strong>, l'ensemble de notre gamme est <strong>halal et sans porc par défaut</strong> : petits-déjeuners, plateaux repas, cocktails et buffets. Ce n'est pas une option cachée dans un coin de la carte, c'est notre référence sur chaque commande livrée à Paris et en Île-de-France.</p>
 
@@ -211,31 +222,31 @@ export default function TraiteurHalal() {
             <Reveal mode="mount" y={16}>
               <div className="hl-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '660px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
-                  Traiteur d'entreprise · Paris & Île-de-France
+                  {en ? E.eyebrow : "Traiteur d'entreprise · Paris & Île-de-France"}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur halal d'entreprise{' '}<br />Paris & Île-de-France
+                  {en ? E.h1a : "Traiteur halal d'entreprise"}{' '}<br />{en ? E.h1b : 'Paris & Île-de-France'}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
-                  Le traiteur d'entreprise qui régale toute l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten, livré dans vos bureaux dès 6h30.
+                  {en ? E.heroDescription : "Le traiteur d'entreprise qui régale toute l'équipe. Tout halal et sans porc, options végétariennes, vegan et sans gluten, livré dans vos bureaux dès 6h30."}
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
                   <a
-                    href="/devis"
+                    href={lien('/devis')}
                     style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
-                    Obtenir un devis →
+                    {en ? E.devis : 'Obtenir un devis →'}
                   </a>
                   <a
-                    href="/creations/petits-dejeuners-et-pauses"
+                    href={lien('/creations/petits-dejeuners-et-pauses')}
                     style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                   >
-                    Voir nos petits déjeuners
+                    {en ? E.voirPdj : 'Voir nos petits déjeuners'}
                   </a>
                 </div>
 
@@ -255,7 +266,7 @@ export default function TraiteurHalal() {
         {/* ── Bloc-réponse : la question posée en clair (SEO + GEO) ── */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '72px 24px 0' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '22px' }}>
-            Vos prestations sont-elles halal ?
+            {en ? E.reponseQ : 'Vos prestations sont-elles halal ?'}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
             Oui. Toute la carte de L'Écrin Traiteur est halal et sans porc par défaut, sans alcool dans les recettes : petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets. Vous n'avez rien à préciser à la commande. Nous ne revendiquons pas de certification halal : c'est une offre halal-friendly, construite avec nos artisans.
@@ -267,13 +278,13 @@ export default function TraiteurHalal() {
             Repères de prix, tout en halal et sans porc : petit-déjeuner dès <strong style={{ fontWeight: 500 }}>8 € HT</strong> par personne, plateau repas dès <strong style={{ fontWeight: 500 }}>28,90 € HT</strong>, cocktail de <strong style={{ fontWeight: 500 }}>29,90 à 51,90 € HT</strong> selon la formule. La livraison est à 29 € HT à Paris et dans les communes proches.
           </p>
                   <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
-            Combien coûte un traiteur halal pour une entreprise ?
+            {en ? E.prixTitre : 'Combien coûte un traiteur halal pour une entreprise ?'}
           </h2>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'var(--text-primary)' }}>
               <thead>
                 <tr>
-                  {['Prestation', 'Prix HT par personne', 'Ce qui est compris'].map(t => (
+                  {(en ? E.prixEntetes : ['Prestation', 'Prix HT par personne', 'Ce qui est compris']).map(t => (
                     <th key={t} style={{ textAlign: 'left', padding: '12px 10px', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-secondary)', borderBottom: '1px solid rgba(17,17,17,0.35)' }}>{t}</th>
                   ))}
                 </tr>
@@ -306,14 +317,14 @@ export default function TraiteurHalal() {
         <div className="hl-regimes" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Une table où personne n'est mis de côté
+              {en ? E.regimesEyebrow : "Une table où personne n'est mis de côté"}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.12, color: 'var(--text-primary)' }}>
-              Le même moment,{' '}<br />partagé par tous
+              {en ? E.regimesTitreA : 'Le même moment,'}{' '}<br />{en ? E.regimesTitreB : 'partagé par tous'}
             </h2>
           </div>
           <div className="hl-regimes-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-            {REGIMES.map((r, i) => (
+            {REGIMES_L.map((r, i) => (
               <Reveal key={r.titre} delay={i * 90}>
                 <div style={{ background: 'var(--bg-secondary)', padding: '40px 34px', height: '100%' }}>
                   <span className="accent-line" style={{ marginBottom: '22px' }} />
@@ -336,17 +347,17 @@ export default function TraiteurHalal() {
         <div className="hl-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Nos prestations
+              {en ? E.prestationsEyebrow : 'Nos prestations'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Halal du petit-déjeuner{' '}<br />au buffet
+              {en ? E.prestationsTitreA : 'Halal du petit-déjeuner'}{' '}<br />{en ? E.prestationsTitreB : 'au buffet'}
             </h2>
           </div>
           <div className="hl-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-            {PRESTATIONS.map((s, i) => (
+            {PRESTATIONS_L.map((s, i) => (
               <Reveal key={s.label} delay={i * 90}>
                 <a
-                  href={s.href}
+                  href={lien(s.href)}
                   className="hl-service-card"
                   style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', transition: 'box-shadow 0.35s ease, transform 0.35s ease' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)' }}
@@ -363,7 +374,7 @@ export default function TraiteurHalal() {
                       {s.desc}
                     </p>
                     <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                      Découvrir →
+                      {en ? E.decouvrir : 'Découvrir →'}
                     </span>
                   </div>
                 </a>
@@ -376,17 +387,17 @@ export default function TraiteurHalal() {
         <nav aria-label="Nos pages traiteur halal d'entreprise" className="hl-subpages" style={{ maxWidth: '1100px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Le détail, prestation par prestation
+              {en ? E.sousPagesEyebrow : 'Le détail, prestation par prestation'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 36px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Trois pages pour choisir votre menu halal
+              {en ? E.sousPagesTitre : 'Trois pages pour choisir votre menu halal'}
             </h2>
           </div>
           <div className="hl-subpages-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-            {SOUS_PAGES.map((s, i) => (
+            {SOUS_PAGES_L.map((s, i) => (
               <Reveal key={s.href} delay={i * 90}>
                 <a
-                  href={s.href}
+                  href={lien(s.href)}
                   style={{ display: 'block', textDecoration: 'none', background: 'var(--bg-secondary)', border: '1px solid rgba(17,17,17,0.08)', padding: '30px 26px', height: '100%' }}
                 >
                   <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '21px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '12px', lineHeight: 1.2 }}>
@@ -396,7 +407,7 @@ export default function TraiteurHalal() {
                     {s.desc}
                   </p>
                   <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                    Voir la page →
+                    {en ? E.voirPage : 'Voir la page →'}
                   </span>
                 </a>
               </Reveal>
@@ -413,13 +424,13 @@ export default function TraiteurHalal() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="hl-faq" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 40px 88px' }}>
             <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px', textAlign: 'center' }}>
-              Questions fréquentes
+              {en ? E.faqEyebrow : 'Questions fréquentes'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 36px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', textAlign: 'center', marginBottom: '48px' }}>
-              Traiteur halal, on vous répond
+              {en ? E.faqTitre : 'Traiteur halal, on vous répond'}
             </h2>
             <div>
-              {FAQ.map((f, i) => (
+              {FAQ_L.map((f, i) => (
                 <div key={i} style={{ padding: '26px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(17,17,17,0.1)' }}>
                   <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.25 }}>
                     {f.q}

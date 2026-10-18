@@ -1,5 +1,10 @@
+import { alternatesPour } from '../../../lib/i18n'
+import { slugsHalalEn } from '../../../lib/en/pages/halal'
 import { HALAL_PAGES } from '../../../lib/halalPagesData'
 import { ogImages } from '../../../lib/og'
+
+/* Un slug inventé répond 404, pas 200. */
+export const dynamicParams = false
 
 export function generateStaticParams() {
   return HALAL_PAGES.map(p => ({ slug: p.slug }))
@@ -27,9 +32,7 @@ export async function generateMetadata({ params }) {
       locale: 'fr_FR',
       type: 'website',
     },
-    alternates: {
-      canonical: `/traiteur-halal/${page.slug}`,
-    },
+    alternates: alternatesPour(`/traiteur-halal/${page.slug}`, { en: slugsHalalEn().includes(page.slug) }),
   }
 }
 
