@@ -15,6 +15,8 @@ import { CONSENT_DEFAULT_SCRIPT } from '../lib/consent'
 import AttributionCapture from '../components/AttributionCapture'
 import { websiteNode, GBP_RATING_LABEL } from '../lib/site'
 import { ogImage, ogImages } from '../lib/og'
+import { enSlugs } from '../lib/en/journal'
+import { EnSlugsProvider } from '../components/EnSlugsProvider'
 
 export const metadata = {
   title: {
@@ -89,7 +91,9 @@ export default function RootLayout({ children }) {
         <SmoothScroll />
         <ScrollRevealInit />
         <CartProvider>
-          <div id="main-content" style={{ display: 'contents' }}>{children}</div>
+          <EnSlugsProvider slugs={enSlugs()}>
+            <div id="main-content" style={{ display: 'contents' }}>{children}</div>
+          </EnSlugsProvider>
         </CartProvider>
         <LangueDocument />
         <MobileCTA />

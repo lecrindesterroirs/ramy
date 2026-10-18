@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 import SelecteurLangue from './SelecteurLangue'
 import { estAnglais, lienLocalise } from '../lib/i18n'
-import { enSlugs } from '../lib/en/journal'
+import { useEnSlugs } from './EnSlugsProvider'
 import { t } from '../lib/en/interface'
 
 const MOMENTS = {
@@ -79,7 +79,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
      lien part vers sa version anglaise quand elle existe — sinon il reste en
      français : on ne renvoie jamais vers une adresse qui n'existe pas. */
   const langue = estAnglais(pathname || '/') ? 'en' : 'fr'
-  const slugsEn = enSlugs()
+  const slugsEn = useEnSlugs()
   const lien = (href) => lienLocalise(href, langue, slugsEn)
   const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
   const alwaysScrolled = forceScrolled || pathname !== '/'

@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { estAnglais, versEn, versFr, equivalentEn } from '../lib/i18n'
-import { enSlugs } from '../lib/en/journal'
+import { useEnSlugs } from './EnSlugsProvider'
 
 /*
   Bascule français / anglais.
@@ -22,7 +22,8 @@ export default function SelecteurLangue({ compact = false, lien = false, style: 
   const anglais = estAnglais(pathname)
   const cheminFr = anglais ? versFr(pathname) : pathname
 
-  const cibleEn = equivalentEn(cheminFr, enSlugs())
+  const slugsEn = useEnSlugs()
+  const cibleEn = equivalentEn(cheminFr, slugsEn)
   if (!cibleEn) return null   // pas de version anglaise : pas de sélecteur
 
   /*

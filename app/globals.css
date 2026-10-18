@@ -517,3 +517,8 @@ a:hover .article-card-img { transform: scale(1.04); }
   from { transform: translateX(100vw); }
   to   { transform: translateX(-100%); }
 }
+
+/* Accueil : le retour à la ligne forcé du texte d'en-tête n'a de sens que sur grand écran ; sur mobile il laissait « pour créer » seul sur sa ligne. */
+@media (max-width: 767px) {
+  .hero-br { display: none; }
+}

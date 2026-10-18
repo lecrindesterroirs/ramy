@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { estAnglais, lienLocalise } from '../lib/i18n'
 import { t } from '../lib/en/interface'
-import { enSlugs } from '../lib/en/journal'
+import { useEnSlugs } from './EnSlugsProvider'
 import SelecteurLangue from './SelecteurLangue'
 
 const linkStyle = {
@@ -34,7 +34,7 @@ export default function Footer() {
      jamais de renvoi vers une adresse qui n'existe pas. */
   const pathname = usePathname() || '/'
   const langue = estAnglais(pathname) ? 'en' : 'fr'
-  const slugsEn = enSlugs()
+  const slugsEn = useEnSlugs()
   const lien = (href) => lienLocalise(href, langue, slugsEn)
   const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
 

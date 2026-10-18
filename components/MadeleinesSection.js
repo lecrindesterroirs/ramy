@@ -1,5 +1,3 @@
-'use client'
-
 import { MADELEINE_FLAVORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
 

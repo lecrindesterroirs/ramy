@@ -153,7 +153,7 @@ export default function Hero({ lang = 'fr' }) {
             textShadow: '0 1px 18px rgba(249,246,239,0.7)',
           }}
         >
-          {T.corps1}{' '}<br />
+          {T.corps1}{' '}<br className="hero-br" />
           {T.corps2}
         </p>
 
