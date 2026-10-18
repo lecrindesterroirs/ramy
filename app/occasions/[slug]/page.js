@@ -281,15 +281,20 @@ export default function OccasionPage() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)', background: 'var(--bg-secondary)', padding: '72px 40px' }}>
           <div style={{ maxWidth: '760px', margin: '0 auto' }}>
             <DevisRapide
+              /* On teste le nom FRANÇAIS : la valeur envoyée doit rester
+                 française, et sur /en occasion.name est déjà traduit, ce qui
+                 faisait retomber toutes les occasions sur « Petit-déjeuner ». */
               defaultPrestation={
-                occasion.name?.toLowerCase().includes('repas') ? 'Plateaux repas'
-                : occasion.name?.toLowerCase().includes('séminaire') ? 'Séminaire'
-                : occasion.name?.toLowerCase().includes('goûter') ? 'Goûter'
-                : occasion.name?.toLowerCase().includes('cocktail') || occasion.name?.toLowerCase().includes('afterwork') ? 'Cocktail / Buffet'
+                occasionFr.name?.toLowerCase().includes('repas') ? 'Plateaux repas'
+                : occasionFr.name?.toLowerCase().includes('séminaire') ? 'Séminaire'
+                : occasionFr.name?.toLowerCase().includes('goûter') ? 'Goûter'
+                : occasionFr.name?.toLowerCase().includes('cocktail') || occasionFr.name?.toLowerCase().includes('afterwork') ? 'Cocktail / Buffet'
                 : 'Petit-déjeuner'
               }
-              titre={`Organiser un ${occasion.name?.toLowerCase()} à Paris ?`}
+              titre={`Organiser un ${occasionFr.name?.toLowerCase()} à Paris ?`}
+              titreEn={`Organising a ${occasion.name?.toLowerCase()} in Paris?`}
               sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h, livraison dans toute l'Île-de-France."
+              sousTitreEn="Answer in 30 seconds, a personalised quote within 24 hours, delivery across the Paris region."
             />
           </div>
         </div>

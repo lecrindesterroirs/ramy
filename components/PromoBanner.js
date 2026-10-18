@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { estAnglais } from '../lib/i18n'
 
 /* ─────────────────────────────────────────────────────────────
    Bandeau de campagne — Octobre Rose
@@ -16,6 +17,15 @@ const CAMPAGNE = {
   texte: "Octobre Rose — 1 € reversé par convive à la recherche contre le cancer du sein",
   texteMobile: "Octobre Rose — 1 € reversé par convive →",
   cta: "Découvrir l'offre",
+  /* Anglais : les textes de campagne changent à chaque campagne, ils vivent
+     donc ici avec le reste, pas dans lib/en/interface.js. La page de l'offre
+     n'existe qu'en français : le lien y mène directement, sans passer par la
+     redirection /en. */
+  texteEn: "Pink October — €1 per guest donated to breast cancer research",
+  texteMobileEn: "Pink October — €1 per guest donated →",
+  ctaEn: 'See the offer',
+  regionEn: 'Pink October campaign',
+  fermerEn: 'Close banner',
   fond: '#EFC6D2',
   encre: '#1A1A18',
 }
@@ -29,6 +39,7 @@ const PAGES_ADS_MOBILE = ['/creations/petits-dejeuners-et-pauses']
 
 export default function PromoBanner() {
   const pathname = usePathname()
+  const en = estAnglais(pathname || '/')
   const [visible, setVisible] = useState(false)
 
   const exclu = EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
@@ -70,7 +81,7 @@ export default function PromoBanner() {
     <div
       className="promo-banner"
       role="region"
-      aria-label="Campagne Octobre Rose"
+      aria-label={en ? CAMPAGNE.regionEn : 'Campagne Octobre Rose'}
       style={{
         position: 'fixed',
         top: 0,
@@ -110,8 +121,8 @@ export default function PromoBanner() {
           overflow: 'hidden',
           textOverflow: 'ellipsis',
         }}>
-          <span className="promo-long">{CAMPAGNE.texte}</span>
-          <span className="promo-short">{CAMPAGNE.texteMobile}</span>
+          <span className="promo-long">{en ? CAMPAGNE.texteEn : CAMPAGNE.texte}</span>
+          <span className="promo-short">{en ? CAMPAGNE.texteMobileEn : CAMPAGNE.texteMobile}</span>
         </span>
         <span className="promo-banner-cta" style={{
           fontFamily: "'Neue Montreal', sans-serif",
@@ -123,13 +134,13 @@ export default function PromoBanner() {
           borderBottom: `1px solid ${CAMPAGNE.encre}`,
           paddingBottom: '1px',
         }}>
-          {CAMPAGNE.cta} →
+          {en ? CAMPAGNE.ctaEn : CAMPAGNE.cta} →
         </span>
       </a>
 
       <button
         onClick={fermer}
-        aria-label="Fermer le bandeau"
+        aria-label={en ? CAMPAGNE.fermerEn : 'Fermer le bandeau'}
         className="promo-banner-close"
         style={{
           position: 'absolute',

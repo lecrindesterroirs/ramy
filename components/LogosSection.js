@@ -1,5 +1,9 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../lib/i18n'
+import { t } from '../lib/en/interface'
+
 // fonce : logo en couleur claire (turquoise, vert, rouge, dégradé) qui devenait
 // gris pâle une fois passé en niveaux de gris. On le ramène à une silhouette
 // sombre, au même poids que les logos déjà noirs. Réservé aux fichiers à fond
@@ -27,7 +31,12 @@ const logos = [
 // On duplique pour le défilement infini
 const track = [...logos, ...logos, ...logos]
 
-export default function LogosSection({ subtitle, style: extraStyle, label = 'Ils nous font confiance' }) {
+export default function LogosSection({ subtitle, subtitleEn, style: extraStyle, label, labelEn }) {
+  // Même règle que DevisRapide : sur /en, un libellé français passé en prop
+  // ne doit pas écraser l'anglais.
+  const langue = estAnglais(usePathname() || '/') ? 'en' : 'fr'
+  label = (langue === 'en' ? labelEn : label) || t('logos.label', langue)
+  subtitle = langue === 'en' ? subtitleEn : subtitle
   return (
     <section
       style={{

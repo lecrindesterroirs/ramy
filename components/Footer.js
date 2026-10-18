@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { estAnglais, lienLocalise } from '../lib/i18n'
 import { t } from '../lib/en/interface'
 import { enSlugs } from '../lib/en/journal'
+import SelecteurLangue from './SelecteurLangue'
 
 const linkStyle = {
   fontFamily: "'Neue Montreal', sans-serif",
@@ -94,15 +95,17 @@ export default function Footer() {
               { title: 'Traiteur à Paris & IDF', titleEn: 'Catering in Paris & Île-de-France', links: [
                 { label: 'Traiteur Paris', href: '/traiteur/paris' },
                 { label: 'Traiteur La Défense', href: '/traiteur/la-defense' },
+                { label: 'Traiteur Puteaux', href: '/traiteur/puteaux' },
+                { label: 'Traiteur Courbevoie', href: '/traiteur/courbevoie' },
                 { label: 'Traiteur Boulogne', href: '/traiteur/boulogne-billancourt' },
                 { label: 'Traiteur Neuilly', href: '/traiteur/neuilly-sur-seine' },
                 { label: 'Traiteur Levallois', href: '/traiteur/levallois-perret' },
                 { label: 'Traiteur Issy', href: '/traiteur/issy-les-moulineaux' },
-                { label: 'Petit-déjeuner Puteaux', href: '/petit-dejeuner-entreprise/puteaux' },
-                { label: 'Petit-déjeuner Courbevoie', href: '/petit-dejeuner-entreprise/courbevoie' },
-                { label: 'Petit-déjeuner La Défense', href: '/petit-dejeuner-entreprise/la-defense' },
-                { label: 'Petit-déjeuner Suresnes', href: '/petit-dejeuner-entreprise/suresnes' },
-                { label: 'Petit-déjeuner Nanterre', href: '/petit-dejeuner-entreprise/nanterre' },
+                { label: 'Traiteur Suresnes', href: '/traiteur/suresnes' },
+                { label: 'Traiteur Nanterre', href: '/traiteur/nanterre' },
+                { label: 'Traiteur Asnières', href: '/traiteur/asnieres-sur-seine' },
+                { label: 'Traiteur Gennevilliers', href: '/traiteur/gennevilliers' },
+                { label: 'Traiteur Versailles', href: '/traiteur/versailles' },
                 { label: 'Toutes les zones', labelEn: 'All areas', href: '/traiteur' },
               ]},
               { title: "L'Univers", titleEn: 'About us', links: [
@@ -153,7 +156,6 @@ export default function Footer() {
             {[
               { label: 'Mentions légales', href: '/mentions-legales' },
               { label: 'CGV', href: '/cgv' },
-              { label: 'English', href: '/corporate-catering-paris' },
               { label: 'Confidentialité', href: '/confidentialite' },
               { label: 'Cookies', href: '/cookies' },
             ].map(l => (
@@ -163,6 +165,13 @@ export default function Footer() {
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.62)'}
               >{mot(l)}</a>
             ))}
+            {/* Bascule de langue : un lien vers l'équivalent réel de la page
+                courante, pas vers une page d'atterrissage figée. Ne s'affiche
+                que si la page existe dans l'autre langue. */}
+            <SelecteurLangue
+              lien
+              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em' }}
+            />
           </div>
 
           {/* Droite */}

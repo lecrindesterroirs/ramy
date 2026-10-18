@@ -609,8 +609,6 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           >
             {t('nav.devis', langue)} <span>→</span>
           </a>
-          {/* Ne s'affiche que si la page existe en anglais. */}
-          <SelecteurLangue />
         </div>
 
         {/* Hamburger, mobile only */}

@@ -1015,6 +1015,7 @@ export default function Contact() {
       <div className="devis-preuves">
         <LogosSection
           subtitle="Et pourquoi pas vous ?"
+          subtitleEn="Why not you?"
           style={{ paddingBottom: '56px' }}
         />
       </div>

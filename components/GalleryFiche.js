@@ -94,6 +94,8 @@ export default function GalleryFiche({
   seoEyebrow, seoTitle, seoHtml, devisPrestation = '',
   devisTitre,
   devisSousTitre,
+  devisTitreEn,
+  devisSousTitreEn,
   related = [], relatedTitle,
   asavoir = null,
   imgRatio = '4 / 3',
@@ -102,8 +104,10 @@ export default function GalleryFiche({
 }) {
   const T = TEXTES[lang] || TEXTES.fr
   listLabel = listLabel || T.composition
-  devisTitre = devisTitre || T.devisTitre
-  devisSousTitre = devisSousTitre || T.devisSousTitre
+  // Même règle que DevisRapide : en anglais, un libellé français passé en
+  // prop ne doit pas écraser le texte anglais.
+  devisTitre = (lang === 'en' ? devisTitreEn : devisTitre) || T.devisTitre
+  devisSousTitre = (lang === 'en' ? devisSousTitreEn : devisSousTitre) || T.devisSousTitre
   relatedTitle = relatedTitle || T.liees
   const photos = gallery && gallery.length ? gallery : [img]
   const showThumbnails = photos.length > 1
@@ -309,7 +313,7 @@ export default function GalleryFiche({
             )}
             {seoHtml && <div className="gf-article-body" dangerouslySetInnerHTML={{ __html: seoHtml }} />}
 
-            <DevisRapide defaultPrestation={devisPrestation} titre={devisTitre} sousTitre={devisSousTitre} />
+            <DevisRapide defaultPrestation={devisPrestation} titre={devisTitre} sousTitre={devisSousTitre} titreEn={devisTitre} sousTitreEn={devisSousTitre} />
 
             {backHref && (
               <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>

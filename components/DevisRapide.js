@@ -93,7 +93,14 @@ const FAMILLES_PERSO = [
 
 // compact : sans la grande marge du haut, pour la feuille de la barre mobile
 // (components/DevisSheet.js) et l'encart de la grille des pages de la carte.
-export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, compact = false }) {
+/*
+  titre / sousTitre sont écrits en français par les pages appelantes. En
+  anglais, on les IGNORE au profit du texte anglais, sinon un libellé français
+  passé en prop écrase la traduction : c'est ce qui laissait « Répondez en 30
+  secondes… » sur 44 pages /en. Une page qui tient à un titre anglais précis
+  passe titreEn / sousTitreEn.
+*/
+export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, titreEn, sousTitreEn, compact = false }) {
   const en = estAnglais(usePathname() || '/')
   const t = en ? T.en : T.fr
   const motPrestation = (v) => (en && PRESTATIONS_EN[v]) || v
@@ -171,7 +178,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
         marginBottom: '6px',
         lineHeight: 1.2,
       }}>
-        {titre || t.titre}
+        {(en ? titreEn : titre) || t.titre}
       </p>
       <p style={{
         fontFamily: "'Neue Montreal', sans-serif",
@@ -180,7 +187,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
         lineHeight: 1.65,
         marginBottom: '28px',
       }}>
-        {sousTitre || t.sousTitre}
+        {(en ? sousTitreEn : sousTitre) || t.sousTitre}
       </p>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

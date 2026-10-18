@@ -17,13 +17,28 @@ import { enSlugs } from '../lib/en/journal'
   à la racine : certaines pages n'ont pas de menu, et l'attribut doit y être
   juste quand même.
 */
-export default function SelecteurLangue({ compact = false }) {
+export default function SelecteurLangue({ compact = false, lien = false, style: styleLien }) {
   const pathname = usePathname() || '/'
   const anglais = estAnglais(pathname)
   const cheminFr = anglais ? versFr(pathname) : pathname
 
   const cibleEn = equivalentEn(cheminFr, enSlugs())
   if (!cibleEn) return null   // pas de version anglaise : pas de sélecteur
+
+  /*
+    Forme « lien » : un seul lien, vers l'autre langue, au format des autres
+    liens du pied de page. C'est celle du pied de page depuis le 18/10/2026 :
+    Ramy ne veut pas du sélecteur dans la barre de navigation, où il élargit
+    le groupe de droite et décale le logo.
+  */
+  if (lien) {
+    const cible = anglais ? cheminFr : cibleEn
+    return (
+      <a href={cible} style={styleLien} hrefLang={anglais ? 'fr' : 'en'}>
+        {anglais ? 'Français' : 'English'}
+      </a>
+    )
+  }
 
   const taille = compact ? 11 : 11.5
   const style = (actif) => ({
