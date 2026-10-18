@@ -3,7 +3,7 @@ import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_CATALOGUE } from "./data"
 import { ogImages } from '../../../lib/og'
 
-const TITLE = "Formules cocktail à Paris dès 29,90 € HT par personne"
+const TITLE = "Traiteur cocktail entreprise Paris : formules dès 29,90 € HT"
 const DESCRIPTION = "Formules L'Invitation (8 pièces), La Réception (12) et La Célébration (16) dès 29,90 € HT par personne. Livraison à Paris et en IDF, devis sous 24h."
 
 export const metadata = {

@@ -11,6 +11,7 @@ export function generateStaticParams() {
    d'un résultat Google (titre ~60 car., description ~155 car.). Une entrée ici
    prime sur citiesData.js, sans toucher à ce fichier. */
 const META_OVERRIDES = {
+  'paris': { title: "Traiteur Paris par arrondissement : livraison dès 6h30" },
   'boulogne-billancourt': { title: "Traiteur d'entreprise Boulogne-Billancourt, livré dès 6h30" },
   "versailles": { description: "Traiteur d'entreprise à Versailles et dans les Yvelines (78) : petits-déjeuners, plateaux repas, buffets et cocktails livrés dès 6h30. Devis sous 24h." },
   "saint-denis": { description: "Traiteur d'entreprise à Saint-Denis (93) : petits-déjeuners, plateaux repas, buffets cocktail dès 6h30, à Pleyel et au Stade de France. Devis sous 24h." },
