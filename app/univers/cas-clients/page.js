@@ -23,7 +23,7 @@ const CAS = [
     contexte: "Cabinet de conseil, bureaux à Paris. Les équipes organisent des petits-déjeuners de réunion plusieurs fois par mois.",
     demande: "Un petit-déjeuner prêt avant l'arrivée des équipes, de 8 à 40 personnes selon la réunion, parfois dès 6h30.",
     livraison: ["Mini-viennoiseries, madeleines, cakes maison, brochettes de fruits, café et jus Alain Milliat, livrés en général à 7h45.", "Selon les semaines, des pauses goûter et, fin août, trois jours de déjeuners de séminaire."],
-    chiffres: "46 livraisons entre le 23 février et le 14 octobre 2026 : 38 petits-déjeuners, 3 pauses goûter, 3 jours de séminaire et 2 déjeuners.",
+    chiffres: "Des petits-déjeuners de réunion plusieurs fois par mois depuis février 2026, des pauses goûter, et trois jours de déjeuners de séminaire fin août.",
     lecon: "Un traiteur de petit-déjeuner sert surtout à ne plus y penser : même horaire, mêmes quantités, sans avoir à tout redemander à chaque fois.",
   },
   {
@@ -31,7 +31,7 @@ const CAS = [
     contexte: "Cabinet de conseil, bureaux à Paris. Des matinées d'équipe d'une centaine de personnes, revenues régulièrement depuis avril.",
     demande: "Un petit-déjeuner pour 100 personnes, installé entre 7h30 et 8h00.",
     livraison: ["7 plateaux de 30 mini-viennoiseries, soit 210 pièces.", "3 plateaux de 30 mini-chouquettes.", "2 coffrets de 50 madeleines.", "60 brochettes de fruits."],
-    chiffres: "9 petits-déjeuners livrés entre le 16 avril et le 7 octobre 2026.",
+    chiffres: "Des matinées revenues régulièrement depuis avril 2026.",
     lecon: "« Le livreur nous a même aidé à tout installer. » Rose Jean, Office Manager, Sia Partners.",
   },
   {
@@ -39,7 +39,7 @@ const CAS = [
     contexte: "Un organisateur de séminaires, pour un événement de trois jours à Ermont (95), du 16 au 18 juin 2026.",
     demande: "Le petit-déjeuner et le déjeuner des participants, trois jours de suite, hors de Paris.",
     livraison: ["Chaque matin à 7h00 : 250 à 350 mini-viennoiseries, 5 percolateurs de café et 1 de thé.", "Chaque midi à 11h30 : 59 à 71 plateaux repas en cinq menus (un végétarien, deux viandes, deux poissons), avec café et thé."],
-    chiffres: "6 livraisons en 3 jours, dont 193 plateaux repas. Le même client nous avait confié, au début du mois, deux matinées de 150 et 100 personnes à Nanterre.",
+    chiffres: "6 livraisons en 3 jours, dont 193 plateaux repas. Le même client nous avait confié, au début du mois, deux matinées à Nanterre.",
     lecon: "Un séminaire se prépare comme une tournée : un menu par régime, les mêmes horaires chaque jour, et une équipe qui livre aussi hors de Paris.",
   },
 ]
