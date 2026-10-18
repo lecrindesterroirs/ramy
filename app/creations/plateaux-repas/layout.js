@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   title: { absolute: "Plateaux repas d'entreprise à Paris : livrés dès 6h30" },
@@ -7,7 +9,7 @@ export const metadata = {
     title: "Déjeuner d'entreprise à Paris : plateaux repas livrés | L'Écrin Traiteur",
     description: "Traiteur déjeuner d'entreprise Paris : plateaux repas artisanaux, livraison lundi à vendredi dès 6h30 dans toute l'Île-de-France.",
   },
-  alternates: { canonical: '/creations/plateaux-repas' },
+  alternates: alternatesPour('/creations/plateaux-repas', { en: true }),
 }
 
 export default function Layout({ children }) {

@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_CATALOGUE } from "./data"
@@ -9,7 +11,7 @@ const DESCRIPTION = "Formules L'Invitation (8 pièces), La Réception (12) et La
 export const metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: '/creations/cocktails' },
+  alternates: alternatesPour('/creations/cocktails', { en: true }),
   openGraph: {
     images: ogImages('/hero-cocktail.webp'),
     title: TITLE,

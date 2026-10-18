@@ -1,3 +1,5 @@
+import { alternatesPour } from '../../../lib/i18n'
+
 import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
 import { ogImages } from '../../../lib/og'
@@ -8,7 +10,7 @@ const DESCRIPTION = "Traiteur petit-déjeuner d'entreprise à Paris : viennoiser
 export const metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: '/creations/petits-dejeuners-et-pauses' },
+  alternates: alternatesPour('/creations/petits-dejeuners-et-pauses', { en: true }),
   openGraph: {
     images: ogImages('/hero-petitdej.webp'),
     title: TITLE,

@@ -1,6 +1,8 @@
+import { alternatesPour } from '../../lib/i18n'
+
 import { ogImages } from '../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/journal' },
+  alternates: alternatesPour('/journal', { en: true }),
   title: { absolute: "Guides traiteur d'entreprise : budgets, quantités, idées" },
   description: "Plus de 100 guides pour organiser un petit-déjeuner, un déjeuner ou un cocktail d'entreprise à Paris : budgets chiffrés, quantités par personne, idées.",
   openGraph: {
