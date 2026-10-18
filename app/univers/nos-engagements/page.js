@@ -92,11 +92,11 @@ export default function NosEngagements() {
           >
             <span style={{ position: 'absolute', inset: '18px', border: '1px solid rgba(169,128,59,0.25)', pointerEvents: 'none' }} />
 
-            <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, marginBottom: '22px' }}>
+            <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', 'Baskerville Fallback', serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, marginBottom: '22px' }}>
               {en ? T.eyebrow : "L'Écrin · Nos Engagements"}
             </p>
 
-            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 400, lineHeight: 1.08, color: '#2A2013', marginBottom: '10px' }}>
+            <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 400, lineHeight: 1.08, color: '#2A2013', marginBottom: '10px' }}>
               {en ? T.titreA : "Chez L'Écrin,"}<br />{en ? T.titreB : "on s'engage à…"}
             </h1>
 
@@ -115,10 +115,10 @@ export default function NosEngagements() {
                   }}
                 >
                   <div>
-                    <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(17px, 1.9vw, 21px)', fontWeight: 400, color: '#2A2013', marginBottom: '8px' }}>
+                    <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(17px, 1.9vw, 21px)', fontWeight: 400, color: '#2A2013', marginBottom: '8px' }}>
                       {e.titre}
                     </h2>
-                    <p className="eng-texte" style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.9vw, 19px)', lineHeight: 1.6, color: 'rgba(42,32,19,0.86)' }}>
+                    <p className="eng-texte" style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.9vw, 19px)', lineHeight: 1.6, color: 'rgba(42,32,19,0.86)' }}>
                       {e.texte}
                     </p>
                   </div>
@@ -129,7 +129,7 @@ export default function NosEngagements() {
             <div style={{ marginTop: '38px' }}>
               <Sprig />
               <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '38px', width: 'auto', margin: '18px auto 8px', opacity: 0.85, display: 'block' }} />
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: GOLD }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: GOLD }}>
                 L'Écrin Traiteur · Paris
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function NosEngagements() {
         .eng-texte::first-letter {
           float: left;
           color: ${GOLD};
-          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
           font-style: normal;
           font-weight: 400;
           font-size: 3.3em;

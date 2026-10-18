@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation'
 import { estAnglais } from '../../../lib/i18n'
 import { T_CAS } from '../../../lib/en/pages/univers'
 
-const SERIF = "'Baskerville Display PT', Georgia, serif"
-const SANS = "'Neue Montreal', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
 const h2 = { fontFamily: SERIF, fontSize: 'clamp(24px, 2.8vw, 34px)', fontWeight: 400, lineHeight: 1.2, color: 'var(--text-primary)', margin: '56px 0 16px' }
 const p = { fontFamily: SANS, fontSize: '16px', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '14px' }
 const li = { ...p, marginBottom: '6px' }

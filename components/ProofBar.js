@@ -2,8 +2,8 @@ import { GBP_RATING_LABEL, GBP_REVIEWS, GBP_URL, PROOF } from '../lib/site'
 
 // Bandeau de chiffres de confiance (modèle Prémices / Biux). Source unique : PROOF
 // et la note Google dans lib/site.js. Texte visible, pas de balisage d'étoiles.
-const SANS = "'Neue Montreal', sans-serif"
-const SERIF = "'Baskerville Display PT', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 
 export default function ProofBar({ lang = 'fr' }) {
   const en = lang === 'en'

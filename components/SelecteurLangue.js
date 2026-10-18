@@ -43,7 +43,7 @@ export default function SelecteurLangue({ compact = false, lien = false, style: 
 
   const taille = compact ? 11 : 11.5
   const style = (actif) => ({
-    fontFamily: "'Neue Montreal', sans-serif",
+    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
     fontSize: `${taille}px`,
     fontWeight: 500,
     letterSpacing: '0.08em',

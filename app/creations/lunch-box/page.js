@@ -57,17 +57,17 @@ function BlocMenu({ label, choix }) {
   return (
     <div style={{ marginTop: '16px' }}>
       <span style={{ display: 'block', width: '26px', height: '1px', background: 'rgba(169,128,59,0.45)', margin: '0 auto 14px' }} />
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>
         {label}
       </p>
       {choix.map((c, i) => (
         <span key={i}>
           {i > 0 && (
-            <span style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontStyle: 'normal', color: '#9B9590', margin: '2px 0' }}>
+            <span style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontStyle: 'normal', color: '#9B9590', margin: '2px 0' }}>
               ou
             </span>
           )}
-          <span style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', lineHeight: 1.5, color: '#5A544C' }}>
+          <span style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12.5px', lineHeight: 1.5, color: '#5A544C' }}>
             {c}
           </span>
         </span>
@@ -121,7 +121,7 @@ function MenuCard({ produit }) {
           transition: 'opacity 0.4s ease',
         }}>
           <span style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
             color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '10px 24px',
             transform: hovered ? 'translateY(0)' : 'translateY(6px)',
@@ -134,15 +134,15 @@ function MenuCard({ produit }) {
 
       {/* Menu complet, à la façon d'une carte imprimée */}
       <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '26px 24px 24px', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: catColor, marginBottom: '10px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: catColor, marginBottom: '10px' }}>
           {catLabel}
         </p>
 
-        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '23px', fontWeight: 400, lineHeight: 1.15, color: hovered ? '#E0A126' : '#111111', marginBottom: '8px', transition: 'color 0.25s ease' }}>
+        <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '23px', fontWeight: 400, lineHeight: 1.15, color: hovered ? '#E0A126' : '#111111', marginBottom: '8px', transition: 'color 0.25s ease' }}>
           {produit.nom}
         </h3>
 
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', lineHeight: 1.55, color: '#5A544C' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12.5px', lineHeight: 1.55, color: '#5A544C' }}>
           {produit.sousTitre}
         </p>
 
@@ -151,7 +151,7 @@ function MenuCard({ produit }) {
 
         <div style={{ flex: 1 }} />
 
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111', marginTop: '22px', paddingTop: '16px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: '#111111', marginTop: '22px', paddingTop: '16px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           {produit.prix} €<span style={{ color: 'rgba(17,17,17,0.35)', fontSize: '11px', marginLeft: '4px' }}>HT · par personne</span>
         </p>
       </div>
@@ -200,16 +200,16 @@ function LunchBoxInner() {
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="lb-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
                   Déjeuner
                 </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                   {HERO.label}
                 </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '360px', marginBottom: '20px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '360px', marginBottom: '20px' }}>
                   {HERO.description}
                 </p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', color: 'rgba(255,255,255,0.9)' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', letterSpacing: '0.04em', color: 'rgba(255,255,255,0.9)' }}>
                   À partir de <span style={{ fontSize: '15px' }}>{HERO.prix} €</span> HT · par personne
                 </p>
               </div>
@@ -228,7 +228,7 @@ function LunchBoxInner() {
         <div className="lb-shell lb-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 72px', display: 'grid', gridTemplateColumns: '168px 1fr', gap: '52px', alignItems: 'start' }}>
 
           <aside className="lb-filters" style={{ position: 'sticky', top: '104px' }}>
-            <p className="lb-filters-label" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
+            <p className="lb-filters-label" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
               Filtrer
             </p>
             {filtresDispo.map(f => {
@@ -239,7 +239,7 @@ function LunchBoxInner() {
                   onClick={() => handleFilterChange(f.key)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '13.5px',
                     fontWeight: active ? 500 : 400,
                     color: active ? '#111111' : '#9B9590',
@@ -263,10 +263,10 @@ function LunchBoxInner() {
           <div className="lb-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
             {boxesFiltres.length === 0 ? (
               <div style={{ gridColumn: '1/-1', padding: '48px 0' }}>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', color: '#111111', marginBottom: '10px' }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', color: '#111111', marginBottom: '10px' }}>
                   Aucune box dans cette catégorie
                 </p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#6E675F' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: '#6E675F' }}>
                   Sélectionnez un autre filtre pour parcourir la sélection.
                 </p>
               </div>

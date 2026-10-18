@@ -28,7 +28,7 @@ export default function NotFound() {
 
           {/* 404 */}
           <p style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(100px, 18vw, 200px)',
             fontWeight: 400,
             lineHeight: 1,
@@ -50,7 +50,7 @@ export default function NotFound() {
 
           {/* Titre */}
           <h1 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(26px, 4vw, 48px)',
             fontWeight: 400,
             lineHeight: 1.1,
@@ -63,7 +63,7 @@ export default function NotFound() {
 
           {/* Sous-titre */}
           <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '15px',
             lineHeight: 1.75,
             color: 'var(--text-secondary)',
@@ -78,7 +78,7 @@ export default function NotFound() {
             <a
               href="/"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.12em',
@@ -101,7 +101,7 @@ export default function NotFound() {
             <a
               href="/creations/petits-dejeuners-et-pauses"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.12em',

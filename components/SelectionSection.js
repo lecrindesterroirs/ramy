@@ -94,7 +94,7 @@ export default function SelectionSection({ lang = 'fr' }) {
             {/* Label + trait */}
             <p
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '12px',
                 fontWeight: 500,
                 letterSpacing: '0.22em',
@@ -110,7 +110,7 @@ export default function SelectionSection({ lang = 'fr' }) {
             {/* Titre */}
             <h2
               style={{
-                fontFamily: "'Baskerville Display PT', Georgia, serif",
+                fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                 fontSize: 'clamp(48px, 4.8vw, 74px)',
                 lineHeight: 0.97,
                 letterSpacing: '-0.02em',
@@ -126,7 +126,7 @@ export default function SelectionSection({ lang = 'fr' }) {
             {/* Corps */}
             <p
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '15px',
                 lineHeight: 1.75,
                 color: 'rgba(17,17,17,0.62)',
@@ -154,10 +154,10 @@ export default function SelectionSection({ lang = 'fr' }) {
                     padding: '20px 20px 20px',
                   }}
                 >
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '10px', lineHeight: 1.5 }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '10px', lineHeight: 1.5 }}>
                     {item.title}
                   </p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.65, color: 'rgba(17,17,17,0.58)' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.65, color: 'rgba(17,17,17,0.58)' }}>
                     {item.body}
                   </p>
                 </div>
@@ -186,7 +186,7 @@ export default function SelectionSection({ lang = 'fr' }) {
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
+                      <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
                         {item.title}
                       </span>
                     </div>
@@ -195,7 +195,7 @@ export default function SelectionSection({ lang = 'fr' }) {
                     </span>
                   </button>
                   {openIndex === i && (
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)', paddingBottom: '16px' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)', paddingBottom: '16px' }}>
                       {item.body}
                     </p>
                   )}

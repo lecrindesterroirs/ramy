@@ -167,11 +167,11 @@ export default function NotreMaison() {
             {/* Filet doré intérieur */}
             <span style={{ position: 'absolute', inset: '18px', border: '1px solid rgba(169,128,59,0.25)', pointerEvents: 'none' }} />
 
-            <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, marginBottom: '22px' }}>
+            <p style={{ fontFamily: "'Cormorant SC', 'Baskerville Display PT', 'Baskerville Fallback', serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.34em', textTransform: 'uppercase', color: GOLD, marginBottom: '22px' }}>
               {T.eyebrow}
             </p>
 
-            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(38px, 6vw, 62px)', fontWeight: 400, lineHeight: 1.05, color: '#2A2013', marginBottom: '10px' }}>
+            <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(38px, 6vw, 62px)', fontWeight: 400, lineHeight: 1.05, color: '#2A2013', marginBottom: '10px' }}>
               {T.titre}
             </h1>
 
@@ -182,7 +182,7 @@ export default function NotreMaison() {
                 <p
                   key={i}
                   style={{
-                    fontFamily: "'Baskerville Display PT', Georgia, serif",
+                    fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                     fontSize: 'clamp(17px, 2vw, 20px)',
                     lineHeight: 1.7,
                     color: 'rgba(42,32,19,0.86)',
@@ -197,7 +197,7 @@ export default function NotreMaison() {
             <div style={{ marginTop: '40px' }}>
               <Sprig />
               <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '38px', width: 'auto', margin: '18px auto 8px', opacity: 0.85, display: 'block' }} />
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', color: GOLD }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '15px', color: GOLD }}>
                 {T.signature}
               </p>
             </div>
@@ -207,10 +207,10 @@ export default function NotreMaison() {
           <section className="nm-facts" style={{ maxWidth: '620px', margin: '80px auto 0', textAlign: 'left' }}>
             {T.faits.map((f, i) => (
               <div key={f.q} style={{ marginBottom: i < T.faits.length - 1 ? '44px' : '0' }}>
-                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.6vw, 30px)', fontWeight: 400, lineHeight: 1.2, color: '#2A2013', marginBottom: '16px' }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.6vw, 30px)', fontWeight: 400, lineHeight: 1.2, color: '#2A2013', marginBottom: '16px' }}>
                   {f.q}
                 </h2>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '16px', lineHeight: 1.85, color: 'rgba(42,32,19,0.82)' }}>
                   {f.a}
                 </p>
               </div>
@@ -219,13 +219,13 @@ export default function NotreMaison() {
 
           {/* ── Le mot du fondateur ── */}
           <section className="nm-founder" style={{ maxWidth: '620px', margin: '48px auto 0', paddingTop: '40px', borderTop: '1px solid rgba(169,128,59,0.3)', textAlign: 'left' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: '18px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: '18px' }}>
               {T.motEyebrow}
             </p>
-            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(18px, 2vw, 22px)', lineHeight: 1.7, color: '#2A2013', marginBottom: '20px' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(18px, 2vw, 22px)', lineHeight: 1.7, color: '#2A2013', marginBottom: '20px' }}>
               {T.mot}
             </p>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'rgba(42,32,19,0.7)' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', color: 'rgba(42,32,19,0.7)' }}>
               <strong style={{ fontWeight: 500, color: '#2A2013' }}>Ramy Abdelaty</strong>, {T.fondateur}
               {T.traduit && <><br /><span style={{ fontSize: '12px', color: 'rgba(42,32,19,0.5)' }}>{T.traduit}</span></>}
             </p>

@@ -107,7 +107,7 @@ function PauseCard({ produit }) {
           transition: 'opacity 0.4s ease',
         }}>
           <span style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
             color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '10px 24px',
             transform: hovered ? 'translateY(0)' : 'translateY(6px)',
@@ -119,23 +119,23 @@ function PauseCard({ produit }) {
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '16px 16px 16px' }}>
-        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '8px', transition: 'color 0.25s ease', flex: 1 }}>
+        <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '8px', transition: 'color 0.25s ease', flex: 1 }}>
           {produit.nom}
         </h3>
         {(() => {
           if (!produit.prix) return (
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#9B9590' }}>À partager · sur devis</p>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: '#9B9590' }}>À partager · sur devis</p>
           )
           const parts = produit.prix.split(', ')
           const hasUnit = parts.length === 2
           return (
             <>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: '#111111' }}>
                 {hasUnit ? parts[1] : parts[0]}
                 <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>
               </p>
               {hasUnit && (
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', marginTop: '4px' }}>{parts[0]}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', marginTop: '4px' }}>{parts[0]}</p>
               )}
             </>
           )
@@ -178,13 +178,13 @@ export default function PausesGourmandes() {
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="pg-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
                   Petit-déjeuner & Pauses
                 </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(30px, 3.6vw, 54px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(30px, 3.6vw, 54px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                   {HERO.label}
                 </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
                   {HERO.description}
                 </p>
               </div>
@@ -205,7 +205,7 @@ export default function PausesGourmandes() {
             <Fragment key={p.id}>
               {p.sectionTitle && (
                 <div style={{ gridColumn: '1 / -1', marginBottom: '0', paddingTop: '16px', paddingBottom: '8px' }}>
-                  <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>
+                  <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>
                     {p.sectionTitle}
                   </h2>
                 </div>
@@ -232,15 +232,15 @@ export default function PausesGourmandes() {
 
         {/* ── FAQ visible (même contenu que le FAQPage du layout) ── */}
         <section className="pg-shell" style={{ maxWidth: '820px', margin: '0 auto', padding: '72px 40px 96px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', textAlign: 'center', marginBottom: '36px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', textAlign: 'center', marginBottom: '36px' }}>
             Goûter d'entreprise : vos questions
           </h2>
           {FAQ_PAUSES.map((f, i) => (
             <div key={i} style={{ padding: '24px 0', borderTop: '1px solid rgba(17,17,17,0.1)' }}>
-              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.25 }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.25 }}>
                 {f.name}
               </h3>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
                 {f.answer}
               </p>
             </div>

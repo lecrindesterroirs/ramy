@@ -43,7 +43,7 @@ export default function CTASection({ lang = 'fr' }) {
 
           <p
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '13px',
               fontWeight: 500,
               textTransform: 'uppercase',
@@ -60,7 +60,7 @@ export default function CTASection({ lang = 'fr' }) {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '7px',
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '11px',
             fontWeight: 400,
             letterSpacing: '0.08em',

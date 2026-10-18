@@ -21,10 +21,10 @@
 export default function BlocReponse({ titre, children, plusTitre, plus }) {
   return (
     <>
-      <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 28px)', fontWeight: 400, lineHeight: 1.2, color: 'var(--text-primary)', margin: '0 0 14px' }}>
+      <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 28px)', fontWeight: 400, lineHeight: 1.2, color: 'var(--text-primary)', margin: '0 0 14px' }}>
         {titre}
       </h2>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
         {children}
       </p>
 
@@ -41,7 +41,7 @@ export default function BlocReponse({ titre, children, plusTitre, plus }) {
         .answer-plus > summary {
           list-style: none; cursor: pointer; padding: 13px 0;
           display: flex; align-items: center; gap: 10px;
-          font-family: 'Neue Montreal', sans-serif; font-size: 11px; font-weight: 500;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.1em; color: #875E10;
         }
         .answer-plus > summary::-webkit-details-marker { display: none; }
@@ -52,7 +52,7 @@ export default function BlocReponse({ titre, children, plusTitre, plus }) {
         }
         .answer-plus[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
         .answer-plus > p {
-          margin: 0 0 16px; font-family: 'Neue Montreal', sans-serif;
+          margin: 0 0 16px; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 14px; line-height: 1.7; color: var(--text-secondary);
         }
         .answer-plus a { color: #875E10; border-bottom: 1px solid rgba(135,94,16,0.4); }

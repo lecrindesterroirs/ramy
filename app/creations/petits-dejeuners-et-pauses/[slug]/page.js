@@ -221,12 +221,12 @@ export default function ProductPage() {
             {breadcrumb.map((crumb, i, arr) => (
               <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 {crumb.href ? (
-                  <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}
+                  <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}
                     onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                     onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.42)'}
                   >{crumb.label}</a>
                 ) : (
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(17,17,17,0.75)' }}>{crumb.label}</span>
+                  <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(17,17,17,0.75)' }}>{crumb.label}</span>
                 )}
                 {i < arr.length - 1 && <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>›</span>}
               </span>
@@ -249,15 +249,15 @@ export default function ProductPage() {
               <ParallaxImage priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature, L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
               <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
                   {MD.titre}<br /><em style={{ fontStyle: 'italic' }}>{motCoffret(coffretMot).toLowerCase()}</em>
                 </h1>
                 <span style={{ display: 'block', width: '36px', height: '1px', background: 'var(--accent)', marginBottom: '20px' }} />
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '380px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '380px' }}>
                   {MD.chapeau}
                 </p>
                 {coffret && (
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-primary)', maxWidth: '380px', marginTop: '12px' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-primary)', maxWidth: '380px', marginTop: '12px' }}>
                     <strong style={{ fontWeight: 500 }}>{MD.coffretLigne(motCoffret(coffretMot), coffret.pieces)}</strong> {en ? (COFFRETS_DESC_EN[coffret.id] || coffret.desc) : coffret.desc}
                   </p>
                 )}
@@ -266,7 +266,7 @@ export default function ProductPage() {
 
             {/* ── Choisissez votre coffret ── */}
             <div style={{ textAlign: 'center', padding: '68px 24px 0' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                 {MD.choisir}
               </p>
             </div>
@@ -278,18 +278,18 @@ export default function ProductPage() {
                   </div>
                   <div style={{ height: '26px', marginBottom: '8px' }}>
                     {c.popular && (
-                      <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 12px' }}>
+                      <span style={{ display: 'inline-block', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '4px 12px' }}>
                         {MD.plusChoisi}
                       </span>
                     )}
                   </div>
-                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px' }}>
+                  <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px' }}>
                     {en ? `${motCoffret(c.titre.replace(/^Coffret\s+/i, ''))} box` : c.titre}
                   </p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
                     {MD.pieces(c.pieces)}
                   </p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: '240px', margin: '0 auto' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: '240px', margin: '0 auto' }}>
                     {en ? (COFFRETS_DESC_EN[c.id] || c.desc) : c.desc}
                   </p>
                 </div>
@@ -298,7 +298,7 @@ export default function ProductPage() {
 
             {/* ── Nos saveurs ── */}
             <div style={{ textAlign: 'center', padding: '56px 24px 36px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                 {MD.saveurs}
               </p>
             </div>
@@ -306,15 +306,15 @@ export default function ProductPage() {
               {MADELEINE_FLAVORS.map(f => (
                 <div key={f.id} style={{ textAlign: 'center', padding: '10px 8px' }}>
                   <img loading="lazy" src={f.img} alt={`Madeleine ${f.label.toLowerCase()}`} style={{ width: '100%', maxWidth: '76px', height: '72px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
-                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '15px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '6px' }}>{f.label}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{en ? (SAVEURS_DESC_EN[f.id] || f.description) : f.description}</p>
+                  <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '15px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '6px' }}>{f.label}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', lineHeight: 1.45, color: 'var(--text-secondary)' }}>{en ? (SAVEURS_DESC_EN[f.id] || f.description) : f.description}</p>
                 </div>
               ))}
             </div>
             <div style={{ textAlign: 'center', padding: '36px 24px 72px' }}>
               <a
                 href="/devis"
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
@@ -326,15 +326,15 @@ export default function ProductPage() {
             <div className="mad-4col" style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr 1.05fr 0.95fr', minHeight: '380px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
               {/* Cellule 1 : Notre exigence */}
               <div style={{ background: 'var(--bg-secondary)', padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
                   {MD.exigenceEyebrow}
                 </p>
-                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '20px' }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '20px' }}>
                   {MD.exigenceTitre[0]}<br />{MD.exigenceTitre[1]}
                 </h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {(en ? MAD_EXIGENCE_EN : MAD_EXIGENCE).map(t => (
-                    <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'var(--text-secondary)' }}>{t}</p>
+                    <p key={t} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'var(--text-secondary)' }}>{t}</p>
                   ))}
                 </div>
               </div>
@@ -344,16 +344,16 @@ export default function ProductPage() {
               </div>
               {/* Cellule 3 : Notre artisan partenaire */}
               <div style={{ padding: '52px 44px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
                   {MD.artisanEyebrow}
                 </p>
-                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '4px' }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '4px' }}>
                   Mado Paris
                 </h2>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '18px' }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontStyle: 'italic', fontSize: '15px', color: 'var(--text-secondary)', marginBottom: '18px' }}>
                   {MD.artisanBaseline}
                 </p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
                   {MD.artisanTexte}
                 </p>
               </div>
@@ -389,10 +389,10 @@ export default function ProductPage() {
 
         {/* ── Article SEO ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             {product.categoryLabel}
           </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
             {product.seoTitle}
           </h2>
           <div className="fiche-article-body" dangerouslySetInnerHTML={{ __html: product.seoArticle }} />
@@ -402,7 +402,7 @@ export default function ProductPage() {
             sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <a href="/creations/petits-dejeuners-et-pauses" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
+            <a href="/creations/petits-dejeuners-et-pauses" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
               ← Retour aux petits-déjeuners
             </a>
           </div>
@@ -411,8 +411,8 @@ export default function ProductPage() {
       </main>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-        .fiche-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
-        .fiche-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
+        .fiche-article-body p { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
+        .fiche-article-body h2 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
         .fiche-article-body strong { color: var(--text-primary); font-weight: 500; }
         @media (max-width: 768px) {
           .fiche-breadcrumb { padding: 20px 24px 0 !important; }
@@ -467,16 +467,16 @@ function GalleryFiche({ product, M }) {
         {/* En-tête centré */}
         <div style={{ textAlign: 'center', marginBottom: '22px' }}>
           <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '32px', width: 'auto', margin: '0 auto 12px', opacity: 0.9 }} />
-          <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '8px' }}>
+          <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '8px' }}>
             {product.name}
           </h1>
           {product.subtitle && (
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '9px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '9px' }}>
               {product.subtitle}
             </p>
           )}
           {product.qty && (
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.03em' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.03em' }}>
               {product.description || product.qty}
             </p>
           )}
@@ -484,7 +484,7 @@ function GalleryFiche({ product, M }) {
 
         {/* Description (gauche) */}
         {product.ingredients && (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '22px', whiteSpace: 'pre-line' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '22px', whiteSpace: 'pre-line' }}>
             {product.ingredients}
           </p>
         )}
@@ -492,8 +492,8 @@ function GalleryFiche({ product, M }) {
         {/* Composition (gauche) */}
         {product.allergens?.length > 0 && (
           <div style={{ marginBottom: '18px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>Composition</p>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>Composition</p>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
               {M.contient} : {product.allergens.join(', ').toLowerCase()}.
             </p>
           </div>
@@ -502,10 +502,10 @@ function GalleryFiche({ product, M }) {
         {/* Accompagnements inclus (gauche) */}
         {product.included?.length > 0 && (
           <div style={{ marginBottom: '22px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '9px' }}>Accompagnements inclus</p>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '9px' }}>Accompagnements inclus</p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {product.included.map(item => (
-                <li key={item} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.4, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <li key={item} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.4, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
                   {item}
                 </li>
@@ -520,18 +520,18 @@ function GalleryFiche({ product, M }) {
         {/* Bloc action centré : prix + CTA */}
         <div style={{ textAlign: 'center' }}>
           {product.price && (
-            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
               {product.price.toFixed(2).replace('.', ',')} €
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>HT</span>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>HT</span>
               {product.qty && (
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.4)', marginLeft: '10px' }}>· {product.qty}</span>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.4)', marginLeft: '10px' }}>· {product.qty}</span>
               )}
             </p>
           )}
 
           <a
             href="/devis"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10.5px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)', background: 'transparent', border: '1px solid var(--accent)', padding: '11px 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', justifyContent: 'center', transition: 'background 0.3s ease, color 0.3s ease' }}
+            style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10.5px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)', background: 'transparent', border: '1px solid var(--accent)', padding: '11px 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', justifyContent: 'center', transition: 'background 0.3s ease, color 0.3s ease' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
           >
@@ -565,12 +565,12 @@ function EditorialHero({ product, breadcrumb, M }) {
           {breadcrumb.map((crumb, i, arr) => (
             <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               {crumb.href ? (
-                <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(40,34,28,0.45)', textDecoration: 'none' }}
+                <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(40,34,28,0.45)', textDecoration: 'none' }}
                   onMouseEnter={e => e.currentTarget.style.color = GOLD}
                   onMouseLeave={e => e.currentTarget.style.color = 'rgba(40,34,28,0.45)'}
                 >{crumb.label}</a>
               ) : (
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(40,34,28,0.72)' }}>{crumb.label}</span>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', letterSpacing: '0.06em', color: 'rgba(40,34,28,0.72)' }}>{crumb.label}</span>
               )}
               {i < arr.length - 1 && <span style={{ color: 'rgba(40,34,28,0.28)', fontSize: '10px' }}>›</span>}
             </span>
@@ -598,34 +598,34 @@ function EditorialHero({ product, breadcrumb, M }) {
               <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '36px', width: 'auto', margin: '0 auto 10px', opacity: 0.92 }} />
 
               {/* Titre */}
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 34px)', fontWeight: 400, color: '#211C16', lineHeight: 1.08, marginBottom: '8px' }}>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.4vw, 34px)', fontWeight: 400, color: '#211C16', lineHeight: 1.08, marginBottom: '8px' }}>
                 {product.name}
               </h1>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.26em', textTransform: 'uppercase', color: GOLD, marginBottom: '10px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.26em', textTransform: 'uppercase', color: GOLD, marginBottom: '10px' }}>
                 {product.categoryLabel}
               </p>
               <div style={{ width: '34px', height: '1px', background: GOLD, margin: '0 auto 10px', opacity: 0.7 }} />
 
               {/* Accroche */}
               {accroche && (
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '14px', fontStyle: 'italic', lineHeight: 1.5, color: 'rgba(33,28,22,0.62)', maxWidth: '320px', margin: '0 auto 16px' }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '14px', fontStyle: 'italic', lineHeight: 1.5, color: 'rgba(33,28,22,0.62)', maxWidth: '320px', margin: '0 auto 16px' }}>
                   {accroche}
                 </p>
               )}
 
               {/* Composition */}
               <div style={{ textAlign: 'left', marginBottom: '14px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Composition</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'rgba(33,28,22,0.6)', whiteSpace: 'pre-line' }}>{product.ingredients}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Composition</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.65, color: 'rgba(33,28,22,0.6)', whiteSpace: 'pre-line' }}>{product.ingredients}</p>
               </div>
 
               {/* Allergènes */}
               {product.allergens?.length > 0 && (
                 <div style={{ textAlign: 'left', marginBottom: '14px' }}>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Allergènes</p>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '6px' }}>Allergènes</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                     {product.allergens.map(a => (
-                      <span key={a} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.04em', color: 'rgba(33,28,22,0.62)', border: '1px solid rgba(169,128,59,0.35)', padding: '3px 9px' }}>{a}</span>
+                      <span key={a} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', letterSpacing: '0.04em', color: 'rgba(33,28,22,0.62)', border: '1px solid rgba(169,128,59,0.35)', padding: '3px 9px' }}>{a}</span>
                     ))}
                   </div>
                 </div>
@@ -635,16 +635,16 @@ function EditorialHero({ product, breadcrumb, M }) {
               {product.price && (
                 <>
                   <div style={{ width: '34px', height: '1px', background: GOLD, margin: '4px auto 12px', opacity: 0.7 }} />
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '5px' }}>Tarif</p>
-                  <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#211C16', lineHeight: 1, marginBottom: '16px' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '5px' }}>Tarif</p>
+                  <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#211C16', lineHeight: 1, marginBottom: '16px' }}>
                     {product.price.toFixed(2).replace('.', ',')} €
-                    {product.qty && <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(33,28,22,0.45)', marginLeft: '8px' }}>· {product.qty}</span>}
+                    {product.qty && <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(33,28,22,0.45)', marginLeft: '8px' }}>· {product.qty}</span>}
                   </p>
                 </>
               )}
 
               {/* CTA devis */}
-              <a href="/devis" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '10px 32px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+              <a href="/devis" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '10px 32px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
@@ -663,37 +663,37 @@ function EditorialHero({ product, breadcrumb, M }) {
 function ProductInfo({ product, M }) {
   return (
     <div>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>{product.categoryLabel}</p>
-      <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.5vw, 46px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '20px', letterSpacing: '-0.01em' }}>{product.name}</h1>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '22px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '10px', letterSpacing: '-0.01em' }}>{product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</p>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.04em', marginBottom: '28px' }}>{product.qty}</p>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)', whiteSpace: 'pre-line' }}>{product.ingredients}</p>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>{product.categoryLabel}</p>
+      <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3.5vw, 46px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', marginBottom: '20px', letterSpacing: '-0.01em' }}>{product.name}</h1>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '22px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '10px', letterSpacing: '-0.01em' }}>{product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</p>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.04em', marginBottom: '28px' }}>{product.qty}</p>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px', paddingBottom: '28px', borderBottom: '1px solid rgba(17,17,17,0.07)', whiteSpace: 'pre-line' }}>{product.ingredients}</p>
 
       {product.dietary?.length > 0 && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '28px' }}>
           {product.dietary.map(tag => {
             const s = DIETARY_COLORS[tag] || { bg: 'rgba(17,17,17,0.05)', color: 'rgba(17,17,17,0.45)' }
-            return <span key={tag} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: s.color, background: s.bg, padding: '5px 10px' }}>{tag}</span>
+            return <span key={tag} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: s.color, background: s.bg, padding: '5px 10px' }}>{tag}</span>
           })}
         </div>
       )}
 
       <div style={{ background: 'var(--bg-secondary)', padding: '20px 24px', marginBottom: '32px' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.45)', marginBottom: '10px' }}>Allergènes</p>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.45)', marginBottom: '10px' }}>Allergènes</p>
         {product.allergens?.length > 0 ? (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-            {product.allergens.map(a => <span key={a} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.65)', background: 'rgba(17,17,17,0.06)', padding: '4px 10px' }}>{a}</span>)}
+            {product.allergens.map(a => <span key={a} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.65)', background: 'rgba(17,17,17,0.06)', padding: '4px 10px' }}>{a}</span>)}
           </div>
         ) : (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#3a7c3a', fontWeight: 500 }}>✓ Aucun allergène majeur déclaré</p>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: '#3a7c3a', fontWeight: 500 }}>✓ Aucun allergène majeur déclaré</p>
         )}
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.35)', marginTop: '10px', lineHeight: 1.6 }}>Fabriqué dans un atelier pouvant traiter d'autres allergènes.</p>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.35)', marginTop: '10px', lineHeight: 1.6 }}>Fabriqué dans un atelier pouvant traiter d'autres allergènes.</p>
       </div>
 
       <a
         href="/devis"
         style={{
-          fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500,
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500,
           letterSpacing: '0.1em', textTransform: 'uppercase',
           color: '#1A1A18', background: 'var(--accent)',
           border: '1px solid var(--accent)', padding: '18px 36px',
@@ -709,7 +709,7 @@ function ProductInfo({ product, M }) {
 
       <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
-          <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.5)', letterSpacing: '0.02em' }}>{t}</p>
+          <p key={t} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.5)', letterSpacing: '0.02em' }}>{t}</p>
         ))}
       </div>
     </div>

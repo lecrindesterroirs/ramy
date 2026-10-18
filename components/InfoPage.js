@@ -10,8 +10,8 @@ import ProofBar from './ProofBar'
   Les paragraphes sont du HTML écrit à la main dans les fichiers de données.
 */
 
-const SANS = "'Neue Montreal', sans-serif"
-const SERIF = "'Baskerville Display PT', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 const h2 = { fontFamily: SERIF, fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '56px 0 20px' }
 const p = { fontFamily: SANS, fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '20px' }
 const cell = { fontFamily: SANS, fontSize: '15px', lineHeight: 1.6, color: 'var(--text-primary)', padding: '14px 12px', borderBottom: '1px solid rgba(17,17,17,0.1)', textAlign: 'left', verticalAlign: 'top' }

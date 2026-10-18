@@ -33,7 +33,7 @@ export default function ReviewsBadge({ variant = 'light', showCount = false, sty
         alignItems: 'center',
         gap: '9px',
         textDecoration: 'none',
-        fontFamily: "'Neue Montreal', sans-serif",
+        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
         transition: 'opacity 0.25s ease',
         ...style,
       }}

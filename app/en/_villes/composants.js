@@ -93,7 +93,7 @@ export function HalalLineEn({ intro = 'Our ', paddingTop = '44px', maxWidth = '8
       className="halal-line"
       style={{ maxWidth, margin: '0 auto', padding: `${paddingTop} 72px ${paddingBottom}`, textAlign: 'center' }}
     >
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
         {intro}
         <a href={lienEn('/traiteur-halal')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
           halal corporate catering is entirely pork-free and alcohol-free
@@ -140,15 +140,15 @@ export function ClosingEn({
       <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
 
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '80px 40px 64px', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             {eyebrow}
           </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
             {titleLines.map((line, i) => (
               <span key={i}>{line}{i < titleLines.length - 1 && <br />}</span>
             ))}
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
             {body}
           </p>
         </div>
@@ -157,20 +157,20 @@ export function ClosingEn({
           {args.map((item, i) => (
             <div key={i} style={{ background: '#FFFFFF', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div style={{ color: 'var(--accent-deep)', opacity: 0.85 }}>{ICONS[item.icon] || ICONS.quality}</div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>{item.titre}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>{item.titre}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
             </div>
           ))}
         </div>
 
         <div style={{ textAlign: 'center', padding: '0 40px 80px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
             {ctaQuestion}
           </p>
           <a
             href={lienEn('/devis')}
             className="en-hover-fade"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+            style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
           >
             Get a quote →
           </a>
@@ -188,14 +188,14 @@ export function ClosingEn({
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cat-seo-body p {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 15px;
           line-height: 1.8;
           color: var(--text-secondary);
           margin-bottom: 20px;
         }
         .cat-seo-body h2 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
           font-size: 26px;
           font-weight: 400;
           color: var(--text-primary);
@@ -203,7 +203,7 @@ export function ClosingEn({
         }
         .cat-seo-body h2:first-child { margin-top: 0; }
         .cat-seo-body h3 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
           font-size: 20px;
           font-weight: 400;
           color: var(--text-primary);
@@ -213,7 +213,7 @@ export function ClosingEn({
         .cat-seo-body table {
           width: 100%;
           border-collapse: collapse;
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 14px;
           line-height: 1.55;
           color: var(--text-secondary);
@@ -233,7 +233,7 @@ export function ClosingEn({
         .cat-seo-body td { padding: 14px 14px 14px 0; border-bottom: 1px solid rgba(17,17,17,0.08); vertical-align: top; }
         .cat-seo-body li { margin-bottom: 8px; }
         .cat-seo-body ul {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 15px;
           line-height: 1.8;
           color: var(--text-secondary);

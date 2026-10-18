@@ -3,8 +3,8 @@ import Footer from '../../../components/Footer'
 import { enArticle, enSlugs, dateEn } from '../../../lib/en/journal'
 
 // Liste des guides du Journal disponibles en anglais (/en/journal).
-const SANS = "'Neue Montreal', sans-serif"
-const SERIF = "'Baskerville Display PT', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 
 export const metadata = {
   title: { absolute: "Corporate Catering Guides: Budgets, Quantities, Ideas | L'Écrin Traiteur" },

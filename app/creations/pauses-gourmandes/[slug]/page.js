@@ -43,23 +43,23 @@ function CoffretDetail({ produit }) {
         {/* Breadcrumb */}
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '24px 72px 0' }}>
           <nav style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <Link href="/" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Accueil</Link>
+            <Link href="/" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Accueil</Link>
             <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>›</span>
-            <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Pause Goûter</Link>
+            <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.42)', textDecoration: 'none' }}>Pause Goûter</Link>
             <span style={{ color: 'rgba(17,17,17,0.2)', fontSize: '10px' }}>›</span>
-            <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.75)' }}>{produit.nom}</span>
+            <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.75)' }}>{produit.nom}</span>
           </nav>
         </div>
 
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '32px 72px 80px' }}>
 
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '12px' }}>
             Pause Goûter · Coffret
           </p>
-          <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '16px' }}>
+          <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.08, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '16px' }}>
             {produit.nom}
           </h1>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '28px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '28px' }}>
             {produit.description}
           </p>
 
@@ -69,7 +69,7 @@ function CoffretDetail({ produit }) {
 
           {/* Formats disponibles */}
           <div style={{ marginBottom: '32px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '10px' }}>
               Taille du coffret
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4px' }}>
@@ -86,17 +86,17 @@ function CoffretDetail({ produit }) {
                     }}
                   >
                     {fmt.popular && (
-                      <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
+                      <span style={{ position: 'absolute', top: '-8px', left: '50%', transform: 'translateX(-50%)', background: 'var(--accent)', color: '#1A1A18', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', whiteSpace: 'nowrap' }}>
                         Le plus choisi
                       </span>
                     )}
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '2px', lineHeight: 1 }}>
+                    <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '2px', lineHeight: 1 }}>
                       {fmt.label}
                     </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.45)', marginBottom: '5px' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', color: 'rgba(17,17,17,0.45)', marginBottom: '5px' }}>
                       {fmt.sub}
                     </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent-deep)' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent-deep)' }}>
                       {fmt.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                     </p>
                   </button>
@@ -110,7 +110,7 @@ function CoffretDetail({ produit }) {
           {/* CTA devis */}
           <a
             href="/devis"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '18px 36px', display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', justifyContent: 'center', width: '100%', transition: 'opacity 0.3s ease' }}
+            style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: '1px solid var(--accent)', padding: '18px 36px', display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', justifyContent: 'center', width: '100%', transition: 'opacity 0.3s ease' }}
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
@@ -119,7 +119,7 @@ function CoffretDetail({ produit }) {
 
           <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
-              <p key={t} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
+              <p key={t} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
             ))}
           </div>
         </div>
@@ -131,10 +131,10 @@ function CoffretDetail({ produit }) {
         {/* Bloc « À savoir » : formats, prix, régimes, délai, livraison (rendu serveur) */}
         <FicheAsavoir {...asavoirPause(produit)} />
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 20px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             Pause Goûter · Traiteur entreprise
           </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '40px' }}>
             {produit.seoTitle || "La pause gourmande qui réunit vos équipes l'après-midi"}
           </h2>
           <div className="cf-article-body" dangerouslySetInnerHTML={{ __html: produit.seoHtml || SEO_HTML }} />
@@ -142,7 +142,7 @@ function CoffretDetail({ produit }) {
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '20px 72px 96px' }}>
           <DevisRapide defaultPrestation="Goûter" titre="Une Pause Goûter à organiser ?" sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h." />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
+            <Link href="/creations/pauses-gourmandes" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
               ← Retour à Pause Goûter
             </Link>
           </div>
@@ -150,8 +150,8 @@ function CoffretDetail({ produit }) {
       </main>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-        .cf-article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
-        .cf-article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
+        .cf-article-body p { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 18px; }
+        .cf-article-body h2 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; color: var(--text-primary); margin: 40px 0 14px; line-height: 1.15; }
         .cf-article-body strong { color: var(--text-primary); font-weight: 500; }
         @media (max-width: 768px) {
           div[style*="max-width: 720px"] { padding-left: 24px !important; padding-right: 24px !important; }

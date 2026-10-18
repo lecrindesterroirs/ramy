@@ -41,12 +41,12 @@ export { FORMULES }
 function Liste({ titre, items, accent }) {
   return (
     <div style={{ marginBottom: '22px' }}>
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: accent, marginBottom: '12px' }}>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: accent, marginBottom: '12px' }}>
         {titre} · {items.length}
       </p>
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '9px' }}>
         {items.map((it, i) => (
-          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.4, color: '#3A352F' }}>
+          <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.4, color: '#3A352F' }}>
             <span style={{ color: accent, flexShrink: 0, fontSize: '7px', marginTop: '5px' }}>◆</span>
             {it}
           </li>
@@ -92,7 +92,7 @@ function FormuleCard({ f }) {
           style={{ objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
         {featured && (
-          <span style={{ position: 'absolute', top: '14px', left: '14px', background: '#E0A126', color: '#FFFFFF', fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '6px 14px', whiteSpace: 'nowrap' }}>
+          <span style={{ position: 'absolute', top: '14px', left: '14px', background: '#E0A126', color: '#FFFFFF', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '6px 14px', whiteSpace: 'nowrap' }}>
             Le plus choisi
           </span>
         )}
@@ -105,18 +105,18 @@ function FormuleCard({ f }) {
 
       {/* En-tête */}
       <div style={{ textAlign: 'center', paddingBottom: '24px', borderBottom: '1px solid rgba(17,17,17,0.09)', marginBottom: '26px' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '10px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '10px' }}>
           {f.occasion || 'Cocktail'}
         </p>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '30px', fontWeight: 400, color: '#111111', marginBottom: '14px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '30px', fontWeight: 400, color: '#111111', marginBottom: '14px' }}>
           {f.label}
         </h2>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#6E675F', marginBottom: '18px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: '#6E675F', marginBottom: '18px' }}>
           {f.pieces} pièces par personne
         </p>
-        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '34px', fontWeight: 400, color: '#111111', lineHeight: 1 }}>
+        <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '34px', fontWeight: 400, color: '#111111', lineHeight: 1 }}>
           {f.prix} €
-          <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.4)', marginLeft: '6px' }}>HT / pers.</span>
+          <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.4)', marginLeft: '6px' }}>HT / pers.</span>
         </p>
       </div>
 
@@ -131,7 +131,7 @@ function FormuleCard({ f }) {
         style={{
           marginTop: '26px',
           display: 'block', textAlign: 'center',
-          fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
           padding: '14px 20px',
           color: featured ? '#FFFFFF' : '#111111',
           background: featured ? '#E0A126' : (hovered ? '#111111' : 'transparent'),
@@ -172,13 +172,13 @@ export default function Cocktails() {
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <Reveal mode="mount" y={16}>
             <div className="ck-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
                 Cocktail
               </p>
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                 Formules cocktail livrées à Paris
               </h1>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
                 Trois formules de 8, 12 ou 16 pièces salées et sucrées par personne, façonnées à la main et livrées prêtes à servir, de l&apos;afterwork à la réception d&apos;exception.
               </p>
             </div>
@@ -195,16 +195,16 @@ export default function Cocktails() {
 
         {/* ── Intro ── */}
         <div className="ck-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
             Trois formules
           </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
             Choisissez votre cocktail
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
             Trois volumes de pièces selon le moment : L&apos;Invitation pour un pot, La Réception pour remplacer un déjeuner, La Célébration pour un dîner debout. Pièces salées et sucrées façonnées à la main, halal et sans porc, livrées prêtes à servir.
           </p>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '14px auto 0' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '14px auto 0' }}>
             Pour dimensionner votre événement et comparer les budgets pour 20 ou 50 personnes, voir notre page{' '}
             <a href="/occasions/cocktail-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>cocktail d&apos;entreprise à Paris</a>.
             Pour un pot en fin de journée, voir notre{' '}
@@ -224,15 +224,15 @@ export default function Cocktails() {
 
         {/* ── FAQ visible (même contenu que le FAQPage du layout) ── */}
         <section className="ck-shell" style={{ maxWidth: '820px', margin: '0 auto', padding: '0 40px 96px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', textAlign: 'center', marginBottom: '36px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', textAlign: 'center', marginBottom: '36px' }}>
             Questions sur les formules cocktail
           </h2>
           {FAQ_CATALOGUE.map((f, i) => (
             <div key={i} style={{ padding: '24px 0', borderTop: '1px solid rgba(17,17,17,0.1)' }}>
-              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.25 }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.25 }}>
                 {f.name}
               </h3>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: '#6E675F' }}>
                 {f.answer}
               </p>
             </div>

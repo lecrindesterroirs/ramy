@@ -148,14 +148,14 @@ export default function TraiteurPage() {
 
         {/* ── Hero ── */}
         <div className="traiteur-hero" style={{ background: 'var(--bg-secondary)', padding: '90px 72px 78px', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
             Zone de livraison
           </p>
           <span style={{ display: 'block', width: '38px', height: '1px', background: 'var(--accent)', opacity: 0.6, margin: '0 auto 26px' }} />
-          <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 400, lineHeight: 1.06, color: 'var(--text-primary)', marginBottom: '24px', letterSpacing: '-0.015em' }}>
+          <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 400, lineHeight: 1.06, color: 'var(--text-primary)', marginBottom: '24px', letterSpacing: '-0.015em' }}>
             Traiteur entreprise Paris{' '}<br />& Île-de-France
           </h1>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
             L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
           </p>
 
@@ -164,7 +164,7 @@ export default function TraiteurPage() {
             {[`${CITIES.length} villes desservies`, 'Livraison dès 6h30', 'Devis sous 24h'].map((fact, i) => (
               <span key={fact} style={{ display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
                 {i > 0 && <span style={{ color: 'var(--accent-deep)', fontSize: '12px', lineHeight: 1 }}>·</span>}
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.04em', color: 'var(--text-secondary)' }}>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.04em', color: 'var(--text-secondary)' }}>
                   {fact}
                 </span>
               </span>
@@ -174,20 +174,20 @@ export default function TraiteurPage() {
 
         {/* ── Bloc-réponse : le service en clair (SEO + GEO) ── */}
         <section className="traiteur-intro" style={{ maxWidth: '760px', margin: '0 auto', padding: '72px 40px 8px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
             L'Écrin Traiteur livre petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets directement dans vos bureaux, à Paris et dans {CITIES.length} villes d'Île-de-France. Chaque commande est préparée à partir de produits d'artisans identifiés, comme les madeleines de Mado Paris, les yaourts de la Ferme de Viltain ou les jus d'Alain Milliat, et livrée par notre propre équipe, jamais en sous-traitance.
           </p>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
             Vous commandez jusqu'à la veille 14h pour une livraison dès 6h30. Le minimum de commande est de <strong style={{ fontWeight: 500 }}>50 € HT</strong>, avec un forfait de livraison de <strong style={{ fontWeight: 500 }}>29 € HT</strong> à Paris et dans les communes proches. Vous recevez une facture entreprise avec TVA et un devis personnalisé sous 24h.
           </p>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
             Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.
           </p>
-                  <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
+                  <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
             Combien coûte un traiteur d'entreprise à Paris ?
           </h2>
           <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', color: 'var(--text-primary)' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', color: 'var(--text-primary)' }}>
               <thead>
                 <tr>
                   {['Prestation', 'Prix HT par personne', 'Ce qui est compris'].map(t => (
@@ -214,14 +214,14 @@ export default function TraiteurPage() {
               </tbody>
             </table>
           </div>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '14px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '14px' }}>
             Prix 2026, hors taxes. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Devis détaillé sous 24h.
           </p>
         </section>
 
         {/* ── Prestations : hub → pages produit ── */}
         <section className="traiteur-prestations" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px' }}>
             Nos prestations de traiteur d'entreprise
           </h2>
           {PRESTATIONS.map((p, i) => (
@@ -234,10 +234,10 @@ export default function TraiteurPage() {
                 borderTop: i === 0 ? '1px solid rgba(17,17,17,0.08)' : '1px solid rgba(17,17,17,0.08)',
               }}
             >
-              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
                 {p.titre}
               </h3>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
                 {p.texte}
               </p>
             </a>
@@ -246,10 +246,10 @@ export default function TraiteurPage() {
 
         {/* ── Repères de prix ── */}
         <section className="traiteur-prix" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '18px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '18px' }}>
             Nos prix par prestation
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '24px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '24px' }}>
             Le prix se compte par personne et dépend de la prestation. À cela s'ajoutent un minimum de commande de 50 € HT et une livraison à 29 € HT à Paris et dans les communes proches. Le devis, personnalisé, est envoyé sous 24h.
           </p>
           {PRIX.map((p, i) => (
@@ -260,10 +260,10 @@ export default function TraiteurPage() {
               style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '24px', textDecoration: 'none', padding: '18px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === PRIX.length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}
             >
               <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', color: 'var(--text-primary)' }}>{p.titre}</span>
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>{p.detail}</span>
+                <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', color: 'var(--text-primary)' }}>{p.titre}</span>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)' }}>{p.detail}</span>
               </span>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-primary)', textAlign: 'right', whiteSpace: 'nowrap' }}>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', color: 'var(--text-primary)', textAlign: 'right', whiteSpace: 'nowrap' }}>
                 {p.prix}
                 <span style={{ display: 'block', fontSize: '12px', color: 'var(--text-secondary)' }}>{p.unite}</span>
               </span>
@@ -273,18 +273,18 @@ export default function TraiteurPage() {
 
         {/* ── Le bon format selon le moment ── */}
         <section className="traiteur-moments" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
             Quel traiteur pour quel moment de la journée ?
           </h2>
           {MOMENTS.map((m, i) => (
             <div key={m.moment} style={{ padding: '20px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === MOMENTS.length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}>
-              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
                 {m.moment}
               </h3>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '8px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '8px' }}>
                 {m.texte}
               </p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
                 Voir :{' '}
                 {m.liens.map((l, k) => (
                   <span key={l.href}>
@@ -299,18 +299,18 @@ export default function TraiteurPage() {
 
         {/* ── Comment ça se passe ── */}
         <section className="traiteur-etapes" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
             Commander en quatre étapes
           </h2>
           {ETAPES.map((e, i) => (
             <div key={e.titre} style={{ display: 'flex', gap: '20px', padding: '16px 0', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', color: 'var(--accent-deep)', paddingTop: '4px', flexShrink: 0 }}>0{i + 1}</span>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', color: 'var(--accent-deep)', paddingTop: '4px', flexShrink: 0 }}>0{i + 1}</span>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
                 <strong style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{e.titre}.</strong> {e.texte}
               </p>
             </div>
           ))}
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginTop: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginTop: '20px' }}>
             Toute la carte est <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>halal et sans porc</a> par défaut. Notre démarche sur les contenants, la reprise du matériel et les produits est détaillée sur la page{' '}
             <a href="/traiteur-eco-responsable" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur éco-responsable</a>.
           </p>
@@ -318,16 +318,16 @@ export default function TraiteurPage() {
 
         {/* ── Bloc Paris / IDF ── */}
         <section className="traiteur-zone" style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 40px 8px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '22px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '22px' }}>
             Un traiteur d'entreprise qui connaît le terrain
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
             Livrer un petit-déjeuner à 8h dans une tour de La Défense et le livrer dans un immeuble haussmannien du 8e arrondissement ne demandent pas la même préparation. Quai de livraison en sous-sol, badge visiteur déclaré la veille, accueil filtré, stationnement impossible : ce sont ces détails qui font qu'une commande arrive à l'heure ou après la réunion.
           </p>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
             Nous livrons avec notre propre équipe, jamais en sous-traitance. C'est ce qui nous permet de tenir un créneau précis plutôt qu'une plage de deux heures, et de connaître les accès de nos secteurs les plus demandés : Boulogne-Billancourt, où se trouve notre atelier, La Défense côté Puteaux, Neuilly-sur-Seine, Levallois et les Hauts-de-Seine nord.
           </p>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
             Choisissez votre commune ci-dessous pour les détails de livraison, ou <a href="/devis" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>demandez un devis</a> : vous l'avez sous 24h.
           </p>
         </section>
@@ -343,7 +343,7 @@ export default function TraiteurPage() {
                   key={r}
                   onClick={() => setActiveRegion(r)}
                   style={{
-                    fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500,
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500,
                     letterSpacing: '0.14em', textTransform: 'uppercase',
                     color: isActive ? 'var(--text-primary)' : 'rgba(17,17,17,0.4)',
                     background: 'transparent', border: 'none', cursor: 'pointer',
@@ -370,12 +370,12 @@ export default function TraiteurPage() {
 
                 {/* En-tête département : nom + filet + compteur */}
                 <div className="dept-head" style={{ display: 'flex', alignItems: 'baseline', gap: '24px', marginBottom: '30px' }}>
-                  <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, whiteSpace: 'nowrap' }}>
+                  <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, whiteSpace: 'nowrap' }}>
                     {name}
-                    {code && <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 400, color: 'var(--accent-deep)', marginLeft: '10px', letterSpacing: '0.02em' }}>{code}</span>}
+                    {code && <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 400, color: 'var(--accent-deep)', marginLeft: '10px', letterSpacing: '0.02em' }}>{code}</span>}
                   </h2>
                   <span style={{ flex: 1, height: '1px', background: 'rgba(17,17,17,0.12)' }} />
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
+                  <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
                     {cities.length} {cities.length > 1 ? 'villes' : 'ville'}
                   </span>
                 </div>
@@ -409,16 +409,16 @@ export default function TraiteurPage() {
                         }}
                       >
                         <span style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                          <span className="city-name" style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.15, transition: 'color 0.25s ease' }}>
+                          <span className="city-name" style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.15, transition: 'color 0.25s ease' }}>
                             {city.name}
                           </span>
                           {locality && (
-                            <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontStyle: 'italic', fontSize: '13px', color: 'rgba(17,17,17,0.42)', lineHeight: 1.2 }}>
+                            <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontStyle: 'italic', fontSize: '13px', color: 'rgba(17,17,17,0.42)', lineHeight: 1.2 }}>
                               {locality}
                             </span>
                           )}
                         </span>
-                        <span className="city-arrow" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--accent-deep)', opacity: 0, transform: 'translateX(-6px)', transition: 'opacity 0.25s ease, transform 0.25s ease', flexShrink: 0, marginLeft: '12px' }}>
+                        <span className="city-arrow" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', color: 'var(--accent-deep)', opacity: 0, transform: 'translateX(-6px)', transition: 'opacity 0.25s ease, transform 0.25s ease', flexShrink: 0, marginLeft: '12px' }}>
                           →
                         </span>
                       </a>
@@ -432,10 +432,10 @@ export default function TraiteurPage() {
 
         {/* ── Guides pour choisir ── */}
         <section className="traiteur-guides" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 8px' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '40px 0 20px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '40px 0 20px' }}>
             Nos guides pour bien choisir
           </h2>
-          <ul style={{ margin: 0, paddingLeft: '22px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)' }}>
+          <ul style={{ margin: 0, paddingLeft: '22px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)' }}>
             {GUIDES.map(g => (
               <li key={g.href}>
                 <a href={g.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{g.label}</a>
@@ -446,15 +446,15 @@ export default function TraiteurPage() {
 
         {/* ── FAQ logistique ── */}
         <section className="traiteur-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '24px 40px 8px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '48px 0 28px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '48px 0 28px' }}>
             Questions fréquentes
           </h2>
           {TRAITEUR_FAQ.map((f, i) => (
             <div key={i} style={{ padding: '22px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(17,17,17,0.08)' }}>
-              <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
+              <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
                 {f.q}
               </h3>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>
                 {f.a}
               </p>
             </div>
@@ -464,15 +464,15 @@ export default function TraiteurPage() {
         {/* ── CTA ── */}
         <div style={{ textAlign: 'center', padding: '48px 40px 96px' }}>
           <div style={{ maxWidth: '560px', margin: '0 auto', paddingTop: '32px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginTop: '64px', marginBottom: '16px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginTop: '64px', marginBottom: '16px' }}>
               Votre ville n'est pas listée ?
             </p>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px' }}>
               Nous livrons dans toute l'Île-de-France. Contactez-nous pour vérifier la disponibilité dans votre commune.
             </p>
             <a
               href="/devis"
-              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+              style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >

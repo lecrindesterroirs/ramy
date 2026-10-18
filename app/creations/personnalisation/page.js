@@ -59,16 +59,16 @@ export default function Personnalisation() {
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.82) 0%, rgba(16,12,9,0.62) 38%, rgba(16,12,9,0.2) 64%, rgba(16,12,9,0) 82%)' }} />
           <Reveal mode="mount" y={16}>
             <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.4vw, 62px)', fontWeight: 400, lineHeight: 1.04, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.4vw, 62px)', fontWeight: 400, lineHeight: 1.04, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                 Personnalisez<br /><em style={{ fontStyle: 'italic' }}>vos événements.</em>
               </h1>
               <span style={{ display: 'block', width: '36px', height: '1px', background: 'var(--accent)', marginBottom: '22px' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '380px', marginBottom: '32px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '380px', marginBottom: '32px' }}>
                 Des gourmandises d'exception, pensées à votre image, jusqu'au moindre détail.
               </p>
               <a
                 href="#familles"
-                style={{ alignSelf: 'flex-start', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                style={{ alignSelf: 'flex-start', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
@@ -83,7 +83,7 @@ export default function Personnalisation() {
 
         {/* ── Ce que nous personnalisons ── */}
         <div id="familles" style={{ textAlign: 'center', padding: '80px 24px 0' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
             Ce que nous personnalisons
           </p>
         </div>
@@ -94,10 +94,10 @@ export default function Personnalisation() {
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)', marginBottom: '16px' }}>
                   <Image fill sizes="(max-width: 768px) 50vw, 16vw" src={f.img} alt={f.nom} style={{ objectFit: 'cover' }} />
                 </div>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
                   {f.nom}
                 </p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', lineHeight: 1.5, color: 'var(--text-secondary)', padding: '0 6px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', lineHeight: 1.5, color: 'var(--text-secondary)', padding: '0 6px' }}>
                   {f.desc}
                 </p>
               </div>
@@ -110,13 +110,13 @@ export default function Personnalisation() {
           <div className="pz-process" style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 72px', display: 'grid', gridTemplateColumns: '0.9fr 1.4fr', gap: '64px', alignItems: 'center' }}>
             <Reveal>
               <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
                   Votre identité, notre savoir-faire
                 </p>
-                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
                   Un accompagnement<br /><em style={{ fontStyle: 'italic' }}>sur-mesure.</em>
                 </h2>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '340px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '340px' }}>
                   De la création à la livraison, nous concevons des attentions uniques qui reflètent votre image et marquent les esprits.
                 </p>
               </div>
@@ -125,8 +125,8 @@ export default function Personnalisation() {
               <div className="pz-steps" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '18px' }}>
                 {ETAPES.map((s) => (
                   <div key={s.n} style={{ borderTop: '1px solid rgba(17,17,17,0.14)', paddingTop: '18px' }}>
-                    <span style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '30px', fontWeight: 400, color: 'var(--accent-deep)', marginBottom: '14px', lineHeight: 1 }}>{s.n}</span>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.5, color: 'var(--text-primary)' }}>{s.title}</p>
+                    <span style={{ display: 'block', fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '30px', fontWeight: 400, color: 'var(--accent-deep)', marginBottom: '14px', lineHeight: 1 }}>{s.n}</span>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.5, color: 'var(--text-primary)' }}>{s.title}</p>
                   </div>
                 ))}
               </div>
@@ -139,12 +139,12 @@ export default function Personnalisation() {
 
         {/* ── Bandeau bas : contextes + CTA ── */}
         <div className="pz-bottom-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '40px', maxWidth: '1280px', margin: '0 auto', padding: '48px 72px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.6, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.6, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
             Pensé pour vos séminaires, lancements produits, cadeaux clients et événements d'entreprise.
           </p>
           <a
             href="/devis"
-            style={{ flexShrink: 0, fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.28)', padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease' }}
+            style={{ flexShrink: 0, fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.28)', padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(17,17,17,0.28)'; e.currentTarget.style.color = 'var(--text-primary)' }}
           >
@@ -175,14 +175,14 @@ export default function Personnalisation() {
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .cat-seo-body p {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 15px;
           line-height: 1.8;
           color: var(--text-secondary);
           margin-bottom: 20px;
         }
         .cat-seo-body h2 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
           font-size: 26px;
           font-weight: 400;
           color: var(--text-primary);

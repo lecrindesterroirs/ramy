@@ -78,7 +78,7 @@ export default function ArticlePage({ params }) {
             <Breadcrumb variant="inline" items={[{ label: 'Accueil', href: '/' }, { label: 'Le Journal', href: '/journal' }]} jsonLd={false} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '10px',
                 fontWeight: 500,
                 letterSpacing: '0.18em',
@@ -89,7 +89,7 @@ export default function ArticlePage({ params }) {
               </span>
               <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
               <span style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 color: 'rgba(17,17,17,0.45)',
                 letterSpacing: '0.04em',
@@ -101,7 +101,7 @@ export default function ArticlePage({ params }) {
               </span>
               <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
               <span style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 color: 'rgba(17,17,17,0.6)',
                 letterSpacing: '0.04em',
@@ -113,7 +113,7 @@ export default function ArticlePage({ params }) {
 
           {/* Titre */}
           <h1 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(32px, 5vw, 52px)',
             fontWeight: 400,
             lineHeight: 1.1,
@@ -126,7 +126,7 @@ export default function ArticlePage({ params }) {
 
           {/* Extrait */}
           <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '17px',
             lineHeight: 1.7,
             color: 'var(--text-secondary)',
@@ -140,10 +140,10 @@ export default function ArticlePage({ params }) {
           {/* En bref : faits chiffrés citables (champ optionnel article.enBref = [phrases]) */}
           {article.enBref?.length > 0 && (
             <aside aria-label="En bref" style={{ margin: '0 0 40px', padding: '24px 28px', background: 'var(--bg-secondary)', borderLeft: '3px solid var(--accent)' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', margin: '0 0 12px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', margin: '0 0 12px' }}>
                 En bref
               </p>
-              <ul style={{ margin: 0, paddingLeft: '18px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-primary)' }}>
+              <ul style={{ margin: 0, paddingLeft: '18px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-primary)' }}>
                 {article.enBref.map((f, i) => <li key={i} style={{ marginBottom: '4px' }}>{f}</li>)}
               </ul>
             </aside>
@@ -163,7 +163,7 @@ export default function ArticlePage({ params }) {
             borderLeft: '3px solid var(--accent)',
           }}>
             <p style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
               fontSize: '20px',
               fontWeight: 400,
               color: 'var(--text-primary)',
@@ -173,7 +173,7 @@ export default function ArticlePage({ params }) {
               Un projet à Paris ou en Île-de-France ?
             </p>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '13px',
               color: 'var(--text-secondary)',
               lineHeight: 1.65,
@@ -184,7 +184,7 @@ export default function ArticlePage({ params }) {
             <a
               href="/devis"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.12em',
@@ -207,7 +207,7 @@ export default function ArticlePage({ params }) {
             return (
               <div style={{ marginTop: '56px', paddingTop: '48px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
                 <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '10px',
                   fontWeight: 500,
                   letterSpacing: '0.18em',
@@ -218,7 +218,7 @@ export default function ArticlePage({ params }) {
                   Nos produits
                 </p>
                 <p style={{
-                  fontFamily: "'Baskerville Display PT', Georgia, serif",
+                  fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                   fontSize: 'clamp(18px, 2.2vw, 26px)',
                   fontWeight: 400,
                   color: 'var(--text-primary)',
@@ -241,13 +241,13 @@ export default function ArticlePage({ params }) {
                         </div>
                       )}
                       <div style={{ padding: '16px 18px 20px' }}>
-                        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
+                        <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
                           {product.name}
                         </p>
-                        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-secondary)', marginBottom: '12px' }}>
+                        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-secondary)', marginBottom: '12px' }}>
                           {product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                         </p>
-                        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                        <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                           Commander →
                         </span>
                       </div>
@@ -263,7 +263,7 @@ export default function ArticlePage({ params }) {
             <a
               href="/journal"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.12em',
@@ -293,21 +293,21 @@ export default function ArticlePage({ params }) {
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .article-body p {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 15px;
           line-height: 1.8;
           color: var(--text-secondary);
           margin-bottom: 20px;
         }
         .article-body h2 {
-          font-family: 'Baskerville Display PT', Georgia, serif;
+          font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
           font-size: 26px;
           font-weight: 400;
           color: var(--text-primary);
           margin: 40px 0 16px;
         }
         .article-body h3 {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 14px;
           font-weight: 500;
           letter-spacing: 0.08em;
@@ -316,7 +316,7 @@ export default function ArticlePage({ params }) {
           margin: 32px 0 12px;
         }
         .article-body ul, .article-body ol {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 15px;
           line-height: 1.8;
           color: var(--text-secondary);
@@ -338,7 +338,7 @@ export default function ArticlePage({ params }) {
           width: 100%;
           border-collapse: collapse;
           margin: 32px 0;
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px;
         }
         .article-body th {
@@ -369,7 +369,7 @@ export default function ArticlePage({ params }) {
         .article-body .faq-block details:first-child { border-top: 1px solid rgba(17,17,17,0.08); }
         .article-body .faq-block summary {
           cursor: pointer;
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 14px;
           color: var(--text-primary);
           list-style: none;

@@ -7,7 +7,7 @@ import { useEnSlugs } from './EnSlugsProvider'
 import SelecteurLangue from './SelecteurLangue'
 
 const linkStyle = {
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '13px',
   fontWeight: 400,
   color: 'var(--text-secondary)',
@@ -18,7 +18,7 @@ const linkStyle = {
 }
 
 const colTitleStyle = {
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '10px',
   fontWeight: 500,
   textTransform: 'uppercase',
@@ -50,12 +50,12 @@ export default function Footer() {
             <a href={langue === 'en' ? '/en' : '/'} style={{ textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', marginBottom: '24px' }}>
               <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '90px', width: 'auto', display: 'block', marginBottom: '6px' }} />
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, letterSpacing: '0.12em', color: '#111111', lineHeight: 1 }}>L'ÉCRIN</span>
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#111111', marginTop: '4px' }}>TRAITEUR</span>
+                <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, letterSpacing: '0.12em', color: '#111111', lineHeight: 1 }}>L'ÉCRIN</span>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#111111', marginTop: '4px' }}>TRAITEUR</span>
               </div>
             </a>
             <div style={{ width: '28px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
-            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '14px', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '200px' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '14px', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '200px' }}>
               {t('pied.signature1', langue)} <br />{t('pied.signature2', langue)}
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function Footer() {
               { label: 'Cookies', href: '/cookies' },
             ].map(l => (
               <a key={l.label} href={l.href}
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em', transition: 'color 0.2s ease' }}
+                style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em', transition: 'color 0.2s ease' }}
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(17,17,17,0.62)'}
               >{mot(l)}</a>
@@ -170,13 +170,13 @@ export default function Footer() {
                 que si la page existe dans l'autre langue. */}
             <SelecteurLangue
               lien
-              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em' }}
+              style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em' }}
             />
           </div>
 
           {/* Droite */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.6)', letterSpacing: '0.03em' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.6)', letterSpacing: '0.03em' }}>
               © 2026 L'Écrin Traiteur — L'Écrin des Terroirs
             </p>
           </div>

@@ -151,10 +151,10 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3a7c3a" strokeWidth="2.5"><polyline points="20,6 9,17 4,12"/></svg>
         </div>
         <div>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', fontWeight: 500, color: '#3a7c3a', marginBottom: '4px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', fontWeight: 500, color: '#3a7c3a', marginBottom: '4px' }}>
             {t.succes}
           </p>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.5)', lineHeight: 1.6 }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.5)', lineHeight: 1.6 }}>
             {t.succesDetail}
           </p>
         </div>
@@ -171,7 +171,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
     }}>
       {/* Header */}
       <p style={{
-        fontFamily: "'Baskerville Display PT', Georgia, serif",
+        fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
         fontSize: '22px',
         fontWeight: 400,
         color: 'var(--text-primary)',
@@ -181,7 +181,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
         {(en ? titreEn : titre) || t.titre}
       </p>
       <p style={{
-        fontFamily: "'Neue Montreal', sans-serif",
+        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
         fontSize: '13px',
         color: 'var(--text-secondary)',
         lineHeight: 1.65,
@@ -323,7 +323,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
             type="submit"
             disabled={status === 'loading'}
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.12em',
@@ -345,7 +345,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
           <a
             href={en ? '/en/devis' : '/devis'}
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               letterSpacing: '0.06em',
               color: 'rgba(17,17,17,0.4)',
@@ -359,7 +359,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
         </div>
 
         {status === 'error' && (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', marginTop: '4px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: '#c0392b', marginTop: '4px' }}>
             {t.erreur}
           </p>
         )}
@@ -379,7 +379,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
 
 const fieldStyle = {
   width: '100%',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '13px',
   color: 'var(--text-primary)',
   background: '#FFFFFF',
@@ -395,7 +395,7 @@ const fieldStyle = {
 
 const labelStyle = {
   display: 'block',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '10px',
   fontWeight: 500,
   letterSpacing: '0.14em',

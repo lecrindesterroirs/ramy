@@ -124,7 +124,7 @@ export default function QuartierPage() {
                     { label: city.name, href: `/traiteur/${city.slug}` },
                   ].map((crumb) => (
                     <span key={crumb.href} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textDecoration: 'none', letterSpacing: '0.04em', transition: 'color 0.2s ease' }}
+                      <a href={crumb.href} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textDecoration: 'none', letterSpacing: '0.04em', transition: 'color 0.2s ease' }}
                         onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
                         onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.55)'}
                       >
@@ -133,25 +133,25 @@ export default function QuartierPage() {
                       <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '10px' }}>›</span>
                     </span>
                   ))}
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, color: 'var(--accent-deep)', letterSpacing: '0.04em' }}>
+                  <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, color: 'var(--accent-deep)', letterSpacing: '0.04em' }}>
                     {q.name}
                   </span>
                 </nav>
 
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
                   Traiteur d'entreprise, {city.name}
                 </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4.4vw, 60px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '20px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4.4vw, 60px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '20px' }}>
                   Traiteur entreprise <br />{q.name}
                 </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '30px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '30px' }}>
                   {q.heroDescription}
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <a
                     href="/creations/petits-dejeuners-et-pauses"
-                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                    style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
@@ -159,7 +159,7 @@ export default function QuartierPage() {
                   </a>
                   <a
                     href="/devis"
-                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
+                    style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                   >
@@ -174,10 +174,10 @@ export default function QuartierPage() {
         {/* ── Nos prestations ── */}
         <div className="q-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '80px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
               Nos prestations à {q.name}
             </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
               Des formats pensés <br />pour vos événements
             </h2>
           </div>
@@ -195,13 +195,13 @@ export default function QuartierPage() {
                     <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={s.img} alt={s.label} style={{ objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '22px 22px 26px' }}>
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                    <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
                       {s.label}
                     </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
                       {s.desc}
                     </p>
-                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                    <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                       Découvrir →
                     </span>
                   </div>
@@ -221,7 +221,7 @@ export default function QuartierPage() {
           <div style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
             <div className="q-zones" style={{ maxWidth: '1280px', margin: '0 auto', padding: '48px 72px' }}>
               <p style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.18em',
@@ -246,13 +246,13 @@ export default function QuartierPage() {
         {/* ── FAQ ── */}
         {allFaq.length > 0 && (
           <div className="q-faq" style={{ maxWidth: '800px', margin: '0 auto', padding: '80px 72px 0' }}>
-            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px', lineHeight: 1.2, textAlign: 'center' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px', lineHeight: 1.2, textAlign: 'center' }}>
               Questions fréquentes
             </p>
             {allFaq.map((item, i) => (
               <div key={i} style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '20px 0' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.5 }}>{item.q}</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>{item.a}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.5 }}>{item.q}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>{item.a}</p>
               </div>
             ))}
             <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
@@ -277,13 +277,13 @@ export default function QuartierPage() {
       <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 64px', display: 'flex', gap: '32px', flexWrap: 'wrap', justifyContent: 'center' }}>
         <a
           href={`/traiteur/${city.slug}`}
-          style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
+          style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
         >
           ← Retour à {city.name}
         </a>
         <a
           href="/traiteur"
-          style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', textDecoration: 'none', borderBottom: '1px solid rgba(17,17,17,0.2)', paddingBottom: '2px' }}
+          style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', textDecoration: 'none', borderBottom: '1px solid rgba(17,17,17,0.2)', paddingBottom: '2px' }}
         >
           Toutes nos villes →
         </a>
@@ -292,14 +292,14 @@ export default function QuartierPage() {
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .q-service-card { border-radius: 4px !important; }
         .city-tag-plain {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px;
           font-weight: 400;
           letter-spacing: 0.02em;
           padding: 2px 0;
         }
         .city-tag-sep {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px;
           color: rgba(17,17,17,0.25);
           margin: 0 14px;

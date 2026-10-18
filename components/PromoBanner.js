@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../lib/i18n'
+import { PROMO } from '../lib/promoBanner'
 
 /* ─────────────────────────────────────────────────────────────
    Bandeau de campagne — Octobre Rose
@@ -10,9 +11,9 @@ import { estAnglais } from '../lib/i18n'
    Hauteur pilotée par --promo-h (globals.css, classe html.promo-on)
    ───────────────────────────────────────────────────────────── */
 const CAMPAGNE = {
-  id: 'octobre-rose-2026',                 // change d'id = bandeau réaffiché à tous
-  debut: '2026-09-25',                     // affiché à partir de (inclus)
-  fin: '2026-11-01',                       // masqué à partir de (exclu)
+  id: PROMO.id,                            // id, dates et pages exclues : lib/promoBanner.js
+  debut: PROMO.debut,
+  fin: PROMO.fin,
   href: '/creations/evenements-saisonniers/octobre-rose',
   texte: "Octobre Rose — 1 € reversé par convive à la recherche contre le cancer du sein",
   texteMobile: "Octobre Rose — 1 € reversé par convive →",
@@ -31,16 +32,20 @@ const CAMPAGNE = {
 }
 
 /* Pages qui n'ont pas de navbar : pas de bandeau non plus */
-const EXCLUS = ['/devis']
+const EXCLUS = PROMO.exclus
 
 /* Pages d'atterrissage Google Ads : sur téléphone, ni ce bandeau ni le défilant
    (« Commandez jusqu'à la veille… ») pour garder le devis dans le premier écran. */
-const PAGES_ADS_MOBILE = ['/creations/petits-dejeuners-et-pauses']
+const PAGES_ADS_MOBILE = PROMO.pagesAdsMobile
 
 export default function PromoBanner() {
   const pathname = usePathname()
   const en = estAnglais(pathname || '/')
   const [visible, setVisible] = useState(false)
+  // Vrai dès qu'on sait que le bandeau ne s'affichera pas. Tant que la décision n'est pas prise,
+  // on ne retire pas `promo-on` : le script de app/layout.js l'a déjà posé avant le premier
+  // affichage, et le retirer puis le remettre faisait sauter toute la page de 46 px.
+  const masquer = useRef(false)
 
   const exclu = EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
 
@@ -52,25 +57,27 @@ export default function PromoBanner() {
   }, [pathname])
 
   useEffect(() => {
-    if (exclu) return
-    if (window.innerWidth <= 768 && PAGES_ADS_MOBILE.includes(pathname)) { setVisible(false); return }
+    if (exclu) { masquer.current = true; return }
+    if (window.innerWidth <= 768 && PAGES_ADS_MOBILE.includes(pathname)) { masquer.current = true; setVisible(false); return }
     const now = new Date()
     const dans = now >= new Date(CAMPAGNE.debut + 'T00:00:00') && now < new Date(CAMPAGNE.fin + 'T00:00:00')
-    if (!dans) return
+    if (!dans) { masquer.current = true; return }
     try {
-      if (window.localStorage.getItem('promo-dismissed') === CAMPAGNE.id) return
+      if (window.localStorage.getItem('promo-dismissed') === CAMPAGNE.id) { masquer.current = true; return }
     } catch (e) { /* mode privé : on affiche quand même */ }
+    masquer.current = false
     setVisible(true)
   }, [exclu, pathname])
 
   useEffect(() => {
     const html = document.documentElement
     if (visible) html.classList.add('promo-on')
-    else html.classList.remove('promo-on')
+    else if (masquer.current) html.classList.remove('promo-on')
     return () => html.classList.remove('promo-on')
   }, [visible])
 
   const fermer = () => {
+    masquer.current = true
     setVisible(false)
     try { window.localStorage.setItem('promo-dismissed', CAMPAGNE.id) } catch (e) { /* noop */ }
   }
@@ -112,7 +119,7 @@ export default function PromoBanner() {
         }}
       >
         <span className="promo-banner-text" style={{
-          fontFamily: "'Neue Montreal', sans-serif",
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
           fontSize: '11px',
           fontWeight: 500,
           letterSpacing: '0.14em',
@@ -125,7 +132,7 @@ export default function PromoBanner() {
           <span className="promo-short">{en ? CAMPAGNE.texteMobileEn : CAMPAGNE.texteMobile}</span>
         </span>
         <span className="promo-banner-cta" style={{
-          fontFamily: "'Neue Montreal', sans-serif",
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
           fontSize: '11px',
           fontWeight: 500,
           letterSpacing: '0.14em',

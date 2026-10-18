@@ -125,7 +125,7 @@ export default function Hero({ lang = 'fr' }) {
         {/* Main title */}
         <h1
           style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontStyle: 'normal',
             fontSize: 'clamp(34px, 4.6vw, 60px)',
             fontWeight: 400,
@@ -143,7 +143,7 @@ export default function Hero({ lang = 'fr' }) {
         {/* Body text */}
         <p
           style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '16.5px',
             fontWeight: 400,
             lineHeight: 1.6,
@@ -162,7 +162,7 @@ export default function Hero({ lang = 'fr' }) {
           <a
             href={lang === 'en' ? '/en/devis' : '/devis'}
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '12px',
               fontWeight: 400,
               textTransform: 'uppercase',
@@ -185,7 +185,7 @@ export default function Hero({ lang = 'fr' }) {
             type="button"
             onClick={() => setCatalogueOpen(true)}
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontWeight: 400,
               fontSize: '12px',
               textTransform: 'uppercase',
@@ -225,7 +225,7 @@ export default function Hero({ lang = 'fr' }) {
       >
         <span
           style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '15px',
             fontWeight: 500,
             color: '#FFFFFF',

@@ -155,13 +155,13 @@ export default async function EnCityPage({ params }) {
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.92) 0%, rgba(16,12,9,0.74) 44%, rgba(16,12,9,0.32) 72%, rgba(16,12,9,0) 92%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="city-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
                   Corporate catering, {city.region}
                 </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
                   Corporate catering <br />in {city.name}
                 </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '32px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '460px', marginBottom: '32px' }}>
                   {city.heroDescription}
                 </p>
 
@@ -169,14 +169,14 @@ export default async function EnCityPage({ params }) {
                   <a
                     href={lienEn('/creations/petits-dejeuners-et-pauses')}
                     className="en-hover-fade"
-                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                    style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                   >
                     See our products →
                   </a>
                   <a
                     href={lienEn('/devis')}
                     className="en-hover-ghost"
-                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
+                    style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
                   >
                     {t('nav.devis', 'en')}
                   </a>
@@ -185,7 +185,7 @@ export default async function EnCityPage({ params }) {
                 {/* Badges */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
                   {[t('info.livraison', 'en'), 'Order by 2 pm the day before', 'Selected artisans'].map(badge => (
-                    <span key={badge} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
+                    <span key={badge} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
                       {badge}
                     </span>
                   ))}
@@ -198,10 +198,10 @@ export default async function EnCityPage({ params }) {
         {/* ── Nos prestations, 3 cartes illustrées ── */}
         <div className="city-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
               Our services in {city.name}
             </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
               Formats designed <br />for your events
             </h2>
           </div>
@@ -217,13 +217,13 @@ export default async function EnCityPage({ params }) {
                     <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={s.img} alt={s.label} style={{ objectFit: 'cover' }} />
                   </div>
                   <div style={{ padding: '22px 22px 26px' }}>
-                    <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                    <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
                       {s.label}
                     </p>
-                    <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.6, color: 'var(--text-secondary)', marginBottom: '14px' }}>
                       {s.desc}
                     </p>
-                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                    <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                       {t('cta.decouvrir', 'en')} →
                     </span>
                   </div>
@@ -237,7 +237,7 @@ export default async function EnCityPage({ params }) {
         {(pdjPage || plateauxPage) && (
           <div className="city-pdj" style={{ maxWidth: '1280px', margin: '0 auto', padding: '36px 72px 0' }}>
             {pdjPage && (
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center' }}>
                 An early meeting? Our page on{' '}
                 <a href={pdjHref} style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
                   corporate breakfast in {city.name}
@@ -246,7 +246,7 @@ export default async function EnCityPage({ params }) {
               </p>
             )}
             {plateauxPage && (
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center', marginTop: pdjPage ? '10px' : 0 }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', textAlign: 'center', marginTop: pdjPage ? '10px' : 0 }}>
                 A working lunch to serve on site? Our page on{' '}
                 <a href={plateauxHref} style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
                   corporate lunch trays in {city.name}
@@ -266,7 +266,7 @@ export default async function EnCityPage({ params }) {
         <div style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid rgba(17,17,17,0.06)' }}>
           <div className="city-zones" style={{ maxWidth: '1280px', margin: '0 auto', padding: '56px 72px' }}>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.18em',
@@ -301,7 +301,7 @@ export default async function EnCityPage({ params }) {
         {/* ── Occasions / maillage ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="city-occasions" style={{ maxWidth: '1280px', margin: '0 auto', padding: '56px 72px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '20px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '20px' }}>
               {t('devis.occasion', 'en')}
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', rowGap: '14px' }}>
@@ -320,13 +320,13 @@ export default async function EnCityPage({ params }) {
         {/* ── FAQ propre à la ville ── */}
         {faq.length > 0 && (
           <section className="city-faq" style={{ maxWidth: '800px', margin: '0 auto', padding: '80px 72px 0' }}>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px', lineHeight: 1.2, textAlign: 'center' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px', lineHeight: 1.2, textAlign: 'center' }}>
               Frequently asked questions in {city.name}
             </h2>
             {faq.map((item, i) => (
               <div key={i} style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '20px 0' }}>
-                <h3 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', margin: '0 0 8px', lineHeight: 1.5 }}>{item.q}</h3>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>{item.a}</p>
+                <h3 style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', margin: '0 0 8px', lineHeight: 1.5 }}>{item.q}</h3>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>{item.a}</p>
               </div>
             ))}
             <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }} />
@@ -364,7 +364,7 @@ export default async function EnCityPage({ params }) {
         <a
           href={lienEn('/traiteur')}
           style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '11px',
             fontWeight: 500,
             letterSpacing: '0.12em',
@@ -385,7 +385,7 @@ export default async function EnCityPage({ params }) {
         .city-tag-link {
           position: relative;
           display: inline-block;
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px;
           font-weight: 400;
           letter-spacing: 0.02em;
@@ -413,7 +413,7 @@ export default async function EnCityPage({ params }) {
           transform: scaleX(1);
         }
         .city-tag-plain {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px;
           font-weight: 400;
           letter-spacing: 0.02em;
@@ -421,7 +421,7 @@ export default async function EnCityPage({ params }) {
           padding: 2px 0;
         }
         .city-tag-sep {
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px;
           color: rgba(17,17,17,0.25);
           margin: 0 14px;

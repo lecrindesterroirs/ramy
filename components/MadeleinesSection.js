@@ -84,17 +84,17 @@ export default function MadeleinesSection({ lang = 'fr' }) {
 
         {/* Contenu */}
         <div className="mad-content reveal" style={{ padding: '88px 88px 80px 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
             {T.eyebrow}
           </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 3.8vw, 56px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 3.8vw, 56px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
             {T.titre}
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '44px', maxWidth: '500px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '44px', maxWidth: '500px' }}>
             {T.corps}
           </p>
 
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
             {T.saveurs}
           </p>
 
@@ -104,12 +104,12 @@ export default function MadeleinesSection({ lang = 'fr' }) {
                 <div style={{ height: '88px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
                   <img loading="lazy" src={f.img} alt={parfum(f)} style={{ maxHeight: '88px', maxWidth: '85%', objectFit: 'contain', display: 'block' }} />
                 </div>
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: '#3A342C', lineHeight: 1.3 }}>{parfum(f)}</span>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, color: '#3A342C', lineHeight: 1.3 }}>{parfum(f)}</span>
               </div>
             ))}
           </div>
 
-          <a href={`${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses/madeleines-20`} className="mad-cta" style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', transition: 'color 0.25s ease, border-color 0.25s ease' }}>
+          <a href={`${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses/madeleines-20`} className="mad-cta" style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', transition: 'color 0.25s ease, border-color 0.25s ease' }}>
             {T.cta}
             <span className="mad-arrow" style={{ display: 'inline-block', transition: 'transform 0.25s ease' }}>→</span>
           </a>
@@ -122,10 +122,10 @@ export default function MadeleinesSection({ lang = 'fr' }) {
           {T.infos.map(info => (
             <div key={info.title}>
               <span style={{ display: 'block', width: '24px', height: '1px', background: 'var(--accent)', marginBottom: '16px' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '12px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '12px' }}>
                 {info.title}
               </p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
                 {info.text}
               </p>
             </div>

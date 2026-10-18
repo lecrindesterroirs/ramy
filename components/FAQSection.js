@@ -138,7 +138,7 @@ export default function FAQSection({ lang = 'fr' }) {
         {/* Header */}
         <div className="reveal" style={{ marginBottom: '64px' }}>
           <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--accent-deep)',
             marginBottom: '20px', textAlign: 'center',
@@ -146,7 +146,7 @@ export default function FAQSection({ lang = 'fr' }) {
             {T.eyebrow}
           </p>
           <h2 style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(32px, 3.6vw, 52px)', fontWeight: 400,
             lineHeight: 1.1, letterSpacing: '-0.01em',
             color: 'var(--text-primary)', marginBottom: '20px', textAlign: 'center',
@@ -154,7 +154,7 @@ export default function FAQSection({ lang = 'fr' }) {
             {T.titre}
           </h2>
           <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)',
             textAlign: 'center', maxWidth: '480px', margin: '0 auto',
           }}>
@@ -192,14 +192,14 @@ export default function FAQSection({ lang = 'fr' }) {
                         }}
                       >
                         <span style={{
-                          fontFamily: "'Baskerville Display PT', Georgia, serif",
+                          fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                           fontSize: 'clamp(15px, 1.4vw, 18px)', fontWeight: 400,
                           color: 'var(--text-primary)', letterSpacing: '0.005em', lineHeight: 1.3,
                         }}>
                           {item.question.replace(/ \?/g, ' ?')}
                         </span>
                         <span style={{
-                          fontFamily: "'Neue Montreal', sans-serif",
+                          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                           fontSize: '20px', fontWeight: 300, color: 'var(--accent-deep)',
                           flexShrink: 0, lineHeight: 1, transition: 'transform 0.3s ease',
                           transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', display: 'block',
@@ -210,7 +210,7 @@ export default function FAQSection({ lang = 'fr' }) {
 
                       {open === i && (
                         <p id={`faq-answer-${i}`} role="region" style={{
-                          fontFamily: "'Neue Montreal', sans-serif",
+                          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                           fontSize: '13px', lineHeight: 1.75,
                           color: 'var(--text-secondary)', paddingBottom: '24px',
                         }}>

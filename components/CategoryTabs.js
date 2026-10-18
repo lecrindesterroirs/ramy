@@ -50,7 +50,7 @@ export function sortItems(list, value, getPrice = () => 0) {
 
 function tabStyle(active) {
   return {
-    fontFamily: "'Neue Montreal', sans-serif",
+    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
     fontSize: '11px',
     fontWeight: active ? 500 : 400,
     letterSpacing: '0.08em',
@@ -104,7 +104,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
             <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setOpen(!open)}
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', outline: 'none' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)', background: 'none', border: 'none', padding: 0, cursor: 'pointer', outline: 'none' }}
               >
                 {motTri(sort)}
                 <span style={{ fontSize: '9px', opacity: 0.5 }}>▾</span>
@@ -115,7 +115,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
                     <button
                       key={s}
                       onClick={() => { onSort(s); setOpen(false) }}
-                      style={{ display: 'block', width: '100%', textAlign: 'left', padding: '10px 20px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.06em', color: s === sort ? 'var(--accent)' : 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}
+                      style={{ display: 'block', width: '100%', textAlign: 'left', padding: '10px 20px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', letterSpacing: '0.06em', color: s === sort ? 'var(--accent)' : 'var(--text-primary)', background: 'none', border: 'none', cursor: 'pointer' }}
                     >
                       {motTri(s)}
                     </button>
@@ -124,7 +124,7 @@ export default function CategoryTabs({ sort, onSort, count, sorts = DEFAULT_SORT
               )}
             </div>
             {count != null && (
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', whiteSpace: 'nowrap' }}>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', whiteSpace: 'nowrap' }}>
                 {en ? `${count} product${count > 1 ? 's' : ''}` : `${count} produit${count > 1 ? 's' : ''}`}
               </span>
             )}

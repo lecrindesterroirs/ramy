@@ -16,10 +16,10 @@ export default function FicheAsavoir({ titre, items = [], cta, more, paddingBott
       aria-label="À savoir"
       style={{ maxWidth: '860px', margin: '0 auto', padding: `56px 72px ${paddingBottom}` }}
     >
-      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
+      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
         À savoir
       </p>
-      <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '24px' }}>
+      <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '24px' }}>
         {titre}
       </h2>
 
@@ -27,7 +27,7 @@ export default function FicheAsavoir({ titre, items = [], cta, more, paddingBott
         {items.map((it, i) => (
           <li
             key={it.label + i}
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', padding: '11px 0', borderBottom: '1px solid rgba(17,17,17,0.07)' }}
+            style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', padding: '11px 0', borderBottom: '1px solid rgba(17,17,17,0.07)' }}
           >
             <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{it.label}&nbsp;:</strong> {it.text}
           </li>
@@ -35,7 +35,7 @@ export default function FicheAsavoir({ titre, items = [], cta, more, paddingBott
       </ul>
 
       {(cta || more) && (
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '20px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '20px' }}>
           {cta && (
             <>
               {cta.before}

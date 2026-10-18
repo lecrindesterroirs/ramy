@@ -147,7 +147,7 @@ function DatePicker({ value, onChange, accent = '#E0A126' }) {
   return (
     <div ref={ref} style={{ position: 'relative', width: '100%' }}>
       <div onClick={() => setOpen(o => !o)} style={{ ...fieldStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', color: value ? 'var(--text-primary)' : 'rgba(17,17,17,0.35)' }}>
-        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px' }}>{displayValue || 'jj / mm / aaaa'}</span>
+        <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px' }}>{displayValue || 'jj / mm / aaaa'}</span>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'rgba(17,17,17,0.3)', flexShrink: 0 }}>
           <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
@@ -156,23 +156,23 @@ function DatePicker({ value, onChange, accent = '#E0A126' }) {
         <div style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.1)', boxShadow: '0 16px 40px rgba(17,17,17,0.1)', zIndex: 300, padding: '18px', minWidth: '260px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
             <button type="button" onClick={prevMonth} style={calNavBtn}><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15,18 9,12 15,6"/></svg></button>
-            <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>{MOIS[view.month]} {view.year}</span>
+            <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>{MOIS[view.month]} {view.year}</span>
             <button type="button" onClick={nextMonth} style={calNavBtn}><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9,18 15,12 9,6"/></svg></button>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1px', marginBottom: '4px' }}>
-            {JOURS.map((j, i) => <div key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.08em', color: 'rgba(17,17,17,0.3)', textAlign: 'center', padding: '3px 0' }}>{j}</div>)}
+            {JOURS.map((j, i) => <div key={i} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.08em', color: 'rgba(17,17,17,0.3)', textAlign: 'center', padding: '3px 0' }}>{j}</div>)}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '1px' }}>
             {days.map((d, i) => (
-              <button key={i} type="button" onClick={() => pick(d)} disabled={!d || isPast(d)} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? accent : 'transparent', color: isSelected(d) ? '#FFF' : isPast(d) ? 'rgba(17,17,17,0.18)' : isToday(d) ? accent : d ? 'var(--text-primary)' : 'transparent', cursor: d && !isPast(d) ? 'pointer' : 'default', outline: 'none', fontWeight: isSelected(d) ? 500 : 400, transition: 'background 0.15s', textDecoration: isPast(d) ? 'line-through' : 'none' }}
+              <button key={i} type="button" onClick={() => pick(d)} disabled={!d || isPast(d)} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? accent : 'transparent', color: isSelected(d) ? '#FFF' : isPast(d) ? 'rgba(17,17,17,0.18)' : isToday(d) ? accent : d ? 'var(--text-primary)' : 'transparent', cursor: d && !isPast(d) ? 'pointer' : 'default', outline: 'none', fontWeight: isSelected(d) ? 500 : 400, transition: 'background 0.15s', textDecoration: isPast(d) ? 'line-through' : 'none' }}
                 onMouseEnter={e => { if (d && !isSelected(d) && !isPast(d)) e.currentTarget.style.background = 'rgba(224,161,38,0.1)' }}
                 onMouseLeave={e => { if (d && !isSelected(d) && !isPast(d)) e.currentTarget.style.background = 'transparent' }}
               >{d || ''}</button>
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid rgba(17,17,17,0.06)' }}>
-            <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>{T('form.effacer')}</button>
-            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: accent, fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>{T('form.aujourdhui')}</button>
+            <button type="button" onClick={() => { onChange(''); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>{T('form.effacer')}</button>
+            <button type="button" onClick={() => { const mm = String(today.getMonth()+1).padStart(2,'0'); const dd = String(today.getDate()).padStart(2,'0'); onChange(`${today.getFullYear()}-${mm}-${dd}`); setView({ year: today.getFullYear(), month: today.getMonth() }); setOpen(false) }} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: accent, fontWeight: 500, background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }}>{T('form.aujourdhui')}</button>
           </div>
         </div>
       )}
@@ -187,7 +187,7 @@ function ProgressBar({ step }) {
   return (
     <div className="devis-progress-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '26px 48px', width: '100%', boxSizing: 'border-box' }}>
       <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '34px', width: 'auto' }} />
-      <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12.5px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
+      <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12.5px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
         Étape {step} sur {total}
       </span>
     </div>
@@ -202,13 +202,13 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
           {T('devis.occasion')}
         </h2>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <ReviewsBadge />
         </div>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '8px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11.5px', letterSpacing: '0.02em', color: 'var(--text-secondary)', marginTop: '8px' }}>
           {T('devis.conditions')}
         </p>
       </div>
@@ -236,7 +236,7 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
               onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
               onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{isRoseCard ? titre : T(p.cle)}</p>
+              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{isRoseCard ? titre : T(p.cle)}</p>
             </div>
           )
         })}
@@ -346,8 +346,8 @@ function CityAutocomplete({ value, onChange, hasError, accent = '#E0A126' }) {
               onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
               onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
             >
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-primary)' }}>{city.nom}</span>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)' }}>{city.codesPostaux?.[0]}</span>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-primary)' }}>{city.nom}</span>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)' }}>{city.codesPostaux?.[0]}</span>
             </div>
           ))}
         </div>
@@ -392,10 +392,10 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
   return (
     <div className="step2-inner" style={{ maxWidth: '860px', margin: '0 auto', padding: '0 24px' }}>
       <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '10px' }}>
           {T('devis.projet')}
         </h2>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
           {T('devis.sousTitre')}
         </p>
       </div>
@@ -403,7 +403,7 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
-            <label style={labelStyle}>{T('form.date')} <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
+            <label style={labelStyle}>{T('form.date')} <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <DatePicker value={data.date} onChange={v => set('date', v)} accent={accent} />
           </div>
           <div>
@@ -412,30 +412,30 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
               <input inputMode="numeric" pattern="[0-9]*" value={data.convives} onChange={e => set('convives', e.target.value)} placeholder={T('ex.convives')} style={{ ...fieldStyle, borderColor: err('convives') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }} />
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(17,17,17,0.3)', pointerEvents: 'none' }}><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            {err('convives') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
+            {err('convives') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
           </div>
         </div>
         <div className="step2-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
           <div>
             <label style={labelStyle}>{T('form.ville')} <span style={{ color: accent }}>*</span></label>
             <CityAutocomplete value={data.ville} onChange={v => set('ville', v)} hasError={err('ville')} accent={accent} />
-            {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
+            {err('ville') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
           </div>
           <div>
-            <label style={labelStyle}>{T('form.budget')} <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
+            <label style={labelStyle}>{T('form.budget')} <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
             <div style={{ position: 'relative' }}>
               <input inputMode="numeric" pattern="[0-9]*" value={data.budget} onChange={e => set('budget', e.target.value)} placeholder={T('ex.budget')} style={fieldStyle} />
-              <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.3)' }}>€</span>
+              <span style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.3)' }}>€</span>
             </div>
           </div>
         </div>
         <div>
           <label style={labelStyle}>{T('form.details')} {isMobile
-            ? <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span>
+            ? <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span>
             : <span style={{ color: accent }}>*</span>}</label>
           {parcours.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-              <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'var(--text-secondary)' }}>{T('devis.vousAvezRegarde')}</span>
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'var(--text-secondary)' }}>{T('devis.vousAvezRegarde')}</span>
               {parcours.map(f => {
                 const choisi = (data.message || '').split('\n').includes(ligneProduit(f.nom))
                 return (
@@ -444,7 +444,7 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
                     type="button"
                     aria-pressed={choisi}
                     onClick={() => set('message', basculerProduit(data.message, f.nom))}
-                    style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', color: '#1A1A18', background: choisi ? accent : '#FFFFFF', border: `1px solid ${choisi ? accent : 'rgba(17,17,17,0.18)'}`, padding: '7px 12px', cursor: 'pointer', outline: 'none', transition: 'background 0.2s ease, border-color 0.2s ease' }}
+                    style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11.5px', color: '#1A1A18', background: choisi ? accent : '#FFFFFF', border: `1px solid ${choisi ? accent : 'rgba(17,17,17,0.18)'}`, padding: '7px 12px', cursor: 'pointer', outline: 'none', transition: 'background 0.2s ease, border-color 0.2s ease' }}
                   >
                     {choisi ? '✓ ' : '+ '}{f.nom}
                   </button>
@@ -459,7 +459,7 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
             rows={isMobile ? 4 : 6}
             style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: !isMobile && err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
           />
-          {!isMobile && err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
+          {!isMobile && err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
         </div>
       </div>
     </div>
@@ -481,7 +481,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
     { key: 'date', type: 'date', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>, label: 'Date souhaitée', value: dateLabel },
     { key: 'convives', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>, label: 'Nombre de convives', value: data.convives || T('devis.nonRenseigne') },
     { key: 'ville', type: 'text', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: 'Ville', value: data.ville || T('devis.nonRenseigne') },
-    { key: 'budget', type: 'text', icon: <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'currentColor', lineHeight: 1 }}>€</span>, label: 'Budget estimé', value: data.budget || T('devis.nonRenseigne') },
+    { key: 'budget', type: 'text', icon: <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'currentColor', lineHeight: 1 }}>€</span>, label: 'Budget estimé', value: data.budget || T('devis.nonRenseigne') },
     { key: 'message', type: 'textarea', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>, label: 'Détails de votre projet', value: data.message || T('devis.nonRenseigne') },
   ]
 
@@ -490,10 +490,10 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
 
       {/* Left, coordonnées */}
       <div>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '8px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '8px' }}>
           Vos coordonnées
         </h2>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '20px' }}>
           Afin de vous recontacter rapidement et de vous envoyer une proposition personnalisée.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -522,11 +522,11 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
 
       {/* Right, récap */}
       <div style={{ background: 'var(--bg-secondary)', border: '1px solid rgba(17,17,17,0.08)', padding: '20px 20px' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
           Récapitulatif de votre projet
         </p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid rgba(17,17,17,0.07)' }}>
-          <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', flex: 1 }}>
+          <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', flex: 1 }}>
             {prestationLabel}
           </p>
           <button type="button" onClick={onEditPrestation} aria-label={T('devis.modifier')} style={pencilStyle}>
@@ -538,7 +538,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
             <div key={r.key} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
               <div style={{ color: accent, marginTop: '1px', flexShrink: 0 }}>{r.icon}</div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '2px' }}>{r.label}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '2px' }}>{r.label}</p>
                 {editing === r.key ? (
                   r.type === 'textarea' ? (
                     <textarea
@@ -561,7 +561,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
                     />
                   )
                 ) : (
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-primary)', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{r.value}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-primary)', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{r.value}</p>
                 )}
               </div>
               {editing !== r.key && (
@@ -575,7 +575,7 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
         <button
           type="button"
           onClick={onEdit}
-          style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid rgba(17,17,17,0.07)', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '14px 0 0', outline: 'none', display: 'block', textDecoration: 'underline', textUnderlineOffset: '3px' }}
+          style={{ marginTop: '20px', paddingTop: '14px', borderTop: '1px solid rgba(17,17,17,0.07)', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.4)', background: 'none', border: 'none', cursor: 'pointer', padding: '14px 0 0', outline: 'none', display: 'block', textDecoration: 'underline', textUnderlineOffset: '3px' }}
         >
           Modifier les informations
         </button>
@@ -821,7 +821,7 @@ export default function Contact() {
             `}</style>
             <div style={{ textAlign: 'center' }}>
               <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '72px', width: 'auto', display: 'block', margin: '0 auto 20px' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590' }}>
                 Vos équipes vont adorer.
               </p>
             </div>
@@ -837,13 +837,13 @@ export default function Contact() {
             <div style={{ width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(224,161,38,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E0A126" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>
             </div>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, margin: 0 }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.1, margin: 0 }}>
               Demande bien reçue.
             </h2>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.75, maxWidth: '360px', margin: 0 }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.75, maxWidth: '360px', margin: 0 }}>
               Merci pour votre confiance. Nous vous recontactons sous 24h avec une proposition personnalisée.
             </p>
-            <a href="/" style={{ marginTop: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', borderBottom: '1px solid rgba(17,17,17,0.25)', paddingBottom: '3px', textDecoration: 'none' }}>
+            <a href="/" style={{ marginTop: '8px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', borderBottom: '1px solid rgba(17,17,17,0.25)', paddingBottom: '3px', textDecoration: 'none' }}>
               Retour à l'accueil
             </a>
           </div>
@@ -887,7 +887,7 @@ export default function Contact() {
                   onClick={prev}
                   className="devis-nav-prev"
                   style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '11px',
                     fontWeight: 500,
                     letterSpacing: '0.1em',
@@ -912,12 +912,12 @@ export default function Contact() {
               {/* Messages d'erreur */}
               <div className="nav-indicator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
                 {submitStatus === 'error' && (
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0 }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0 }}>
                     Erreur d'envoi. Réessayez ou appelez-nous.
                   </p>
                 )}
                 {step === 2 && showStep2Errors && !step2Valid() && (
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0, textAlign: 'center' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: '#c0392b', margin: 0, textAlign: 'center' }}>
                     Remplissez les champs obligatoires ↑
                   </p>
                 )}
@@ -933,7 +933,7 @@ export default function Contact() {
                   onClick={next}
                   className="devis-nav-next"
                   style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '11px',
                     fontWeight: 500,
                     letterSpacing: '0.1em',
@@ -958,7 +958,7 @@ export default function Contact() {
                   disabled={submitStatus === 'loading'}
                   className="devis-nav-next"
                   style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '11px',
                     fontWeight: 500,
                     letterSpacing: '0.1em',
@@ -988,22 +988,22 @@ export default function Contact() {
         {showExitModal && (
           <div style={{ position: 'fixed', inset: 0, background: 'rgba(17,17,17,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '24px' }}>
             <div style={{ background: '#FFFFFF', maxWidth: '380px', width: '100%', padding: '32px 28px', textAlign: 'center', borderRadius: '4px' }}>
-              <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.2 }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.2 }}>
                 {t('devis.attendez', langue)}
               </p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13.5px', color: 'rgba(17,17,17,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13.5px', color: 'rgba(17,17,17,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
                 {exitMessage()}
               </p>
               <button
                 type="button"
                 onClick={() => setShowExitModal(false)}
-                style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: accent, border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
+                style={{ width: '100%', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: accent, border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
               >
                 {t('devis.continuer', langue)}
               </button>
               <a
                 href="/"
-                style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '11.5px', color: 'rgba(17,17,17,0.45)', textDecoration: 'underline', padding: '4px' }}
+                style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11.5px', color: 'rgba(17,17,17,0.45)', textDecoration: 'underline', padding: '4px' }}
               >
                 {t('devis.quitter', langue)}
               </a>
@@ -1072,7 +1072,7 @@ export default function Contact() {
           border-top: 1px solid rgba(17,17,17,0.08);
         }
         .devis-legal a {
-          font-family: 'Neue Montreal', sans-serif; font-size: 11px;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11px;
           letter-spacing: 0.06em; color: rgba(17,17,17,0.45); text-decoration: none;
         }
         @media (max-width: 1024px) and (min-width: 769px) {
@@ -1110,7 +1110,7 @@ const pencilStyle = {
 
 const recapEditStyle = {
   width: '100%',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '12px',
   color: 'var(--text-primary)',
   background: '#FFFFFF',
@@ -1124,7 +1124,7 @@ const recapEditStyle = {
 
 const fieldStyle = {
   width: '100%',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '13px',
   color: 'var(--text-primary)',
   background: '#FFFFFF',
@@ -1139,7 +1139,7 @@ const fieldStyle = {
 
 const labelStyle = {
   display: 'block',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '10px',
   fontWeight: 500,
   letterSpacing: '0.14em',

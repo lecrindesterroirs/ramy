@@ -94,7 +94,7 @@ function DatePicker({ value, onChange, required }) {
         aria-label={displayValue ? `${T('form.dateEvenement')} : ${displayValue}` : `${T('form.dateEvenement')} (${T('form.obligatoire')})`}
         style={{ ...inputStyle, textAlign: 'left', display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer', userSelect: 'none', color: value ? 'var(--text-primary)' : 'rgba(17,17,17,0.38)' }}
       >
-        <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px' }}>{displayValue || `${T('form.dateEvenement')} *`}</span>
+        <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px' }}>{displayValue || `${T('form.dateEvenement')} *`}</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: 'rgba(17,17,17,0.38)', flexShrink: 0 }}>
           <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
@@ -103,11 +103,11 @@ function DatePicker({ value, onChange, required }) {
         <div role="dialog" aria-label={T('form.choisirDate')} style={{ position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0, background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.12)', boxShadow: '0 16px 40px rgba(17,17,17,0.12)', zIndex: 200, padding: '20px', minWidth: '260px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <button type="button" onClick={prevMonth} aria-label={T('form.moisPrecedent')} style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg></button>
-            <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.05em', color: 'var(--text-primary)' }}>{MOIS[view.month]} {view.year}</span>
+            <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, letterSpacing: '0.05em', color: 'var(--text-primary)' }}>{MOIS[view.month]} {view.year}</span>
             <button type="button" onClick={nextMonth} aria-label={T('form.moisSuivant')} style={navBtn}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg></button>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px', marginBottom: '6px' }}>
-            {JOURS.map((j, i) => <div key={i} style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textAlign: 'center', padding: '4px 0' }}>{j}</div>)}
+            {JOURS.map((j, i) => <div key={i} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textAlign: 'center', padding: '4px 0' }}>{j}</div>)}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '2px' }}>
             {days.map((d, i) => (
@@ -115,7 +115,7 @@ function DatePicker({ value, onChange, required }) {
                 aria-hidden={!d}
                 aria-label={d ? `${d} ${MOIS[view.month]} ${view.year}` : undefined}
                 aria-pressed={d ? isSelected(d) : undefined}
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: isSelected(d) ? 500 : 400, width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? '#E0A126' : 'transparent', color: isSelected(d) ? '#FFF' : isToday(d) ? '#E0A126' : d ? 'var(--text-primary)' : 'transparent', cursor: d ? 'pointer' : 'default', outline: 'none', transition: 'background 0.15s ease' }}
+                style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: isSelected(d) ? 500 : 400, width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', borderRadius: '50%', border: 'none', background: isSelected(d) ? '#E0A126' : 'transparent', color: isSelected(d) ? '#FFF' : isToday(d) ? '#E0A126' : d ? 'var(--text-primary)' : 'transparent', cursor: d ? 'pointer' : 'default', outline: 'none', transition: 'background 0.15s ease' }}
                 onMouseEnter={e => { if (d && !isSelected(d)) e.currentTarget.style.background = 'rgba(224,161,38,0.1)' }}
                 onMouseLeave={e => { if (d && !isSelected(d)) e.currentTarget.style.background = 'transparent' }}
               >{d || ''}</button>
@@ -191,13 +191,13 @@ export default function Contact() {
         >
           {/* ── Colonne gauche ── */}
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '24px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '24px' }}>
               {T('contact.surtitre')}
             </p>
-            <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
+            <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
               {T('contact.titre1')} <br />{T('contact.titre2')}
             </h1>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '32px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '32px' }}>
               {T('contact.chapeau')}
             </p>
 
@@ -234,17 +234,17 @@ export default function Contact() {
             </div>
 
             <div style={{ marginTop: '20px', paddingTop: '14px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>{T('info.reponse24h')}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>{T('info.livraison')}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '6px' }}>{T('info.reponse24h')}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)' }}>{T('info.livraison')}</p>
             </div>
 
             <div style={{ marginTop: '20px', paddingTop: '14px' }}>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px' }}>
                 {T('contact.vivevoix')}
               </p>
               <a
                 href="/contact/rendez-vous"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--accent)', paddingBottom: '3px', transition: 'opacity 0.2s ease' }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--accent)', paddingBottom: '3px', transition: 'opacity 0.2s ease' }}
                 onMouseEnter={e => { e.currentTarget.style.opacity = '0.65' }}
                 onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
               >
@@ -256,10 +256,10 @@ export default function Contact() {
 
           {/* ── Colonne droite, Formulaire ── */}
           <div style={{ background: '#FFFFFF', padding: '36px 40px 32px', display: 'flex', flexDirection: 'column' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
               {T('contact.formTitre')}
             </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.5vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.5vw, 38px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
               {T('contact.merci')}
             </h2>
 
@@ -268,8 +268,8 @@ export default function Contact() {
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(224,161,38,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A126" strokeWidth="2" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
                 </div>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2 }}>{T('form.recu')}</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '300px' }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2 }}>{T('form.recu')}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7, maxWidth: '300px' }}>
                   {T('contact.formChapeau')}
                 </p>
               </div>
@@ -307,20 +307,20 @@ export default function Contact() {
                   style={{ ...inputStyle, resize: 'none', lineHeight: 1.6, flex: 1, minHeight: '80px' }}
                 />
                 {status === 'error' && (
-                  <p role="alert" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: '#c0392b', textAlign: 'center', margin: '0' }}>
+                  <p role="alert" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: '#c0392b', textAlign: 'center', margin: '0' }}>
                     {T('contact.erreur')}
                   </p>
                 )}
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  style={{ width: '100%', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: 'none', padding: '18px 32px', cursor: status === 'loading' ? 'default' : 'pointer', opacity: status === 'loading' ? 0.65 : 1, transition: 'opacity 0.3s ease', marginTop: '4px' }}
+                  style={{ width: '100%', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', border: 'none', padding: '18px 32px', cursor: status === 'loading' ? 'default' : 'pointer', opacity: status === 'loading' ? 0.65 : 1, transition: 'opacity 0.3s ease', marginTop: '4px' }}
                   onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.opacity = '0.85' }}
                   onMouseLeave={e => { if (status !== 'loading') e.currentTarget.style.opacity = '1' }}
                 >
                   {status === 'loading' ? T('form.envoiEnCours') : `${T('form.envoyer')} →`}
                 </button>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)', textAlign: 'center' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.35)', textAlign: 'center' }}>
                   {T('contact.confidentiel')}
                 </p>
               </form>
@@ -352,10 +352,10 @@ export default function Contact() {
       <section style={{ background: 'var(--bg-secondary)', padding: '80px 72px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
               {T('contact.argsSurtitre')}
             </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 44px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 44px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)' }}>
               {T('contact.argsTitre1')}<br />{T('contact.argsTitre2')}
             </h2>
           </div>
@@ -377,8 +377,8 @@ export default function Contact() {
                 gap: '14px',
               }}>
                 <div style={{ color: 'var(--accent-deep)', opacity: 0.85 }}>{item.icon}</div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.01em' }}>{item.titre}</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.01em' }}>{item.titre}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -397,7 +397,7 @@ export default function Contact() {
 
 const inputStyle = {
   width: '100%',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '13px',
   color: 'var(--text-primary)',
   background: 'var(--bg-secondary)',
@@ -409,7 +409,7 @@ const inputStyle = {
 }
 
 const labelStyle = {
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '10px',
   fontWeight: 500,
   letterSpacing: '0.16em',
@@ -419,7 +419,7 @@ const labelStyle = {
 }
 
 const infoStyle = {
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '14px',
   color: 'var(--text-primary)',
   textDecoration: 'none',
@@ -443,7 +443,7 @@ const navBtn = {
 }
 
 const footerBtn = {
-  fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400,
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400,
   letterSpacing: '0.06em', color: 'rgba(17,17,17,0.45)', background: 'none',
   border: 'none', cursor: 'pointer', padding: '4px 0', outline: 'none',
 }

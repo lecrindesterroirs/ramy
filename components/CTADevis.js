@@ -7,7 +7,7 @@ export function CTADevis({ category = 'general', phone = '01 74 54 23 10' }) {
       borderRadius: '8px',
       textAlign: 'center',
       marginBottom: '40px',
-      fontFamily: "'Neue Montreal', sans-serif"
+      fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
     }}>
       <h2 style={{ margin: '0 0 12px 0', fontSize: '24px' }}>
         Demander un devis

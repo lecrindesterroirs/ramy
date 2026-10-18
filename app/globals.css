@@ -35,6 +35,26 @@
   font-display: swap;
 }
 
+/* Polices de repli ajustées aux métriques des vraies polices : le texte garde sa taille
+   et sa hauteur de ligne quand la police du site remplace celle du système (moins de décalage). */
+@font-face {
+  font-family: 'Baskerville Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 96.2%;
+  ascent-override: 97.2%;
+  descent-override: 36.7%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Neue Montreal Fallback';
+  src: local('Arial'), local('Helvetica'), local('Roboto');
+  size-adjust: 95.3%;
+  ascent-override: 100.5%;
+  descent-override: 25.4%;
+  line-gap-override: 0%;
+}
+
 
 /* Reset */
 *, *::before, *::after {
@@ -88,7 +108,7 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Neue Montreal', 'Helvetica Neue', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
@@ -125,7 +145,7 @@ img {
   z-index: 1000;
   background: #111111;
   color: #FFFFFF;
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-size: 13px;
   letter-spacing: 0.04em;
   padding: 10px 18px;
@@ -153,7 +173,7 @@ img {
 
 /* ===== TYPOGRAPHY ===== */
 .hero-title {
-  font-family: 'Baskerville Display PT', Georgia, serif;
+  font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
   font-size: clamp(54px, 6.4vw, 92px);
   font-weight: 400;
   line-height: 1.08;
@@ -163,11 +183,11 @@ img {
 
 .hero-title em {
   font-style: normal;
-  font-family: 'Baskerville Display PT', Georgia, serif;
+  font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
 }
 
 .section-title-xl {
-  font-family: 'Baskerville Display PT', Georgia, serif;
+  font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
   font-size: clamp(40px, 4vw, 64px);
   font-weight: 400;
   line-height: 0.97;
@@ -180,7 +200,7 @@ img {
 }
 
 .section-title-md {
-  font-family: 'Baskerville Display PT', Georgia, serif;
+  font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
   font-size: clamp(28px, 3vw, 44px);
   font-weight: 400;
   line-height: 1.0;
@@ -193,7 +213,7 @@ img {
 }
 
 .label {
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
@@ -202,7 +222,7 @@ img {
 }
 
 .body {
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.7;
@@ -210,7 +230,7 @@ img {
 }
 
 .body-lg {
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.65;
@@ -218,7 +238,7 @@ img {
 }
 
 .caption {
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -245,7 +265,7 @@ img {
 .btn-primary {
   background: #111111;
   color: #FFFFFF;
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-weight: 500;
   font-size: 13px;
   text-transform: uppercase;
@@ -265,7 +285,7 @@ img {
 
 .btn-secondary {
   background: transparent;
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-weight: 500;
   font-size: 13px;
   text-transform: uppercase;
@@ -288,7 +308,7 @@ img {
   background: transparent;
   color: var(--accent-deep);
   border: 1px solid var(--accent);
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-weight: 500;
   font-size: 13px;
   text-transform: uppercase;
@@ -474,7 +494,7 @@ a:hover .article-card-img { transform: scale(1.04); }
   background: transparent;
   color: #111111;
   border: 1px solid #111111;
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-weight: 500;
   font-size: 12px;
   text-transform: uppercase;
@@ -490,7 +510,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 }
 
 .consent-etat {
-  font-family: 'Neue Montreal', sans-serif;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
   font-size: 13px;
   line-height: 1.5;
   color: var(--text-secondary);

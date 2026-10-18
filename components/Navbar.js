@@ -123,7 +123,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         overflow: 'hidden',
       }}>
         <div className="banner-sole" style={{
-          fontFamily: "'Neue Montreal', sans-serif",
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
           fontSize: '10px',
           fontWeight: 500,
           letterSpacing: '0.16em',
@@ -170,7 +170,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   href={lien(moment.href)}
                   className="nav-moment-item"
                   style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '15px',
                     fontWeight: 500,
                     letterSpacing: '0.01em',
@@ -193,7 +193,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                 className="nav-moment-item"
                 onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown(moment.key) }}
                 style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '15px',
                   fontWeight: 500,
                   letterSpacing: '0.01em',
@@ -272,7 +272,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                         />
                       </div>
                       <p style={{
-                        fontFamily: "'Baskerville Display PT', Georgia, serif",
+                        fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                         fontSize: '17px',
                         fontWeight: 400,
                         letterSpacing: '0.02em',
@@ -309,7 +309,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           onMouseLeave={e => { e.currentTarget.querySelectorAll('span').forEach(s => s.style.color = '#111111') }}
         >
           <span style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: '24px',
             fontWeight: 400,
             letterSpacing: '0.12em',
@@ -320,7 +320,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             L'ÉCRIN
           </span>
           <span style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '9.5px',
             fontWeight: 500,
             letterSpacing: '0.22em',
@@ -344,7 +344,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             <button
               className="nav-util-btn"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '15px',
                 fontWeight: 500,
                 letterSpacing: '0.01em',
@@ -389,7 +389,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     key={mot(item)}
                     href={lien(item.href)}
                     style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                       fontSize: '12px',
                       fontWeight: 400,
                       letterSpacing: '0.08em',
@@ -418,7 +418,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             <button
               className="nav-util-btn"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '15px',
                 fontWeight: 500,
                 letterSpacing: '0.01em',
@@ -463,7 +463,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     key={mot(item)}
                     href={lien(item.href)}
                     style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                       fontSize: '12px',
                       fontWeight: 400,
                       letterSpacing: '0.08em',
@@ -483,7 +483,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
                 <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '8px', paddingTop: '8px' }}>
                   <p style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '9px',
                     fontWeight: 600,
                     letterSpacing: '0.12em',
@@ -499,7 +499,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                       key={mot(item)}
                       href={lien(item.href)}
                       style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                         fontSize: '12px',
                         fontWeight: 400,
                         letterSpacing: '0.08em',
@@ -520,7 +520,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
                 <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '8px', paddingTop: '8px' }}>
                   <p style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '9px',
                     fontWeight: 600,
                     letterSpacing: '0.12em',
@@ -536,7 +536,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                       key={mot(item)}
                       href={lien(item.href)}
                       style={{
-                        fontFamily: "'Neue Montreal', sans-serif",
+                        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                         fontSize: '11px',
                         fontWeight: 400,
                         letterSpacing: '0.06em',
@@ -562,7 +562,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             href={lien('/contact')}
             className="nav-contact-link"
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '12px',
               fontWeight: 400,
               textTransform: 'uppercase',
@@ -588,7 +588,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             href={lien('/devis')}
             className="nav-cta-link"
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '12px',
               fontWeight: 400,
               letterSpacing: '0.08em',
@@ -669,7 +669,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   key={moment.key}
                   href={lien(moment.href)}
                   onClick={() => setMobileOpen(false)}
-                  style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
+                  style={{ display: 'block', fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
                 >
                   {mot(moment)}
                 </a>
@@ -682,7 +682,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   onClick={() => setMobileExpanded(open ? null : moment.key)}
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
                 >
-                  <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{mot(moment)}</span>
+                  <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: open ? 'var(--accent)' : '#111111' }}>{mot(moment)}</span>
                   <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
                 </button>
                 {open && (
@@ -692,7 +692,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                         key={mot(card, 'title')}
                         href={lien(card.href)}
                         onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
-                        style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
+                        style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
                       >
                         {mot(card, 'title')}
                       </a>
@@ -709,7 +709,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onClick={() => setMobileExpanded(mobileExpanded === 'univers' ? null : 'univers')}
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>{t('nav.univers', langue)}</span>
+              <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'univers' ? 'var(--accent)' : '#111111' }}>{t('nav.univers', langue)}</span>
               <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'univers' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
             </button>
             {mobileExpanded === 'univers' && (
@@ -719,7 +719,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     key={mot(item)}
                     href={lien(item.href)}
                     onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
-                    style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
+                    style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
                   >
                     {mot(item)}
                   </a>
@@ -734,7 +734,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onClick={() => setMobileExpanded(mobileExpanded === 'journal' ? null : 'journal')}
               style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '18px 0', cursor: 'pointer' }}
             >
-              <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>{t('nav.journal', langue)}</span>
+              <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: mobileExpanded === 'journal' ? 'var(--accent)' : '#111111' }}>{t('nav.journal', langue)}</span>
               <span style={{ fontSize: '18px', color: 'var(--accent-deep)', display: 'inline-block', transform: mobileExpanded === 'journal' ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }} aria-hidden="true">›</span>
             </button>
             {mobileExpanded === 'journal' && (
@@ -744,7 +744,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                     key={mot(item)}
                     href={lien(item.href)}
                     onClick={() => { setMobileOpen(false); setMobileExpanded(null) }}
-                    style={{ display: 'block', fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
+                    style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.6)', textDecoration: 'none', padding: '11px 0 11px 16px' }}
                   >
                     {mot(item)}
                   </a>
@@ -757,7 +757,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           <a
             href={lien('/contact')}
             onClick={() => setMobileOpen(false)}
-            style={{ display: 'block', fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
+            style={{ display: 'block', fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', textDecoration: 'none', padding: '18px 0', borderBottom: '1px solid rgba(17,17,17,0.08)' }}
           >
             Contact
           </a>
@@ -765,7 +765,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           <a
             href={lien('/devis')}
             onClick={() => setMobileOpen(false)}
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: devisAccent, padding: '16px', textDecoration: 'none', marginTop: '28px' }}
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: devisAccent, padding: '16px', textDecoration: 'none', marginTop: '28px' }}
           >
             {t('nav.devis', langue)} <span>→</span>
           </a>

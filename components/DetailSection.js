@@ -111,21 +111,21 @@ export default function DetailSection({ lang = 'fr' }) {
               padding: '0 0 0 64px',
             }}
           >
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '10px' }}>
               {T.eyebrow}
             </p>
             <span style={{ width: '32px', height: '1px', background: 'var(--accent)', display: 'block', marginBottom: '32px' }} />
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(42px, 4.8vw, 72px)', lineHeight: 1.0, letterSpacing: '-0.01em', fontWeight: 400, color: '#FFFFFF', marginBottom: '24px' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(42px, 4.8vw, 72px)', lineHeight: 1.0, letterSpacing: '-0.01em', fontWeight: 400, color: '#FFFFFF', marginBottom: '24px' }}>
               {T.t1}<br />
               {T.t2}
             </h2>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'rgba(255,255,255,0.88)', maxWidth: '360px', marginBottom: '40px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'rgba(255,255,255,0.88)', maxWidth: '360px', marginBottom: '40px' }}>
               {T.c1}<br />
               {T.c2}
             </p>
             <a
                 href={en ? '/en/univers/notre-maison' : '/univers/notre-maison'}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#FFFFFF', borderBottom: '1px solid rgba(255,255,255,0.45)', paddingBottom: '4px', width: 'fit-content', transition: 'opacity 0.3s ease' }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#FFFFFF', borderBottom: '1px solid rgba(255,255,255,0.45)', paddingBottom: '4px', width: 'fit-content', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.6'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
@@ -152,10 +152,10 @@ export default function DetailSection({ lang = 'fr' }) {
                 paddingRight: i < 2 ? '48px' : '0',
               }}
             >
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '12px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#151515', marginBottom: '12px' }}>
                 {item.title}
               </p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)' }}>
                 {item.body}
               </p>
             </div>
@@ -184,7 +184,7 @@ export default function DetailSection({ lang = 'fr' }) {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
+                  <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#151515' }}>
                     {item.title}
                   </span>
                 </div>
@@ -193,7 +193,7 @@ export default function DetailSection({ lang = 'fr' }) {
                 </span>
               </button>
               {openIndex === i && (
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)', paddingBottom: '16px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.58)', paddingBottom: '16px' }}>
                   {item.body}
                 </p>
               )}

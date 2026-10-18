@@ -41,7 +41,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
         }}>
           <div>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.18em',
@@ -52,7 +52,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
               {T.eyebrow}
             </p>
             <h2 style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
               fontSize: 'clamp(28px, 3.2vw, 46px)',
               fontWeight: 400,
               lineHeight: 1.08,
@@ -65,7 +65,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
           <a
             href={en ? '/en/traiteur' : '/traiteur'}
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.1em',
@@ -118,7 +118,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
             >
               <div>
                 <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '13px',
                   fontWeight: 500,
                   color: 'var(--text-primary)',
@@ -128,7 +128,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
                   {city.name}
                 </p>
                 <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '10px',
                   fontWeight: 400,
                   color: 'rgba(17,17,17,0.62)',
@@ -162,7 +162,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
             <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
               <span style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 400,
                 color: 'rgba(17,17,17,0.62)',

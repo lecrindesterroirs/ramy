@@ -16,6 +16,7 @@ import AttributionCapture from '../components/AttributionCapture'
 import { websiteNode, GBP_RATING_LABEL } from '../lib/site'
 import { ogImage, ogImages } from '../lib/og'
 import { enSlugs } from '../lib/en/journal'
+import { PROMO_PRELOAD_SCRIPT } from '../lib/promoBanner'
 import { EnSlugsProvider } from '../components/EnSlugsProvider'
 
 export const metadata = {
@@ -69,8 +70,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <body>
+        {/* Pose promo-on / ads-mobile-epure sur <html> avant le premier affichage : plus de décalage de la page quand le bandeau arrive */}
+        <script dangerouslySetInnerHTML={{ __html: PROMO_PRELOAD_SCRIPT }} />
         {/* Pose le refus avant GTM si le visiteur a refusé la mesure (page Cookies) */}
         <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }} />
         <DeferredGTM gtmId="GTM-N22T3FZJ" />

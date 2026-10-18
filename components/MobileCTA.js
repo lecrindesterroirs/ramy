@@ -119,7 +119,7 @@ export default function MobileCTA() {
             align-items: center;
             justify-content: center;
             gap: 8px;
-            font-family: 'Neue Montreal', sans-serif;
+            font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
             font-size: 12px;
             font-weight: 500;
             letter-spacing: 0.04em;
@@ -139,7 +139,7 @@ export default function MobileCTA() {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Neue Montreal', sans-serif;
+            font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
             font-size: 12px;
             font-weight: 500;
             letter-spacing: 0.08em;

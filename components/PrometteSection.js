@@ -55,7 +55,7 @@ export default function PrometteSection() {
           className="reveal"
           style={{
             maxWidth: '760px',
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(40px, 4vw, 64px)',
             fontWeight: 400,
             fontStyle: 'italic',

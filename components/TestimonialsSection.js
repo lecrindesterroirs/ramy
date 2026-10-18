@@ -50,7 +50,7 @@ const CLIENT_LOGOS = [
 ]
 
 function QuoteMark({ size = 34 }) {
-  return <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: `${size}px`, lineHeight: 1, color: 'var(--accent-deep)', display: 'block' }}>❝</span>
+  return <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: `${size}px`, lineHeight: 1, color: 'var(--accent-deep)', display: 'block' }}>❝</span>
 }
 
 /*
@@ -107,13 +107,13 @@ export default function TestimonialsSection({ lang = 'fr' }) {
 
         {/* ── Header ── */}
         <div className="ts-top reveal" style={{ marginBottom: '44px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
             {T.eyebrow}
           </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
             {T.titre}
           </h2>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.66)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.66)' }}>
             {T.corps}
           </p>
         </div>
@@ -128,14 +128,14 @@ export default function TestimonialsSection({ lang = 'fr' }) {
             </div>
             <div style={{ padding: '34px 38px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <img loading="lazy" src={vedette.logo} alt={vedette.company} style={{ height: '24px', width: 'auto', marginBottom: '14px', filter: 'grayscale(1)', alignSelf: 'flex-start' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>{vedette.context}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>{vedette.context}</p>
               <QuoteMark size={34} />
-              <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(16px, 1.5vw, 21px)', fontWeight: 400, lineHeight: 1.32, color: 'var(--text-primary)', fontStyle: 'italic', margin: '10px 0 24px' }}>
+              <blockquote style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(16px, 1.5vw, 21px)', fontWeight: 400, lineHeight: 1.32, color: 'var(--text-primary)', fontStyle: 'italic', margin: '10px 0 24px' }}>
                 {vedette.quote}
               </blockquote>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '3px' }}>{vedette.author}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{vedette.role}</p>
-              {T.traduit && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)', marginTop: '5px' }}>{T.traduit}</p>}
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '3px' }}>{vedette.author}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{vedette.role}</p>
+              {T.traduit && <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)', marginTop: '5px' }}>{T.traduit}</p>}
             </div>
           </div>
 
@@ -147,15 +147,15 @@ export default function TestimonialsSection({ lang = 'fr' }) {
                   <img loading="lazy" src={t.img} alt={`Événement ${t.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 </div>
                 <div style={{ padding: '24px 28px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '6px' }}>{t.company}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>{t.context}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', marginBottom: '6px' }}>{t.company}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>{t.context}</p>
                   <QuoteMark size={26} />
-                  <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(13px, 1.15vw, 16px)', fontWeight: 400, lineHeight: 1.36, color: 'var(--text-primary)', fontStyle: 'italic', margin: '8px 0 18px' }}>
+                  <blockquote style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(13px, 1.15vw, 16px)', fontWeight: 400, lineHeight: 1.36, color: 'var(--text-primary)', fontStyle: 'italic', margin: '8px 0 18px' }}>
                     {t.quote}
                   </blockquote>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '2px' }}>{t.author}</p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{t.role}</p>
-                  {T.traduit && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)', marginTop: '4px' }}>{T.traduit}</p>}
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '2px' }}>{t.author}</p>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{t.role}</p>
+                  {T.traduit && <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)', marginTop: '4px' }}>{T.traduit}</p>}
                 </div>
               </div>
             ))}
@@ -164,7 +164,7 @@ export default function TestimonialsSection({ lang = 'fr' }) {
 
         {/* ── Barre logos ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '56px', paddingTop: '40px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)', textAlign: 'center', marginBottom: '28px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)', textAlign: 'center', marginBottom: '28px' }}>
             {T.eyebrow}
           </p>
           <div className="ts-logos" style={{ display: 'grid', gridTemplateColumns: `repeat(${CLIENT_LOGOS.length}, 1fr)`, alignItems: 'center', justifyItems: 'center', gap: '24px' }}>

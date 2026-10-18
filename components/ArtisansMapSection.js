@@ -109,17 +109,17 @@ export default function ArtisansMapSection({ headingTag: Heading = 'h2', lang = 
 
         <Reveal>
           <div>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
               {T.eyebrow}
             </p>
-            <Heading style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
+            <Heading style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 42px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
               {T.t1}<br />{T.t2}
             </Heading>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '420px', marginBottom: '24px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '420px', marginBottom: '24px' }}>
               {T.corps}
             </p>
 
-            <Link href={en ? '/en/univers/nos-artisans' : '/univers/nos-artisans'} className="amp-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', marginBottom: '36px', alignSelf: 'flex-start' }}>
+            <Link href={en ? '/en/univers/nos-artisans' : '/univers/nos-artisans'} className="amp-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--text-primary)', paddingBottom: '4px', marginBottom: '36px', alignSelf: 'flex-start' }}>
               {T.lien}
               <span className="amp-arrow" style={{ display: 'inline-block', transition: 'transform 0.25s ease' }}>→</span>
             </Link>
@@ -131,7 +131,7 @@ export default function ArtisansMapSection({ headingTag: Heading = 'h2', lang = 
                   <span style={{ flexShrink: 0, color: 'var(--accent-deep)', marginTop: '2px' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
                   </span>
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.55, color: 'var(--text-secondary)' }}>{t}</span>
+                  <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.55, color: 'var(--text-secondary)' }}>{t}</span>
                 </li>
               ))}
             </ul>
@@ -160,7 +160,7 @@ export default function ArtisansMapSection({ headingTag: Heading = 'h2', lang = 
           transform: translateX(-50%) translateY(4px);
           background: #111111;
           color: #FFFFFF;
-          font-family: 'Neue Montreal', sans-serif;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 10px;
           font-weight: 500;
           letter-spacing: 0.02em;

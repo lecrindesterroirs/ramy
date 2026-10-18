@@ -25,7 +25,7 @@ export default function EvenementsSaisonniers() {
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
             <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
               <p style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 400,
                 letterSpacing: '0.18em',
@@ -36,7 +36,7 @@ export default function EvenementsSaisonniers() {
                 Nos Créations, Événements Saisonniers
               </p>
               <h1 style={{
-                fontFamily: "'Baskerville Display PT', Georgia, serif",
+                fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                 fontSize: 'clamp(32px, 4vw, 58px)',
                 fontWeight: 400,
                 lineHeight: 1.05,
@@ -47,7 +47,7 @@ export default function EvenementsSaisonniers() {
                 Événements Saisonniers
               </h1>
               <p style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '14px',
                 lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.72)',
@@ -99,7 +99,7 @@ export default function EvenementsSaisonniers() {
 
               <div style={{ padding: '24px 24px 32px' }}>
                 <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '10px',
                   fontWeight: 500,
                   letterSpacing: '0.18em',
@@ -110,7 +110,7 @@ export default function EvenementsSaisonniers() {
                   {ev.mois}
                 </p>
                 <h3 style={{
-                  fontFamily: "'Baskerville Display PT', Georgia, serif",
+                  fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                   fontSize: '22px',
                   fontWeight: 400,
                   color: 'var(--text-primary)',
@@ -120,7 +120,7 @@ export default function EvenementsSaisonniers() {
                   {ev.nom}
                 </h3>
                 <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '13px',
                   lineHeight: 1.7,
                   color: 'var(--text-secondary)',
@@ -131,7 +131,7 @@ export default function EvenementsSaisonniers() {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
                   {ev.tags.map((tag, j) => (
                     <span key={j} style={{
-                      fontFamily: "'Neue Montreal', sans-serif",
+                      fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                       fontSize: '9px',
                       fontWeight: 500,
                       letterSpacing: '0.1em',
@@ -145,7 +145,7 @@ export default function EvenementsSaisonniers() {
                   ))}
                 </div>
                 <p style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '10px',
                   fontWeight: 500,
                   letterSpacing: '0.1em',
@@ -170,7 +170,7 @@ export default function EvenementsSaisonniers() {
           }}
         >
           <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '14px',
             color: 'var(--text-secondary)',
             marginBottom: '24px',
@@ -180,7 +180,7 @@ export default function EvenementsSaisonniers() {
           <a
             href="/devis"
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.12em',

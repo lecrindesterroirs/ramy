@@ -51,7 +51,7 @@ export default function ManifestoSection({ lang = 'fr' }) {
         {/* Citation */}
         <blockquote
           style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(28px, 3.6vw, 52px)',
             fontWeight: 400,
             fontStyle: 'italic',
@@ -80,7 +80,7 @@ export default function ManifestoSection({ lang = 'fr' }) {
         {/* Tagline */}
         <p
           style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '10px',
             fontWeight: 500,
             letterSpacing: '0.22em',

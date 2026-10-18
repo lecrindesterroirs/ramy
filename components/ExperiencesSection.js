@@ -50,7 +50,7 @@ export default function ExperiencesSection({ lang = 'fr' }) {
 
         <h2
           style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(30px, 3.2vw, 50px)',
             fontWeight: 400,
             lineHeight: 1.1,
@@ -65,7 +65,7 @@ export default function ExperiencesSection({ lang = 'fr' }) {
 
         <p
           style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '14px',
             fontWeight: 400,
             lineHeight: 1.75,
@@ -85,7 +85,7 @@ export default function ExperiencesSection({ lang = 'fr' }) {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '14px',
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '10px',
             fontWeight: 500,
             letterSpacing: '0.16em',

@@ -100,7 +100,7 @@ export default function CatalogueModal({ open, onClose }) {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a7c3a" strokeWidth="2.5"><polyline points="20,6 9,17 4,12"/></svg>
             </div>
             <p style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
               fontSize: '24px',
               fontWeight: 400,
               color: '#171310',
@@ -109,7 +109,7 @@ export default function CatalogueModal({ open, onClose }) {
             }}>
               Votre catalogue est prêt.
             </p>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.55)', lineHeight: 1.65, marginBottom: '26px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.55)', lineHeight: 1.65, marginBottom: '26px' }}>
               Nous venons aussi de vous l'envoyer par email à {form.email}.
             </p>
             <a
@@ -117,7 +117,7 @@ export default function CatalogueModal({ open, onClose }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.12em',
@@ -137,7 +137,7 @@ export default function CatalogueModal({ open, onClose }) {
         ) : (
           <>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '10px',
               fontWeight: 500,
               letterSpacing: '0.18em',
@@ -148,7 +148,7 @@ export default function CatalogueModal({ open, onClose }) {
               Catalogue 2026
             </p>
             <p style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
               fontSize: '26px',
               fontWeight: 400,
               color: '#171310',
@@ -157,7 +157,7 @@ export default function CatalogueModal({ open, onClose }) {
             }}>
               Recevez notre catalogue.
             </p>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.55)', lineHeight: 1.65, marginBottom: '28px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.55)', lineHeight: 1.65, marginBottom: '28px' }}>
               Petits-déjeuners, plateaux repas, buffets, cocktails : toutes nos créations 2026, avec prix et compositions.
             </p>
 
@@ -191,7 +191,7 @@ export default function CatalogueModal({ open, onClose }) {
                 type="submit"
                 disabled={status === 'loading'}
                 style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '11px',
                   fontWeight: 500,
                   letterSpacing: '0.12em',
@@ -213,12 +213,12 @@ export default function CatalogueModal({ open, onClose }) {
               </button>
 
               {status === 'error' && (
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', color: '#c0392b' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: '#c0392b' }}>
                   Erreur d'envoi. Réessayez ou écrivez-nous à commercial@lecrin-traiteur.fr
                 </p>
               )}
 
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10.5px', color: 'rgba(17,17,17,0.4)', lineHeight: 1.6, margin: 0 }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10.5px', color: 'rgba(17,17,17,0.4)', lineHeight: 1.6, margin: 0 }}>
                 Vos coordonnées servent uniquement à vous envoyer le catalogue et à vous recontacter. Jamais de spam.
               </p>
             </form>
@@ -236,7 +236,7 @@ export default function CatalogueModal({ open, onClose }) {
 
 const fieldStyle = {
   width: '100%',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '13px',
   color: 'var(--text-primary)',
   background: '#FFFFFF',
@@ -252,7 +252,7 @@ const fieldStyle = {
 
 const labelStyle = {
   display: 'block',
-  fontFamily: "'Neue Montreal', sans-serif",
+  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
   fontSize: '10px',
   fontWeight: 500,
   letterSpacing: '0.14em',

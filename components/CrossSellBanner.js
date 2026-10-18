@@ -18,11 +18,11 @@ export default function CrossSellBanner({ title, body, buttonLabel, href, produc
       >
         <div className="cross-sell-top" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '32px', flexWrap: 'wrap' }}>
           <div>
-            <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(20px, 2vw, 26px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 8px', lineHeight: 1.2 }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(20px, 2vw, 26px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 8px', lineHeight: 1.2 }}>
               {title}
             </p>
             {body && (
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, maxWidth: '480px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6, maxWidth: '480px' }}>
                 {body}
               </p>
             )}
@@ -31,7 +31,7 @@ export default function CrossSellBanner({ title, body, buttonLabel, href, produc
             href={href}
             className="cross-sell-btn"
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.12em',
@@ -69,10 +69,10 @@ export default function CrossSellBanner({ title, body, buttonLabel, href, produc
                   <Image fill src={p.img} alt={p.name} sizes="64px" style={{ objectFit: 'cover' }} />
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', margin: '0 0 4px', lineHeight: 1.3 }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', margin: '0 0 4px', lineHeight: 1.3 }}>
                     {p.name}
                   </p>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', margin: 0 }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', margin: 0 }}>
                     {p.price}
                   </p>
                 </div>

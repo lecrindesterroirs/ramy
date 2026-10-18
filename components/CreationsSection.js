@@ -99,11 +99,11 @@ function Card({ item, lang = 'fr' }) {
         />
       </div>
       <div style={{ background: '#F5F5F0', padding: '18px 20px 22px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '19px', fontWeight: 400, color: '#111111', marginBottom: '6px', margin: '0 0 6px' }}>
+        <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: '#111111', marginBottom: '6px', margin: '0 0 6px' }}>
           {item.label}
         </p>
         {item.description && (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 400, lineHeight: 1.5, color: '#767068', margin: 0 }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 400, lineHeight: 1.5, color: '#767068', margin: 0 }}>
             {item.description}
           </p>
         )}
@@ -124,13 +124,13 @@ export default function CreationsSection({ lang = 'fr' }) {
       }}
     >
       <div className="reveal creations-title-wrap" style={{ padding: '0 72px 40px', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
           {T.eyebrow}
         </p>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '14px' }}>
+        <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '14px' }}>
           {T.titre}
         </h2>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '480px', margin: '0 auto' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '480px', margin: '0 auto' }}>
           {T.corps}
         </p>
       </div>

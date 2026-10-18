@@ -36,7 +36,7 @@ export default function EncartDevisMobile() {
         .encart-devis-mobile { display: none; }
         .encart-devis-catalogue {
           display: block; margin: 12px auto 0; background: none; border: none; padding: 0; cursor: pointer;
-          font-family: 'Neue Montreal', sans-serif; font-size: 12.5px; color: var(--accent-deep);
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 12.5px; color: var(--accent-deep);
           text-decoration: underline; text-underline-offset: 3px;
         }
         @media (max-width: 768px) {

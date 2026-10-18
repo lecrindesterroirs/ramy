@@ -11,8 +11,8 @@ import ProofBar from '../../components/ProofBar'
 */
 
 const BASE = 'https://www.lecrin-traiteur.fr'
-const SANS = "'Neue Montreal', sans-serif"
-const SERIF = "'Baskerville Display PT', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 
 const OFFERS = [
   ['Office breakfast', 'From €8 per person', 'Butter pastries, Alain Milliat juices, coffee, fresh fruit. A full breakfast with madeleines, tea and fruit skewers runs €12 to €16 per person, plus delivery.', '/creations/petits-dejeuners-et-pauses'],

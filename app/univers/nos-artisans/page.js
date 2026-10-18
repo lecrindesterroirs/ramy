@@ -83,9 +83,9 @@ function ArtisanCard({ a, en = false }) {
         <Image fill sizes="260px" src={a.img} alt={a.nom} style={{ objectFit: 'cover', objectPosition: a.imgPos || 'center' }} />
       </div>
       <div style={{ padding: '18px 4px 4px', textAlign: 'center' }}>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>{t.specialite || a.specialite}</p>
-        <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)' }}>{a.nom}</p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>{a.ville}</p>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '6px' }}>{t.specialite || a.specialite}</p>
+        <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '18px', fontWeight: 400, color: 'var(--text-primary)' }}>{a.nom}</p>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginTop: '2px' }}>{a.ville}</p>
       </div>
     </Link>
   )
@@ -117,7 +117,7 @@ export default function NosArtisans() {
         <div className="art-carousel-section" style={{ maxWidth: '1440px', margin: '0 auto', padding: '96px 72px' }}>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '32px', gap: '24px' }}>
             <Reveal>
-              <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, color: 'var(--text-primary)' }}>
+              <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, color: 'var(--text-primary)' }}>
                 {T.titre}
               </h2>
             </Reveal>
@@ -131,7 +131,7 @@ export default function NosArtisans() {
             </div>
           </div>
           <Reveal>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '620px', marginBottom: '36px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '620px', marginBottom: '36px' }}>
               {T.intro}
             </p>
           </Reveal>
@@ -157,8 +157,8 @@ export default function NosArtisans() {
             </Reveal>
             <Reveal delay={80}>
               <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '10px' }}>{T.engagement}</p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'rgba(42,32,19,0.78)', maxWidth: '480px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '10px' }}>{T.engagement}</p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'rgba(42,32,19,0.78)', maxWidth: '480px' }}>
                   {T.engagementTexte}
                 </p>
               </div>
@@ -172,7 +172,7 @@ export default function NosArtisans() {
                 ].map((it, i) => (
                   <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100px', textAlign: 'center' }}>
                     <Icon name={it.icon} size={22} color="var(--accent)" />
-                    <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.06em', color: 'rgba(42,32,19,0.7)', lineHeight: 1.4 }}>{it.label}</span>
+                    <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.06em', color: 'rgba(42,32,19,0.7)', lineHeight: 1.4 }}>{it.label}</span>
                   </div>
                 ))}
               </div>
@@ -182,7 +182,7 @@ export default function NosArtisans() {
 
         {/* ── CTA contact ── */}
         <div className="artisans-cta" style={{ borderTop: '1px solid rgba(17,17,17,0.08)', padding: '40px 72px', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
             {T.rejoindre}
             <a href="mailto:commercial@lecrin-traiteur.fr" style={{ color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '1px' }}>
               {T.contact}

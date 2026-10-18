@@ -15,8 +15,8 @@ import { reecrireLiensEn } from '../../../../lib/i18n'
 */
 
 const BASE = 'https://www.lecrin-traiteur.fr'
-const SANS = "'Neue Montreal', sans-serif"
-const SERIF = "'Baskerville Display PT', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 const isoDateTime = (d) => (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) ? `${d}T09:00:00+02:00` : d
 
 export const dynamicParams = false
@@ -129,13 +129,13 @@ export default function EnArticlePage({ params }) {
       </main>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-        .article-body p { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
-        .article-body h2 { font-family: 'Baskerville Display PT', Georgia, serif; font-size: 26px; font-weight: 400; color: var(--text-primary); margin: 40px 0 16px; }
-        .article-body h3 { font-family: 'Neue Montreal', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin: 32px 0 12px; }
-        .article-body ul, .article-body ol { font-family: 'Neue Montreal', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text-secondary); padding-left: 24px; margin-bottom: 20px; }
+        .article-body p { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+        .article-body h2 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 26px; font-weight: 400; color: var(--text-primary); margin: 40px 0 16px; }
+        .article-body h3 { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin: 32px 0 12px; }
+        .article-body ul, .article-body ol { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.8; color: var(--text-secondary); padding-left: 24px; margin-bottom: 20px; }
         .article-body strong { color: var(--text-primary); font-weight: 500; }
         .article-body blockquote { border-left: 2px solid var(--accent); padding: 8px 0 8px 24px; margin: 32px 0; font-style: italic; color: var(--text-secondary); }
-        .article-body table { width: 100%; border-collapse: collapse; margin: 32px 0; font-family: 'Neue Montreal', sans-serif; font-size: 13px; }
+        .article-body table { width: 100%; border-collapse: collapse; margin: 32px 0; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; }
         .article-body th { background: var(--bg-secondary); color: var(--text-primary); font-weight: 500; text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--accent); letter-spacing: 0.03em; font-size: 11px; text-transform: uppercase; }
         .article-body td { padding: 12px 16px; border-bottom: 1px solid rgba(17,17,17,0.07); color: var(--text-secondary); line-height: 1.55; vertical-align: top; }
         .article-body tr:last-child td { border-bottom: none; }
@@ -143,7 +143,7 @@ export default function EnArticlePage({ params }) {
         .article-body td strong { color: var(--accent); font-weight: 500; }
         .article-body .faq-block details { border-bottom: 1px solid rgba(17,17,17,0.08); padding: 14px 0; }
         .article-body .faq-block details:first-child { border-top: 1px solid rgba(17,17,17,0.08); }
-        .article-body .faq-block summary { cursor: pointer; font-family: 'Neue Montreal', sans-serif; font-size: 14px; color: var(--text-primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .article-body .faq-block summary { cursor: pointer; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; color: var(--text-primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
         .article-body .faq-block summary::after { content: '+'; font-size: 18px; color: var(--accent); flex-shrink: 0; margin-left: 12px; }
         .article-body .faq-block details[open] summary::after { content: '−'; }
         .article-body .faq-block details p { margin-top: 10px; margin-bottom: 0; font-size: 14px; line-height: 1.7; }

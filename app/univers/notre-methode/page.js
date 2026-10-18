@@ -6,8 +6,8 @@ import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../../../lib/i18n'
 
-const SERIF = "'Baskerville Display PT', Georgia, serif"
-const SANS = "'Neue Montreal', sans-serif"
+const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
+const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
 const h2 = { fontFamily: SERIF, fontSize: 'clamp(22px, 2.6vw, 30px)', fontWeight: 400, lineHeight: 1.2, color: 'var(--text-primary)', margin: '44px 0 14px' }
 const p = { fontFamily: SANS, fontSize: '16px', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '16px' }
 

@@ -11,12 +11,12 @@ export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, 
     <section style={{ background, borderTop: '1px solid rgba(17,17,17,0.07)', padding: '72px 72px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {eyebrow && (
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
             {eyebrow}
           </p>
         )}
         {title && (
-          <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '36px' }}>
+          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 34px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '36px' }}>
             {title}
           </h2>
         )}
@@ -48,14 +48,14 @@ export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, 
               )}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: it.img ? '22px 26px 26px' : '28px 26px' }}>
                 {it.meta && (
-                  <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                  <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
                     {it.meta}
                   </span>
                 )}
-                <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.3, color: 'var(--text-primary)' }}>
+                <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.3, color: 'var(--text-primary)' }}>
                   {it.title}
                 </span>
-                <span style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--accent-deep)', marginTop: '2px' }}>
+                <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--accent-deep)', marginTop: '2px' }}>
                   {cta || 'Découvrir →'}
                 </span>
               </div>

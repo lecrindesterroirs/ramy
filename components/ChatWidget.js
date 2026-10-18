@@ -299,7 +299,7 @@ export default function ChatWidget() {
           position: absolute; right: 68px; top: 50%; transform: translateY(-50%) translateX(6px);
           padding: 9px 13px; background: #FFFFFF; color: #1C1614; white-space: nowrap;
           border: 1px solid rgba(17,17,17,.1); box-shadow: 0 8px 22px rgba(17,17,17,.1);
-          font-family: 'Neue Montreal', sans-serif; font-size: 10.5px; font-weight: 500;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 10.5px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.12em; line-height: 1;
           opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease;
         }
@@ -342,10 +342,10 @@ export default function ChatWidget() {
         }
         .chat-titre { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
         .chat-marque {
-          font-family: 'Baskerville Display PT', Georgia, serif; font-size: 17px; line-height: 1; color: #1C1614;
+          font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 17px; line-height: 1; color: #1C1614;
         }
         .chat-sous {
-          font-family: 'Neue Montreal', sans-serif; font-size: 9.5px; font-weight: 500;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 9.5px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.14em; color: #875E10;
         }
         .chat-langues { display: flex; gap: 5px; flex-shrink: 0; }
@@ -376,12 +376,12 @@ export default function ChatWidget() {
         .chat-tour:last-child { border-bottom: none; }
         .chat-qui {
           display: block; margin-bottom: 11px;
-          font-family: 'Neue Montreal', sans-serif; font-size: 9.5px; font-weight: 500;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 9.5px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.18em; color: #875E10;
         }
         .chat-tour-moi .chat-qui { color: #A39B8E; }
         .chat-tour p {
-          font-family: 'Neue Montreal', sans-serif; font-size: 14.5px; line-height: 1.75;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14.5px; line-height: 1.75;
           color: #1C1614; overflow-wrap: anywhere;
         }
         .chat-tour p + p { margin-top: 13px; }
@@ -408,7 +408,7 @@ export default function ChatWidget() {
           display: flex; align-items: center; justify-content: space-between; gap: 14px;
           width: 100%; padding: 15px 0; background: none; text-align: left;
           border: none; border-top: 1px solid rgba(17,17,17,.07);
-          font-family: 'Neue Montreal', sans-serif; font-size: 13.5px; color: #1C1614;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13.5px; color: #1C1614;
           cursor: pointer; transition: color .25s ease;
         }
         .chat-suggestion span { color: #C6BCAB; font-size: 13px; transition: transform .25s ease, color .25s ease; }
@@ -418,13 +418,13 @@ export default function ChatWidget() {
         /* ── Formulaire pré-rempli ── */
         .chat-form { padding: 22px 0 6px; border-top: 1px solid rgba(17,17,17,.07); }
         .chat-form-intro {
-          margin: -4px 0 16px; font-family: 'Neue Montreal', sans-serif;
+          margin: -4px 0 16px; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
           font-size: 13px; line-height: 1.6; color: #605A4F;
         }
         .chat-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
         .chat-chip {
           padding: 7px 12px; background: none; border: 1px solid rgba(17,17,17,.14);
-          font-family: 'Neue Montreal', sans-serif; font-size: 11.5px; color: #605A4F;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11.5px; color: #605A4F;
           cursor: pointer; transition: all .2s ease;
         }
         .chat-chip:hover { border-color: rgba(135,94,16,.5); color: #875E10; }
@@ -434,13 +434,13 @@ export default function ChatWidget() {
         .chat-champ { display: block; margin-bottom: 10px; }
         .chat-champ > span {
           display: block; margin-bottom: 5px;
-          font-family: 'Neue Montreal', sans-serif; font-size: 9.5px; font-weight: 500;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 9.5px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.14em; color: #A39B8E;
         }
         .chat-champ input, .chat-champ textarea {
           width: 100%; padding: 10px 12px; background: #FDFBF7;
           border: 1px solid rgba(17,17,17,.1);
-          font-family: 'Neue Montreal', sans-serif; font-size: 14px; color: #1C1614;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; color: #1C1614;
           resize: vertical;
         }
         .chat-champ input:focus-visible, .chat-champ textarea:focus-visible {
@@ -449,14 +449,14 @@ export default function ChatWidget() {
         .chat-envoi {
           width: 100%; margin-top: 14px; padding: 15px 20px;
           background: #111111; color: #FFFFFF; border: 1px solid #111111;
-          font-family: 'Neue Montreal', sans-serif; font-size: 11.5px; font-weight: 500;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11.5px; font-weight: 500;
           text-transform: uppercase; letter-spacing: 0.13em;
           cursor: pointer; transition: opacity .25s ease;
         }
         .chat-envoi:hover:not(:disabled) { opacity: .85; }
         .chat-envoi:disabled { opacity: .45; cursor: default; }
         .chat-form-erreur {
-          margin-top: 10px; font-family: 'Neue Montreal', sans-serif; font-size: 12px; color: #9A3B2F;
+          margin-top: 10px; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 12px; color: #9A3B2F;
         }
 
         /* ── Saisie ── */
@@ -467,7 +467,7 @@ export default function ChatWidget() {
         }
         .chat-barre input {
           flex: 1; min-width: 0; padding: 17px 8px 17px 20px; border: none; background: transparent;
-          font-family: 'Neue Montreal', sans-serif; font-size: 14.5px; color: #1C1614;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14.5px; color: #1C1614;
         }
         .chat-barre input::placeholder { color: #A39B8E; }
         .chat-barre input:focus-visible { outline: 1px solid #875E10; outline-offset: -1px; }
@@ -481,7 +481,7 @@ export default function ChatWidget() {
 
         .chat-mention {
           padding: 0 20px 16px; background: #FFFFFF;
-          font-family: 'Neue Montreal', sans-serif; font-size: 10px; line-height: 1.6; color: #A39B8E;
+          font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 10px; line-height: 1.6; color: #A39B8E;
         }
 
         @media (max-width: 768px) {

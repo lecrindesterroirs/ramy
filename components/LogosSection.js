@@ -48,7 +48,7 @@ export default function LogosSection({ subtitle, subtitleEn, style: extraStyle, 
       }}
     >
       <p style={{
-        fontFamily: "'Neue Montreal', sans-serif",
+        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
         fontSize: '11px',
         fontWeight: 500,
         letterSpacing: '0.18em',
@@ -62,7 +62,7 @@ export default function LogosSection({ subtitle, subtitleEn, style: extraStyle, 
 
       {subtitle && (
         <p style={{
-          fontFamily: "'Baskerville Display PT', Georgia, serif",
+          fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
           fontSize: 'clamp(20px, 2vw, 28px)',
           fontWeight: 400,
           color: 'var(--text-primary)',

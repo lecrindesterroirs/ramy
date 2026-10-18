@@ -37,7 +37,7 @@ export default function ArticleCard({ article }) {
         marginBottom: '10px',
       }}>
         <span style={{
-          fontFamily: "'Neue Montreal', sans-serif",
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
           fontSize: '10px',
           fontWeight: 500,
           letterSpacing: '0.14em',
@@ -48,7 +48,7 @@ export default function ArticleCard({ article }) {
         </span>
         <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
         <span style={{
-          fontFamily: "'Neue Montreal', sans-serif",
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
           fontSize: '11px',
           color: 'rgba(17,17,17,0.45)',
           letterSpacing: '0.04em',
@@ -57,7 +57,7 @@ export default function ArticleCard({ article }) {
         </span>
         <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
         <span style={{
-          fontFamily: "'Neue Montreal', sans-serif",
+          fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
           fontSize: '11px',
           color: 'rgba(17,17,17,0.45)',
           letterSpacing: '0.04em',
@@ -68,7 +68,7 @@ export default function ArticleCard({ article }) {
 
       {/* Titre */}
       <h2 style={{
-        fontFamily: "'Baskerville Display PT', Georgia, serif",
+        fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
         fontSize: '20px',
         fontWeight: 400,
         lineHeight: 1.25,
@@ -80,7 +80,7 @@ export default function ArticleCard({ article }) {
 
       {/* Extrait */}
       <p style={{
-        fontFamily: "'Neue Montreal', sans-serif",
+        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
         fontSize: '13px',
         lineHeight: 1.7,
         color: 'var(--text-secondary)',
@@ -91,7 +91,7 @@ export default function ArticleCard({ article }) {
 
       {/* Lire */}
       <span style={{
-        fontFamily: "'Neue Montreal', sans-serif",
+        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
         fontSize: '11px',
         fontWeight: 500,
         letterSpacing: '0.1em',

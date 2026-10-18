@@ -20,7 +20,7 @@ export default function EvenementDetail() {
       <>
         <Navbar showBanner={true} />
         <main style={{ paddingTop: 'calc(var(--banner-h) + var(--nav-h))', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', color: 'var(--text-secondary)' }}>
+          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', color: 'var(--text-secondary)' }}>
             Événement non trouvé.
           </p>
         </main>
@@ -46,7 +46,7 @@ export default function EvenementDetail() {
             <img loading="lazy" src="/logo-footer.svg" alt="L'Écrin" style={{ height: '30px', width: 'auto', margin: '0 auto 18px', opacity: 0.9, display: 'block' }} />
 
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '10px',
               fontWeight: 500,
               letterSpacing: '0.24em',
@@ -58,7 +58,7 @@ export default function EvenementDetail() {
             </p>
 
             <h1 style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
               fontSize: 'clamp(34px, 4.4vw, 60px)',
               fontWeight: 400,
               lineHeight: 1.02,
@@ -71,7 +71,7 @@ export default function EvenementDetail() {
             <span style={{ display: 'block', width: '44px', height: '1px', background: 'var(--accent)', margin: '22px auto' }} />
 
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '14px',
               lineHeight: 1.7,
               color: 'var(--text-secondary)',
@@ -82,7 +82,7 @@ export default function EvenementDetail() {
             </p>
 
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '10px',
               fontWeight: 500,
               letterSpacing: '0.18em',
@@ -120,7 +120,7 @@ export default function EvenementDetail() {
           {/* Colonne gauche */}
           <div>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.18em',
@@ -131,7 +131,7 @@ export default function EvenementDetail() {
               L'événement
             </p>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '16px',
               lineHeight: 1.85,
               color: 'var(--text-secondary)',
@@ -142,7 +142,7 @@ export default function EvenementDetail() {
 
             <div style={{ borderLeft: '2px solid var(--accent)', paddingLeft: '24px' }}>
               <p style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '9px',
                 fontWeight: 500,
                 letterSpacing: '0.18em',
@@ -153,7 +153,7 @@ export default function EvenementDetail() {
                 {ev.differentiateur.label}
               </p>
               <p style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '14px',
                 lineHeight: 1.75,
                 color: 'var(--text-primary)',
@@ -166,7 +166,7 @@ export default function EvenementDetail() {
           {/* Colonne droite */}
           <div style={{ background: 'var(--bg-secondary)', padding: '40px' }}>
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.18em',
@@ -197,7 +197,7 @@ export default function EvenementDetail() {
                     flexShrink: 0,
                   }} />
                   <span style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '13px',
                     color: 'var(--text-primary)',
                   }}>
@@ -210,7 +210,7 @@ export default function EvenementDetail() {
             <a
               href="/devis"
               style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
                 letterSpacing: '0.14em',
@@ -250,7 +250,7 @@ export default function EvenementDetail() {
           >
             {/* Label article */}
             <p style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '10px',
               fontWeight: 500,
               letterSpacing: '0.22em',
@@ -263,7 +263,7 @@ export default function EvenementDetail() {
 
             {/* Titre article */}
             <h2 style={{
-              fontFamily: "'Baskerville Display PT', Georgia, serif",
+              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
               fontSize: 'clamp(24px, 3vw, 42px)',
               fontWeight: 400,
               lineHeight: 1.1,
@@ -279,7 +279,7 @@ export default function EvenementDetail() {
               {ev.article.sections.map((section, i) => (
                 <div key={i}>
                   <h3 style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '11px',
                     fontWeight: 500,
                     letterSpacing: '0.14em',
@@ -290,7 +290,7 @@ export default function EvenementDetail() {
                     {section.heading}
                   </h3>
                   <p style={{
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '15px',
                     lineHeight: 1.9,
                     color: 'var(--text-secondary)',
@@ -319,7 +319,7 @@ export default function EvenementDetail() {
               flexWrap: 'wrap',
             }}>
               <p style={{
-                fontFamily: "'Neue Montreal', sans-serif",
+                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '14px',
                 lineHeight: 1.6,
                 color: 'var(--text-primary)',
@@ -330,7 +330,7 @@ export default function EvenementDetail() {
               <a
                 href="/devis"
                 style={{
-                  fontFamily: "'Neue Montreal', sans-serif",
+                  fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '10px',
                   fontWeight: 500,
                   letterSpacing: '0.14em',
@@ -366,7 +366,7 @@ export default function EvenementDetail() {
           }}
         >
           <p style={{
-            fontFamily: "'Baskerville Display PT', Georgia, serif",
+            fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
             fontSize: 'clamp(22px, 2.8vw, 38px)',
             fontWeight: 400,
             color: 'var(--text-primary)',
@@ -376,7 +376,7 @@ export default function EvenementDetail() {
             D'autres événements à organiser ?
           </p>
           <p style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '14px',
             color: 'var(--text-secondary)',
             maxWidth: '380px',
@@ -388,7 +388,7 @@ export default function EvenementDetail() {
           <a
             href="/devis"
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 500,
               letterSpacing: '0.12em',
@@ -417,7 +417,7 @@ export default function EvenementDetail() {
           <a
             href="/creations/evenements-saisonniers"
             style={{
-              fontFamily: "'Neue Montreal', sans-serif",
+              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
               fontWeight: 400,
               letterSpacing: '0.14em',

@@ -77,24 +77,24 @@ export default function OctobreRosePage() {
           <div className="or-hero-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
 
             <div>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '18px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '18px' }}>
                 Événement solidaire
               </p>
-              <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(38px, 4.6vw, 66px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.015em', color: ENCRE, marginBottom: '22px' }}>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(38px, 4.6vw, 66px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.015em', color: ENCRE, marginBottom: '22px' }}>
                 Octobre <span style={{ color: ROSE }}>Rose</span>
               </h1>
               <span style={{ display: 'block', width: '48px', height: '2px', background: ROSE, marginBottom: '26px' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '17px', lineHeight: 1.55, color: ENCRE, marginBottom: '20px', maxWidth: '440px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '17px', lineHeight: 1.55, color: ENCRE, marginBottom: '20px', maxWidth: '440px' }}>
                 Un moment gourmand et engagé pour sensibiliser vos équipes au dépistage du cancer du sein.
               </p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.72)', marginBottom: '40px', maxWidth: '460px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.72)', marginBottom: '40px', maxWidth: '460px' }}>
                 À travers une sélection de douceurs roses et de produits de saison, nous vous proposons une pause conviviale et solidaire. 1 € est reversé par convive à la recherche contre le cancer du sein, sur toutes nos commandes livrées en octobre.
               </p>
 
               <div style={{ marginBottom: '36px' }}>
                 <Link
                   href="/devis?theme=octobre-rose"
-                  style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                  style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                   onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                 >
@@ -108,10 +108,10 @@ export default function OctobreRosePage() {
                   return (
                     <div key={b.titre}>
                       <Icon />
-                      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.03em', color: ENCRE, margin: '10px 0 3px', textTransform: 'uppercase' }}>
+                      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.03em', color: ENCRE, margin: '10px 0 3px', textTransform: 'uppercase' }}>
                         {b.titre}
                       </p>
-                      <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', color: 'rgba(26,26,24,0.6)', lineHeight: 1.4 }}>
+                      <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(26,26,24,0.6)', lineHeight: 1.4 }}>
                         {b.sub}
                       </p>
                     </div>
@@ -131,15 +131,15 @@ export default function OctobreRosePage() {
           <div className="or-programme" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px' }}>
             <div className="or-programme-head" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', marginBottom: '48px', alignItems: 'start' }}>
               <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '16px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '16px' }}>
                   Au programme
                 </p>
-                <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: ENCRE }}>
+                <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: ENCRE }}>
                   Une sélection gourmande <br />aux couleurs d'Octobre Rose
                 </h2>
               </div>
               <div style={{ borderLeft: `1px solid ${ROSE}`, paddingLeft: '28px', alignSelf: 'center' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.7)' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.7)' }}>
                   Des créations sucrées et fraîches, pensées spécialement pour l'occasion, alliant plaisir et engagement. Chaque commande contribue directement à la recherche contre le cancer du sein.
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function OctobreRosePage() {
                   <div className="or-programme-img" style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: ROSE_PALE, marginBottom: '12px', transition: 'box-shadow 0.3s ease' }}>
                     <Image fill sizes="(max-width: 900px) 33vw, 16vw" src={p.img} alt={p.label} style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }} />
                   </div>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '12px', lineHeight: 1.4, color: ENCRE, textAlign: 'center' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.4, color: ENCRE, textAlign: 'center' }}>
                     {p.label}
                   </p>
                 </Link>
@@ -161,7 +161,7 @@ export default function OctobreRosePage() {
             <div style={{ textAlign: 'center', marginTop: '48px' }}>
               <Link
                 href="/devis?theme=octobre-rose"
-                style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
+                style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
@@ -177,20 +177,20 @@ export default function OctobreRosePage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
               <IconRuban />
               <div>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: ROSE, marginBottom: '8px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: ROSE, marginBottom: '8px' }}>
                   Notre engagement
                 </p>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, color: ENCRE, lineHeight: 1.15 }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, color: ENCRE, lineHeight: 1.15 }}>
                   1 € reversé par convive <br />sur toutes nos commandes d'octobre.
                 </p>
               </div>
             </div>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: 'rgba(26,26,24,0.65)', maxWidth: '220px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(26,26,24,0.65)', maxWidth: '220px' }}>
               Le montant total est publié en fin de mois.
             </p>
             <a
               href="/devis?theme=octobre-rose"
-              style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease', whiteSpace: 'nowrap' }}
+              style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease', whiteSpace: 'nowrap' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
@@ -202,19 +202,19 @@ export default function OctobreRosePage() {
         {/* ── Article SEO (contenu existant conservé) ── */}
         <div className="or-article" style={{ borderTop: '1px solid rgba(17,17,17,0.07)', background: '#FFFFFF' }}>
           <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 96px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: ROSE, marginBottom: '20px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: ROSE, marginBottom: '20px' }}>
               Guide pratique
             </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(24px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: ENCRE, marginBottom: '56px', letterSpacing: '-0.01em' }}>
+            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: ENCRE, marginBottom: '56px', letterSpacing: '-0.01em' }}>
               {ev.article.titre}
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
               {ev.article.sections.map((section, i) => (
                 <div key={i}>
-                  <h3 style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: ENCRE, marginBottom: '16px' }}>
+                  <h3 style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: ENCRE, marginBottom: '16px' }}>
                     {section.heading}
                   </h3>
-                  <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)' }}>
+                  <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)' }}>
                     {section.texte}
                   </p>
                 </div>
@@ -227,7 +227,7 @@ export default function OctobreRosePage() {
         <div style={{ background: '#FFFFFF', padding: '0 72px 40px', display: 'flex', justifyContent: 'center' }}>
           <a
             href="/creations/evenements-saisonniers"
-            style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
+            style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
           >
             ← Voir tous les événements
           </a>

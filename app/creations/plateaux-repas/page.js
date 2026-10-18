@@ -107,7 +107,7 @@ function MenuCard({ produit }) {
           transition: 'opacity 0.4s ease',
         }}>
           <span style={{
-            fontFamily: "'Neue Montreal', sans-serif",
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
             fontSize: '11px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
             color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '10px 24px',
             transform: hovered ? 'translateY(0)' : 'translateY(6px)',
@@ -120,13 +120,13 @@ function MenuCard({ produit }) {
 
       {/* Contenu, nom, catégorie, prix */}
       <div style={{ padding: '16px 16px 16px' }}>
-        <h3 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '9px', transition: 'color 0.25s ease' }}>
+        <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.2, color: hovered ? '#E0A126' : '#111111', marginBottom: '9px', transition: 'color 0.25s ease' }}>
           {produit.nom}
         </h3>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.13em', textTransform: 'uppercase', color: catColor, marginBottom: '12px' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.13em', textTransform: 'uppercase', color: catColor, marginBottom: '12px' }}>
           {catLabel}
         </p>
-        <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#111111' }}>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: '#111111' }}>
           À partir de {prixMenu(produit)} €<span style={{ color: 'rgba(17,17,17,0.3)', fontSize: '11px', marginLeft: '3px' }}>HT</span>
         </p>
       </div>
@@ -144,7 +144,7 @@ function TextTab({ label, active, onClick, size = '16px', gap = '10px', underlin
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        fontFamily: "'Neue Montreal', sans-serif",
+        fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
         fontSize: size,
         fontWeight: 400,
         color: active ? '#111111' : hovered ? '#4A453F' : '#B4AFA8',
@@ -234,16 +234,16 @@ function PlateauxRepasInner() {
             {/* Texte overlay, aligné à gauche, centré verticalement, fade-up au montage, rejoué à chaque changement de collection */}
             <Reveal key={`hero-text-${col.key}`} mode="mount" y={16}>
               <div className="pr-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
                   {COLLECTIONS.length > 1 ? `Collection ${col.label}` : 'Déjeuner · Paris & Île-de-France'}
                 </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
+                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                   {COLLECTIONS.length > 1 ? col.label : 'Plateaux repas'}
                 </h1>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px', marginBottom: '20px' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px', marginBottom: '20px' }}>
                   {col.description}
                 </p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', letterSpacing: '0.04em', color: 'rgba(255,255,255,0.9)' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', letterSpacing: '0.04em', color: 'rgba(255,255,255,0.9)' }}>
                   À partir de <span style={{ fontSize: '15px' }}>{col.prix} €</span> HT · par personne
                 </p>
               </div>
@@ -269,7 +269,7 @@ function PlateauxRepasInner() {
                   key={c.key}
                   onClick={() => handleCollectionChange(c.key)}
                   style={{
-                    fontFamily: "'Baskerville Display PT', Georgia, serif",
+                    fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
                     fontSize: '19px',
                     fontWeight: 400,
                     color: active ? '#111111' : '#A7A29B',
@@ -299,7 +299,7 @@ function PlateauxRepasInner() {
 
           {/* Filtres verticaux */}
           <aside className="pr-filters" style={{ position: 'sticky', top: '104px' }}>
-            <p className="pr-filters-label" style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
+            <p className="pr-filters-label" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '16px' }}>
               Filtrer
             </p>
             {filtresDispo.map(f => {
@@ -310,7 +310,7 @@ function PlateauxRepasInner() {
                   onClick={() => handleFilterChange(f.key)}
                   style={{
                     display: 'block', width: '100%', textAlign: 'left',
-                    fontFamily: "'Neue Montreal', sans-serif",
+                    fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                     fontSize: '13.5px',
                     fontWeight: active ? 500 : 400,
                     color: active ? '#111111' : '#9B9590',
@@ -335,10 +335,10 @@ function PlateauxRepasInner() {
           <div className="pr-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px 24px' }}>
             {produitsAffiches.length === 0 ? (
               <div style={{ gridColumn: '1/-1', padding: '48px 0' }}>
-                <p style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: '20px', color: '#111111', marginBottom: '10px' }}>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', color: '#111111', marginBottom: '10px' }}>
                   Aucun menu dans cette catégorie
                 </p>
-                <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', color: '#6E675F' }}>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: '#6E675F' }}>
                   Sélectionnez un autre filtre pour parcourir la collection.
                 </p>
               </div>
