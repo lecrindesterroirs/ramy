@@ -45,6 +45,67 @@ const fallbackFaqs = [
   },
 ]
 
+/*
+  Mêmes dix questions, mêmes faits, en anglais. Les chiffres — veille 14h,
+  6h30, 50 € HT, 29 € HT, 01 74 54 23 10 — sont identiques des deux côtés :
+  un écart entre les deux langues serait une contradiction lue par les IA.
+*/
+const faqsEn = [
+  {
+    question: 'How far ahead do we need to order?',
+    reponse: 'For a standard order, the deadline is 2 pm the day before. Your order is delivered the next morning from 6:30 am, at the time you choose.',
+  },
+  {
+    question: 'Do you take last-minute orders?',
+    reponse: 'The rule is still 2 pm the day before, for delivery from 6:30 am. For a same-morning request, call 01 74 54 23 10: the answer depends on what is available that day. In Boulogne-Billancourt, where our kitchen is, we take orders until 10 am from that day\'s selection.',
+  },
+  {
+    question: 'Is there a minimum order, and a delivery charge?',
+    reponse: 'The minimum order is €50 excl. VAT. Delivery is €29 excl. VAT for Paris and nearby towns. Get in touch for other addresses across Île-de-France.',
+  },
+  {
+    question: 'Do you issue company invoices with VAT?',
+    reponse: 'Yes. We issue company invoices showing VAT on every order. You can give us your company name, your VAT number and the billing address when you order, or contact us directly.',
+  },
+  {
+    question: 'How do you handle specific dietary needs?',
+    reponse: 'Several of our products suit specific diets: our Mado Paris madeleines are made with organic ingredients and no palm oil, our fruit skewers and compotes are vegan, and some loaf cakes come gluten-free. For lactose-free, we can adapt the selection to what is available that day. The whole menu is halal and pork-free as standard, at no extra cost. Tell us your constraints when you order and we work around them.',
+  },
+  {
+    question: 'Do you provide cups and napkins?',
+    reponse: 'Yes, everything is included: cups, napkins, disposable plates and cutlery, properly presented. Every order arrives ready to serve. There is nothing for you to handle — just the moment with your team.',
+  },
+  {
+    question: 'Can an order be changed or cancelled?',
+    reponse: 'Changes are accepted until 2 pm the day before delivery. For cancellations, contact us as soon as you can at commercial@lecrin-traiteur.fr; we do what we can depending on how much notice is left.',
+  },
+  {
+    question: 'Does everything arrive ready to serve?',
+    reponse: 'Yes. Everything arrives packed and ready to serve as it is. Depending on the package you choose, we can also set it up on site.',
+  },
+  {
+    question: 'Do you cover the whole of Île-de-France?',
+    reponse: 'Yes, we deliver across Île-de-France: central Paris, La Défense, Neuilly, Boulogne, Versailles, Massy, Saint-Denis and more than 20 towns in the 92, 93, 94 and 78. See our delivery areas page or contact us to confirm your address.',
+  },
+  {
+    question: 'How does asking for a quote work?',
+    reponse: 'Fill in our online form or email us at commercial@lecrin-traiteur.fr. We come back to you within 24 hours with a proposal built around your event and your budget.',
+  },
+]
+
+const T_FAQ = {
+  fr: {
+    eyebrow: 'Questions fréquentes',
+    titre: "Ce qu'on nous demande souvent.",
+    corps: 'Nous avons réuni les réponses essentielles pour préparer votre prestation avec simplicité.',
+  },
+  en: {
+    eyebrow: 'Frequently asked questions',
+    titre: 'What people ask us most.',
+    corps: 'The answers that matter before you order, in one place.',
+  },
+}
+
 // JSON-LD FAQ schema pour la homepage
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -56,16 +117,21 @@ const faqSchema = {
   })),
 }
 
-export default function FAQSection() {
+export default function FAQSection({ lang = 'fr' }) {
   const [open, setOpen]   = useState(null)
+  const T = T_FAQ[lang] || T_FAQ.fr
   // FAQ 100% locale (pas de WordPress) : fallbackFaqs est l'unique source.
-  const faqs = fallbackFaqs
+  const faqs = lang === 'en' ? faqsEn : fallbackFaqs
 
   return (
     <section className="faq-section" style={{ background: 'var(--bg-primary)', padding: '120px 0' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(
+          lang === 'en'
+            ? { ...faqSchema, mainEntity: faqsEn.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.reponse } })) }
+            : faqSchema
+        ) }}
       />
       <div className="faq-inner" style={{ maxWidth: '1160px', margin: '0 auto', padding: '0 40px' }}>
 
@@ -77,7 +143,7 @@ export default function FAQSection() {
             textTransform: 'uppercase', color: 'var(--accent-deep)',
             marginBottom: '20px', textAlign: 'center',
           }}>
-            Questions fréquentes
+            {T.eyebrow}
           </p>
           <h2 style={{
             fontFamily: "'Baskerville Display PT', Georgia, serif",
@@ -85,14 +151,14 @@ export default function FAQSection() {
             lineHeight: 1.1, letterSpacing: '-0.01em',
             color: 'var(--text-primary)', marginBottom: '20px', textAlign: 'center',
           }}>
-            Ce qu'on nous demande souvent.
+            {T.titre}
           </h2>
           <p style={{
             fontFamily: "'Neue Montreal', sans-serif",
             fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)',
             textAlign: 'center', maxWidth: '480px', margin: '0 auto',
           }}>
-            Nous avons réuni les réponses essentielles pour préparer votre prestation avec simplicité.
+            {T.corps}
           </p>
         </div>
 

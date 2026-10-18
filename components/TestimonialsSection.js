@@ -53,7 +53,50 @@ function QuoteMark({ size = 34 }) {
   return <span style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: `${size}px`, lineHeight: 1, color: 'var(--accent-deep)', display: 'block' }}>❝</span>
 }
 
-export default function TestimonialsSection() {
+/*
+  Textes anglais. Les citations sont les mots réels de personnes nommées :
+  la version anglaise est donc présentée comme une traduction (`traduit`),
+  affichée sous la signature. On ne met pas des phrases anglaises dans la
+  bouche de quelqu'un sans le dire.
+*/
+const EN_TEMOIGNAGES = {
+  'Le Monde': {
+    context: 'Press breakfast',
+    quote: 'Every single product got excellent feedback — the yoghurts, the pastries, the fruit juices — with a special mention for the madeleines, which were delicious, and the strawberry nectar, which went down extremely well.',
+    role: 'Office Manager, Digital Division · Le Monde',
+  },
+  'SIA Partners': {
+    context: 'Company offsite',
+    quote: 'The madeleines are very good, a wide choice of flavours, pastries, juice, and the service was excellent. The driver even helped us set everything up.',
+    role: 'Office Manager · SIA Partners',
+  },
+  'Stellantis': {
+    context: 'Open days',
+    quote: "I have used L'Écrin several times for our client events and our open days, and the experience is always flawless.",
+    role: 'Marketing Manager · Stellantis',
+  },
+}
+
+const T_TEMOIGNAGES = {
+  fr: {
+    eyebrow: 'Ils nous font confiance',
+    titre: 'Ils parlent de leurs événements.',
+    corps: "Des prestations pensées pour les entreprises qui recherchent plus qu'un simple traiteur.",
+    traduit: null,
+  },
+  en: {
+    eyebrow: 'They trust us',
+    titre: 'In their own words.',
+    corps: 'Catering for companies that want more than someone who drops off a box.',
+    traduit: 'Translated from French',
+  },
+}
+
+export default function TestimonialsSection({ lang = 'fr' }) {
+  const T = T_TEMOIGNAGES[lang] || T_TEMOIGNAGES.fr
+  const en = lang === 'en'
+  const loc = (o) => (en && EN_TEMOIGNAGES[o.company]) ? { ...o, ...EN_TEMOIGNAGES[o.company] } : o
+  const vedette = loc(FEATURED)
   // NB : pas de JSON-LD Review/AggregateRating ici, les avis auto-attribués
   // sur sa propre entité sont contraires aux règles Google (risque de flag).
   // Les vraies notes proviennent de la fiche Google Business Profile (5,0★ / 18 avis).
@@ -65,13 +108,13 @@ export default function TestimonialsSection() {
         {/* ── Header ── */}
         <div className="ts-top reveal" style={{ marginBottom: '44px' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-            Ils nous font confiance
+            {T.eyebrow}
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(34px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '18px' }}>
-            Ils parlent de leurs événements.
+            {T.titre}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '13px', lineHeight: 1.7, color: 'rgba(17,17,17,0.66)' }}>
-            Des prestations pensées pour les entreprises qui recherchent plus qu'un simple traiteur.
+            {T.corps}
           </p>
         </div>
 
@@ -81,23 +124,24 @@ export default function TestimonialsSection() {
           {/* Vedette, photo + carte texte côte à côte */}
           <div className="ts-featured" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', border: '1px solid rgba(17,17,17,0.10)', background: '#FFFFFF', overflow: 'hidden' }}>
             <div className="ts-featured-img" style={{ overflow: 'hidden', background: 'var(--bg-secondary)' }}>
-              <img loading="lazy" src={FEATURED.img} alt={`Événement ${FEATURED.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+              <img loading="lazy" src={vedette.img} alt={`Événement ${vedette.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
             </div>
             <div style={{ padding: '34px 38px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <img loading="lazy" src={FEATURED.logo} alt={FEATURED.company} style={{ height: '24px', width: 'auto', marginBottom: '14px', filter: 'grayscale(1)', alignSelf: 'flex-start' }} />
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>{FEATURED.context}</p>
+              <img loading="lazy" src={vedette.logo} alt={vedette.company} style={{ height: '24px', width: 'auto', marginBottom: '14px', filter: 'grayscale(1)', alignSelf: 'flex-start' }} />
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>{vedette.context}</p>
               <QuoteMark size={34} />
               <blockquote style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(16px, 1.5vw, 21px)', fontWeight: 400, lineHeight: 1.32, color: 'var(--text-primary)', fontStyle: 'italic', margin: '10px 0 24px' }}>
-                {FEATURED.quote}
+                {vedette.quote}
               </blockquote>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '3px' }}>{FEATURED.author}</p>
-              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{FEATURED.role}</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '3px' }}>{vedette.author}</p>
+              <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{vedette.role}</p>
+              {T.traduit && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)', marginTop: '5px' }}>{T.traduit}</p>}
             </div>
           </div>
 
           {/* Deux cartes photo + texte */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-            {CARDS.map(t => (
+            {CARDS.map(loc).map(t => (
               <div key={t.company} className="ts-card" style={{ display: 'grid', gridTemplateColumns: '0.62fr 1fr', border: '1px solid rgba(17,17,17,0.10)', background: '#FFFFFF', overflow: 'hidden', flex: 1 }}>
                 <div className="ts-card-img" style={{ overflow: 'hidden', background: 'var(--bg-secondary)' }}>
                   <img loading="lazy" src={t.img} alt={`Événement ${t.company}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
@@ -111,6 +155,7 @@ export default function TestimonialsSection() {
                   </blockquote>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 600, letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '2px' }}>{t.author}</p>
                   <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)' }}>{t.role}</p>
+                  {T.traduit && <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '9px', letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)', marginTop: '4px' }}>{T.traduit}</p>}
                 </div>
               </div>
             ))}
@@ -120,7 +165,7 @@ export default function TestimonialsSection() {
         {/* ── Barre logos ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '56px', paddingTop: '40px' }}>
           <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)', textAlign: 'center', marginBottom: '28px' }}>
-            Ils nous font confiance
+            {T.eyebrow}
           </p>
           <div className="ts-logos" style={{ display: 'grid', gridTemplateColumns: `repeat(${CLIENT_LOGOS.length}, 1fr)`, alignItems: 'center', justifyItems: 'center', gap: '24px' }}>
             {CLIENT_LOGOS.map(logo => (

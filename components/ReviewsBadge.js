@@ -1,17 +1,26 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS } from '../lib/site'
+import { estAnglais } from '../lib/i18n'
 
 // Badge preuve sociale "5,0★ · Avis Google", cliquable vers la fiche GBP.
 // variant   : 'light' (fond clair, texte foncé) | 'onImage' (sur photo/scrim, texte foncé chaud)
 // showCount : afficher le nombre d'avis (par défaut non, juste les étoiles + note)
 export default function ReviewsBadge({ variant = 'light', showCount = false, style = {} }) {
+  // La note vient de la fiche Google : c'est un fait, pas un texte. Seuls le
+  // libellé et le séparateur décimal changent de langue.
+  const en = estAnglais(usePathname() || '/')
+  const note = en ? GBP_RATING_LABEL.replace(',', '.') : GBP_RATING_LABEL
+  const libelle = en
+    ? (showCount ? `${GBP_REVIEWS} Google reviews` : 'Google reviews')
+    : (showCount ? `${GBP_REVIEWS} avis Google` : 'Avis Google')
   const isOnImage = variant === 'onImage'
   const textColor = isOnImage ? 'rgba(24,18,16,0.9)' : 'var(--text-secondary)'
   // L'aria-label doit CONTENIR le texte visible (WCAG 2.5.3), visible = "5,0 · [N ]Avis Google"
-  const ariaLabel = showCount
-    ? `${GBP_RATING_LABEL} · ${GBP_REVIEWS} avis Google, note ${GBP_RATING_LABEL} sur 5, voir la fiche`
-    : `${GBP_RATING_LABEL} · Avis Google, note ${GBP_RATING_LABEL} sur 5, voir la fiche`
+  const ariaLabel = en
+    ? `${note} · ${libelle}, rated ${note} out of 5, see the listing`
+    : `${note} · ${libelle}, note ${note} sur 5, voir la fiche`
 
   return (
     <a
@@ -39,8 +48,8 @@ export default function ReviewsBadge({ variant = 'light', showCount = false, sty
         ))}
       </span>
       <span style={{ fontSize: '13px', fontWeight: 500, letterSpacing: '0.01em', color: textColor, whiteSpace: 'nowrap' }}>
-        <strong style={{ fontWeight: 600, color: isOnImage ? '#171310' : 'var(--text-primary)' }}>{GBP_RATING_LABEL}</strong>
-        {' · '}{showCount ? `${GBP_REVIEWS} avis Google` : 'Avis Google'}
+        <strong style={{ fontWeight: 600, color: isOnImage ? '#171310' : 'var(--text-primary)' }}>{note}</strong>
+        {' · '}{libelle}
       </span>
     </a>
   )

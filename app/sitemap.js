@@ -187,6 +187,7 @@ export default function sitemap() {
     ...slugsPlateauxAperitifsEn().map(id => url(`/en/creations/plateaux-aperitifs/${id}`, 0.74, 'monthly')),
     ...cheminsAnimationsEn().map(c => url(`/en${c}`, 0.72, 'monthly')),
     ...clesCocktailsEn().map(k => url(`/en/creations/cocktails/${k}`, 0.78, 'monthly')),
+    url('/en', 0.90, 'weekly'),   // accueil anglais
     ...INDEX_FAMILLES_EN.map(c => url(`/en${c}`, 0.80, 'weekly')),
     ...cheminsVillesEn().map(c => url(`/en${c}`, 0.70, 'monthly')),
     url('/en/contact', 0.60, 'monthly'),

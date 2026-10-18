@@ -39,7 +39,50 @@ const creations = [
   },
 ]
 
-function Card({ item }) {
+/* Textes anglais, par href : les images et les liens restent les mêmes. */
+const EN_CREATIONS = {
+  '/creations/petits-dejeuners-et-pauses': {
+    label: 'Corporate breakfast',
+    description: 'Delivered from 6:30 am in Paris: pastries, juice, coffee and fresh fruit, from €8 excl. VAT per person.',
+  },
+  '/creations/pauses-gourmandes': {
+    label: 'Afternoon treats',
+    description: 'Madeleines, cookies, loaf cakes and fresh fruit to give your team breaks a shape.',
+  },
+  '/creations/cocktails': {
+    label: 'Cocktail receptions',
+    description: 'Savoury and sweet canapés, built to carry an evening rather than fill a gap.',
+  },
+  '/creations/a-partager': {
+    label: 'Sharing buffet',
+    description: 'Generous buffets in the middle of the table, made to get a room talking.',
+  },
+  '/creations/plateaux-repas': {
+    label: 'Lunch trays',
+    description: 'Fresh, seasonal, balanced menus for a lunch nobody has to apologise for.',
+  },
+  '/creations/boissons': {
+    label: 'Drinks',
+    description: 'Juices, soft drinks, coffee and tea worth putting on the table.',
+  },
+}
+
+const T_CREATIONS = {
+  fr: {
+    eyebrow: 'Notre carte',
+    titre: 'Pour tous les moments de la journée',
+    corps: 'Des instants gourmands, pensés avec passion pour sublimer vos journées.',
+  },
+  en: {
+    eyebrow: 'Our menu',
+    titre: 'For every moment of the working day',
+    corps: 'Breakfasts, lunches, breaks and receptions, each built for the moment it serves.',
+  },
+}
+
+function Card({ item, lang = 'fr' }) {
+  const en = lang === 'en' ? EN_CREATIONS[item.href] : null
+  item = en ? { ...item, ...en, href: `/en${item.href}` } : item
   return (
     <a
       href={item.href}
@@ -69,7 +112,8 @@ function Card({ item }) {
   )
 }
 
-export default function CreationsSection() {
+export default function CreationsSection({ lang = 'fr' }) {
+  const T = T_CREATIONS[lang] || T_CREATIONS.fr
   return (
     <section
       className="creations-section"
@@ -81,13 +125,13 @@ export default function CreationsSection() {
     >
       <div className="reveal creations-title-wrap" style={{ padding: '0 72px 40px', textAlign: 'center' }}>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '14px' }}>
-          Notre carte
+          {T.eyebrow}
         </p>
         <h2 style={{ fontFamily: "'Baskerville Display PT', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '14px' }}>
-          Pour tous les moments de la journée
+          {T.titre}
         </h2>
         <p style={{ fontFamily: "'Neue Montreal', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: '480px', margin: '0 auto' }}>
-          Des instants gourmands, pensés avec passion pour sublimer vos journées.
+          {T.corps}
         </p>
       </div>
 
@@ -95,7 +139,7 @@ export default function CreationsSection() {
         <div className="creations-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '6px', maxWidth: '1280px', margin: '0 auto' }}>
           {creations.map((item) => (
             <div key={item.label} style={{ overflow: 'hidden' }}>
-              <Card item={item} />
+              <Card item={item} lang={lang} />
             </div>
           ))}
         </div>

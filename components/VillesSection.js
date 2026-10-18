@@ -2,7 +2,24 @@
 
 import { CITIES } from '../lib/citiesData'
 
-export default function VillesSection() {
+const T_VILLES = {
+  fr: {
+    eyebrow: 'Livraison Paris & Île-de-France',
+    t1: 'Nous livrons dès 6h30', t2: "dans toute l'IDF",
+    toutes: 'Voir toutes les villes →',
+    points: ['Commandez avant 14h la veille', 'Livraison dès 6h30', 'Adresse exacte au bureau'],
+  },
+  en: {
+    eyebrow: 'Delivery across Paris & Île-de-France',
+    t1: 'Delivered from 6:30 am', t2: 'anywhere in Île-de-France',
+    toutes: 'See every town →',
+    points: ['Order until 2 pm the day before', 'Delivered from 6:30 am', 'To the exact office address'],
+  },
+}
+
+export default function VillesSection({ lang = 'fr' }) {
+  const T = T_VILLES[lang] || T_VILLES.fr
+  const en = lang === 'en'
   return (
     <section style={{
       background: 'var(--bg-secondary)',
@@ -30,7 +47,7 @@ export default function VillesSection() {
               color: 'var(--accent-deep)',
               marginBottom: '14px',
             }}>
-              Livraison Paris & Île-de-France
+              {T.eyebrow}
             </p>
             <h2 style={{
               fontFamily: "'Baskerville Display PT', Georgia, serif",
@@ -40,11 +57,11 @@ export default function VillesSection() {
               color: 'var(--text-primary)',
               letterSpacing: '-0.01em',
             }}>
-              Nous livrons dès 6h30<br />dans toute l'IDF
+              {T.t1}<br />{T.t2}
             </h2>
           </div>
           <a
-            href="/traiteur"
+            href={en ? '/en/traiteur' : '/traiteur'}
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
               fontSize: '11px',
@@ -62,7 +79,7 @@ export default function VillesSection() {
             onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)' }}
             onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'rgba(17,17,17,0.25)' }}
           >
-            Voir toutes les villes →
+            {T.toutes}
           </a>
         </div>
 
@@ -75,7 +92,7 @@ export default function VillesSection() {
           {CITIES.map(city => (
             <a
               key={city.slug}
-              href={`/traiteur/${city.slug}`}
+              href={`${en ? '/en' : ''}/traiteur/${city.slug}`}
               className="ville-card"
               style={{
                 background: '#FFFFFF',
@@ -139,11 +156,7 @@ export default function VillesSection() {
           gap: '40px',
           flexWrap: 'wrap',
         }}>
-          {[
-            'Commandez avant 14h la veille',
-            'Livraison dès 6h30',
-            'Adresse exacte au bureau',
-          ].map(text => (
+          {T.points.map(text => (
             <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--accent)', flexShrink: 0 }} />
               <span style={{

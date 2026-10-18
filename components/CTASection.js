@@ -1,6 +1,22 @@
 'use client'
 
-export default function CTASection() {
+const T_CTA = {
+  fr: {
+    t1: 'Prêt à organiser', t2: 'votre événement ?',
+    c1: 'Parlons ensemble de votre projet et créons une expérience',
+    c2: 'sur-mesure à la hauteur de vos attentes.',
+    cta: 'Décrire mon événement',
+  },
+  en: {
+    t1: 'Ready to organise', t2: 'your event?',
+    c1: 'Tell us what you have in mind and we will build something',
+    c2: 'that fits the room, the budget and the day.',
+    cta: 'Describe my event',
+  },
+}
+
+export default function CTASection({ lang = 'fr' }) {
+  const T = T_CTA[lang] || T_CTA.fr
   return (
     <section
       id="contact"
@@ -21,8 +37,8 @@ export default function CTASection() {
             className="section-title-xl"
             style={{ marginBottom: '24px', color: '#1A1A18' }}
           >
-            Prêt à organiser<br />
-            votre événement ?
+            {T.t1}<br />
+            {T.t2}
           </h2>
 
           <p
@@ -36,11 +52,11 @@ export default function CTASection() {
               marginBottom: '48px',
             }}
           >
-            Parlons ensemble de votre projet et créons une expérience<br />
-            sur-mesure à la hauteur de vos attentes.
+            {T.c1}<br />
+            {T.c2}
           </p>
 
-          <a href="/devis" style={{
+          <a href={lang === 'en' ? '/en/devis' : '/devis'} style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '7px',
@@ -59,7 +75,7 @@ export default function CTASection() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Décrire mon événement <span>→</span>
+            {T.cta} <span>→</span>
           </a>
         </div>
       </div>

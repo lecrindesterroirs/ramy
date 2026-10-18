@@ -15,9 +15,10 @@ import VillesSection from '../components/VillesSection'
 import CTASection from '../components/CTASection'
 import Footer from '../components/Footer'
 import { businessNode } from '../lib/site'
+import { alternatesPour } from '../lib/i18n'
 
 export const metadata = {
-  alternates: { canonical: '/' },
+  alternates: alternatesPour('/', { en: true }),
 }
 
 export default function Home() {

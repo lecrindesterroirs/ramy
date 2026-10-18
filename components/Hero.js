@@ -7,7 +7,31 @@ import CatalogueModal from './CatalogueModal'
 import { trackPhoneClick } from '../lib/tracking'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 
-export default function Hero() {
+/* Textes de l'en-tête, par langue. Le numéro et la note Google sont des
+   faits, pas des textes : ils ne changent pas d'une langue à l'autre. */
+const T_HERO = {
+  fr: {
+    titre1: "Traiteur d'entreprise",
+    titre2: 'à Paris.',
+    corps1: 'Nous sélectionnons les meilleurs artisans pour créer',
+    corps2: 'des réceptions dont vos équipes se souviennent.',
+    devis: 'Obtenir un devis',
+    catalogue: 'Découvrir notre catalogue',
+    question: 'Une question ?',
+  },
+  en: {
+    titre1: 'Corporate catering',
+    titre2: 'in Paris.',
+    corps1: 'We pick the best artisans in the city to build',
+    corps2: 'receptions your team actually remembers.',
+    devis: 'Get a quote',
+    catalogue: 'See our menu',
+    question: 'A question?',
+  },
+}
+
+export default function Hero({ lang = 'fr' }) {
+  const T = T_HERO[lang] || T_HERO.fr
   const imageRef = useRef(null)
   const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : 'var(--accent)'
   const [catalogueOpen, setCatalogueOpen] = useState(false)
@@ -112,8 +136,8 @@ export default function Hero() {
             textShadow: '0 1px 26px rgba(249,246,239,0.75)',
           }}
         >
-          Traiteur d'entreprise{' '}<br />
-          à Paris.
+          {T.titre1}{' '}<br />
+          {T.titre2}
         </h1>
 
         {/* Body text */}
@@ -129,14 +153,14 @@ export default function Hero() {
             textShadow: '0 1px 18px rgba(249,246,239,0.7)',
           }}
         >
-          Nous sélectionnons les meilleurs artisans pour créer{' '}<br />
-          des réceptions dont vos équipes se souviennent.
+          {T.corps1}{' '}<br />
+          {T.corps2}
         </p>
 
         {/* CTA group */}
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <a
-            href="/devis"
+            href={lang === 'en' ? '/en/devis' : '/devis'}
             style={{
               fontFamily: "'Neue Montreal', sans-serif",
               fontSize: '12px',
@@ -155,7 +179,7 @@ export default function Hero() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.82'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Obtenir un devis <span>→</span>
+            {T.devis} <span>→</span>
           </a>
           <button
             type="button"
@@ -181,7 +205,7 @@ export default function Hero() {
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.85)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.5)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.55)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.35)' }}
           >
-            Découvrir notre catalogue <span>→</span>
+            {T.catalogue} <span>→</span>
           </button>
         </div>
 
@@ -209,7 +233,7 @@ export default function Hero() {
             textShadow: '0 1px 8px rgba(0,0,0,0.4)',
           }}
         >
-          Une question ?&nbsp;&nbsp;
+          {T.question}&nbsp;&nbsp;
           <a
             href="tel:+33174542310"
             onClick={trackPhoneClick}
