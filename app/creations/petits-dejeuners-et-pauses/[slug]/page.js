@@ -139,12 +139,12 @@ export default function ProductPage() {
   // français au milieu d'un texte anglais.
   const en = langue === 'en'
   const M = en
-    ? { accueil: 'Home', famille: 'Breakfasts & Breaks', devis: 'Get a quote →',
+    ? { en: true, accueil: 'Home', famille: 'Breakfasts & Breaks', devis: 'Get a quote →',
         contient: 'Contains', similaires: 'Similar products', liees: 'In the same selection',
-        decouvrir: 'Discover →' }
-    : { accueil: 'Accueil', famille: 'Petits-Déjeuners & Pauses', devis: 'Obtenir un devis →',
+        decouvrir: 'Discover →', ht: 'excl. VAT' }
+    : { en: false, accueil: 'Accueil', famille: 'Petits-Déjeuners & Pauses', devis: 'Obtenir un devis →',
         contient: 'Contient', similaires: 'Produits similaires', liees: 'Dans la même sélection',
-        decouvrir: 'Découvrir →' }
+        decouvrir: 'Découvrir →', ht: 'HT' }
   const MD = en ? MAD_T.en : MAD_T.fr
   const motCoffret = (mot) => (en ? (COFFRETS_MOT_EN[mot] || mot) : mot)
   const product = produitLocalise(produitFr, langue)
@@ -313,7 +313,7 @@ export default function ProductPage() {
             </div>
             <div style={{ textAlign: 'center', padding: '36px 24px 72px' }}>
               <a
-                href="/devis"
+                href={M.en ? '/en/devis' : '/devis'}
                 style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '16px 40px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
@@ -521,8 +521,8 @@ function GalleryFiche({ product, M }) {
         <div style={{ textAlign: 'center' }}>
           {product.price && (
             <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
-              {product.price.toFixed(2).replace('.', ',')} €
-              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>HT</span>
+              {M.en ? `€${product.price.toFixed(2)}` : `${product.price.toFixed(2).replace('.', ',')} €`}
+              <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>{M.ht}</span>
               {product.qty && (
                 <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(17,17,17,0.4)', marginLeft: '10px' }}>· {product.qty}</span>
               )}
@@ -530,7 +530,7 @@ function GalleryFiche({ product, M }) {
           )}
 
           <a
-            href="/devis"
+            href={M.en ? '/en/devis' : '/devis'}
             style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10.5px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)', background: 'transparent', border: '1px solid var(--accent)', padding: '11px 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', justifyContent: 'center', transition: 'background 0.3s ease, color 0.3s ease' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}

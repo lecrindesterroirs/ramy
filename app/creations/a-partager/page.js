@@ -212,7 +212,17 @@ function MenuCard({ m, T, en }) {
 
 /* ─── Page ───────────────────────────────────────────────────────── */
 
-const ANSWER_BLOCK = (
+/* Le bloc-réponse dépend de la langue : il était écrit en dur et restait
+   français sur /en/creations/a-partager, prix au format français compris. */
+const ANSWER_BLOCK = (en) => en ? (
+  <BlocReponse
+    titre="Sharing buffets for companies: prices, lead time, ordering"
+    plusTitre="Delivery, minimum order and presentation"
+    plus={<>Delivery €29 excl. VAT in Paris and nearby towns, minimum order €50 excl. VAT. Served on wooden boards with reusable tableware, nothing disposable, collected after your event. <a href="/en/devis">Ask for a quote within 24 hours</a>.</>}
+  >
+    A sharing buffet starts at <strong>€34.90 excl. VAT per person</strong> and goes up to €37.90 depending on the menu: several cold dishes set down in the middle of the table for everyone to help themselves. Delivered Monday to Friday across Paris and Île-de-France, ordered by <strong>2 pm the day before</strong>.
+  </BlocReponse>
+) : (
   <BlocReponse
     titre="Buffet à partager en entreprise : prix, délai, commande"
     plusTitre="Livraison, minimum de commande et présentation"
@@ -256,7 +266,7 @@ export default function APartager() {
 
 
 
-        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
+        <CadreBlocReponse>{ANSWER_BLOCK(en)}</CadreBlocReponse>
         <CategoryTabs />
 
         {/* ── Intro ── */}

@@ -16,6 +16,7 @@ import ParallaxImage from '../../../components/ParallaxImage'
 import { FAQSchema } from '../../../components/FAQSchema'
 import { HALAL_PAGES } from '../../../lib/halalPagesData'
 import { PRODUITS, prixMenu } from '../../creations/plateaux-repas/data'
+import { enPlateauRepas } from '../../../lib/en/produits/plateauxRepas'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
 
 const BASE = 'https://www.lecrin-traiteur.fr'
@@ -82,10 +83,21 @@ export default function TraiteurHalalSousPage() {
   const otherPages = HALAL_PAGES.filter(p => p.slug !== page.slug)
   const pageUrl = `${BASE}${en ? '/en' : ''}/traiteur-halal/${page.slug}`
 
-  // Plateaux mis en avant : ids de la carte réelle (app/creations/plateaux-repas/data.js)
+  // Plateaux mis en avant : ids de la carte réelle (app/creations/plateaux-repas/data.js).
+  // En anglais, le nom et les trois plats viennent de la surcouche
+  // lib/en/produits/plateauxRepas.js : elle existait, mais cette page lisait
+  // le français, donc la section affichait des plats français.
   const selection = (page.selection || [])
-    .map(s => ({ ...s, produit: PRODUITS.find(p => p.id === s.id) }))
+    .map(s => {
+      const produit = PRODUITS.find(p => p.id === s.id)
+      return { ...s, produit: produit && en ? { ...produit, ...(enPlateauRepas(produit.id) || {}) } : produit }
+    })
     .filter(s => s.produit)
+  // « 29,90 € HT par personne » / « €29.90 excl. VAT per person »
+  const prixPlateau = (p) => {
+    const v = String(prixMenu(p))
+    return en ? `€${v.replace(',', '.')} excl. VAT per person` : `${v} € HT par personne`
+  }
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -218,14 +230,14 @@ export default function TraiteurHalalSousPage() {
                     style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', height: '100%' }}
                   >
                     <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
-                      <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={produit.img} alt={`${produit.nom}, plateau repas halal d'entreprise`} style={{ objectFit: 'cover' }} />
+                      <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={produit.img} alt={en ? `${produit.nom}, halal corporate lunch tray` : `${produit.nom}, plateau repas halal d'entreprise`} style={{ objectFit: 'cover' }} />
                     </div>
                     <div style={{ padding: '22px 22px 26px' }}>
                       <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '4px' }}>
                         {produit.nom}
                       </p>
                       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 600, color: 'var(--accent-deep)', marginBottom: '12px' }}>
-                        {prixMenu(produit)} € HT par personne
+                        {prixPlateau(produit)}
                       </p>
                       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '12px' }}>
                         {produit.entree} · {produit.plat} · {produit.dessert}
