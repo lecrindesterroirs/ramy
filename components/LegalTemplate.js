@@ -1,5 +1,7 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../lib/i18n'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
@@ -40,7 +42,10 @@ const sectionStyle = {
 
 export { h2Style, h3Style, pStyle, sectionStyle }
 
-export default function LegalTemplate({ title, category = 'Informations légales', updated, children }) {
+export default function LegalTemplate({ title, category, updated, children }) {
+  // Les pages légales anglaises vivent sous app/en/ : le gabarit suit le chemin.
+  const langue = estAnglais(usePathname() || '/') ? 'en' : 'fr'
+  category = category || (langue === 'en' ? 'Legal information' : 'Informations légales')
   return (
     <>
       <Navbar />
@@ -80,7 +85,7 @@ export default function LegalTemplate({ title, category = 'Informations légales
               color: 'var(--text-secondary)',
               letterSpacing: '0.04em',
             }}>
-              Dernière mise à jour : {updated}
+              {langue === 'en' ? 'Last updated: ' : 'Dernière mise à jour : '}{updated}
             </p>
           )}
         </div>

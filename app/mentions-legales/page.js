@@ -40,6 +40,10 @@ export default function MentionsLegales() {
         <p style={pStyle}>
           Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable de L'Écrin Traiteur.
         </p>
+        <p style={{ ...pStyle, marginTop: '16px' }}>
+          Le site constitue en outre une <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>base de données</strong> au sens de l'article L.341-1 du Code de la propriété intellectuelle : tarifs, quantités de référence, budgets par effectif, compositions et guides y sont rassemblés et vérifiés au prix d'un investissement substantiel. L'Écrin Traiteur en est le producteur et bénéficie du droit <em>sui generis</em> de l'article L.342-1, indépendamment du droit d'auteur. L'extraction ou la réutilisation d'une partie substantielle de ce contenu, comme l'extraction répétée de parties non substantielles, sont interdites et sanctionnées par l'article L.343-1 (trois ans d'emprisonnement et 300 000 € d'amende). Le détail figure à l'article 2quinquies des{' '}
+          <a href="/cgv" style={{ color: 'var(--accent-deep)', textDecoration: 'none' }}>conditions générales de vente</a>.
+        </p>
       </div>
 
       <div style={sectionStyle}>

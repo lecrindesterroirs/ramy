@@ -94,6 +94,27 @@ export default function CGV() {
       </div>
 
       <div style={sectionStyle}>
+        <h2 style={h2Style}>Article 2quinquies, Droit du producteur de base de données</h2>
+        <p style={{ ...pStyle, marginBottom: '16px' }}>
+          Le site de L'Écrin Traiteur constitue une base de données au sens des articles L.112-3 et L.341-1 du Code de la propriété intellectuelle. Il rassemble, vérifie et présente de manière systématique un ensemble de données : tarifs par prestation et par personne, quantités de référence par convive et par format, budgets chiffrés par effectif, compositions, délais et zones de livraison, fiches produits et guides pratiques.
+        </p>
+        <p style={{ ...pStyle, marginBottom: '16px' }}>
+          La constitution, la vérification et la présentation de cette base représentent un <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>investissement financier, matériel et humain substantiel</strong> de L'Écrin Traiteur. À ce titre, L'Écrin Traiteur est producteur de cette base de données et bénéficie du droit <em>sui generis</em> prévu à l'article L.342-1 du même code, indépendamment de toute protection par le droit d'auteur.
+        </p>
+        <p style={{ ...pStyle, marginBottom: '16px' }}>
+          Sont en conséquence interdites, sauf autorisation écrite préalable :
+        </p>
+        <p style={{ ...pStyle, marginBottom: '16px' }}>
+          • L'extraction, par transfert permanent ou temporaire, de la totalité ou d'une partie qualitativement ou quantitativement substantielle du contenu de cette base, sur un autre support, par tout moyen et sous toute forme ;<br />
+          • La réutilisation, par la mise à disposition du public, de la totalité ou d'une partie qualitativement ou quantitativement substantielle de ce contenu, quelle qu'en soit la forme ;<br />
+          • L'extraction ou la réutilisation répétée et systématique de parties non substantielles du contenu, lorsqu'elles excèdent manifestement les conditions d'utilisation normale de la base.
+        </p>
+        <p style={pStyle}>
+          Ces interdictions s'appliquent quel que soit le procédé employé, y compris la consultation manuelle, la copie automatisée, l'indexation à des fins de republication et la reformulation. Les atteintes au droit du producteur de base de données sont sanctionnées par l'article L.343-1 du Code de la propriété intellectuelle, qui prévoit <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>trois ans d'emprisonnement et 300 000 € d'amende</strong>, sans préjudice des actions civiles en contrefaçon, concurrence déloyale et parasitisme mentionnées à l'article 9bis.
+        </p>
+      </div>
+
+      <div style={sectionStyle}>
         <h2 style={h2Style}>Article 3, Modalités de commande</h2>
         <p style={{ ...pStyle, marginBottom: '16px' }}>
           Les commandes peuvent être passées par téléphone au 01 74 54 23 10 ou par email à commercial@lecrin-traiteur.fr. Toute commande doit être validée avant <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>14h la veille</strong> de la livraison souhaitée.
