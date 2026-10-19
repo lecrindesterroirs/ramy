@@ -33,7 +33,7 @@ export const MENUS = [
     salees: [
       'Salade de torti au pesto, tomates confites & mozzarella',
       "Pommes de terre rôties, crème d'Isigny & ciboulette",
-      'Club sandwich dinde & emmental',
+      'Club sandwich blanc de poulet',
       'Mini baguette poulet curry',
       'Plateau de charcuteries artisanales',
       'Salade de tomates anciennes & basilic',
