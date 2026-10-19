@@ -36,7 +36,7 @@ export default function CookiePolicy() {
         </p>
         <p style={pStyle}>
           <strong style={sousTitre}>Advertising measurement cookies</strong>
-          We run ads on Google. Google Ads places a cookie that tells us whether a visit coming from an ad led to a quote request. You may refuse it at any time (see &laquo;&nbsp;Managing your preferences&nbsp;&raquo;). We also use Leadfeeder and Leadinfo, which recognise the company a business visitor&apos;s network belongs to; they do not identify individuals.
+          We run ads on Google. Google Ads places a cookie that tells us whether a visit coming from an ad led to a quote request. You may refuse it at any time (see &laquo;&nbsp;Managing your preferences&nbsp;&raquo;). We also use Leadfeeder, which recognises the company a business visitor&apos;s network belongs to; it does not identify individuals.
         </p>
       </div>
 
