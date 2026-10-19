@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18n'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -12,6 +14,66 @@ import Breadcrumb from '../../../components/Breadcrumb'
 import ParallaxImage from '../../../components/ParallaxImage'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 import EncartDevisMobile from '../../../components/EncartDevisMobile'
+
+/*
+  Page bilingue : le même composant sert /creations/coffrets-cadeaux et
+  /en/creations/coffrets-cadeaux. La langue vient du chemin. Les noms
+  d'artisans (Mado Paris, Pierre Morel, Laura Todd) ne se traduisent pas.
+*/
+const T_COFFRETS = {
+  fr: {
+    accueil: 'Accueil',
+    creations: 'Créations',
+    fil: 'Coffrets cadeaux',
+    label: 'Coffrets Cadeaux',
+    description: "Des coffrets gourmands prêts à offrir · madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, cakes maison. Idéal pour remercier un client ou marquer un moment d'équipe.",
+    decouvrir: 'Découvrir',
+    ht: 'HT',
+    reponse: "Nos coffrets démarrent <strong>à partir de 17,90 € HT</strong> et vont jusqu'à 64 € HT selon le contenu : madeleines d'exception, macarons, assortiments à offrir. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.",
+    closeEyebrow: 'Pensé pour remercier',
+    closeTitle: 'Un cadeau qui a du goût.\nUne attention qui reste.',
+    closeBody: "Remercier un client, féliciter une équipe, marquer une fin d'année : nos coffrets gourmands portent les noms de nos artisans et peuvent être entièrement personnalisés à votre image, jusqu'au ruban.",
+    jsonLdName: 'Coffrets cadeaux',
+    noms: {
+      'madeleines-20': ['Coffret de madeleines', '20 madeleines Mado Paris'],
+      'macarons': ['Coffret de macarons', '24 macarons Pierre Morel'],
+      'cookies': ['Coffret de cookies', '6 cookies Laura Todd'],
+    },
+  },
+  en: {
+    accueil: 'Home',
+    creations: 'Creations',
+    fil: 'Gift boxes',
+    label: 'Gift Boxes',
+    description: 'Gourmet boxes ready to give · Mado Paris madeleines, Pierre Morel macarons, Laura Todd cookies, homemade loaf cakes. Right for thanking a client or marking a team moment.',
+    decouvrir: 'Discover',
+    ht: 'excl. VAT',
+    reponse: 'Our gift boxes start <strong>from €17.90 excl. VAT</strong> and go up to €64 excl. VAT depending on what is inside: exceptional madeleines, macarons, assortments to give. Delivered Monday to Friday in Paris and the Paris region, ordered before <strong>2 pm the day before</strong>.',
+    closeEyebrow: 'Made for saying thank you',
+    closeTitle: 'A gift with taste.\nAn attention that stays.',
+    closeBody: "Thanking a client, congratulating a team, marking the end of a year: our gourmet boxes carry the names of our artisans and can be personalised entirely in your image.",
+    jsonLdName: 'Gift boxes',
+    noms: {
+      'madeleines-20': ['Box of madeleines', '20 Mado Paris madeleines'],
+      'macarons': ['Box of macarons', '24 Pierre Morel macarons'],
+      'cookies': ['Box of cookies', '6 Laura Todd cookies'],
+    },
+  },
+}
+
+const SEO_EN = `
+  <h2>Gourmet corporate gift boxes, delivered in Paris</h2>
+  <p>The <strong>corporate gift box</strong> is the gesture that stays: thanking a loyal client, congratulating a team, an end-of-year attention for your partners. Where an email is forgotten, a gourmet box is unwrapped, shared and talked about. L'Écrin Traiteur delivers your boxes in Paris and the Paris region, or prepares them to be handed out at your event.</p>
+
+  <h2>Every box can be personalised</h2>
+  <p>Each box can be adapted to your image: <strong>an adjusted assortment</strong>, the number of pieces, ribbons and packaging in your colours, a personalised message, your logo added. For a product launch or a premium client gift, we design boxes entirely to measure — tell us about your project and we take care of the rest.</p>
+
+  <h2>Madeleines, macarons, cookies, chocolates: artisans we name</h2>
+  <p>An L'Écrin box contains no anonymous products: <strong>Mado Paris</strong> madeleines, with a reputation as the best in Paris, <strong>Pierre Morel</strong> macarons, <strong>Laura Todd</strong> cookies, artisan chocolates. Names that mean something to people who know, and give the gift a story to tell, well beyond the generic box of chocolates.</p>
+
+  <h2>Giving a gourmet box to your clients or your teams</h2>
+  <p>Order before <strong>2 pm the day before</strong> for delivery to the address of your choice. For multiple shipments (end-of-year client gifts, multi-site distribution), our team organises the whole logistics on quote, with an answer within 24 hours and a company invoice with VAT.</p>
+`
 
 const SEO_ARTICLE = `
   <h2>Coffrets cadeaux d'entreprise gourmands, livrés à Paris</h2>
@@ -39,11 +101,12 @@ const COFFRETS = [
   { id: 'cookies', nom: 'Coffret de cookies', sousTitre: '6 cookies Laura Todd', prix: '17,90', img: '/prod-cookies.webp' },
 ]
 
-function CoffretCard({ produit }) {
+function CoffretCard({ produit, T, en }) {
   const [hovered, setHovered] = useState(false)
+  const [nom, sousTitre] = T.noms[produit.id] || [produit.nom, produit.sousTitre]
   return (
     <a
-      href={`/creations/petits-dejeuners-et-pauses/${produit.id}`}
+      href={`${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses/${produit.id}`}
       className="cf-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -61,7 +124,7 @@ function CoffretCard({ produit }) {
     >
       <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
         <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={produit.img}
-          alt={produit.nom}
+          alt={nom}
           style={{ objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
         />
         <div style={{
@@ -78,20 +141,20 @@ function CoffretCard({ produit }) {
             transform: hovered ? 'translateY(0)' : 'translateY(6px)',
             transition: 'transform 0.4s ease',
           }}>
-            Découvrir
+            {T.decouvrir}
           </span>
         </div>
       </div>
 
       <div style={{ padding: '16px 16px 16px' }}>
         <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '18px', fontWeight: 400, lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '4px', transition: 'color 0.25s ease' }}>
-          {produit.nom}
+          {nom}
         </p>
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '12px' }}>
-          {produit.sousTitre}
+          {sousTitre}
         </p>
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-primary)' }}>
-          {produit.prix} €<span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>HT</span>
+          {produit.prix} €<span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>{T.ht}</span>
         </p>
       </div>
     </a>
@@ -108,7 +171,19 @@ const ANSWER_BLOCK = (
   </BlocReponse>
 )
 
+const ANSWER_BLOCK_EN = (
+  <BlocReponse
+    titre="Corporate gift boxes: price and lead time"
+    plusTitre="Personalisation, volumes and delivery"
+    plus={<>Ribbon, card and message can all be personalised, and we deliver either in one go to your site or to several addresses for your remote teams. Delivery €29 excl. VAT in Paris and the nearby towns, €50 excl. VAT minimum order. <a href="/en/devis">Ask for a quote within 24 hours</a>.</>}
+  >
+    Our gift boxes start <strong>from €17.90 excl. VAT</strong> and go up to €64 excl. VAT depending on what is inside: exceptional madeleines, macarons, assortments to give. Delivered Monday to Friday in Paris and the Paris region, ordered before <strong>2 pm the day before</strong>.
+  </BlocReponse>
+)
+
 export default function CoffretsCadeaux() {
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_COFFRETS.en : T_COFFRETS.fr
   return (
     <>
       <Navbar showBanner={true} />
@@ -123,13 +198,13 @@ export default function CoffretsCadeaux() {
             <Reveal mode="mount" y={16}>
               <div className="cc-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                  Créations
+                  {T.creations}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                  {HERO.label}
+                  {T.label}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
-                  {HERO.description}
+                  {T.description}
                 </p>
               </div>
             </Reveal>
@@ -137,17 +212,17 @@ export default function CoffretsCadeaux() {
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Coffrets cadeaux' }]} jsonLd={false} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: T.accueil, href: en ? '/en' : '/' }, { label: T.fil }]} jsonLd={false} />
 
 
-        <CadreBlocReponse>{ANSWER_BLOCK}</CadreBlocReponse>
+        <CadreBlocReponse>{en ? ANSWER_BLOCK_EN : ANSWER_BLOCK}</CadreBlocReponse>
         <CategoryTabs />
 
         {/* ── Grille des coffrets ── */}
         <div className="cc-shell cc-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px 0', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '32px 24px' }}>
           {COFFRETS.map((p, i) => [
             <Reveal key={p.id} delay={(i % 4) * 90}>
-              <CoffretCard produit={p} />
+              <CoffretCard produit={p} T={T} en={en} />
             </Reveal>,
             i === Math.min(3, COFFRETS.length - 1) && <EncartDevisMobile key="encart-devis" />,
           ])}
@@ -156,10 +231,11 @@ export default function CoffretsCadeaux() {
       </main>
 
       <CategoryClosing
-        eyebrow="Pensé pour remercier"
-        title={'Un cadeau qui a du goût.\nUne attention qui reste.'}
-        body="Remercier un client, féliciter une équipe, marquer une fin d'année : nos coffrets gourmands portent les noms de nos artisans et peuvent être entièrement personnalisés à votre image, jusqu'au ruban."
-        seoArticle={SEO_ARTICLE}
+        eyebrow={T.closeEyebrow}
+        title={T.closeTitle}
+        body={T.closeBody}
+        seoArticle={en ? SEO_EN : SEO_ARTICLE}
+        lang={en ? 'en' : 'fr'}
       />
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
@@ -184,7 +260,7 @@ export default function CoffretsCadeaux() {
         }
       ` }} />
 
-      <CategoryJsonLd name="Coffrets cadeaux" path="/creations/coffrets-cadeaux" />
+      <CategoryJsonLd name={T.jsonLdName} path={`${en ? '/en' : ''}/creations/coffrets-cadeaux`} />
 
       <Footer />
     </>

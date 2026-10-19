@@ -1,3 +1,4 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   title: "Coffrets cadeaux d'entreprise Paris",
@@ -7,9 +8,7 @@ export const metadata = {
     title: "Coffrets & Cadeaux d'entreprise | L'Écrin Traiteur",
     description: "Coffrets artisanaux pour cadeaux d'entreprise · madeleines, macarons, cookies. Livraison Paris & Île-de-France.",
   },
-  alternates: {
-    canonical: '/creations/coffrets-cadeaux',
-  },
+  alternates: alternatesPour('/creations/coffrets-cadeaux', { en: true }),
 }
 
 export default function Layout({ children }) {

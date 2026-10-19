@@ -1,8 +1,9 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   title: "Réceptions sur mesure traiteur Paris",
   description: "Réceptions sur mesure à Paris : cocktails de lancement, inaugurations et réceptions VIP conçues par L'Écrin Traiteur. Devis sous 24h.",
-  alternates: { canonical: '/creations/receptions-sur-mesure' },
+  alternates: alternatesPour('/creations/receptions-sur-mesure', { en: true }),
   openGraph: {
     images: ogImages('/img-reception.webp'),
     title: "Réceptions sur mesure | L'Écrin Traiteur",
