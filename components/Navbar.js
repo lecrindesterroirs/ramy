@@ -437,7 +437,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
               onMouseLeave={e => e.currentTarget.style.color = '#111111'}
             >
-              Le Journal
+              {t('nav.journal', langue)}
               <span aria-hidden="true" style={{ fontSize: '10px', opacity: 0.7 }}>▾</span>
             </button>
 

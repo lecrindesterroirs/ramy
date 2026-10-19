@@ -803,7 +803,7 @@ export default function Contact() {
       <main className="devis-main" style={{ background: '#FFFFFF', minHeight: '100vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', position: 'relative' }}>
 
         <h1 style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
-          Demander un devis traiteur d&apos;entreprise à Paris &amp; Île-de-France
+          {t('devis.h1', langue)}
         </h1>
 
         {/* Logo splash screen */}
