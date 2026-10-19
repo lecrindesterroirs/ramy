@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { estAnglais, lienLocaliseDans } from '../lib/i18nBase'
 import { t } from '../lib/en/interface'
 import { useEnSlugs, useEnChemins } from './EnSlugsProvider'
+import { trackPhoneClick } from '../lib/tracking'
 import SelecteurLangue from './SelecteurLangue'
 
 const linkStyle = {
@@ -135,6 +136,7 @@ export default function Footer() {
                     return (
                       <a key={l.label} href={lien(l.href)} style={linkStyle}
                         target={ext ? '_blank' : undefined} rel={ext ? 'noopener noreferrer' : undefined}
+                        {...(l.href.startsWith('tel:') ? { 'data-emplacement': 'pied_de_page', onClick: trackPhoneClick } : {})}
                         onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
                         onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                       >{mot(l)}</a>

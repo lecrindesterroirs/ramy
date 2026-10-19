@@ -210,7 +210,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p style={labelStyle}>{T('form.telephone')}</p>
-                  <a href="tel:+33174542310" onClick={trackPhoneClick} style={infoStyle}>01 74 54 23 10</a>
+                  <a href="tel:+33174542310" data-emplacement="page_contact" onClick={trackPhoneClick} style={infoStyle}>01 74 54 23 10</a>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>

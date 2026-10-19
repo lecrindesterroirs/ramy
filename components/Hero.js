@@ -236,6 +236,7 @@ export default function Hero({ lang = 'fr' }) {
           {T.question}&nbsp;&nbsp;
           <a
             href="tel:+33174542310"
+            data-emplacement="hero"
             onClick={trackPhoneClick}
             style={{ borderBottom: '1px solid rgba(255,255,255,0.6)', paddingBottom: '1px', color: 'inherit', cursor: 'pointer' }}
           >
