@@ -1,0 +1,341 @@
+'use client'
+
+import Image from 'next/image'
+import Navbar from '../../../components/Navbar'
+import Footer from '../../../components/Footer'
+
+/* Habillage de la page, par langue. Elle sert les deux. */
+const T_OCC = {
+  fr: {
+    eyebrow: 'Pour votre entreprise',
+    devis: 'Obtenir un devis →',
+    selection: 'Sélection recommandée',
+    nosProduits: (nom) => `Nos produits pour ${nom.toLowerCase()}`,
+    voirProduit: 'Voir le produit →',
+    tousProduits: 'Voir tous nos produits →',
+    tousPlateaux: 'Voir tous nos plateaux repas →',
+    livrons: 'Nous livrons notamment à',
+    toutesVilles: 'Toutes nos villes →',
+    faq: 'Questions fréquentes',
+    traduit: null,
+    fil: ['Accueil', 'Occasions'],
+    plateau: 'Plateau repas',
+    formule: 'Formule cocktail',
+  },
+  en: {
+    eyebrow: 'For your company',
+    devis: 'Get a quote →',
+    selection: 'What we recommend',
+    nosProduits: (nom) => `Our products for ${nom.toLowerCase()}`,
+    voirProduit: 'See the product →',
+    tousProduits: 'See all our products →',
+    tousPlateaux: 'See all our lunch trays →',
+    livrons: 'Towns we deliver to',
+    toutesVilles: 'All our towns →',
+    faq: 'Frequently asked questions',
+    traduit: 'Translated from French',
+    fil: ['Home', 'Occasions'],
+    plateau: 'Lunch tray',
+    formule: 'Cocktail menu',
+  },
+}
+import DevisRapide from '../../../components/DevisRapide'
+import GuidesPratiques from '../../../components/GuidesPratiques'
+import { useState } from 'react'
+import ParallaxImage from '../../../components/ParallaxImage'
+
+const PRODUCT_ROUTE_BY_CATEGORY = {
+  'plateaux-repas': 'plateaux-repas',
+  'cocktails': 'cocktails',
+}
+
+/* Les données (occasions, produits, villes, textes anglais) sont lues par OccasionView.js,
+   côté serveur : seule l'occasion affichée arrive ici. Importer lib/occasionsData,
+   productsData ou citiesData dans ce composant client ajouterait ~120 Ko de JavaScript
+   à chaque page occasion. */
+export default function OccasionClient({ en, nomFr, occasion, article, products: produitsLies, cities, allFaq }) {
+  const T = en ? T_OCC.en : T_OCC.fr
+  const lien = (href) => (en ? `/en${href}` : href)
+
+  const isPlateaux = occasion.productCategory === 'plateaux-repas'
+  const isCocktails = occasion.productCategory === 'cocktails'
+  const productRoute = PRODUCT_ROUTE_BY_CATEGORY[occasion.productCategory] || 'petits-dejeuners-et-pauses'
+  const products = produitsLies.map(p => (p.categoryKey ? { ...p, categoryLabel: T[p.categoryKey] } : p))
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: allFaq.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: T.fil[0], item: `https://www.lecrin-traiteur.fr${en ? '/en' : ''}` },
+      { '@type': 'ListItem', position: 2, name: T.fil[1], item: `https://www.lecrin-traiteur.fr${en ? '/en' : ''}/occasions` },
+      { '@type': 'ListItem', position: 3, name: occasion.name, item: `https://www.lecrin-traiteur.fr${en ? '/en' : ''}/occasions/${occasion.slug}` },
+    ],
+  }
+
+  const heroImg = occasion.heroImg || '/creations-featured.webp'
+
+  return (
+    <>
+      <Navbar showBanner />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+
+      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+
+        {/* ── Hero photo ── */}
+        <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+          <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
+            <ParallaxImage priority sizes="100vw" src={heroImg}
+              alt={occasion.heroTitle}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center 40%' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 30%, rgba(0,0,0,0.30) 58%, rgba(0,0,0,0) 80%)' }} />
+            <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)', marginBottom: '16px', textShadow: '0 1px 8px rgba(0,0,0,0.5)' }}>
+                {T.eyebrow}
+              </p>
+              <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3.8vw, 52px)', fontWeight: 400, lineHeight: 1.06, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px', textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}>
+                {occasion.heroTitle}
+              </h1>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '400px', marginBottom: '32px', textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>
+                {occasion.heroDescription}
+              </p>
+              <a
+                href={lien('/devis')}
+                style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease', alignSelf: 'flex-start' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              >
+                {T.devis}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 3 piliers ── */}
+        <div className="occasion-piliers" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+            {occasion.piliers.map((p, i) => (
+              <div key={p.title} style={{ padding: '40px 32px 40px 0', borderRight: i < 2 ? '1px solid rgba(17,17,17,0.08)' : 'none', paddingLeft: i > 0 ? '32px' : 0 }}>
+                <span style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', color: 'var(--accent-deep)', marginBottom: '16px' }}>
+                  0{i + 1}
+                </span>
+                <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(17px, 1.6vw, 22px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.25 }}>
+                  {p.title}
+                </p>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>
+                  {p.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Article SEO ── */}
+        <section className="occasion-article" style={{ maxWidth: '800px', margin: '0 auto', padding: '64px 72px' }}>
+          <div className="occasion-article-body" dangerouslySetInnerHTML={{ __html: article }} />
+        </section>
+
+        {/* ── Témoignage ── */}
+        {occasion.testimonial && (
+          <div style={{ background: '#111111', padding: '72px 40px' }}>
+            <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+              <span style={{ display: 'block', width: '28px', height: '2px', background: 'var(--accent)', marginBottom: '32px' }} />
+              <blockquote style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(18px, 2vw, 26px)', fontWeight: 400, fontStyle: 'italic', color: '#FFFFFF', lineHeight: 1.55, letterSpacing: '-0.005em', marginBottom: '32px' }}>
+                « {occasion.testimonial.quote} »
+              </blockquote>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--accent-deep)', marginBottom: '4px' }}>
+                {occasion.testimonial.author}
+              </p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.38)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                {occasion.testimonial.role}, {occasion.testimonial.company}
+                {T.traduit && <><br /><span style={{ opacity: 0.6 }}>{T.traduit}</span></>}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ── Produits recommandés ── */}
+        <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+          <div className="occasion-products" style={{ maxWidth: '1440px', margin: '0 auto', padding: '64px 72px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '8px' }}>
+              {T.selection}
+            </p>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 34px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '40px', lineHeight: 1.15 }}>
+              {T.nosProduits(occasion.name)}
+            </p>
+            <div className="occasion-products-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
+              {products.map(product => (
+                <a
+                  key={product.id}
+                  href={lien(`/creations/${productRoute}/${product.id}`)}
+                  style={{ background: 'var(--bg-secondary)', textDecoration: 'none', display: 'flex', flexDirection: 'column', transition: 'background 0.2s ease' }}
+                  onMouseEnter={e => e.currentTarget.style.background = '#EDE8DE'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'var(--bg-secondary)'}
+                >
+                  <div style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', background: '#EDE8DE' }}>
+                    <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={product.img} alt={product.name} style={{ objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ padding: '18px 20px 22px' }}>
+                    <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.35)', marginBottom: '5px' }}>
+                      {product.categoryLabel || 'Artisanal'}
+                    </p>
+                    <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1.2, marginBottom: '12px' }}>
+                      {product.name}
+                    </p>
+                    <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
+                      {T.voirProduit}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div style={{ marginTop: '32px' }}>
+              <a href={lien(`/creations/${productRoute}`)} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
+                {isPlateaux ? T.tousPlateaux : T.tousProduits}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Villes desservies ── */}
+        <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)', background: 'var(--bg-secondary)' }}>
+          <div className="occasion-cities" style={{ maxWidth: '1440px', margin: '0 auto', padding: '48px 72px' }}>
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '20px' }}>
+              {T.livrons}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {cities.map(city => (
+                <a key={city.slug} href={lien(`/traiteur/${city.slug}`)}
+                  style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-primary)', background: '#FFFFFF', border: '1px solid rgba(17,17,17,0.1)', padding: '7px 16px', textDecoration: 'none', transition: 'border-color 0.2s ease, color 0.2s ease', letterSpacing: '0.02em' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)' }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.1)'; e.currentTarget.style.color = 'var(--text-primary)' }}
+                >
+                  {city.name}
+                </a>
+              ))}
+              <a href={lien('/traiteur')}
+                style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--accent-deep)', border: '1px solid rgba(224,161,38,0.35)', padding: '7px 16px', textDecoration: 'none', letterSpacing: '0.02em', transition: 'border-color 0.2s ease' }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(224,161,38,0.35)'}
+              >
+                {T.toutesVilles}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── FAQ ── */}
+        <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+          <div className="occasion-faq" style={{ maxWidth: '800px', margin: '0 auto', padding: '64px 72px' }}>
+            <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.5vw, 34px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '40px', lineHeight: 1.15 }}>
+              {T.faq}
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {allFaq.map((item, i) => (
+                <FaqItem key={i} item={item} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Devis ── */}
+        <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)', background: 'var(--bg-secondary)', padding: '72px 40px' }}>
+          <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+            <DevisRapide
+              /* On teste le nom FRANÇAIS : la valeur envoyée doit rester
+                 française, et sur /en occasion.name est déjà traduit, ce qui
+                 faisait retomber toutes les occasions sur « Petit-déjeuner ». */
+              defaultPrestation={
+                nomFr?.toLowerCase().includes('repas') ? 'Plateaux repas'
+                : nomFr?.toLowerCase().includes('séminaire') ? 'Séminaire'
+                : nomFr?.toLowerCase().includes('goûter') ? 'Goûter'
+                : nomFr?.toLowerCase().includes('cocktail') || nomFr?.toLowerCase().includes('afterwork') ? 'Cocktail / Buffet'
+                : 'Petit-déjeuner'
+              }
+              titre={`Organiser un ${nomFr?.toLowerCase()} à Paris ?`}
+              titreEn={`Organising a ${occasion.name?.toLowerCase()} in Paris?`}
+              sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h, livraison dans toute l'Île-de-France."
+              sousTitreEn="Answer in 30 seconds, a personalised quote within 24 hours, delivery across the Paris region."
+            />
+          </div>
+        </div>
+
+      </main>
+
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
+        .occasion-article-body p { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; line-height: 1.72; color: rgba(17,17,17,0.58); margin-bottom: 16px; }
+        .occasion-article-body h2 { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin: 48px 0 12px; padding-top: 24px; border-top: 1px solid rgba(169,128,59,0.22); line-height: 1; }
+        .occasion-article-body strong { color: rgba(17,17,17,0.82); font-weight: 500; }
+        .occasion-article-body a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+        .occasion-article-body a:hover { color: #111111; }
+        .occasion-article-body ul { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; line-height: 1.72; color: rgba(17,17,17,0.58); list-style: disc; padding-left: 22px; margin-bottom: 16px; }
+        .occasion-article-body li { margin-bottom: 8px; }
+        .occasion-article-body .tbl-wrap { overflow-x: auto; margin: 8px 0 20px; -webkit-overflow-scrolling: touch; }
+        .occasion-article-body table { width: 100%; border-collapse: collapse; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; line-height: 1.5; color: rgba(17,17,17,0.7); min-width: 520px; }
+        .occasion-article-body th { text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(17,17,17,0.5); padding: 10px 12px 10px 0; border-bottom: 1px solid rgba(17,17,17,0.18); vertical-align: bottom; }
+        .occasion-article-body td { padding: 12px 12px 12px 0; border-bottom: 1px solid rgba(17,17,17,0.08); vertical-align: top; }
+        @media (max-width: 768px) {
+          .page-hero-wrapper { padding: 24px 16px 0 !important; }
+          .page-hero { height: 50vh !important; min-height: 300px !important; }
+          .page-hero-text { padding: 0 24px !important; }
+          .occasion-piliers { padding: 0 24px !important; }
+          .occasion-piliers > div { grid-template-columns: 1fr !important; }
+          .occasion-article { padding: 48px 24px !important; }
+          .occasion-products { padding: 48px 24px !important; }
+          .occasion-products-grid { grid-template-columns: 1fr 1fr !important; }
+          .occasion-cities { padding: 40px 24px !important; }
+          .occasion-faq { padding: 48px 24px !important; }
+        }
+        @media (max-width: 1024px) and (min-width: 769px) {
+          .page-hero-wrapper { padding: 24px 40px 0 !important; }
+          .occasion-piliers { padding: 0 40px !important; }
+          .occasion-article { padding: 56px 40px !important; }
+          .occasion-products { padding: 56px 40px !important; }
+          .occasion-products-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .occasion-cities { padding: 40px 40px !important; }
+          .occasion-faq { padding: 56px 40px !important; }
+        }
+      ` }} />
+
+      <GuidesPratiques />
+
+      <Footer />
+    </>
+  )
+}
+
+function FaqItem({ item }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{ width: '100%', textAlign: 'left', padding: '22px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', background: 'none', border: 'none', cursor: 'pointer' }}
+      >
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.5, margin: 0 }}>
+          {item.q}
+        </p>
+        <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '18px', color: 'var(--accent-deep)', flexShrink: 0, lineHeight: 1, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s ease' }}>+</span>
+      </button>
+      {/* Réponse toujours présente dans le HTML (indexable), simplement masquée tant que la question est repliée. */}
+      <p
+        hidden={!open}
+        style={{ display: open ? 'block' : 'none', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.75, color: 'var(--text-secondary)', paddingBottom: '22px' }}
+      >
+        {item.a}
+      </p>
+    </div>
+  )
+}
