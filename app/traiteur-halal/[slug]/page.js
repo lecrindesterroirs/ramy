@@ -293,14 +293,14 @@ export default function TraiteurHalalSousPage() {
       </div>
 
       {/* ── Maillage : autres pages halal + guides liés ── */}
-      <nav aria-label="Autres pages traiteur halal d'entreprise" style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 40px', textAlign: 'center' }}>
+      <nav aria-label={en ? 'Other halal corporate catering pages' : "Autres pages traiteur halal d'entreprise"} style={{ maxWidth: '760px', margin: '0 auto', padding: '0 40px 40px', textAlign: 'center' }}>
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.4)', marginBottom: '16px' }}>
           {T.aussi}
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 22px', marginBottom: '28px' }}>
           {otherPages.map(p => (
             <a key={p.slug} href={lien(`/traiteur-halal/${p.slug}`)} style={linkStyle}>
-              {p.name}
+              {(en && enHalal(p.slug)?.name) || p.name}
             </a>
           ))}
           <a href={lien('/traiteur-halal')} style={linkStyle}>{T.toutePage}</a>
