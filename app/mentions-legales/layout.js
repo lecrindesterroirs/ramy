@@ -1,5 +1,7 @@
+import { alternatesPour } from '../../lib/i18n'
+
 export const metadata = {
-  alternates: { canonical: '/mentions-legales' },
+  alternates: alternatesPour('/mentions-legales', { en: true }),
   title: "Mentions légales",
   description: "Mentions légales de L'Écrin Traiteur · informations légales, éditeur du site, hébergeur.",
   robots: { index: true, follow: false },

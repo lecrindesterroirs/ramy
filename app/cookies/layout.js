@@ -1,5 +1,7 @@
+import { alternatesPour } from '../../lib/i18n'
+
 export const metadata = {
-  alternates: { canonical: '/cookies' },
+  alternates: alternatesPour('/cookies', { en: true }),
   title: "Politique de cookies",
   description: "Politique de cookies de L'Écrin Traiteur · utilisation des cookies et traceurs sur lecrin-traiteur.fr.",
   robots: { index: true, follow: false },

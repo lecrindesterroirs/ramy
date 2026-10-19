@@ -1,5 +1,7 @@
+import { alternatesPour } from '../../lib/i18n'
+
 export const metadata = {
-  alternates: { canonical: '/confidentialite' },
+  alternates: alternatesPour('/confidentialite', { en: true }),
   title: "Politique de confidentialité",
   description: "Politique de confidentialité de L'Écrin Traiteur · collecte et traitement des données personnelles (RGPD).",
   robots: { index: true, follow: false },
