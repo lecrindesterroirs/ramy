@@ -1,6 +1,7 @@
+import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
-  alternates: { canonical: '/creations/a-partager' },
+  alternates: alternatesPour('/creations/a-partager', { en: true }),
   title: "Buffet à partager traiteur Paris",
   description: "Menus à partager pour vos déjeuners d'équipe à Paris : salades, planches et pièces cocktail dressés pour 8 à 12 personnes. Livraison en Île-de-France.",
   openGraph: {

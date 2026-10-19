@@ -11,6 +11,63 @@ import CategoryTabs from '../../../components/CategoryTabs'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18n'
+import { enMenu, prixMenuEn } from '../../../lib/en/produits/aPartager'
+
+/*
+  Page bilingue : le même composant sert /creations/a-partager et
+  /en/creations/a-partager. Les noms de menus (Le Méditerranéen, Le Parisien,
+  Le Jardin) ne se traduisent pas ; les recettes passent par la surcouche
+  lib/en/produits/aPartager.js.
+*/
+const T_PARTAGER = {
+  fr: {
+    accueil: 'Accueil', fil: 'Buffet à partager',
+    eyebrowHero: 'Déjeuner', label: 'À Partager',
+    description: 'Des menus généreux à partager · salades dressées, planches gourmandes et pièces cocktail, en grand format. Composés le matin avec des produits de saison.',
+    introEyebrow: 'Trois menus',
+    introTitre: 'Choisissez votre menu à partager',
+    introTexte: "Chaque menu mêle salades, planches et pièces cocktail, dans un équilibre pensé pour toute l'équipe. Personnalisable selon vos effectifs et régimes.",
+    plusChoisi: 'Le plus choisi',
+    recettes: (sa, su) => `${sa} recettes salées · ${su} sucrées`,
+    sale: 'Salé', sucre: 'Sucré',
+    devis: 'Obtenir un devis →',
+    closeEyebrow: 'Pensé pour les moments collectifs',
+    closeTitre: 'Des menus généreux.\nPensés pour rassembler.',
+    closeBody: "Un menu au centre de la table vaut mieux qu'un long discours d'équipe. Salades, planches, pièces cocktail et douceurs : des formats à faire circuler, livrés prêts à servir pour vos déjeuners partagés.",
+  },
+  en: {
+    accueil: 'Home', fil: 'Sharing buffet',
+    eyebrowHero: 'Lunch', label: 'To Share',
+    description: 'Generous menus to share · plated salads, gourmet boards and canapés, in large format. Made in the morning with seasonal produce.',
+    introEyebrow: 'Three menus',
+    introTitre: 'Choose your sharing menu',
+    introTexte: 'Each menu brings together salads, boards and canapés, balanced for the whole team. Adaptable to your headcount and dietary needs.',
+    plusChoisi: 'Most chosen',
+    recettes: (sa, su) => `${sa} savoury recipes · ${su} sweet`,
+    sale: 'Savoury', sucre: 'Sweet',
+    devis: 'Get a quote →',
+    closeEyebrow: 'Made for collective moments',
+    closeTitre: 'Generous menus.\nMade to bring people together.',
+    closeBody: 'A menu in the middle of the table says more than a long team speech. Salads, boards, canapés and sweet bites: formats made to be passed around, eaten standing or seated.',
+  },
+}
+
+const SEO_EN = `
+  <h2>Sharing menus for your team lunches in Paris</h2>
+  <p>Some company lunches do not need a set format, they need <strong>one generous menu to share in the middle of the table</strong>. A team catch-up, welcoming a partner, a department lunch: our sharing menus bring together salads, boards and canapés, delivered at the time you choose anywhere in Paris and the Paris region. The menus arrive plated, ready to set down on the table.</p>
+
+  <h2>Sharing, an underrated team ritual</h2>
+  <p>A menu set down in the middle changes the dynamic of a room: people help themselves, pass things along, comment. Each menu balances savoury pieces and sweet ones, made to travel from hand to hand — generous, and easy to eat standing or seated.</p>
+
+  <h2>Choosing the right menu</h2>
+  <p>Allow one menu for 8 to 12 people, topping it up according to appetite and the hour. Le Méditerranéen, Le Parisien or Le Jardin (100% vegetarian): our team helps you compose and size the order.</p>
+
+  <h2>Ordering your sharing menus in Paris</h2>
+  <p>Order before <strong>2 pm the day before</strong>, delivered at the time you choose anywhere in Paris and the Paris region. The menus arrive plated, ready to set down. Company invoice with VAT.</p>
+  <p>For a larger format with several stations, our <a href="/journal/buffet-entreprise-guide-complet-paris">complete guide to the company buffet</a> covers budget, presentation and choosing a caterer.</p>
+`
 
 const SEO_ARTICLE = `
   <h2>Menus à partager pour vos déjeuners d'équipe à Paris</h2>
@@ -64,7 +121,12 @@ function Liste({ titre, items, accent }) {
 
 /* ─── Grande carte menu ──────────────────────────────────────────── */
 
-function MenuCard({ m }) {
+function MenuCard({ m, T, en }) {
+  const tr = en ? enMenu(m.key) : null
+  const accroche = tr ? tr.accroche : m.accroche
+  const salees = tr ? tr.salees : m.salees
+  const sucrees = tr ? tr.sucrees : m.sucrees
+  const prix = en ? prixMenuEn(m.prix) : m.prix
   const [hovered, setHovered] = useState(false)
   const featured = m.featured
   return (
@@ -94,7 +156,7 @@ function MenuCard({ m }) {
         />
         {featured && (
           <span style={{ position: 'absolute', top: '14px', left: '14px', background: '#E0A126', color: '#FFFFFF', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '6px 14px', whiteSpace: 'nowrap' }}>
-            Le plus choisi
+            {T.plusChoisi}
           </span>
         )}
       </div>
@@ -110,27 +172,27 @@ function MenuCard({ m }) {
             {m.nom}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.55, color: '#6E675F', maxWidth: '340px', margin: '0 auto 6px' }}>
-            {m.accroche}
+            {accroche}
           </p>
           {m.prix && (
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', fontWeight: 500, color: '#111111', margin: '10px 0 0' }}>
-              {m.prix}
+              {prix}
             </p>
           )}
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.4)' }}>
-            {m.salees.length} recettes salées · {m.sucrees.length} sucrées
+            {T.recettes(salees.length, sucrees.length)}
           </p>
         </div>
 
         {/* Composition */}
         <div style={{ flex: 1 }}>
-          <Liste titre="Salé" items={m.salees} accent="#5A7247" />
-          <Liste titre="Sucré" items={m.sucrees} accent="#C08A3E" />
+          <Liste titre={T.sale} items={salees} accent="#5A7247" />
+          <Liste titre={T.sucre} items={sucrees} accent="#C08A3E" />
         </div>
 
         {/* CTA */}
         <a
-          href="/devis"
+          href={en ? '/en/devis' : '/devis'}
           style={{
             marginTop: '24px', display: 'block', textAlign: 'center',
             fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase',
@@ -141,7 +203,7 @@ function MenuCard({ m }) {
             transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease',
           }}
         >
-          Obtenir un devis →
+          {T.devis}
         </a>
       </div>
     </article>
@@ -161,6 +223,8 @@ const ANSWER_BLOCK = (
 )
 
 export default function APartager() {
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_PARTAGER.en : T_PARTAGER.fr
   return (
     <>
       <Navbar showBanner={true} />
@@ -175,20 +239,20 @@ export default function APartager() {
             <Reveal mode="mount" y={16}>
               <div className="ap-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                  Déjeuner
+                  {T.eyebrowHero}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                  {HERO.label}
+                  {T.label}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '420px' }}>
-                  {HERO.description}
+                  {T.description}
                 </p>
               </div>
             </Reveal>
           </header>
         </div>
 
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Buffet à partager' }]} jsonLd={false} />
+        <Breadcrumb maxWidth="1440px" items={[{ label: T.accueil, href: en ? '/en' : '/' }, { label: T.fil }]} jsonLd={false} />
 
 
 
@@ -198,13 +262,13 @@ export default function APartager() {
         {/* ── Intro ── */}
         <div className="ap-shell" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0', textAlign: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9B9590', marginBottom: '12px' }}>
-            Trois menus
+            {T.introEyebrow}
           </p>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 400, lineHeight: 1.15, color: '#111111', marginBottom: '14px' }}>
-            Choisissez votre menu à partager
+            {T.introTitre}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '0 auto' }}>
-            Chaque menu mêle salades, planches et pièces cocktail, dans un équilibre pensé pour toute l'équipe. Personnalisable selon vos effectifs et régimes.
+            {T.introTexte}
           </p>
         </div>
 
@@ -216,12 +280,12 @@ export default function APartager() {
             return [centered ? (
               <div key={m.key} className="ap-center">
                 <Reveal delay={(i % 2) * 90}>
-                  <MenuCard m={m} />
+                  <MenuCard m={m} T={T} en={en} />
                 </Reveal>
               </div>
             ) : (
               <Reveal key={m.key} delay={(i % 2) * 90}>
-                <MenuCard m={m} />
+                <MenuCard m={m} T={T} en={en} />
               </Reveal>
             ), encart]
           })}
@@ -230,10 +294,11 @@ export default function APartager() {
       </main>
 
       <CategoryClosing
-        eyebrow="Pensé pour les moments collectifs"
-        title={'Des menus généreux.\nPensés pour rassembler.'}
-        body="Un menu au centre de la table vaut mieux qu'un long discours d'équipe. Salades, planches, pièces cocktail et douceurs : des formats à faire circuler, livrés prêts à servir pour vos déjeuners partagés."
-        seoArticle={SEO_ARTICLE}
+        eyebrow={T.closeEyebrow}
+        title={T.closeTitre}
+        body={T.closeBody}
+        seoArticle={en ? SEO_EN : SEO_ARTICLE}
+        lang={en ? 'en' : 'fr'}
       />
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
