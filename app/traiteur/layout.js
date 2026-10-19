@@ -1,4 +1,5 @@
 import { ogImages } from '../../lib/og'
+import { alternatesPour } from '../../lib/i18n'
 // Page pivot sur « traiteur entreprise Paris ». Le mot « entreprise » manquait
 // au title alors qu'il est dans le H1 et dans toutes les requêtes visées.
 export const metadata = {
@@ -11,9 +12,9 @@ export const metadata = {
     locale: 'fr_FR',
     type: 'website',
   },
-  alternates: {
-    canonical: '/traiteur',
-  },
+  // Réciprocité hreflang : la page anglaise déclare la française et
+  // inversement, sinon Google ignore la paire.
+  alternates: alternatesPour('/traiteur', { en: true }),
 }
 
 export default function TraiteurLayout({ children }) {

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
+import { estAnglais } from '../lib/i18nBase'
 import { getAttribution } from '../lib/attribution'
 import { identifierVisiteur } from '../lib/posthog-identify'
 
@@ -17,8 +18,10 @@ import { identifierVisiteur } from '../lib/posthog-identify'
  * chaque tour annoncé par un filet et une étiquette, comme une page du site. */
 const EXCLUS = ['/devis', '/panier', '/commande-confirmee']
 
-/* Deux langues, tout au même endroit. Le français reste la langue par défaut :
- * on ne devine pas d'après le navigateur, le visiteur bascule s'il le veut. */
+/* Deux langues, tout au même endroit. On ne devine rien d'après le navigateur :
+ * la langue de départ est celle de la page (une page /en ouvre le chat en
+ * anglais), et le visiteur bascule s'il le veut. Son choix explicite est gardé
+ * en mémoire et l'emporte, sauf sur une page anglaise, où l'adresse tranche. */
 const T = {
   fr: {
     lanceur: 'Chat en direct', ouvrir: "Ouvrir le chat en direct", fermer: "Fermer l'assistant",
@@ -62,9 +65,12 @@ const T = {
 
 export default function ChatWidget() {
   const pathname = usePathname()
+  // La langue de la page, connue dès le rendu serveur : pas d'écart d'hydratation.
+  const pageEn = estAnglais(pathname || '/')
+  const languePage = pageEn ? 'en' : 'fr'
   const [ouvert, setOuvert] = useState(false)
-  const [langue, setLangue] = useState('fr')
-  const [messages, setMessages] = useState([{ role: 'assistant', content: T.fr.accueil }])
+  const [langue, setLangue] = useState(languePage)
+  const [messages, setMessages] = useState([{ role: 'assistant', content: T[languePage].accueil }])
   const [saisie, setSaisie] = useState('')
   const [enCours, setEnCours] = useState(false)
   const [formulaire, setFormulaire] = useState(null)   // pré-rempli par l'assistant
@@ -100,6 +106,9 @@ export default function ChatWidget() {
   }, [pathname])
 
   useEffect(() => {
+    // Sur une page anglaise, l'adresse tranche : inutile d'aller voir le choix
+    // mémorisé, le visiteur lit déjà la page en anglais.
+    if (pageEn) return
     try {
       const m = window.localStorage.getItem('chat-langue')
       if (m === 'en' || m === 'fr') basculer(m, true)

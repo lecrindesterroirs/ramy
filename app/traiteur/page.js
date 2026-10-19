@@ -1,11 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocaliseDans } from '../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../components/EnSlugsProvider'
+import { EN_TRAITEUR, EN_DEPT_TOUS } from '../../lib/en/pages/traiteur'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd'
 import { CITIES } from '../../lib/citiesData'
 import { businessNode } from '../../lib/site'
+import { FORMULES, LIV } from '../../lib/calculsPrix'
+import { MINIMUM, PDJ_DES, PAUSE_DES, LUNCHBOX_DES, PLATEAU_DES, euroFr } from '../../lib/prixEntree'
 
 const DEPARTEMENTS = ['Paris', 'Hauts-de-Seine (92)', 'Yvelines (78)', 'Essonne (91)', 'Val-de-Marne (94)', 'Seine-Saint-Denis (93)']
 
@@ -134,6 +140,17 @@ const localityOf = city => (city.region.includes('·') ? city.region.split('·')
 
 export default function TraiteurPage() {
   const [activeRegion, setActiveRegion] = useState('Tous')
+  const en = estAnglais(usePathname() || '/')
+  const E = en ? EN_TRAITEUR : null
+  // Un lien ne part vers /en que si la page anglaise existe (sinon il reste
+  // en français : changer de langue en route vaut mieux qu'une 404).
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  const nVilles = CITIES.length
+  const FAQ = en ? E.faq(nVilles) : TRAITEUR_FAQ
+  const BASE_URL = 'https://www.lecrin-traiteur.fr'
+  const URL_PAGE = en ? `${BASE_URL}/en/traiteur` : `${BASE_URL}/traiteur`
 
   const groups = DEPARTEMENTS
     .map(d => ({ dept: d, cities: CITIES.filter(c => deptOf(c) === d) }))
@@ -149,19 +166,19 @@ export default function TraiteurPage() {
         {/* ── Hero ── */}
         <div className="traiteur-hero" style={{ background: 'var(--bg-secondary)', padding: '90px 72px 78px', textAlign: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-            Zone de livraison
+            {en ? E.eyebrow : 'Zone de livraison'}
           </p>
           <span style={{ display: 'block', width: '38px', height: '1px', background: 'var(--accent)', opacity: 0.6, margin: '0 auto 26px' }} />
           <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 400, lineHeight: 1.06, color: 'var(--text-primary)', marginBottom: '24px', letterSpacing: '-0.015em' }}>
-            Traiteur entreprise Paris{' '}<br />& Île-de-France
+            {en ? <>{E.h1a}{' '}<br />{E.h1b}</> : <>Traiteur entreprise Paris{' '}<br />& Île-de-France</>}
           </h1>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
-            L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans {CITIES.length} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.
+            {en ? E.heroDesc(nVilles) : `L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans ${nVilles} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.`}
           </p>
 
           {/* Ligne sobre, points clés séparés par des puces dorées */}
           <div className="traiteur-facts" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '4px 16px' }}>
-            {[`${CITIES.length} villes desservies`, 'Livraison dès 6h30', 'Devis sous 24h'].map((fact, i) => (
+            {(en ? E.facts(nVilles) : [`${nVilles} villes desservies`, 'Livraison dès 6h30', 'Devis sous 24h']).map((fact, i) => (
               <span key={fact} style={{ display: 'inline-flex', alignItems: 'center', gap: '16px' }}>
                 {i > 0 && <span style={{ color: 'var(--accent-deep)', fontSize: '12px', lineHeight: 1 }}>·</span>}
                 <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.04em', color: 'var(--text-secondary)' }}>
@@ -175,36 +192,37 @@ export default function TraiteurPage() {
         {/* ── Bloc-réponse : le service en clair (SEO + GEO) ── */}
         <section className="traiteur-intro" style={{ maxWidth: '760px', margin: '0 auto', padding: '72px 40px 8px' }}>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
-            L'Écrin Traiteur livre petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets directement dans vos bureaux, à Paris et dans {CITIES.length} villes d'Île-de-France. Chaque commande est préparée à partir de produits d'artisans identifiés, comme les madeleines de Mado Paris, les yaourts de la Ferme de Viltain ou les jus d'Alain Milliat, et livrée par notre propre équipe, jamais en sous-traitance.
+            {en ? E.intro1(nVilles) : `L'Écrin Traiteur livre petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets directement dans vos bureaux, à Paris et dans ${nVilles} villes d'Île-de-France. Chaque commande est préparée à partir de produits d'artisans identifiés, comme les madeleines de Mado Paris, les yaourts de la Ferme de Viltain ou les jus d'Alain Milliat, et livrée par notre propre équipe, jamais en sous-traitance.`}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
-            Vous commandez jusqu'à la veille 14h pour une livraison dès 6h30. Le minimum de commande est de <strong style={{ fontWeight: 500 }}>50 € HT</strong>, avec un forfait de livraison de <strong style={{ fontWeight: 500 }}>29 € HT</strong> à Paris et dans les communes proches. Vous recevez une facture entreprise avec TVA et un devis personnalisé sous 24h.
+            {en ? <>{E.intro2a}<strong style={{ fontWeight: 500 }}>{E.intro2mini}</strong>{E.intro2b}<strong style={{ fontWeight: 500 }}>{E.intro2liv}</strong>{E.intro2c}</>
+              : <>Vous commandez jusqu'à la veille 14h pour une livraison dès 6h30. Le minimum de commande est de <strong style={{ fontWeight: 500 }}>{euroFr(MINIMUM)} HT</strong>, avec un forfait de livraison de <strong style={{ fontWeight: 500 }}>{euroFr(LIV)} HT</strong> à Paris et dans les communes proches. Vous recevez une facture entreprise avec TVA et un devis personnalisé sous 24h.</>}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
-            Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.
+            {en ? E.intro3 : 'Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.'}
           </p>
                   <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
-            Combien coûte un traiteur d'entreprise à Paris ?
+            {en ? E.prixTitre : "Combien coûte un traiteur d'entreprise à Paris ?"}
           </h2>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', color: 'var(--text-primary)' }}>
               <thead>
                 <tr>
-                  {['Prestation', 'Prix HT par personne', 'Ce qui est compris'].map(t => (
+                  {(en ? E.prixCols : ['Prestation', 'Prix HT par personne', 'Ce qui est compris']).map(t => (
                     <th key={t} style={{ textAlign: 'left', padding: '12px 10px', fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-secondary)', borderBottom: '1px solid rgba(17,17,17,0.35)' }}>{t}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {[
-                  ['Petit-déjeuner', 'dès 8 €', 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
-                  ['Pause goûter', 'dès 6 €', 'Une boisson et une pâtisserie'],
-                  ['Lunch box', 'dès 18,90 €', 'Déjeuner individuel prêt à manger'],
-                  ['Plateau repas', 'dès 28,90 €', 'Entrée, plat, dessert et pain'],
-                  ['Cocktail 8 pièces', '29,90 €', "L'Invitation : apéritif, afterwork"],
-                  ['Cocktail 12 pièces', '40,90 €', 'La Réception : déjeunatoire, soirée partenaires'],
-                  ['Cocktail 16 pièces', '51,90 €', 'La Célébration : cocktail dînatoire'],
-                ].map(([a, b, c]) => (
+                {(en ? E.prixRows : [
+                  ['Petit-déjeuner', `dès ${euroFr(PDJ_DES)}`, 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
+                  ['Pause goûter', `dès ${euroFr(PAUSE_DES)}`, 'Une boisson et une pâtisserie'],
+                  ['Lunch box', `dès ${euroFr(LUNCHBOX_DES)}`, 'Déjeuner individuel prêt à manger'],
+                  ['Plateau repas', `dès ${euroFr(PLATEAU_DES)}`, 'Entrée, plat, dessert et pain'],
+                  ['Cocktail 8 pièces', euroFr(FORMULES.invitation.prix), "L'Invitation : apéritif, afterwork"],
+                  ['Cocktail 12 pièces', euroFr(FORMULES.reception.prix), 'La Réception : déjeunatoire, soirée partenaires'],
+                  ['Cocktail 16 pièces', euroFr(FORMULES.celebration.prix), 'La Célébration : cocktail dînatoire'],
+                ]).map(([a, b, c]) => (
                   <tr key={a}>
                     <td style={{ padding: '12px 10px', borderBottom: '1px solid rgba(17,17,17,0.1)', fontWeight: 500 }}>{a}</td>
                     <td style={{ padding: '12px 10px', borderBottom: '1px solid rgba(17,17,17,0.1)', whiteSpace: 'nowrap' }}>{b}</td>
@@ -215,19 +233,19 @@ export default function TraiteurPage() {
             </table>
           </div>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '14px' }}>
-            Prix 2026, hors taxes. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Devis détaillé sous 24h.
+            {en ? E.prixNote : `Prix 2026, hors taxes. Livraison ${euroFr(LIV)} HT à Paris et dans les communes proches, minimum de commande ${euroFr(MINIMUM)} HT. Devis détaillé sous 24h.`}
           </p>
         </section>
 
         {/* ── Prestations : hub → pages produit ── */}
         <section className="traiteur-prestations" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px' }}>
-            Nos prestations de traiteur d'entreprise
+            {en ? E.prestationsTitre : "Nos prestations de traiteur d'entreprise"}
           </h2>
-          {PRESTATIONS.map((p, i) => (
+          {(en ? E.prestations : PRESTATIONS).map((p, i) => (
             <a
               key={p.href}
-              href={p.href}
+              href={L(p.href)}
               className="presta-row"
               style={{
                 display: 'block', textDecoration: 'none', padding: '22px 0',
@@ -247,17 +265,17 @@ export default function TraiteurPage() {
         {/* ── Repères de prix ── */}
         <section className="traiteur-prix" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '18px' }}>
-            Nos prix par prestation
+            {en ? E.reperesTitre : 'Nos prix par prestation'}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '24px' }}>
-            Le prix se compte par personne et dépend de la prestation. À cela s'ajoutent un minimum de commande de 50 € HT et une livraison à 29 € HT à Paris et dans les communes proches. Le devis, personnalisé, est envoyé sous 24h.
+            {en ? E.reperesIntro : `Le prix se compte par personne et dépend de la prestation. À cela s'ajoutent un minimum de commande de ${euroFr(MINIMUM)} HT et une livraison à ${euroFr(LIV)} HT à Paris et dans les communes proches. Le devis, personnalisé, est envoyé sous 24h.`}
           </p>
-          {PRIX.map((p, i) => (
+          {(en ? E.reperes : PRIX).map((p, i) => (
             <a
               key={p.href}
-              href={p.href}
+              href={L(p.href)}
               className="prix-row"
-              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '24px', textDecoration: 'none', padding: '18px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === PRIX.length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}
+              style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '24px', textDecoration: 'none', padding: '18px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === (en ? E.reperes : PRIX).length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}
             >
               <span style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', color: 'var(--text-primary)' }}>{p.titre}</span>
@@ -274,10 +292,10 @@ export default function TraiteurPage() {
         {/* ── Le bon format selon le moment ── */}
         <section className="traiteur-moments" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
-            Quel traiteur pour quel moment de la journée ?
+            {en ? E.momentsTitre : 'Quel traiteur pour quel moment de la journée ?'}
           </h2>
-          {MOMENTS.map((m, i) => (
-            <div key={m.moment} style={{ padding: '20px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === MOMENTS.length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}>
+          {(en ? E.moments : MOMENTS).map((m, i) => (
+            <div key={m.moment} style={{ padding: '20px 0', borderTop: '1px solid rgba(17,17,17,0.08)', borderBottom: i === (en ? E.moments : MOMENTS).length - 1 ? '1px solid rgba(17,17,17,0.08)' : 'none' }}>
               <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>
                 {m.moment}
               </h3>
@@ -285,11 +303,11 @@ export default function TraiteurPage() {
                 {m.texte}
               </p>
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
-                Voir :{' '}
+                {en ? E.momentsVoir : 'Voir :'}{' '}
                 {m.liens.map((l, k) => (
                   <span key={l.href}>
                     {k > 0 && ', '}
-                    <a href={l.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{l.label}</a>
+                    <a href={L(l.href)} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{l.label}</a>
                   </span>
                 ))}
               </p>
@@ -300,9 +318,9 @@ export default function TraiteurPage() {
         {/* ── Comment ça se passe ── */}
         <section className="traiteur-etapes" style={{ maxWidth: '760px', margin: '0 auto', padding: '56px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '24px' }}>
-            Commander en quatre étapes
+            {en ? E.etapesTitre : 'Commander en quatre étapes'}
           </h2>
-          {ETAPES.map((e, i) => (
+          {(en ? E.etapes : ETAPES).map((e, i) => (
             <div key={e.titre} style={{ display: 'flex', gap: '20px', padding: '16px 0', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
               <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', color: 'var(--accent-deep)', paddingTop: '4px', flexShrink: 0 }}>0{i + 1}</span>
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
@@ -311,24 +329,28 @@ export default function TraiteurPage() {
             </div>
           ))}
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginTop: '20px' }}>
-            Toute la carte est <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>halal et sans porc</a> par défaut. Notre démarche sur les contenants, la reprise du matériel et les produits est détaillée sur la page{' '}
-            <a href="/traiteur-eco-responsable" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur éco-responsable</a>.
+            {en
+              ? <>{E.etapesNote.a}<a href={L('/traiteur-halal')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{E.etapesNote.halal}</a>{E.etapesNote.b}<a href={L('/traiteur-eco-responsable')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{E.etapesNote.eco}</a>{E.etapesNote.c}</>
+              : <>Toute la carte est <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>halal et sans porc</a> par défaut. Notre démarche sur les contenants, la reprise du matériel et les produits est détaillée sur la page{' '}
+            <a href="/traiteur-eco-responsable" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur éco-responsable</a>.</>}
           </p>
         </section>
 
         {/* ── Bloc Paris / IDF ── */}
         <section className="traiteur-zone" style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '22px' }}>
-            Un traiteur d'entreprise qui connaît le terrain
+            {en ? E.zoneTitre : "Un traiteur d'entreprise qui connaît le terrain"}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
-            Livrer un petit-déjeuner à 8h dans une tour de La Défense et le livrer dans un immeuble haussmannien du 8e arrondissement ne demandent pas la même préparation. Quai de livraison en sous-sol, badge visiteur déclaré la veille, accueil filtré, stationnement impossible : ce sont ces détails qui font qu'une commande arrive à l'heure ou après la réunion.
+            {en ? E.zone1 : "Livrer un petit-déjeuner à 8h dans une tour de La Défense et le livrer dans un immeuble haussmannien du 8e arrondissement ne demandent pas la même préparation. Quai de livraison en sous-sol, badge visiteur déclaré la veille, accueil filtré, stationnement impossible : ce sont ces détails qui font qu'une commande arrive à l'heure ou après la réunion."}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginBottom: '18px' }}>
-            Nous livrons avec notre propre équipe, jamais en sous-traitance. C'est ce qui nous permet de tenir un créneau précis plutôt qu'une plage de deux heures, et de connaître les accès de nos secteurs les plus demandés : Boulogne-Billancourt, où se trouve notre atelier, La Défense côté Puteaux, Neuilly-sur-Seine, Levallois et les Hauts-de-Seine nord.
+            {en ? E.zone2 : "Nous livrons avec notre propre équipe, jamais en sous-traitance. C'est ce qui nous permet de tenir un créneau précis plutôt qu'une plage de deux heures, et de connaître les accès de nos secteurs les plus demandés : Boulogne-Billancourt, où se trouve notre atelier, La Défense côté Puteaux, Neuilly-sur-Seine, Levallois et les Hauts-de-Seine nord."}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
-            Choisissez votre commune ci-dessous pour les détails de livraison, ou <a href="/devis" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>demandez un devis</a> : vous l'avez sous 24h.
+            {en
+              ? <>{E.zone3a}<a href={L('/devis')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{E.zone3lien}</a>{E.zone3b}</>
+              : <>Choisissez votre commune ci-dessous pour les détails de livraison, ou <a href="/devis" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>demandez un devis</a> : vous l'avez sous 24h.</>}
           </p>
         </section>
 
@@ -337,7 +359,7 @@ export default function TraiteurPage() {
           <div className="traiteur-filter" style={{ maxWidth: '1160px', margin: '0 auto', padding: '0 72px', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {['Tous', ...DEPARTEMENTS].map(r => {
               const isActive = activeRegion === r
-              const label = r === 'Tous' ? 'Tous' : parseDept(r).name
+              const label = r === 'Tous' ? (en ? EN_DEPT_TOUS : 'Tous') : parseDept(r).name
               return (
                 <button
                   key={r}
@@ -376,7 +398,7 @@ export default function TraiteurPage() {
                   </h2>
                   <span style={{ flex: 1, height: '1px', background: 'rgba(17,17,17,0.12)' }} />
                   <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
-                    {cities.length} {cities.length > 1 ? 'villes' : 'ville'}
+                    {cities.length} {en ? (cities.length > 1 ? E.villesPlusieurs : E.villesUn) : (cities.length > 1 ? 'villes' : 'ville')}
                   </span>
                 </div>
 
@@ -387,7 +409,7 @@ export default function TraiteurPage() {
                     return (
                       <a
                         key={city.slug}
-                        href={`/traiteur/${city.slug}`}
+                        href={L(`/traiteur/${city.slug}`)}
                         className="city-row"
                         style={{
                           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -433,12 +455,12 @@ export default function TraiteurPage() {
         {/* ── Guides pour choisir ── */}
         <section className="traiteur-guides" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 8px' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '40px 0 20px' }}>
-            Nos guides pour bien choisir
+            {en ? E.guidesTitre : 'Nos guides pour bien choisir'}
           </h2>
           <ul style={{ margin: 0, paddingLeft: '22px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)' }}>
-            {GUIDES.map(g => (
+            {(en ? E.guides : GUIDES).map(g => (
               <li key={g.href}>
-                <a href={g.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{g.label}</a>
+                <a href={L(g.href)} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{g.label}</a>
               </li>
             ))}
           </ul>
@@ -447,9 +469,9 @@ export default function TraiteurPage() {
         {/* ── FAQ logistique ── */}
         <section className="traiteur-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '24px 40px 8px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '48px 0 28px' }}>
-            Questions fréquentes
+            {en ? E.faqTitre : 'Questions fréquentes'}
           </h2>
-          {TRAITEUR_FAQ.map((f, i) => (
+          {FAQ.map((f, i) => (
             <div key={i} style={{ padding: '22px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(17,17,17,0.08)' }}>
               <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
                 {f.q}
@@ -465,18 +487,18 @@ export default function TraiteurPage() {
         <div style={{ textAlign: 'center', padding: '48px 40px 96px' }}>
           <div style={{ maxWidth: '560px', margin: '0 auto', paddingTop: '32px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginTop: '64px', marginBottom: '16px' }}>
-              Votre ville n'est pas listée ?
+              {en ? E.ctaEyebrow : "Votre ville n'est pas listée ?"}
             </p>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', marginBottom: '28px' }}>
-              Nous livrons dans toute l'Île-de-France. Contactez-nous pour vérifier la disponibilité dans votre commune.
+              {en ? E.ctaTexte : "Nous livrons dans toute l'Île-de-France. Contactez-nous pour vérifier la disponibilité dans votre commune."}
             </p>
             <a
-              href="/devis"
+              href={L('/devis')}
               style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              Obtenir un devis →
+              {en ? E.ctaBouton : 'Obtenir un devis →'}
             </a>
           </div>
         </div>
@@ -505,7 +527,7 @@ export default function TraiteurPage() {
         }
       ` }} />
 
-      <BreadcrumbJsonLd items={[
+      <BreadcrumbJsonLd items={en ? E.breadcrumb : [
         { name: 'Accueil', path: '' },
         { name: 'Traiteur en entreprise', path: '/traiteur' },
       ]} />
@@ -518,18 +540,20 @@ export default function TraiteurPage() {
           '@graph': [
             {
               '@type': 'Service',
-              '@id': 'https://www.lecrin-traiteur.fr/traiteur#service',
-              'name': "Traiteur d'entreprise Paris & Île-de-France",
-              'serviceType': "Traiteur d'entreprise",
-              'provider': { '@id': 'https://www.lecrin-traiteur.fr/#business' },
+              '@id': `${URL_PAGE}#service`,
+              'name': en ? E.serviceName : "Traiteur d'entreprise Paris & Île-de-France",
+              'serviceType': en ? E.serviceType : "Traiteur d'entreprise",
+              'provider': { '@id': `${BASE_URL}/#business` },
               'areaServed': { '@type': 'State', 'name': 'Île-de-France' },
-              'url': 'https://www.lecrin-traiteur.fr/traiteur',
-              'description': "Livraison de petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets en entreprise, à Paris et en Île-de-France. Produits d'artisans, halal et sans porc, livraison dès 6h30.",
+              'url': URL_PAGE,
+              'inLanguage': en ? 'en' : 'fr',
+              'description': en ? E.serviceDesc : "Livraison de petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets en entreprise, à Paris et en Île-de-France. Produits d'artisans, halal et sans porc, livraison dès 6h30.",
             },
             {
               '@type': 'FAQPage',
-              '@id': 'https://www.lecrin-traiteur.fr/traiteur#faq',
-              'mainEntity': TRAITEUR_FAQ.map(f => ({
+              '@id': `${URL_PAGE}#faq`,
+              'inLanguage': en ? 'en' : 'fr',
+              'mainEntity': FAQ.map(f => ({
                 '@type': 'Question',
                 'name': f.q,
                 'acceptedAnswer': { '@type': 'Answer', 'text': f.a },

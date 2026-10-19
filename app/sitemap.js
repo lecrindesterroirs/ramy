@@ -191,6 +191,10 @@ export default function sitemap() {
     ...cheminsAnimationsEn().map(c => url(`/en${c}`, 0.72, 'monthly')),
     ...clesCocktailsEn().map(k => url(`/en/creations/cocktails/${k}`, 0.78, 'monthly')),
     url('/en', 0.90, 'weekly'),   // accueil anglais
+    // Pages légales anglaises : elles existent (app/en/cgv, /mentions-legales,
+    // /confidentialite, /cookies) mais n'étaient pas déclarées, donc le
+    // hreflang n'était pas réciproque pour ces quatre-là.
+    ...['/mentions-legales', '/cgv', '/confidentialite', '/cookies'].map(c => url(`/en${c}`, 0.15, 'yearly')),
     ...INDEX_FAMILLES_EN.map(c => url(`/en${c}`, 0.80, 'weekly')),
     ...UNIVERS_EN.map(c => url(`/en${c}`, 0.72, 'monthly')),
     ...slugsArtisansEn().map(s => url(`/en/univers/nos-artisans/${s}`, 0.68, 'monthly')),
