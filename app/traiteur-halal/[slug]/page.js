@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { estAnglais, reecrireLiensEnDans } from '../../../lib/i18nBase'
-import { enHalal } from '../../../lib/en/pages/halal'
+import { enHalal, EN_LIENS_UTILES } from '../../../lib/en/pages/halal'
 import { useEnSlugs, useEnChemins } from '../../../components/EnSlugsProvider'
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
@@ -49,6 +49,7 @@ const T_HALAL = {
     toutePage: "Traiteur halal d'entreprise, Paris et Île-de-France",
     aLire: 'À lire aussi',
     faqEyebrow: 'Questions fréquentes',
+    retour: "← Traiteur halal d'entreprise",
   },
   en: {
     devis: 'Get a quote →',
@@ -61,6 +62,7 @@ const T_HALAL = {
     toutePage: 'Halal corporate catering, Paris and Île-de-France',
     aLire: 'Also worth reading',
     faqEyebrow: 'Frequently asked questions',
+    retour: '← Halal corporate catering',
   },
 }
 
@@ -310,7 +312,7 @@ export default function TraiteurHalalSousPage() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 22px' }}>
               {page.liensUtiles.map(l => (
-                <a key={l.href} href={en ? (reecrireLiensEnDans(chemins, `href="${l.href}"`, slugsEn).match(/href="([^"]*)"/) || [, l.href])[1] : l.href} style={linkStyle}>{l.label}</a>
+                <a key={l.href} href={en ? (reecrireLiensEnDans(chemins, `href="${l.href}"`, slugsEn).match(/href="([^"]*)"/) || [, l.href])[1] : l.href} style={linkStyle}>{(en && EN_LIENS_UTILES[l.href]) || l.label}</a>
               ))}
             </div>
           </>
@@ -322,7 +324,7 @@ export default function TraiteurHalalSousPage() {
           href={lien('/traiteur-halal')}
           style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
         >
-          ← Traiteur halal d'entreprise
+          {T.retour}
         </a>
       </div>
 
