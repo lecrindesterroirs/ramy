@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../lib/i18n'
+import { estAnglais } from '../lib/i18nBase'
 import { t } from '../lib/en/interface'
 
 // fonce : logo en couleur claire (turquoise, vert, rouge, dégradé) qui devenait

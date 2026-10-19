@@ -1,8 +1,8 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { estAnglais, versEn, versFr, equivalentEn } from '../lib/i18n'
-import { useEnSlugs } from './EnSlugsProvider'
+import { estAnglais, versEn, versFr, equivalentEnDans } from '../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from './EnSlugsProvider'
 
 /*
   Bascule français / anglais.
@@ -23,7 +23,8 @@ export default function SelecteurLangue({ compact = false, lien = false, style: 
   const cheminFr = anglais ? versFr(pathname) : pathname
 
   const slugsEn = useEnSlugs()
-  const cibleEn = equivalentEn(cheminFr, slugsEn)
+  const chemins = useEnChemins()
+  const cibleEn = equivalentEnDans(chemins, cheminFr, slugsEn)
   if (!cibleEn) return null   // pas de version anglaise : pas de sélecteur
 
   /*

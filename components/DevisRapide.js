@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAttribution } from '../lib/attribution'
 import { identifierVisiteur } from '../lib/posthog-identify'
-import { estAnglais } from '../lib/i18n'
+import { estAnglais } from '../lib/i18nBase'
 
 const PRESTATIONS = [
   'Petit-déjeuner',

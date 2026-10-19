@@ -4,7 +4,7 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../lib/i18n'
+import { estAnglais } from '../../../lib/i18nBase'
 import { T_CAS } from '../../../lib/en/pages/univers'
 
 const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"

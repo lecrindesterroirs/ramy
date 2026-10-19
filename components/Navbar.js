@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 import SelecteurLangue from './SelecteurLangue'
-import { estAnglais, lienLocalise } from '../lib/i18n'
-import { useEnSlugs } from './EnSlugsProvider'
+import { estAnglais, lienLocaliseDans } from '../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from './EnSlugsProvider'
 import { t } from '../lib/en/interface'
 
 const MOMENTS = {
@@ -80,7 +80,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
      français : on ne renvoie jamais vers une adresse qui n'existe pas. */
   const langue = estAnglais(pathname || '/') ? 'en' : 'fr'
   const slugsEn = useEnSlugs()
-  const lien = (href) => lienLocalise(href, langue, slugsEn)
+  const chemins = useEnChemins()
+  const lien = (href) => lienLocaliseDans(chemins, href, langue, slugsEn)
   const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
   const alwaysScrolled = forceScrolled || pathname !== '/'
   const devisAccent = isOctobreRoseActive() ? OCTOBRE_ROSE_ACCENT : 'var(--accent)'

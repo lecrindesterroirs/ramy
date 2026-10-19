@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../lib/i18n'
+import { estAnglais } from '../../lib/i18nBase'
 import { enOccasion } from '../../lib/en/pages/occasions'
 import Link from 'next/link'
 import Navbar from '../../components/Navbar'

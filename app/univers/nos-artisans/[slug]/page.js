@@ -9,7 +9,7 @@ import Reveal from '../../../../components/Reveal'
 import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { usePathname } from 'next/navigation'
 import { ARTISANS, getArtisanBySlug } from '../../../../lib/artisansData'
-import { estAnglais } from '../../../../lib/i18n'
+import { estAnglais } from '../../../../lib/i18nBase'
 import { enArtisan, nomCreationEn } from '../../../../lib/en/univers/artisans'
 
 /*

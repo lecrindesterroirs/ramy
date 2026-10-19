@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import { trackPhoneClick } from '../lib/tracking'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 import { prestationRapidePour } from '../lib/parcours'
-import { estAnglais } from '../lib/i18n'
+import { estAnglais } from '../lib/i18nBase'
 import DevisSheet from './DevisSheet'
 import CatalogueModal from './CatalogueModal'
 

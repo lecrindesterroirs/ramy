@@ -5,7 +5,7 @@ import Footer from '../../../components/Footer'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import BusinessJsonLd from '../../../components/BusinessJsonLd'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../lib/i18n'
+import { estAnglais } from '../../../lib/i18nBase'
 import { T_ENGAGEMENTS } from '../../../lib/en/pages/univers'
 
 /* Fond papier (grain léger) pour l'effet parchemin. */

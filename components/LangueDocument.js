@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { estAnglais } from '../lib/i18n'
+import { estAnglais } from '../lib/i18nBase'
 
 /*
   Pose l'attribut lang sur <html> selon le chemin.

@@ -15,7 +15,7 @@ import ParallaxImage from '../../../../components/ParallaxImage'
 import FicheAsavoir from '../../../../components/FicheAsavoir'
 import { asavoirProduit } from '../../../../lib/ficheAsavoir'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../../lib/i18n'
+import { estAnglais } from '../../../../lib/i18nBase'
 import { produitLocalise } from '../../../../lib/en/produits/petitsDejeuners'
 
 const COFFRETS = [

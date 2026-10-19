@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS } from '../lib/site'
-import { estAnglais } from '../lib/i18n'
+import { estAnglais } from '../lib/i18nBase'
 
 // Badge preuve sociale "5,0★ · Avis Google", cliquable vers la fiche GBP.
 // variant   : 'light' (fond clair, texte foncé) | 'onImage' (sur photo/scrim, texte foncé chaud)

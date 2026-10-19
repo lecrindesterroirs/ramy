@@ -1,9 +1,9 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { estAnglais, lienLocalise } from '../lib/i18n'
+import { estAnglais, lienLocaliseDans } from '../lib/i18nBase'
 import { t } from '../lib/en/interface'
-import { useEnSlugs } from './EnSlugsProvider'
+import { useEnSlugs, useEnChemins } from './EnSlugsProvider'
 import SelecteurLangue from './SelecteurLangue'
 
 const linkStyle = {
@@ -35,7 +35,8 @@ export default function Footer() {
   const pathname = usePathname() || '/'
   const langue = estAnglais(pathname) ? 'en' : 'fr'
   const slugsEn = useEnSlugs()
-  const lien = (href) => lienLocalise(href, langue, slugsEn)
+  const chemins = useEnChemins()
+  const lien = (href) => lienLocaliseDans(chemins, href, langue, slugsEn)
   const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
 
   return (

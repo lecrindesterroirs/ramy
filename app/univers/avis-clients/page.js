@@ -4,7 +4,7 @@ import InfoPage from '../../../components/InfoPage'
 import { testimonials } from '../../../lib/testimonialsData'
 import { businessNode, BUSINESS_ID, GBP_URL, GBP_RATING_LABEL, GBP_REVIEWS, PROOF } from '../../../lib/site'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../lib/i18n'
+import { estAnglais } from '../../../lib/i18nBase'
 import { T_AVIS, temoignageEn } from '../../../lib/en/pages/univers'
 
 // Page « Avis clients » : répond à « Que penser de L'Écrin Traiteur ? ». Que des faits

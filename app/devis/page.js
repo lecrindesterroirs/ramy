@@ -10,7 +10,7 @@ import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
 import { identifierVisiteur, suivreEtapeDevis } from '../../lib/posthog-identify'
-import { estAnglais } from '../../lib/i18n'
+import { estAnglais } from '../../lib/i18nBase'
 import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
 
 /* Le même parcours sert /devis et /en/devis. La langue vient du chemin ; les

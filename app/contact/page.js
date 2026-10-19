@@ -9,7 +9,7 @@ import { trackPhoneClick } from '../../lib/tracking'
 import { getAttribution } from '../../lib/attribution'
 import { identifierVisiteur } from '../../lib/posthog-identify'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../lib/i18n'
+import { estAnglais } from '../../lib/i18nBase'
 import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
 
 /*

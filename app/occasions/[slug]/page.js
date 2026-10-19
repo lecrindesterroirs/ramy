@@ -7,9 +7,9 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import { OCCASIONS, FAQ_DERNIERE_MINUTE } from '../../../lib/occasionsData'
 import { usePathname } from 'next/navigation'
-import { estAnglais, reecrireLiensEn } from '../../../lib/i18n'
+import { estAnglais, reecrireLiensEnDans } from '../../../lib/i18nBase'
 import { enOccasion, FAQ_DERNIERE_MINUTE_EN } from '../../../lib/en/pages/occasions'
-import { useEnSlugs } from '../../../components/EnSlugsProvider'
+import { useEnSlugs, useEnChemins } from '../../../components/EnSlugsProvider'
 
 /* Habillage de la page, par langue. Elle sert les deux. */
 const T_OCC = {
@@ -65,6 +65,7 @@ export default function OccasionPage() {
   const occasionFr = OCCASIONS.find(o => o.slug === slug)
   const en = estAnglais(usePathname() || '/')
   const slugsEn = useEnSlugs()
+  const chemins = useEnChemins()
   const T = en ? T_OCC.en : T_OCC.fr
   const surcouche = occasionFr && en ? enOccasion(slug) : null
   if (!occasionFr || (en && !surcouche)) notFound()
@@ -73,7 +74,7 @@ export default function OccasionPage() {
   const lien = (href) => (en ? `/en${href}` : href)
   // Les liens de l'article gardent leur chemin FR : reecrireLiensEn ne les
   // bascule que là où une page anglaise existe.
-  const article = en ? reecrireLiensEn(occasion.seoArticle, slugsEn) : occasion.seoArticle
+  const article = en ? reecrireLiensEnDans(chemins, occasion.seoArticle, slugsEn) : occasion.seoArticle
 
   const isPlateaux = occasion.productCategory === 'plateaux-repas'
   const isCocktails = occasion.productCategory === 'cocktails'

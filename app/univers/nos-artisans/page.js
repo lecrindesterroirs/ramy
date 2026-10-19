@@ -10,7 +10,7 @@ import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import BusinessJsonLd from '../../../components/BusinessJsonLd'
 import ArtisansMapSection from '../../../components/ArtisansMapSection'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../lib/i18n'
+import { estAnglais } from '../../../lib/i18nBase'
 import { enArtisan } from '../../../lib/en/univers/artisans'
 
 /* Habillage de la page, par langue. Elle sert les deux. */
