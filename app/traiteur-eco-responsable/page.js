@@ -1,6 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocaliseDans, reecrireLiensEnDans } from '../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../components/EnSlugsProvider'
+import { EN_ECO } from '../../lib/en/pages/eco'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Reveal from '../../components/Reveal'
@@ -9,6 +13,7 @@ import RelatedLinks from '../../components/RelatedLinks'
 import CategoryClosing from '../../components/CategoryClosing'
 import ParallaxImage from '../../components/ParallaxImage'
 import BusinessJsonLd from '../../components/BusinessJsonLd'
+import { MINIMUM, PDJ_DES, PAUSE_DES, PLATEAU_DES, RECUP, euroFr } from '../../lib/prixEntree'
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
@@ -88,12 +93,25 @@ const FAQ = [
 ]
 
 export default function TraiteurEcoResponsable() {
+  const en = estAnglais(usePathname() || '/')
+  const E = en ? EN_ECO : null
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  const URL_PAGE = `${BASE}${en ? '/en' : ''}/traiteur-eco-responsable`
+  const LFAQ = en ? E.faq : FAQ
+  // Photos et chemins restent lus dans PRESTATIONS : la surcouche ne porte
+  // que le texte, pour qu'une photo changée en français le soit aussi ici.
+  const LPRESTATIONS = en
+    ? PRESTATIONS.map((p, i) => ({ ...p, ...E.prestations[i] }))
+    : PRESTATIONS
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FoodEstablishment'],
     name: "L'Écrin Traiteur",
-    description: "Traiteur d'entreprise éco-responsable à Paris et en Île-de-France : circuit court, artisans identifiés, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos. Livré dès 6h30.",
-    url: `${BASE}/traiteur-eco-responsable`,
+    description: en ? E.schemaDesc : "Traiteur d'entreprise éco-responsable à Paris et en Île-de-France : circuit court, artisans identifiés, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos. Livré dès 6h30.",
+    url: URL_PAGE,
+    inLanguage: en ? 'en' : 'fr',
     telephone: '+33174542310',
     email: 'commercial@lecrin-traiteur.fr',
     address: {
@@ -116,29 +134,29 @@ export default function TraiteurEcoResponsable() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: BASE },
-      { '@type': 'ListItem', position: 2, name: 'Traiteur éco-responsable', item: `${BASE}/traiteur-eco-responsable` },
+      { '@type': 'ListItem', position: 1, name: en ? E.breadcrumb[0].name : 'Accueil', item: `${BASE}${en ? '/en' : ''}` },
+      { '@type': 'ListItem', position: 2, name: en ? E.breadcrumb[1].name : 'Traiteur éco-responsable', item: URL_PAGE },
     ],
   }
 
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ.map(f => ({
+    mainEntity: LFAQ.map(f => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   }
 
-  const ARGS = [
+  const ARGS = en ? E.args : [
     { icon: 'quality',  titre: 'Circuit court',            desc: "Producteurs et artisans identifiés, farines françaises, zéro arôme artificiel. On nomme, on trace." },
     { icon: 'custom',   titre: 'Vaisselle bois et pulpe de canne',    desc: "Bois, carton et pulpe de canne plutôt que du plastique jetable, sans rien perdre en présentation." },
     { icon: 'support',  titre: 'Boucle fermée',            desc: "Récupération de la vaisselle réutilisable et des thermos après votre événement." },
     { icon: 'delivery', titre: 'Livré par notre équipe',   desc: "Pas de sous-traitance : la même équipe livre et reprend, à Paris et en Île-de-France." },
   ]
 
-  const seoArticle = `
+  const seoArticleFr = `
     <h2>Un traiteur d'entreprise éco-responsable, concret</h2>
     <p>Chez <strong>L'Écrin Traiteur</strong>, l'éco-responsabilité n'est pas un label affiché en bas de page : c'est une manière de travailler. Nous partons d'artisans et de producteurs identifiés, en circuit court quand la proximité améliore vraiment le produit : la Ferme de Viltain, le verger des Yvelines, des farines françaises, zéro arôme artificiel. Nommer nos sources, c'est déjà pouvoir en répondre.</p>
 
@@ -179,6 +197,10 @@ export default function TraiteurEcoResponsable() {
     <p>De la commande à la reprise du matériel, tout passe par notre équipe interne, jamais par de la sous-traitance. Nous livrons dès 6h30 à Paris et en Île-de-France, de 10 à 300 personnes : <a href="/traiteur/paris">Paris</a>, <a href="/traiteur/la-defense">La Défense</a>, <a href="/traiteur/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/versailles">Versailles</a> et <a href="/traiteur">toutes les villes que nous desservons</a>. <a href="/devis">Demandez votre devis gratuit</a> et composez une prestation qui régale vos équipes sans gaspiller.</p>
   `
 
+  // Les liens de l'article gardent leur chemin français : la réécriture se fait
+  // au rendu, et seulement vers les pages anglaises qui existent.
+  const seoArticle = en ? reecrireLiensEnDans(cheminsEn, E.seoArticle, slugsEn) : seoArticleFr
+
   return (
     <>
       <Navbar showBanner={true} />
@@ -194,42 +216,42 @@ export default function TraiteurEcoResponsable() {
         {/* ── Hero image pleine largeur ── */}
         <div className="hl-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="hl-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
-            <ParallaxImage priority sizes="100vw" src="/buffet-garden-party.webp" alt="Traiteur d'entreprise éco-responsable, L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
+            <ParallaxImage priority sizes="100vw" src="/buffet-garden-party.webp" alt={en ? E.heroAlt : "Traiteur d'entreprise éco-responsable, L'Écrin Traiteur"} strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="hl-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '660px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
-                  Traiteur d'entreprise · Paris & Île-de-France
+                  {en ? E.eyebrow : "Traiteur d'entreprise · Paris & Île-de-France"}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.6vw, 64px)', fontWeight: 400, lineHeight: 1.05, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur éco-responsable <br />Paris & Île-de-France
+                  {en ? <>{E.h1a} <br />{E.h1b}</> : <>Traiteur éco-responsable <br />Paris & Île-de-France</>}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
-                  Un traiteur d'entreprise qui régale sans gaspiller : circuit court, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos, livré dans vos bureaux dès 6h30.
+                  {en ? E.heroDesc : "Un traiteur d'entreprise qui régale sans gaspiller : circuit court, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos, livré dans vos bureaux dès 6h30."}
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
                   <a
-                    href="/devis"
+                    href={L('/devis')}
                     style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
-                    Obtenir un devis →
+                    {en ? E.ctaDevis : 'Obtenir un devis →'}
                   </a>
                   <a
-                    href="/univers/nos-engagements"
+                    href={L('/univers/nos-engagements')}
                     style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                   >
-                    Nos engagements
+                    {en ? E.ctaEngagements : 'Nos engagements'}
                   </a>
                 </div>
 
                 {/* Badges */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
-                  {['Circuit court', 'Vaisselle bois & pulpe de canne', 'Vaisselle & thermos récupérés', 'Noté 5/5 sur Google'].map(badge => (
+                  {(en ? E.badges : ['Circuit court', 'Vaisselle bois & pulpe de canne', 'Vaisselle & thermos récupérés', 'Noté 5/5 sur Google']).map(badge => (
                     <span key={badge} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
                       {badge}
                     </span>
@@ -243,13 +265,15 @@ export default function TraiteurEcoResponsable() {
         {/* ── Bloc-réponse : la question posée en clair (SEO + GEO) ── */}
         <section style={{ maxWidth: '760px', margin: '0 auto', padding: '72px 24px 0' }}>
           <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '22px' }}>
-            Que fait concrètement un traiteur d'entreprise éco-responsable ?
+            {en ? E.reponseQ : "Que fait concrètement un traiteur d'entreprise éco-responsable ?"}
           </h2>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
-            Chez L'Écrin Traiteur, cela tient en quatre pratiques vérifiables : des produits d'artisans et de producteurs que nous nommons, des contenants en bois de peuplier français non traité, en carton ou en pulpe de canne plutôt qu'en plastique jetable, la reprise de la vaisselle réutilisable et des thermos après votre événement, et une livraison assurée par notre propre équipe, sans sous-traitance.
+            {en ? E.reponse1 : "Chez L'Écrin Traiteur, cela tient en quatre pratiques vérifiables : des produits d'artisans et de producteurs que nous nommons, des contenants en bois de peuplier français non traité, en carton ou en pulpe de canne plutôt qu'en plastique jetable, la reprise de la vaisselle réutilisable et des thermos après votre événement, et une livraison assurée par notre propre équipe, sans sous-traitance."}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
-            Nous ne revendiquons ni label écologique, ni mention « zéro déchet » ou « neutre en carbone », et nous ne publions aucun chiffre d'impact : livrer des repas dans Paris produit des déchets et des émissions, et nous préférons dire ce que nous faisons plutôt qu'afficher ce que nous ne pourrions pas prouver. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
+            {en
+              ? <>{E.reponse2a}<strong style={{ fontWeight: 500 }}>{E.reponse2mini}</strong>{E.reponse2b}</>
+              : <>Nous ne revendiquons ni label écologique, ni mention « zéro déchet » ou « neutre en carbone », et nous ne publions aucun chiffre d'impact : livrer des repas dans Paris produit des déchets et des émissions, et nous préférons dire ce que nous faisons plutôt qu'afficher ce que nous ne pourrions pas prouver. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>{euroFr(MINIMUM)} HT</strong>, devis sous 24h.</>}
           </p>
         </section>
 
@@ -257,14 +281,14 @@ export default function TraiteurEcoResponsable() {
         <div className="hl-regimes" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Une démarche concrète, pas un logo
+              {en ? E.piliersEyebrow : 'Une démarche concrète, pas un logo'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.12, color: 'var(--text-primary)' }}>
-              Bien recevoir,<br />sans gaspiller
+              {en ? E.piliersTitre.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>) : <>Bien recevoir,<br />sans gaspiller</>}
             </h2>
           </div>
           <div className="hl-regimes-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-            {PILIERS.map((r, i) => (
+            {(en ? E.piliers : PILIERS).map((r, i) => (
               <Reveal key={r.titre} delay={i * 90}>
                 <div style={{ background: 'var(--bg-secondary)', padding: '40px 34px', height: '100%' }}>
                   <span className="accent-line" style={{ marginBottom: '22px' }} />
@@ -287,17 +311,17 @@ export default function TraiteurEcoResponsable() {
         <div className="hl-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Nos prestations
+              {en ? E.prestationsEyebrow : 'Nos prestations'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Du petit-déjeuner <br />au buffet
+              {en ? E.prestationsTitre.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>) : <>Du petit-déjeuner <br />au buffet</>}
             </h2>
           </div>
           <div className="hl-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-            {PRESTATIONS.map((s, i) => (
+            {LPRESTATIONS.map((s, i) => (
               <Reveal key={s.label} delay={i * 90}>
                 <a
-                  href={s.href}
+                  href={L(s.href)}
                   className="hl-service-card"
                   style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', transition: 'box-shadow 0.35s ease, transform 0.35s ease' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)' }}
@@ -314,7 +338,7 @@ export default function TraiteurEcoResponsable() {
                       {s.desc}
                     </p>
                     <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                      Découvrir →
+                      {en ? E.prestationsCta : 'Découvrir →'}
                     </span>
                   </div>
                 </a>
@@ -332,13 +356,13 @@ export default function TraiteurEcoResponsable() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="hl-faq" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 40px 88px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px', textAlign: 'center' }}>
-              Questions fréquentes
+              {en ? E.faqEyebrow : 'Questions fréquentes'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 36px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', textAlign: 'center', marginBottom: '48px' }}>
-              Traiteur éco-responsable, on vous répond
+              {en ? E.faqTitre : 'Traiteur éco-responsable, on vous répond'}
             </h2>
             <div>
-              {FAQ.map((f, i) => (
+              {LFAQ.map((f, i) => (
                 <div key={i} style={{ padding: '26px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(17,17,17,0.1)' }}>
                   <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.25 }}>
                     {f.q}
@@ -355,25 +379,26 @@ export default function TraiteurEcoResponsable() {
       </main>
 
       <RelatedLinks
-        eyebrow="Explorez nos prestations"
-        title="Composez une prestation responsable"
-        items={[
+        eyebrow={en ? E.relatedEyebrow : "Explorez nos prestations"}
+        title={en ? E.relatedTitre : "Composez une prestation responsable"}
+        items={(en ? E.related : [
           { href: '/creations/petits-dejeuners-et-pauses', title: 'Petits-Déjeuners & Pauses', meta: 'Livrés dès 6h30' },
           { href: '/creations/plateaux-repas', title: 'Plateaux Repas', meta: 'Déjeuners de travail' },
           { href: '/univers/nos-engagements', title: 'Nos engagements', meta: 'Notre démarche' },
           { href: '/devis', title: 'Demander un devis', meta: 'Réponse rapide' },
-        ]}
+        ]).map(it => ({ ...it, href: L(it.href) }))}
         columns={4}
       />
 
       {/* ── Éditorial + arguments + CTA + article SEO ── */}
       <CategoryClosing
-        eyebrow="Traiteur éco-responsable entreprise"
-        title={"Bien recevoir,\nsans gaspiller."}
-        body="Circuit court, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos, livraison par notre propre équipe : chaque prestation est pensée pour régaler vos équipes en limitant les déchets, à Paris et en Île-de-France."
+        eyebrow={en ? E.closingEyebrow : "Traiteur éco-responsable entreprise"}
+        title={en ? E.closingTitre : "Bien recevoir,\nsans gaspiller."}
+        body={en ? E.closingBody : "Circuit court, vaisselle en bois et pulpe de canne, récupération de la vaisselle et des thermos, livraison par notre propre équipe : chaque prestation est pensée pour régaler vos équipes en limitant les déchets, à Paris et en Île-de-France."}
         args={ARGS}
-        ctaQuestion="Une prestation responsable à organiser ?"
+        ctaQuestion={en ? E.closingCta : "Une prestation responsable à organiser ?"}
         seoArticle={seoArticle}
+        lang={en ? 'en' : 'fr'}
       />
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `

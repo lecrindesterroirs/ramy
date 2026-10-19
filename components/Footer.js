@@ -95,19 +95,19 @@ export default function Footer() {
                 { label: 'Toutes les occasions', labelEn: 'All occasions', href: '/occasions' },
               ]},
               { title: 'Traiteur à Paris & IDF', titleEn: 'Catering in Paris & Île-de-France', links: [
-                { label: 'Traiteur Paris', href: '/traiteur/paris' },
-                { label: 'Traiteur La Défense', href: '/traiteur/la-defense' },
-                { label: 'Traiteur Puteaux', href: '/traiteur/puteaux' },
-                { label: 'Traiteur Courbevoie', href: '/traiteur/courbevoie' },
-                { label: 'Traiteur Boulogne', href: '/traiteur/boulogne-billancourt' },
-                { label: 'Traiteur Neuilly', href: '/traiteur/neuilly-sur-seine' },
-                { label: 'Traiteur Levallois', href: '/traiteur/levallois-perret' },
-                { label: 'Traiteur Issy', href: '/traiteur/issy-les-moulineaux' },
-                { label: 'Traiteur Suresnes', href: '/traiteur/suresnes' },
-                { label: 'Traiteur Nanterre', href: '/traiteur/nanterre' },
-                { label: 'Traiteur Asnières', href: '/traiteur/asnieres-sur-seine' },
-                { label: 'Traiteur Gennevilliers', href: '/traiteur/gennevilliers' },
-                { label: 'Traiteur Versailles', href: '/traiteur/versailles' },
+                { label: 'Traiteur Paris', labelEn: 'Catering in Paris', href: '/traiteur/paris' },
+                { label: 'Traiteur La Défense', labelEn: 'Catering at La Défense', href: '/traiteur/la-defense' },
+                { label: 'Traiteur Puteaux', labelEn: 'Catering in Puteaux', href: '/traiteur/puteaux' },
+                { label: 'Traiteur Courbevoie', labelEn: 'Catering in Courbevoie', href: '/traiteur/courbevoie' },
+                { label: 'Traiteur Boulogne', labelEn: 'Catering in Boulogne', href: '/traiteur/boulogne-billancourt' },
+                { label: 'Traiteur Neuilly', labelEn: 'Catering in Neuilly', href: '/traiteur/neuilly-sur-seine' },
+                { label: 'Traiteur Levallois', labelEn: 'Catering in Levallois', href: '/traiteur/levallois-perret' },
+                { label: 'Traiteur Issy', labelEn: 'Catering in Issy', href: '/traiteur/issy-les-moulineaux' },
+                { label: 'Traiteur Suresnes', labelEn: 'Catering in Suresnes', href: '/traiteur/suresnes' },
+                { label: 'Traiteur Nanterre', labelEn: 'Catering in Nanterre', href: '/traiteur/nanterre' },
+                { label: 'Traiteur Asnières', labelEn: 'Catering in Asnières', href: '/traiteur/asnieres-sur-seine' },
+                { label: 'Traiteur Gennevilliers', labelEn: 'Catering in Gennevilliers', href: '/traiteur/gennevilliers' },
+                { label: 'Traiteur Versailles', labelEn: 'Catering in Versailles', href: '/traiteur/versailles' },
                 { label: 'Toutes les zones', labelEn: 'All areas', href: '/traiteur' },
               ]},
               { title: "L'Univers", titleEn: 'About us', links: [
@@ -157,10 +157,10 @@ export default function Footer() {
           {/* Légal */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
             {[
-              { label: 'Mentions légales', href: '/mentions-legales' },
-              { label: 'CGV', href: '/cgv' },
-              { label: 'Confidentialité', href: '/confidentialite' },
-              { label: 'Cookies', href: '/cookies' },
+              { label: 'Mentions légales', labelEn: 'Legal notice', href: '/mentions-legales' },
+              { label: 'CGV', labelEn: 'Terms of sale', href: '/cgv' },
+              { label: 'Confidentialité', labelEn: 'Privacy', href: '/confidentialite' },
+              { label: 'Cookies', labelEn: 'Cookies', href: '/cookies' },
             ].map(l => (
               <a key={l.label} href={l.href}
                 style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.62)', textDecoration: 'none', letterSpacing: '0.03em', transition: 'color 0.2s ease' }}

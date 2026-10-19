@@ -1,9 +1,16 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../lib/i18nBase'
+
 // Bloc de maillage latéral réutilisable, "À lire aussi", "Villes limitrophes",
 // "Produits similaires". Éditorial, fidèle à la DA L'Écrin.
 // items : [{ href, title, meta? }]  (meta = catégorie, département, sous-titre…)
+//
+// Le libellé du lien se déduit de la langue de la page quand l'appelant ne
+// passe pas de cta : il s'affichait « Découvrir → » sur les pages anglaises.
 export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, background = 'var(--bg-secondary)', cta }) {
+  const en = estAnglais(usePathname() || '/')
   if (!items.length) return null
   const cols = Math.min(columns, items.length)
 
@@ -56,7 +63,7 @@ export default function RelatedLinks({ eyebrow, title, items = [], columns = 3, 
                   {it.title}
                 </span>
                 <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.06em', color: 'var(--accent-deep)', marginTop: '2px' }}>
-                  {cta || 'Découvrir →'}
+                  {cta || (en ? 'Explore →' : 'Découvrir →')}
                 </span>
               </div>
             </a>

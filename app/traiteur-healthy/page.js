@@ -1,6 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocaliseDans, reecrireLiensEnDans } from '../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../components/EnSlugsProvider'
+import { EN_HEALTHY } from '../../lib/en/pages/healthy'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Reveal from '../../components/Reveal'
@@ -72,12 +76,23 @@ const FAQ = [
 ]
 
 export default function TraiteurHealthy() {
+  const en = estAnglais(usePathname() || '/')
+  const E = en ? EN_HEALTHY : null
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  const URL_PAGE = `${BASE}${en ? '/en' : ''}/traiteur-healthy`
+  const LFAQ = en ? E.faq : FAQ
+  // Photos et chemins restent lus dans PRESTATIONS : la surcouche ne porte
+  // que le texte, pour qu'une photo changée en français le soit aussi ici.
+  const LPRESTATIONS = en ? PRESTATIONS.map((p, i) => ({ ...p, ...E.prestations[i] })) : PRESTATIONS
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'FoodEstablishment'],
     name: "L'Écrin Traiteur",
-    description: "Traiteur d'entreprise healthy à Paris et en Île-de-France : fruits de saison, yaourts fermiers, jus pressés, options végétariennes, vegan et sans gluten. Petits-déjeuners équilibrés livrés dès 6h30.",
-    url: `${BASE}/traiteur-healthy`,
+    description: en ? E.schemaDesc : "Traiteur d'entreprise healthy à Paris et en Île-de-France : fruits de saison, yaourts fermiers, jus pressés, options végétariennes, vegan et sans gluten. Petits-déjeuners équilibrés livrés dès 6h30.",
+    url: URL_PAGE,
+    inLanguage: en ? 'en' : 'fr',
     telephone: '+33174542310',
     email: 'commercial@lecrin-traiteur.fr',
     address: {
@@ -100,29 +115,29 @@ export default function TraiteurHealthy() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: BASE },
-      { '@type': 'ListItem', position: 2, name: 'Traiteur healthy', item: `${BASE}/traiteur-healthy` },
+      { '@type': 'ListItem', position: 1, name: en ? E.breadcrumb[0].name : 'Accueil', item: `${BASE}${en ? '/en' : ''}` },
+      { '@type': 'ListItem', position: 2, name: en ? E.breadcrumb[1].name : 'Traiteur healthy', item: URL_PAGE },
     ],
   }
 
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ.map(f => ({
+    mainEntity: LFAQ.map(f => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
     })),
   }
 
-  const ARGS = [
+  const ARGS = en ? E.args : [
     { icon: 'quality',  titre: 'Frais & de saison',        desc: "Fruits découpés, yaourts fermiers, produits qui suivent la saison et gardent leur fraîcheur." },
     { icon: 'custom',   titre: 'Léger, pas fade',          desc: "Jus pressés, compotes sans sucres ajoutés, alternatives plus légères qui ont vraiment du goût." },
     { icon: 'support',  titre: 'Tous les régimes',         desc: "Végétarien, vegan, sans gluten sur demande : chacun trouve sa place à table." },
     { icon: 'delivery', titre: 'Livraison dès 6h30',       desc: "Livré et installé par notre équipe à Paris et en Île-de-France, chaque matin en semaine." },
   ]
 
-  const seoArticle = `
+  const seoArticleFr = `
     <h2>Un traiteur d'entreprise healthy, sans renoncer au plaisir</h2>
     <p>Manger équilibré au bureau ne devrait pas rimer avec ennui. Chez <strong>L'Écrin Traiteur</strong>, la version healthy, c'est du <strong>frais et de saison</strong> qui a du goût : fruits découpés, yaourts fermiers de la Ferme de Viltain, jus pressés Alain Milliat, compotes sans sucres ajoutés. On allège le sucré, on garde le plaisir.</p>
     <h2>Frais, de saison, sourcé chez des producteurs identifiés</h2>
@@ -130,6 +145,10 @@ export default function TraiteurHealthy() {
     <h2>Traiteur vegan et végétarien, adapté à chaque régime</h2>
     <p>Au-delà du frais, nos prestations se déclinent en versions <strong>végétariennes et vegan</strong>, avec des adaptations <strong>sans gluten sur demande</strong>. Réunion matinale, petit-déjeuner d'équipe ou déjeuner de travail, de 10 à 300 personnes, livrés dès 6h30 à Paris et en Île-de-France. <a href="/devis">Demandez votre devis gratuit</a> et composez une pause saine et gourmande.</p>
   `
+
+  // Les liens de l'article gardent leur chemin français : la réécriture se fait
+  // au rendu, et seulement vers les pages anglaises qui existent.
+  const seoArticle = en ? reecrireLiensEnDans(cheminsEn, E.seoArticle, slugsEn) : seoArticleFr
 
   return (
     <>
@@ -146,42 +165,42 @@ export default function TraiteurHealthy() {
         {/* ── Hero image pleine largeur ── */}
         <div className="hl-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <header className="hl-hero" style={{ position: 'relative', width: '100%', height: 'clamp(440px, 52vw, 600px)', overflow: 'hidden' }}>
-            <ParallaxImage priority sizes="100vw" src="/plateau-fruits.webp" alt="Traiteur d'entreprise healthy, plateau de fruits frais de saison, L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
+            <ParallaxImage priority sizes="100vw" src="/plateau-fruits.webp" alt={en ? E.heroAlt : "Traiteur d'entreprise healthy, plateau de fruits frais de saison, L'Écrin Traiteur"} strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.80) 0%, rgba(16,12,9,0.55) 42%, rgba(16,12,9,0.15) 70%, rgba(16,12,9,0) 88%)' }} />
             <Reveal mode="mount" y={16}>
               <div className="hl-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '660px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: '18px' }}>
-                  Traiteur d'entreprise · Paris & Île-de-France
+                  {en ? E.eyebrow : "Traiteur d'entreprise · Paris & Île-de-France"}
                 </p>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(30px, 4.2vw, 58px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.015em', color: '#FFFFFF', marginBottom: '22px' }}>
-                  Traiteur Healthy <br />Vegan & Végétarien
+                  {en ? <>{E.h1a} <br />{E.h1b}</> : <>Traiteur Healthy <br />Vegan & Végétarien</>}
                 </h1>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.80)', maxWidth: '480px', marginBottom: '32px' }}>
-                  Un traiteur d'entreprise qui fait du bien : fruits de saison, yaourts fermiers, jus pressés et options légères, sans jamais sacrifier le plaisir. Livré dans vos bureaux dès 6h30.
+                  {en ? E.heroDesc : "Un traiteur d'entreprise qui fait du bien : fruits de saison, yaourts fermiers, jus pressés et options légères, sans jamais sacrifier le plaisir. Livré dans vos bureaux dès 6h30."}
                 </p>
 
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
                   <a
-                    href="/devis"
+                    href={L('/devis')}
                     style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', background: '#FFFFFF', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
-                    Obtenir un devis →
+                    {en ? E.ctaDevis : 'Obtenir un devis →'}
                   </a>
                   <a
-                    href="/creations/petits-dejeuners-et-pauses"
+                    href={L('/creations/petits-dejeuners-et-pauses')}
                     style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.5)', padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', background: 'transparent', transition: 'background 0.3s ease' }}
                     onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
                     onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
                   >
-                    Voir nos petits déjeuners
+                    {en ? E.ctaPdj : 'Voir nos petits déjeuners'}
                   </a>
                 </div>
 
                 {/* Badges */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
-                  {['Frais & de saison', 'Végé, vegan, sans gluten', 'Jus & yaourts d\'artisans', 'Noté 5/5 sur Google'].map(badge => (
+                  {(en ? E.badges : ['Frais & de saison', 'Végé, vegan, sans gluten', 'Jus & yaourts d\'artisans', 'Noté 5/5 sur Google']).map(badge => (
                     <span key={badge} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
                       {badge}
                     </span>
@@ -196,14 +215,14 @@ export default function TraiteurHealthy() {
         <div className="hl-regimes" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Sain sans être triste
+              {en ? E.piliersEyebrow : 'Sain sans être triste'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.12, color: 'var(--text-primary)' }}>
-              Du frais qui fait <br />vraiment plaisir
+              {en ? E.piliersTitre.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>) : <>Du frais qui fait <br />vraiment plaisir</>}
             </h2>
           </div>
           <div className="hl-regimes-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-            {PILIERS.map((r, i) => (
+            {(en ? E.piliers : PILIERS).map((r, i) => (
               <Reveal key={r.titre} delay={i * 90}>
                 <div style={{ background: 'var(--bg-secondary)', padding: '40px 34px', height: '100%' }}>
                   <span className="accent-line" style={{ marginBottom: '22px' }} />
@@ -226,17 +245,17 @@ export default function TraiteurHealthy() {
         <div className="hl-services" style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 72px 0' }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-              Nos prestations
+              {en ? E.prestationsEyebrow : 'Nos prestations'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)' }}>
-              Le frais, du matin <br />au déjeuner
+              {en ? E.prestationsTitre.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>) : <>Le frais, du matin <br />au déjeuner</>}
             </h2>
           </div>
           <div className="hl-services-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-            {PRESTATIONS.map((s, i) => (
+            {LPRESTATIONS.map((s, i) => (
               <Reveal key={s.label} delay={i * 90}>
                 <a
-                  href={s.href}
+                  href={L(s.href)}
                   className="hl-service-card"
                   style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', overflow: 'hidden', boxShadow: '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)', transition: 'box-shadow 0.35s ease, transform 0.35s ease' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)' }}
@@ -253,7 +272,7 @@ export default function TraiteurHealthy() {
                       {s.desc}
                     </p>
                     <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                      Découvrir →
+                      {en ? E.prestationsCta : 'Découvrir →'}
                     </span>
                   </div>
                 </a>
@@ -271,13 +290,13 @@ export default function TraiteurHealthy() {
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
           <div className="hl-faq" style={{ maxWidth: '820px', margin: '0 auto', padding: '80px 40px 88px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px', textAlign: 'center' }}>
-              Questions fréquentes
+              {en ? E.faqEyebrow : 'Questions fréquentes'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 36px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', textAlign: 'center', marginBottom: '48px' }}>
-              Traiteur healthy, on vous répond
+              {en ? E.faqTitre : 'Traiteur healthy, on vous répond'}
             </h2>
             <div>
-              {FAQ.map((f, i) => (
+              {LFAQ.map((f, i) => (
                 <div key={i} style={{ padding: '26px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(17,17,17,0.1)' }}>
                   <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px', lineHeight: 1.25 }}>
                     {f.q}
@@ -294,24 +313,25 @@ export default function TraiteurHealthy() {
       </main>
 
       <RelatedLinks
-        eyebrow="Explorez nos prestations"
-        title="Composez une pause saine et gourmande"
-        items={[
+        eyebrow={en ? E.relatedEyebrow : "Explorez nos prestations"}
+        title={en ? E.relatedTitre : "Composez une pause saine et gourmande"}
+        items={(en ? E.related : [
           { href: '/creations/petits-dejeuners-et-pauses', title: 'Petits-Déjeuners & Pauses', meta: 'Livrés dès 6h30' },
           { href: '/creations/boissons', title: 'Boissons & Jus', meta: 'Jus Alain Milliat' },
           { href: '/creations/plateaux-repas', title: 'Plateaux Repas', meta: 'Déjeuners de travail' },
           { href: '/devis', title: 'Demander un devis', meta: 'Réponse rapide' },
-        ]}
+        ]).map(it => ({ ...it, href: L(it.href) }))}
         columns={4}
       />
 
       {/* ── Éditorial + arguments + CTA + article SEO ── */}
       <CategoryClosing
-        eyebrow="Traiteur healthy entreprise"
-        title={"Du frais qui fait\nvraiment plaisir."}
-        body="Fruits de saison, yaourts fermiers, jus pressés et options légères, déclinés en versions végétariennes, vegan et sans gluten : chaque prestation fait du bien à vos équipes sans jamais sacrifier le goût, à Paris et en Île-de-France."
+        eyebrow={en ? E.closingEyebrow : "Traiteur healthy entreprise"}
+        title={en ? E.closingTitre : "Du frais qui fait\nvraiment plaisir."}
+        body={en ? E.closingBody : "Fruits de saison, yaourts fermiers, jus pressés et options légères, déclinés en versions végétariennes, vegan et sans gluten : chaque prestation fait du bien à vos équipes sans jamais sacrifier le goût, à Paris et en Île-de-France."}
         args={ARGS}
-        ctaQuestion="Une pause saine à organiser ?"
+        ctaQuestion={en ? E.closingCta : "Une pause saine à organiser ?"}
+        lang={en ? 'en' : 'fr'}
         seoArticle={seoArticle}
       />
 
