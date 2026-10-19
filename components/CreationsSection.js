@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import { PDJ_DES, PLATEAU_DES, euroFr, euroEn } from '../lib/prixEntree'
 
 const creations = [
   {
     label: "Petit-déjeuner d'entreprise",
-    description: 'Livraison dès 6h30 à Paris : viennoiseries, jus, café et fruits, dès 8 € HT par personne.',
+    description: `Livraison dès 6h30 à Paris : viennoiseries, jus, café et fruits, dès ${euroFr(PDJ_DES)} HT par personne.`,
     img: '/hero-petitdej.webp',
     href: '/creations/petits-dejeuners-et-pauses',
   },
@@ -15,19 +16,19 @@ const creations = [
   },
   {
     label: 'Cocktails',
-    description: 'Des pièces salées et sucrées raffinées pour sublimer tous vos événements.',
+    description: 'Gougères au fromage, brochettes de poulet tandoori, mini cheeseburgers : 8, 12 ou 16 pièces par personne.',
     img: '/cocktail-signature.webp',
     href: '/creations/cocktails',
   },
   {
     label: 'Buffet à partager',
-    description: 'Des buffets conviviaux et généreux pensés pour rassembler et marquer les esprits.',
+    description: 'Houmous, taboulé, caviar d\'aubergine et planches à partager, posés au centre de la table.',
     img: '/hero-a-partager.webp',
     href: '/creations/a-partager',
   },
   {
     label: 'Plateaux repas',
-    description: 'Des recettes fraîches, de saison et équilibrées pour des déjeuners savoureux et responsables.',
+    description: `Filet de poulet, saumon ou falafels, entrée et dessert compris, dès ${euroFr(PLATEAU_DES)} HT par personne.`,
     img: '/plateau-mediterraneen.webp',
     href: '/creations/plateaux-repas',
   },
@@ -43,7 +44,7 @@ const creations = [
 const EN_CREATIONS = {
   '/creations/petits-dejeuners-et-pauses': {
     label: 'Corporate breakfast',
-    description: 'Delivered from 6:30 am in Paris: pastries, juice, coffee and fresh fruit, from €8 excl. VAT per person.',
+    description: `Delivered from 6:30 am in Paris: pastries, juice, coffee and fresh fruit, from ${euroEn(PDJ_DES)} excl. VAT per person.`,
   },
   '/creations/pauses-gourmandes': {
     label: 'Afternoon treats',
@@ -51,15 +52,15 @@ const EN_CREATIONS = {
   },
   '/creations/cocktails': {
     label: 'Cocktail receptions',
-    description: 'Savoury and sweet canapés, built to carry an evening rather than fill a gap.',
+    description: 'Cheese gougères, tandoori chicken skewers, mini cheeseburgers: 8, 12 or 16 canapés per person.',
   },
   '/creations/a-partager': {
     label: 'Sharing buffet',
-    description: 'Generous buffets in the middle of the table, made to get a room talking.',
+    description: 'Hummus, tabbouleh, aubergine caviar and sharing boards, set down in the middle of the table.',
   },
   '/creations/plateaux-repas': {
     label: 'Lunch trays',
-    description: 'Fresh, seasonal, balanced menus for a lunch nobody has to apologise for.',
+    description: `Chicken, salmon or falafel, starter and dessert included, from ${euroEn(PLATEAU_DES)} excl. VAT per person.`,
   },
   '/creations/boissons': {
     label: 'Drinks',
