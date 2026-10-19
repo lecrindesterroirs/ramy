@@ -45,6 +45,12 @@ export default function DeferredPostHog() {
              qu'on croit cliquable, un titre qu'on prend pour un lien). C'est
              le signal qui dit où le site trompe le visiteur. */
           capture_dead_clicks: true,
+          /* Vitesse réelle des visiteurs : PostHog envoie l'événement $web_vitals
+             (LCP, CLS, INP, FCP) avec l'URL et l'appareil. C'est la mesure
+             terrain qui manque à Lighthouse (une simulation) pour savoir si
+             les pages sont vraiment plus rapides sur mobile. À lire dans
+             PostHog > Web analytics > Web vitals. */
+          capture_performance: { web_vitals: true },
           /* PostHog masque TOUS les champs de saisie par défaut : dans les
              enregistrements, l'effectif et le budget s'affichaient « ** » et
              « *** », donc on ne voyait rien de ce que le visiteur cherchait.
