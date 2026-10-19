@@ -1,6 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocaliseDans } from '../../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../../components/EnSlugsProvider'
+import { EN_EVENEMENTS, EN_EV_UI as T } from '../../../lib/en/pages/evenements'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
@@ -9,6 +13,14 @@ import { evenements } from './evenementsData'
 import ParallaxImage from '../../../components/ParallaxImage'
 
 export default function EvenementsSaisonniers() {
+  const en = estAnglais(usePathname() || '/')
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  // Photo, slug et ordre restent lus en français : seul le texte est surchargé.
+  const LEVENEMENTS = en
+    ? evenements.map(e => ({ ...e, ...(EN_EVENEMENTS[e.slug] || {}) }))
+    : evenements
   return (
     <>
       <Navbar showBanner={true} />
@@ -19,7 +31,7 @@ export default function EvenementsSaisonniers() {
         <div className="sais-header" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
           <div style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '420px', overflow: 'hidden' }}>
             <ParallaxImage priority sizes="100vw" src="/creations-featured.webp"
-              alt="Événements Saisonniers, L'Écrin Traiteur"
+              alt={en ? T.idxHeroAlt : "Événements Saisonniers, L'Écrin Traiteur"}
               strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }}
             />
             <div className="cat-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
@@ -33,7 +45,7 @@ export default function EvenementsSaisonniers() {
                 color: 'rgba(255,255,255,0.65)',
                 marginBottom: '16px',
               }}>
-                Nos Créations, Événements Saisonniers
+                {en ? T.idxEyebrow : 'Nos Créations, Événements Saisonniers'}
               </p>
               <h1 style={{
                 fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
@@ -44,7 +56,7 @@ export default function EvenementsSaisonniers() {
                 color: '#FFFFFF',
                 marginBottom: '20px',
               }}>
-                Événements Saisonniers
+                {en ? T.idxH1 : 'Événements Saisonniers'}
               </h1>
               <p style={{
                 fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
@@ -53,14 +65,16 @@ export default function EvenementsSaisonniers() {
                 color: 'rgba(255,255,255,0.72)',
                 maxWidth: '340px',
               }}>
-                Galette des Rois, Chandeleur, Halloween, Noël... Chaque moment de l'année a ses produits, ses codes, ses attentions.
+                {en ? T.idxDesc : "Galette des Rois, Chandeleur, Halloween, Noël... Chaque moment de l'année a ses produits, ses codes, ses attentions."}
               </p>
             </div>
           </div>
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers' }]} jsonLd={false} />
+        <Breadcrumb maxWidth="1440px" items={en
+          ? [{ label: T.accueil, href: '/en' }, { label: T.fil }]
+          : [{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers' }]} jsonLd={false} />
 
         {/* Grille événements */}
         <div
@@ -74,10 +88,10 @@ export default function EvenementsSaisonniers() {
             gap: '10px',
           }}
         >
-          {evenements.map((ev, i) => (
+          {LEVENEMENTS.map((ev, i) => (
             <a
               key={i}
-              href={`/creations/evenements-saisonniers/${ev.slug}`}
+              href={L(`/creations/evenements-saisonniers/${ev.slug}`)}
               className="sais-card"
               style={{
                 background: 'var(--bg-secondary)',
@@ -152,7 +166,7 @@ export default function EvenementsSaisonniers() {
                   textTransform: 'uppercase',
                   color: 'var(--accent-deep)',
                 }}>
-                  Voir l'événement →
+                  {en ? T.idxVoir : "Voir l'événement →"}
                 </p>
               </div>
             </a>
@@ -175,10 +189,10 @@ export default function EvenementsSaisonniers() {
             color: 'var(--text-secondary)',
             marginBottom: '24px',
           }}>
-            Vous préparez un événement saisonnier pour votre entreprise ?
+            {en ? T.idxCtaTitre : 'Vous préparez un événement saisonnier pour votre entreprise ?'}
           </p>
           <a
-            href="/devis"
+            href={L('/devis')}
             style={{
               fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
@@ -197,7 +211,7 @@ export default function EvenementsSaisonniers() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Obtenir un devis →
+            {en ? T.idxCtaBouton : 'Obtenir un devis →'}
           </a>
         </div>
 
@@ -219,7 +233,7 @@ export default function EvenementsSaisonniers() {
         }
       ` }} />
 
-      <CategoryJsonLd name="Événements saisonniers" path="/creations/evenements-saisonniers" />
+      <CategoryJsonLd name="Événements saisonniers" nameEn={T.idxJsonLdName} path="/creations/evenements-saisonniers" />
 
       <Footer />
     </>

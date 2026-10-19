@@ -1,8 +1,9 @@
 import { ogImages } from '../../../../lib/og'
+import { alternatesPour } from '../../../../lib/i18n'
 export const metadata = {
   title: { absolute: "Octobre Rose en entreprise : idées et conseils | L'Écrin Traiteur" },
   description: "Octobre Rose en entreprise : 1 € reversé par convive sur toutes nos commandes d'octobre. Sélection rose, madeleines, macarons et cakes fruits rouges.",
-  alternates: { canonical: '/creations/evenements-saisonniers/octobre-rose' },
+  alternates: alternatesPour('/creations/evenements-saisonniers/octobre-rose', { en: true }),
   openGraph: {
     images: ogImages('/octobre-rose-hero-madeleines.webp', "Octobre Rose en entreprise, L'Écrin Traiteur"),
     title: "Octobre Rose en entreprise | L'Écrin Traiteur",

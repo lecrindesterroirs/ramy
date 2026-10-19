@@ -1,5 +1,6 @@
 import { evenements } from '../evenementsData'
 import { ogImages } from '../../../../lib/og'
+import { alternatesPour } from '../../../../lib/i18n'
 
 export function generateStaticParams() {
   // 'octobre-rose' a sa propre route statique dédiée (app/.../octobre-rose/page.js) :
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }) {
   return {
     title: { absolute: `Traiteur ${ev.nom} en entreprise à Paris` },
     description: `${ev.descCourt} Prestation traiteur livrée à Paris et en Île-de-France.`,
-    alternates: { canonical: `/creations/evenements-saisonniers/${params.slug}` },
+    alternates: alternatesPour(`/creations/evenements-saisonniers/${params.slug}`, { en: true }),
     openGraph: {
       images: ogImages(ev.img, ev.imgAlt || `${ev.nom}, L'Écrin Traiteur`),
       title: `Traiteur ${ev.nom} en entreprise | L'Écrin Traiteur`,

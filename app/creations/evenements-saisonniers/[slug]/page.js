@@ -1,7 +1,10 @@
 'use client'
 
-import { useParams } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import Image from 'next/image'
+import { estAnglais, lienLocaliseDans } from '../../../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../../../components/EnSlugsProvider'
+import { EN_EVENEMENTS, EN_EV_UI } from '../../../../lib/en/pages/evenements'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
@@ -13,7 +16,17 @@ import ParallaxImage from '../../../../components/ParallaxImage'
 
 export default function EvenementDetail() {
   const { slug } = useParams()
-  const ev = evenements.find(e => e.slug === slug)
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? EN_EV_UI : null
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  // Slug, photo et ordre restent lus en français : la surcouche ne porte que
+  // le texte, et sa clé est le slug, identique dans les deux langues.
+  const brut = evenements.find(e => e.slug === slug)
+  const ev = brut && en ? { ...brut, ...(EN_EVENEMENTS[brut.slug] || {}) } : brut
+  // Nom anglais d'un événement voisin, pour le bloc de liens.
+  const nomDe = (e) => (en && EN_EVENEMENTS[e.slug]?.nom) || e.nom
 
   if (!ev) {
     return (
@@ -21,7 +34,7 @@ export default function EvenementDetail() {
         <Navbar showBanner={true} />
         <main style={{ paddingTop: 'calc(var(--banner-h) + var(--nav-h))', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', color: 'var(--text-secondary)' }}>
-            Événement non trouvé.
+            {en ? EN_EV_UI.introuvable : 'Événement non trouvé.'}
           </p>
         </main>
         <Footer />
@@ -38,7 +51,9 @@ export default function EvenementDetail() {
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: bandeau ? 'calc(var(--banner-h) + var(--nav-h))' : 'var(--nav-h)' }}>
 
-        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} jsonLd={false} />
+        <Breadcrumb items={en
+          ? [{ label: T.accueil, href: '/en' }, { label: T.fil, href: L('/creations/evenements-saisonniers') }, { label: ev.nom }]
+          : [{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} jsonLd={false} />
 
         {/* En-tête — écriture de fiche : monogramme, filet doré, titre serif */}
         <div className="ev-header" style={{ background: 'var(--bg-secondary)', padding: '52px 72px 46px' }}>
@@ -174,7 +189,7 @@ export default function EvenementDetail() {
               color: 'var(--accent-deep)',
               marginBottom: '24px',
             }}>
-              Au programme
+              {en ? T.programme : 'Au programme'}
             </p>
 
             <div style={{ marginBottom: '40px' }}>
@@ -208,7 +223,7 @@ export default function EvenementDetail() {
             </div>
 
             <a
-              href="/devis"
+              href={L('/devis')}
               style={{
                 fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                 fontSize: '11px',
@@ -228,7 +243,7 @@ export default function EvenementDetail() {
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              Organiser cet événement →
+              {en ? T.organiser : 'Organiser cet événement →'}
             </a>
           </div>
         </div>
@@ -258,7 +273,7 @@ export default function EvenementDetail() {
               color: 'var(--accent-deep)',
               marginBottom: '20px',
             }}>
-              Guide pratique
+              {en ? T.guide : 'Guide pratique'}
             </p>
 
             {/* Titre article */}
@@ -325,10 +340,10 @@ export default function EvenementDetail() {
                 color: 'var(--text-primary)',
                 maxWidth: '380px',
               }}>
-                Vous organisez {ev.nom === 'Halloween' || ev.nom === 'Noël' || ev.nom === 'Pâques' ? ev.nom : `la ${ev.nom}`} pour votre entreprise ? On s'en occupe.
+                {en ? T.ctaTitre(ev.nom) : <>Vous organisez {ev.nom === 'Halloween' || ev.nom === 'Noël' || ev.nom === 'Pâques' ? ev.nom : `la ${ev.nom}`} pour votre entreprise ? On s'en occupe.</>}
               </p>
               <a
-                href="/devis"
+                href={L('/devis')}
                 style={{
                   fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
                   fontSize: '10px',
@@ -349,7 +364,7 @@ export default function EvenementDetail() {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Obtenir un devis →
+                {en ? T.ctaBouton : 'Obtenir un devis →'}
               </a>
             </div>
           </div>
@@ -383,10 +398,10 @@ export default function EvenementDetail() {
             margin: '0 auto 36px',
             lineHeight: 1.75,
           }}>
-            Dites-nous votre contexte, votre date, votre effectif. Devis sous 24h.
+            {en ? T.ctaBas : 'Dites-nous votre contexte, votre date, votre effectif. Devis sous 24h.'}
           </p>
           <a
-            href="/devis"
+            href={L('/devis')}
             style={{
               fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
@@ -405,7 +420,7 @@ export default function EvenementDetail() {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            Obtenir un devis →
+            {en ? T.ctaBouton : 'Obtenir un devis →'}
           </a>
         </div>
 
@@ -415,7 +430,7 @@ export default function EvenementDetail() {
           style={{ padding: '40px 72px', display: 'flex', justifyContent: 'center' }}
         >
           <a
-            href="/creations/evenements-saisonniers"
+            href={L('/creations/evenements-saisonniers')}
             style={{
               fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
@@ -432,7 +447,7 @@ export default function EvenementDetail() {
             onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
             onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
           >
-            ← Voir tous les événements
+            {en ? T.retour : '← Voir tous les événements'}
           </a>
         </div>
 
@@ -459,10 +474,19 @@ export default function EvenementDetail() {
         }
       ` }} />
 
+      {/* En anglais, quatre événements voisins plutôt que deux événements et
+          deux guides : les titres du Journal ne sont lisibles que depuis
+          lib/en/journal, qu'une page client n'a pas le droit d'importer
+          (2,9 Mo de JavaScript). Mieux vaut quatre liens anglais que deux
+          titres français au milieu d'un bloc anglais. */}
       <RelatedLinks
-        eyebrow="À découvrir aussi"
-        title="Autres rendez-vous & lectures"
-        items={[
+        eyebrow={en ? EN_EV_UI.relatedEyebrow : "À découvrir aussi"}
+        title={en ? EN_EV_UI.relatedTitre : "Autres rendez-vous & lectures"}
+        items={en
+          ? evenements.filter(e => e.slug !== ev.slug).slice(0, 4).map(e => ({
+              href: L(`/creations/evenements-saisonniers/${e.slug}`), title: nomDe(e), meta: EN_EV_UI.fil,
+            }))
+          : [
           ...evenements.filter(e => e.slug !== ev.slug).slice(0, 2).map(e => ({ href: `/creations/evenements-saisonniers/${e.slug}`, title: e.nom, meta: 'Événement saisonnier' })),
           // `articles` de l'événement : les guides du cluster, dans l'ordre voulu.
           // Sans liste déclarée, on retombe sur les 2 premiers articles du journal.
@@ -474,7 +498,11 @@ export default function EvenementDetail() {
         columns={4}
       />
 
-      <BreadcrumbJsonLd items={[
+      <BreadcrumbJsonLd items={en ? [
+        { name: EN_EV_UI.accueil, path: '/en' },
+        { name: EN_EV_UI.fil, path: '/en/creations/evenements-saisonniers' },
+        { name: ev.nom, path: `/en/creations/evenements-saisonniers/${ev.slug}` },
+      ] : [
         { name: 'Accueil', path: '' },
         { name: 'Événements saisonniers', path: '/creations/evenements-saisonniers' },
         { name: ev.nom, path: `/creations/evenements-saisonniers/${ev.slug}` },

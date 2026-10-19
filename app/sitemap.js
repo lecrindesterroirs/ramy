@@ -202,6 +202,12 @@ export default function sitemap() {
     ...slugsOccasionsEn().map(s => url(`/en/occasions/${s}`, 0.74, 'monthly')),
     ...slugsHalalEn().map(s => url(`/en/traiteur-halal/${s}`, 0.74, 'monthly')),
     ...cheminsVillesEn().map(c => url(`/en${c}`, 0.70, 'monthly')),
+    // Événements saisonniers anglais : l'index et les dix fiches.
+    url('/en/creations/evenements-saisonniers', 0.78, 'monthly'),
+    ...evenements.map(ev => url(`/en/creations/evenements-saisonniers/${ev.slug}`, 0.76, 'monthly')),
+    // Pages thématiques et personnalisation en anglais.
+    ...['/traiteur-eco-responsable', '/traiteur-healthy', '/creations/personnalisation'].map(c => url(`/en${c}`, 0.76, 'monthly')),
+    url('/en/contact/rendez-vous', 0.60, 'monthly'),
     url('/en/contact', 0.60, 'monthly'),
     url('/en/devis', 0.70, 'monthly'),
     url('/en/journal', 0.76, 'weekly'),

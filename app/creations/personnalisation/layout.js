@@ -1,8 +1,9 @@
 import { ogImages } from '../../../lib/og'
+import { alternatesPour } from '../../../lib/i18n'
 export const metadata = {
   title: "Personnalisation traiteur entreprise",
   description: "Personnalisez vos prestations traiteur : number cakes, plaques chocolat au message et packaging aux couleurs de votre entreprise à Paris.",
-  alternates: { canonical: '/creations/personnalisation' },
+  alternates: alternatesPour('/creations/personnalisation', { en: true }),
   openGraph: {
     images: ogImages('/prod-cookie-personnalisation.webp'),
     title: "Personnalisation traiteur | L'Écrin Traiteur",

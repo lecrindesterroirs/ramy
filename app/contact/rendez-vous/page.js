@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { estAnglais } from '../../../lib/i18nBase'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 
@@ -15,6 +17,20 @@ const reassurances = [
   { titre: 'Sans engagement', desc: 'On cadre votre besoin, on répond à vos questions. Rien de plus.' },
   { titre: "Avec l'équipe", desc: 'Un échange direct avec la personne qui suivra votre projet.' },
 ]
+
+/* Version anglaise. Le planificateur lui-même est servi par Calendly : sa
+   langue se règle dans Calendly, pas ici. */
+const T_EN = {
+  eyebrow: 'A direct conversation',
+  h1a: 'Take 15 minutes',
+  h1b: 'with us.',
+  intro: 'A no-commitment conversation to frame what you need, answer your questions and see how we can help. Pick the slot that suits you.',
+  reassurances: [
+    { titre: '15 minutes', desc: 'A short, efficient conversation, at a time that suits you.' },
+    { titre: 'No commitment', desc: 'We frame what you need and answer your questions. Nothing more.' },
+    { titre: 'With the team', desc: 'A direct conversation with the person who will handle your project.' },
+  ],
+}
 
 // Charge le widget Calendly seulement quand il entre dans le viewport (perf).
 function CalendlyEmbed({ url }) {
@@ -60,6 +76,9 @@ function CalendlyEmbed({ url }) {
 }
 
 export default function PrendreRendezVous() {
+  const en = estAnglais(usePathname() || '/')
+  const T = en ? T_EN : null
+  const REASSURANCES = en ? T.reassurances : reassurances
   return (
     <>
       <Navbar />
@@ -69,13 +88,13 @@ export default function PrendreRendezVous() {
         <section style={{ padding: '72px 72px 48px' }} className="rdv-hero">
           <div style={{ maxWidth: '1440px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '24px' }}>
-              Un échange direct
+              {en ? T.eyebrow : 'Un échange direct'}
             </p>
             <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px', maxWidth: '640px' }}>
-              Prendre 15 min <br />avec nous.
+              {en ? <>{T.h1a} <br />{T.h1b}</> : <>Prendre 15 min <br />avec nous.</>}
             </h1>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '480px' }}>
-              Un échange sans engagement pour cadrer votre besoin, répondre à vos questions et voir comment nous pouvons vous accompagner. Choisissez le créneau qui vous convient.
+              {en ? T.intro : 'Un échange sans engagement pour cadrer votre besoin, répondre à vos questions et voir comment nous pouvons vous accompagner. Choisissez le créneau qui vous convient.'}
             </p>
           </div>
         </section>
@@ -83,7 +102,7 @@ export default function PrendreRendezVous() {
         {/* ── Réassurances ── */}
         <section style={{ padding: '0 72px 48px' }} className="rdv-reassure">
           <div className="rdv-reassure-grid" style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-            {reassurances.map((item, i) => (
+            {REASSURANCES.map((item, i) => (
               <div key={i} style={{ background: '#FFFFFF', padding: '28px 26px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.01em' }}>{item.titre}</p>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>

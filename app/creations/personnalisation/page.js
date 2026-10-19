@@ -1,6 +1,10 @@
 'use client'
 
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocaliseDans, reecrireLiensEnDans } from '../../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../../components/EnSlugsProvider'
+import { EN_PERSO } from '../../../lib/en/pages/personnalisation'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
@@ -10,7 +14,7 @@ import DevisRapide from '../../../components/DevisRapide'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 
-const SEO_ARTICLE = `
+const SEO_ARTICLE_FR = `
   <h2>Personnalisation de créations gourmandes pour l'entreprise à Paris</h2>
   <p>La <strong>personnalisation</strong> est le cœur de nos prestations : c'est le moyen de transformer une sélection de produits artisanaux en une création unique qui porte votre identité. De vos couleurs d'entreprise au message que vous souhaitez transmettre, chaque détail compte. L'Écrin Traiteur conçoit vos projets de personnalisation à Paris et en Île-de-France.</p>
 
@@ -47,6 +51,15 @@ const ETAPES = [
 ]
 
 export default function Personnalisation() {
+  const en = estAnglais(usePathname() || '/')
+  const E = en ? EN_PERSO : null
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  // Photos lues côté français : la surcouche ne porte que le texte.
+  const LFAMILLES = en ? FAMILLES.map((f, i) => ({ ...f, ...E.familles[i] })) : FAMILLES
+  const LETAPES = en ? ETAPES.map((e, i) => ({ ...e, title: E.etapes[i] })) : ETAPES
+  const SEO_ARTICLE = en ? reecrireLiensEnDans(cheminsEn, E.seoArticle, slugsEn) : SEO_ARTICLE_FR
   return (
     <>
       <Navbar showBanner={true} />
@@ -55,16 +68,16 @@ export default function Personnalisation() {
 
         {/* ── Hero : bandeau image pleine largeur, texte par-dessus ── */}
         <div className="pz-hero" style={{ position: 'relative', width: '100%', height: 'clamp(420px, 46vw, 580px)', overflow: 'hidden' }}>
-          <ParallaxImage priority sizes="100vw" src="/perso-chocolats-bouygues.webp" alt="Personnalisation L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
+          <ParallaxImage priority sizes="100vw" src="/perso-chocolats-bouygues.webp" alt={en ? E.heroAlt : "Personnalisation L'Écrin Traiteur"} strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.82) 0%, rgba(16,12,9,0.62) 38%, rgba(16,12,9,0.2) 64%, rgba(16,12,9,0) 82%)' }} />
           <Reveal mode="mount" y={16}>
             <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
               <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.4vw, 62px)', fontWeight: 400, lineHeight: 1.04, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                Personnalisez<br /><em style={{ fontStyle: 'italic' }}>vos événements.</em>
+                {en ? <>{E.h1a}<br /><em style={{ fontStyle: 'italic' }}>{E.h1b}</em></> : <>Personnalisez<br /><em style={{ fontStyle: 'italic' }}>vos événements.</em></>}
               </h1>
               <span style={{ display: 'block', width: '36px', height: '1px', background: 'var(--accent)', marginBottom: '22px' }} />
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: '380px', marginBottom: '32px' }}>
-                Des gourmandises d'exception, pensées à votre image, jusqu'au moindre détail.
+                {en ? E.heroDesc : "Des gourmandises d'exception, pensées à votre image, jusqu'au moindre détail."}
               </p>
               <a
                 href="#familles"
@@ -72,23 +85,25 @@ export default function Personnalisation() {
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Découvrir nos possibilités →
+                {en ? E.heroCta : 'Découvrir nos possibilités →'}
               </a>
             </div>
           </Reveal>
         </div>
 
         {/* Fil d'Ariane visible */}
-        <Breadcrumb maxWidth="1440px" items={[{ label: 'Accueil', href: '/' }, { label: 'Personnalisation' }]} jsonLd={false} />
+        <Breadcrumb maxWidth="1440px" items={en
+          ? [{ label: E.accueil, href: '/en' }, { label: E.fil }]
+          : [{ label: 'Accueil', href: '/' }, { label: 'Personnalisation' }]} jsonLd={false} />
 
         {/* ── Ce que nous personnalisons ── */}
         <div id="familles" style={{ textAlign: 'center', padding: '80px 24px 0' }}>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-            Ce que nous personnalisons
+            {en ? E.famillesEyebrow : 'Ce que nous personnalisons'}
           </p>
         </div>
         <div className="pz-famille-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '2px', maxWidth: '1280px', margin: '0 auto', padding: '48px 72px 0' }}>
-          {FAMILLES.map((f, i) => (
+          {LFAMILLES.map((f, i) => (
             <Reveal key={f.nom} delay={(i % 6) * 70}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: 'var(--bg-secondary)', marginBottom: '16px' }}>
@@ -111,19 +126,19 @@ export default function Personnalisation() {
             <Reveal>
               <div>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
-                  Votre identité, notre savoir-faire
+                  {en ? E.processEyebrow : 'Votre identité, notre savoir-faire'}
                 </p>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400, lineHeight: 1.08, letterSpacing: '-0.01em', color: 'var(--text-primary)', marginBottom: '22px' }}>
-                  Un accompagnement<br /><em style={{ fontStyle: 'italic' }}>sur-mesure.</em>
+                  {en ? <>{E.processTitreA}<br /><em style={{ fontStyle: 'italic' }}>{E.processTitreB}</em></> : <>Un accompagnement<br /><em style={{ fontStyle: 'italic' }}>sur-mesure.</em></>}
                 </h2>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.75, color: 'var(--text-secondary)', maxWidth: '340px' }}>
-                  De la création à la livraison, nous concevons des attentions uniques qui reflètent votre image et marquent les esprits.
+                  {en ? E.processDesc : 'De la création à la livraison, nous concevons des attentions uniques qui reflètent votre image et marquent les esprits.'}
                 </p>
               </div>
             </Reveal>
             <Reveal delay={120}>
               <div className="pz-steps" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '18px' }}>
-                {ETAPES.map((s) => (
+                {LETAPES.map((s) => (
                   <div key={s.n} style={{ borderTop: '1px solid rgba(17,17,17,0.14)', paddingTop: '18px' }}>
                     <span style={{ display: 'block', fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '30px', fontWeight: 400, color: 'var(--accent-deep)', marginBottom: '14px', lineHeight: 1 }}>{s.n}</span>
                     <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.5, color: 'var(--text-primary)' }}>{s.title}</p>
@@ -140,15 +155,15 @@ export default function Personnalisation() {
         {/* ── Bandeau bas : contextes + CTA ── */}
         <div className="pz-bottom-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '40px', maxWidth: '1280px', margin: '0 auto', padding: '48px 72px' }}>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.6, color: 'var(--text-secondary)', whiteSpace: 'nowrap' }}>
-            Pensé pour vos séminaires, lancements produits, cadeaux clients et événements d'entreprise.
+            {en ? E.barTexte : "Pensé pour vos séminaires, lancements produits, cadeaux clients et événements d'entreprise."}
           </p>
           <a
-            href="/devis"
+            href={L('/devis')}
             style={{ flexShrink: 0, fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-primary)', border: '1px solid rgba(17,17,17,0.28)', padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease' }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(17,17,17,0.28)'; e.currentTarget.style.color = 'var(--text-primary)' }}
           >
-            Obtenir un devis personnalisé →
+            {en ? E.barCta : 'Obtenir un devis personnalisé →'}
           </a>
         </div>
 
@@ -158,6 +173,8 @@ export default function Personnalisation() {
             defaultPrestation="Personnalisation"
             titre="Un projet de personnalisation à Paris ou en Île-de-France ?"
             sousTitre="Décrivez votre projet, nous revenons vers vous avec une proposition sous 24h."
+            titreEn={EN_PERSO.devisTitre}
+            sousTitreEn={EN_PERSO.devisSousTitre}
           />
         </section>
 
@@ -209,7 +226,7 @@ export default function Personnalisation() {
         }
       ` }} />
 
-      <CategoryJsonLd name="Personnalisation" path="/creations/personnalisation" />
+      <CategoryJsonLd name="Personnalisation" nameEn={EN_PERSO.jsonLdName} path="/creations/personnalisation" />
 
       <Footer />
     </>

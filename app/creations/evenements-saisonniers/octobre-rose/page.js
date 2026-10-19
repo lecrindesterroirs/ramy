@@ -2,6 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { estAnglais, lienLocaliseDans } from '../../../../lib/i18nBase'
+import { useEnSlugs, useEnChemins } from '../../../../components/EnSlugsProvider'
+import { EN_EVENEMENTS, EN_EV_UI as T } from '../../../../lib/en/pages/evenements'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import RelatedLinks from '../../../../components/RelatedLinks'
@@ -10,7 +14,8 @@ import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
 import { evenements } from '../evenementsData'
 import { articles } from '../../../../lib/journalData'
 
-const ev = evenements.find(e => e.slug === 'octobre-rose')
+const evFr = evenements.find(e => e.slug === 'octobre-rose')
+const evEn = { ...evFr, ...EN_EVENEMENTS['octobre-rose'] }
 
 const ROSE = '#E27FA0'
 const ROSE_PALE = '#F6E4EA'
@@ -59,11 +64,22 @@ function IconCoeur({ color = ROSE }) {
 const ICONS = { ruban: IconRuban, personnes: IconPersonnes, coeur: IconCoeur }
 
 export default function OctobreRosePage() {
+  const en = estAnglais(usePathname() || '/')
+  const slugsEn = useEnSlugs()
+  const cheminsEn = useEnChemins()
+  const L = (href) => lienLocaliseDans(cheminsEn, href, en ? 'en' : 'fr', slugsEn)
+  const ev = en ? evEn : evFr
+  const nomDe = (e) => (en && EN_EVENEMENTS[e.slug]?.nom) || e.nom
+  const progLabel = (i, def) => (en ? T.orProgrammeLabels[i] : def)
   return (
     <>
       <Navbar showBanner={!ev.masquerBandeau} />
 
-      <BreadcrumbJsonLd items={[
+      <BreadcrumbJsonLd items={en ? [
+        { name: T.accueil, path: '/en' },
+        { name: T.fil, path: '/en/creations/evenements-saisonniers' },
+        { name: ev.nom, path: `/en/creations/evenements-saisonniers/${ev.slug}` },
+      ] : [
         { name: 'Accueil', path: '' },
         { name: 'Événements saisonniers', path: '/creations/evenements-saisonniers' },
         { name: ev.nom, path: `/creations/evenements-saisonniers/${ev.slug}` },
@@ -73,46 +89,50 @@ export default function OctobreRosePage() {
 
         {/* ── Hero 2 colonnes (fil d'Ariane inclus, pas de bande blanche entre navbar et section rose) ── */}
         <div className="or-hero" style={{ background: ROSE_PALE, position: 'relative', overflow: 'hidden' }}>
-          <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} jsonLd={false} />
+          <Breadcrumb items={en
+            ? [{ label: T.accueil, href: '/en' }, { label: T.fil, href: L('/creations/evenements-saisonniers') }, { label: ev.nom }]
+            : [{ label: 'Accueil', href: '/' }, { label: 'Événements saisonniers', href: '/creations/evenements-saisonniers' }, { label: ev.nom }]} jsonLd={false} />
           <div className="or-hero-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
 
             <div>
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '18px' }}>
-                Événement solidaire
+                {en ? T.orEyebrow : 'Événement solidaire'}
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(38px, 4.6vw, 66px)', fontWeight: 400, lineHeight: 1.02, letterSpacing: '-0.015em', color: ENCRE, marginBottom: '22px' }}>
-                Octobre <span style={{ color: ROSE }}>Rose</span>
+                {en ? <>{T.orH1a} <span style={{ color: ROSE }}>{T.orH1b}</span></> : <>Octobre <span style={{ color: ROSE }}>Rose</span></>}
               </h1>
               <span style={{ display: 'block', width: '48px', height: '2px', background: ROSE, marginBottom: '26px' }} />
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '17px', lineHeight: 1.55, color: ENCRE, marginBottom: '20px', maxWidth: '440px' }}>
-                Un moment gourmand et engagé pour sensibiliser vos équipes au dépistage du cancer du sein.
+                {en ? T.orDesc : 'Un moment gourmand et engagé pour sensibiliser vos équipes au dépistage du cancer du sein.'}
               </p>
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.72)', marginBottom: '40px', maxWidth: '460px' }}>
-                À travers une sélection de douceurs roses et de produits de saison, nous vous proposons une pause conviviale et solidaire. 1 € est reversé par convive à la recherche contre le cancer du sein, sur toutes nos commandes livrées en octobre.
+                {en ? T.orDesc2 : "À travers une sélection de douceurs roses et de produits de saison, nous vous proposons une pause conviviale et solidaire. 1 € est reversé par convive à la recherche contre le cancer du sein, sur toutes nos commandes livrées en octobre."}
               </p>
 
               <div style={{ marginBottom: '36px' }}>
                 <Link
-                  href="/devis?theme=octobre-rose"
+                  href={`${L('/devis')}?theme=octobre-rose`}
                   style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '16px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                   onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                 >
-                  Demander un devis Octobre Rose →
+                  {en ? T.orCta : 'Demander un devis Octobre Rose →'}
                 </Link>
               </div>
 
               <div className="or-badges" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-                {BADGES.map(b => {
+                {BADGES.map((b, bi) => {
                   const Icon = ICONS[b.icon]
+                  const titre = en ? T.orBadges[bi].titre : b.titre
+                  const sub = en ? T.orBadges[bi].sub : b.sub
                   return (
-                    <div key={b.titre}>
+                    <div key={b.icon}>
                       <Icon />
                       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 600, letterSpacing: '0.03em', color: ENCRE, margin: '10px 0 3px', textTransform: 'uppercase' }}>
-                        {b.titre}
+                        {titre}
                       </p>
                       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(26,26,24,0.6)', lineHeight: 1.4 }}>
-                        {b.sub}
+                        {sub}
                       </p>
                     </div>
                   )
@@ -132,27 +152,27 @@ export default function OctobreRosePage() {
             <div className="or-programme-head" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', marginBottom: '48px', alignItems: 'start' }}>
               <div>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: ROSE, marginBottom: '16px' }}>
-                  Au programme
+                  {en ? T.programme : 'Au programme'}
                 </p>
                 <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 400, lineHeight: 1.15, color: ENCRE }}>
-                  Une sélection gourmande <br />aux couleurs d'Octobre Rose
+                  {en ? T.orProgTitre.split('\n').map((l, i) => <span key={i}>{l}{i === 0 && <br />}</span>) : <>Une sélection gourmande <br />aux couleurs d'Octobre Rose</>}
                 </h2>
               </div>
               <div style={{ borderLeft: `1px solid ${ROSE}`, paddingLeft: '28px', alignSelf: 'center' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'rgba(26,26,24,0.7)' }}>
-                  Des créations sucrées et fraîches, pensées spécialement pour l'occasion, alliant plaisir et engagement. Chaque commande contribue directement à la recherche contre le cancer du sein.
+                  {en ? T.orProgDesc : "Des créations sucrées et fraîches, pensées spécialement pour l'occasion, alliant plaisir et engagement. Chaque commande contribue directement à la recherche contre le cancer du sein."}
                 </p>
               </div>
             </div>
 
             <div className="or-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '18px' }}>
-              {PROGRAMME.map(p => (
-                <Link key={p.label} href={p.href} className="or-programme-card" style={{ textDecoration: 'none', display: 'block' }}>
+              {PROGRAMME.map((p, pi) => (
+                <Link key={p.img} href={L(p.href)} className="or-programme-card" style={{ textDecoration: 'none', display: 'block' }}>
                   <div className="or-programme-img" style={{ position: 'relative', width: '100%', aspectRatio: '1/1', overflow: 'hidden', background: ROSE_PALE, marginBottom: '12px', transition: 'box-shadow 0.3s ease' }}>
-                    <Image fill sizes="(max-width: 900px) 33vw, 16vw" src={p.img} alt={p.label} style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }} />
+                    <Image fill sizes="(max-width: 900px) 33vw, 16vw" src={p.img} alt={progLabel(pi, p.label)} style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }} />
                   </div>
                   <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.4, color: ENCRE, textAlign: 'center' }}>
-                    {p.label}
+                    {progLabel(pi, p.label)}
                   </p>
                 </Link>
               ))}
@@ -160,12 +180,12 @@ export default function OctobreRosePage() {
 
             <div style={{ textAlign: 'center', marginTop: '48px' }}>
               <Link
-                href="/devis?theme=octobre-rose"
+                href={`${L('/devis')}?theme=octobre-rose`}
                 style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 34px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
                 onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                Composer ma sélection Octobre Rose →
+                {en ? T.orProgCta : 'Composer ma sélection Octobre Rose →'}
               </Link>
             </div>
           </div>
@@ -178,23 +198,23 @@ export default function OctobreRosePage() {
               <IconRuban />
               <div>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: ROSE, marginBottom: '8px' }}>
-                  Notre engagement
+                  {en ? T.orEngagementEyebrow : 'Notre engagement'}
                 </p>
                 <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 400, color: ENCRE, lineHeight: 1.15 }}>
-                  1 € reversé par convive <br />sur toutes nos commandes d'octobre.
+                  {en ? T.orEngagementTitre : <>1 € reversé par convive <br />sur toutes nos commandes d'octobre.</>}
                 </p>
               </div>
             </div>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'rgba(26,26,24,0.65)', maxWidth: '220px' }}>
-              Le montant total est publié en fin de mois.
+              {en ? T.orEngagementNote : 'Le montant total est publié en fin de mois.'}
             </p>
             <a
-              href="/devis?theme=octobre-rose"
+              href={`${L('/devis')}?theme=octobre-rose`}
               style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: ROSE, padding: '15px 30px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease', whiteSpace: 'nowrap' }}
               onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              Organiser cet événement →
+              {en ? T.organiser : 'Organiser cet événement →'}
             </a>
           </div>
         </div>
@@ -203,7 +223,7 @@ export default function OctobreRosePage() {
         <div className="or-article" style={{ borderTop: '1px solid rgba(17,17,17,0.07)', background: '#FFFFFF' }}>
           <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 96px' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.22em', textTransform: 'uppercase', color: ROSE, marginBottom: '20px' }}>
-              Guide pratique
+              {en ? T.guide : 'Guide pratique'}
             </p>
             <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: ENCRE, marginBottom: '56px', letterSpacing: '-0.01em' }}>
               {ev.article.titre}
@@ -226,10 +246,10 @@ export default function OctobreRosePage() {
         {/* Retour */}
         <div style={{ background: '#FFFFFF', padding: '0 72px 40px', display: 'flex', justifyContent: 'center' }}>
           <a
-            href="/creations/evenements-saisonniers"
+            href={L('/creations/evenements-saisonniers')}
             style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-secondary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
           >
-            ← Voir tous les événements
+            {en ? T.retour : '← Voir tous les événements'}
           </a>
         </div>
 
@@ -252,10 +272,16 @@ export default function OctobreRosePage() {
         }
       ` }} />
 
+      {/* En anglais, quatre événements voisins : les titres du Journal ne sont
+          lisibles que depuis lib/en/journal, interdit en composant client. */}
       <RelatedLinks
-        eyebrow="À découvrir aussi"
-        title="Autres rendez-vous & lectures"
-        items={[
+        eyebrow={en ? T.relatedEyebrow : "À découvrir aussi"}
+        title={en ? T.relatedTitre : "Autres rendez-vous & lectures"}
+        items={en
+          ? evenements.filter(e => e.slug !== ev.slug).slice(0, 4).map(e => ({
+              href: L(`/creations/evenements-saisonniers/${e.slug}`), title: nomDe(e), meta: T.fil,
+            }))
+          : [
           ...evenements.filter(e => e.slug !== ev.slug).slice(0, 2).map(e => ({ href: `/creations/evenements-saisonniers/${e.slug}`, title: e.nom, meta: 'Événement saisonnier' })),
           ...(ev.articles?.length
             ? ev.articles.map(slug => articles.find(a => a.slug === slug)).filter(Boolean)

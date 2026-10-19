@@ -1,6 +1,7 @@
 import { ogImages } from '../../../lib/og'
+import { alternatesPour } from '../../../lib/i18n'
 export const metadata = {
-  alternates: { canonical: '/creations/evenements-saisonniers' },
+  alternates: alternatesPour('/creations/evenements-saisonniers', { en: true }),
   title: "Événements saisonniers entreprise Paris",
   description: "Galette des Rois, Chandeleur, Halloween, Noël : des prestations traiteur pour chaque moment de l'année dans vos bureaux à Paris.",
   openGraph: {
