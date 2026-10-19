@@ -65,7 +65,7 @@ export default function ProductsPageTemplate({
     <>
       <Navbar showBanner={true} />
 
-      <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+      <main className="pd-main" style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
         {/* ── Hero ── */}
         <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
@@ -135,32 +135,12 @@ export default function ProductsPageTemplate({
       {/* ── Section éditoriale + article SEO ── */}
       <CategoryClosing {...(editorial || {})} seoArticle={seoArticle} lang={lang} />
 
-      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
-        .pd-card { border-radius: 4px !important; }
-        @media (max-width: 768px) {
-          .page-hero-wrapper { padding: 24px 16px 0 !important; }
-          .page-breadcrumb { padding: 20px 16px 0 !important; }
-          .page-answer { padding: 24px 16px 0 !important; }
-          .page-hero { height: 50vh !important; min-height: 340px !important; }
-          .page-hero-text { padding: 0 24px !important; }
-          .page-hero-veil { background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 100%) !important; }
-          .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
-          .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
-          .filter-cats::-webkit-scrollbar { display: none; }
-          .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 36px 16px !important; }
-          .cat-faq { padding: 8px 24px 72px !important; }
-        }
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .page-hero-wrapper { padding: 24px 40px 0 !important; }
-          .page-breadcrumb { padding: 20px 40px 0 !important; }
-          .page-answer { padding: 28px 40px 0 !important; }
-          .products-filter-bar { padding: 0 40px !important; }
-          .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
-        }
-      ` }} />
+      {/* Les règles responsive de cette page sont dans app/globals.css (.pd-main, .pd-faq) : une balise
+          <style> placée en bas de page arrive après le premier affichage et décale le haut de la page. */}
+      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `.pd-card { border-radius: 4px !important; }` }} />
 
       {/* ── FAQ logistique visible (schema porté par CategoryJsonLd) ── */}
-      <section className="cat-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 88px' }}>
+      <section className="cat-faq pd-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 88px' }}>
         <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px' }}>
           {en ? 'Frequently asked questions' : 'Questions fréquentes'}
         </h2>

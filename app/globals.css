@@ -557,3 +557,26 @@ a:hover .article-card-img { transform: scale(1.04); }
 @media (prefers-reduced-motion: reduce) {
   .reveal-mount { animation: none; }
 }
+
+/* Pages de catégories produits (components/ProductsPageTemplate.js) : règles responsive ici et non dans
+   une balise <style> en bas de page, qui arrive après le premier affichage et décalait le haut de page. */
+@media (max-width: 768px) {
+  .pd-main .page-hero-wrapper { padding: 24px 16px 0 !important; }
+  .pd-main .page-breadcrumb { padding: 20px 16px 0 !important; }
+  .pd-main .page-answer { padding: 24px 16px 0 !important; }
+  .pd-main .page-hero { height: 50vh !important; min-height: 340px !important; }
+  .pd-main .page-hero-text { padding: 0 24px !important; }
+  .pd-main .page-hero-veil { background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 100%) !important; }
+  .pd-main .products-filter-bar { padding: 0 0 0 16px !important; gap: 12px !important; flex-wrap: nowrap !important; }
+  .pd-main .filter-cats { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-shrink: 1; min-width: 0; }
+  .pd-main .filter-cats::-webkit-scrollbar { display: none; }
+  .pd-main .products-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 32px 16px 80px !important; gap: 36px 16px !important; }
+  .pd-faq { padding: 8px 24px 72px !important; }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .pd-main .page-hero-wrapper { padding: 24px 40px 0 !important; }
+  .pd-main .page-breadcrumb { padding: 20px 40px 0 !important; }
+  .pd-main .page-answer { padding: 28px 40px 0 !important; }
+  .pd-main .products-filter-bar { padding: 0 40px !important; }
+  .pd-main .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
+}
