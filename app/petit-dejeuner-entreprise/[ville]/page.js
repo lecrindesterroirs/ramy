@@ -1,6 +1,3 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -12,8 +9,8 @@ import { FAQSchema } from '../../../components/FAQSchema'
 import { PDJ_VILLES } from '../../../lib/pdjVillesData'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
 
-export default function PdjVillePage() {
-  const { ville } = useParams()
+export default function PdjVillePage({ params }) {
+  const { ville } = params
   const city = PDJ_VILLES.find(c => c.slug === ville)
   if (!city) notFound()
 

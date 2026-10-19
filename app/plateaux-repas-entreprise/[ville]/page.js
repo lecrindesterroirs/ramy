@@ -1,6 +1,3 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
@@ -15,8 +12,8 @@ import { PRODUITS, prixMenu } from '../../creations/plateaux-repas/data'
 import { businessNode, BUSINESS_ID } from '../../../lib/site'
 import HalalLine from '../../../components/HalalLine'
 
-export default function PlateauxVillePage() {
-  const { ville } = useParams()
+export default function PlateauxVillePage({ params }) {
+  const { ville } = params
   const city = PLATEAUX_VILLES.find(c => c.slug === ville)
   if (!city) notFound()
 
