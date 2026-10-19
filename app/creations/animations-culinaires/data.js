@@ -212,12 +212,12 @@ export const ANIMATIONS = [
     ` },
   { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/prod-atelier-burgers.webp',
     description: 'Montage minute de mini burgers.',
-    compo: ['Cheeseburger', 'Bœuf Effiloché BBQ', 'Truffe & Comté', 'Halloumi'],
+    compo: ['Hamburger', 'Cheeseburger', 'Burger au steak végétal (sur demande)'],
     article: `
       <h2>Un atelier mini burgers pour vos événements d'entreprise à Paris</h2>
-      <p>Des mini burgers montés minute devant vos invités : cheeseburger, bœuf effiloché BBQ, truffe-comté, halloumi. Un format street food net à manger debout, qui plaît à tous les âges. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <p>Des mini burgers montés minute devant vos invités : hamburger et cheeseburger, avec un burger au steak végétal sur demande. Un format street food net à manger debout, qui plaît à tous les âges. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
       <h2>Montés à la demande</h2>
-      <p>On assemble et on sert au fil du service, jamais à l'avance. Recettes variées, dont une option végétarienne au halloumi, pour que chacun trouve la sienne. Quantités ajustées à votre effectif.</p>
+      <p>On assemble et on sert au fil du service, jamais à l'avance. Une option végétarienne au steak végétal se demande à la commande, pour que chacun trouve la sienne. Quantités ajustées à votre effectif.</p>
       <h2>Réserver votre atelier mini burgers à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },

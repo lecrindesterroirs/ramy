@@ -45,10 +45,10 @@ export const PLATEAUX = [
   },
   {
     seoTitle: `Plateau de mini burgers pour vos afterworks et événements d'entreprise à Paris`,
-    seoHtml: `<p>Notre plateau de mini burgers artisanaux met de l'ambiance sur un apéritif d'équipe. Format street food net à manger debout, il plaît à tous les âges et transforme un afterwork ou un pot de départ en moment convivial. Des bouchées généreuses, assemblées avec soin.</p><h2>Des mini burgers à partager</h2><p>Le cheeseburger, prêt à se servir d'une main. On mixe les garnitures et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    seoHtml: `<p>Notre plateau de mini burgers artisanaux met de l'ambiance sur un apéritif d'équipe. Format street food net à manger debout, il plaît à tous les âges et transforme un afterwork ou un pot de départ en moment convivial. Des bouchées généreuses, assemblées avec soin.</p><h2>Des mini burgers à partager</h2><p>Hamburger et cheeseburger, prêts à se servir d'une main. On mixe les garnitures et on cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'sw4', famille: 'sandwichs', nom: 'Mini Burgers', img: '/plateau-burgers.webp',
     description: 'Assortiment de mini burgers artisanaux.',
-    recettes: ['Cheeseburger'],
+    recettes: ['Hamburger', 'Cheeseburger'],
   },
   // ── Gourmands ──
   {

@@ -52,7 +52,7 @@ export const MENUS = [
     featured: false,
     salees: [
       'Salade de lentilles, feta & légumes rôtis',
-      'Houmous méditerranéen & focaccia romarin',
+      'Houmous méditerranéen & navette de légumes grillés',
       'Mini baguette œuf & emmental',
       'Salade de tomates & mozzarella au basilic',
       'Falafels & crème tahini citronnée',
