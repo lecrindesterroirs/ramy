@@ -24,7 +24,7 @@ const fit = (candidats, max) => candidats.find(c => c.length <= max) || candidat
 const OVERRIDES = {
   'atelier-mini-burgers': {
     title: 'Animation traiteur mini burgers : atelier live à Paris',
-    description: "Atelier mini burgers monté minute devant vos invités : cheeseburger, chicken crispy, bœuf effiloché BBQ, truffe-comté, halloumi. Animation live à Paris.",
+    description: "Atelier mini burgers monté minute devant vos invités : cheeseburger, bœuf effiloché BBQ, truffe-comté, halloumi. Animation live à Paris.",
   },
   'location-de-machine-expresso-professionnelle-en-entreprise': {
     title: 'Location de machine expresso en entreprise à Paris',
