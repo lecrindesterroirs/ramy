@@ -402,8 +402,8 @@ export default function ProductPage() {
             sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
           <div style={{ marginTop: '48px', paddingTop: '40px', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-            <a href="/creations/petits-dejeuners-et-pauses" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
-              ← Retour aux petits-déjeuners
+            <a href={`${en ? '/en' : ''}/creations/petits-dejeuners-et-pauses`} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}>
+              {en ? '← Back to breakfasts' : '← Retour aux petits-déjeuners'}
             </a>
           </div>
         </section>
