@@ -326,7 +326,7 @@ export default function APartager() {
         }
       ` }} />
 
-      <CategoryJsonLd name="À partager" path="/creations/a-partager" />
+      <CategoryJsonLd name="À partager" nameEn="Sharing buffet" path="/creations/a-partager" />
 
       <Footer />
     </>
