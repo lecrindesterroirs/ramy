@@ -20,17 +20,17 @@ export const PRODUITS = [
   // ── Collection Essentiel (à partir de 28,90 € HT) ──
   {
     id: 'e2', collection: 'essentiel', categorie: 'poulet', nom: 'La Romaine', img: '/plateau-cesar.webp',
-    seoTitle: `La Romaine : le plateau repas César au poulet pour vos déjeuners d'entreprise à Paris`,
+    seoTitle: `La Romaine : le plateau repas poulet et pommes de terre rôties pour vos déjeuners d'entreprise à Paris`,
     seoHtml: `
-      <p>La Romaine remet la salade César à sa vraie place : une salade au poulet rôti généreuse, précédée d'une salade de tomates anciennes et basilic, terminée par un brownie. Un menu complet et rassasiant de la collection Essentiel, monté le matin même. Idéal pour un déjeuner de réunion ou un comité qui n'a pas le temps de sortir.</p>
+      <p>La Romaine, c'est le plateau poulet qui cale : salade de tomates anciennes et basilic en entrée, filet de poulet et pommes de terre rôties en plat, muffin aux pépites de chocolat en dessert. Un menu complet et rassasiant de la collection Essentiel, monté le matin même. Idéal pour un déjeuner de réunion ou un comité qui n'a pas le temps de sortir.</p>
       <h2>Un classique bien fait, préparé le jour même</h2>
-      <p>Salade de tomates anciennes et basilic en entrée, salade César au poulet rôti en plat, brownie en dessert. Des recettes de saison, dressées en plateau individuel et montées le matin de la livraison. Rien d'industriel.</p>
+      <p>Une salade de tomates anciennes au basilic frais, un filet de poulet et des pommes de terre rôties à l'huile d'olive, un muffin aux pépites de chocolat. Dressé en plateau individuel et monté le matin de la livraison.</p>
       <h2>Commander La Romaine à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dans vos bureaux dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de tomates anciennes & basilic',
-    plat: 'Salade César au poulet rôti',
-    dessert: 'Brownie',
+    plat: 'Filet de poulet & pommes de terre rôties',
+    dessert: 'Muffin aux pépites de chocolat',
   },
   {
     id: 'e1', collection: 'essentiel', categorie: 'vegetarien', nom: 'La Solaire', img: '/plateau-mediterraneen.webp',
@@ -62,16 +62,16 @@ export const PRODUITS = [
   },
   {
     id: 'e4', collection: 'essentiel', categorie: 'poulet', nom: 'La Champêtre', img: '/plateau-fermier.webp',
-    seoTitle: `La Champêtre : le plateau repas au poulet et taboulé pour vos déjeuners d'entreprise`,
+    seoTitle: `La Champêtre : le plateau repas au poulet et riz pour vos déjeuners d'entreprise`,
     seoHtml: `
-      <p>La Champêtre joue la fraîcheur : salade de concombre au yaourt et ciboulette en entrée, émincé de poulet et taboulé en plat, salade de fruits frais en dessert. Un plateau repas de la collection Essentiel, léger et équilibré, idéal pour un déjeuner de travail.</p>
+      <p>La Champêtre joue la fraîcheur : salade de concombre au yaourt et ciboulette en entrée, émincé de poulet et riz en plat, salade de fruits frais en dessert. Un plateau repas de la collection Essentiel, léger et équilibré, idéal pour un déjeuner de travail.</p>
       <h2>Léger, frais et rassasiant</h2>
-      <p>Salade de concombre au yaourt et ciboulette, émincé de poulet et taboulé, salade de fruits frais. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
+      <p>Salade de concombre au yaourt et ciboulette, émincé de poulet et riz basmati, salade de fruits frais. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
       <h2>Commander La Champêtre à Paris et en Île-de-France</h2>
       <p>Commande avant 14h la veille, livraison dès 6h30 dans vos locaux. On adapte aux effectifs et aux régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de concombre au yaourt & ciboulette',
-    plat: 'Émincé de poulet & taboulé',
+    plat: 'Émincé de poulet & riz',
     dessert: 'Salade de fruits frais',
   },
   {
