@@ -12,7 +12,7 @@ const PRODUITS = PLATEAUX
   .map(p => ({
     id: p.id,
     name: enPlateauAperitif(p.id).nom,
-    label: `${FAMILLES_EN[p.famille] || 'Aperitif'} · On quote`,
+    label: p.prix ? `${FAMILLES_EN[p.famille] || 'Aperitif'} · €${p.prix.toFixed(2)} excl. VAT` : `${FAMILLES_EN[p.famille] || 'Aperitif'} · On quote`,
     img: p.img,
   }))
 

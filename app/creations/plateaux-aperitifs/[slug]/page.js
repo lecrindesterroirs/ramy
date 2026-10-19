@@ -42,8 +42,11 @@ function PlateauAperitifDetailInner() {
       relatedTitle="D'autres plateaux apéritifs"
       subtitle={famille}
       img={plateau.img}
-      price={null}
-      description={`${plateau.description} Format à partager, idéal pour vos afterworks et réceptions. Tarif au format et à l'effectif, sur devis.`}
+      price={plateau.prix ? plateau.prix.toFixed(2).replace('.', ',') : null}
+      priceNote={plateau.pieces ? `HT · ${plateau.pieces} pièces` : 'HT'}
+      description={plateau.prix
+        ? `${plateau.description} Plateau de ${plateau.pieces} pièces à partager, idéal pour vos afterworks et réceptions.`
+        : `${plateau.description} Format à partager, idéal pour vos afterworks et réceptions. Tarif au format et à l'effectif, sur devis.`}
       listLabel={plateau.recettes?.length ? 'Recettes' : 'Composition'}
       listItems={plateau.recettes ?? []}
       breadcrumb={[

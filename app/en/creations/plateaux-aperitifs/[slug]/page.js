@@ -42,8 +42,11 @@ function FicheEn() {
       title={en.nom}
       subtitle={FAMILLES_EN[plateau.famille] || ''}
       img={plateau.img}
-      price={null}
-      description={`${en.description} A sharing format, right for afterworks and receptions. Priced by size and headcount, on quote.`}
+      price={plateau.prix ? plateau.prix.toFixed(2) : null}
+      priceNote={plateau.pieces ? `excl. VAT · ${plateau.pieces} pieces` : 'excl. VAT'}
+      description={plateau.prix
+        ? `${en.description} A platter of ${plateau.pieces} pieces to share, right for afterworks and receptions.`
+        : `${en.description} A sharing format, right for afterworks and receptions. Priced by size and headcount, on quote.`}
       listLabel={en.recettes?.length ? 'Recipes' : 'Composition'}
       listItems={en.recettes ?? []}
       related={voisins}

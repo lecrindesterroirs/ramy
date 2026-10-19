@@ -103,7 +103,7 @@ function PlateauCard({ produit }) {
           {produit.description}
         </p>
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: '#9B9590', marginTop: '14px' }}>
-          À partager · sur devis
+          {produit.prix ? `${produit.pieces} pièces · ${produit.prix.toFixed(2).replace('.', ',')} € HT` : 'À partager · sur devis'}
         </p>
       </div>
     </Link>
