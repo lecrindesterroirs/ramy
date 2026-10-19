@@ -14,7 +14,7 @@ import Breadcrumb from '../../../components/Breadcrumb'
 
 const SEO_ARTICLE = `
   <h2>Commander une formule cocktail livrée à Paris et en Île-de-France</h2>
-  <p>Cette page présente les trois formules cocktail de L'Écrin Traiteur, livrées prêtes à servir : <strong>L'Invitation</strong> (8 pièces, 29,90 € HT par personne), <strong>La Réception</strong> (12 pièces, 40,90 € HT) et <strong>La Célébration</strong> (16 pièces, 51,90 € HT). Chaque formule est un plateau complet de pièces salées et sucrées façonnées à la main : vous choisissez le nombre de personnes, nous composons et livrons. Pour savoir comment dimensionner votre événement, comparer les budgets pour 20 ou 50 personnes ou choisir selon l'occasion, voir notre page <a href="/occasions/cocktail-entreprise">cocktail d'entreprise à Paris</a>.</p>
+  <p>Cette page présente les trois formules cocktail de L'Écrin Traiteur, livrées prêtes à servir : <strong>L'Invitation</strong> (8 pièces, 29,90 € HT par personne), <strong>La Réception</strong> (12 pièces, 40,90 € HT) et <strong>La Célébration</strong> (16 pièces, 51,90 € HT). Chaque formule est un plateau complet de pièces salées et sucrées façonnées à la main : vous choisissez le nombre de personnes, nous composons et livrons. Pour savoir comment dimensionner votre événement, comparer les budgets pour 20 ou 50 personnes ou choisir selon l'occasion, voir notre guide <a href="/occasions/cocktail-entreprise">organiser un cocktail d'entreprise</a>.</p>
 
   <h2>Quelle formule pour quel moment ?</h2>
   <p>L'Invitation est la formule apéritive : un afterwork, un pot de départ, un accueil avant un événement, pour une heure et demie à deux heures. La Réception, la plus choisie, associe terre et mer pour un cocktail déjeunatoire, une soirée partenaires ou une inauguration. La Célébration remplace le dîner : elle est pensée pour un cocktail dînatoire de deux heures et demie à trois heures. Pour un pot en fin de journée, voir aussi notre page <a href="/occasions/afterwork-entreprise">traiteur afterwork d'entreprise</a> et le <a href="/journal/traiteur-afterwork-pot-depart-entreprise-paris">guide pour organiser un afterwork ou un pot de départ</a>.</p>
@@ -176,7 +176,7 @@ export default function Cocktails() {
                 Cocktail
               </p>
               <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                Formules cocktail livrées à Paris
+                Cocktail d'entreprise livré à Paris
               </h1>
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '400px' }}>
                 Trois formules de 8, 12 ou 16 pièces salées et sucrées par personne, façonnées à la main et livrées prêtes à servir, de l&apos;afterwork à la réception d&apos;exception.
@@ -205,8 +205,8 @@ export default function Cocktails() {
             Trois volumes de pièces selon le moment : L&apos;Invitation pour un pot, La Réception pour remplacer un déjeuner, La Célébration pour un dîner debout. Pièces salées et sucrées façonnées à la main, halal et sans porc, livrées prêtes à servir.
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: '#6E675F', maxWidth: '560px', margin: '14px auto 0' }}>
-            Pour dimensionner votre événement et comparer les budgets pour 20 ou 50 personnes, voir notre page{' '}
-            <a href="/occasions/cocktail-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>cocktail d&apos;entreprise à Paris</a>.
+            Pour dimensionner votre événement et comparer les budgets pour 20 ou 50 personnes, voir notre guide{' '}
+            <a href="/occasions/cocktail-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>organiser un cocktail d&apos;entreprise</a>.
             Pour un pot en fin de journée, voir notre{' '}
             <a href="/occasions/afterwork-entreprise" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur afterwork d&apos;entreprise</a>.
           </p>
