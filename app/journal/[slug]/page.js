@@ -6,6 +6,7 @@ import RelatedLinks from '../../../components/RelatedLinks'
 import { grappesCommunes, estGuide } from '../../../lib/guidesMaillage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { articles, articleAuthor } from '../../../lib/journalData'
+import { modifieLe } from '../../../lib/journalLastmod'
 import { founderNode } from '../../../lib/site'
 import { PRODUCTS } from '../../../lib/productsData'
 import { PAUSES } from '../../creations/pauses-gourmandes/data'
@@ -38,6 +39,8 @@ export default function ArticlePage({ params }) {
   const { slug } = params
   const article = articles.find(a => a.slug === slug)
   if (!article) notFound()
+  // Dernière modification réelle du contenu (isoModified, isoDate ou historique : voir lib/journalLastmod.js)
+  const modifie = modifieLe(article)
 
   const author = articleAuthor(slug)
 
@@ -95,8 +98,8 @@ export default function ArticlePage({ params }) {
                 letterSpacing: '0.04em',
               }}>
                 <time dateTime={article.isoDate}>{article.date}</time>
-                {article.isoModified && article.isoModified !== article.isoDate && (
-                  <> · mis à jour le <time dateTime={article.isoModified}>{dateFr(article.isoModified)}</time></>
+                {modifie && modifie !== article.isoDate && (
+                  <> · mis à jour le <time dateTime={modifie}>{dateFr(modifie)}</time></>
                 )}
               </span>
               <span style={{ color: 'rgba(17,17,17,0.25)', fontSize: '10px' }}>·</span>
@@ -431,7 +434,7 @@ export default function ArticlePage({ params }) {
           ...(article.about?.length ? { 'about': article.about.map(name => ({ '@type': 'Thing', name })) } : {}),
           'inLanguage': 'fr-FR',
           'datePublished': isoDateTime(article.isoDate) || article.date,
-          'dateModified': isoDateTime(article.isoModified || article.isoDate) || article.date,
+          'dateModified': isoDateTime(modifie || article.isoDate) || article.date,
           'author': author.isPerson
             ? founderNode()
             : {

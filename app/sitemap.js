@@ -29,6 +29,7 @@ import { slugsHalalEn } from '../lib/en/pages/halal'
 import { slugsArtisansEn } from '../lib/en/univers/artisans'
 import { cheminsVillesEn } from '../lib/en/villes'
 import { EN_PAGES } from '../lib/enPages'
+import { modifieLe } from '../lib/journalLastmod'
 
 const BASE_URL = 'https://www.lecrin-traiteur.fr'
 // Date de dernière mise à jour éditoriale, figée volontairement (ne pas remettre
@@ -162,7 +163,7 @@ export default function sitemap() {
   // ── Articles du journal ───────────────────────────────────────────
   const journalPages = articles.map(a => ({
     url: `${BASE_URL}/journal/${a.slug}`,
-    lastModified: a.isoDate ? new Date(a.isoDate).toISOString() : NOW,
+    lastModified: modifieLe(a) ? new Date(modifieLe(a)).toISOString() : NOW,
     priority: 0.75,
     changeFrequency: 'yearly',
   }))
