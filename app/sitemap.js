@@ -36,8 +36,32 @@ const BASE_URL = 'https://www.lecrin-traiteur.fr'
 // À bumper lors d'une vraie refonte de contenu.
 const NOW = '2026-07-06T00:00:00.000Z'
 
+/*
+  Dates de dernière modification réelle, par page. Google ne se fie à <lastmod> que si les
+  dates sont exactes : toutes les pages à la même date figée disaient à Google que rien n'avait
+  bougé depuis le 6 juillet, alors que des pages ont été réécrites en octobre. On ne liste ici que
+  les pages dont le contenu a VRAIMENT changé ; les autres gardent NOW. À mettre à jour (date du
+  jour) quand on modifie le texte, le titre ou la description d'une page.
+*/
+const EN_LANCEMENT = '2026-10-19'                      // pages /en : créées du 17 au 19/10/2026
+const LASTMOD_PAGES = {
+  '/creations/petits-dejeuners-et-pauses': '2026-10-19',   // titre, prix « dès 6,50 € HT », FAQ
+  '/traiteur/paris/15e-arrondissement': '2026-10-21',      // page réécrite (SIRENE, FAQ)
+  '/traiteur/paris/17e-arrondissement': '2026-10-21',
+}
+const LASTMOD_VILLES_21_10 = [   // titres et descriptions reformulés le 21/10/2026
+  'puteaux', 'neuilly-sur-seine', 'boulogne-billancourt', 'nanterre', 'levallois-perret',
+  'asnieres-sur-seine', 'courbevoie', 'suresnes', 'gennevilliers', 'rueil-malmaison', 'saint-denis',
+]
+LASTMOD_VILLES_21_10.forEach(v => { LASTMOD_PAGES[`/traiteur/${v}`] = '2026-10-21' })
+
+function lastmodDe(path) {
+  const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)
+  return d ? `${d}T00:00:00.000Z` : NOW
+}
+
 function url(path, priority, changeFrequency) {
-  return { url: `${BASE_URL}${path}`, lastModified: NOW, priority, changeFrequency }
+  return { url: `${BASE_URL}${path}`, lastModified: lastmodDe(path), priority, changeFrequency }
 }
 
 export default function sitemap() {
