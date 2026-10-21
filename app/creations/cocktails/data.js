@@ -59,7 +59,7 @@ export const FORMULES = [
     key: 'prestige',
     occasion: 'Dînatoire',
     seoTitle: `Cocktail La Célébration : la formule prestige pour vos grandes réceptions d'entreprise à Paris`,
-    seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Saumon mariné, crevette à la mangue, melon à la feta et à la menthe : une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, melon, feta et menthe, navette de légumes grillés. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Saumon mariné, crevette à la mangue, tartelette avocat feta : une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, tartelette avocat feta, navette de légumes grillés. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     label: 'La Célébration',
     pieces: 16,
     prix: '51,90',
@@ -77,7 +77,7 @@ export const FORMULES = [
       'Saumon Mariné & Betterave Jaune',
       'Crevette Bio, Mangue & Radis Noir',
       'Gâteau de Carotte au Cerfeuil',
-      'Melon, Feta, Menthe Fraîche & Olive Kalamata',
+      'Tartelette Avocat & Feta',
       'Navette de Légumes Grillés',
     ],
     sucre: [
