@@ -34,7 +34,7 @@ export const PAUSES = [
   { id: 'carrot-cake',
     seoTitle: `Carrot cake pour vos pauses gourmandes d'entreprise à Paris`,
     seoHtml: `<p>Un carrot cake moelleux signé notre chef pâtissier, servi à couper, en tranches parfumées à la cannelle et aux fruits secs. Une part par personne. En pause d'après-midi, il change du chocolat et séduit ceux qui aiment les gâteaux un peu plus caractériels, et transforme une réunion en moment convivial.</p><h2>Commander votre carrot cake à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
-    nom: 'Carrot cake maison',           img: '/prod-carrot-cake.webp', prix: '5/6 pers, 13,90 €',    description: 'Carrot cake signé notre chef pâtissier, tranché sur plateau.' },
+    nom: 'Carrot cake maison',           img: '/prod-carrot-cake.webp', prix: '5/6 pers, 24,90 €',    description: 'Carrot cake signé notre chef pâtissier, tranché sur plateau.' },
   { id: 'cake-citron',
     seoTitle: `Cake citron pour vos pauses d'entreprise à Paris`,
     seoHtml: `<p>Un cake au citron fait maison, servi tranché, une part par personne. Acidulé, moelleux et pas trop sucré, il accompagne parfaitement un café de milieu d'après-midi ou une réunion qui s'étire, et plaît à ceux qui fuient le trop-riche.</p><h2>Commander votre cake citron à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
