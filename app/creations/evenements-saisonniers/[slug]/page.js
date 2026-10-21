@@ -340,7 +340,10 @@ export default function EvenementDetail() {
                 color: 'var(--text-primary)',
                 maxWidth: '380px',
               }}>
-                {en ? T.ctaTitre(ev.nom) : <>Vous organisez {ev.nom === 'Halloween' || ev.nom === 'Noël' || ev.nom === 'Pâques' ? ev.nom : `la ${ev.nom}`} pour votre entreprise ? On s'en occupe.</>}
+                {/* ctaNom : tournure de la phrase quand « la {nom} » sonne faux
+                    (« le Dry January », « un iftar ou l'Aïd »). En anglais, on ne
+                    lit que la surcouche, pour ne jamais afficher la tournure française. */}
+                {en ? T.ctaTitre(EN_EVENEMENTS[ev.slug]?.ctaNom || ev.nom) : <>Vous organisez {ev.ctaNom || (ev.nom === 'Halloween' || ev.nom === 'Noël' || ev.nom === 'Pâques' ? ev.nom : `la ${ev.nom}`)} pour votre entreprise ? On s'en occupe.</>}
               </p>
               <a
                 href={L('/devis')}

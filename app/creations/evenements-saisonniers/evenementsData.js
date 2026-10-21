@@ -42,6 +42,54 @@ export const evenements = [
     },
   },
   {
+    slug: 'dry-january',
+    mois: 'Janvier',
+    nom: 'Dry January',
+    ctaNom: 'le Dry January',
+    articles: [
+      'cocktail-entreprise-sans-alcool',
+      'bar-mocktails-barman-evenement-entreprise',
+    ],
+    tags: ['Cocktails & Buffets', 'Animations'],
+    img: '/prod-bar-mocktails.webp',
+    imgAlt: "Bar à mocktails sans alcool tenu par un barman de L'Écrin Traiteur : agrumes, fruits frais et herbes",
+    descCourt: "Bar à mocktails avec barman, Chardonnay 0 %, infusions et jus Alain Milliat. Un afterwork de janvier 100 % sans alcool.",
+    desc: "En janvier, une partie de vos équipes relève le défi d'un mois sans alcool. Chez L'Écrin Traiteur, ce n'est pas une contrainte : nous ne servons jamais d'alcool. Un barman prépare des mocktails à la minute, avec agrumes, fruits frais et herbes, à côté d'un cocktail de pièces salées. Personne n'a à expliquer pourquoi il ne boit pas.",
+    produits: [
+      'Bar à mocktails avec barman (sur devis)',
+      'Blanc de Blancs Chardonnay 0 %',
+      'Infusion citron vert et gingembre bio, en jarre de 10 L',
+      'Nectars et jus Alain Milliat',
+      'Eaux infusées aux fruits et herbes fraîches',
+      "Cocktail L'Invitation, 8 pièces par personne",
+    ],
+    differentiateur: {
+      label: '100 % sans alcool',
+      text: "Toute notre carte est sans alcool, toute l'année. Le Dry January ne change rien à notre façon de servir : il la met en avant.",
+    },
+    article: {
+      titre: "Dry January en entreprise : un afterwork sans alcool qui tient la route",
+      sections: [
+        {
+          heading: "Le Dry January en bref",
+          texte: "Le Dry January, appelé Défi de janvier en France, propose de ne pas boire d'alcool pendant tout le mois de janvier. En entreprise, c'est le bon moment pour un afterwork où personne n'a à se justifier. Un cocktail de 8 pièces salées et sucrées revient à 29,90 € HT par personne, soit 627 € HT livraison comprise pour 20 personnes. Le bar à mocktails se chiffre sur devis, installation et démontage compris.",
+        },
+        {
+          heading: "Ce qu'on sert à la place de l'alcool",
+          texte: "Le piège, c'est de remplacer le vin par une bouteille d'eau et un jus d'orange. Ce qui fonctionne : un bar à mocktails, où un barman prépare chaque verre à la minute avec agrumes, fruits frais, herbes et sirops maison. Pour trinquer, un Chardonnay Blanc de Blancs 0 %. En libre-service, une jarre de 10 litres d'infusion citron vert et gingembre, et des nectars Alain Milliat : abricot, pêche, mangue.",
+        },
+        {
+          heading: "Pourquoi c'est simple chez nous",
+          texte: "Chez L'Écrin Traiteur, la carte est sans alcool toute l'année, halal et sans porc. Le Dry January ne demande donc aucune adaptation : les mêmes pièces, les mêmes boissons, le même service. C'est aussi un argument pour la suite de l'année : un pot sans alcool inclut tout le monde, ceux qui ne boivent jamais, ceux qui conduisent et ceux qui ne souhaitent pas en parler.",
+        },
+        {
+          heading: "Organisation et timing",
+          texte: "Évitez la première semaine de janvier, souvent prise par les vœux et la galette. La deuxième ou la troisième semaine, entre 18h et 20h, fonctionne bien. Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; à partir de 50 personnes, un préavis de 48 h est recommandé. Pour le bar à mocktails, demandez le devis quelques jours avant : le nombre de barmans dépend de votre effectif.",
+        },
+      ],
+    },
+  },
+  {
     slug: 'chandeleur',
     mois: 'Février',
     nom: 'Chandeleur',
@@ -79,6 +127,149 @@ export const evenements = [
         {
           heading: "À quelle heure organiser la pause crêpes ?",
           texte: "La Chandeleur fonctionne très bien en milieu de matinée (10h à 11h) ou en goûter (16h à 17h). Évitez l'heure du déjeuner, où l'événement se noierait dans la logistique du repas. Une durée de 30 à 45 minutes est idéale pour que tout le monde passe, discute, et reprenne le travail sans que l'événement s'étire. Communiquez la pause en avance dans les calendriers partagés pour maximiser la participation.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'nouvel-an-chinois',
+    mois: 'Janvier / Février',
+    nom: 'Nouvel An chinois',
+    ctaNom: 'le Nouvel An chinois',
+    articles: [
+      'plateau-asiatique-sushi-afterwork-entreprise-paris',
+    ],
+    tags: ['Cocktails & Buffets', 'Pauses gourmandes'],
+    img: '/plateau-asiatique.webp',
+    imgAlt: "Plateau apéritif asiatique : makis, california rolls, spring rolls, gyozas et brochettes yakitori",
+    descCourt: "Plateau de makis, spring rolls, gyozas et yakitori, thé Mariage Frères. Pour fêter la nouvelle année lunaire au bureau.",
+    desc: "Le Nouvel An chinois tombe le samedi 6 février 2027 : on le fête au bureau le vendredi 5. Un plateau de bouchées d'inspiration asiatique, makis, california rolls, spring rolls, gyozas et brochettes yakitori, à picorer debout. Thé Mariage Frères en thermos, brochettes de fruits frais pour finir. Halal et sans porc, comme toute la carte.",
+    produits: [
+      'Plateau apéritif asiatique (makis, california rolls, spring rolls, gyozas, yakitori)',
+      'Atelier sushi et maki (sur devis)',
+      'Thermos de thé Mariage Frères',
+      'Infusion citron vert et gingembre bio',
+      'Nectar de mangue Alain Milliat',
+      'Brochettes de fruits frais',
+    ],
+    differentiateur: {
+      label: 'Halal et sans porc',
+      text: "Gyozas, spring rolls et brochettes yakitori sans porc, comme toute notre carte. Tout le monde mange de tout.",
+    },
+    article: {
+      titre: "Fêter le Nouvel An chinois au bureau : simple et bien fait",
+      sections: [
+        {
+          heading: "Le Nouvel An chinois 2027 en bref",
+          texte: "Le Nouvel An chinois, ou fête du Printemps, suit le calendrier lunaire : sa date change chaque année, entre fin janvier et mi-février. En 2027, il tombe le samedi 6 février ; fêtez-le le vendredi 5 ou le lundi 8. Un cocktail de 8 pièces revient à 29,90 € HT par personne, un petit-déjeuner Classique à 8 € HT, livraison de 29 € HT en plus.",
+        },
+        {
+          heading: "Que servir ?",
+          texte: "Nous ne prétendons pas faire de la cuisine chinoise traditionnelle. Notre plateau asiatique réunit des bouchées d'inspiration asiatique qui se mangent d'une main : makis, california rolls, spring rolls, gyozas, brochettes yakitori, avec sauce soja, gingembre et wasabi. Pour une équipe plus nombreuse, l'atelier sushi et maki prépare les pièces en continu devant vos invités. Côté boissons, du thé Mariage Frères en thermos et une infusion citron vert et gingembre.",
+        },
+        {
+          heading: "Le bon format pour une équipe",
+          texte: "Le Nouvel An chinois se prête bien à un déjeuner debout ou à un afterwork court. Le plateau asiatique se partage en complément d'un cocktail de pièces, et des brochettes de fruits frais terminent le moment sur une note légère. Si des collègues fêtent l'événement en famille, demandez-leur ce qu'ils aimeraient voir sur la table : c'est la meilleure façon d'en faire un vrai moment d'équipe.",
+        },
+        {
+          heading: "Commande et timing",
+          texte: "Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France. À partir de 50 personnes ou pour plusieurs sites, un préavis de 48 h est recommandé ; pour l'atelier sushi et maki, demandez le devis quelques jours avant. Entre 12h et 14h ou en fin de journée, 45 minutes à une heure suffisent. Précisez les régimes de l'équipe à la demande : végétarien, sans gluten.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'saint-valentin',
+    mois: '14 Février',
+    nom: 'Saint-Valentin',
+    articles: [
+      'gouter-entreprise-bureau',
+      'meilleures-patisseries-gouter-entreprise-paris',
+    ],
+    tags: ['Pauses gourmandes', 'Goûters'],
+    img: '/prod-fraisier-partager.webp',
+    imgAlt: "Fraisier à partager : biscuit léger, crème mousseline et fraises fraîches",
+    descCourt: "Un goûter pour dire merci à vos équipes : fraisier à partager, macarons, madeleines personnalisées. Pas de cœurs partout.",
+    desc: "La Saint-Valentin version bureau, ce n'est pas un dîner aux chandelles : c'est un goûter pour dire à vos équipes qu'on tient à elles. Un fraisier ou une grande tarte aux framboises à partager, des macarons, des madeleines avec votre message. En 2027, le 14 février tombe un dimanche : fêtez-la le vendredi 12.",
+    produits: [
+      'Fraisier à partager (10 à 12 personnes)',
+      'Grande tarte aux framboises',
+      "Coffret de macarons d'exception",
+      'Madeleines personnalisées, sur devis',
+      'Cake framboise maison',
+      'Jus pomme et framboise',
+    ],
+    differentiateur: {
+      label: 'Personnalisation',
+      text: "Madeleines, macarons ou cookies à votre message et aux couleurs de l'entreprise. Un merci écrit, pas une déclaration.",
+    },
+    article: {
+      titre: "Saint-Valentin au bureau : un goûter pour vos équipes, pas pour les couples",
+      sections: [
+        {
+          heading: "Pourquoi en parler au bureau ?",
+          texte: "La Saint-Valentin est une fête de couple, et c'est pour ça qu'elle met mal à l'aise en entreprise si on la prend au pied de la lettre. Le bon angle est ailleurs : profiter de la date pour dire merci à l'équipe. Un goûter le vendredi après-midi, un mot du manager, des pâtisseries choisies avec soin. Personne n'est mis de côté, ni ceux qui sont seuls, ni ceux qui ne la fêtent pas.",
+        },
+        {
+          heading: "Que servir ?",
+          texte: "Un grand gâteau à partager fait le centre de la table : le fraisier, biscuit léger, crème mousseline et fraises fraîches, ou la grande tarte aux framboises, pour 10 à 12 personnes chacun. Autour, un coffret de 24 macarons signés Pierre Morel, un cake framboise maison, du jus pomme et framboise. Les madeleines personnalisées portent votre message : un merci, le nom de l'équipe, pas forcément un cœur.",
+        },
+        {
+          heading: "Budget",
+          texte: "Une pause gourmande démarre à 6 € HT par personne, soit 149 € HT livraison comprise pour 20 personnes. Le minimum de commande est de 50 € HT. Les madeleines personnalisées se chiffrent sur devis, selon le message et la quantité : demandez-les en même temps que le reste de la commande.",
+        },
+        {
+          heading: "Timing",
+          texte: "En 2027, le 14 février tombe un dimanche : choisissez le vendredi 12 en fin d'après-midi, entre 16h et 17h. Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France. Trente minutes suffisent : le but est de marquer le moment, pas d'organiser une soirée.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'ramadan-aid',
+    mois: 'Février / Mars, date variable',
+    nom: 'Ramadan et Aïd',
+    ctaNom: "un iftar ou l'Aïd",
+    articles: [
+      'iftar-entreprise-ramadan-organiser',
+      'traiteur-halal-entreprise-paris',
+      'petit-dejeuner-halal-entreprise-paris',
+    ],
+    tags: ['Cocktails & Buffets', 'Petits-déjeuners'],
+    img: '/prod-atelier-libanais.webp',
+    imgAlt: "Atelier libanais wrap et pita : chawarma, falafels, houmous et taboulé préparés devant les invités",
+    descCourt: "Iftar au bureau en fin de journée et petit-déjeuner de l'Aïd. Toute la carte est halal et sans porc, sans supplément.",
+    desc: "Le Ramadan suit le calendrier lunaire : sa date avance d'environ onze jours chaque année. En 2027, il devrait commencer vers le 8 février et finir vers le 9 mars. Pour un iftar au bureau, nous livrons un cocktail dînatoire ou un buffet salé un quart d'heure avant la rupture du jeûne. Pour l'Aïd, un petit-déjeuner d'équipe. Toute notre carte est halal et sans porc : pas de menu à part.",
+    produits: [
+      'Cocktail La Célébration, 16 pièces par personne',
+      "Buffet à partager Le Méditerranéen : taboulé, falafels, caviar d'aubergine",
+      'Atelier libanais wrap et pita (sur devis)',
+      'Assortiment de pains briochés salés',
+      'Jus Alain Milliat',
+      'Thermos de thé Mariage Frères et de café',
+    ],
+    differentiateur: {
+      label: "Halal, toute l'année",
+      text: "Toute la carte est halal et sans porc, sans alcool, sans supplément. Jeûneurs ou non, tout le monde mange la même chose.",
+    },
+    article: {
+      titre: "Ramadan et Aïd en entreprise : iftar au bureau et petit-déjeuner de fête",
+      sections: [
+        {
+          heading: "Le Ramadan 2027 en bref",
+          texte: "Le Ramadan suit le calendrier lunaire : ses dates avancent d'environ onze jours chaque année et se confirment lors de la Nuit du doute. En 2027, il devrait commencer vers le lundi 8 février et se terminer vers le 9 mars ; l'Aïd el-Fitr tomberait le mardi 9 ou le mercredi 10 mars. À Paris, le jeûne se rompt vers 17h59 début février et vers 18h45 début mars.",
+        },
+        {
+          heading: "L'iftar au bureau : du salé, à l'heure",
+          texte: "Un iftar d'entreprise réunit l'équipe au moment de la rupture du jeûne, jeûneurs ou non. Tout se joue sur l'heure : le buffet doit être en place un quart d'heure avant, avec de l'eau et des jus dès la première minute. Ensuite, du salé qui rassasie : un cocktail de 16 pièces par personne à 51,90 € HT, soit 1 586 € HT livraison comprise pour 30 personnes, ou un buffet à partager comme Le Méditerranéen, avec taboulé, falafels et caviar d'aubergine. Pour une équipe plus nombreuse, l'atelier libanais prépare chawarma de poulet ou de bœuf, falafels, houmous et taboulé devant les invités.",
+        },
+        {
+          heading: "Halal et sans porc : rien à demander",
+          texte: "Chez L'Écrin Traiteur, toute la carte est halal et sans porc, sans alcool, toute l'année et sans supplément. Vous n'avez pas à commander un menu à part pour les collègues qui jeûnent, ni à vérifier chaque ligne du devis. Précisez seulement les autres régimes de l'équipe, végétarien ou sans gluten, et l'heure de rupture du jeûne le jour de votre iftar : nous calons la livraison un quart d'heure avant.",
+        },
+        {
+          heading: "Le petit-déjeuner de l'Aïd",
+          texte: "Le jour de l'Aïd, beaucoup de collègues posent leur journée. Un petit-déjeuner le jour même ou le lendemain permet de marquer la fête avec toute l'équipe. Le petit-déjeuner Classique est à 8 € HT par personne, soit 189 € HT livraison comprise pour 20 personnes ; ajoutez un plateau de pains briochés salés pour ceux qui préfèrent le salé le matin. Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France.",
         },
       ],
     },
@@ -166,6 +357,102 @@ export const evenements = [
     },
   },
   {
+    slug: 'semaine-qvt',
+    mois: 'Juin',
+    nom: 'Semaine de la QVT',
+    articles: [
+      'qvt-alimentation-politique-rh',
+      'bien-etre-bureau-alimentation',
+      'livraison-fruits-bureau-entreprise',
+    ],
+    tags: ['Petits-déjeuners', 'Pauses gourmandes'],
+    img: '/prod-bar-jus.webp',
+    imgAlt: "Bar à jus pressés : fruits et légumes pressés à la minute devant les invités",
+    descCourt: "Petits-déjeuners bien-être, jus pressés minute, fruits frais, yaourts fermiers. Pour la semaine de la qualité de vie au travail.",
+    desc: "Chaque année en juin, la Semaine pour la qualité de vie et des conditions de travail met le sujet sur la table. Un petit-déjeuner bien pensé est une façon concrète d'y participer : jus d'orange pressé, brochettes de fruits frais, yaourts de la Ferme de Viltain, compotes sans sucres ajoutés. Ou un bar à jus pressés installé dans vos locaux.",
+    produits: [
+      'Bar à jus pressés (sur devis)',
+      "Jus d'orange pressé minute",
+      'Brochettes de fruits frais',
+      'Corbeille de fruits de saison',
+      'Yaourt fermier et yaourt au granola',
+      'Compote du verger, sans sucres ajoutés',
+    ],
+    differentiateur: {
+      label: 'Sur demande',
+      text: "Un bar à jus pressés dans vos locaux : orange, pamplemousse, carotte-orange-gingembre, concombre-menthe-citron vert, pressés à la minute.",
+    },
+    article: {
+      titre: "Semaine de la QVT : un petit-déjeuner qui va dans le sens du message",
+      sections: [
+        {
+          heading: "La Semaine de la QVT en bref",
+          texte: "La Semaine pour la qualité de vie et des conditions de travail est organisée chaque année en juin par le réseau Anact-Aract. Les entreprises y prévoient ateliers, conférences et moments d'équipe. Un petit-déjeuner en ouverture de semaine revient à 8 € HT par personne en formule Classique, soit 189 € HT livraison comprise pour 20 personnes.",
+        },
+        {
+          heading: "Ce qu'on met sur la table",
+          texte: "Des fruits frais, en brochettes ou en corbeille, plutôt qu'un plateau de viennoiseries seul. Des yaourts fermiers de la Ferme de Viltain et des yaourts au granola. Des compotes de pomme sans sucres ajoutés. Du jus d'orange pressé minute plutôt qu'un nectar. On garde quelques viennoiseries : un petit-déjeuner bien-être qui ne fait envie à personne passe à côté de son objectif.",
+        },
+        {
+          heading: "Le bar à jus pressés",
+          texte: "Pour marquer la semaine, le bar à jus pressés s'installe dans vos locaux : orange, pamplemousse, pomme, citronnade fraîche, et des mélanges comme carotte-orange-gingembre ou concombre-menthe-citron vert, pressés devant chaque collègue. La prestation se chiffre sur devis, installation et démontage compris. C'est le format qui fait venir les équipes en salle de pause.",
+        },
+        {
+          heading: "Organisation",
+          texte: "Ouvrez la semaine par le petit-déjeuner, le lundi ou le mardi entre 8h30 et 9h30, et gardez le bar à jus pour un temps fort en milieu de semaine. Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; pour le bar à jus, demandez le devis quelques jours avant. Précisez les régimes de l'équipe : les brochettes de fruits sont vegan et sans gluten, le banana bread est sans gluten.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'fete-de-la-musique',
+    mois: '21 Juin',
+    nom: 'Fête de la musique',
+    articles: [
+      'idees-afterwork-entreprise-formats-budget',
+      'mini-burgers-afterwork-cocktail-entreprise-paris',
+      'cocktail-entreprise-sans-alcool',
+    ],
+    tags: ['Cocktails & Buffets', 'Animations'],
+    img: '/plateau-burgers.webp',
+    imgAlt: "Plateau de mini burgers piqués, prêts à servir pour un afterwork d'été",
+    descCourt: "Un afterwork d'été sans alcool : mini burgers, cocktail de pièces, bar à mocktails, Chardonnay 0 %.",
+    desc: "Le 21 juin, la ville sort dans la rue en fin de journée. Au bureau, c'est l'occasion d'un afterwork avant que chacun parte écouter des concerts. Mini burgers, wraps, cocktail de 8 pièces, et côté boissons un bar à mocktails, du Chardonnay 0 % et une jarre d'infusion fraîche. Sans alcool, halal et sans porc.",
+    produits: [
+      'Plateau de mini burgers (24 pièces)',
+      'Plateau de mini wraps roulés',
+      "Cocktail L'Invitation, 8 pièces par personne",
+      'Bar à mocktails avec barman (sur devis)',
+      'Blanc de Blancs Chardonnay 0 %',
+      'Infusion passion bio, en jarre de 10 L',
+    ],
+    differentiateur: {
+      label: 'Sans alcool',
+      text: "Un afterwork où tout le monde trinque avec le même verre. Mocktails, Chardonnay 0 %, infusions : aucune bouteille d'alcool à gérer.",
+    },
+    article: {
+      titre: "Fête de la musique au bureau : un afterwork d'été, sans alcool",
+      sections: [
+        {
+          heading: "La Fête de la musique 2027 en bref",
+          texte: "La Fête de la musique a lieu chaque 21 juin. En 2027, elle tombe un lundi : un afterwork au bureau entre 17h30 et 19h30 laisse à chacun le temps de rejoindre les concerts ensuite. Un cocktail de 8 pièces revient à 29,90 € HT par personne, soit 926 € HT livraison comprise pour 30 personnes.",
+        },
+        {
+          heading: "Que servir ?",
+          texte: "Du salé qui se mange debout, d'une main : un plateau de 24 mini burgers, hamburger et cheeseburger, des mini wraps roulés au poulet ou au saumon fumé, des clubs sandwichs. Le cocktail de 8 pièces complète avec des bouchées plus fines et quelques douceurs. Pour un afterwork plus long, passez à la formule de 12 pièces, à 40,90 € HT par personne.",
+        },
+        {
+          heading: "Des boissons fraîches, sans alcool",
+          texte: "En juin, il fait chaud et on boit beaucoup : comptez large. Une jarre de 10 litres d'infusion passion ou citron vert et gingembre, des jus Alain Milliat, de l'eau pétillante, et un Chardonnay Blanc de Blancs 0 % pour trinquer. Pour faire de l'afterwork un moment, ajoutez un bar à mocktails : un barman prépare chaque verre à la minute, sur devis. Toute la carte est sans alcool, halal et sans porc.",
+        },
+        {
+          heading: "Commande et organisation",
+          texte: "Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; à partir de 50 personnes, un préavis de 48 h est recommandé. Si vous avez une terrasse ou une cour, servez dehors. La musique, c'est à vous : une enceinte et une playlist d'équipe suffisent, ou un collègue musicien qui joue deux morceaux.",
+        },
+      ],
+    },
+  },
+  {
     slug: 'fete-de-fin-dannee',
     mois: 'Juin',
     nom: "Fête de fin d'année",
@@ -203,6 +490,54 @@ export const evenements = [
         {
           heading: "Organisation pratique",
           texte: "Prévoyez l'événement entre 18h et 21h pour une plage horaire qui convient à tous. Communiquez la date au moins 3 semaines à l'avance pour maximiser la présence. Si vous avez la possibilité d'utiliser une terrasse ou un espace extérieur en juin, c'est un vrai plus. Pensez à la musique d'ambiance, quelques tables hautes et basses pour faciliter les échanges. Les détails logistiques font autant la qualité de la soirée que le menu.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'ete',
+    mois: 'Juillet / Août',
+    nom: 'Été',
+    ctaNom: "un moment d'été",
+    articles: [
+      'livraison-fruits-bureau-entreprise',
+      'idees-afterwork-entreprise-formats-budget',
+    ],
+    tags: ['Plateaux Repas', 'Pauses gourmandes'],
+    img: '/prod-bar-glaces.webp',
+    imgAlt: "Bar à glaces artisanales : bacs de glaces et toppings servis à la coupe",
+    descCourt: "Pauses fraîches, afterworks d'été, lunch box pour les équipes réduites. Bar à glaces, fruits frais et infusions en jarre.",
+    desc: "En juillet et en août, les bureaux se vident à moitié et il fait chaud. Les formats changent : des pauses fraîches plutôt que des viennoiseries, des lunch box pour une petite équipe, un bar à glaces pour un pot avant les congés. Livré dès 6h30 à Paris et en Île-de-France, avec un minimum de commande de 50 € HT.",
+    produits: [
+      'Bar à glaces artisanales (sur devis)',
+      'Lunch box, dès 18,90 € HT',
+      'Brochettes de fruits frais',
+      'Panna cotta maison aux fruits rouges',
+      'Infusion citron vert et gingembre bio, en jarre de 10 L',
+      'Eaux infusées aux fruits et herbes fraîches',
+    ],
+    differentiateur: {
+      label: 'Petites équipes',
+      text: "Un minimum de commande de 50 € HT : une équipe de cinq personnes commande comme une équipe de cinquante.",
+    },
+    article: {
+      titre: "L'été au bureau : pauses fraîches, afterworks et équipes réduites",
+      sections: [
+        {
+          heading: "Ce qui change en été",
+          texte: "Entre mi-juillet et fin août, une partie de l'équipe est en congés et le reste travaille par fortes chaleurs. Les plateaux de viennoiseries et les boissons chaudes passent moins bien. Ce qui marche : des fruits frais, des boissons froides en quantité, des formats individuels pour les petites équipes, et un dernier pot avant les départs.",
+        },
+        {
+          heading: "Les pauses fraîches",
+          texte: "Des brochettes de fruits frais, une panna cotta aux fruits rouges ou une verrine lemon curd. Côté boissons, une jarre de 10 litres d'infusion citron vert et gingembre ou passion, ou des eaux infusées aux fruits et herbes fraîches. Une pause gourmande démarre à 6 € HT par personne, soit 149 € HT livraison comprise pour 20 personnes.",
+        },
+        {
+          heading: "Les équipes réduites",
+          texte: "Pour cinq à huit personnes restées au bureau, la lunch box est le format le plus simple : un sandwich, une entrée et un dessert par personne, dès 18,90 € HT. Pour huit personnes, comptez 180,20 € HT livraison comprise. Le minimum de commande est de 50 € HT, et la règle reste la même toute l'année : commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France.",
+        },
+        {
+          heading: "Le pot avant les congés",
+          texte: "Mi-juillet, avant les grands départs, un afterwork en terrasse rassemble l'équipe une dernière fois. Le bar à glaces artisanales s'installe sur place : vanille, chocolat, pistache, fraise, citron, café, avec coulis, caramel beurre salé et fruits rouges. Il se chiffre sur devis, installation et reprise du matériel compris. Pour le salé, un cocktail de 8 pièces à 29,90 € HT par personne.",
         },
       ],
     },
@@ -268,6 +603,52 @@ export const evenements = [
     },
   },
   {
+    slug: 'journee-mondiale-du-cafe',
+    mois: '1er Octobre',
+    nom: 'Journée mondiale du café',
+    articles: [
+      'meilleur-the-cafe-reunion-entreprise-paris',
+    ],
+    tags: ['Petits-déjeuners', 'Animations'],
+    img: '/prod-cafe.webp',
+    imgAlt: "Barista préparant des cafés sur un comptoir installé en entreprise",
+    descCourt: "Un barista dans vos bureaux, ou des thermos de café avec madeleines et cookies. Pour la Journée mondiale du café, le 1er octobre.",
+    desc: "Le 1er octobre, c'est la Journée mondiale du café. Au bureau, la boisson la plus bue de la journée mérite un moment à elle. Un barista prépare espresso, cappuccino, latte et flat white à la demande. Pour un format plus simple, des thermos de café avec madeleines, cookies et brioche babka.",
+    produits: [
+      'Barista : espresso, cappuccino, latte, flat white (sur devis)',
+      'Location de machine expresso professionnelle (sur devis)',
+      'Thermos de café bio',
+      'Thermos de thé Mariage Frères',
+      "Madeleines d'exception",
+      'Cookies signature et brioche babka',
+    ],
+    differentiateur: {
+      label: 'Sur demande',
+      text: "Un barista et sa machine dans vos locaux, avec laits végétaux. Chacun commande sa boisson, préparée devant lui.",
+    },
+    article: {
+      titre: "Journée mondiale du café : un barista au bureau, le 1er octobre",
+      sections: [
+        {
+          heading: "La Journée mondiale du café en bref",
+          texte: "La Journée mondiale du café a lieu chaque 1er octobre, à l'initiative de l'Organisation internationale du café. En 2027, elle tombe un vendredi. Au bureau, c'est un prétexte simple pour un petit-déjeuner autour du café : la formule Classique est à 8 € HT par personne, soit 189 € HT livraison comprise pour 20 personnes.",
+        },
+        {
+          heading: "Un barista dans vos locaux",
+          texte: "Le format qui marque : un barista installe sa machine et prépare à la demande espresso, cappuccino, latte, flat white, chocolat chaud et thés, avec des laits végétaux. Chacun commande sa boisson et la regarde préparer. La prestation se chiffre sur devis selon l'effectif, la durée et l'accès électrique ; installation et démontage sont compris. Pour une journée entière en libre-service, la location d'une machine expresso professionnelle est une alternative.",
+        },
+        {
+          heading: "Combien de café prévoir",
+          texte: "Si vous restez sur des thermos : un thermos d'un litre sert six à huit tasses. Sept personnes sur dix prennent un café le matin, et beaucoup reviennent pour une deuxième tasse. Pour vingt personnes, prévoyez trois thermos de café et un de thé Mariage Frères.",
+        },
+        {
+          heading: "Ce qui accompagne le café",
+          texte: "Des madeleines d'exception cuites du jour, des cookies signés Laura Todd, une brioche babka au chocolat tranchée, un cake marbré maison. Des pièces qui se tiennent d'une main, une tasse dans l'autre. Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; pour le barista, demandez le devis quelques jours avant.",
+        },
+      ],
+    },
+  },
+  {
     slug: 'octobre-rose',
     mois: 'Octobre',
     nom: 'Octobre Rose',
@@ -312,6 +693,53 @@ export const evenements = [
         {
           heading: "Notre engagement : 1 € reversé par convive",
           texte: "Pendant tout le mois d'octobre, nous reversons 1 € par convive servi à la recherche contre le cancer du sein. Toutes les commandes comptent, pas seulement les goûters roses : un petit-déjeuner de 40 personnes, ce sont 40 € de don. Le montant total collecté est publié en fin de mois, et le reçu du don est disponible sur simple demande. Pour vos équipes, c'est une manière concrète de relier une pause gourmande à une cause, sans rien changer à votre organisation.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'semaine-du-gout',
+    mois: 'Octobre',
+    nom: 'Semaine du goût',
+    articles: [
+      'meilleures-patisseries-gouter-entreprise-paris',
+      'jus-alain-milliat-entreprise-paris',
+    ],
+    tags: ['Pauses gourmandes', 'Animations'],
+    img: '/prod-atelier-fromages.webp',
+    imgAlt: "Atelier fromages affinés : fromages, pains artisanaux, fruits frais et fruits secs dressés devant les invités",
+    descCourt: "Une dégustation au bureau : fromages affinés, jus Alain Milliat, pâtisseries d'artisans. Pour la Semaine du goût, mi-octobre.",
+    desc: "La Semaine du goût revient chaque année à la mi-octobre. Au bureau, c'est l'occasion d'une vraie dégustation plutôt que d'un buffet de plus : un atelier fromages affinés, une comparaison de jus Alain Milliat, des pâtisseries signées par des artisans. On goûte, on compare, on en parle.",
+    produits: [
+      'Atelier fromages affinés (sur devis)',
+      'Jus et nectars Alain Milliat',
+      'Jus de pomme du Verger, Vergers de Plaisir (Yvelines)',
+      'Macarons signés Pierre Morel',
+      'Choux à la crème signés Philippe Urraca',
+      'Cookies signés Laura Todd',
+    ],
+    differentiateur: {
+      label: 'Nos artisans',
+      text: "Macarons de Pierre Morel, choux de Philippe Urraca, Meilleur Ouvrier de France, cookies de Laura Todd, jus Alain Milliat. Des noms à faire découvrir.",
+    },
+    article: {
+      titre: "Semaine du goût en entreprise : organiser une dégustation au bureau",
+      sections: [
+        {
+          heading: "La Semaine du goût en bref",
+          texte: "La Semaine du goût a lieu chaque année à la mi-octobre et invite à découvrir des produits et des savoir-faire. Au bureau, une pause dégustation démarre à 6 € HT par personne, soit 149 € HT livraison comprise pour 20 personnes ; l'atelier fromages se chiffre sur devis.",
+        },
+        {
+          heading: "Une dégustation de jus",
+          texte: "Le format le plus simple : aligner quatre ou cinq jus et nectars Alain Milliat, pomme, orange, abricot, pêche, tomate, avec le jus de pomme du Verger des Yvelines, et les faire goûter à l'aveugle. Chacun note ses préférences, on révèle les noms à la fin. De petits verres suffisent : un litre de chaque fait le tour d'une équipe de vingt personnes.",
+        },
+        {
+          heading: "L'atelier fromages affinés",
+          texte: "Pour aller plus loin, l'atelier fromages s'installe dans vos locaux : comté, chèvres, pâtes persillées et croûtes fleuries coupés à la demande et expliqués à ceux qui veulent en savoir plus, avec pains artisanaux, miel et fruits de saison. Installation et démontage compris. C'est l'animation qui fait parler les équipes de ce qu'elles mangent.",
+        },
+        {
+          heading: "Les douceurs d'artisans",
+          texte: "Pour le sucré, misez sur des pièces signées : les macarons de Pierre Morel, coques à la meringue italienne, les choux à la crème de Philippe Urraca, Meilleur Ouvrier de France, les cookies très fins de Laura Todd. Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; pour l'atelier fromages, demandez le devis quelques jours avant.",
         },
       ],
     },
@@ -391,8 +819,8 @@ export const evenements = [
       'movember-entreprise-organiser-petit-dejeuner-gouter-bureau',
     ],
     tags: ['Petits-déjeuners', 'Pauses gourmandes'],
-    img: '/hero-petits-dejeuners.webp',
-    imgAlt: "Cake marbré glacé au chocolat, tranché, et cookies aux pépites : un goûter livré en entreprise par L'Écrin Traiteur",
+    img: '/prod-cake-marbre.webp',
+    imgAlt: "Cake marbré maison, vanille et chocolat, tranché sur une planche en bois : un goûter livré en entreprise par L'Écrin Traiteur",
     descCourt: "Lancement et clôture de Movember au bureau : petit-déjeuner et goûter livrés dès 6 € HT par personne.",
     desc: "Movember dure tout le mois de novembre. Pour le lancement, un petit-déjeuner le lundi 2 novembre ; pour la clôture, un goûter avec remise des prix le vendredi 27 ou le lundi 30. Livré dès 6h30 à Paris et en Île-de-France, à partir de 6 € HT par personne, livraison de 29 € HT en plus.",
     produits: [
@@ -425,6 +853,53 @@ export const evenements = [
         {
           heading: "Budget et timing",
           texte: "Commandez jusqu'à la veille à 14h, avec une livraison dès 6h30 ; à partir de 50 personnes, prévoyez 48 h. Précisez à la demande de devis les régimes de l'équipe : végétarien, vegan, sans gluten. Les madeleines se personnalisent aux couleurs de l'événement, sur devis.",
+        },
+      ],
+    },
+  },
+  {
+    slug: 'thanksgiving',
+    mois: 'Novembre',
+    nom: 'Thanksgiving',
+    ctaNom: 'Thanksgiving',
+    articles: [
+      'menu-inclusif-entreprise-halal-vegetarien-sans-gluten',
+    ],
+    tags: ['Cocktails & Buffets', 'Plateaux Repas'],
+    img: '/buffet-garden-party.webp',
+    imgAlt: "Buffet à partager : sandwichs, saumon, burrata et salades dressés pour un repas d'équipe",
+    descCourt: "Pour les entreprises américaines à Paris : buffet à partager, cocktail dînatoire, carrot cake. Le jeudi 26 novembre 2026.",
+    desc: "Thanksgiving tombe le quatrième jeudi de novembre : le 26 novembre en 2026, le 25 en 2027. Pour une entreprise américaine à Paris, c'est le repas d'équipe de l'automne. Un buffet à partager ou un cocktail dînatoire, un atelier bagels de New York, et en dessert un carrot cake et un cake poire maison.",
+    produits: [
+      'Cocktail La Réception, 12 pièces par personne',
+      'Buffets à partager',
+      'Atelier bagels de New York (sur devis)',
+      'Carrot cake maison',
+      'Cake poire maison',
+      'Jus de pomme du Verger',
+    ],
+    differentiateur: {
+      label: 'Format au choix',
+      text: "Déjeuner à partager, cocktail dînatoire en fin de journée ou plateaux repas. Halal, sans porc et sans alcool, comme toute la carte.",
+    },
+    article: {
+      titre: "Thanksgiving à Paris : le repas d'équipe des entreprises américaines",
+      sections: [
+        {
+          heading: "Thanksgiving 2026 en bref",
+          texte: "Thanksgiving se fête le quatrième jeudi de novembre : le jeudi 26 novembre 2026, puis le jeudi 25 novembre 2027. Aux États-Unis, c'est un jour férié ; à Paris, les filiales et les équipes américaines le marquent souvent par un déjeuner ou un cocktail en fin de journée. Un cocktail de 12 pièces revient à 40,90 € HT par personne, soit 1 665 € HT livraison comprise pour 40 personnes.",
+        },
+        {
+          heading: "Ce que nous servons",
+          texte: "La dinde rôtie entière et la tarte au potiron ne sont pas à notre carte. Nous proposons ce que nous faisons bien : des buffets à partager, un cocktail dînatoire de 12 ou 16 pièces, des plateaux repas dès 28,90 € HT. Pour une touche américaine, l'atelier bagels de New York garnit les bagels devant vos invités : saumon et cream cheese, poulet César, pastrami, avocat et feta.",
+        },
+        {
+          heading: "Le dessert d'automne",
+          texte: "Pour finir, le carrot cake maison, carotte râpée et épices douces, et le cake poire maison, servis tranchés sur plateau. Avec un thermos de café et du jus de pomme du Verger, produit dans les Yvelines, c'est un dessert de saison qui rappelle l'automne sans prétendre recréer un repas de famille.",
+        },
+        {
+          heading: "Commande et organisation",
+          texte: "Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; à partir de 50 personnes ou pour plusieurs sites, un préavis de 48 h est recommandé. Un déjeuner entre 12h30 et 14h, ou un cocktail entre 17h et 19h, fonctionne bien. Toute la carte est halal, sans porc et sans alcool : précisez seulement les régimes végétariens ou sans gluten de l'équipe.",
         },
       ],
     },
