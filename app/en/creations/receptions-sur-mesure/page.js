@@ -14,7 +14,7 @@ const fallback = [
   { name: 'Company gala evening', label: "L'Écrin Paris", img: '/creations-featured.webp' },
   { name: 'Prestige private reception', label: "L'Écrin Paris", img: '/detail-bg.webp' },
   { name: 'Premium business lunch', label: "L'Écrin Paris", img: '/hero-a-partager.webp' },
-  { name: 'Networking cocktail reception', label: "L'Écrin Paris", img: '/mini-cookies.webp' },
+  { name: 'Networking cocktail reception', label: "L'Écrin Paris", img: '/cocktail-signature.webp' },
 ]
 
 export default function BespokeReceptions() {
