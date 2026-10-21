@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Bespoke receptions in Paris: launch cocktail receptions, inaugurations and VIP receptions designed by L\'Écrin Traiteur. Quote within 24 hours.',
   alternates: alternatesPourEn('/creations/receptions-sur-mesure'),
   openGraph: {
-    images: ogImages('/img-reception.webp'),
+    images: ogImages('/cocktail-dinatoire.webp'),
     title: "Bespoke receptions | L'Écrin Traiteur",
     description: 'Launch cocktail receptions, inaugurations, VIP receptions: bespoke corporate events in Paris and the Paris region.',
     locale: 'en_GB',

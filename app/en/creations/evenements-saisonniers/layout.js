@@ -6,7 +6,7 @@ export const metadata = {
   description: "Galette des Rois, Candlemas, Halloween, Christmas: catering for every moment of the year, delivered to your offices in Paris.",
   alternates: alternatesPourEn('/creations/evenements-saisonniers'),
   openGraph: {
-    images: ogImages('/img-reception.webp'),
+    images: ogImages('/cocktail-dinatoire.webp'),
     title: "Seasonal corporate events | L'Écrin Traiteur",
     description: "Galette des Rois, Candlemas, Halloween, Christmas… catering for every moment of the year.",
     locale: 'en_GB',
