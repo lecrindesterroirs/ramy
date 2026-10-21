@@ -131,6 +131,10 @@ export const PAUSES = [
     seoTitle: `Crêpes pour vos pauses et goûters d'entreprise à Paris`,
     seoHtml: `<p>Nos crêpes sucrées sont préparées le jour même, avec des garnitures au choix. En pause d'après-midi ou lors d'un événement, elles rappellent le goûter d'enfance et rassemblent l'équipe autour d'un moment simple et convivial. Un format généreux, à partager sans façon.</p><h2>Commander vos crêpes à Paris et en Île-de-France</h2><p>Quantité selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h. Voir aussi notre atelier crêpes en version animation live.</p>`,
     nom: 'Crêpes moelleuses maison',                      img: '/prod-crepes-v2.webp',         prix: '6 crêpes, 18,90 €', description: 'Pâte traditionnelle reposée. Inclus : pots de confiture Alain Milliat et pâte à tartiner.' },
+  { id: 'mini-crepes',
+    seoTitle: `Mini crêpes pour vos pauses et goûters d'entreprise à Paris`,
+    seoHtml: `<p>Nos mini crêpes moelleuses sont cuites le jour même, à partir d'une pâte traditionnelle reposée la veille. Leur petit format permet à chacun d'en prendre deux ou trois et de varier les garnitures : confiture Alain Milliat ou pâte à tartiner, incluses. En pause d'après-midi, elles se mangent à la main, sans assiette ni couvert.</p><h2>Commander vos mini crêpes à Paris et en Île-de-France</h2><p>Un plateau de 15 mini crêpes pour 5 personnes environ, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    nom: 'Mini crêpes moelleuses maison',                 img: '/prod-mini-crepes.webp',       prix: '15 mini crêpes, 29,90 €', description: 'Pâte traditionnelle reposée, format bouchée. Inclus : pots de confiture Alain Milliat et pâte à tartiner.' },
   // ─── Grands gâteaux à partager ────────────────────────────────────
   { id: 'tarte-framboise-grand-format',
     sectionTitle: 'Gâteaux à partager',
