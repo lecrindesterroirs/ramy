@@ -85,6 +85,7 @@ const LASTMOD_PRIX_21_10 = [
   '/petit-dejeuner-entreprise/levallois-perret',
   '/traiteur-halal/paris',
 ]
+LASTMOD_PRIX_21_10.push('/traiteur-halal', '/en/traiteur-halal')
 LASTMOD_PRIX_21_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-21' })
 
 function lastmodDe(path) {

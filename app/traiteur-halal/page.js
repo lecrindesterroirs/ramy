@@ -99,7 +99,7 @@ const FAQ = [
   },
   {
     q: 'Le halal coûte-t-il plus cher chez L\'Écrin Traiteur ?',
-    a: `Non. Toute la carte est halal et sans porc, au même prix que n'importe quelle commande : il n'y a pas de carte halal à part ni de supplément. Par exemple, un petit-déjeuner complet pour 20 personnes revient à ${eurFr(EXEMPLES[0].total)} HT livré, et des plateaux repas pour 20 personnes à ${eurFr(EXEMPLES[2].total)} HT livrés.`,
+    a: `Non. Toute la carte est halal et sans porc, au même prix que n'importe quelle commande : il n'y a pas de carte halal à part ni de supplément. Par exemple, un petit-déjeuner Classique pour 20 personnes revient à ${eurFr(20 * 8 + 29)} HT livré, et des plateaux repas pour 20 personnes à ${eurFr(EXEMPLES[2].total)} HT livrés.`,
   },
   {
     q: 'Combien coûte un plateau repas halal ?',
