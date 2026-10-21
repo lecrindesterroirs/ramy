@@ -29,7 +29,7 @@ const DESCRIPTIONS_COURTES = {
   'gouter-noel-entreprise-paris': "Le goûter de Noël d'entreprise : produits, quantités, budget. Le guide complet pour organiser le vôtre à Paris.",
   'gouter-entreprise-bureau': 'Cookies, viennoiseries, jus, brochettes de fruits : idées de goûter en entreprise et guide pratique pour vos équipes.',
   'idees-pauses-gourmandes-bureau': "Le distributeur automatique n'a jamais soudé une équipe. Cinq idées de pauses gourmandes pour faire de 16h un rituel attendu.",
-  'petit-dejeuner-entreprise-paris': "Petit-déjeuner d'entreprise à Paris dès 8 € HT par personne en formule classique, de 12 à 16 € HT en complet. Budget, composition, quantités.",
+  'petit-dejeuner-entreprise-paris': "Petit-déjeuner d'entreprise à Paris dès 6,50 € HT par personne (viennoiseries et café), 8 € HT en formule classique. Budget, composition, quantités.",
   'cocktail-entreprise-50-personnes': "Cocktail d'entreprise pour 50 personnes : 400 à 800 pièces, de 1 495 à 2 595 € HT selon le format. Menu, boissons et budget détaillé.",
   'idees-pieces-cocktail-entreprise': "16 idées de pièces cocktail salées et sucrées, menus de 8, 12 ou 16 pièces et 5 animations pour marquer votre événement d'entreprise.",
   'cocktail-entreprise-sans-alcool': "Que servir à un cocktail d'entreprise sans alcool ? Pétillant 0 %, jus, mocktails : boissons, quantités et budget de 20 à 100 personnes.",
