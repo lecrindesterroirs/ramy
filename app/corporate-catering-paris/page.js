@@ -15,7 +15,7 @@ const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
 const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 
 const OFFERS = [
-  ['Office breakfast', 'From €8 per person', 'Butter pastries, Alain Milliat juices, coffee, fresh fruit. A full breakfast with madeleines, tea and fruit skewers runs €12 to €16 per person, plus delivery.', '/creations/petits-dejeuners-et-pauses'],
+  ['Office breakfast', 'From €8 per person', 'Butter pastries, Alain Milliat juices, coffee, fresh fruit. A full breakfast with madeleines, tea and fruit skewers is quoted on request.', '/creations/petits-dejeuners-et-pauses'],
   ['Afternoon break', 'From €6 per person', 'A pastry and a drink per person (madeleines, cookies or cakes) for a meeting or a training day.', '/creations/pauses-gourmandes'],
   ['Lunch boxes', 'From €18.90 per person', 'Individual lunches, ready to eat in a meeting room.', '/creations/lunch-box'],
   ['Lunch trays', 'From €28.90 per person', 'Starter, main course, dessert and bread, individually packed.', '/creations/plateaux-repas'],

@@ -45,9 +45,10 @@ export function articleEn(html) {
   })
 }
 
-/** '8€ HT/pers' → '€8 excl. VAT per person' ; '12 à 16€ HT/pers' → '€12 to €16 excl. VAT per person'. */
+/** '8€ HT/pers' → '€8 excl. VAT per person' ; 'Sur devis' → 'On quote'. */
 export function prixEn(prix) {
   if (!prix) return prix
+  if (/sur devis/i.test(String(prix))) return 'On quote'
   const n = (String(prix).match(/\d+(?:,\d+)?/g) || []).map(x => '€' + x.replace(',', '.'))
   if (!n.length) return prix
   return `${n.join(' to ')} excl. VAT per person`

@@ -5,7 +5,7 @@ Anglais britannique simple et direct (locale en_GB), phrases courtes, aucun poin
 | Français | Anglais |
 |---|---|
 | L'Écrin Traiteur, L'Écrin | inchangé (jamais « The Écrin ») |
-| HT | excl. VAT (ex. « €28.90 excl. VAT ») ; « 12 à 16 € HT par personne » → « €12 to €16 per person excl. VAT » |
+| HT | excl. VAT (ex. « €28.90 excl. VAT ») ; « sur devis » → « on quote » |
 | TTC | incl. VAT |
 | 1 382,60 € | €1,382.60 |
 | petit-déjeuner d'entreprise | office breakfast / corporate breakfast |
