@@ -19,7 +19,7 @@ Version 1, 13 octobre 2026. Document interne. Toute page du site découle de cet
 | Minimum | 50 € HT | Site |
 | Devis | Sous 24 h, facture entreprise avec TVA | Site |
 | Petit-déjeuner Classique | 8 € HT par personne, livraison en sus | Ramy, 26/09/2026 |
-| Petit-déjeuner complet | 12 à 16 € HT par personne, plus la livraison | Règles de devis de l'OS, tranché le 13/10/2026 |
+| Petit-déjeuner complet | Affiché « sur devis » sur le site : la fourchette 12 à 16 € HT n'est plus publiée (elle reste la règle de devis de l'OS du 13/10/2026) | Ramy, 21/10/2026 (« trop cher ») |
 | Viennoiseries et café | Dès 6,50 € HT par personne pour 30 personnes, hors livraison (60 mini-viennoiseries 97,80 € + 5 thermos 97,50 €) ; 8,79 € à 20 personnes | Calcul du 19/10/2026, affiché sur la page petit-déjeuner à la demande de Ramy |
 | Pause goûter | Dès 6 € HT par personne | Site |
 | Lunch box | Dès 18,90 € HT (La Fermière) | Catalogue, app/creations/lunch-box/data.js, lu le 15/10/2026 |

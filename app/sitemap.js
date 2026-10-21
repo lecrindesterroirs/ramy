@@ -55,6 +55,37 @@ const LASTMOD_VILLES_21_10 = [   // titres et descriptions reformulés le 21/10/
   'asnieres-sur-seine', 'courbevoie', 'suresnes', 'gennevilliers', 'rueil-malmaison', 'saint-denis',
 ]
 LASTMOD_VILLES_21_10.forEach(v => { LASTMOD_PAGES[`/traiteur/${v}`] = '2026-10-21' })
+// Pages dont le texte a changé le 21/10/2026 : fourchette « 12 à 16 € » du petit-déjeuner complet retirée
+const LASTMOD_PRIX_21_10 = [
+  '/creations/petits-dejeuners-et-pauses',
+  '/tarifs',
+  '/traiteur',
+  '/creations/evenements-saisonniers/rentree',
+  '/occasions/seminaire-entreprise',
+  '/traiteur/neuilly-sur-seine',
+  '/traiteur/levallois-perret',
+  '/traiteur/courbevoie',
+  '/traiteur/versailles',
+  '/traiteur/saint-denis',
+  '/traiteur/nanterre',
+  '/traiteur/asnieres-sur-seine',
+  '/traiteur/gennevilliers',
+  '/traiteur/suresnes',
+  '/traiteur/paris/6e-arrondissement',
+  '/traiteur/paris/14e-arrondissement',
+  '/petit-dejeuner-entreprise/gennevilliers',
+  '/petit-dejeuner-entreprise/boulogne-billancourt',
+  '/petit-dejeuner-entreprise/puteaux',
+  '/petit-dejeuner-entreprise/suresnes',
+  '/petit-dejeuner-entreprise/courbevoie',
+  '/petit-dejeuner-entreprise/la-defense',
+  '/petit-dejeuner-entreprise/nanterre',
+  '/petit-dejeuner-entreprise/neuilly-sur-seine',
+  '/petit-dejeuner-entreprise/asnieres-sur-seine',
+  '/petit-dejeuner-entreprise/levallois-perret',
+  '/traiteur-halal/paris',
+]
+LASTMOD_PRIX_21_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-21' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)

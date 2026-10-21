@@ -9,7 +9,7 @@ const SEO_ARTICLE = `
   <p>Le <strong>petit-déjeuner d'entreprise</strong> est le format le plus commandé en restauration B2B parisienne. CODIR, accueil client, onboarding, réunion de rentrée : c'est souvent la première impression que vous construisez. L'Écrin Traiteur livre vos sélections artisanales dès <strong>6h30</strong>, du lundi au vendredi, dans tout Paris et l'Île-de-France.</p>
 
   <h2>Meilleur traiteur de petit-déjeuner à Paris : sur quels critères choisir ?</h2>
-  <p>Il n'existe pas de classement officiel : le <strong>meilleur traiteur de petit-déjeuner à Paris</strong> est celui qui tient sept engagements vérifiables. Chez L'Écrin Traiteur : livraison <strong>dès 6h30</strong> à l'heure choisie, prix publiés (<strong>dès 8 € HT par personne</strong>, 12 à 16 € HT en complet, livraison 29 € HT), produits d'artisans nommés, commande jusqu'à la veille <strong>14h</strong>, régimes sur demande, minimum de 50 € HT et une note Google de <strong>5,0/5</strong>. Le détail des sept critères est dans <a href="/journal/meilleur-traiteur-petit-dejeuner-paris-comment-choisir">meilleur traiteur petit-déjeuner à Paris : 7 critères pour choisir</a>, et les grandes familles de prestataires sont comparées dans le <a href="/journal/comparatif-traiteur-entreprise-paris">comparatif des traiteurs d'entreprise à Paris</a>.</p>
+  <p>Il n'existe pas de classement officiel : le <strong>meilleur traiteur de petit-déjeuner à Paris</strong> est celui qui tient sept engagements vérifiables. Chez L'Écrin Traiteur : livraison <strong>dès 6h30</strong> à l'heure choisie, prix publiés (<strong>dès 6,50 € HT par personne</strong> en viennoiseries et café, 8 € HT en formule Classique, livraison 29 € HT), produits d'artisans nommés, commande jusqu'à la veille <strong>14h</strong>, régimes sur demande, minimum de 50 € HT et une note Google de <strong>5,0/5</strong>. Le détail des sept critères est dans <a href="/journal/meilleur-traiteur-petit-dejeuner-paris-comment-choisir">meilleur traiteur petit-déjeuner à Paris : 7 critères pour choisir</a>, et les grandes familles de prestataires sont comparées dans le <a href="/journal/comparatif-traiteur-entreprise-paris">comparatif des traiteurs d'entreprise à Paris</a>.</p>
 
   <h2>Viennoiseries, pâtisseries et jus : des artisans que vos équipes reconnaissent</h2>
   <p>Notre sélection est construite autour de maisons identifiées : viennoiseries pur beurre, madeleines artisanales <strong>Mado Paris</strong>, jus artisanaux <strong>Alain Milliat</strong>, yaourts <strong>La Ferme de Viltain</strong>. Des produits qui portent un nom et une histoire. La différence entre un plateau qui passe inaperçu et une sélection dont vos équipes parlent encore le lendemain.</p>
@@ -33,7 +33,7 @@ const SEO_ARTICLE = `
   <div class="faq-block">
     <details>
       <summary><strong>Combien coûte un petit-déjeuner d'entreprise livré à Paris ?</strong></summary>
-      <p>Viennoiseries et café reviennent dès 6,50 € HT par personne pour 30 personnes, hors livraison. La formule Classique est à 8 € HT par personne (viennoiseries, jus, café, fruits) et le petit-déjeuner complet coûte 12 à 16 € HT par personne, plus 29 € HT de livraison. Le minimum de commande est de 50 € HT. Pour 20 personnes, le petit-déjeuner complet revient à 340,80 € HT livraison comprise.</p>
+      <p>Viennoiseries et café reviennent dès 6,50 € HT par personne pour 30 personnes, hors livraison. La formule Classique est à 8 € HT par personne (viennoiseries, jus, café, fruits) et le petit-déjeuner complet se chiffre sur devis, plus 29 € HT de livraison. Le minimum de commande est de 50 € HT. Pour 20 personnes, la formule Classique revient à 189 € HT livraison comprise (160 € HT plus 29 € HT de livraison).</p>
     </details>
     <details>
       <summary><strong>À quelle heure livrez-vous et jusqu'à quand commander ?</strong></summary>
@@ -68,7 +68,7 @@ const ANSWER_BLOCK = (
     plusTitre="Tarifs de livraison, minimum de commande et quantités"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour calibrer les quantités selon votre effectif, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes">guide budget par nombre de personnes</a>, ou <a href="/devis">demandez un devis sous 24h</a>.</>}
   >
-    Un petit-déjeuner d'entreprise commence à <strong>6,50 € HT par personne</strong> (viennoiseries et café, pour 30 personnes), <strong>8 € HT</strong> en formule Classique (viennoiseries, jus, café, fruits), et de <strong>12 à 16 € HT</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Un petit-déjeuner d'entreprise commence à <strong>6,50 € HT par personne</strong> (viennoiseries et café, pour 30 personnes), <strong>8 € HT</strong> en formule Classique (viennoiseries, jus, café, fruits), et <strong>sur devis</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
   </BlocReponse>
 )
 

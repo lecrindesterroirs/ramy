@@ -7,7 +7,7 @@ const BASE = 'https://www.lecrin-traiteur.fr'
 const a = (href, t) => `<a href="${href}" style="color:var(--text-primary)">${t}</a>`
 
 const FAQ = [
-  { name: "Combien coûte un traiteur d'entreprise à Paris ?", answer: "Chez L'Écrin Traiteur, de 6 € HT par personne (pause gourmande) à 51,90 € HT (cocktail de 16 pièces). Un petit-déjeuner coûte 8 € HT par personne en formule Classique et 12 à 16 € HT en formule complète, un plateau repas de 28,90 à 30,90 € HT. La livraison est à 29 € HT à Paris et dans les communes proches." },
+  { name: "Combien coûte un traiteur d'entreprise à Paris ?", answer: "Chez L'Écrin Traiteur, de 6 € HT par personne (pause gourmande) à 51,90 € HT (cocktail de 16 pièces). Un petit-déjeuner coûte dès 6,50 € HT par personne en viennoiseries et café (pour 30 personnes), 8 € HT en formule Classique, et le complet est sur devis, un plateau repas de 28,90 à 30,90 € HT. La livraison est à 29 € HT à Paris et dans les communes proches." },
   { name: "Les prix sont-ils HT ou TTC ?", answer: "Tous nos prix sont HT. Vous recevez une facture d'entreprise avec la TVA." },
   { name: "Y a-t-il un minimum de commande ?", answer: "Oui, 50 € HT de produits. Il n'y a pas de minimum de personnes." },
   { name: "La livraison est-elle comprise ?", answer: "Non, elle s'ajoute : 29 € HT à Paris et dans les communes proches, dès 6h30. La récupération de vaisselle réutilisable ou de matériel coûte 19 € HT en plus de la livraison." },
@@ -48,7 +48,7 @@ export default function Tarifs() {
             head: ['Prestation', 'Prix HT par personne', 'Ce qui est compris'],
             rows: [
               [a('/creations/petits-dejeuners-et-pauses', 'Petit-déjeuner Classique'), '8 €', 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
-              [a('/creations/petits-dejeuners-et-pauses', 'Petit-déjeuner complet'), '12 à 16 €', 'La base Classique, plus madeleines ou cakes, thé, brochettes de fruits'],
+              [a('/creations/petits-dejeuners-et-pauses', 'Petit-déjeuner complet'), 'Sur devis', 'La base Classique, plus madeleines ou cakes, thé, brochettes de fruits'],
               [a('/creations/pauses-gourmandes', 'Pause gourmande'), '6 à 15 €', 'Une pâtisserie et une boisson par personne, jusqu\'à une pause premium (macarons, fruits)'],
               [a('/creations/lunch-box', 'Lunch box'), '18,90 à 21,90 €', 'Déjeuner individuel prêt à manger'],
               [a('/creations/plateaux-repas', 'Plateau repas'), '28,90 à 30,90 €', 'Entrée, plat, dessert : 28,90 € végétarien, 29,90 € poulet, 30,90 € saumon'],
@@ -60,16 +60,16 @@ export default function Tarifs() {
           },
         },
         {
-          h2: 'Budget petit-déjeuner selon le nombre de personnes',
-          before: ["Budgets calculés avec nos règles de quantités (2 mini-viennoiseries par personne, 1 mignardise, 1 verre de jus, 1 thermos d'1 litre pour 6), livraison de 29 € HT comprise."],
+          h2: 'Budget petit-déjeuner Classique selon le nombre de personnes',
+          before: ["Formule Classique à 8 € HT par personne (viennoiseries pur beurre, jus, café, fruits frais), livraison de 29 € HT comprise. Pour viennoiseries et café seuls : dès 6,50 € HT par personne pour 30 personnes, hors livraison. Le petit-déjeuner complet est sur devis."],
           table: {
             head: ['Effectif', 'Total HT, livraison comprise', 'Par personne'],
             rows: [
-              ['10 personnes', '160,80 €', '16,08 €'],
-              ['20 personnes', '340,80 €', '17,04 €'],
-              ['30 personnes', '442,60 €', '14,75 €'],
-              ['50 personnes', '743,40 €', '14,87 €'],
-              ['100 personnes', '1 382,60 €', '13,83 €'],
+              ['10 personnes', '109 €', '10,90 €'],
+              ['20 personnes', '189 €', '9,45 €'],
+              ['30 personnes', '269 €', '8,97 €'],
+              ['50 personnes', '429 €', '8,58 €'],
+              ['100 personnes', '829 €', '8,29 €'],
             ],
           },
           after: [`Le détail produit par produit est dans notre ${a('/journal/budget-petit-dejeuner-equipe-personnes', 'guide du budget petit-déjeuner')}.`],

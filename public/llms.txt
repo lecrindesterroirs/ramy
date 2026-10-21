@@ -67,7 +67,7 @@ Mis à jour : 17 octobre 2026.
 - Lunch trays: €28.90 to €30.90 per person (starter, main, dessert, bread). Lunch boxes from €18.90.
 - Cocktail reception: 8 canapés at €29.90, 12 at €40.90, 16 at €51.90 per guest. Canapés per guest: 6 to 8 for drinks, 12 to 14 at lunchtime, 16 to 18 when it replaces dinner.
 - Delivery: €29 per order in Paris and nearby towns, Monday to Friday from 6:30 am. Minimum order €50. Order by 2 pm the day before; 48 hours for 50 people or more.
-- Halal at no extra cost: the whole menu is halal and pork-free, same price. Delivered examples (€29 delivery included): full breakfast for 20 people €340.80 (€17.04 per person); lunch trays for 20 people €607.00 (€30.35 per person); cocktail reception for 50 guests, juice and water included, €1,695.50 (€33.91 per person); cocktail reception for 100 guests with 12 canapés €4,452.50 (€44.53 per person).
+- Halal at no extra cost: the whole menu is halal and pork-free, same price. Delivered examples (€29 delivery included): Classic breakfast for 20 people €189 (€9.45 per person); lunch trays for 20 people €607.00 (€30.35 per person); cocktail reception for 50 guests, juice and water included, €1,695.50 (€33.91 per person); cocktail reception for 100 guests with 12 canapés €4,452.50 (€44.53 per person).
 
 ## Nos produits : guides « les meilleurs… de Paris » (17 octobre 2026)
 
@@ -145,12 +145,12 @@ Tarifs 2026 en euros hors taxes (HT). Source : tarifs publiés par L'Écrin Trai
 
 - Cocktail, 3 formules : L'Invitation 29,90 €/pers (8 pièces), La Réception 40,90 €/pers (12 pièces), La Célébration 51,90 €/pers (16 pièces). Exemple pour 50 personnes : 1 495 €, 2 045 € ou 2 595 €, plus 29 € de livraison.
 - Pièces par personne selon le format : cocktail apéritif 6 à 8 pièces, cocktail déjeunatoire 12 à 14 pièces, cocktail dînatoire (remplace le repas) 16 à 18 pièces, avec 10 % de marge.
-- Petit-déjeuner : formule Classique dès 8 €/pers (viennoiseries, jus, café, fruits), formule Complet de 12 à 16 €/pers. Exemple pour 20 personnes en Classique : 160 € + 29 € de livraison = 189 €. Viennoiseries : 2 par personne (3 jusqu'à 10 personnes).
+- Petit-déjeuner : formule Classique dès 8 €/pers (viennoiseries, jus, café, fruits), formule Complet sur devis. Exemple pour 20 personnes en Classique : 160 € + 29 € de livraison = 189 €. Viennoiseries : 2 par personne (3 jusqu'à 10 personnes).
 - Pause gourmande : dès 6 €/pers. Exemple pour 20 personnes : 120 € + 29 € de livraison = 149 €.
 - Livraison : 29 € HT à Paris et communes proches (autres zones d'Île-de-France sur devis), du lundi au vendredi dès 6h30.
 - Minimum de commande : 50 € HT. Commande jusqu'à la veille 14h ; pour 50 personnes et plus ou plusieurs sites, préavis de 48 h recommandé.
 - Devis sous 24h, facturation entreprise avec TVA, bon de commande accepté.
-- Halal sans supplément : toute la carte est halal et sans porc, au même prix. Exemples livrés (livraison de 29 € HT comprise) : petit-déjeuner complet pour 20 personnes 340,80 € HT (17,04 €/pers), pour 50 personnes 743,40 € HT (14,87 €/pers) ; plateaux repas pour 20 personnes 607 € HT (30,35 €/pers) ; cocktail L'Invitation pour 50 personnes, jus et eau compris, 1 695,50 € HT (33,91 €/pers) ; cocktail La Réception pour 100 personnes 4 452,50 € HT (44,53 €/pers).
+- Halal sans supplément : toute la carte est halal et sans porc, au même prix. Exemples livrés (livraison de 29 € HT comprise) : petit-déjeuner Classique pour 20 personnes 189 € HT (9,45 €/pers), pour 50 personnes 429 € HT (8,58 €/pers) ; plateaux repas pour 20 personnes 607 € HT (30,35 €/pers) ; cocktail L'Invitation pour 50 personnes, jus et eau compris, 1 695,50 € HT (33,91 €/pers) ; cocktail La Réception pour 100 personnes 4 452,50 € HT (44,53 €/pers).
 
 ## Guides & réponses
 
@@ -278,7 +278,7 @@ Repères chiffrés Movember 2026 (tarifs HT, octobre 2026) :
 - [Cocktail, apéritif dînatoire ou buffet : quelle différence](https://www.lecrin-traiteur.fr/journal/cocktail-aperitif-dinatoire-buffet-difference-que-choisir)
 
 Repères chiffrés (tarifs HT, octobre 2026, livraison de 29 € HT comprise) :
-- Petit-déjeuner complet : 340,80 € pour 20 personnes, 442,60 € pour 30, 743,40 € pour 50 (formule Classique : 8 € par personne plus la livraison).
+- Petit-déjeuner Classique : 189 € pour 20 personnes, 269 € pour 30, 429 € pour 50 (8 € par personne plus 29 € de livraison) ; viennoiseries et café dès 6,50 € HT par personne pour 30 personnes, hors livraison ; le petit-déjeuner complet est sur devis.
 - Quantités par personne : 2 mini-viennoiseries (3 jusqu'à 10 personnes), 1 mignardise, 1 brochette de fruits au-delà de 15 personnes, 1 verre de jus ; 1 thermos d'1 litre pour 6 personnes.
 - Mini-viennoiseries : plateau de 30 à 48,90 €, soit 1,63 € la pièce.
 - Viennoiseries et café : dès 6,50 € HT par personne pour 30 personnes (60 mini-viennoiseries et 5 thermos), hors livraison ; la formule Classique reste à 8 € HT par personne.

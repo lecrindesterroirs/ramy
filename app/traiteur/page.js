@@ -35,7 +35,7 @@ const TRAITEUR_FAQ = [
   },
   {
     q: "Combien coûte un traiteur d'entreprise à Paris ?",
-    a: "Un petit-déjeuner démarre à 8 € HT par personne en formule Classique (12 à 16 € HT en formule complète), un goûter à 6 € HT, un plateau repas à 28,90 € HT et un cocktail va de 29,90 à 51,90 € HT selon la formule (8, 12 ou 16 pièces). Le minimum de commande est de 50 € HT et la livraison de 29 € HT à Paris et dans les communes proches.",
+    a: "Un petit-déjeuner démarre à 6,50 € HT par personne en viennoiseries et café (pour 30 personnes), 8 € HT en formule Classique (formule complète sur devis), un goûter à 6 € HT, un plateau repas à 28,90 € HT et un cocktail va de 29,90 à 51,90 € HT selon la formule (8, 12 ou 16 pièces). Le minimum de commande est de 50 € HT et la livraison de 29 € HT à Paris et dans les communes proches.",
   },
   {
     q: "Quel est le meilleur traiteur pour une entreprise à Paris ?",
