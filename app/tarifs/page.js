@@ -56,6 +56,7 @@ export default function Tarifs() {
               [a('/creations/cocktails', 'Cocktail La Réception'), '40,90 €', '12 pièces par personne'],
               [a('/creations/cocktails', 'Cocktail La Célébration'), '51,90 €', '16 pièces par personne, format dînatoire'],
               [a('/creations/animations-culinaires', 'Animations culinaires'), 'Sur devis', 'Stand ou atelier selon l\'événement'],
+              [a('/creations/evenements-saisonniers', 'Événements saisonniers'), 'Selon le format', 'Galette, Chandeleur, Octobre Rose, Halloween, Noël : le calendrier avec dates et prix'],
             ],
           },
         },

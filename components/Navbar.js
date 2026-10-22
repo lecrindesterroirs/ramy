@@ -70,6 +70,8 @@ const JOURNAL_ITEMS = {
     { label: 'Cocktail d\'entreprise', labelEn: 'Corporate cocktail', href: '/occasions/cocktail-entreprise' },
     { label: 'Goûter d\'entreprise', labelEn: 'Corporate afternoon break', href: '/occasions/gouter-entreprise' },
     { label: 'Afterwork', labelEn: 'Afterwork', href: '/occasions/afterwork-entreprise' },
+    // Calendrier des événements saisonniers : simple lien, aucune donnée d'événement ici.
+    { label: 'Événements saisonniers', labelEn: 'Seasonal events', href: '/creations/evenements-saisonniers' },
   ],
 }
 
@@ -740,7 +742,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             </button>
             {mobileExpanded === 'journal' && (
               <div style={{ paddingBottom: '14px' }}>
-                {[...JOURNAL_ITEMS.main, ...JOURNAL_ITEMS.categories].map(item => (
+                {[...JOURNAL_ITEMS.main, ...JOURNAL_ITEMS.categories, JOURNAL_ITEMS.occasions[JOURNAL_ITEMS.occasions.length - 1]].map(item => (
                   <a
                     key={mot(item)}
                     href={lien(item.href)}

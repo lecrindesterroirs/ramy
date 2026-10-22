@@ -1,4 +1,5 @@
 import { evenements } from './creations/evenements-saisonniers/evenementsData'
+import { traductionComplete } from '../lib/en/pages/evenements'
 import { articles } from '../lib/journalData'
 import { PRODUCTS } from '../lib/productsData'
 import { CITIES } from '../lib/citiesData'
@@ -49,6 +50,7 @@ const LASTMOD_PAGES = {
   '/creations/petits-dejeuners-et-pauses': '2026-10-19',   // titre, prix « dès 6,50 € HT », FAQ
   '/traiteur/paris/15e-arrondissement': '2026-10-21',      // page réécrite (SIRENE, FAQ)
   '/traiteur/paris/17e-arrondissement': '2026-10-21',
+  '/creations/evenements-saisonniers': '2026-10-22',      // refonte : calendrier, prix calculés, FAQ
 }
 const LASTMOD_VILLES_21_10 = [   // titres et descriptions reformulés le 21/10/2026
   'puteaux', 'neuilly-sur-seine', 'boulogne-billancourt', 'nanterre', 'levallois-perret',
@@ -60,7 +62,6 @@ const LASTMOD_PRIX_21_10 = [
   '/creations/petits-dejeuners-et-pauses',
   '/tarifs',
   '/traiteur',
-  '/creations/evenements-saisonniers/rentree',
   '/occasions/seminaire-entreprise',
   '/traiteur/neuilly-sur-seine',
   '/traiteur/levallois-perret',
@@ -115,7 +116,6 @@ LASTMOD_PRIX_21_10.push(
   '/en/petit-dejeuner-entreprise/neuilly-sur-seine',
   '/en/petit-dejeuner-entreprise/asnieres-sur-seine',
   '/en/petit-dejeuner-entreprise/levallois-perret',
-  '/en/creations/evenements-saisonniers/rentree',
   '/en/journal/petit-dejeuner-prestige-entreprise-paris',
   '/en/journal/meilleurs-yaourts-petit-dejeuner-entreprise-paris',
   '/en/journal/petit-dejeuner-halal-entreprise-paris',
@@ -225,10 +225,11 @@ export default function sitemap() {
   ))
 
   // ── Événements saisonniers ────────────────────────────────────────
-  const eventPages = evenements.map(ev => url(
-    `/creations/evenements-saisonniers/${ev.slug}`,
-    0.82, 'monthly'
-  ))
+  // lastmod lu dans les données (champ maj de evenementsData.js).
+  const eventPages = evenements.map(ev => ({
+    ...url(`/creations/evenements-saisonniers/${ev.slug}`, 0.82, 'monthly'),
+    lastModified: `${ev.maj}T00:00:00.000Z`,
+  }))
 
   // ── Fiches leaf boissons (données dans lib/, importables côté serveur) ─
   const leafPages = [
@@ -320,8 +321,12 @@ export default function sitemap() {
     ...slugsHalalEn().map(s => url(`/en/traiteur-halal/${s}`, 0.74, 'monthly')),
     ...cheminsVillesEn().map(c => url(`/en${c}`, 0.70, 'monthly')),
     // Événements saisonniers anglais : l'index et les dix fiches.
-    url('/en/creations/evenements-saisonniers', 0.78, 'monthly'),
-    ...evenements.map(ev => url(`/en/creations/evenements-saisonniers/${ev.slug}`, 0.76, 'monthly')),
+    { ...url('/en/creations/evenements-saisonniers', 0.78, 'monthly'), lastModified: '2026-10-22T00:00:00.000Z' },
+    // Seulement les fiches traduites en entier : pas d'URL anglaise sans page anglaise.
+    ...evenements.filter(ev => traductionComplete(ev.slug)).map(ev => ({
+      ...url(`/en/creations/evenements-saisonniers/${ev.slug}`, 0.76, 'monthly'),
+      lastModified: `${ev.maj}T00:00:00.000Z`,
+    })),
     // Pages thématiques et personnalisation en anglais.
     ...['/traiteur-eco-responsable', '/traiteur-healthy', '/creations/personnalisation'].map(c => url(`/en${c}`, 0.76, 'monthly')),
     url('/en/contact/rendez-vous', 0.60, 'monthly'),

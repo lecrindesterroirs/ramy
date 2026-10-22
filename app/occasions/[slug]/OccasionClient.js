@@ -53,7 +53,7 @@ const PRODUCT_ROUTE_BY_CATEGORY = {
    côté serveur : seule l'occasion affichée arrive ici. Importer lib/occasionsData,
    productsData ou citiesData dans ce composant client ajouterait ~120 Ko de JavaScript
    à chaque page occasion. */
-export default function OccasionClient({ en, nomFr, occasion, article, products: produitsLies, cities, allFaq }) {
+export default function OccasionClient({ en, nomFr, occasion, article, products: produitsLies, cities, allFaq, evenements = [] }) {
   const T = en ? T_OCC.en : T_OCC.fr
   const lien = (href) => (en ? `/en${href}` : href)
 
@@ -235,6 +235,19 @@ export default function OccasionClient({ en, nomFr, occasion, article, products:
             </div>
           </div>
         </div>
+
+        {/* ── Événements saisonniers liés ── */}
+        {evenements.length > 0 && (
+          <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
+            <p className="occ-evenements" style={{ maxWidth: '800px', margin: '0 auto', padding: '40px 72px 0', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+              {en ? 'Through the year: ' : "Dans l'année : "}
+              {evenements.map((e, i) => (
+                <span key={e.href}>{i > 0 && ', '}<a href={e.href} style={{ color: 'var(--accent-deep)', borderBottom: '1px solid rgba(135,94,16,0.35)' }}>{e.nom}</a></span>
+              ))}
+              .
+            </p>
+          </div>
+        )}
 
         {/* ── FAQ ── */}
         <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>

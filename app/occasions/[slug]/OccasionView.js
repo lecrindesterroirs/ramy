@@ -7,6 +7,8 @@ import { PRODUCTS } from '../../../lib/productsData'
 import { PRODUITS as PLATEAUX_PRODUITS } from '../../creations/plateaux-repas/data'
 import { FORMULES as COCKTAIL_FORMULES } from '../../creations/cocktails/data'
 import { CITIES } from '../../../lib/citiesData'
+import { evenements } from '../../creations/evenements-saisonniers/evenementsData'
+import { EN_EVENEMENTS, traductionComplete } from '../../../lib/en/pages/evenements'
 import OccasionClient from './OccasionClient'
 
 /*
@@ -37,6 +39,11 @@ export default function OccasionView({ slug, en }) {
     .filter(Boolean)
     .map(c => ({ slug: c.slug, name: c.name }))
 
+  // Événements saisonniers qui renvoient vers cette occasion : lien retour, données légères seulement.
+  const evenementsLies = evenements
+    .filter(e => (e.occasions || []).includes(slug) && (!en || traductionComplete(e.slug)))
+    .map(e => ({ href: `${en ? '/en' : ''}/creations/evenements-saisonniers/${e.slug}`, nom: en ? EN_EVENEMENTS[e.slug].nom : e.nom }))
+
   const allFaq = [...occasion.faq, en ? FAQ_DERNIERE_MINUTE_EN : FAQ_DERNIERE_MINUTE]
 
   // Le texte de l'article part à part (`article`) : on ne le double pas dans `occasion`.
@@ -51,6 +58,7 @@ export default function OccasionView({ slug, en }) {
       products={products}
       cities={cities}
       allFaq={allFaq}
+      evenements={evenementsLies}
     />
   )
 }

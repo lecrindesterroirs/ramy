@@ -11,6 +11,7 @@ import { enBoisson } from '../lib/en/produits/boissons'
 import { productOfferPolicy, BUSINESS_ID } from '../lib/site'
 import BusinessJsonLd from './BusinessJsonLd'
 import FicheAsavoir from './FicheAsavoir'
+import { evenementsPourProduit } from '../app/creations/evenements-saisonniers/evenementsIndex'
 
 // Cross-sell « À servir avec » : sélection de boissons complémentaires, montrée sur
 // toutes les fiches SAUF les fiches boissons elles-mêmes. Sélection curée, repli sur
@@ -44,6 +45,7 @@ const TEXTES = {
     decouvrir: 'Découvrir →',
     devisTitre: 'Un événement à Paris ou en Île-de-France ?',
     devisSousTitre: 'Répondez en 30 secondes, devis personnalisé sous 24h.',
+    idealPour: 'Idéal pour',
   },
   en: {
     composition: 'Composition',
@@ -56,6 +58,7 @@ const TEXTES = {
     decouvrir: 'Discover →',
     devisTitre: 'An event in Paris or Île-de-France?',
     devisSousTitre: 'Answer in 30 seconds, personalised quote within 24 hours.',
+    idealPour: 'Ideal for',
   },
 }
 
@@ -120,6 +123,8 @@ export default function GalleryFiche({
 
   const BASE = 'https://www.lecrin-traiteur.fr'
   const canonicalPath = breadcrumb.length ? breadcrumb[breadcrumb.length - 1]?.href : undefined
+  // Événements saisonniers dont la sélection contient cette fiche (index léger, sans texte).
+  const evenementsLies = evenementsPourProduit(canonicalPath)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -281,6 +286,17 @@ export default function GalleryFiche({
               >
                 {T.devis}
               </a>
+              {evenementsLies.length > 0 && (
+                <p className="gf-ideal">
+                  {T.idealPour}&nbsp;:{' '}
+                  {evenementsLies.map((e, i) => (
+                    <span key={e.slug}>
+                      {i > 0 && ', '}
+                      <a href={`${lang === 'en' ? '/en' : ''}/creations/evenements-saisonniers/${e.slug}`}>{lang === 'en' ? e.nomEn : e.nom}</a>
+                    </span>
+                  ))}
+                </p>
+              )}
             </div>
           </div>
         </div>
