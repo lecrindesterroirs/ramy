@@ -836,12 +836,12 @@ const TEXTES = [
     desc: "Un goûter qui sort de l'ordinaire, mené par le macaron noir à la vanille et au cœur de potiron épicé. Autour : la madeleine citrouille au chocolat blanc et à l'orange, des cookies, des brochettes de fruits frais. Ou un cocktail de 8 pièces en afterwork.",
     differentiateur: {
       label: 'Le macaron noir de la saison',
-      text: "Une coque au cacao, une ganache vanille et un cœur de potiron à la cannelle. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail.",
+      text: "Signé Pierre Morel : une coque au cacao, une ganache vanille et un cœur de potiron à la cannelle. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail.",
     },
     enBref: "L'Écrin Traiteur livre des goûters d'Halloween au bureau, avec le macaron noir au potiron et la madeleine citrouille, et des afterworks orange et noir sans alcool.",
     prestations: ['pause', 'cocktail8'],
     exemples: [{ p: 'pause', n: 20 }, { p: 'cocktail8', n: 30 }],
-    horsCatalogue: ['Macaron noir vanille, cœur potiron épicé', 'Madeleine citrouille, chocolat blanc et orange'],
+    horsCatalogue: ['Macaron noir vanille, cœur potiron épicé, signé Pierre Morel', 'Madeleine citrouille, chocolat blanc et orange'],
     faq: [
       { q: 'Faut-il obliger les déguisements ?', a: "Non. Proposez-les comme une option, jamais comme une obligation. Un petit concours avec un prix crée de l'animation sans forcer personne." },
     ],
@@ -856,7 +856,7 @@ const TEXTES = [
         },
         {
           heading: "Le macaron noir, vanille et cœur potiron épicé",
-          texte: "Une coque au cacao, presque noire, une ganache à la vanille, et au centre un cœur de potiron relevé à la cannelle. Le potiron apporte une rondeur qui équilibre la vanille, et l'épice réveille l'ensemble. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail.",
+          texte: "Signé Pierre Morel, pâtissier à La Gacilly : une coque au cacao, presque noire, une ganache à la vanille, et au centre un cœur de potiron relevé à la cannelle. Le potiron apporte une rondeur qui équilibre la vanille, et l'épice réveille l'ensemble. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail.",
         },
         {
           heading: "La madeleine citrouille, chocolat blanc et orange",
