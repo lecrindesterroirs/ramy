@@ -1,32 +1,30 @@
 import { evenements } from '../evenementsData'
+import { traductionComplete } from '../../../../lib/en/pages/evenements'
 import { ogImages } from '../../../../lib/og'
 import { alternatesPour } from '../../../../lib/i18n'
 
+/* Un slug inventé répond 404, pas une fausse page en 200. */
+export const dynamicParams = false
+
 export function generateStaticParams() {
-  // 'octobre-rose' a sa propre route statique dédiée (app/.../octobre-rose/page.js) :
-  // l'exclure ici évite une collision de build où les deux routes écrivent
-  // le même fichier de sortie et où celle-ci gagnait par erreur.
-  return evenements.filter(e => e.slug !== 'octobre-rose').map(e => ({ slug: e.slug }))
+  return evenements.map(e => ({ slug: e.slug }))
 }
 
-export async function generateMetadata({ params }) {
+export function generateMetadata({ params }) {
   const ev = evenements.find(e => e.slug === params.slug)
-
-  if (!ev) {
-    return {
-      title: 'Événement saisonnier en entreprise',
-      description: "Découvrez nos prestations traiteur pour vos événements d'entreprise à Paris et Île-de-France.",
-    }
-  }
-
+  if (!ev) return {}
+  const title = ev.seoTitle || `Traiteur ${ev.nom} en entreprise à Paris`
+  const description = ev.metaDescription || `${ev.descCourt} Livré à Paris et en Île-de-France.`
   return {
-    title: { absolute: `Traiteur ${ev.nom} en entreprise à Paris` },
-    description: `${ev.descCourt} Prestation traiteur livrée à Paris et en Île-de-France.`,
-    alternates: alternatesPour(`/creations/evenements-saisonniers/${params.slug}`, { en: true }),
+    title: { absolute: title },
+    description,
+    alternates: alternatesPour(`/creations/evenements-saisonniers/${ev.slug}`, { en: traductionComplete(ev.slug) }),
     openGraph: {
       images: ogImages(ev.img, ev.imgAlt || `${ev.nom}, L'Écrin Traiteur`),
-      title: `Traiteur ${ev.nom} en entreprise | L'Écrin Traiteur`,
-      description: ev.descCourt,
+      title,
+      description,
+      locale: 'fr_FR',
+      type: 'article',
     },
   }
 }

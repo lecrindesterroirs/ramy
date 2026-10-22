@@ -1,2 +1,8 @@
-/* Même composant que la page française : la langue vient du chemin. */
-export { default } from '../../../creations/evenements-saisonniers/page'
+import HubView from '../../../../components/evenements/HubView'
+
+/* Même vue que la page française, en anglais (événements traduits seulement). */
+export const revalidate = 86400
+
+export default function EvenementsSaisonniersEn() {
+  return <HubView en />
+}
