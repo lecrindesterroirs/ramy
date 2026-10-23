@@ -1,11 +1,10 @@
 /*
-  La page Occasion anglaise est la même page que la française
-  (app/occasions/[slug]/OccasionView.js) avec `en` à true : elle fusionne
-  lib/en/pages/occasions.js. Les liens de l'article gardent leur chemin
-  français et passent par reecrireLiensEn().
+  La page Occasion anglaise est la même vue serveur que la française
+  (components/occasions/OccasionView.js) avec `en` : elle fusionne
+  lib/en/pages/occasions.js.
 */
-import OccasionView from '../../../occasions/[slug]/OccasionView'
+import OccasionView from '../../../../components/occasions/OccasionView'
 
 export default function OccasionPageEn({ params }) {
-  return <OccasionView slug={params.slug} en={true} />
+  return <OccasionView slug={params.slug} en />
 }

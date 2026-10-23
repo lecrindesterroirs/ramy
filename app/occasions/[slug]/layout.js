@@ -2,6 +2,7 @@ import { alternatesPour } from '../../../lib/i18n'
 import { slugsOccasionsEn } from '../../../lib/en/pages/occasions'
 import { ogImages } from '../../../lib/og'
 import { OCCASIONS } from '../../../lib/occasionsData'
+import { remplirPrix } from '../../../lib/occasionsVue'
 
 /* Un slug inventé répond 404, pas 200. */
 export const dynamicParams = false
@@ -18,8 +19,10 @@ const DESCRIPTIONS_COURTES = {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params
-  const o = OCCASIONS.find(o => o.slug === slug)
-  if (!o) return {}
+  const brut = OCCASIONS.find(o => o.slug === slug)
+  if (!brut) return {}
+  // Les prix des textes sont des marqueurs remplis par lib/occasionsVue.js.
+  const o = { ...brut, seoTitle: remplirPrix(brut.seoTitle), seoDescription: remplirPrix(brut.seoDescription) }
 
   // Marque en suffixe seulement si le titre reste sous ~60 caractères (sinon tronqué dans Google).
   const avecMarque = `${o.seoTitle} | L'Écrin Traiteur`

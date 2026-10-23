@@ -1,5 +1,5 @@
-import OccasionView from './OccasionView'
+import OccasionView from '../../../components/occasions/OccasionView'
 
 export default function OccasionPage({ params }) {
-  return <OccasionView slug={params.slug} en={false} />
+  return <OccasionView slug={params.slug} />
 }
