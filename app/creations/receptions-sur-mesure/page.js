@@ -1,27 +1,6 @@
-'use client'
+import ReceptionView from '../../../components/ReceptionView'
 
-import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
-
-const fallback = [
-  { name: 'Réception cocktail dînatoire',  label: "L'Écrin Paris", img: '/cocktail-dinatoire.webp' },
-  { name: 'Dîner assis gastronomique',     label: "L'Écrin Paris", img: '/hero-plateau-signature.webp' },
-  { name: 'Cocktail de lancement',         label: "L'Écrin Paris", img: '/hero-cocktail.webp' },
-  { name: 'Buffet inauguration',           label: "L'Écrin Paris", img: '/prod-brunch-gourmand.webp' },
-  { name: "Soirée gala d'entreprise",      label: "L'Écrin Paris", img: '/creations-featured.webp' },
-  { name: 'Réception privée prestige',     label: "L'Écrin Paris", img: '/detail-bg.webp' },
-  { name: "Déjeuner d'affaires premium",   label: "L'Écrin Paris", img: '/hero-a-partager.webp' },
-  { name: 'Cocktail networking',           label: "L'Écrin Paris", img: '/cocktail-signature.webp' },
-]
-
+/* Événement sur mesure, rendu côté serveur (components/ReceptionView.js). */
 export default function ReceptionsSurMesure() {
-  return (
-    <ProductsPageTemplate
-      heroImg="/cocktail-dinatoire.webp"
-      heroTitle={"Réceptions\nSur-Mesure"}
-      heroSubtitle="Des événements d'exception conçus dans les moindres détails pour votre image."
-      breadcrumb="Nos Créations, Réceptions Sur-Mesure"
-      categorieSlug="receptions"
-      fallbackProducts={fallback}
-    />
-  )
+  return <ReceptionView />
 }

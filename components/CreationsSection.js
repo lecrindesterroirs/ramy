@@ -17,7 +17,7 @@ const creations = [
   {
     label: 'Cocktails',
     description: 'Gougères au fromage, brochettes de poulet tandoori, mini cheeseburgers : 8, 12 ou 16 pièces par personne.',
-    img: '/cocktail-signature.webp',
+    img: '/cocktail-dinatoire.webp',
     href: '/creations/cocktails',
   },
   {
@@ -34,7 +34,7 @@ const creations = [
   },
   {
     label: 'Boissons',
-    description: "Jus, softs, cafés et thés d'exception pour accompagner chaque moment.",
+    description: "Jus Alain Milliat, thés Mariage Frères, café bio en thermos.",
     img: '/creations-boissons.webp',
     href: '/creations/boissons',
   },

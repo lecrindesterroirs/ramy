@@ -5,8 +5,10 @@ import { PriceSchema } from "@/components/PriceSchema"
 import { FAQ_CATALOGUE } from "./data"
 import { ogImages } from '../../../lib/og'
 
-const TITLE = "Traiteur cocktail entreprise Paris : formules dès 29,90 € HT"
-const DESCRIPTION = "Formules L'Invitation (8 pièces), La Réception (12) et La Célébration (16) dès 29,90 € HT par personne. Livraison à Paris et en IDF, devis sous 24h."
+import { FORMULES } from "./data"
+const [I, R, C] = FORMULES
+const TITLE = `Traiteur cocktail entreprise Paris : formules dès ${I.prix} € HT`
+const DESCRIPTION = `Formules ${I.label} (${I.pieces} pièces), ${R.label} (${R.pieces}) et ${C.label} (${C.pieces}) dès ${I.prix} € HT par personne. Livraison à Paris et en IDF, devis sous 24h.`
 
 export const metadata = {
   title: { absolute: TITLE },
@@ -25,7 +27,7 @@ export default function Layout({ children }) {
   return (
     <>
       <FAQSchema faqs={faqs} pageTitle={TITLE} />
-      <PriceSchema productName="Cocktail d'entreprise" minPrice="29.90" />
+      <PriceSchema productName="Cocktail d'entreprise" minPrice={I.prixNum.toFixed(2)} />
       {children}
     </>
   )

@@ -1,16 +1,31 @@
 // Données cocktails, module plat (importable depuis le serveur comme depuis le client).
 // Extraites de page.js : un `export const` dans un fichier 'use client' revient
 // sous forme de proxy dans une route API, pas sous forme de tableau.
+//
+// Prix et nombre de pièces : lus dans lib/calculsPrix.js (FORMULES), jamais
+// recopiés ici. `prix` reste une chaîne « 29,90 » pour les anciens appelants,
+// `prixNum` est le nombre.
+import { FORMULES as PX, LIV } from '../../../lib/calculsPrix'
+import { MINIMUM } from '../../../lib/prixEntree'
+
+const virgule = (x) => x.toFixed(2).replace('.', ',')
+const milliers = (x) => {
+  const [e, d] = x.toFixed(Number.isInteger(x) ? 0 : 2).split('.')
+  const ent = e.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0')
+  return d ? `${ent},${d}` : ent
+}
+const ORGANISER = `<h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Le prix par personne ne change pas avec l'effectif. Livraison ${LIV} € HT à Paris et dans les communes proches, minimum de commande ${MINIMUM} € HT, facture entreprise avec TVA. Commande jusqu'à 14h la veille, 48 h de préavis à partir de 50 personnes. Devis détaillé sous 24h.</p>`
 
 export const FORMULES = [
   {
     key: 'classique',
     occasion: 'Apéritif',
     seoTitle: `Cocktail L'Invitation : la formule apéritive pour vos afterworks d'entreprise à Paris`,
-    seoHtml: `<p>La formule L'Invitation est notre cocktail apéritif le plus accessible : 8 pièces salées et sucrées par personne, pensées pour un afterwork ou une pause conviviale. Un format équilibré qui lance bien une fin de journée sans en faire trop, à Paris et en Île-de-France.</p><h2>8 pièces à partager, salé et sucré</h2><p>Côté salé : gougères, chou craquelin à la tapenade, tomate et mozzarella, tartelette pissaladière, millefeuille betterave et chèvre, brochette de poulet tandoori et mini cheeseburger. Côté sucré : tartelette tout chocolat et brochette de fruits frais. Tout est dressé et livré prêt à servir.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La formule L'Invitation est notre cocktail apéritif le plus accessible : 8 pièces salées et sucrées par personne, pensées pour un afterwork ou une pause conviviale. Un format équilibré qui lance bien une fin de journée sans en faire trop, à Paris et en Île-de-France.</p><h2>8 pièces à partager, salé et sucré</h2><p>Côté salé : gougères, chou craquelin à la tapenade, tomate et mozzarella, tartelette pissaladière, millefeuille betterave et chèvre, brochette de poulet tandoori et mini cheeseburger. Côté sucré : tartelette tout chocolat et brochette de fruits frais. Tout est dressé et livré prêt à servir.</p>${ORGANISER}`,
     label: "L'Invitation",
-    pieces: 8,
-    prix: '29,90',
+    pieces: PX.invitation.pieces,
+    prix: virgule(PX.invitation.prix),
+    prixNum: PX.invitation.prix,
     accroche: 'La formule apéritive équilibrée pour vos afterworks et pauses conviviales.',
     featured: false,
     img: '/cocktail-classique.webp',
@@ -31,13 +46,14 @@ export const FORMULES = [
     key: 'signature',
     occasion: 'Déjeunatoire',
     seoTitle: `Cocktail La Réception : la formule signature terre et mer pour vos événements d'entreprise à Paris`,
-    seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces par personne, entre terre et mer. C'est notre formule la plus choisie pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces entre terre et mer</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, patate douce, feta et olive kalamata, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre. Côté sucré : dôme praliné, tartelette tout chocolat et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur site, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La formule La Réception monte d'un cran : 12 pièces par personne, entre terre et mer. C'est la formule pour un cocktail dînatoire, une soirée partenaires ou une inauguration, quand on veut marquer le coup sans passer à un repas assis.</p><h2>12 pièces entre terre et mer</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, patate douce, feta et olive kalamata, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre. Côté sucré : dôme praliné, tartelette tout chocolat et brochette de fruits frais.</p>${ORGANISER}`,
     label: 'La Réception',
-    pieces: 12,
-    prix: '40,90',
-    accroche: 'Une sélection raffinée de pièces généreuses, entre terre et mer.',
+    pieces: PX.reception.pieces,
+    prix: virgule(PX.reception.prix),
+    prixNum: PX.reception.prix,
+    accroche: 'Douze pièces entre terre et mer, de quoi remplacer un déjeuner debout.',
     featured: true,
-    img: '/cocktail-signature.webp',
+    img: '/cocktail-dinatoire.webp',
     sale: [
       'Gougères Soufflées au Fromage',
       'Chou Craquelin à la Tapenade, Tomate & Mozzarella',
@@ -58,14 +74,15 @@ export const FORMULES = [
   {
     key: 'prestige',
     occasion: 'Dînatoire',
-    seoTitle: `Cocktail La Célébration : la formule prestige pour vos grandes réceptions d'entreprise à Paris`,
-    seoHtml: `<p>La formule La Célébration est notre cocktail le plus abouti : 16 pièces salées et sucrées par personne, pour les réceptions les plus soignées. Saumon mariné, crevette à la mangue, tartelette avocat feta : une palette large et travaillée qui tient lieu de vrai dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, tartelette avocat feta, navette de légumes grillés. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p><h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Prestation sur devis selon l'effectif, la date et le lieu. Livraison sur votre lieu de réception, installation possible, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoTitle: `Cocktail La Célébration : 16 pièces par personne pour un cocktail dînatoire d'entreprise à Paris`,
+    seoHtml: `<p>La formule La Célébration est notre formule la plus complète : 16 pièces salées et sucrées par personne, pour un cocktail dînatoire de deux heures et demie à trois heures. Saumon mariné, crevette à la mangue, tartelette avocat feta : une composition large qui tient lieu de dîner debout pour une grande soirée d'entreprise.</p><h2>16 pièces pour une grande réception</h2><p>Côté salé : saumon mariné et betterave jaune, radis noir, mangue et crevette bio, brochette de poulet tandoori, mini cheeseburger, gougères, chou craquelin à la tapenade, tartelette pissaladière, millefeuille betterave et chèvre, patate douce, feta et kalamata, gâteau de carotte au cerfeuil, tartelette avocat feta, navette de légumes grillés. Côté sucré : dôme praliné, tartelette tout chocolat, tartelette myrtilles et brochette de fruits frais.</p>${ORGANISER}`,
     label: 'La Célébration',
-    pieces: 16,
-    prix: '51,90',
-    accroche: 'L\'excellence gastronomique pour vos réceptions les plus soignées.',
+    pieces: PX.celebration.pieces,
+    prix: virgule(PX.celebration.prix),
+    prixNum: PX.celebration.prix,
+    accroche: 'Seize pièces par personne, de quoi tenir lieu de dîner debout.',
     featured: false,
-    img: '/cocktail-prestige.webp',
+    img: '/hero-plateaux-aperitifs.webp',
     sale: [
       'Gougères Soufflées au Fromage',
       'Chou Craquelin à la Tapenade, Tomate & Mozzarella',
@@ -91,25 +108,30 @@ export const FORMULES = [
 
 // Questions du catalogue : rendues visibles dans la page ET servies en FAQPage (layout.js).
 // Les chiffres reprennent les formules ci-dessus ; livraison 29 € HT, minimum 50 € HT.
+const [I, R, C] = [PX.invitation, PX.reception, PX.celebration]
 export const FAQ_CATALOGUE = [
   {
     name: "Quel est le prix d'une formule cocktail par personne ?",
-    answer: "L'Invitation (8 pièces) est à 29,90 € HT par personne, La Réception (12 pièces) à 40,90 € HT et La Célébration (16 pièces) à 51,90 € HT. La livraison s'ajoute : 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT.",
+    answer: `${I.nom} (${I.pieces} pièces) est à ${virgule(I.prix)} € HT par personne, ${R.nom} (${R.pieces} pièces) à ${virgule(R.prix)} € HT et ${C.nom} (${C.pieces} pièces) à ${virgule(C.prix)} € HT. La livraison s'ajoute : ${LIV} € HT à Paris et dans les communes proches, minimum de commande ${MINIMUM} € HT.`,
   },
   {
     name: 'Combien de pièces par personne dans chaque formule ?',
-    answer: "L'Invitation : 8 pièces, dont 6 salées et 2 sucrées. La Réception : 12 pièces, dont 9 salées et 3 sucrées. La Célébration : 16 pièces, dont 12 salées et 4 sucrées. La composition détaillée est affichée sur chaque carte.",
+    answer: `${I.nom} : ${I.pieces} pièces. ${R.nom} : ${R.pieces} pièces. ${C.nom} : ${C.pieces} pièces. Comptez ${I.pieces} pièces pour un pot d'une heure et demie, ${R.pieces} pour remplacer un déjeuner, ${C.pieces} pour un dîner debout. La composition détaillée est sur chaque fiche.`,
   },
   {
     name: 'Quelle formule pour 20 personnes, pour 50 personnes ?',
-    answer: "Pour 20 personnes : 598 € HT en L'Invitation, 818 € HT en La Réception, 1 038 € HT en La Célébration. Pour 50 personnes : 1 495, 2 045 ou 2 595 € HT. Les totaux sont hors livraison, et le prix par personne reste fixe quel que soit l'effectif.",
+    answer: `Pour 20 personnes : ${milliers(20 * I.prix)} € HT en ${I.nom}, ${milliers(20 * R.prix)} € HT en ${R.nom}, ${milliers(20 * C.prix)} € HT en ${C.nom}. Pour 50 personnes : ${milliers(50 * I.prix)}, ${milliers(50 * R.prix)} ou ${milliers(50 * C.prix)} € HT. Ces totaux sont hors boissons et hors livraison (${LIV} € HT) ; le prix par personne reste fixe quel que soit l'effectif.`,
   },
   {
     name: 'Peut-on adapter une formule aux régimes alimentaires ?',
-    answer: "Toute la carte est halal et sans porc par défaut. Les options végétariennes, véganes et sans gluten se précisent au devis. La composition des trois formules est fixe : pour une demande particulière, envoyez un mail ou demandez un devis avant la commande.",
+    answer: "Toute la carte salée est halal et sans porc, et sans alcool. Les options végétariennes, vegan et sans gluten se précisent au devis, avec le nombre de personnes concernées. La composition des trois formules est fixe : pour une demande particulière, demandez un devis avant la commande.",
   },
   {
-    name: 'Jusqu\'à quand peut-on commander ?',
-    answer: "Jusqu'à la veille 14h pour une livraison le lendemain. À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48h avant. Le devis est envoyé sous 24h.",
+    name: "Jusqu'à quand peut-on commander ?",
+    answer: "Jusqu'à la veille 14h pour une livraison le lendemain. À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48 h avant. Le devis est envoyé sous 24h.",
+  },
+  {
+    name: 'Les boissons sont-elles comprises ?',
+    answer: "Non, les formules comptent les pièces salées et sucrées. Les jus Alain Milliat, les eaux et le Chardonnay sans alcool s'ajoutent au devis, avec les gobelets.",
   },
 ]
