@@ -33,8 +33,12 @@ const cheminDe = (params) => '/' + (params.chemin || []).join('/')
 
 const BASE = 'https://www.lecrin-traiteur.fr'
 
+/* Chemins qui ont désormais leur propre page anglaise (route dédiée) : le
+   texte générique de EN_PAGES ne les sert plus. */
+const ROUTES_DEDIEES = new Set(['/creations/cocktails'])
+
 export function generateStaticParams() {
-  return Object.values(EN_PAGES).map(pg => ({ chemin: pg.fr.replace(/^\//, '').split('/') }))
+  return Object.values(EN_PAGES).filter(pg => !ROUTES_DEDIEES.has(pg.fr)).map(pg => ({ chemin: pg.fr.replace(/^\//, '').split('/') }))
 }
 
 /*

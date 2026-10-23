@@ -1,5 +1,6 @@
 import InfoPage from '../../components/InfoPage'
 import { businessNode, BUSINESS_ID } from '../../lib/site'
+import { LIV_RECUP_PROCHE, RECUP, euroFr } from '../../lib/prixEntree'
 
 // Page Tarifs (modèle « Tarifs vidéo B2B 2026 » de Biux) : tous les prix viennent de la
 // carte et des guides déjà publiés. Un prix change : le corriger ici aussi.
@@ -10,7 +11,7 @@ const FAQ = [
   { name: "Combien coûte un traiteur d'entreprise à Paris ?", answer: "Chez L'Écrin Traiteur, de 6 € HT par personne (pause gourmande) à 51,90 € HT (cocktail de 16 pièces). Un petit-déjeuner coûte dès 6,50 € HT par personne en viennoiseries et café (pour 30 personnes), 8 € HT en formule Classique, et le complet est sur devis, un plateau repas de 28,90 à 30,90 € HT. La livraison est à 29 € HT à Paris et dans les communes proches." },
   { name: "Les prix sont-ils HT ou TTC ?", answer: "Tous nos prix sont HT. Vous recevez une facture d'entreprise avec la TVA." },
   { name: "Y a-t-il un minimum de commande ?", answer: "Oui, 50 € HT de produits. Il n'y a pas de minimum de personnes." },
-  { name: "La livraison est-elle comprise ?", answer: "Non, elle s'ajoute : 29 € HT à Paris et dans les communes proches, dès 6h30. La récupération de vaisselle réutilisable ou de matériel coûte 19 € HT en plus de la livraison." },
+  { name: "La livraison est-elle comprise ?", answer: `Non, elle s'ajoute : 29 € HT à Paris et dans les communes proches, dès 6h30. Avec la reprise de la vaisselle réutilisable ou du matériel, livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94 ; ailleurs, prix de la zone plus ${euroFr(RECUP)} HT.` },
   { name: "Quand faut-il commander ?", answer: "Jusqu'à la veille 14h. À partir de 50 personnes, prévoyez 48 h. Le devis est envoyé sous 24 h." },
   { name: "Les prix changent-ils pour le halal ou le végétarien ?", answer: "Non. Toute la carte est halal et sans porc, sans alcool et sans supplément. Les options végétariennes, vegan et sans gluten sont au même prix." },
 ]
@@ -49,7 +50,7 @@ export default function Tarifs() {
             rows: [
               [a('/creations/petits-dejeuners-et-pauses', 'Petit-déjeuner Classique'), '8 €', 'Viennoiseries pur beurre, jus Alain Milliat, café, fruits frais'],
               [a('/creations/petits-dejeuners-et-pauses', 'Petit-déjeuner complet'), 'Sur devis', 'La base Classique, plus madeleines ou cakes, thé, brochettes de fruits'],
-              [a('/creations/pauses-gourmandes', 'Pause gourmande'), '6 à 15 €', 'Une pâtisserie et une boisson par personne, jusqu\'à une pause premium (macarons, fruits)'],
+              [a('/creations/pauses-gourmandes', 'Pause gourmande'), '6 à 15 €', 'Une pâtisserie et une boisson par personne, jusqu\'à une pause avec macarons et fruits'],
               [a('/creations/lunch-box', 'Lunch box'), '18,90 à 21,90 €', 'Déjeuner individuel prêt à manger'],
               [a('/creations/plateaux-repas', 'Plateau repas'), '28,90 à 30,90 €', 'Entrée, plat, dessert : 28,90 € végétarien, 29,90 € poulet, 30,90 € saumon'],
               [a('/creations/cocktails', 'Cocktail L\'Invitation'), '29,90 €', '8 pièces salées et sucrées par personne'],
@@ -106,7 +107,7 @@ export default function Tarifs() {
             "<strong>Livraison :</strong> 29 € HT à Paris et dans les communes proches, dès 6h30, à l'heure exacte demandée, par notre propre équipe.",
             "<strong>Minimum :</strong> 50 € HT de produits, sans minimum de personnes.",
             "<strong>Délais :</strong> commande jusqu'à la veille 14h ; 48 h à partir de 50 personnes. Devis sous 24 h, facture d'entreprise avec TVA.",
-            "<strong>Matériel :</strong> la récupération de vaisselle réutilisable ou de matériel coûte 19 € HT en plus de la livraison.",
+            `<strong>Matériel :</strong> livraison et reprise de la vaisselle réutilisable ou du matériel, ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94 ; ailleurs, prix de la zone plus ${euroFr(RECUP)} HT.`,
           ],
         },
       ]}

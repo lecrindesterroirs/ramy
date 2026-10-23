@@ -1,8 +1,6 @@
 import { alternatesPour } from '../../../lib/i18n'
 
-import { FAQSchema } from "@/components/FAQSchema"
 import { PriceSchema } from "@/components/PriceSchema"
-import { FAQ_CATALOGUE } from "./data"
 import { ogImages } from '../../../lib/og'
 
 import { FORMULES } from "./data"
@@ -21,12 +19,10 @@ export const metadata = {
   }
 }
 
-const faqs = FAQ_CATALOGUE
-
 export default function Layout({ children }) {
   return (
     <>
-      <FAQSchema faqs={faqs} pageTitle={TITLE} />
+      {/* Le FAQPage est porté par la page (CocktailsIndexView), qui affiche la même FAQ. */}
       <PriceSchema productName="Cocktail d'entreprise" minPrice={I.prixNum.toFixed(2)} />
       {children}
     </>
