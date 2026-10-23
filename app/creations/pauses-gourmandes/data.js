@@ -77,7 +77,7 @@ export const PAUSES = [
     nom: 'Tartelette Praliné',      img: '/prod-tartelette-praline.webp', prix: '6 pièces, 19,90 €', description: 'Tartelette au praliné signée notre chef pâtissier, croustillant noisette.' },
   { id: 'mousse-chocolat',
     seoTitle: `Mousse au chocolat pour vos pauses et déjeuners d'entreprise à Paris`,
-    seoHtml: `<p>Une mousse au chocolat signée notre chef pâtissier, faite maison avec un chocolat de qualité. Une verrine individuelle par personne, servie à la cuillère, sans découpe ni service compliqué. Texture aérienne et chocolat qui a du caractère : un dessert qui clôt un déjeuner d'équipe ou ponctue une pause gourmande avec élégance.</p><h2>Commander vos mousses au chocolat à Paris et en Île-de-France</h2><p>Nombre de verrines selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
+    seoHtml: `<p>Une mousse au chocolat signée notre chef pâtissier, faite maison. Une verrine individuelle par personne, servie à la cuillère, sans découpe ni service compliqué. Texture aérienne et chocolat qui a du caractère : un dessert qui clôt un déjeuner d'équipe ou ponctue une pause gourmande avec élégance.</p><h2>Commander vos mousses au chocolat à Paris et en Île-de-France</h2><p>Nombre de verrines selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     nom: 'Véritable mousse au chocolat',           img: '/prod-mousse-chocolat.webp', prix: '6 pièces, 18,90 €', description: 'Mousse au chocolat signée notre chef pâtissier, faite maison, texture aérienne.' },
   { id: 'panna-cotta',
     seoTitle: `Panna cotta pour vos pauses et déjeuners d'entreprise à Paris`,

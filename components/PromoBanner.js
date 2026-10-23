@@ -15,15 +15,15 @@ const CAMPAGNE = {
   debut: PROMO.debut,
   fin: PROMO.fin,
   href: '/creations/evenements-saisonniers/octobre-rose',
-  texte: "Octobre Rose — 1 € reversé par convive à la recherche contre le cancer du sein",
-  texteMobile: "Octobre Rose — 1 € reversé par convive →",
+  texte: "Octobre Rose : 1 € reversé par convive à la recherche contre le cancer du sein",
+  texteMobile: "Octobre Rose : 1 € reversé par convive →",
   cta: "Découvrir l'offre",
   /* Anglais : les textes de campagne changent à chaque campagne, ils vivent
      donc ici avec le reste, pas dans lib/en/interface.js. La page de l'offre
      n'existe qu'en français : le lien y mène directement, sans passer par la
      redirection /en. */
-  texteEn: "Pink October — €1 per guest donated to breast cancer research",
-  texteMobileEn: "Pink October — €1 per guest donated →",
+  texteEn: "Pink October: €1 per guest donated to breast cancer research",
+  texteMobileEn: "Pink October: €1 per guest donated →",
   ctaEn: 'See the offer',
   regionEn: 'Pink October campaign',
   fermerEn: 'Close banner',

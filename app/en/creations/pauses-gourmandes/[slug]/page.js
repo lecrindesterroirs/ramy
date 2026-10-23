@@ -31,7 +31,7 @@ function FicheEn() {
     ? [{
         label: 'Box sizes',
         value: produit.coffrets
-          .map(c => `${c.pieces} pieces · ${c.sub.replace(/(\d+)\s*à\s*(\d+)\s*pers\.?/, '$1–$2 people')} · €${c.price.toFixed(2)}`)
+          .map(c => `${c.pieces} pieces · ${c.sub.replace(/(\d+)\s*à\s*(\d+)\s*pers\.?/, '$1 to $2 people')} · €${c.price.toFixed(2)}`)
           .join('\n'),
       }]
     : []

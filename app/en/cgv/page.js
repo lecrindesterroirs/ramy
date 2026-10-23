@@ -17,14 +17,14 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 1 — Scope</h2>
+        <h2 style={h2Style}>Article 1, Scope</h2>
         <p style={pStyle}>
           These Terms and Conditions of Sale apply to all event catering services offered by L&apos;Écrin Traiteur (L&apos;Écrin des Terroirs SASU, SIRET 100 102 672 00019) to professional clients (companies, associations, public bodies) located in the Paris region. They govern the whole of the contractual relationship between L&apos;Écrin Traiteur and its clients.
         </p>
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 2 — Services offered</h2>
+        <h2 style={h2Style}>Article 2, Services offered</h2>
         <p style={p16}>
           L&apos;Écrin Traiteur provides event catering for companies: breakfasts, afternoon breaks, lunch trays, cocktail receptions, buffets and seasonal events, prepared with selected local artisans.
         </p>
@@ -37,7 +37,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 2bis — Intellectual property and copyright</h2>
+        <h2 style={h2Style}>Article 2bis, Intellectual property and copyright</h2>
         <p style={p16}>
           <strong style={gras}>All the content of the site</strong> (text, images, photographs, videos, graphics, arrangements, layouts, code, logos, trade marks, designs) is the exclusive property of L&apos;Écrin Traiteur or is used with the authorisation of its respective owners. This content is protected by the French Intellectual Property Code and by international copyright law.
         </p>
@@ -50,7 +50,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 2ter — Prohibited uses and re-uses of the content</h2>
+        <h2 style={h2Style}>Article 2ter, Prohibited uses and re-uses of the content</h2>
         <p style={p16}>The client expressly undertakes:</p>
         <p style={pStyle}>
           • <strong style={gras}>Not to</strong> reproduce, copy, download, print, save or archive the photographs and images of the site, except strictly privately and without passing them on;<br /><br />
@@ -66,7 +66,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 2quater — Limits of personal use</h2>
+        <h2 style={h2Style}>Article 2quater, Limits of personal use</h2>
         <p style={p16}>Consulting the site for personal purposes does not authorise the client to:</p>
         <p style={p16}>
           • Share the photographs with third parties in a way that bypasses access to the site;<br />
@@ -80,7 +80,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 2quinquies — Database maker&apos;s right</h2>
+        <h2 style={h2Style}>Article 2quinquies, Database maker&apos;s right</h2>
         <p style={p16}>
           The L&apos;Écrin Traiteur site constitutes a database within the meaning of articles L.112-3 and L.341-1 of the French Intellectual Property Code. It gathers, verifies and systematically presents a body of data: prices per service and per person, reference quantities per guest and per format, costed budgets by headcount, compositions, lead times and delivery areas, product sheets and practical guides.
         </p>
@@ -99,7 +99,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 3 — How to order</h2>
+        <h2 style={h2Style}>Article 3, How to order</h2>
         <p style={p16}>
           Orders may be placed by telephone on +33 1 74 54 23 10 or by email at commercial@lecrin-traiteur.fr. Every order must be confirmed before <strong style={gras}>2 pm on the day before</strong> the requested delivery.
         </p>
@@ -109,7 +109,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 4 — Hygiene and allergens</h2>
+        <h2 style={h2Style}>Article 4, Hygiene and allergens</h2>
         <p style={p16}>
           Products are delivered in accordance with the food hygiene standards in force. On receipt, chilled products must be kept between 0°C and 4°C and eaten within <strong style={gras}>4 hours</strong> of delivery. At room temperature, consumption must not exceed <strong style={gras}>2 hours</strong>. L&apos;Écrin Traiteur accepts no liability where the client does not observe these storage conditions.
         </p>
@@ -119,7 +119,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 5 — Prices and payment</h2>
+        <h2 style={h2Style}>Article 5, Prices and payment</h2>
         <p style={p16}>
           All prices are shown in euros excluding VAT, to which VAT is added at the rate in force. A <strong style={gras}>flat charge of €29 excl. VAT</strong> applies to any delivery within Paris and the neighbouring towns. Specific charges may apply to other parts of the Paris region, stated on the quote.
         </p>
@@ -132,7 +132,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 6 — Delivery</h2>
+        <h2 style={h2Style}>Article 6, Delivery</h2>
         <p style={p16}>
           Delivery is made within the slot agreed when ordering, with a tolerance of <strong style={gras}>30 minutes</strong>. Deliveries start from <strong style={gras}>6:30 am</strong>.
         </p>
@@ -145,7 +145,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 7 — Cancellation</h2>
+        <h2 style={h2Style}>Article 7, Cancellation</h2>
         <p style={p16}>
           Cancellation is free of charge up to <strong style={gras}>2 working days before the delivery date, before 10 am</strong>. For drinks-only orders, cancellation is possible until 5 pm on the day before delivery.
         </p>
@@ -155,7 +155,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 8 — Equipment and force majeure</h2>
+        <h2 style={h2Style}>Article 8, Equipment and force majeure</h2>
         <p style={p16}>
           Any equipment lent by L&apos;Écrin Traiteur (dishes, stands, thermoses) must be returned clean within <strong style={gras}>72 hours</strong>. Damage or loss will be charged to the client at replacement value.
         </p>
@@ -165,7 +165,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9 — Personal data (GDPR)</h2>
+        <h2 style={h2Style}>Article 9, Personal data (GDPR)</h2>
         <p style={pStyle}>
           Personal data collected in the course of the commercial relationship is processed in accordance with the General Data Protection Regulation (GDPR). The client has rights of access, rectification, erasure and portability over their data. To exercise these rights, contact L&apos;Écrin Traiteur at commercial@lecrin-traiteur.fr or by post at 2, Allée des Bergeronnettes, 92150 Suresnes, France. For more information, see our{' '}
           <a href="/en/confidentialite" style={{ color: 'var(--accent-deep)', textDecoration: 'none' }}>Privacy Policy</a>.
@@ -173,7 +173,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9bis — Penalties for infringement of intellectual property rights</h2>
+        <h2 style={h2Style}>Article 9bis, Penalties for infringement of intellectual property rights</h2>
         <p style={p16}>
           <strong style={gras}>In the event of infringement</strong> of the intellectual property rights of L&apos;Écrin Traiteur, including but not limited to the unauthorised reproduction of photographs, content or images, the infringer will be liable for:
         </p>
@@ -192,7 +192,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9ter — Extended limitations of liability</h2>
+        <h2 style={h2Style}>Article 9ter, Extended limitations of liability</h2>
         <p style={p16}>
           <strong style={gras}>L&apos;Écrin Traiteur accepts no liability</strong> in the event of:
         </p>
@@ -208,7 +208,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9quater — Security and confidentiality of the content</h2>
+        <h2 style={h2Style}>Article 9quater, Security and confidentiality of the content</h2>
         <p style={p16}>
           The photographs and images shown on the site represent the creative work and the innovations of L&apos;Écrin Traiteur. Their unauthorised disclosure could compromise the company&apos;s commercial and professional secrets.
         </p>
@@ -218,7 +218,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9quinquies — Use of photographs and content by the company</h2>
+        <h2 style={h2Style}>Article 9quinquies, Use of photographs and content by the company</h2>
         <p style={p16}>
           <strong style={gras}>Save for explicit written agreement to the contrary</strong>, L&apos;Écrin Traiteur reserves the right to use the photographs, videos and visual content published on its site and in its commercial materials in perpetuity, worldwide and by any means (digital, printed, social networks, advertising campaigns).
         </p>
@@ -228,7 +228,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9sexies — Technical and security measures</h2>
+        <h2 style={h2Style}>Article 9sexies, Technical and security measures</h2>
         <p style={p16}>
           L&apos;Écrin Traiteur reserves the right to put in place and strengthen technical measures protecting the content (watermarking, metadata, CSS protection, download limits) without prior notice.
         </p>
@@ -241,7 +241,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Article 9septies — Verification of contractual obligations</h2>
+        <h2 style={h2Style}>Article 9septies, Verification of contractual obligations</h2>
         <p style={p16}>
           The client accepts that L&apos;Écrin Traiteur may verify at any time that the restrictions on use set out in these terms are being observed. Such verification may include:
         </p>
@@ -256,7 +256,7 @@ export default function TermsOfSale() {
       </div>
 
       <div style={{ ...sectionStyle, borderBottom: 'none', paddingBottom: 0, marginBottom: 0 }}>
-        <h2 style={h2Style}>Article 10 — Governing law and jurisdiction</h2>
+        <h2 style={h2Style}>Article 10, Governing law and jurisdiction</h2>
         <p style={p16}>
           These terms are governed by French law. In the event of a dispute between L&apos;Écrin Traiteur and a professional client, and failing an amicable resolution within 30 days, the Tribunal de Commerce de Nanterre shall have sole jurisdiction.
         </p>

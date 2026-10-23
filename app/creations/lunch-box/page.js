@@ -19,7 +19,7 @@ const SEO_ARTICLE = `
   <p>La <strong>lunch box d'entreprise</strong> répond à un besoin simple : nourrir bien, individuellement et sans installation. Formations, journées d'étude, équipes en déplacement, tournages, chaque convive reçoit sa boîte complète, prête à emporter ou à ouvrir sur place. L'Écrin Traiteur livre vos lunch box à Paris et en Île-de-France, préparées le matin même.</p>
 
   <h2>Une boîte complète, composée comme un vrai repas</h2>
-  <p>Chaque lunch box associe un plat travaillé, un accompagnement et une touche sucrée, dans un contenant soigné et facile à transporter. Ce n'est pas un sandwich de dépannage : c'est un déjeuner pensé, avec des produits frais et des recettes qui changent, de quoi faire d'une journée de formation un souvenir un peu meilleur.</p>
+  <p>Chaque lunch box associe un plat travaillé, un accompagnement et une touche sucrée, dans un contenant soigné et facile à transporter. Ce n'est pas un sandwich de dépannage : c'est un déjeuner pensé, préparé le matin même, avec des recettes qui changent, de quoi faire d'une journée de formation un souvenir un peu meilleur.</p>
 
   <h2>Le bon format pour les journées contraintes</h2>
   <p>La lunch box brille là où le plateau repas est trop formel et le buffet impossible : horaires serrés, salles sans office, groupes qui se déplacent entre deux sites. Distribution en quelques minutes, zéro vaisselle, tri des emballages simplifié. Indiquez les régimes spécifiques (végétarien, sans gluten) à la commande : chacun reçoit une boîte équivalente.</p>
@@ -338,7 +338,7 @@ const ANSWER_BLOCK = (
     plusTitre="Livraison, minimum de commande et régimes"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Les garnitures s'adaptent aux régimes de votre équipe : végétarien, sans porc, sans gluten sur demande. <a href="/devis">Demandez un devis sous 24h</a>.</>}
   >
-    Une lunch box — entrée, sandwich et dessert — va de <strong>18,90 à 21,90 € HT par personne</strong>, serviette et couverts inclus, boisson en option. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Une lunch box (entrée, sandwich et dessert) va de <strong>18,90 à 21,90 € HT par personne</strong>, serviette et couverts inclus, boisson en option. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
   </BlocReponse>
 )
 

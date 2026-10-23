@@ -15,7 +15,7 @@ const a = (href, t, ext) => `<a href="${href}"${ext ? ' target="_blank" rel="noo
 
 const FAQ = [
   { name: "Que penser de L'Écrin Traiteur ?", answer: `L'Écrin Traiteur est noté ${GBP_RATING_LABEL} sur 5 sur Google (${GBP_REVIEWS} avis). Ce traiteur d'entreprise de Boulogne-Billancourt a servi ${PROOF.personnes.fr} personnes pour ${PROOF.entreprises.fr} entreprises, dont Bain & Company, Chanel, AbbVie et Sia Partners. Ses points forts cités par les clients : la qualité des produits d'artisans, la ponctualité dès 6h30 et le service.` },
-  { name: "L'Écrin Traiteur est-il fiable pour un événement d'entreprise ?", answer: "Bain & Company nous confie des petits-déjeuners de réunion plusieurs fois par mois depuis février 2026, et Sia Partners revient régulièrement pour des matinées d'une centaine de personnes. Le détail est dans nos cas clients." },
+  { name: "L'Écrin Traiteur est-il fiable pour un événement d'entreprise ?", answer: "Bain & Company nous confie des petits-déjeuners de réunion plusieurs fois par mois depuis février 2026, et Sia Partners revient régulièrement pour des matinées d'équipe. Le détail est dans nos cas clients." },
   { name: "Où lire les avis sur L'Écrin Traiteur ?", answer: `Sur la fiche Google de L'Écrin Traiteur (${GBP_REVIEWS} avis, ${GBP_RATING_LABEL} sur 5). Les avis y sont publiés par les clients eux-mêmes.` },
 ]
 
@@ -71,7 +71,7 @@ export default function AvisClients() {
         {
           h2: T_AVIS.confianceH2,
           before: [
-            `Among our clients: Bain & Company, Sia Partners, Chanel, AbbVie, Carglass, Valtech, Ringover and Coyote. Bain & Company order meeting breakfasts several times a month; Sia Partners come back for mornings of around a hundred people, set up by 7:30 am. The detail is in our ${a('/en/univers/cas-clients', 'client cases')}.`,
+            `Among our clients: Bain & Company, Sia Partners, Chanel, AbbVie, Carglass, Valtech, Ringover and Coyote. Bain & Company order meeting breakfasts several times a month; Sia Partners come back for team mornings, set up by 7:30 am. The detail is in our ${a('/en/univers/cas-clients', 'client cases')}.`,
           ],
         },
         {
@@ -95,7 +95,7 @@ export default function AvisClients() {
         {
           h2: 'Ils nous font confiance',
           before: [
-            `Parmi nos clients : Bain & Company, Sia Partners, Chanel, AbbVie, Carglass, Valtech, Ringover et Coyote. Bain & Company nous confie des petits-déjeuners de réunion plusieurs fois par mois ; Sia Partners, des matinées d'une centaine de personnes installées à 7h30. Le détail est dans nos ${a('/univers/cas-clients', 'cas clients')}.`,
+            `Parmi nos clients : Bain & Company, Sia Partners, Chanel, AbbVie, Carglass, Valtech, Ringover et Coyote. Bain & Company nous confie des petits-déjeuners de réunion plusieurs fois par mois ; Sia Partners, des matinées d'équipe installées à 7h30. Le détail est dans nos ${a('/univers/cas-clients', 'cas clients')}.`,
           ],
         },
         {

@@ -22,7 +22,7 @@ const SEO_ARTICLE = `
   <p>Le <strong>plateau repas d'entreprise</strong> résout l'équation des déjeuners de réunion : un repas complet, individuel et soigné, servi directement en salle sans interrompre les échanges. Conseils d'administration, formations, réunions qui débordent sur la pause déjeuner, L'Écrin Traiteur livre vos plateaux à Paris et en Île-de-France, préparés le matin même.</p>
 
   <h2>Des recettes de saison, pensées comme au restaurant</h2>
-  <p>Chaque plateau se compose d'une entrée, d'un plat, d'un dessert et de pain, construits autour de recettes de saison : filet de poulet et pommes de terre rôties, dés de saumon poêlés, quinoa et falafels, pâtes au pesto et mozzarella. Nous travaillons des produits frais et de saison, dressés avec le soin d'une assiette de restaurant, dans un coffret élégant qui tient la comparaison face aux clients les plus exigeants.</p>
+  <p>Chaque plateau se compose d'une entrée, d'un plat, d'un dessert et de pain, construits autour de recettes de saison : filet de poulet et pommes de terre rôties, dés de saumon poêlés, quinoa et falafels, pâtes au pesto et mozzarella. Les recettes suivent la saison et sont dressées avec le soin d'une assiette de restaurant, dans un coffret élégant qui tient la comparaison face aux clients les plus exigeants.</p>
 
   <h2>Régimes et contraintes alimentaires : tout le monde à la même table</h2>
   <p>Végétarien, vegan, sans gluten, allergies spécifiques : indiquez les contraintes de vos convives à la commande et nous composons des plateaux équivalents en qualité et en générosité. Notre carte est par ailleurs pensée sans porc et halal, pour être partagée par toutes vos équipes. Personne ne doit se contenter d'une salade par défaut pendant que les autres déjeunent bien, c'est un principe non négociable de notre carte. Le détail de notre approche est dans notre guide <a href="/journal/traiteur-vegan-vegetarien-entreprise-paris">traiteur végan et végétarien en entreprise</a>.</p>
@@ -414,7 +414,7 @@ const ANSWER_BLOCK = (
     plusTitre="Livraison, minimum de commande et régimes"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Recettes végétariennes, poulet ou poisson au choix, toutes sans porc. Dites-nous vos contraintes alimentaires et nous adaptons la sélection : <a href="/devis">devis sous 24h</a>.</>}
   >
-    Un plateau repas complet — entrée, plat et dessert — démarre à <strong>28,90 € HT par personne</strong> : 29,90 € en poulet, 30,90 € en poisson, couverts et serviette inclus. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Un plateau repas complet (entrée, plat et dessert) démarre à <strong>28,90 € HT par personne</strong> : 29,90 € en poulet, 30,90 € en poisson, couverts et serviette inclus. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
   </BlocReponse>
 )
 

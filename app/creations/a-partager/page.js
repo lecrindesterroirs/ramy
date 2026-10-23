@@ -12,7 +12,7 @@ import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../lib/i18n'
+import { estAnglais } from '../../../lib/i18nBase'
 import { enMenu, prixMenuEn } from '../../../lib/en/produits/aPartager'
 
 /*
@@ -59,7 +59,7 @@ const SEO_EN = `
   <p>Some company lunches do not need a set format, they need <strong>one generous menu to share in the middle of the table</strong>. A team catch-up, welcoming a partner, a department lunch: our sharing menus bring together salads, boards and canapés, delivered at the time you choose anywhere in Paris and the Paris region. The menus arrive plated, ready to set down on the table.</p>
 
   <h2>Sharing, an underrated team ritual</h2>
-  <p>A menu set down in the middle changes the dynamic of a room: people help themselves, pass things along, comment. Each menu balances savoury pieces and sweet ones, made to travel from hand to hand — generous, and easy to eat standing or seated.</p>
+  <p>A menu set down in the middle changes the dynamic of a room: people help themselves, pass things along, comment. Each menu balances savoury pieces and sweet ones, made to travel from hand to hand, generous, and easy to eat standing or seated.</p>
 
   <h2>Choosing the right menu</h2>
   <p>Allow one menu for 8 to 12 people, topping it up according to appetite and the hour. Le Méditerranéen, Le Parisien or Le Jardin (100% vegetarian): our team helps you compose and size the order.</p>

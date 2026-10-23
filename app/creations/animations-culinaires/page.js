@@ -10,7 +10,8 @@ import Footer from '../../../components/Footer'
 import Reveal from '../../../components/Reveal'
 import CategoryClosing from '../../../components/CategoryClosing'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
-import { UNIVERS, UNIVERS_LABEL, slugAnim, ANIMATIONS } from './data'
+import { UNIVERS, UNIVERS_LABEL, slugAnim, ANIMATIONS, prixDesAnimation } from './data'
+import { ANIMATION_DES, euroFr } from '../../../lib/prixEntree'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
@@ -109,7 +110,7 @@ function AnimationCard({ produit }) {
           {produit.description}
         </p>
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: '#9B9590', marginTop: '14px' }}>
-          Animation live · sur devis
+          {prixDesAnimation(produit) ? `Animation live · dès ${euroFr(prixDesAnimation(produit))} HT` : 'Animation live · sur devis'}
         </p>
       </div>
     </Link>
@@ -308,7 +309,7 @@ const ANSWER_BLOCK = (
     plusTitre="Délai de réservation et ce que nous vérifions"
     plus={<>Une animation se réserve au moins une semaine à l'avance : nous vérifions l'accès, le point d'eau et l'électricité, puis nous vous adressons une proposition sous 24h, mise en place et matériel compris. <a href="/devis">Demander un devis</a>.</>}
   >
-    Nos animations culinaires sont chiffrées sur devis, <strong>à partir de 600 € HT</strong>, selon le nombre de convives et la mise en place sur votre site. Un artisan vient préparer devant vos équipes, à Paris et en Île-de-France.
+    Nos animations culinaires sont chiffrées sur devis, <strong>à partir de {euroFr(ANIMATION_DES)} HT</strong>, selon le nombre de convives et la mise en place sur votre site. Un artisan vient préparer devant vos équipes, à Paris et en Île-de-France.
   </BlocReponse>
 )
 

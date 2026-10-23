@@ -20,6 +20,7 @@ function useLangue() {
   return estAnglais(chemin) ? 'en' : 'fr'
 }
 import { lireChemin, lireParcours, occasionPour } from '../../lib/parcours'
+import { trackPhoneClick } from '../../lib/tracking'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -241,6 +242,12 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
           )
         })}
       </div>
+
+      {/* Téléphone dès l'étape 1 : une partie des acheteurs préfère appeler. */}
+      <p className="step1-tel" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', textAlign: 'center', marginTop: '28px' }}>
+        {langue === 'en' ? 'Prefer to talk it through? ' : 'Vous préférez en parler ? '}
+        <a href="tel:+33174542310" data-emplacement="devis_etape1" onClick={trackPhoneClick} style={{ color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid rgba(17,17,17,0.25)' }}>01 74 54 23 10</a>
+      </p>
     </div>
   )
 }
@@ -800,7 +807,7 @@ export default function Contact() {
 
   return (
     <>
-      <main className="devis-main" style={{ background: '#FFFFFF', minHeight: '100vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      <main className="devis-main" style={{ background: '#FFFFFF', minHeight: 'min(100vh, 720px)', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', position: 'relative' }}>
 
         <h1 style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
           {t('devis.h1', langue)}
@@ -858,7 +865,7 @@ export default function Contact() {
 
             {/* Step content : centré, hauteur stable d'une étape à l'autre */}
             <div className="devis-stage" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-              <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '440px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '32px 40px 120px' }}>
+              <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '24px 40px 96px' }}>
                 {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} isOctobreRose={isOctobreRose} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} parcours={parcours} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} accent={accent} />}

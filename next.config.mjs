@@ -77,6 +77,9 @@ const nextConfig = {
       // Ancienne section « Cocktails & Buffets » supprimée → redirigée vers /creations/cocktails
       { source: '/creations/cocktails-et-buffets', destination: '/creations/cocktails', permanent: true },
       { source: '/creations/cocktails-et-buffets/:slug*', destination: '/creations/cocktails', permanent: true },
+      // Fiche artisan retirée (décision de Ramy, 22 oct. 2026 : fournisseur non nommé publiquement)
+      { source: '/univers/nos-artisans/un-passage-a-lautre', destination: '/univers/nos-artisans', permanent: true },
+      { source: '/en/univers/nos-artisans/un-passage-a-lautre', destination: '/en/univers/nos-artisans', permanent: true },
       // Animations renommées → anciennes URLs redirigées vers les nouveaux slugs
       // Formule cocktail du Chef Stuart retirée du site (oct. 2026)
       { source: '/creations/cocktails/chef-stuart', destination: '/creations/cocktails', permanent: true },

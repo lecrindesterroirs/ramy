@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { estAnglais } from '../../../lib/i18n'
+import { estAnglais } from '../../../lib/i18nBase'
 import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
@@ -66,7 +66,7 @@ const SEO_EN = `
   <p>The <strong>corporate gift box</strong> is the gesture that stays: thanking a loyal client, congratulating a team, an end-of-year attention for your partners. Where an email is forgotten, a gourmet box is unwrapped, shared and talked about. L'Écrin Traiteur delivers your boxes in Paris and the Paris region, or prepares them to be handed out at your event.</p>
 
   <h2>Every box can be personalised</h2>
-  <p>Each box can be adapted to your image: <strong>an adjusted assortment</strong>, the number of pieces, ribbons and packaging in your colours, a personalised message, your logo added. For a product launch or a premium client gift, we design boxes entirely to measure — tell us about your project and we take care of the rest.</p>
+  <p>Each box can be adapted to your image: <strong>an adjusted assortment</strong>, the number of pieces, ribbons and packaging in your colours, a personalised message, your logo added. For a product launch or a premium client gift, we design boxes entirely to measure: tell us about your project and we take care of the rest.</p>
 
   <h2>Madeleines, macarons, cookies, chocolates: artisans we name</h2>
   <p>An L'Écrin box contains no anonymous products: <strong>Mado Paris</strong> madeleines, with a reputation as the best in Paris, <strong>Pierre Morel</strong> macarons, <strong>Laura Todd</strong> cookies, artisan chocolates. Names that mean something to people who know, and give the gift a story to tell, well beyond the generic box of chocolates.</p>
@@ -92,7 +92,7 @@ const SEO_ARTICLE = `
 const HERO = {
   label: 'Coffrets Cadeaux',
   description: 'Des coffrets gourmands prêts à offrir · madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, cakes maison. Idéal pour remercier un client ou marquer un moment d\'équipe.',
-  hero: '/hero-coffrets-cadeaux.webp',
+  hero: '/prod-madeleines-50.webp',
 }
 
 const COFFRETS = [

@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     images: ogImages('/hero-bg2.webp'),
     title: "Notre Maison | L'Écrin Traiteur",
-    description: "L'histoire de L'Écrin Traiteur : artisans partenaires, livraison soignée, produits de qualité pour vos équipes.",
+    description: "L'histoire de L'Écrin Traiteur : artisans nommés, commande jusqu'à 14h la veille, livraison dès 6h30 à Paris et en Île-de-France.",
   },
 }
 

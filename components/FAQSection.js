@@ -73,7 +73,7 @@ const faqsEn = [
   },
   {
     question: 'Do you provide cups and napkins?',
-    reponse: 'Yes, everything is included: cups, napkins, disposable plates and cutlery, properly presented. Every order arrives ready to serve. There is nothing for you to handle — just the moment with your team.',
+    reponse: 'Yes, everything is included: cups, napkins, disposable plates and cutlery, properly presented. Every order arrives ready to serve. There is nothing for you to handle, just the moment with your team.',
   },
   {
     question: 'Can an order be changed or cancelled?',

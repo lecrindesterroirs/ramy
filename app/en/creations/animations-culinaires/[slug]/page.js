@@ -4,7 +4,8 @@ import { useEffect, Suspense } from 'react'
 import { useParams, notFound } from 'next/navigation'
 import { useUrlSearchParams } from '../../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../../components/GalleryFiche'
-import { ANIMATIONS, slugAnim } from '../../../../creations/animations-culinaires/data'
+import { ANIMATIONS, slugAnim, prixDesAnimation } from '../../../../creations/animations-culinaires/data'
+import { euroEn } from '../../../../../lib/prixEntree'
 import { enAnimation, UNIVERS_EN } from '../../../../../lib/en/produits/animations'
 
 /*
@@ -44,7 +45,7 @@ function FicheEn() {
       subtitle={UNIVERS_EN[anim.univers] || ''}
       img={anim.img}
       price={null}
-      description={`${en.description} A live station set up at your venue, with a chef or a server on site. Priced by headcount and length, on quote.`}
+      description={`${en.description} A live station set up at your venue, with a chef or a server on site. ${prixDesAnimation(anim) ? `From ${euroEn(prixDesAnimation(anim))} excl. VAT per station, set-up and portions included; the quote follows headcount and length.` : 'Priced by headcount and length, on quote.'}`}
       listLabel={en.compo?.length ? 'On the station' : 'Composition'}
       listItems={en.compo ?? []}
       related={voisines}
@@ -58,7 +59,7 @@ function FicheEn() {
       backLabel="Back to live stations"
       seoEyebrow="Live food station · Corporate catering"
       seoHtml={en.article}
-      devisPrestation="Animations culinaires"
+      devisPrestation="Événement sur mesure"
       devisTitre="A live station for your event?"
       devisSousTitre="Answer in 30 seconds, personalised quote within 24 hours."
     />

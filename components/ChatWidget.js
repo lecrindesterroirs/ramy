@@ -495,7 +495,7 @@ export default function ChatWidget() {
 
         @media (max-width: 768px) {
           /* La barre d'action mobile occupe déjà le bas de l'écran. */
-          .chat-launcher { right: 16px; bottom: 88px; width: 50px; height: 50px; }
+          .chat-launcher { right: 14px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); width: 46px; height: 46px; }
           .chat-launcher > svg { width: 23px; height: 23px; }
           .chat-launcher-txt { display: none; }
           .chat-grille { grid-template-columns: 1fr; gap: 0; }

@@ -11,7 +11,9 @@ import RelatedLinks from '../../../../components/RelatedLinks'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import FicheAsavoir from '../../../../components/FicheAsavoir'
 import { asavoirAnimation } from '../../../../lib/ficheAsavoir'
-import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim } from '../data'
+import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim, prixDesAnimation } from '../data'
+import { euroFr } from '../../../../lib/prixEntree'
+import { productOfferPolicy } from '../../../../lib/site'
 
 function AnimationDetailInner() {
   const { slug } = useParams()
@@ -50,8 +52,25 @@ function AnimationDetailInner() {
           ...(c.href ? { item: `${BASE}${c.href}` } : {}),
         })),
       },
-      // Pas de Product : animation sur devis (pas de prix). Un Product sans offer,
-      // review ni aggregateRating est rejeté par Google (extrait produit invalide).
+      // Product seulement quand un prix « dès » existe (plancher des animations) :
+      // un Product sans offer est rejeté par Google.
+      ...(prixDesAnimation(anim) ? [{
+        '@type': 'Product',
+        name: anim.nom,
+        description: anim.description,
+        image: `${BASE}${anim.img}`,
+        brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
+        category: 'Animation culinaire',
+        offers: {
+          '@type': 'AggregateOffer',
+          lowPrice: prixDesAnimation(anim).toFixed(2),
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+          areaServed: 'Île-de-France',
+          url: `${BASE}/creations/animations-culinaires/${slug}`,
+          ...productOfferPolicy(),
+        },
+      }] : []),
     ],
   }
 
@@ -102,7 +121,7 @@ function AnimationDetailInner() {
         </div>
 
         {/* ── Bloc « À savoir » : format, composition, devis, régimes (rendu serveur) ── */}
-        <FicheAsavoir {...asavoirAnimation(anim)} paddingBottom="8px" />
+        <FicheAsavoir {...asavoirAnimation({ ...anim, prixDes: prixDesAnimation(anim) })} paddingBottom="8px" />
 
         {/* ── Article SEO + devis rapide ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>
@@ -114,7 +133,7 @@ function AnimationDetailInner() {
           </h2>
           <div className="fiche-article-body" dangerouslySetInnerHTML={{ __html: seoArticle }} />
           <DevisRapide
-            defaultPrestation="Cocktail / Buffet"
+            defaultPrestation="Événement sur mesure"
             titre="Une animation pour votre événement d'entreprise ?"
             sousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
           />
@@ -212,9 +231,14 @@ function AnimGalleryFiche({ anim, universLabel }) {
 
         {/* Bloc action centré : sur devis + CTA */}
         <div style={{ textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
-            Sur devis
+          <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: prixDesAnimation(anim) ? '6px' : '16px' }}>
+            {prixDesAnimation(anim) ? `dès ${euroFr(prixDesAnimation(anim))} HT` : 'Sur devis'}
           </p>
+          {prixDesAnimation(anim) && (
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '16px' }}>
+              par animation, installation et personne sur place comprises
+            </p>
+          )}
 
           <a
             href="/devis"
@@ -222,7 +246,7 @@ function AnimGalleryFiche({ anim, universLabel }) {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#FFFFFF' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
           >
-            Obtenir un devis →
+            Obtenir un devis
           </a>
         </div>
       </div>

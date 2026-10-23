@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { estAnglais, lienLocaliseDans } from '../lib/i18nBase'
 import { t } from '../lib/en/interface'
@@ -39,12 +40,24 @@ export default function Footer() {
   const chemins = useEnChemins()
   const lien = (href) => lienLocaliseDans(chemins, href, langue, slugsEn)
   const mot = (o, champ = 'label') => (langue === 'en' && o[champ + 'En']) || o[champ]
+  // Sur téléphone, les colonnes se replient en accordéons (une seule ouverte à la fois).
+  const [ouverte, setOuverte] = useState(null)
+  // Page devis : pied de page allégé, pour ne pas détourner du formulaire.
+  const allege = /^\/(en\/)?devis\/?$/.test(pathname)
 
   return (
     <footer style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
 
+      {allege && (
+        <div className="footer-allege" style={{ maxWidth: '1440px', margin: '0 auto', padding: '28px 72px', display: 'flex', flexWrap: 'wrap', gap: '12px 32px', alignItems: 'center', justifyContent: 'center', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)' }}>
+          <span>{langue === 'en' ? 'A question before sending?' : 'Une question avant d’envoyer ?'}</span>
+          <a href="tel:+33174542310" data-emplacement="pied_de_page" onClick={trackPhoneClick} style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>01 74 54 23 10</a>
+          <a href="mailto:commercial@lecrin-traiteur.fr" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>commercial@lecrin-traiteur.fr</a>
+        </div>
+      )}
+
       {/* ── Main ── */}
-      <div className="footer-main" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px 64px' }}>
+      {!allege && <div className="footer-main" style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 72px 64px' }}>
         <div className="footer-grid" style={{ display: 'flex', alignItems: 'flex-start', gap: '48px' }}>
 
           {/* Logo + tagline */}
@@ -128,9 +141,13 @@ export default function Footer() {
                 { label: '63 bis rue de Sèvres, Boulogne-Billancourt', href: 'https://www.google.com/maps/search/?api=1&query=63+bis+rue+de+Sèvres+92100+Boulogne-Billancourt' },
               ]},
             ].map(col => (
-              <div key={col.title}>
-                <span style={colTitleStyle}>{mot(col, 'title')}</span>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
+              <div key={col.title} className={`footer-col${ouverte === col.title ? ' footer-col-ouverte' : ''}`}>
+                <button type="button" className="footer-col-titre" style={{ ...colTitleStyle, background: 'none', border: 'none', padding: 0, textAlign: 'left', cursor: 'default' }}
+                  aria-expanded={ouverte === col.title}
+                  onClick={() => setOuverte(o => (o === col.title ? null : col.title))}>
+                  {mot(col, 'title')}
+                </button>
+                <div className="footer-col-liens" style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
                   {col.links.map(l => {
                     const ext = l.href.startsWith('http')
                     return (
@@ -148,7 +165,7 @@ export default function Footer() {
           </div>
 
         </div>
-      </div>
+      </div>}
 
       {/* ── Bottom bar ── */}
       <div style={{ borderTop: '1px solid rgba(17,17,17,0.07)' }}>
@@ -180,7 +197,7 @@ export default function Footer() {
           {/* Droite */}
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.6)', letterSpacing: '0.03em' }}>
-              © 2026 L'Écrin Traiteur — L'Écrin des Terroirs
+              © 2026 L'Écrin Traiteur · L'Écrin des Terroirs
             </p>
           </div>
 
@@ -192,7 +209,15 @@ export default function Footer() {
           .footer-main { padding: 60px 24px 48px !important; }
           .footer-grid { flex-direction: column !important; gap: 40px !important; }
           .footer-grid > div:first-child { width: 100% !important; }
-          .footer-cols { grid-template-columns: 1fr 1fr !important; gap: 32px 40px !important; }
+          .footer-cols { grid-template-columns: 1fr !important; gap: 0 !important; width: 100% !important; }
+          .footer-col { border-top: 1px solid rgba(17,17,17,0.08); }
+          .footer-col:last-child { border-bottom: 1px solid rgba(17,17,17,0.08); }
+          .footer-col-titre { width: 100%; margin: 0 !important; padding: 16px 28px 16px 0 !important; position: relative; cursor: pointer !important; }
+          .footer-col-titre::after { content: '+'; position: absolute; right: 2px; top: 12px; font-size: 18px; letter-spacing: 0; color: var(--accent-deep); transition: transform 0.2s ease; }
+          .footer-col-ouverte .footer-col-titre::after { transform: rotate(45deg); }
+          .footer-col-liens { display: none !important; padding: 0 0 18px; }
+          .footer-col-ouverte .footer-col-liens { display: flex !important; }
+          .footer-allege { padding: 24px 24px !important; }
           .footer-bottom { flex-direction: column !important; align-items: center !important; gap: 16px !important; padding: 20px 24px !important; }
           .footer-bottom > div:first-child { flex-wrap: wrap !important; gap: 12px 20px !important; justify-content: center !important; }
         }

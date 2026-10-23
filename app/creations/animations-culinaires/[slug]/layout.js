@@ -28,7 +28,7 @@ const OVERRIDES = {
   },
   'location-de-machine-expresso-professionnelle-en-entreprise': {
     title: 'Location de machine expresso en entreprise à Paris',
-    description: "Une machine à expresso installée pour un café de qualité en libre-service, pour vos petits-déjeuners et événements d'entreprise à Paris et en IDF.",
+    description: "Une machine à expresso installée pour un expresso en libre-service, pour vos petits-déjeuners et événements d'entreprise à Paris et en IDF.",
   },
 }
 

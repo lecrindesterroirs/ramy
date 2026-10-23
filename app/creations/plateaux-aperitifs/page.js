@@ -22,7 +22,7 @@ const SEO_ARTICLE = `
   <p>Nos plateaux réunissent le meilleur de nos artisans : bouchées salées, produits de caractère, douceurs à picorer. Le format « à partager » casse la distance entre collègues, on tend le plateau, on compare, on discute. C'est précisément ce qu'on attend d'un apéritif d'équipe, et c'est ce qui le distingue d'un buffet formel.</p>
 
   <h2>Quelles quantités pour un afterwork ?</h2>
-  <p>Comptez <strong>4 à 6 pièces par personne et par heure</strong> pour un apéritif de fin de journée. Pour un afterwork qui se prolonge au-delà de deux heures ou qui remplace le dîner, passez à 10-12 pièces en ajoutant des bouchées plus consistantes. Pensez aux boissons : jus artisanaux et softs premium complètent naturellement la commande.</p>
+  <p>Comptez <strong>4 à 6 pièces par personne et par heure</strong> pour un apéritif de fin de journée. Pour un afterwork qui se prolonge au-delà de deux heures ou qui remplace le dîner, passez à 10-12 pièces en ajoutant des bouchées plus consistantes. Pensez aux boissons : jus Alain Milliat et eaux pétillantes complètent naturellement la commande.</p>
 
   <h2>Commander vos plateaux apéritifs à Paris</h2>
   <p>Commandez avant <strong>14h la veille</strong> en indiquant l'heure exacte de livraison, vos plateaux arrivent prêts à servir, présentation soignée. Facturation entreprise avec TVA. Pour un événement plus ambitieux, notre équipe compose des formats sur mesure sur devis, réponse sous 24h.</p>

@@ -1,4 +1,11 @@
 // Données animations culinaires, module plat (importable serveur + client)
+import { ANIMATION_DES } from '../../../lib/prixEntree'
+
+/* Prix « dès » d'une animation : le plancher de lib/prixEntree.js. La location
+   de machine et les eaux infusées n'ont personne sur place : elles restent
+   sur devis, sans plancher affiché. */
+const SANS_PLANCHER = new Set(['b2', 'ba3'])
+export const prixDesAnimation = (a) => (a && !SANS_PLANCHER.has(a.id) ? ANIMATION_DES : null)
 
 /* Tag court + couleur par univers. */
 export const UNIVERS = {
@@ -32,7 +39,7 @@ export const ANIMATIONS = [
   // ── Petit-déjeuner & Brunch ──
   { id: 'b1', univers: 'brunch', nom: 'Barista', img: '/prod-cafe.webp',
     description: 'Préparation de cafés de spécialité à la demande.',
-    compo: ['Espresso', 'Cappuccino', 'Latte', 'Flat White', 'Chocolat chaud', 'Thés premium'],
+    compo: ['Espresso', 'Cappuccino', 'Latte', 'Flat White', 'Chocolat chaud', 'Thés Mariage Frères'],
     article: `
       <h2>Une animation dégustation de café pour vos petits-déjeuners et événements d'entreprise à Paris</h2>
       <p>Un vrai barista qui prépare espresso, cappuccino, latte et flat white à la demande, c'est le détail qui réveille une matinée de séminaire ou un petit-déjeuner d'accueil. Chacun commande sa boisson, préparée devant lui, avec l'attention et la dégustation de café d'un comptoir de spécialité. L'Écrin Traiteur installe ce bar à café dans vos bureaux ou votre lieu d'événement, à Paris et en Île-de-France.</p>
@@ -42,13 +49,13 @@ export const ANIMATIONS = [
       <p>Prestation sur devis : date, lieu, effectif, durée et accès électrique. On installe la machine et le comptoir, on démonte à la fin, vous n'avez rien à gérer. Idéal pour un petit-déjeuner d'accueil, un salon ou une journée collaborateurs. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
   { id: 'b2', univers: 'brunch', nom: 'Location de Machine Expresso Professionnelle en Entreprise', img: '/prod-machine-expresso.webp',
-    description: 'Une machine à expresso professionnelle installée pour un café de qualité en libre-service.',
-    compo: ['Espresso', 'Lungo', 'Ristretto', 'Décaféiné', 'Sélection de capsules premium', 'Gobelets, sucres & touillettes'],
+    description: 'Une machine à expresso professionnelle installée pour un expresso en libre-service toute la journée.',
+    compo: ['Espresso', 'Lungo', 'Ristretto', 'Décaféiné', 'Sélection de capsules', 'Gobelets, sucres & touillettes'],
     article: `
       <h2>Une machine à expresso professionnelle pour vos bureaux et événements d'entreprise à Paris</h2>
       <p>Un vrai café, tout de suite et sans effort : nous installons une machine à expresso professionnelle dans vos locaux ou sur votre lieu d'événement. Chacun se sert quand il veut, un espresso serré avant une réunion, un allongé pendant la pause. L'Écrin Traiteur met en place cette machine à Paris et en Île-de-France, avec les capsules, les gobelets et tout le nécessaire.</p>
-      <h2>Un café de qualité, en libre-service toute la journée</h2>
-      <p>Espresso, lungo, ristretto ou décaféiné, à partir d'une sélection de capsules premium. La machine reste à disposition pendant toute la prestation : on fournit gobelets, sucres et touillettes, on réassort si besoin, et on reprend le matériel à la fin. Idéal pour un petit-déjeuner d'accueil, un séminaire ou une journée collaborateurs.</p>
+      <h2>Un vrai expresso, en libre-service toute la journée</h2>
+      <p>Espresso, lungo, ristretto ou décaféiné, à partir d'une sélection de capsules. La machine reste à disposition pendant toute la prestation : on fournit gobelets, sucres et touillettes, on réassort si besoin, et on reprend le matériel à la fin. Idéal pour un petit-déjeuner d'accueil, un séminaire ou une journée collaborateurs.</p>
       <h2>Louer une machine à expresso à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, durée, nombre de personnes et accès électrique. Livraison, installation et reprise de la machine compris, vous n'avez rien à gérer. Une option simple pour garder vos équipes et vos invités au café toute la journée. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
