@@ -3,12 +3,12 @@ import { alternatesPourEn } from '../../../lib/i18n'
 
 export const metadata = {
   title: { absolute: 'Healthy, Vegan & Vegetarian Corporate Catering in Paris' },
-  description: 'Healthy corporate caterer in Paris: seasonal fruit, farm yoghurts, pressed juices, vegetarian, vegan and gluten-free options. Delivered from 6:30 am.',
+  description: 'Healthy corporate catering in Paris: fruit skewers, yoghurts, compotes, vegetarian lunch trays and gluten-free options, delivered from 6:30 am.',
   alternates: alternatesPourEn('/traiteur-healthy'),
   openGraph: {
-    images: ogImages('/plateau-fruits.webp'),
+    images: ogImages('/plateau-brochettes-fruits-v2.webp'),
     title: "Healthy, vegan & vegetarian corporate catering | L'Écrin Traiteur",
-    description: 'Seasonal fruit, farm yoghurts, pressed juices and lighter options, in vegetarian, vegan and gluten-free versions. Delivered from 6:30 am across Paris and Île-de-France.',
+    description: 'Fruit skewers, yoghurts, compotes, vegetarian lunch trays and gluten-free options, delivered from 6:30 am across Paris and Île-de-France.',
     locale: 'en_GB',
     type: 'website',
   },

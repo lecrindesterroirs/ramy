@@ -1,2 +1,6 @@
-/* La page traiteur éco-responsable en anglais : la même page, qui lit sa langue dans le chemin. */
-export { default } from '../../traiteur-eco-responsable/page'
+import ThematiqueView from '../../../components/thematiques/ThematiqueView'
+
+/* Même vue serveur que la page française, en anglais. */
+export default function PageEn() {
+  return <ThematiqueView cle="eco" en />
+}

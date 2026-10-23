@@ -2,11 +2,11 @@ import { ogImages } from '../../lib/og'
 import { alternatesPour } from '../../lib/i18n'
 export const metadata = {
   title: { absolute: "Traiteur healthy, vegan et végétarien en entreprise" },
-  description: "Fruits de saison, yaourts fermiers, jus pressés, adaptations sans gluten : petits-déjeuners healthy et végétariens livrés dès 6h30 à Paris et en IDF.",
+  description: "Brochettes de fruits, yaourts, compotes, plateaux repas végétariens et options sans gluten, livrés dès 6h30 à Paris et en Île-de-France. Prix publiés.",
   openGraph: {
-    images: ogImages('/hero-a-partager.webp'),
+    images: ogImages('/plateau-brochettes-fruits-v2.webp'),
     title: "Traiteur Healthy, Vegan & Végétarien | L'Écrin Traiteur",
-    description: "Fruits de saison, yaourts fermiers, jus pressés et options végétariennes, vegan, sans sacrifier le plaisir. Un traiteur d'entreprise livré dès 6h30 à Paris & en IDF.",
+    description: "Brochettes de fruits, yaourts, compotes, plateaux végétariens et options sans gluten, livrés dès 6h30 à Paris et en Île-de-France.",
   },
   alternates: alternatesPour('/traiteur-healthy', { en: true }),
 }
