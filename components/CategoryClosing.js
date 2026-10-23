@@ -2,100 +2,81 @@
 
 import GuidesPratiques from './GuidesPratiques'
 
+import { LIV } from '../lib/calculsPrix'
+import { MINIMUM, euroFr, euroEn } from '../lib/prixEntree'
+import { trackPhoneClick } from '../lib/tracking'
+
 /*
-  Section de clôture des pages catégorie :
-  bande éditoriale (eyebrow + titre + corps) → 4 cartes arguments → CTA devis → article SEO.
-  Chaque page passe ses propres textes pour éviter la redondance entre catégories.
+  Section de clôture des pages catégorie, refaite le 22/10/2026 (audit design) :
+  plus de cartes d'icônes « Produits de qualité / Livraison / Sur mesure /
+  Accompagnement », mais un bloc factuel « Comment ça se passe » : délai,
+  livraison et minimum calculés (lib/prixEntree.js, lib/calculsPrix.js), facture,
+  une vraie citation client, le téléphone. Puis l'article SEO de la page.
+
+  Les anciennes props (eyebrow, title, body, args, ctaQuestion) sont encore
+  passées par certaines pages : elles sont ignorées, pour qu'un seul bloc
+  sobre et identique serve partout. Styles : app/globals.css, préfixe .csp-.
 */
 
-const ICONS = {
-  quality: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l2 2 4-4"/></svg>,
-  delivery: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>,
-  custom: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>,
-  support: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+const TEXTES = {
+  fr: {
+    titre: 'Comment ça se passe',
+    lignes: (liv, min) => [
+      ['Commande', "jusqu'à 14h la veille ; à partir de 50 personnes ou pour plusieurs sites, 48 h de préavis recommandées."],
+      ['Livraison', `dès 6h30, du lundi au vendredi, à Paris et en Île-de-France ; ${liv} HT à Paris et dans les communes proches.`],
+      ['Minimum', `${min} HT de commande.`],
+      ['Facture', 'facture entreprise avec TVA, bon de commande accepté.'],
+      ['Devis', 'réponse sous 24h, avec le détail des quantités.'],
+    ],
+    citation: 'Les madeleines sont très bonnes, grand choix de parfums, viennoiseries, jus, et le service au top. Le livreur nous a même aidé à tout installer.',
+    auteur: 'Rose Jean, Office Manager, Sia Partners',
+    question: 'Une question avant de commander ?',
+    devis: 'Demander un devis',
+    devisHref: '/devis',
+  },
+  en: {
+    titre: 'How it works',
+    lignes: (liv, min) => [
+      ['Ordering', "until 2 pm the day before; from 50 people or across several sites, 48 hours' notice recommended."],
+      ['Delivery', `from 6:30 am, Monday to Friday, across Paris and Île-de-France; ${liv} excl. VAT in Paris and nearby towns.`],
+      ['Minimum', `${min} excl. VAT per order.`],
+      ['Invoice', 'company invoice showing VAT, purchase orders accepted.'],
+      ['Quote', 'reply within 24 hours, with the quantities set out.'],
+    ],
+    citation: 'The madeleines are very good, a wide choice of flavours, pastries, juice, and the service was excellent. The driver even helped us set everything up.',
+    auteur: 'Rose Jean, Office Manager, Sia Partners (translated from French)',
+    question: 'A question before you order?',
+    devis: 'Ask for a quote',
+    devisHref: '/en/devis',
+  },
 }
 
-export const DEFAULT_ARGS = [
-  { icon: 'quality',  titre: 'Produits de qualité',    desc: 'Des ingrédients sélectionnés avec exigence et travaillés dans notre savoir-faire pour des créations raffinées.' },
-  { icon: 'delivery', titre: 'Livraison dès 6h30',     desc: 'Une logistique pensée pour les entreprises, livraison à l\'heure souhaitée à Paris et en Île-de-France.' },
-  { icon: 'custom',   titre: 'Prestations sur mesure', desc: 'Nous prenons en compte vos contraintes alimentaires, votre budget et vos envies pour chaque événement.' },
-  { icon: 'support',  titre: 'Accompagnement dédié',   desc: 'Un interlocuteur unique, dédié et à l\'écoute, pour vous accompagner du devis à la réalisation.' },
-]
-
-/* Mêmes quatre arguments, en anglais. */
-export const DEFAULT_ARGS_EN = [
-  { icon: 'quality',  titre: 'Ingredients that stand up', desc: 'Ingredients chosen with care and worked by hand, for food people remember.' },
-  { icon: 'delivery', titre: 'Delivered from 6:30 am',    desc: 'Logistics built for companies: delivered at the time you choose, across Paris and Île-de-France.' },
-  { icon: 'custom',   titre: 'Built around your event',   desc: 'We work to your dietary needs, your budget and what you actually want, every time.' },
-  { icon: 'support',  titre: 'One person, start to finish', desc: 'A single contact who knows your file, from the quote to the delivery.' },
-]
-
-export default function CategoryClosing({
-  eyebrow,
-  title,
-  body,
-  args,
-  ctaQuestion,
-  seoArticle,
-  lang = 'fr',
-}) {
+export default function CategoryClosing({ seoArticle, lang = 'fr' }) {
   const en = lang === 'en'
-  eyebrow = eyebrow || (en ? 'Built for corporate receptions' : "Pensé pour les réceptions d'entreprise")
-  title = title || (en
-    ? 'Food with real flavour.\nA service that keeps its word.'
-    : 'Des produits qui ont du goût.\nUn service qui tient ses promesses.')
-  body = body || (en
-    ? 'Catering built for companies that care how things taste. Breakfasts, lunch trays, cocktail receptions, buffets: every product is chosen, every delivery is handled properly.'
-    : "Des prestations pensées pour les entreprises qui accordent de l'importance au goût. Petits-déjeuners, plateaux repas, cocktails, buffets : chaque produit est sélectionné, chaque livraison est soignée.")
-  args = args || (en ? DEFAULT_ARGS_EN : DEFAULT_ARGS)
-  ctaQuestion = ctaQuestion || (en ? 'Need something built for your event?' : "Besoin d'une prestation sur mesure ?")
-  const titleLines = title.split('\n')
+  const T = TEXTES[en ? 'en' : 'fr']
+  const lignes = T.lignes(en ? euroEn(LIV) : euroFr(LIV), en ? euroEn(MINIMUM) : euroFr(MINIMUM))
   return (
     <>
-      {/* ── Section éditoriale ── */}
-      <section style={{ background: 'var(--bg-secondary)', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-
-        {/* Bloc texte centré */}
-        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '80px 40px 64px', textAlign: 'center' }}>
-          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '20px' }}>
-            {eyebrow}
-          </p>
-          <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 42px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)', marginBottom: '24px' }}>
-            {titleLines.map((line, i) => (
-              <span key={i}>{line}{i < titleLines.length - 1 && <br />}</span>
+      <section className="csp">
+        <div className="csp-inner">
+          <h2 className="csp-titre">{T.titre}</h2>
+          <ul className="csp-lignes">
+            {lignes.map(([label, texte]) => (
+              <li key={label}><strong>{label}&nbsp;:</strong> {texte}</li>
             ))}
-          </h2>
-          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
-            {body}
-          </p>
+          </ul>
+          <figure className="csp-citation">
+            <blockquote>« {T.citation} »</blockquote>
+            <figcaption>{T.auteur}</figcaption>
+          </figure>
+          <div className="csp-actions">
+            <a className="csp-btn" href={T.devisHref}>{T.devis}</a>
+            <p className="csp-tel">
+              {T.question}{' '}
+              <a href="tel:+33174542310" data-emplacement="bloc_comment" onClick={trackPhoneClick}>01 74 54 23 10</a>
+            </p>
+          </div>
         </div>
-
-        {/* 4 cartes arguments */}
-        <div className="prods-args" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 72px 72px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
-          {args.map((item, i) => (
-            <div key={i} style={{ background: '#FFFFFF', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <div style={{ color: 'var(--accent-deep)', opacity: 0.85 }}>{ICONS[item.icon] || ICONS.quality}</div>
-              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)' }}>{item.titre}</p>
-              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div style={{ textAlign: 'center', padding: '0 40px 80px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '24px' }}>
-            {ctaQuestion}
-          </p>
-          <a
-            href={en ? '/en/devis' : '/devis'}
-            style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1A18', background: 'var(--accent)', padding: '14px 32px', display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', transition: 'opacity 0.3s ease' }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-          >
-            {en ? 'Get a quote →' : 'Obtenir un devis →'}
-          </a>
-        </div>
-
       </section>
 
       {/* ── Article SEO catégorie ── */}
@@ -178,11 +159,7 @@ export default function CategoryClosing({
         }
         .cat-seo-body a:hover { opacity: 0.75; }
         @media (max-width: 768px) {
-          .prods-args { grid-template-columns: 1fr 1fr !important; padding: 0 24px 60px !important; }
           .cat-seo-body h2 { font-size: 22px !important; }
-        }
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .prods-args { padding: 0 40px 60px !important; }
         }
       ` }} />
     </>

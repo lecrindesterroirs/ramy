@@ -2,18 +2,18 @@
 
 const T_EXP = {
   fr: {
-    t1: 'Des moments qui font', t2: 'du bien au bureau.',
-    c1: "Du petit-déjeuner de rentrée au cocktail de fin d'année,",
-    c2: "du déjeuner d'équipe au séminaire,",
-    c3: "on s'adapte à chacun de vos moments.",
-    cta: 'Découvrir nos créations',
+    t1: 'Du petit-déjeuner', t2: "au cocktail de fin d'année.",
+    c1: 'Un petit-déjeuner livré dès 6h30 pour une réunion de 8 heures,',
+    c2: 'des plateaux repas pour un comité, un goûter pour un anniversaire,',
+    c3: 'trois jours de séminaire hors de Paris : même équipe, mêmes horaires.',
+    cta: 'Voir les pauses goûter',
   },
   en: {
-    t1: 'The moments that make', t2: 'an office worth coming to.',
-    c1: 'From the first breakfast back to the end-of-year reception,',
-    c2: 'from a team lunch to a two-day offsite,',
-    c3: 'we build around the moment you actually have.',
-    cta: 'See what we make',
+    t1: 'From breakfast', t2: 'to the end-of-year reception.',
+    c1: 'Breakfast delivered from 6:30 am for an 8 am meeting,',
+    c2: 'lunch trays for a committee, an afternoon break for a birthday,',
+    c3: 'three days of offsite outside Paris: same team, same times.',
+    cta: 'See the afternoon breaks',
   },
 }
 
@@ -74,8 +74,8 @@ export default function ExperiencesSection({ lang = 'fr' }) {
             marginBottom: '48px',
           }}
         >
-          {T.c1}<br />
-          {T.c2}<br />
+          {T.c1}{' '}<br />
+          {T.c2}{' '}<br />
           {T.c3}
         </p>
 
@@ -99,7 +99,7 @@ export default function ExperiencesSection({ lang = 'fr' }) {
           onMouseEnter={e => e.currentTarget.style.opacity = '0.45'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          {T.cta} <span style={{ fontSize: '15px' }}>→</span>
+          {T.cta}
         </a>
       </div>
 

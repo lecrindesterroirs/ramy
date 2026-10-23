@@ -6,18 +6,18 @@ import Image from 'next/image'
 const args = [
   {
     num: '01.',
-    title: 'Ponctualité garantie',
-    body: 'Livraison dès 6h30, à l\'heure souhaitée, pour que vos réunions commencent sans stress et sans attente.',
+    title: 'Livré avant la réunion',
+    body: 'Livraison dès 6h30, du lundi au vendredi, à l\'heure que vous indiquez sur la commande.',
   },
   {
     num: '02.',
-    title: 'Zéro charge mentale',
-    body: 'Devis sous 24h, facturation adaptée aux entreprises, gestion des demandes particulières. De la commande à la mise en place, vous n\'avez rien à prévoir.',
+    title: 'Commande jusqu\'à 14h la veille',
+    body: 'Devis sous 24h, facture entreprise avec TVA, bon de commande accepté. Les plateaux arrivent dressés, prêts à poser.',
   },
   {
     num: '03.',
-    title: 'Fait maison & local',
-    body: 'Boulangers artisanaux, fruits de saison, producteurs locaux choisis. Des produits qui ont vraiment du goût.',
+    title: 'Des artisans nommés',
+    body: 'Madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, yaourts de la Ferme de Viltain, jus Alain Milliat.',
   },
 ]
 
@@ -39,18 +39,18 @@ const T_DETAIL = {
     items: [
       {
         num: '01.',
-        title: 'On time, every time',
-        body: 'Delivered from 6:30 am, at the time you asked for, so your meeting starts when it is meant to.',
+        title: 'There before the meeting',
+        body: 'Delivered from 6:30 am, Monday to Friday, at the time you put on the order.',
       },
       {
         num: '02.',
-        title: 'Nothing for you to carry',
-        body: 'Quote within 24 hours, invoicing built for companies, special requests handled. From the order to the setup, there is nothing for you to arrange.',
+        title: 'Order by 2 pm the day before',
+        body: 'Quote within 24 hours, company invoice showing VAT, purchase orders accepted. Platters arrive arranged, ready to put down.',
       },
       {
         num: '03.',
-        title: 'Made by hand, sourced close by',
-        body: 'Artisan bakers, fruit in season, growers we have chosen ourselves. Food that actually tastes of something.',
+        title: 'Named makers',
+        body: 'Mado Paris madeleines, Pierre Morel macarons, Laura Todd cookies, Ferme de Viltain yoghurts, Alain Milliat juices.',
       },
     ],
   },

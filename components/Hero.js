@@ -6,6 +6,8 @@ import ReviewsBadge from './ReviewsBadge'
 import CatalogueModal from './CatalogueModal'
 import { trackPhoneClick } from '../lib/tracking'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
+import { PDJ_DES, PLATEAU_DES, euroFr, euroEn } from '../lib/prixEntree'
+import { FORMULES } from '../lib/calculsPrix'
 
 /* Textes de l'en-tête, par langue. Le numéro et la note Google sont des
    faits, pas des textes : ils ne changent pas d'une langue à l'autre. */
@@ -13,8 +15,9 @@ const T_HERO = {
   fr: {
     titre1: "Traiteur d'entreprise",
     titre2: 'à Paris.',
-    corps1: 'Nous sélectionnons les meilleurs artisans pour créer',
-    corps2: 'des réceptions dont vos équipes se souviennent.',
+    corps1: 'Petits-déjeuners, plateaux repas et cocktails livrés dans vos bureaux,',
+    corps2: 'avec les madeleines Mado Paris et les macarons Pierre Morel.',
+    prix: `Par personne, HT : petit-déjeuner dès ${euroFr(PDJ_DES)}, plateau repas dès ${euroFr(PLATEAU_DES)}, cocktail dès ${euroFr(FORMULES.invitation.prix)}. Livraison dès 6h30, commande jusqu'à 14h la veille.`,
     devis: 'Obtenir un devis',
     catalogue: 'Découvrir notre catalogue',
     question: 'Une question ?',
@@ -22,8 +25,9 @@ const T_HERO = {
   en: {
     titre1: 'Corporate catering',
     titre2: 'in Paris.',
-    corps1: 'We pick the best artisans in the city to build',
-    corps2: 'receptions your team actually remembers.',
+    corps1: 'Breakfasts, lunch trays and cocktail receptions delivered to your offices,',
+    corps2: 'with Mado Paris madeleines and Pierre Morel macarons.',
+    prix: `Per person, excl. VAT: breakfast from ${euroEn(PDJ_DES)}, lunch tray from ${euroEn(PLATEAU_DES)}, cocktail reception from ${euroEn(FORMULES.invitation.prix)}. Delivery from 6:30 am, order by 2 pm the day before.`,
     devis: 'Get a quote',
     catalogue: 'See our menu',
     question: 'A question?',
@@ -84,6 +88,7 @@ export default function Hero({ lang = 'fr' }) {
       {/* Background image */}
       <div
         ref={imageRef}
+        className="hero-media"
         style={{
           position: 'absolute',
           inset: '-15% 0',
@@ -101,6 +106,7 @@ export default function Hero({ lang = 'fr' }) {
 
       {/* Warm cream scrim, renforcé côté gauche pour la lisibilité */}
       <div
+        className="hero-scrim"
         style={{
           position: 'absolute',
           inset: 0,
@@ -148,13 +154,18 @@ export default function Hero({ lang = 'fr' }) {
             fontWeight: 400,
             lineHeight: 1.6,
             color: 'rgba(24,18,16,0.82)',
-            marginBottom: '38px',
-            maxWidth: '430px',
+            marginBottom: '14px',
+            maxWidth: '470px',
             textShadow: '0 1px 18px rgba(249,246,239,0.7)',
           }}
         >
           {T.corps1}{' '}<br className="hero-br" />
           {T.corps2}
+        </p>
+
+        {/* Prix calculés (lib/prixEntree.js, lib/calculsPrix.js), dans le premier écran */}
+        <p className="hero-prix" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.6, color: '#171310', marginBottom: '30px', maxWidth: '470px', textShadow: '0 1px 18px rgba(249,246,239,0.7)' }}>
+          {T.prix}
         </p>
 
         {/* CTA group */}
@@ -179,7 +190,7 @@ export default function Hero({ lang = 'fr' }) {
             onMouseEnter={e => e.currentTarget.style.opacity = '0.82'}
             onMouseLeave={e => e.currentTarget.style.opacity = '1'}
           >
-            {T.devis} <span>→</span>
+            {T.devis}
           </a>
           <button
             type="button"
@@ -205,7 +216,7 @@ export default function Hero({ lang = 'fr' }) {
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.85)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.5)' }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,253,249,0.55)'; e.currentTarget.style.borderColor = 'rgba(28,22,20,0.35)' }}
           >
-            {T.catalogue} <span>→</span>
+            {T.catalogue}
           </button>
         </div>
 
@@ -247,6 +258,7 @@ export default function Hero({ lang = 'fr' }) {
 
       {/* Scroll indicator */}
       <div
+        className="hero-scroll"
         style={{
           position: 'absolute',
           bottom: '36px',
@@ -272,8 +284,17 @@ export default function Hero({ lang = 'fr' }) {
           50%       { opacity: 1;   transform: scaleY(0.6); }
         }
         @media (max-width: 768px) {
-          .hero-content { padding: 0 24px !important; max-width: 100% !important; }
+          /* Sur téléphone : la photo en haut, recadrée sur le coffret, le texte
+             dessous sur fond crème (avant, le coffret sortait de l'écran). */
+          .hero-section { height: auto !important; min-height: 0 !important; display: block !important; background: #F9F6EF; }
+          .hero-media { position: relative !important; inset: auto !important; height: calc(var(--promo-h) + var(--nav-base) + 30vh); transform: none !important; }
+          .hero-media img { object-position: 74% 62% !important; }
+          .hero-scrim { display: none !important; }
+          .hero-content { padding: 22px 16px 36px !important; max-width: 100% !important; }
+          .hero-content h1 { margin-bottom: 14px !important; }
+          .hero-br { display: none; }
           .hero-phone { display: none !important; }
+          .hero-scroll { display: none !important; }
         }
       ` }} />
 

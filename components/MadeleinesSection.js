@@ -4,15 +4,15 @@ import ParallaxImage from './ParallaxImage'
 const INFOS = [
   {
     title: 'Préparées chaque jour',
-    text: "Nos madeleines sont confectionnées quotidiennement pour vous offrir un moelleux incomparable et une fraîcheur optimale.",
+    text: "Mado les prépare chaque jour ; elles arrivent dans leur coffret le matin de votre livraison.",
   },
   {
     title: 'Des saveurs qui surprennent',
     text: "Pistache framboise, ananas coco passion, fleur d'oranger, rose violette... Des recettes originales qui raviront tous les palais.",
   },
   {
-    title: "Le best-seller de L'Écrin",
-    text: "Le produit le plus demandé lors de nos petits-déjeuners, cocktails et événements d'entreprise.",
+    title: 'En coffrets de 10, 20 ou 50',
+    text: "Elles font partie de chacun de nos petits-déjeuners complets, et se commandent aussi seules, en coffret.",
   },
 ]
 
@@ -30,21 +30,21 @@ const PARFUMS_EN = {
 const INFOS_EN = [
   {
     title: 'Baked every morning',
-    text: 'Our madeleines are made fresh each day, which is the only way to get that crumb and that lift.',
+    text: 'Mado bakes them every day; they arrive in their box on the morning of your delivery.',
   },
   {
     title: 'Flavours that surprise people',
     text: 'Pistachio and raspberry, pineapple coconut passion fruit, orange blossom, rose and violet… recipes that are not the usual.',
   },
   {
-    title: "L'Écrin's best seller",
-    text: 'The most asked-for thing on our breakfasts, cocktail receptions and corporate events.',
+    title: 'In boxes of 10, 20 or 50',
+    text: 'They are part of every full breakfast we deliver, and can also be ordered on their own, by the box.',
   },
 ]
 
 const T_MADELEINES = {
   fr: {
-    eyebrow: 'Les incontournables',
+    eyebrow: 'Mado Paris',
     titre: 'Madeleines artisanales',
     corps: 'Préparées chaque matin par Mado, notre partenaire historique, considérées comme les meilleures madeleines de Paris. Elle nous suit depuis le premier jour et est devenue, au fil du temps, le produit signature de la maison : texture moelleuse, bosse généreuse et des saveurs pensées pour surprendre.',
     saveurs: 'Nos saveurs',
@@ -52,7 +52,7 @@ const T_MADELEINES = {
     infos: INFOS,
   },
   en: {
-    eyebrow: 'The ones people ask for',
+    eyebrow: 'Mado Paris',
     titre: 'Artisan madeleines',
     corps: 'Baked every morning by Mado, our partner since day one, and reckoned among the best madeleines in Paris. Over time they have become the thing the house is known for: a soft crumb, a generous hump, and flavours chosen to surprise.',
     saveurs: 'Our flavours',

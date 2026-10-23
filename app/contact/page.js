@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ReviewsBadge from '../../components/ReviewsBadge'
+import CategoryClosing from '../../components/CategoryClosing'
 import { contactPageLd } from '../../lib/site'
 import { trackPhoneClick } from '../../lib/tracking'
 import { getAttribution } from '../../lib/attribution'
@@ -337,53 +338,15 @@ export default function Contact() {
           main { height: auto !important; }
           .contact-wrap { grid-template-columns: 1fr !important; padding: 40px 24px 60px !important; gap: 40px !important; }
           .form-row { grid-template-columns: 1fr !important; }
-          .args-grid { grid-template-columns: 1fr !important; padding: 0 24px !important; }
-          section { padding: 60px 24px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           main { height: auto !important; }
           .contact-wrap { grid-template-columns: 1fr !important; padding: 40px 40px 60px !important; gap: 40px !important; }
-          .args-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          section { padding: 60px 40px !important; }
         }
       ` }} />
 
-      {/* ── Section arguments ── */}
-      <section style={{ background: 'var(--bg-secondary)', padding: '80px 72px' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
-              {T('contact.argsSurtitre')}
-            </p>
-            <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(26px, 3vw, 44px)', fontWeight: 400, lineHeight: 1.1, color: 'var(--text-primary)' }}>
-              {T('contact.argsTitre1')}<br />{T('contact.argsTitre2')}
-            </h2>
-          </div>
-
-          <div className="args-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-            {[
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>, titre: T('contact.arg1.titre'), desc: T('contact.arg1.desc') },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>, titre: T('contact.arg2.titre'), desc: T('contact.arg2.desc') },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>, titre: T('contact.arg3.titre'), desc: T('contact.arg3.desc') },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>, titre: T('contact.arg4.titre'), desc: T('contact.arg4.desc') },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, titre: T('contact.arg5.titre'), desc: T('contact.arg5.desc') },
-              { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>, titre: T('contact.arg6.titre'), desc: T('contact.arg6.desc') },
-            ].map((item, i) => (
-              <div key={i} style={{
-                background: '#FFFFFF',
-                padding: '32px 28px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '14px',
-              }}>
-                <div style={{ color: 'var(--accent-deep)', opacity: 0.85 }}>{item.icon}</div>
-                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', letterSpacing: '0.01em' }}>{item.titre}</p>
-                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', lineHeight: 1.75, color: 'var(--text-secondary)' }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Bloc factuel commun (components/CategoryClosing.js) : remplace les six cartes d'icônes le 22/10/2026 */}
+      <CategoryClosing lang={langue} />
 
       <script
         type="application/ld+json"

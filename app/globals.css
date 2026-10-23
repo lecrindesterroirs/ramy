@@ -97,6 +97,10 @@
 html.promo-on { --promo-h: 44px; }
 @media (max-width: 768px) {
   html.promo-on { --promo-h: 46px; }
+  /* Sur téléphone, un seul bandeau à la fois : quand la campagne s'affiche, le
+     défilant « Commandez jusqu'à la veille… » se replie (audit du 22/10/2026,
+     trois barres empilées prenaient 135 px). */
+  html.promo-on { --banner-h: 0px; }
 }
 
 html {
@@ -735,3 +739,41 @@ a:hover .article-card-img { transform: scale(1.04); }
 /* Occasions : ligne « Dans l'année » vers les événements saisonniers */
 @media (max-width: 1024px) and (min-width: 769px) { .occ-evenements { padding: 40px 40px 0 !important; } }
 @media (max-width: 768px) { .occ-evenements { padding: 32px 24px 0 !important; } }
+
+/* Bloc « Comment ça se passe » (components/CategoryClosing.js), remplace les cartes d'icônes le 22/10/2026 */
+.csp { background: var(--bg-secondary); border-top: 1px solid rgba(17,17,17,0.07); }
+.csp-inner { max-width: 860px; margin: 0 auto; padding: 72px 40px 80px; }
+.csp-titre { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 400; line-height: 1.15; color: var(--text-primary); margin-bottom: 20px; }
+.csp-lignes { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(17,17,17,0.08); }
+.csp-lignes li { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-secondary); padding: 11px 0; border-bottom: 1px solid rgba(17,17,17,0.08); }
+.csp-lignes strong { color: var(--text-primary); font-weight: 500; }
+.csp-citation { margin: 36px 0 0; }
+.csp-citation blockquote { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.4; color: var(--text-primary); margin: 0 0 10px; }
+.csp-citation figcaption { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; color: var(--text-secondary); }
+.csp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 36px; }
+.csp-btn { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF !important; background: #111111; padding: 15px 30px; display: inline-flex; align-items: center; text-decoration: none; transition: opacity 0.3s ease; }
+.csp-btn:hover { opacity: 0.82; }
+.csp-tel { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; color: var(--text-secondary); margin: 0; }
+.csp-tel a { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid rgba(17,17,17,0.25); }
+@media (max-width: 768px) {
+  .csp-inner { padding: 56px 16px 64px; }
+  .csp-lignes li { font-size: 14px; }
+}
+.home-devis { margin-top: 0; }
+
+/* Pages Cocktails (components/cocktails/CocktailFicheView.js, app/creations/cocktails/page.js), 22/10/2026 */
+.ckv-compo { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.ckv-compo .ev-h3 { margin-bottom: 12px; }
+.ckv-cartes-2 { grid-template-columns: repeat(2, 1fr); max-width: 860px; }
+.ckv-liens-occ { margin-top: 20px; }
+.ckv-liens-occ a { color: var(--accent-deep) !important; border-bottom: 1px solid rgba(135,94,16,0.35); }
+@media (max-width: 768px) {
+  .ckv-compo { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* Événement sur mesure (components/ReceptionView.js), 22/10/2026 */
+.rsm-cartes { grid-template-columns: repeat(4, 1fr); }
+.rsm-deroule { margin: 0; padding-left: 22px; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+.rsm-deroule li { padding: 6px 0; }
+.rsm-devis { margin-bottom: 96px; }
+@media (max-width: 900px) { .rsm-cartes { grid-template-columns: repeat(2, 1fr); } }

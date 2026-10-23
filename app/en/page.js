@@ -11,7 +11,7 @@ import DetailSection from '../../components/DetailSection'
 import TestimonialsSection from '../../components/TestimonialsSection'
 import FAQSection from '../../components/FAQSection'
 import VillesSection from '../../components/VillesSection'
-import CTASection from '../../components/CTASection'
+import DevisRapide from '../../components/DevisRapide'
 import Footer from '../../components/Footer'
 import { businessNode } from '../../lib/site'
 import { alternatesPourEn } from '../../lib/i18n'
@@ -58,7 +58,17 @@ export default function HomeEn() {
         <TestimonialsSection lang="en" />
         <FAQSection lang="en" />
         <VillesSection lang="en" />
-        <CTASection lang="en" />
+        {/* Fin de page sur le formulaire court (audit du 22/10/2026), à la place du bloc jaune */}
+        <section id="devis" className="ev-devis home-devis">
+          <div className="ev-devis-inner">
+            <DevisRapide
+              titre="Un petit-déjeuner, un déjeuner ou un cocktail à organiser ?"
+              titreEn="A breakfast, a lunch or a reception to organise?"
+              sousTitre="Répondez en 30 secondes, devis détaillé sous 24h, livraison dans toute l'Île-de-France."
+              sousTitreEn="Answer in 30 seconds, a detailed quote within 24 hours, delivery across the Paris region."
+            />
+          </div>
+        </section>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', ...businessNode() }) }}

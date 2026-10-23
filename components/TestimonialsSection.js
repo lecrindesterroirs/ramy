@@ -34,20 +34,6 @@ const CARDS = [
   },
 ]
 
-// Mêmes fichiers que le bandeau logos en haut de la home (LogosSection).
-// Hauteurs calées pour un poids visuel équilibré : wordmarks larges plus bas,
-// emblèmes compacts plus hauts.
-const CLIENT_LOGOS = [
-  { name: 'Wella Company', src: '/logos/wella.jpg', height: '40px' },
-  { name: 'SNCF', src: '/logos/sncf.png', height: '34px' },
-  { name: 'VINCI', src: '/logos/vinci-v2.png', height: '33px' },
-  { name: 'Le Monde', src: '/logos/lemonde.png', height: '30px' },
-  { name: 'Carglass', src: '/logos/carglass.svg', height: '30px' },
-  { name: 'Coyote', src: '/logos/coyote.png', height: '34px' },
-  { name: 'TotalEnergies', src: '/logos/totalenergies.png', height: '42px' },
-  { name: 'Talan', src: '/logos/talan.png', height: '30px' },
-  { name: 'DS Automobiles', src: '/logos/ds-v2.svg', height: '58px', opacity: 0.85 },
-]
 
 function QuoteMark({ size = 34 }) {
   return <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: `${size}px`, lineHeight: 1, color: 'var(--accent-deep)', display: 'block' }}>❝</span>
@@ -62,7 +48,7 @@ function QuoteMark({ size = 34 }) {
 const EN_TEMOIGNAGES = {
   'Le Monde': {
     context: 'Press breakfast',
-    quote: 'Every single product got excellent feedback — the yoghurts, the pastries, the fruit juices — with a special mention for the madeleines, which were delicious, and the strawberry nectar, which went down extremely well.',
+    quote: 'Every single product got excellent feedback (the yoghurts, the pastries, the fruit juices) with a special mention for the madeleines, which were delicious, and the strawberry nectar, which went down extremely well.',
     role: 'Office Manager, Digital Division · Le Monde',
   },
   'SIA Partners': {
@@ -162,26 +148,11 @@ export default function TestimonialsSection({ lang = 'fr' }) {
           </div>
         </div>
 
-        {/* ── Barre logos ── */}
-        <div style={{ borderTop: '1px solid rgba(17,17,17,0.08)', marginTop: '56px', paddingTop: '40px' }}>
-          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.66)', textAlign: 'center', marginBottom: '28px' }}>
-            {T.eyebrow}
-          </p>
-          <div className="ts-logos" style={{ display: 'grid', gridTemplateColumns: `repeat(${CLIENT_LOGOS.length}, 1fr)`, alignItems: 'center', justifyItems: 'center', gap: '24px' }}>
-            {CLIENT_LOGOS.map(logo => (
-              <img loading="lazy" key={logo.name} src={logo.src} alt={logo.name} style={{ height: logo.height || '30px', width: 'auto', maxWidth: '100%', objectFit: 'contain', filter: 'grayscale(1)', opacity: logo.opacity || 0.6, mixBlendMode: 'multiply' }} />
-            ))}
-          </div>
-        </div>
-
       </div>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 1024px) {
           .ts-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 900px) {
-          .ts-logos { grid-template-columns: repeat(3, 1fr) !important; gap: 32px 24px !important; }
         }
         @media (max-width: 768px) {
           .ts-inner { padding: 0 24px 48px !important; }

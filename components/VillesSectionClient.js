@@ -8,13 +8,13 @@ const T_VILLES = {
   fr: {
     eyebrow: 'Livraison Paris & Île-de-France',
     t1: 'Nous livrons dès 6h30', t2: "dans toute l'IDF",
-    toutes: 'Voir toutes les villes →',
+    toutes: 'Voir toutes les zones desservies',
     points: ['Commandez avant 14h la veille', 'Livraison dès 6h30', 'Adresse exacte au bureau'],
   },
   en: {
     eyebrow: 'Delivery across Paris & Île-de-France',
     t1: 'Delivered from 6:30 am', t2: 'anywhere in Île-de-France',
-    toutes: 'See every town →',
+    toutes: 'See every area we serve',
     points: ['Order until 2 pm the day before', 'Delivered from 6:30 am', 'To the exact office address'],
   },
 }
@@ -88,7 +88,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
         {/* Grille villes */}
         <div className="villes-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
+          gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '2px',
         }}>
           {villes.map(city => (
@@ -139,12 +139,6 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
                     : city.region.match(/\(([^)]+)\)/)?.[1] || city.region}
                 </p>
               </div>
-              <span style={{
-                fontSize: '12px',
-                color: 'var(--accent-deep)',
-                opacity: 0.6,
-                flexShrink: 0,
-              }}>→</span>
             </a>
           ))}
         </div>
