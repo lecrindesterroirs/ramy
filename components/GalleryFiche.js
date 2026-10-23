@@ -112,7 +112,7 @@ export default function GalleryFiche({
   devisTitre = (lang === 'en' ? devisTitreEn : devisTitre) || T.devisTitre
   devisSousTitre = (lang === 'en' ? devisSousTitreEn : devisSousTitre) || T.devisSousTitre
   relatedTitle = relatedTitle || T.liees
-  const photos = gallery && gallery.length ? gallery : [img]
+  const photos = gallery && gallery.length ? gallery : (img ? [img] : [null])
   const showThumbnails = photos.length > 1
 
   // Ne pas proposer « À servir avec [boissons] » sur une fiche boisson.
@@ -188,7 +188,7 @@ export default function GalleryFiche({
           {/* ── Colonne gauche : photo ── */}
           <div className="gallery-col">
             <div style={{ position: 'relative', width: '100%', aspectRatio: imgRatio, overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-              <Image fill priority sizes="(max-width: 900px) 100vw, 55vw" src={photos[0]} alt={title} style={{ objectFit: 'cover' }} />
+              {photos[0] ? <Image fill priority sizes="(max-width: 900px) 100vw, 55vw" src={photos[0]} alt={title} style={{ objectFit: 'cover' }} /> : <span className="pgr-sans-photo">{title}</span>}
             </div>
 
             {showThumbnails && (

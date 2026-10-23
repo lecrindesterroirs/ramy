@@ -1,2 +1,6 @@
-/* Même composant que la page française : la langue vient du chemin. */
-export { default } from '../../../creations/a-partager/page'
+/* Même vue serveur que la page française, en anglais (app/creations/a-partager/Vue.js). */
+import VuePartage from '../../../creations/a-partager/Vue'
+
+export default function PageEn() {
+  return <VuePartage en />
+}

@@ -1,15 +1,19 @@
-'use client'
-
 import ProductsPageTemplate from '../../../components/ProductsPageTemplate'
-import { BOISSONS } from '../../../lib/boissonsData'
-import BlocReponse from '../../../components/BlocReponse'
+import { categorieBoissons } from '../../../lib/categoriesVue'
 
+/*
+  Boissons.
+  Page rendue côté serveur (refonte du 23/10/2026, audit design chantier 5) :
+  formules et tableau calculés en tête, carte par sections avec filtres
+  collants, texte replié dans « Bien choisir », une seule FAQ affichée et
+  balisée. Données et prix : lib/categoriesVue.js.
+*/
 const SEO_ARTICLE = `
   <h2>Boissons artisanales pour vos événements d'entreprise à Paris</h2>
-  <p>La boisson est souvent le détail le plus remarqué, et le plus négligé. Un jus <strong>Alain Milliat</strong> sur la table dit quelque chose de votre exigence. Un thé <strong>Mariage Frères</strong> en réunion crée une atmosphère différente d'un sachet de supermarché. L'Écrin Traiteur sélectionne des boissons artisanales pour tous vos événements d'entreprise à Paris.</p>
+  <p>Jus Alain Milliat, thés Mariage Frères, café en thermos : les boissons arrivent avec la commande, avec les gobelets. L'Écrin Traiteur les livre pour vos réunions et événements d'entreprise à Paris et en Île-de-France.</p>
 
-  <h2>Notre sélection : Alain Milliat, Mariage Frères, Vergers de Plaisir</h2>
-  <p>Nos jus artisanaux sont issus de fruits entiers, sans concentré, sans sucre ajouté. Les jus <strong>Alain Milliat</strong> (nectar de fraise, poire Williams, pur jus d'orange) sont reconnus des connaisseurs. Les jus du <strong>Verger de Plaisir</strong> (Yvelines) sont produits en circuit ultra-court. Les thés <strong>Mariage Frères</strong> et nos thermos de café ou chocolat chaud complètent une offre pensée pour tous les moments de la journée.</p>
+  <h2>Notre sélection : Alain Milliat, Mariage Frères</h2>
+  <p>Nos jus et nectars viennent d'<strong>Alain Milliat</strong> : orange, pomme, abricot, pêche, fraise, mangue, passion. Les thés <strong>Mariage Frères</strong>, le café en thermos et les infusions complètent la carte, du matin à l'après-midi. Pour trinquer sans alcool, un Chardonnay Blanc de Blancs 0 %.</p>
 
   <h2>Boissons froides et chaudes, du matin à l'après-midi</h2>
   <p>Pour un <strong>petit-déjeuner</strong> : jus froids + thermos de café ou thé. Pour une <strong>pause après-midi</strong> : boissons froides sans alcool, infusions bio, jus de saison. Pour un <strong>cocktail</strong> : nectars Alain Milliat + eaux pétillantes. Nos thermos maintiennent vos boissons chaudes plusieurs heures après la livraison, pratique pour les séminaires de journée entière.</p>
@@ -18,33 +22,32 @@ const SEO_ARTICLE = `
   <p>Commandez avant <strong>14h la veille</strong>. Livraison dès <strong>6h30</strong>, du lundi au vendredi. Jus et boissons froides sont livrés <strong>avec gobelets</strong>, vous n'avez rien à prévoir. Les boissons s'ajoutent facilement à une commande existante de viennoiseries ou de pâtisseries, une seule livraison, tout ensemble. Facturation entreprise avec TVA disponible.</p>
 `
 
-const ANSWER_BLOCK = (
-  <BlocReponse
-    titre="Boissons pour vos événements d'entreprise : prix et livraison"
-    plusTitre="Quantités à prévoir, livraison et minimum de commande"
-    plus={<>Un thermos d'un litre sert 6 personnes, un litre de jus remplit 5 verres. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
-  >
-    Nos boissons démarrent <strong>à partir de 3,80 € HT</strong> : jus de fruits Alain Milliat, thés Mariage Frères, thermos de café bio, eaux plates et pétillantes. Livrées avec votre commande du lundi au vendredi à Paris et en Île-de-France, dès <strong>6h30</strong>, sur commande avant <strong>14h la veille</strong>.
-  </BlocReponse>
-)
-
 export default function Boissons() {
+  const c = categorieBoissons(false)
+  const FAQ = [
+    { q: 'Combien de boissons prévoir ?', a: c.essentiel },
+    { q: 'Les boissons sont-elles livrées avec des gobelets ?', a: "Oui, jus et boissons froides arrivent avec les gobelets ; les thermos gardent le café et le thé chauds plusieurs heures." },
+    { q: 'Proposez-vous des boissons alcoolisées ?', a: "Non, toute la carte est sans alcool. Pour trinquer, nous livrons un Chardonnay Blanc de Blancs 0 %." },
+  ]
   return (
     <ProductsPageTemplate
-      heroImg="/boissons-hero.webp"
-      heroTitle={"Boissons"}
-      heroSubtitle="Jus Alain Milliat, thés Mariage Frères, cafés et eaux. Des boissons choisies pour leur qualité."
-      breadcrumb="Nos Créations, Boissons"
-      categorieSlug="boissons"
-      fallbackProducts={BOISSONS}
-      answerBlock={ANSWER_BLOCK}
-      basePath="/creations/boissons"
+      heroImg="/creations-boissons.webp"
+      heroAlt="Jus Alain Milliat et thermos de café L'Écrin Traiteur"
+      surtitre="Boissons"
+      heroTitle="Boissons pour l'entreprise"
+      heroSubtitle="Jus Alain Milliat, thés Mariage Frères, café en thermos et eaux, livrés avec votre commande à Paris et en Île-de-France."
+      faits={c.faits}
+      essentiel={c.essentiel}
+      formules={c.formules}
+      produits={c.produits}
+      sections={c.sections}
       seoArticle={SEO_ARTICLE}
-      editorial={{
-        eyebrow: 'Pensé pour accompagner chaque moment',
-        title: 'Jus d\'exception et boissons artisanales',
-        body: "Jus de fruits entiers Alain Milliat, thés Mariage Frères, cafés servis en thermos : la boisson est le détail que vos invités remarquent. Nous la choisissons avec la même exigence que le reste de la table.",
-      }}
+      faq={FAQ}
+      basePath="/creations/boissons"
+      devisPrestation="Petit-déjeuner"
+      devisTitre={{ fr: 'Des boissons à commander ?', en: 'Drinks to order?' }}
+      nomJsonLd="Boissons"
     />
   )
 }
+

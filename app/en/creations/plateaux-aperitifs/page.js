@@ -1,21 +1,13 @@
-'use client'
-
 import ProductsPageTemplate from '../../../../components/ProductsPageTemplate'
-import { PLATEAUX } from '../../../creations/plateaux-aperitifs/data'
-import { enPlateauAperitif, FAMILLES_EN } from '../../../../lib/en/produits/plateauxAperitifs'
+import { categorieAperitifs, ht } from '../../../../lib/categoriesVue'
+import { MINIMUM } from '../../../../lib/prixEntree'
+import { LIV } from '../../../../lib/calculsPrix'
 
-/* Index plateaux apéritifs en anglais. Ces plateaux n'ont pas de prix
-   affiché : ils se chiffrent au format et à l'effectif. */
-
-const PRODUITS = PLATEAUX
-  .filter(p => enPlateauAperitif(p.id))
-  .map(p => ({
-    id: p.id,
-    name: enPlateauAperitif(p.id).nom,
-    label: p.prix ? `${FAMILLES_EN[p.famille] || 'Aperitif'} · €${p.prix.toFixed(2)} excl. VAT` : `${FAMILLES_EN[p.famille] || 'Aperitif'} · On quote`,
-    img: p.img,
-  }))
-
+/*
+  Index anglais, rendu côté serveur avec le même gabarit et les mêmes calculs
+  que la page française (refonte du 23/10/2026) : prix et photos lus dans les
+  fiches françaises, noms dans les surcouches lib/en/produits/*.
+*/
 const SEO_ARTICLE = `
   <h2>Aperitif platters to share for your Paris afterworks</h2>
   <p>The <strong>sharing aperitif platter</strong> is what makes an afterwork, a leaving party or a corporate reception work. Put in the middle of the table, it gets people standing together: sandwich platters, cheese and charcuterie boards, signature creations.</p>
@@ -27,22 +19,31 @@ const SEO_ARTICLE = `
   <p>Headcount, formats, dietary needs: we put together the right selection and send you a personalised quote within 24 hours. Order until 2 pm the day before, delivered straight to your venue.</p>
 `
 
-export default function PlateauxAperitifsEn() {
+export default function Page() {
+  const c = categorieAperitifs(true)
+  const FAQ = [
+    { q: 'How much do aperitif platters cost?', a: c.essentiel },
+    { q: 'Are the platters halal?', a: 'Yes. All the savoury food is halal and pork-free, alcohol-free and at no extra cost. The charcuterie platter is cured beef and poultry.' },
+  ]
   return (
     <ProductsPageTemplate
       lang="en"
-      heroImg="/hero-plateaux-aperitifs-full.webp"
-      heroTitle="Aperitif platters"
-      heroSubtitle="Sandwiches, cheese, charcuterie and signature bites, on a board in the middle of the table."
-      breadcrumb="Our menu, Aperitif platters"
-      fallbackProducts={PRODUITS}
-      basePath="/en/creations/plateaux-aperitifs"
+      heroImg="/plateau-crudites.webp"
+      heroAlt="Crudités and dips platter by L'Écrin Traiteur"
+      surtitre="Aperitif platters"
+      heroTitle="Aperitif platters for the office"
+      heroSubtitle="Platters to share for afterworks and drinks: sandwiches, cheese, salmon, crudités and sweet things, delivered across Paris and Île-de-France."
+      faits={c.faits}
+      essentiel={c.essentiel}
+      formules={c.formules}
+      produits={c.produits}
+      sections={c.sections}
       seoArticle={SEO_ARTICLE}
-      editorial={{
-        eyebrow: 'Built for standing events',
-        title: 'Boards that get a room\ntalking to each other.',
-        body: 'Platters to put in the middle of the table, generous enough that nobody has to ask whether there is more. Halal and pork-free as standard.',
-      }}
+      faq={FAQ}
+      basePath="/creations/plateaux-aperitifs"
+      devisPrestation="Cocktail / Buffet"
+      devisTitre={{ fr: "Drinks to organise?", en: "Drinks to organise?" }}
+      nomJsonLd="Aperitif platters"
     />
   )
 }

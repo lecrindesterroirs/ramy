@@ -67,7 +67,7 @@ function FicheEn() {
       seoEyebrow="Afternoon treat · Corporate catering"
       seoTitle={en.seoTitle}
       seoHtml={en.seoHtml}
-      devisPrestation="Pause gourmande"
+      devisPrestation="Goûter"
       devisTitre="An afternoon treat for your team?"
       devisSousTitre="Answer in 30 seconds, personalised quote within 24 hours."
     />

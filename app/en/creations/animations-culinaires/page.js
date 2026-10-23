@@ -1,21 +1,13 @@
-'use client'
-
 import ProductsPageTemplate from '../../../../components/ProductsPageTemplate'
-import { ANIMATIONS, slugAnim } from '../../../creations/animations-culinaires/data'
-import { enAnimation, UNIVERS_EN } from '../../../../lib/en/produits/animations'
+import { categorieAnimations, ht } from '../../../../lib/categoriesVue'
+import { MINIMUM } from '../../../../lib/prixEntree'
+import { LIV } from '../../../../lib/calculsPrix'
 
-/* Index animations culinaires en anglais. L'identifiant de carte est le slug
-   français, comme sur les fiches, pour garder /en/<chemin FR>. */
-
-const PRODUITS = ANIMATIONS
-  .filter(a => enAnimation(a.id))
-  .map(a => ({
-    id: slugAnim(a.nom),
-    name: enAnimation(a.id).nom,
-    label: `${UNIVERS_EN[a.univers] || 'Live station'} · On quote`,
-    img: a.img,
-  }))
-
+/*
+  Index anglais, rendu côté serveur avec le même gabarit et les mêmes calculs
+  que la page française (refonte du 23/10/2026) : prix et photos lus dans les
+  fiches françaises, noms dans les surcouches lib/en/produits/*.
+*/
 const SEO_ARTICLE = `
   <h2>Live food stations for your corporate events in Paris</h2>
   <p>A <strong>live food station</strong> changes an event: instead of a buffet that was dressed an hour earlier, something is being made in front of your guests. A barista pulling espresso, a crêpe cooking, salmon being carved, candy floss being spun. L'Écrin Traiteur brings the kit, the staff and the setup, across Paris and Île-de-France.</p>
@@ -27,22 +19,31 @@ const SEO_ARTICLE = `
   <p>Tell us the date, the venue and roughly how many people, and we come back within <strong>24 hours</strong> with a detailed quote. Company invoice showing VAT. Several stations can run side by side for a large reception.</p>
 `
 
-export default function AnimationsEn() {
+export default function Page() {
+  const c = categorieAnimations(true)
+  const FAQ = [
+    { q: 'How much does a live food station cost?', a: c.essentiel },
+    { q: 'How far ahead should we book?', a: 'At least a week ahead: we check access, water and power, and book the chef or barista. The quote arrives within 24 hours.' },
+  ]
   return (
     <ProductsPageTemplate
       lang="en"
-      heroImg="/hero-animations.webp"
+      heroImg="/prod-atelier-crepes.webp"
+      heroAlt="Crêpe station made live at a corporate event"
+      surtitre="Live food stations"
       heroTitle="Live food stations"
-      heroSubtitle="A barista, a crêpe pan, a carving board: something made in front of your guests rather than dressed an hour before."
-      breadcrumb="Our menu, Live food stations"
-      fallbackProducts={PRODUITS}
-      basePath="/en/creations/animations-culinaires"
+      heroSubtitle="A barista, a crêpe pan, a pasta pan: something made in front of your guests rather than set out an hour before."
+      faits={c.faits}
+      essentiel={c.essentiel}
+      formules={c.formules}
+      produits={c.produits}
+      sections={c.sections}
       seoArticle={SEO_ARTICLE}
-      editorial={{
-        eyebrow: 'Made in front of your guests',
-        title: 'The difference between a buffet\nand something happening.',
-        body: 'Twenty-nine stations, from a speciality coffee bar to a candy floss machine. We bring the kit, set up, serve and clear away.',
-      }}
+      faq={FAQ}
+      basePath="/creations/animations-culinaires"
+      devisPrestation="Événement sur mesure"
+      devisTitre={{ fr: "A live station to organise?", en: "A live station to organise?" }}
+      nomJsonLd="Live food stations"
     />
   )
 }

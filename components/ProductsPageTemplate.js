@@ -1,247 +1,214 @@
-'use client'
-
-import Image from 'next/image'
-import { useState, Fragment } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Reveal from './Reveal'
+import Breadcrumb from './Breadcrumb'
+import ParallaxImage from './ParallaxImage'
+import ReviewsBadge from './ReviewsBadge'
+import DevisRapide from './DevisRapide'
 import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
-import CategoryTabs from './CategoryTabs'
+import ProductsGrid from './categorie/ProductsGrid'
 import { CATEGORY_FAQ, CATEGORY_FAQ_EN } from '../lib/categoryFaq'
-import Breadcrumb from './Breadcrumb'
-import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
-import ParallaxImage from './ParallaxImage'
-import CrossSellBanner from './CrossSellBanner'
-import EncartDevisMobile from './EncartDevisMobile'
 
-const BASE_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
+/*
+  Gabarit des pages de la carte (refonte du 23/10/2026, audit design,
+  chantier 5), sur le modèle des pages saisonnières et cocktails :
 
-const extractPrice = (label = '') => {
-  const match = label.match(/(\d+[,.]?\d*)\s*€/)
-  if (!match) return 0
-  return parseFloat(match[1].replace(',', '.'))
-}
+    en-tête photo + titre + ligne de faits (prix calculés)
+    → « L'essentiel »
+    → les formules et le tableau « Combien prévoir » (calculés)
+    → la carte, rangée par sections, filtres collants (seul îlot client)
+    → devis court → « Comment ça se passe » → « Bien choisir » (texte replié)
+    → UNE seule FAQ, la même affichée et balisée.
 
-// sectionFilterLabel/-Key : entrée de tri optionnelle qui filtre la grille sur
-// une seule section (ex. « Petit Déjeuner Salé » → product.section === key),
-// plutôt que de trier l'ensemble du catalogue.
-const sortProducts = (list, sortLabel, sectionFilterLabel, sectionFilterKey) => {
-  if (sectionFilterLabel && sortLabel === sectionFilterLabel) {
-    return list.filter(p => p.section === sectionFilterKey)
+  Pas de hook ici : le gabarit se rend côté serveur depuis une page serveur,
+  et reste utilisable par les quelques pages anglaises encore en 'use client'.
+
+  Anciennes props acceptées (pages anglaises) : fallbackProducts au format
+  { id, name, label: « portion · prix », img }, breadcrumb, answerBlock.
+  Styles : app/globals.css, préfixes .ev-, .cat- et .pgr-.
+*/
+const BASE = 'https://www.lecrin-traiteur.fr'
+
+/* « 6 pièces · 17,90€ » ou « €17.90 » → carte légère pour la grille. */
+function depuisAncien(p, basePath, en) {
+  const parts = String(p.label || '').split('·').map(s => s.trim()).filter(Boolean)
+  const prixBrut = parts.length > 1 ? parts[parts.length - 1] : parts[0] || ''
+  const unite = parts.length > 1 ? parts.slice(0, -1).join(' · ') : (p.qty || '')
+  const m = prixBrut.match(/(\d+(?:[.,]\d+)?)/)
+  const prix = m && /€/.test(prixBrut) ? Number(m[1].replace(',', '.')) : null
+  const montant = prixBrut.replace(/\s*ht\s*$/i, '').trim()
+  return {
+    href: p.id ? `${basePath}/${p.id}` : (en ? '/en/devis' : '/devis'),
+    nom: p.name,
+    img: p.img,
+    imgPos: p.imgPosition,
+    prix,
+    prixTexte: prix != null ? `${montant} ${en ? 'excl. VAT' : 'HT'}` : (montant || (en ? 'on request' : 'sur devis')),
+    unite,
+    section: p.section && p.sectionLabel ? p.sectionLabel : undefined,
   }
-  const arr = [...list]
-  if (sortLabel === 'Prix croissant')  return arr.sort((a, b) => extractPrice(a.label) - extractPrice(b.label))
-  if (sortLabel === 'Prix décroissant') return arr.sort((a, b) => extractPrice(b.label) - extractPrice(a.label))
-  if (sortLabel === 'Nouveautés')      return arr.reverse()
-  return arr // En vedette = ordre original
 }
 
 export default function ProductsPageTemplate({
-  heroImg,
-  heroImgPosition,
-  heroTitle,
-  heroSubtitle,
-  breadcrumb,
-  categorieSlug,
-  fallbackProducts,
-  seoArticle,
-  basePath,
-  editorial,
-  sectionFilterLabel,
-  sectionFilterKey,
-  crossSell,
-  answerBlock,
   lang = 'fr',
+  heroImg, heroImgPosition, heroAlt,
+  surtitre, heroTitle, heroSubtitle, faits,
+  essentiel, essentielTitre,
+  formules,
+  produits, sections,
+  fallbackProducts, basePath = '/creations/petits-dejeuners-et-pauses',
+  seoArticle, titreChoisir,
+  faq, faqAvecGenerale = true,
+  devisPrestation = '', devisTitre,
+  nomJsonLd,
+  answerBlock,
 }) {
   const en = lang === 'en'
-  const [sortLabel, setSortLabel]   = useState('En vedette')
-  const sorts = sectionFilterLabel ? [...BASE_SORTS, sectionFilterLabel] : BASE_SORTS
-  // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
-  // fallbackProducts est l'unique source de vérité.
-  const products = sortProducts(fallbackProducts, sortLabel, sectionFilterLabel, sectionFilterKey)
+  const titre = (heroTitle || '').replace(/\n/g, ' ')
+  const cartes = produits || (fallbackProducts || []).map(p => depuisAncien(p, basePath, en))
+  const pre = en ? '/en' : ''
+  const chemin = basePath
+  const url = `${BASE}${pre}${chemin}`
+
+  // Une seule FAQ : questions de la page, puis les questions générales qu'elles ne couvrent pas.
+  const generale = en ? CATEGORY_FAQ_EN : CATEGORY_FAQ
+  const propres = faq || []
+  const toutes = faqAvecGenerale
+    ? [...propres, ...generale.filter(g => !propres.some(p => p.q === g.q))]
+    : propres
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'FAQPage', '@id': `${url}#faq`, inLanguage: en ? 'en' : 'fr',
+        mainEntity: toutes.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
+    ],
+  }
+
+  const devisTitres = {
+    fr: devisTitre?.fr || 'Pour combien de personnes ?',
+    en: devisTitre?.en || 'For how many people?',
+  }
 
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar showBanner />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <main className="pd-main" style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
+      <main className="ev-main cat-main">
+        <Breadcrumb maxWidth="1440px" jsonLd={false} items={[{ label: en ? 'Home' : 'Accueil', href: en ? '/en' : '/' }, { label: titre }]} />
 
-        {/* ── Hero ── */}
-        <div className="page-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
-          <div className="page-hero" style={{ position: 'relative', width: '100%', height: '68vh', minHeight: '460px', overflow: 'hidden' }}>
-            <ParallaxImage priority sizes="100vw" src={heroImg}
-              alt={heroTitle}
-              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: heroImgPosition || 'center' }}
-            />
-            <div className="page-hero-veil" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0) 80%)' }} />
-            <Reveal mode="mount" y={16}>
-              <div className="page-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
-                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
-                  {breadcrumb}
-                </p>
-                <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(32px, 4vw, 58px)', fontWeight: 400, lineHeight: 1.15, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
-                  {heroTitle}
-                </h1>
-                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.72)', maxWidth: '340px' }}>
-                  {heroSubtitle}
-                </p>
+        <section className="ev-hero cat-hero">
+          <div className="ev-hero-texte">
+            {surtitre && <p className="ev-surtitre">{surtitre}</p>}
+            <h1 className="ev-h1">{titre}</h1>
+            {heroSubtitle && <p className="ev-chapo">{heroSubtitle}</p>}
+            {faits && <p className="ev-faits">{faits}</p>}
+            <div className="ev-actions">
+              <a className="ev-btn" href="#devis">{en ? 'Ask for a quote' : 'Demander un devis'}</a>
+              <a className="ev-btn-filet" href={formules ? '#formules' : '#carte'}>{formules ? (en ? 'See the prices' : 'Voir les prix') : (en ? 'See the menu' : 'Voir la carte')}</a>
+            </div>
+            <ReviewsBadge showCount />
+          </div>
+          <div className="ev-hero-img">
+            <ParallaxImage priority sizes="(max-width: 900px) 100vw, 55vw" src={heroImg} alt={heroAlt || titre}
+              strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: heroImgPosition || 'center' }} />
+          </div>
+        </section>
+
+        {essentiel ? (
+          <section className="ev-bloc ev-etroit cat-essentiel">
+            <h2 className="ev-h2">{essentielTitre || (en ? 'At a glance' : "L'essentiel")}</h2>
+            <p className="ev-texte">{essentiel}</p>
+          </section>
+        ) : answerBlock ? (
+          <section className="ev-bloc ev-etroit cat-essentiel">{answerBlock}</section>
+        ) : null}
+
+        {formules && (
+          <section id="formules" className="ev-bloc cat-formules-bloc">
+            <h2 className="ev-h2">{formules.titre}</h2>
+            {formules.intro && <p className="ev-intro">{formules.intro}</p>}
+            {formules.cartes?.length > 0 && (
+              <ul className="cat-formules">
+                {formules.cartes.map(c => {
+                  const corps = (
+                    <>
+                      <span className="cat-formule-nom">{c.nom}</span>
+                      <span className="cat-formule-prix">{c.prix}</span>
+                      {c.detail && <span className="cat-formule-detail">{c.detail}</span>}
+                    </>
+                  )
+                  return <li key={c.nom}>{c.href ? <a href={c.href} className="cat-formule">{corps}</a> : <div className="cat-formule">{corps}</div>}</li>
+                })}
+              </ul>
+            )}
+            {formules.tableau && (
+              <div className="cat-tableau">
+                {formules.tableau.titre && <h3 className="ev-h3">{formules.tableau.titre}</h3>}
+                <div className="ev-table-wrap">
+                  <table className="ev-table">
+                    <thead><tr>{formules.tableau.entetes.map(h => <th key={h}>{h}</th>)}</tr></thead>
+                    <tbody>
+                      {formules.tableau.lignes.map(l => (
+                        <tr key={l[0]}>
+                          {l.map((c, i) => (i === 0 ? <td key={i}><strong>{c}</strong></td> : <td key={i} className="ev-nowrap">{c}</td>))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                {formules.note && <p className="ev-note">{formules.note}</p>}
               </div>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* ── Fil d'Ariane visible (Accueil › Catégorie) ── */}
-        <div className="page-breadcrumb" style={{ maxWidth: '1440px', margin: '0 auto', padding: '24px 72px 0' }}>
-          {/* jsonLd={false} : le BreadcrumbList de ces pages est porté par CategoryJsonLd. */}
-          <Breadcrumb variant="inline" jsonLd={false} items={[{ label: en ? 'Home' : 'Accueil', href: en ? '/en' : '/' }, { label: (heroTitle || '').replace(/\n/g, ' ') }]} />
-        </div>
-
-        {/* ── Bloc réponse optionnel (prix, délai, commande) avant la grille ── */}
-        {answerBlock && (
-          <div className="page-answer" style={{ maxWidth: '1440px', margin: '0 auto', padding: '32px 72px 8px' }}>
-            <div style={{ maxWidth: '860px' }}>{answerBlock}</div>
-          </div>
+            )}
+          </section>
         )}
 
-        {/* ── Barre catégories + tri (partagée avec toutes les pages) ── */}
-        <CategoryTabs sort={sortLabel} onSort={setSortLabel} count={products.length} sorts={sorts} lang={lang} />
+        <section className="cat-carte" aria-label={en ? 'The menu' : 'La carte'}>
+          <ProductsGrid produits={cartes} sections={sections} lang={lang} />
+        </section>
 
-        {/* ── Grille produits ── */}
-        <div className="products-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '56px 72px 120px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px 24px' }}>
-          {products.map((p, i) => (
-            <Fragment key={`${p.id ?? 'p'}-${i}`}>
-              {p.sectionTitle && (
-                <div style={{ gridColumn: '1 / -1', marginBottom: '0', paddingTop: '16px', paddingBottom: '8px' }}>
-                  <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, letterSpacing: '-0.01em', color: '#1a1a1a', margin: 0 }}>
-                    {p.sectionTitle}
-                  </h2>
-                </div>
-              )}
-              <Reveal delay={(i % 4) * 90}>
-                <ProductCard product={p} basePath={basePath || '/creations/petits-dejeuners-et-pauses'} lang={lang} />
-              </Reveal>
-              {/* L'encart mobile n'est pas encore traduit : pas d'encart en anglais
-                  plutôt qu'un formulaire français au milieu de la grille. */}
-              {!en && i === Math.min(3, products.length - 1) && <EncartDevisMobile />}
-            </Fragment>
-          ))}
-        </div>
-
-        {crossSell && <CrossSellBanner {...crossSell} />}
-
+        <section id="devis" className="ev-devis cat-devis">
+          <div className="ev-devis-inner">
+            <DevisRapide
+              defaultPrestation={devisPrestation}
+              titre={devisTitres.fr}
+              titreEn={devisTitres.en}
+              sousTitre="Indiquez la date et votre email : devis détaillé sous 24h, sans engagement."
+              sousTitreEn="Give us the date and your email: a detailed quote within 24 hours, no commitment."
+            />
+          </div>
+        </section>
       </main>
 
-      {/* ── Section éditoriale + article SEO ── */}
-      <CategoryClosing {...(editorial || {})} seoArticle={seoArticle} lang={lang} />
-
-      {/* Les règles responsive de cette page sont dans app/globals.css (.pd-main, .pd-faq) : une balise
-          <style> placée en bas de page arrive après le premier affichage et décale le haut de la page. */}
-      <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `.pd-card { border-radius: 4px !important; }` }} />
-
-      {/* ── FAQ logistique visible (schema porté par CategoryJsonLd) ── */}
-      <section className="cat-faq pd-faq" style={{ maxWidth: '760px', margin: '0 auto', padding: '8px 40px 88px' }}>
-        <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px' }}>
-          {en ? 'Frequently asked questions' : 'Questions fréquentes'}
-        </h2>
-        {(en ? CATEGORY_FAQ_EN : CATEGORY_FAQ).map((f, i) => (
-          <div key={i} style={{ padding: '22px 0', borderTop: i === 0 ? '1px solid rgba(17,17,17,0.08)' : '1px solid rgba(17,17,17,0.08)' }}>
-            <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
-              {f.q}
-            </h3>
-            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
-              {f.a}
-            </p>
-          </div>
-        ))}
-      </section>
+      <CategoryClosing
+        seoArticle={seoArticle}
+        lang={lang}
+        titreChoisir={titreChoisir}
+        avantGuides={(
+          <section className="ev-bloc ev-etroit cat-faq-bloc">
+            <h2 className="ev-h2">{en ? 'Frequently asked questions' : 'Questions fréquentes'}</h2>
+            <div className="ev-faq">
+              {toutes.map(f => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+      />
 
       <CategoryJsonLd
-        name={heroTitle}
-        path={basePath || '/creations/petits-dejeuners-et-pauses'}
-        items={products.map(p => ({ name: p.name, url: `${basePath || '/creations/petits-dejeuners-et-pauses'}/${p.id}` }))}
+        name={nomJsonLd || titre}
+        path={chemin}
+        includeFaq={false}
+        items={cartes.filter(c => c.href && !c.href.endsWith('/devis')).map(c => ({ name: c.nom, url: c.href }))}
       />
       <Footer />
     </>
-  )
-}
-
-function ProductCard({ product, basePath, lang = 'fr' }) {
-  const [hovered, setHovered] = useState(false)
-
-  const href = product.id
-    ? `${basePath}/${product.id}`
-    : (lang === 'en' ? '/en/devis' : '/devis')
-
-  // "16 pièces, 26,80€" → pièces + prix séparés
-  const parts = (product.label || '').split('·').map(s => s.trim()).filter(Boolean)
-  const hasPieces = parts.length > 1
-  const pieces = hasPieces ? parts[0] : ''
-  const priceRaw = hasPieces ? parts[1] : parts[0]
-  const priceClean = (priceRaw || '').replace(/\s*ht\s*$/i, '').trim()
-  // « Sur devis » n'est pas un montant : pas de mention HT derrière
-  const isAmount = /\d/.test(priceClean)
-
-  return (
-    <a
-      href={href}
-      className="pd-card"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: 'block',
-        textDecoration: 'none',
-        background: '#FFFFFF',
-        overflow: 'hidden',
-        cursor: 'pointer',
-        boxShadow: hovered
-          ? '0 2px 6px rgba(17,17,17,0.04), 0 16px 40px rgba(17,17,17,0.09)'
-          : '0 1px 3px rgba(17,17,17,0.04), 0 6px 20px rgba(17,17,17,0.05)',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        transition: 'box-shadow 0.35s ease, transform 0.35s ease',
-      }}
-    >
-      {/* Image pleine largeur dans la carte, overlay "Découvrir" au survol */}
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden', background: '#F8F5EF' }}>
-        <Image fill src={product.img}
-          alt={product.name}
-          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-          style={{ objectFit: 'cover', objectPosition: product.imgPosition || 'center', transition: 'transform 0.7s ease', transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
-        />
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(20,16,12,0.30)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.4s ease',
-        }}>
-          <span style={{
-            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
-            fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase',
-            color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.7)', padding: '11px 26px',
-            transform: hovered ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'transform 0.4s ease',
-          }}>
-            {lang === 'en' ? 'Discover' : 'Découvrir'}
-          </span>
-        </div>
-      </div>
-
-      {/* Contenu dans la carte, nom, prix, pièces */}
-      <div style={{ padding: '16px 16px 16px', display: 'flex', flexDirection: 'column' }}>
-        <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '9px', transition: 'color 0.25s ease' }}>
-          {product.name}
-        </p>
-        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '9px' : '0' }}>
-          {priceClean}
-          {isAmount && <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>{lang === 'en' ? 'excl. VAT' : 'HT'}</span>}
-        </p>
-        {hasPieces && (
-          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)' }}>
-            {pieces}
-          </p>
-        )}
-      </div>
-    </a>
   )
 }

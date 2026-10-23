@@ -4,7 +4,7 @@ import { useEffect, Suspense } from 'react'
 import { useParams, notFound } from 'next/navigation'
 import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../components/GalleryFiche'
-import { BOXES } from '../page'
+import { BOXES } from '../data'
 import { asavoirLunchBox } from '../../../../lib/ficheAsavoir'
 
 const SEO_HTML = `
@@ -65,7 +65,7 @@ function LunchBoxDetailInner() {
       seoTitle={box.seoTitle || "La lunch box parfaite pour vos déjeuners nomades et réunions"}
       seoHtml={box.seoHtml || SEO_HTML}
       asavoir={asavoirLunchBox(box)}
-      devisPrestation="Lunch box"
+      devisPrestation="Plateaux repas"
       devisTitre="Des lunch box pour votre équipe ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />

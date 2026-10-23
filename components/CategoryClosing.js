@@ -33,6 +33,7 @@ const TEXTES = {
     question: 'Une question avant de commander ?',
     devis: 'Demander un devis',
     devisHref: '/devis',
+    choisir: 'Bien choisir : quantités, budget, livraison',
   },
   en: {
     titre: 'How it works',
@@ -48,10 +49,11 @@ const TEXTES = {
     question: 'A question before you order?',
     devis: 'Ask for a quote',
     devisHref: '/en/devis',
+    choisir: 'Choosing well: quantities, budget, delivery',
   },
 }
 
-export default function CategoryClosing({ seoArticle, lang = 'fr' }) {
+export default function CategoryClosing({ seoArticle, lang = 'fr', titreChoisir, avantGuides = null }) {
   const en = lang === 'en'
   const T = TEXTES[en ? 'en' : 'fr']
   const lignes = T.lignes(en ? euroEn(LIV) : euroFr(LIV), en ? euroEn(MINIMUM) : euroFr(MINIMUM))
@@ -79,14 +81,18 @@ export default function CategoryClosing({ seoArticle, lang = 'fr' }) {
         </div>
       </section>
 
-      {/* ── Article SEO catégorie ── */}
+      {/* ── Article SEO catégorie, replié dans « Bien choisir » (23/10/2026) :
+          le texte reste dans le HTML (details natif), la page ne s'étire plus. ── */}
       {seoArticle && (
-        <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,17,17,0.07)' }}>
-          <div style={{ maxWidth: '760px', margin: '0 auto', padding: '80px 40px 88px' }}>
+        <section className="cat-choisir">
+          <details className="cat-choisir-details">
+            <summary>{titreChoisir || T.choisir}</summary>
             <div className="cat-seo-body" dangerouslySetInnerHTML={{ __html: seoArticle }} />
-          </div>
+          </details>
         </section>
       )}
+
+      {avantGuides}
 
       {/* Les guides du Journal ne sont pas tous traduits : on ne les montre
           pas en anglais plutôt que d'y envoyer vers des pages françaises. */}

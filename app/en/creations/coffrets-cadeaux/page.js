@@ -1,5 +1,6 @@
-/*
-  /en/creations/coffrets-cadeaux sert exactement le même composant que la page
-  française : il déduit sa langue du chemin. Aucune duplication de texte.
-*/
-export { default } from '../../../creations/coffrets-cadeaux/page'
+/* Même vue serveur que la page française, en anglais (app/creations/coffrets-cadeaux/Vue.js). */
+import VueCoffrets from '../../../creations/coffrets-cadeaux/Vue'
+
+export default function PageEn() {
+  return <VueCoffrets en />
+}

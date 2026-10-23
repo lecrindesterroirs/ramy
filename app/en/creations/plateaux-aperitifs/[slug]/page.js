@@ -61,7 +61,7 @@ function FicheEn() {
       seoEyebrow="Aperitif platter · Corporate catering"
       seoTitle={en.seoTitle}
       seoHtml={en.seoHtml}
-      devisPrestation="Plateaux apéritifs"
+      devisPrestation="Cocktail / Buffet"
       devisTitre="An afterwork or a reception to organise?"
       devisSousTitre="Answer in 30 seconds, personalised quote within 24 hours."
     />

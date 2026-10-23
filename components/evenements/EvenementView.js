@@ -71,7 +71,7 @@ export default function EvenementView({ slug, en = false }) {
   ].filter(Boolean)
 
   // Photo de la rangée « signature » : celle du guide si elle existe, sinon la première pièce de la sélection.
-  const imgSignature = ev.article.sections.find(s => s.img)?.img || produits.find(p => p.img !== ev.img)?.img
+  const imgSignature = ev.article.sections.find(s => s.img)?.img || produits.find(p => p.img && p.img !== ev.img)?.img
   const prestationDevis = PRESTATIONS[ev.prestations[0]].devis
 
   const fil = [
@@ -189,7 +189,7 @@ export default function EvenementView({ slug, en = false }) {
             {produits.map(p => (
               <a key={p.href} href={p.href} className="ev-carte">
                 <span className="ev-carte-img">
-                  <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={p.img} alt={p.nom} style={{ objectFit: 'cover' }} />
+                  {p.img ? <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={p.img} alt={p.nom} style={{ objectFit: 'cover' }} /> : <span className="pgr-sans-photo">{p.nom}</span>}
                 </span>
                 <span className="ev-carte-nom">{p.nom}</span>
                 <span className="ev-carte-prix">{p.prixTexte}</span>

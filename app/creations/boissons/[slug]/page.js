@@ -35,7 +35,7 @@ export default function BoissonPage() {
       seoTitle={product.seoTitle}
       seoHtml={product.seoArticle}
       asavoir={asavoirProduit(product, { kind: 'boisson' })}
-      devisPrestation="Boissons"
+      devisPrestation="Petit-déjeuner"
       devisTitre="Un événement à Paris ou en Île-de-France ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />

@@ -62,7 +62,7 @@ function FicheEn() {
       seoEyebrow="Lunch box · Corporate catering"
       seoTitle={en.seoTitle}
       seoHtml={en.seoHtml}
-      devisPrestation="Lunch box"
+      devisPrestation="Plateaux repas"
       devisTitre="Lunch boxes for your team?"
       devisSousTitre="Answer in 30 seconds, personalised quote within 24 hours."
     />

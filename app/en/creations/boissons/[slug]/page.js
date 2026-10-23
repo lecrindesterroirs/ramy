@@ -48,7 +48,7 @@ function FicheEn() {
       seoEyebrow={en.seoEyebrow || 'Drinks · Corporate catering'}
       seoTitle={en.seoTitle}
       seoHtml={en.seoArticle}
-      devisPrestation="Boissons"
+      devisPrestation="Petit-déjeuner"
       devisTitre="An event in Paris or Île-de-France?"
       devisSousTitre="Answer in 30 seconds, personalised quote within 24 hours."
     />

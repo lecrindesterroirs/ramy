@@ -58,7 +58,7 @@ function AnimationDetailInner() {
         '@type': 'Product',
         name: anim.nom,
         description: anim.description,
-        image: `${BASE}${anim.img}`,
+        ...(anim.img ? { image: `${BASE}${anim.img}` } : {}),
         brand: { '@type': 'Brand', name: "L'Écrin Traiteur" },
         category: 'Animation culinaire',
         offers: {
@@ -186,7 +186,9 @@ function AnimGalleryFiche({ anim, universLabel }) {
       {/* ── Colonne gauche : galerie ── */}
       <div className="gallery-col">
         <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', borderRadius: '4px', background: '#F8F5EF', boxShadow: '0 16px 40px rgba(17,17,17,0.10)' }}>
-          <Image fill priority sizes="(max-width: 768px) 100vw, 55vw" src={anim.img} alt={anim.nom} style={{ objectFit: 'cover' }} />
+          {anim.img
+            ? <Image fill priority sizes="(max-width: 768px) 100vw, 55vw" src={anim.img} alt={anim.nom} style={{ objectFit: 'cover' }} />
+            : <span className="pgr-sans-photo">{anim.nom}</span>}
         </div>
       </div>
 

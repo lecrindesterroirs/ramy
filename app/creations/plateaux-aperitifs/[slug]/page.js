@@ -4,7 +4,7 @@ import { useEffect, Suspense } from 'react'
 import { useParams, notFound } from 'next/navigation'
 import { useUrlSearchParams } from '../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../components/GalleryFiche'
-import { PLATEAUX, FILTRES } from '../page'
+import { PLATEAUX, FILTRES } from '../data'
 import { asavoirPlateauAperitif } from '../../../../lib/ficheAsavoir'
 
 const SEO_HTML = `
@@ -60,7 +60,7 @@ function PlateauAperitifDetailInner() {
       seoTitle={plateau.seoTitle || "Le plateau apéritif qui fait le succès de vos afterworks"}
       seoHtml={plateau.seoHtml || SEO_HTML}
       asavoir={asavoirPlateauAperitif(plateau)}
-      devisPrestation="Cocktail déjeunatoire"
+      devisPrestation="Cocktail / Buffet"
       devisTitre="Un afterwork ou une réception à organiser ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />

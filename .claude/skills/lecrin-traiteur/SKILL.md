@@ -146,6 +146,8 @@ Rendu       → composants serveur dès que possible (modèle : components/evene
 SEO         → Next.js Metadata API (generateMetadata par page)
 ```
 
+**Gabarits serveur (23/10/2026)** : pages de la carte → `components/ProductsPageTemplate.js` + `lib/categoriesVue.js` (formules, tableau « Combien prévoir », grille par sections `components/categorie/ProductsGrid.js`, texte replié « Bien choisir », une seule FAQ) ; occasions → `components/occasions/*` + `lib/occasionsVue.js` (prix des textes en marqueurs `{{ht:veg}}`, `{{htn:inv:20}}`…) ; healthy et éco-responsable → `components/thematiques/ThematiqueView.js` + `lib/thematiquesVue.js`. Avant toute affirmation produit (bio, maison, nom d'artisan), vérifier la note du coffre « Ce que le site et les papiers promettent ».
+
 ---
 
 ## Références à charger selon le contexte

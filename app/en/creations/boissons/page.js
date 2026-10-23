@@ -1,20 +1,13 @@
-'use client'
-
 import ProductsPageTemplate from '../../../../components/ProductsPageTemplate'
-import { BOISSONS } from '../../../../lib/boissonsData'
-import { enBoisson, qtyEn } from '../../../../lib/en/produits/boissons'
+import { categorieBoissons, ht } from '../../../../lib/categoriesVue'
+import { MINIMUM } from '../../../../lib/prixEntree'
+import { LIV } from '../../../../lib/calculsPrix'
 
-/* Index boissons en anglais. Prix et contenances viennent du fichier français. */
-
-const PRODUITS = BOISSONS
-  .filter(b => enBoisson(b.id))
-  .map(b => ({
-    id: b.id,
-    name: enBoisson(b.id).name,
-    label: `${qtyEn(b.qty)} · €${b.price?.toFixed(2)}`,
-    img: b.img,
-  }))
-
+/*
+  Index anglais, rendu côté serveur avec le même gabarit et les mêmes calculs
+  que la page française (refonte du 23/10/2026) : prix et photos lus dans les
+  fiches françaises, noms dans les surcouches lib/en/produits/*.
+*/
 const SEO_ARTICLE = `
   <h2>Artisan drinks for your corporate events in Paris</h2>
   <p>The drink is usually the most noticed detail, and the most neglected. An <strong>Alain Milliat</strong> juice on the table says something about your standards. A <strong>Mariage Frères</strong> tea in a meeting creates a different atmosphere from a supermarket teabag. L'Écrin Traiteur picks artisan drinks for every corporate event in Paris.</p>
@@ -26,22 +19,31 @@ const SEO_ARTICLE = `
   <p>Order until <strong>2 pm the day before</strong>. Delivered from <strong>6:30 am</strong>, Monday to Friday. Juices and cold drinks arrive <strong>with cups</strong>, so there is nothing for you to arrange. Drinks are easy to add to an existing pastry or dessert order, one delivery, everything together. Company invoice showing VAT.</p>
 `
 
-export default function BoissonsEn() {
+export default function Page() {
+  const c = categorieBoissons(true)
+  const FAQ = [
+    { q: 'How much should we allow?', a: c.essentiel },
+    { q: 'Do you serve alcohol?', a: 'No, the whole menu is alcohol-free. To raise a glass, we deliver an alcohol-free Chardonnay Blanc de Blancs.' },
+  ]
   return (
     <ProductsPageTemplate
       lang="en"
-      heroImg="/boissons-hero.webp"
-      heroTitle="Drinks"
-      heroSubtitle="Alain Milliat juices, Mariage Frères teas, coffee and water. Drinks chosen for how they taste."
-      breadcrumb="Our menu, Drinks"
-      fallbackProducts={PRODUITS}
-      basePath="/en/creations/boissons"
+      heroImg="/creations-boissons.webp"
+      heroAlt="Alain Milliat juices and a coffee thermos"
+      surtitre="Drinks"
+      heroTitle="Drinks for the office"
+      heroSubtitle="Alain Milliat juices, Mariage Frères teas, coffee in thermoses and water, delivered with your order."
+      faits={c.faits}
+      essentiel={c.essentiel}
+      formules={c.formules}
+      produits={c.produits}
+      sections={c.sections}
       seoArticle={SEO_ARTICLE}
-      editorial={{
-        eyebrow: 'Built to go with every moment',
-        title: 'Exceptional juice and\nartisan drinks.',
-        body: 'Whole-fruit Alain Milliat juices, Mariage Frères teas, coffee served in flasks: the drink is the detail your guests notice. We choose it as carefully as the rest of the table.',
-      }}
+      faq={FAQ}
+      basePath="/creations/boissons"
+      devisPrestation="Petit-déjeuner"
+      devisTitre={{ fr: "Drinks to order?", en: "Drinks to order?" }}
+      nomJsonLd="Drinks"
     />
   )
 }

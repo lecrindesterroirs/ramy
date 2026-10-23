@@ -2,7 +2,7 @@
 
 import { useParams, notFound } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
-import { SALADES, FILTRES } from '../page'
+import { SALADES, FILTRES } from '../data'
 
 const SEO_HTML = `
   <p>Les <strong>grandes salades à partager</strong> apportent de la convivialité aux déjeuners d'équipe, ateliers et réunions à Paris. Généreuses et colorées, elles se posent au centre de la table et invitent chacun à se servir, une alternative fraîche et décontractée au plateau individuel.</p>

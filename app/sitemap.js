@@ -147,6 +147,15 @@ LASTMOD_PRIX_21_10.push(
   '/en/journal/traiteur-agence-evenementielle-paris',
 )
 LASTMOD_PRIX_21_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-21' })
+// Refonte du 23/10/2026 (audit design, phase 2) : occasions, pages de la carte, healthy, éco-responsable
+const LASTMOD_23_10 = [
+  '/occasions', '/creations/petits-dejeuners-et-pauses', '/creations/pauses-gourmandes', '/creations/plateaux-repas',
+  '/creations/lunch-box', '/creations/a-partager', '/creations/plateaux-aperitifs', '/creations/boissons',
+  '/creations/animations-culinaires', '/creations/coffrets-cadeaux', '/creations/cocktails',
+  '/traiteur-healthy', '/traiteur-eco-responsable', '/traiteur-halal/buffet-entreprise', '/tarifs',
+]
+OCCASIONS.forEach(o => LASTMOD_23_10.push(`/occasions/${o.slug}`))
+LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en${p}`] = '2026-10-23' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)

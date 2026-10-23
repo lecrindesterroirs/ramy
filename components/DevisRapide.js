@@ -100,13 +100,30 @@ const FAMILLES_PERSO = [
   secondes… » sur 44 pages /en. Une page qui tient à un titre anglais précis
   passe titreEn / sousTitreEn.
 */
+/*
+  Une page qui pré-choisit une valeur absente de la liste (« Boissons »,
+  « Lunch box »…) laissait le select vide sans le dire : on la ramène à la
+  valeur de la liste la plus proche, sinon à rien (23/10/2026).
+*/
+const ALIAS = {
+  'Boissons': 'Petit-déjeuner',
+  'Lunch box': 'Plateaux repas',
+  'Pause gourmande': 'Goûter',
+  'Plateaux apéritifs': 'Cocktail / Buffet',
+  'Cocktail déjeunatoire': 'Cocktail / Buffet',
+  'Cocktail': 'Cocktail / Buffet',
+  'Buffet': 'Cocktail / Buffet',
+  'Animation': 'Événement sur mesure',
+}
+const prestationValide = (v) => (PRESTATIONS.includes(v) ? v : ALIAS[v] || '')
+
 export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, titreEn, sousTitreEn, compact = false }) {
   const en = estAnglais(usePathname() || '/')
   const t = en ? T.en : T.fr
   const motPrestation = (v) => (en && PRESTATIONS_EN[v]) || v
   const motFamille = (v) => (en && FAMILLES_PERSO_EN[v]) || v
   const [form, setForm] = useState({
-    prestation: defaultPrestation,
+    prestation: prestationValide(defaultPrestation),
     famillePerso: '',
     convives: '',
     date: '',

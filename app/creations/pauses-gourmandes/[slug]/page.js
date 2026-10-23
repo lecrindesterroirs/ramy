@@ -12,7 +12,7 @@ import FicheAsavoir from '../../../../components/FicheAsavoir'
 import { asavoirPause } from '../../../../lib/ficheAsavoir'
 import RelatedLinks from '../../../../components/RelatedLinks'
 import BreadcrumbJsonLd from '../../../../components/BreadcrumbJsonLd'
-import { PAUSES } from '../page'
+import { PAUSES } from '../data'
 
 const pauseRelated = (produit) => PAUSES.filter(p => p.id !== produit.id).slice(0, 4)
   .map(p => ({ href: `/creations/pauses-gourmandes/${p.id}`, title: p.nom, meta: 'Pause gourmande', img: p.img }))
