@@ -190,6 +190,7 @@ export default function sitemap() {
     url('/creations/cocktails/classique',                 0.82, 'monthly'),
     url('/creations/cocktails/signature',                 0.82, 'monthly'),
     url('/creations/cocktails/prestige',                  0.82, 'monthly'),
+    url('/creations/cocktails/afterwork-partage',         0.82, 'monthly'),
     url('/creations/plateaux-aperitifs',                  0.84, 'monthly'),
     url('/creations/animations-culinaires',               0.84, 'monthly'),
     url('/creations/boissons',                            0.78, 'monthly'),
@@ -323,6 +324,7 @@ export default function sitemap() {
     ...slugsPlateauxAperitifsEn().map(id => url(`/en/creations/plateaux-aperitifs/${id}`, 0.74, 'monthly')),
     ...cheminsAnimationsEn().map(c => url(`/en${c}`, 0.72, 'monthly')),
     ...clesCocktailsEn().map(k => url(`/en/creations/cocktails/${k}`, 0.78, 'monthly')),
+    url('/en/creations/cocktails/afterwork-partage',      0.78, 'monthly'),
     url('/en', 0.90, 'weekly'),   // accueil anglais
     // Pages légales anglaises : elles existent (app/en/cgv, /mentions-legales,
     // /confidentialite, /cookies) mais n'étaient pas déclarées, donc le
