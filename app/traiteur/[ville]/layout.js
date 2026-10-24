@@ -10,15 +10,18 @@ export function generateStaticParams() {
 /* Metas écrites à la main : les textes de lib/citiesData.js dépassent la taille
    d'un résultat Google (titre ~60 car., description ~155 car.). Une entrée ici
    prime sur citiesData.js, sans toucher à ce fichier. */
+/* 24/10/2026 : Boulogne, Puteaux, Nanterre et Courbevoie laissent la requête « petit déjeuner » à leur page /petit-dejeuner-entreprise/<ville>
+   (mieux classée quand Google la montre : 3e à Nanterre, 4e à Puteaux). Les 7 autres villes gardent « petit déjeuner dès 6,50 € HT » :
+   elles servent de témoins. Comparer les positions et les clics vers le 20/11/2026. */
 const META_OVERRIDES = {
-  'boulogne-billancourt': { title: "Traiteur Boulogne-Billancourt : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Boulogne-Billancourt : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
+  'boulogne-billancourt': { title: "Traiteur Boulogne-Billancourt : plateaux repas dès 28,90 € HT", description: "Traiteur d'entreprise à Boulogne-Billancourt : plateaux repas dès 28,90 € HT, cocktails dès 29,90 € HT, livrés dès 6h30. Petit-déjeuner : page dédiée." },
   'versailles': { title: "Traiteur entreprise Versailles : buffets, plateaux repas", description: "Traiteur d'entreprise à Versailles : buffets et cocktails dès 29,90 € HT, plateaux repas dès 28,90 € HT, livrés dès 6h30. 5,0/5 sur Google, devis 24h." },
-  'puteaux': { title: "Traiteur Puteaux, La Défense : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Puteaux et La Défense : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
+  'puteaux': { title: "Traiteur Puteaux, La Défense : plateaux repas dès 28,90 € HT", description: "Traiteur d'entreprise à Puteaux et La Défense : plateaux repas dès 28,90 € HT, cocktails dès 29,90 € HT, livrés dès 6h30. Petit-déjeuner : page dédiée." },
   'neuilly-sur-seine': { title: "Traiteur entreprise Neuilly : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Neuilly-sur-Seine : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
-  'nanterre': { title: "Traiteur entreprise Nanterre : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Nanterre : petit déjeuner entreprise dès 6,50 € HT (viennoiseries et café), plateaux repas entreprise dès 28,90 € HT. Dès 6h30." },
+  'nanterre': { title: "Traiteur entreprise Nanterre : plateaux repas dès 28,90 € HT", description: "Traiteur d'entreprise à Nanterre : plateaux repas dès 28,90 € HT, cocktails dès 29,90 € HT, livrés dès 6h30. Petit-déjeuner : page dédiée." },
   'levallois-perret': { title: "Traiteur entreprise Levallois : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Levallois-Perret : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
   'asnieres-sur-seine': { title: "Traiteur entreprise Asnières : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Asnières-sur-Seine : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
-  'courbevoie': { title: "Traiteur Courbevoie, La Défense : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Courbevoie et La Défense : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
+  'courbevoie': { title: "Traiteur Courbevoie, La Défense : plateaux et cocktails", description: "Traiteur d'entreprise à Courbevoie et La Défense : plateaux repas dès 28,90 € HT, cocktails dès 29,90 € HT, livrés dès 6h30. Petit-déjeuner : page dédiée." },
   'suresnes': { title: "Traiteur entreprise Suresnes : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Suresnes : petit déjeuner entreprise dès 6,50 € HT (viennoiseries et café), plateaux repas entreprise dès 28,90 € HT. Dès 6h30." },
   'gennevilliers': { title: "Traiteur entreprise Gennevilliers : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Gennevilliers : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
   'rueil-malmaison': { title: "Traiteur Rueil-Malmaison : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Rueil-Malmaison : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
