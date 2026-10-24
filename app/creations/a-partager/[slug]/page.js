@@ -1,43 +1,57 @@
-'use client'
-
-import { useParams, notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import GalleryFiche from '../../../../components/GalleryFiche'
-import { SALADES, FILTRES } from '../data'
+import { MENUS } from '../data'
 
-const SEO_HTML = `
-  <p>Les <strong>grandes salades à partager</strong> apportent de la convivialité aux déjeuners d'équipe, ateliers et réunions à Paris. Généreuses et colorées, elles se posent au centre de la table et invitent chacun à se servir, une alternative fraîche et décontractée au plateau individuel.</p>
-  <h2>Pensées par base, composées le matin même</h2>
-  <p>Plutôt que par recette, nous raisonnons par <strong>base</strong> : vertes, pâtes, pommes de terre, lentilles ou céréales, déclinées avec des produits de saison et des protéines au choix. Chaque salade est assemblée le jour de la livraison pour une fraîcheur irréprochable.</p>
-  <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
-  <p>Format, effectif, régimes alimentaires : nous adaptons chaque salade à votre déjeuner et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe dans vos locaux.</p>
-`
+/*
+  Fiche d'un menu à partager (Le Méditerranéen, Le Parisien, Le Jardin). Page serveur :
+  les trois menus viennent de ../data.js. L'ancienne fiche lisait SALADES (vide depuis la
+  refonte des menus) : les liens de la page /creations/a-partager répondaient 404.
+*/
+const prixNombre = (prix) => (/(\d+[,.]\d{2})/.exec(prix || '') || [])[1]?.replace('.', ',') || null
 
-export default function SaladeDetail() {
-  const { slug } = useParams()
-  const salade = SALADES.find(s => s.id === slug)
-  if (!salade) notFound()
+export default function MenuDetail({ params }) {
+  const m = MENUS.find(x => x.key === params.slug)
+  if (!m) notFound()
+  const prix = prixNombre(m.prix)
 
-  const base = FILTRES.find(f => f.key === salade.categorie)?.label ?? ''
+  const autres = MENUS.filter(x => x.key !== m.key)
+    .map(x => ({ href: `/creations/a-partager/${x.key}`, title: x.nom, meta: 'Menu à partager', img: x.img }))
+
+  const seoHtml = `
+    <p><strong>${m.nom}</strong> est un menu à partager pour <strong>8 à 12 personnes</strong> : ${m.accroche.charAt(0).toLowerCase() + m.accroche.slice(1)} Il se pose au centre de la table et circule de main en main, pour un déjeuner d'équipe, un accueil ou un séminaire à Paris et en Île-de-France.</p>
+    <h2>Au menu : ${m.salees.length} pièces salées et ${m.sucrees.length} douceurs</h2>
+    <p><strong>Salé :</strong> ${m.salees.join(' ; ')}.</p>
+    <p><strong>Sucré :</strong> ${m.sucrees.join(' ; ')}.</p>
+    <h2>Commande et livraison</h2>
+    <p>${prix ? `Le menu est à ${prix} € HT par personne. ` : ''}Commande avant <strong>14h la veille</strong>, livraison dès <strong>6h30</strong> à Paris et en Île-de-France, dressé et prêt à poser sur la table. Minimum de commande 50 € HT, livraison 29 € HT, facturation entreprise avec TVA. Toute la carte salée est halal et sans porc.</p>
+  `
 
   return (
     <GalleryFiche
-      title={salade.nom}
-      subtitle={base}
-      img={salade.img}
-      price={null}
-      description={`Une grande salade généreuse à partager, sur base « ${base.toLowerCase()} », composée le matin avec des produits de saison. Tarif au format et à l'effectif, sur devis.`}
+      title={m.nom}
+      subtitle="Menu à partager"
+      img={m.img}
+      price={prix}
+      priceNote="HT · par personne"
+      description={`${m.accroche} Pour 8 à 12 personnes : ${m.salees.length} pièces salées et ${m.sucrees.length} douceurs, dressées le matin et livrées dès 6h30.`}
+      sections={[
+        { label: 'Salé', value: m.salees.join(' · ') },
+        { label: 'Sucré', value: m.sucrees.join(' · ') },
+      ]}
+      related={autres}
+      relatedTitle="Les autres menus à partager"
       breadcrumb={[
         { label: 'Accueil', href: '/' },
-        { label: 'À Partager', href: '/creations/a-partager' },
-        { label: salade.nom },
+        { label: 'À partager', href: '/creations/a-partager' },
+        { label: m.nom },
       ]}
       backHref="/creations/a-partager"
-      backLabel="Retour aux salades à partager"
-      seoEyebrow="À Partager · Traiteur entreprise"
-      seoTitle="Les grandes salades à partager pour vos déjeuners conviviaux"
-      seoHtml={SEO_HTML}
+      backLabel="Retour aux menus à partager"
+      seoEyebrow="À partager · Traiteur entreprise"
+      seoTitle={`${m.nom}, un menu à partager pour vos déjeuners d'équipe`}
+      seoHtml={seoHtml}
       devisPrestation="Plateaux repas"
-      devisTitre="Un déjeuner convivial à organiser ?"
+      devisTitre="Un déjeuner à partager ?"
       devisSousTitre="Répondez en 30 secondes, devis personnalisé sous 24h."
     />
   )

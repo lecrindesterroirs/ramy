@@ -9,6 +9,7 @@ import { HALAL_PAGES } from '../lib/halalPagesData'
 import { OCCASIONS } from '../lib/occasionsData'
 import { BOISSONS } from '../lib/boissonsData'
 import { PRODUITS as PLATEAUX_REPAS } from './creations/plateaux-repas/data'
+import { MENUS as MENUS_A_PARTAGER } from './creations/a-partager/data'
 import { SLUGS as LUNCHBOX_SLUGS } from './creations/lunch-box/[slug]/layout'
 import { SLUGS as APERITIFS_SLUGS } from './creations/plateaux-aperitifs/[slug]/layout'
 import { SLUGS as PAUSES_SLUGS } from './creations/pauses-gourmandes/[slug]/layout'
@@ -87,6 +88,8 @@ const LASTMOD_PRIX_21_10 = [
   '/traiteur-halal/paris',
 ]
 LASTMOD_PRIX_21_10.push('/traiteur-halal', '/en/traiteur-halal')
+// Fiches des menus à partager créées le 24/10/2026 (les liens de la page répondaient 404)
+;['mediterraneen', 'parisien', 'jardin'].forEach(k => { LASTMOD_PAGES[`/creations/a-partager/${k}`] = '2026-10-24'; LASTMOD_PAGES[`/en/creations/a-partager/${k}`] = '2026-10-24' })
 // Versions anglaises et pages alignées le 21/10/2026 (fourchette du complet retirée en anglais aussi)
 LASTMOD_PRIX_21_10.push(
   '/corporate-catering-paris',
@@ -244,6 +247,7 @@ export default function sitemap() {
   const leafPages = [
     ...BOISSONS.map(b => url(`/creations/boissons/${b.id}`, 0.72, 'monthly')),
     ...PLATEAUX_REPAS.map(p => url(`/creations/plateaux-repas/${p.id}`, 0.82, 'monthly')),
+    ...MENUS_A_PARTAGER.map(m => url(`/creations/a-partager/${m.key}`, 0.80, 'monthly')),
     ...LUNCHBOX_SLUGS.map(s => url(`/creations/lunch-box/${s}`, 0.80, 'monthly')),
     ...APERITIFS_SLUGS.map(s => url(`/creations/plateaux-aperitifs/${s}`, 0.78, 'monthly')),
     ...PAUSES_SLUGS.map(s => url(`/creations/pauses-gourmandes/${s}`, 0.80, 'monthly')),
@@ -311,6 +315,7 @@ export default function sitemap() {
     ...Object.values(EN_PAGES).map(pg => url(`/en${pg.fr}`, 0.80, 'monthly')),
     ...slugsLunchBoxEn().map(id => url(`/en/creations/lunch-box/${id}`, 0.74, 'monthly')),
     ...slugsPlateauxRepasEn().map(id => url(`/en/creations/plateaux-repas/${id}`, 0.76, 'monthly')),
+    ...MENUS_A_PARTAGER.map(m => url(`/en/creations/a-partager/${m.key}`, 0.74, 'monthly')),
     ...slugsPetitsDejeunersEn().map(id => url(`/en/creations/petits-dejeuners-et-pauses/${id}`, 0.78, 'monthly')),
     ...slugsPausesEn().map(id => url(`/en/creations/pauses-gourmandes/${id}`, 0.74, 'monthly')),
     ...slugsBoissonsEn().map(id => url(`/en/creations/boissons/${id}`, 0.68, 'monthly')),
