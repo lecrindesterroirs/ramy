@@ -85,7 +85,7 @@ export default function InfoPage({ lang = 'fr', eyebrow, title, intro, cta, sect
           )}
 
           <div style={{ textAlign: 'center', marginTop: '56px' }}>
-            <a href="/devis" style={btn}>{ctaLabel}</a>
+            <a href={lang === 'en' ? '/en/devis' : '/devis'} style={btn}>{ctaLabel}</a>
           </div>
         </section>
       </main>
