@@ -13,6 +13,9 @@ const METIERS = [
   { nom: "Cabinets d'avocats", livre: `Petit-déjeuner client, déjeuner de travail en plateaux repas, cocktail pour une soirée clients`, guide: '/journal/traiteur-cabinet-avocats-paris' },
   { nom: 'Cabinets de conseil', livre: `Petits-déjeuners d'équipe, comités et séminaires, afterwork de fin de mission`, guide: '/journal/traiteur-cabinet-conseil-paris' },
   { nom: 'Entreprises tech et ESN', livre: `Afterwork, onboarding, meetups, petits-déjeuners d'équipe`, guide: '/journal/traiteur-entreprise-tech-esn-paris' },
+  { nom: 'Banque, assurance et finance', livre: `Petits-déjeuners de comité, plateaux de réunion, cocktail clients à La Défense`, guide: '/journal/traiteur-banque-assurance-finance-paris' },
+  { nom: 'Santé, laboratoires et medtech', livre: `Staffs du matin dès 6h30, formations, journées scientifiques`, guide: '/journal/traiteur-sante-laboratoire-medtech-paris' },
+  { nom: 'Immobilier et BTP', livre: `Cocktail d'inauguration, petit-déjeuner de chantier, portes ouvertes`, guide: '/journal/traiteur-immobilier-btp-paris' },
   { nom: 'Agences événementielles', livre: `Traiteur partenaire sur les événements de vos clients : formats, délais, ce qui est livré`, guide: '/journal/traiteur-agence-evenementielle-paris' },
 ]
 
@@ -42,7 +45,7 @@ export default function Metiers() {
   return (
     <InfoPage
       eyebrow="Par métier · Paris & Île-de-France"
-      title="Traiteur d'entreprise par métier : avocats, conseil, tech, agences"
+      title="Traiteur d'entreprise par métier : avocats, finance, santé, tech, agences"
       intro="Pour chaque métier, ce que nous livrons, à quel prix et sous quel délai. Prix HT, livraison dès 6h30, devis sous 24 h."
       jsonLd={jsonLd}
       faq={FAQ}
