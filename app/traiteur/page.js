@@ -235,6 +235,18 @@ export default function TraiteurPage() {
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '14px' }}>
             {en ? E.prixNote : `Prix 2026, hors taxes. Livraison ${euroFr(LIV)} HT à Paris et dans les communes proches, minimum de commande ${euroFr(MINIMUM)} HT. Devis détaillé sous 24h.`}
           </p>
+          {/* Section halal, reprise de l'ancienne page anglaise /corporate-catering-paris (fusionnée le 24/10/2026) */}
+          {en && (
+            <>
+              <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
+                {E.halalTitre}
+              </h2>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '16px' }}>{E.halal1}</p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '8px' }}>
+                {E.halal2a}<a href={L('/traiteur-halal')} style={{ color: 'var(--text-primary)' }}>{E.halal2lien}</a>{E.halal2b}
+              </p>
+            </>
+          )}
         </section>
 
         {/* ── Prestations : hub → pages produit ── */}

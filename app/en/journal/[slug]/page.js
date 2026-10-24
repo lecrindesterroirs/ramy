@@ -74,7 +74,7 @@ export default function EnArticlePage({ params }) {
         <div className="article-page-content" style={{ maxWidth: '760px', margin: '0 auto', padding: '44px 24px 120px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginBottom: '24px', fontFamily: SANS, fontSize: '11px', color: 'rgba(17,17,17,0.55)' }}>
             <nav aria-label="Breadcrumb">
-              <a href="/corporate-catering-paris" style={{ color: 'inherit' }}>Home</a> › <a href="/en/journal" style={{ color: 'inherit' }}>Journal</a>
+              <a href="/en" style={{ color: 'inherit' }}>Home</a> › <a href="/en/journal" style={{ color: 'inherit' }}>Journal</a>
             </nav>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <span style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>{a.categorie}</span>
@@ -191,7 +191,7 @@ export default function EnArticlePage({ params }) {
         'translationOfWork': { '@id': `${BASE}/journal/${a.slug}#article` },
         'mainEntityOfPage': { '@type': 'WebPage', '@id': url },
         'breadcrumb': { '@type': 'BreadcrumbList', 'itemListElement': [
-          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': `${BASE}/corporate-catering-paris` },
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': `${BASE}/en` },
           { '@type': 'ListItem', 'position': 2, 'name': 'Journal', 'item': `${BASE}/en/journal` },
           { '@type': 'ListItem', 'position': 3, 'name': a.titre, 'item': url },
         ] },

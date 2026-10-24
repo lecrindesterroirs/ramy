@@ -92,7 +92,6 @@ LASTMOD_PRIX_21_10.push('/traiteur-halal', '/en/traiteur-halal')
 ;['mediterraneen', 'parisien', 'jardin'].forEach(k => { LASTMOD_PAGES[`/creations/a-partager/${k}`] = '2026-10-24'; LASTMOD_PAGES[`/en/creations/a-partager/${k}`] = '2026-10-24' })
 // Versions anglaises et pages alignées le 21/10/2026 (fourchette du complet retirée en anglais aussi)
 LASTMOD_PRIX_21_10.push(
-  '/corporate-catering-paris',
   '/en/tarifs',
   '/en/creations/petits-dejeuners-et-pauses',
   '/en/traiteur',
@@ -205,9 +204,6 @@ export default function sitemap() {
     url('/tarifs',                                        0.80, 'monthly'),
 
     // À propos
-
-    // Page en anglais (GEO)
-    url('/corporate-catering-paris',                      0.70, 'monthly'),
 
     // Journal
     url('/journal',                                       0.70, 'weekly'),

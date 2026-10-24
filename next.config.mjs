@@ -69,6 +69,8 @@ const nextConfig = {
          français (décision de Ramy, 17 octobre 2026). Les cinq adresses sur
          mesure d'origine étaient déjà dans le sitemap et dans llms.txt : on
          les redirige plutôt que de les laisser tomber en 404. */
+      // Fusion des deux pages anglaises concurrentes (24 oct. 2026) : /en/traiteur garde tout
+      { source: '/corporate-catering-paris', destination: '/en/traiteur', permanent: true },
       { source: '/en/pricing', destination: '/en/tarifs', permanent: true },
       { source: '/en/office-breakfast-paris', destination: '/en/creations/petits-dejeuners-et-pauses', permanent: true },
       { source: '/en/office-lunch-paris', destination: '/en/creations/plateaux-repas', permanent: true },

@@ -90,7 +90,7 @@ export default function EnPage({ params }) {
       sections={pg.sections}
       faq={pg.faq}
       jsonLd={jsonLd}
-      breadcrumb={[{ name: 'Home', path: '' }, { name: 'Corporate catering in Paris', path: '/corporate-catering-paris' }, { name: pg.title, path }]}
+      breadcrumb={[{ name: 'Home', path: '' }, { name: 'Corporate catering in Paris', path: '/en/traiteur' }, { name: pg.title, path }]}
     />
   )
 }
