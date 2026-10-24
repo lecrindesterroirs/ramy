@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useId } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAttribution } from '../lib/attribution'
 import { identifierVisiteur } from '../lib/posthog-identify'
@@ -118,6 +118,7 @@ const ALIAS = {
 const prestationValide = (v) => (PRESTATIONS.includes(v) ? v : ALIAS[v] || '')
 
 export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, titreEn, sousTitreEn, compact = false }) {
+  const uid = useId()
   const en = estAnglais(usePathname() || '/')
   const t = en ? T.en : T.fr
   const motPrestation = (v) => (en && PRESTATIONS_EN[v]) || v
@@ -224,9 +225,10 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
         {/* Row 1, Prestation + Date */}
         <div className="dr-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           <div>
-            <label style={labelStyle}>{t.prestation}</label>
+            <label htmlFor={`${uid}-prestation`} style={labelStyle}>{t.prestation}</label>
             <div style={{ position: 'relative' }}>
               <select
+                id={`${uid}-prestation`}
                 value={form.prestation}
                 onChange={e => set('prestation', e.target.value)}
                 style={{ ...fieldStyle, paddingRight: '32px', cursor: 'pointer' }}
@@ -240,9 +242,10 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
           </div>
           {form.prestation === 'Personnalisation' && (
             <div>
-              <label style={labelStyle}>{t.famille}</label>
+              <label htmlFor={`${uid}-famille`} style={labelStyle}>{t.famille}</label>
               <div style={{ position: 'relative' }}>
                 <select
+                  id={`${uid}-famille`}
                   value={form.famillePerso}
                   onChange={e => set('famillePerso', e.target.value)}
                   style={{ ...fieldStyle, paddingRight: '32px', cursor: 'pointer' }}
@@ -256,8 +259,9 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
           )}
           {form.prestation !== 'Personnalisation' && (
             <div>
-              <label style={labelStyle}>{t.convives}</label>
+              <label htmlFor={`${uid}-convives`} style={labelStyle}>{t.convives}</label>
               <input
+                id={`${uid}-convives`}
                 value={form.convives}
                 onChange={e => set('convives', e.target.value)}
                 placeholder={t.exConvives}
@@ -272,8 +276,9 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
           {form.prestation === 'Personnalisation' ? (
             <>
               <div>
-                <label style={labelStyle}>{t.convives}</label>
+                <label htmlFor={`${uid}-convives`} style={labelStyle}>{t.convives}</label>
                 <input
+                  id={`${uid}-convives`}
                   value={form.convives}
                   onChange={e => set('convives', e.target.value)}
                   placeholder={t.exConvives50}
@@ -281,8 +286,9 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
                 />
               </div>
               <div>
-                <label style={labelStyle}>{t.date}</label>
+                <label htmlFor={`${uid}-date`} style={labelStyle}>{t.date}</label>
                 <input
+                  id={`${uid}-date`}
                   type="date"
                   value={form.date}
                   onChange={e => set('date', e.target.value)}
@@ -293,8 +299,9 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
           ) : (
             <>
               <div>
-                <label style={labelStyle}>{t.date}</label>
+                <label htmlFor={`${uid}-date`} style={labelStyle}>{t.date}</label>
                 <input
+                  id={`${uid}-date`}
                   type="date"
                   value={form.date}
                   onChange={e => set('date', e.target.value)}
@@ -302,8 +309,9 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
                 />
               </div>
               <div>
-                <label style={labelStyle}>{t.email}</label>
+                <label htmlFor={`${uid}-email`} style={labelStyle}>{t.email}</label>
                 <input
+                  id={`${uid}-email`}
                   type="email"
                   autoComplete="email"
                   inputMode="email"
@@ -320,8 +328,9 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
 
         {form.prestation === 'Personnalisation' && (
           <div className="dr-row">
-            <label style={labelStyle}>{t.email}</label>
+            <label htmlFor={`${uid}-email`} style={labelStyle}>{t.email}</label>
             <input
+              id={`${uid}-email`}
               type="email"
               autoComplete="email"
               inputMode="email"
@@ -417,6 +426,6 @@ const labelStyle = {
   fontWeight: 500,
   letterSpacing: '0.14em',
   textTransform: 'uppercase',
-  color: 'rgba(17,17,17,0.45)',
+  color: 'rgba(17,17,17,0.64)',   // contraste ≥ 4,5:1 (accessibilité)
   marginBottom: '6px',
 }
