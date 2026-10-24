@@ -161,7 +161,7 @@ LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en
 // Prix rendus cohérents le 24/10/2026 : petit-déjeuner complet sur devis (plus aucun total), livraison avec reprise du matériel à 39 € HT
 ;['/petit-dejeuner-entreprise/puteaux', '/petit-dejeuner-entreprise/neuilly-sur-seine', '/petit-dejeuner-entreprise/levallois-perret']
   .forEach(p => { LASTMOD_PAGES[p] = '2026-10-24'; LASTMOD_PAGES[`/en${p}`] = '2026-10-24' })
-;['/en/tarifs', '/en/creations/petits-dejeuners-et-pauses'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-24' })
+;['/en/tarifs', '/en/creations/petits-dejeuners-et-pauses', '/metiers', '/en/metiers', '/univers/nos-engagements', '/en/univers/nos-engagements'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-24' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)
@@ -206,6 +206,7 @@ export default function sitemap() {
     url('/univers/cas-clients',                           0.60, 'monthly'),
     url('/univers/avis-clients',                          0.60, 'monthly'),
     url('/tarifs',                                        0.80, 'monthly'),
+    url('/metiers',                                       0.78, 'monthly'),
 
     // À propos
 

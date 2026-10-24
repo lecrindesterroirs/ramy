@@ -26,6 +26,7 @@ const EN_HEROS = {
   'cocktail-reception-paris': '/hero-cocktail.webp',
   'halal-catering-paris': '/hero-petitdej.webp',
   'pricing': '/hero-plateaux-essentiel.webp',
+  'metiers': '/hero-plateaux-essentiel.webp',
 }
 
 /** ['creations','plateaux-repas'] → '/creations/plateaux-repas' */

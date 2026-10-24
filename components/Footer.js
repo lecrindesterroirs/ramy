@@ -127,6 +127,7 @@ export default function Footer() {
                 { label: 'Nos Artisans', labelEn: 'Our makers', href: '/univers/nos-artisans' },
                 { label: 'Nos Engagements', labelEn: 'Our commitments', href: '/univers/nos-engagements' },
                 { label: 'Cas clients', labelEn: 'Case studies', href: '/univers/cas-clients' },
+                { label: 'Par métier', labelEn: 'By profession', href: '/metiers' },
                 { label: 'Notre méthode', labelEn: 'Our method', href: '/univers/notre-methode' },
                 { label: 'Le Journal', labelEn: 'The Journal', href: '/journal' },
               ]},

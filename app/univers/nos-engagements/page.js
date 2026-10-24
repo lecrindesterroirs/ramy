@@ -55,6 +55,22 @@ const ENGAGEMENTS = [
     titre: 'Une livraison qui fait partie du service',
     texte: "livraison à partir de 6h30 par notre équipe interne, formée à nos standards, avec mise en place sur demande. Jamais de sous-traitance. Le dernier geste compte autant que le premier.",
   },
+  {
+    titre: 'Un prix annoncé avant de commander',
+    texte: "afficher tous nos prix hors taxes sur le site, avec la livraison (29 € HT à Paris et dans les communes proches) et le minimum de commande (50 € HT, sans minimum de personnes). Pas de frais cachés au moment du devis.",
+  },
+  {
+    titre: 'Un devis sous 24 heures',
+    texte: "répondre à chaque demande sous 24 h, avec le détail produit par produit et le total, pour que vous puissiez arbitrer. La facture est une facture d'entreprise avec TVA, et le numéro de bon de commande y figure si vous en avez un.",
+  },
+  {
+    titre: 'Une commande jusqu\'à la veille 14h',
+    texte: "prendre les commandes jusqu'à la veille à 14h, et 48 h à l'avance à partir de 50 personnes, pour livrer à l'heure que vous fixez.",
+  },
+  {
+    titre: 'Un halal sans supplément',
+    texte: "servir une carte halal et sans porc, sans alcool, au même prix que le reste. Les options végétariennes, vegan et sans gluten se précisent au devis, sans surcoût.",
+  },
 ]
 
 export default function NosEngagements() {
