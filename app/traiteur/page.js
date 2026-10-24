@@ -77,7 +77,7 @@ const MOMENTS = [
   ] },
   { moment: 'Le soir', texte: "Afterwork, pot de départ, lancement de produit ou vœux : 8, 12 ou 16 pièces par personne, livrées prêtes à servir.", liens: [
     { href: '/occasions/afterwork-entreprise', label: 'afterwork' },
-    { href: '/occasions/cocktail-entreprise', label: "cocktail d'entreprise" },
+    { href: '/creations/cocktails', label: "cocktail d'entreprise" },
   ] },
 ]
 

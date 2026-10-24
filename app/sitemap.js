@@ -159,7 +159,7 @@ const LASTMOD_23_10 = [
 OCCASIONS.forEach(o => LASTMOD_23_10.push(`/occasions/${o.slug}`))
 LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en${p}`] = '2026-10-23' })
 // Prix rendus cohérents le 24/10/2026 : petit-déjeuner complet sur devis (plus aucun total), livraison avec reprise du matériel à 39 € HT
-;['/petit-dejeuner-entreprise/puteaux', '/petit-dejeuner-entreprise/neuilly-sur-seine', '/petit-dejeuner-entreprise/levallois-perret', '/occasions/cocktail-entreprise']
+;['/petit-dejeuner-entreprise/puteaux', '/petit-dejeuner-entreprise/neuilly-sur-seine', '/petit-dejeuner-entreprise/levallois-perret']
   .forEach(p => { LASTMOD_PAGES[p] = '2026-10-24'; LASTMOD_PAGES[`/en${p}`] = '2026-10-24' })
 ;['/en/tarifs', '/en/creations/petits-dejeuners-et-pauses'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-24' })
 

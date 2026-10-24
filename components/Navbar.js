@@ -67,7 +67,7 @@ const JOURNAL_ITEMS = {
     { label: 'Team Building', labelEn: 'Team building', href: '/occasions/team-building' },
     { label: 'Petit-déjeuner d\'entreprise', labelEn: 'Corporate breakfast', href: '/occasions/petit-dejeuner-entreprise' },
     { label: 'Déjeuner d\'entreprise', labelEn: 'Corporate lunch', href: '/occasions/dejeuner-entreprise' },
-    { label: 'Cocktail d\'entreprise', labelEn: 'Corporate cocktail', href: '/occasions/cocktail-entreprise' },
+    { label: 'Cocktail d\'entreprise', labelEn: 'Corporate cocktail', href: '/creations/cocktails' },
     { label: 'Goûter d\'entreprise', labelEn: 'Corporate afternoon break', href: '/occasions/gouter-entreprise' },
     { label: 'Afterwork', labelEn: 'Afterwork', href: '/occasions/afterwork-entreprise' },
     // Calendrier des événements saisonniers : simple lien, aucune donnée d'événement ici.

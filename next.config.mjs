@@ -70,6 +70,9 @@ const nextConfig = {
          mesure d'origine étaient déjà dans le sitemap et dans llms.txt : on
          les redirige plutôt que de les laisser tomber en 404. */
       // Fusion des deux pages anglaises concurrentes (24 oct. 2026) : /en/traiteur garde tout
+      // Cocktail d'entreprise : le guide est fusionné dans la carte (décision de Ramy, 24 oct. 2026)
+      { source: '/occasions/cocktail-entreprise', destination: '/creations/cocktails', permanent: true },
+      { source: '/en/occasions/cocktail-entreprise', destination: '/en/creations/cocktails', permanent: true },
       { source: '/corporate-catering-paris', destination: '/en/traiteur', permanent: true },
       { source: '/en/pricing', destination: '/en/tarifs', permanent: true },
       { source: '/en/office-breakfast-paris', destination: '/en/creations/petits-dejeuners-et-pauses', permanent: true },

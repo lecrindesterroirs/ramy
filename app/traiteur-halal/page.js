@@ -205,7 +205,7 @@ ${exemplesHalalFr()}
     <ul>
       <li><strong>Séminaire :</strong> sur une journée qui réunit plusieurs équipes et des intervenants extérieurs, la carte halal par défaut évite de recenser les contraintes de chacun. Voir <a href="/occasions/seminaire-entreprise">traiteur séminaire d'entreprise</a>.</li>
       <li><strong>Déjeuner de réunion :</strong> un plateau individuel complet par personne, halal et sans porc. Voir <a href="/occasions/dejeuner-entreprise">déjeuner d'entreprise</a>.</li>
-      <li><strong>Cocktail et afterwork :</strong> des pièces salées et sucrées sans porc ni alcool, avec des boissons sans alcool dans la même commande. Voir <a href="/occasions/cocktail-entreprise">cocktail d'entreprise à Paris</a> et <a href="/occasions/afterwork-entreprise">traiteur afterwork</a>.</li>
+      <li><strong>Cocktail et afterwork :</strong> des pièces salées et sucrées sans porc ni alcool, avec des boissons sans alcool dans la même commande. Voir <a href="/creations/cocktails">cocktail d'entreprise à Paris</a> et <a href="/occasions/afterwork-entreprise">traiteur afterwork</a>.</li>
       <li><strong>Petit-déjeuner d'équipe :</strong> viennoiseries, madeleines, fruits et jus, sans aménagement particulier. Voir <a href="/occasions/petit-dejeuner-entreprise">petit-déjeuner d'entreprise</a>.</li>
     </ul>
 
