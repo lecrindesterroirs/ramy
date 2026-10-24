@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import ParallaxImage from '../../../../components/ParallaxImage'
+import DevisRapide from '../../../../components/DevisRapide'
+import { prestationPourArticle } from '../../../../lib/parcours'
 import { founderNode } from '../../../../lib/site'
 import { ogImages } from '../../../../lib/og'
 import { enArticle, enSlugs, dateEn } from '../../../../lib/en/journal'
@@ -119,16 +121,14 @@ export default function EnArticlePage({ params }) {
             </div>
           )}
 
-          <div style={{ marginTop: '56px', padding: '36px 40px', background: 'var(--bg-secondary)', borderLeft: '3px solid var(--accent)' }}>
-            <p style={{ fontFamily: SERIF, fontSize: '20px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px', lineHeight: 1.3 }}>
-              An event in Paris or Île-de-France?
-            </p>
-            <p style={{ fontFamily: SANS, fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '20px' }}>
-              Tell us about your event and receive a tailored quote within 24 hours.
-            </p>
-            <a href="/devis" style={{ fontFamily: SANS, fontSize: '11px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FFFFFF', background: 'var(--accent)', padding: '12px 28px', display: 'inline-block', textDecoration: 'none' }}>
-              Request a quote →
-            </a>
+          {/* Formulaire court (le lien d'avant menait au formulaire français /devis) */}
+          <div style={{ marginTop: '56px' }}>
+            <DevisRapide
+              compact
+              defaultPrestation={prestationPourArticle(a.slug, a.titre)}
+              titre="An event in Paris or Île-de-France?"
+              sousTitre="Add the date and your email: personalised quote within 24 hours, no commitment."
+            />
           </div>
 
           <p style={{ fontFamily: SANS, fontSize: '12px', color: 'var(--text-secondary)', marginTop: '32px' }}>

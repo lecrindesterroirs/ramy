@@ -11,6 +11,8 @@ import { founderNode } from '../../../lib/site'
 import { PRODUCTS } from '../../../lib/productsData'
 import { PAUSES } from '../../creations/pauses-gourmandes/data'
 import ParallaxImage from '../../../components/ParallaxImage'
+import DevisRapide from '../../../components/DevisRapide'
+import { prestationPourArticle } from '../../../lib/parcours'
 
 // Résout un id de relatedProducts sur les deux sources possibles (Petits-Déjeuners & Pauses,
 // ou Pauses Gourmandes) et normalise le format (prix numérique + href) pour l'affichage.
@@ -158,49 +160,14 @@ export default function ArticlePage({ params }) {
             dangerouslySetInnerHTML={{ __html: article.contenu }}
           />
 
-          {/* CTA devis */}
-          <div style={{
-            marginTop: '56px',
-            padding: '36px 40px',
-            background: 'var(--bg-secondary)',
-            borderLeft: '3px solid var(--accent)',
-          }}>
-            <p style={{
-              fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif",
-              fontSize: '20px',
-              fontWeight: 400,
-              color: 'var(--text-primary)',
-              marginBottom: '8px',
-              lineHeight: 1.3,
-            }}>
-              Un projet à Paris ou en Île-de-France ?
-            </p>
-            <p style={{
-              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
-              fontSize: '13px',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.65,
-              marginBottom: '20px',
-            }}>
-              Décrivez votre événement et recevez un devis personnalisé sous 24h.
-            </p>
-            <a
-              href="/devis"
-              style={{
-                fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: '#FFFFFF',
-                background: 'var(--accent)',
-                padding: '12px 28px',
-                display: 'inline-block',
-                textDecoration: 'none',
-              }}
-            >
-              Obtenir un devis →
-            </a>
+          {/* Formulaire court : les articles menaient à /devis par un simple lien */}
+          <div style={{ marginTop: '56px' }}>
+            <DevisRapide
+              compact
+              defaultPrestation={prestationPourArticle(article.slug, article.titre)}
+              titre="Un projet à Paris ou en Île-de-France ?"
+              sousTitre="Indiquez la date et votre email : devis personnalisé sous 24 h, sans engagement."
+            />
           </div>
 
           {/* Produits recommandés */}
