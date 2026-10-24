@@ -28,9 +28,18 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const a = enArticle(params.slug)
   if (!a) return {}
-  const title = a.metaTitle && a.metaTitle.length <= 60 ? a.metaTitle : a.titre
+  const base = a.metaTitle && a.metaTitle.length <= 60 ? a.metaTitle : a.titre
+  // Google coupe vers 60 caractères : on garde la marque seulement si le titre complet tient.
+  const court = (t, max) => {
+    if (t.length <= max) return t
+    const avantDeuxPoints = t.split(':')[0].trim()
+    if (avantDeuxPoints.length >= 25 && avantDeuxPoints.length <= max) return avantDeuxPoints
+    return t.slice(0, max + 1).replace(/\s+\S*$/, '').replace(/[\s,;:–-]+$/, '')
+  }
+  const avecMarque = `${base} | L'Écrin Traiteur`
+  const title = avecMarque.length <= 62 ? avecMarque : court(base, 62)
   return {
-    title: { absolute: `${title} | L'Écrin Traiteur` },
+    title: { absolute: title },
     description: a.extrait,
     alternates: {
       canonical: `/en/journal/${a.slug}`,

@@ -1,4 +1,5 @@
 import Navbar from '../../components/Navbar'
+import { ogImages } from '../../lib/og'
 import Hero from '../../components/Hero'
 import LogosSection from '../../components/LogosSection'
 import CreationsSection from '../../components/CreationsSection'
@@ -34,6 +35,7 @@ export const metadata = {
   description: 'Corporate catering in Paris and Île-de-France: breakfasts, lunch trays and cocktail receptions delivered from 6:30 am. Halal and pork-free menu, quote within 24 hours.',
   alternates: alternatesPourEn('/'),
   openGraph: {
+    images: ogImages('/hero-bg.webp'),
     title: "Corporate Catering in Paris | L'Écrin Traiteur",
     description: 'Breakfasts, lunch trays and cocktail receptions delivered to your offices from 6:30 am. Quote within 24 hours.',
     locale: 'en_GB',

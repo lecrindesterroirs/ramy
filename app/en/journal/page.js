@@ -1,4 +1,5 @@
 import Navbar from '../../../components/Navbar'
+import { ogImages } from '../../../lib/og'
 import Footer from '../../../components/Footer'
 import { enArticle, enSlugs, dateEn } from '../../../lib/en/journal'
 
@@ -10,7 +11,7 @@ export const metadata = {
   title: { absolute: "Corporate Catering Guides: Budgets, Quantities, Ideas | L'Écrin Traiteur" },
   description: "Practical guides for office managers in Paris: how much food per person, budgets by group size, breakfast, lunch and cocktail reception ideas, by L'Écrin Traiteur.",
   alternates: { canonical: '/en/journal', languages: { en: '/en/journal', fr: '/journal', 'x-default': '/journal' } },
-  openGraph: { locale: 'en_GB', title: "Journal | L'Écrin Traiteur", description: 'Guides for corporate catering in Paris.' },
+  openGraph: { images: ogImages(), locale: 'en_GB', title: "Journal | L'Écrin Traiteur", description: 'Guides for corporate catering in Paris.' },
 }
 
 export default function EnJournal() {

@@ -1,3 +1,4 @@
+import { ogImages } from '../../../../lib/og'
 import { alternatesPourEn } from '../../../../lib/i18n'
 
 export const metadata = {
@@ -5,6 +6,7 @@ export const metadata = {
   description: "Sharing platters for your afterworks: sandwiches, aged cheeses, halal charcuterie, salmon, crudités. Delivered from 6:30 am in Paris, on quote.",
   alternates: alternatesPourEn('/creations/plateaux-aperitifs'),
   openGraph: {
+    images: ogImages('/plateau-baguettes.webp'),
     title: "Aperitif platters | L'Écrin Traiteur",
     description: "Sharing platters for your afterworks: sandwiches, aged cheeses, halal charcuterie, salmon, crudités. Delivered from 6:30 am in Paris, on quote.",
     locale: 'en_GB',
