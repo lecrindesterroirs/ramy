@@ -167,6 +167,8 @@ LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en
 ;['/calculateur-quantites', '/en/calculateur-quantites'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
 // Page presse (kit média) créée le 25/10/2026
 ;['/presse', '/en/presse'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
+// GEO du 25/10/2026 : phrases de quantités signées « L'Écrin Traiteur » (mêmes chiffres)
+;['/creations/petits-dejeuners-et-pauses', '/creations/cocktails', '/en/creations/cocktails'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)

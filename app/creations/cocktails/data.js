@@ -116,7 +116,7 @@ export const FAQ_CATALOGUE = [
   },
   {
     name: 'Combien de pièces par personne dans chaque formule ?',
-    answer: `${I.nom} : ${I.pieces} pièces. ${R.nom} : ${R.pieces} pièces. ${C.nom} : ${C.pieces} pièces. Comptez ${I.pieces} pièces pour un pot d'une heure et demie, ${R.pieces} pour remplacer un déjeuner, ${C.pieces} pour un dîner debout. La composition détaillée est sur chaque fiche.`,
+    answer: `${I.nom} : ${I.pieces} pièces. ${R.nom} : ${R.pieces} pièces. ${C.nom} : ${C.pieces} pièces. L'Écrin Traiteur compte ${I.pieces} pièces pour un pot d'une heure et demie, ${R.pieces} pour remplacer un déjeuner, ${C.pieces} pour un dîner debout. La composition détaillée est sur chaque fiche.`,
   },
   {
     name: 'Quelle formule pour 20 personnes, pour 50 personnes ?',
