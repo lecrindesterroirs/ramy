@@ -54,8 +54,8 @@ const TEXTES = [
     h1: 'Galette des Rois en entreprise',
     seoTitle: 'Galette des Rois en entreprise à Paris, livrée',
     metaDescription: `Galettes des rois préparées par nos boulangers partenaires, livrées au bureau à Paris et en Île-de-France avec boissons et café. Sur devis, dès janvier.`,
-    img: '/hero-bg.webp',
-    imgAlt: "Coffret L'Écrin Traiteur de viennoiseries pur beurre posé sur une table de bureau",
+    img: '/galette-des-rois-entreprise.webp',
+    imgAlt: "Galette des rois feuilletée pur beurre dorée, avec sa couronne, livrée par L'Écrin Traiteur",
     descCourt: "Galettes préparées par nos boulangers partenaires, fève et couronne comprises, avec jus, café et thé. Sur devis.",
     desc: "Le rituel de janvier, fait sérieusement. Nos galettes sont préparées par nos boulangers partenaires, en pâte feuilletée pur beurre, avec une fève et une couronne dans chaque galette. Elles sont proposées sur devis, avec les boissons et le café du petit-déjeuner.",
     differentiateur: {
