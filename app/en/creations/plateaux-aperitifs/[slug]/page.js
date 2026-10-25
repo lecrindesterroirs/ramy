@@ -6,6 +6,7 @@ import { useUrlSearchParams } from '../../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../../components/GalleryFiche'
 import { PLATEAUX } from '../../../../creations/plateaux-aperitifs/data'
 import { enPlateauAperitif, FAMILLES_EN } from '../../../../../lib/en/produits/plateauxAperitifs'
+import { asavoirEn } from '../../../../../lib/ficheAsavoir'
 
 /*
   Fiche plateau apéritif en anglais. Photo, famille et identifiant viennent du
@@ -43,6 +44,7 @@ function FicheEn() {
       subtitle={FAMILLES_EN[plateau.famille] || ''}
       img={plateau.img}
       price={plateau.prix ? plateau.prix.toFixed(2) : null}
+      asavoir={asavoirEn('aperitif', { nom: en.nom, seed: plateau.id, unite: 'plateau', prix: plateau.prix || null, personnes: plateau.pieces ? { min: plateau.pieces / 6, max: plateau.pieces / 6 } : null, detail: plateau.pieces ? `${plateau.pieces} pieces, 6 per person` : '', contenu: (en.recettes || []).join(', ') })}
       priceNote={plateau.pieces ? `excl. VAT · ${plateau.pieces} pieces` : 'excl. VAT'}
       description={plateau.prix
         ? `${en.description} A platter of ${plateau.pieces} pieces to share, right for afterworks and receptions.`

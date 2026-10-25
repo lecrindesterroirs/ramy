@@ -13,7 +13,7 @@ import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import DevisRapide from '../../../../components/DevisRapide'
 import ParallaxImage from '../../../../components/ParallaxImage'
 import FicheAsavoir from '../../../../components/FicheAsavoir'
-import { asavoirProduit } from '../../../../lib/ficheAsavoir'
+import { asavoirProduit, asavoirEn, personnes as personnesProduit } from '../../../../lib/ficheAsavoir'
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../../../../lib/i18nBase'
 import { produitLocalise } from '../../../../lib/en/produits/petitsDejeuners'
@@ -385,7 +385,14 @@ export default function ProductPage() {
             Pas rendu en anglais : lib/ficheAsavoir.js génère ses phrases en
             français, et un bloc français au milieu d'une page anglaise est
             pire que pas de bloc. À traduire, c'est le dernier morceau. ── */}
-        {!en && <FicheAsavoir {...asavoirProduit(product, { kind: 'pdj' })} />}
+        {en
+          ? <FicheAsavoir {...asavoirEn('pdj', {
+              nom: product.name, seed: produitFr.id,
+              prix: typeof produitFr.price === 'number' && produitFr.price > 0 ? produitFr.price : null,
+              personnes: personnesProduit(produitFr), unite: 'format',
+              dietary: product.dietary, allergens: product.allergens,
+            })} />
+          : <FicheAsavoir {...asavoirProduit(product, { kind: 'pdj' })} />}
 
         {/* ── Article SEO ── */}
         <section className="fiche-seo" style={{ maxWidth: '860px', margin: '0 auto', padding: '72px 72px 96px' }}>

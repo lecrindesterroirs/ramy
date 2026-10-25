@@ -6,6 +6,7 @@ import { useUrlSearchParams } from '../../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../../components/GalleryFiche'
 import { PRODUITS, prixMenu } from '../../../../creations/plateaux-repas/data'
 import { enPlateauRepas } from '../../../../../lib/en/produits/plateauxRepas'
+import { asavoirEn, prixNombre } from '../../../../../lib/ficheAsavoir'
 
 /*
   Fiche plateau repas en anglais. Prix, photo et catégorie viennent du fichier
@@ -42,6 +43,7 @@ function FicheEn() {
       subtitle={en.plat}
       img={produit.img}
       price={prixMenu(produit)}
+      asavoir={asavoirEn('plateau', { nom: produit.nom, seed: produit.id, prix: prixNombre(prixMenu(produit)), parPersonne: true, contenu: sections.map(s => `${s.label}: ${s.value}`).join('; ') })}
       priceNote="excl. VAT · per person"
       description={en.seoHtml.replace(/<[^>]+>/g, ' ').trim().split('. ')[0] + '.'}
       sections={sections}

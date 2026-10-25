@@ -6,6 +6,7 @@ import { useUrlSearchParams } from '../../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../../components/GalleryFiche'
 import { BOXES } from '../../../../creations/lunch-box/data'
 import { enLunchBox, slugsLunchBoxEn } from '../../../../../lib/en/produits/lunchBox'
+import { asavoirEn, prixNombre } from '../../../../../lib/ficheAsavoir'
 
 /*
   Fiche lunch box en anglais.
@@ -47,6 +48,7 @@ function FicheEn() {
       img={box.img}
       imgRatio="1400 / 615"
       price={box.prix}
+      asavoir={asavoirEn('lunch', { nom: box.nom, seed: box.id, prix: prixNombre(box.prix), parPersonne: true, contenu: sections.map(s => `${s.label}: ${s.value}`).join('; ') })}
       priceNote="excl. VAT · per person"
       description={en.description}
       sections={sections}

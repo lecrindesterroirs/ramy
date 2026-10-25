@@ -7,8 +7,9 @@
 // Props : titre, items [{ label, text }], cta { before, link, after },
 //         more { label, href }, paddingBottom.
 
-export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq = [], liens = [], paddingBottom = '8px' }) {
-  if (!items.length) return null
+export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq = [], liens = [], lang = 'fr', paddingBottom = '8px' }) {
+  if (!items.length && !faq.length && !budget) return null
+  const E = lang === 'en'
   const faqLd = faq.length ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -18,16 +19,17 @@ export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq
   return (
     <section
       className="fiche-asavoir"
-      aria-label="À savoir"
+      aria-label={E ? 'Good to know' : 'À savoir'}
       style={{ maxWidth: '860px', margin: '0 auto', padding: `56px 72px ${paddingBottom}` }}
     >
       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '16px' }}>
-        À savoir
+        {E ? 'Good to know' : 'À savoir'}
       </p>
       <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', marginBottom: '24px' }}>
         {titre}
       </h2>
 
+      {items.length > 0 && (
       <ul style={{ listStyle: 'none', margin: 0, padding: 0, borderTop: '1px solid rgba(17,17,17,0.07)' }}>
         {items.map((it, i) => (
           <li
@@ -38,6 +40,7 @@ export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq
           </li>
         ))}
       </ul>
+      )}
 
       {(cta || more) && (
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.7, color: 'var(--text-secondary)', marginTop: '20px' }}>
@@ -77,7 +80,7 @@ export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq
 
       {faq.length > 0 && (
         <div style={{ marginTop: '44px' }}>
-          <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(19px, 2vw, 24px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>Questions fréquentes</h3>
+          <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(19px, 2vw, 24px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>{E ? 'Frequently asked questions' : 'Questions fréquentes'}</h3>
           <div className="ev-faq">
             {faq.map(f => (
               <details key={f.q}>
@@ -91,7 +94,7 @@ export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq
 
       {liens.length > 0 && (
         <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)', marginTop: '28px' }}>
-          Pour compléter votre commande :{' '}
+          {E ? 'To complete your order:' : 'Pour compléter votre commande :'}{' '}
           {liens.map((l, i) => (
             <span key={l.href}>{i > 0 && ' · '}<a href={l.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{l.label}</a></span>
           ))}

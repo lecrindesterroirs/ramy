@@ -6,6 +6,7 @@ import { useUrlSearchParams } from '../../../../../lib/useUrlSearchParams'
 import GalleryFiche from '../../../../../components/GalleryFiche'
 import { PAUSES } from '../../../../creations/pauses-gourmandes/data'
 import { enPause, prixEn } from '../../../../../lib/en/produits/pausesGourmandes'
+import { asavoirEn, prixNombre } from '../../../../../lib/ficheAsavoir'
 
 /*
   Fiche pause goûter en anglais. Photo, prix et tailles de coffret viennent du
@@ -52,6 +53,7 @@ function FicheEn() {
       title={en.nom}
       img={produit.img}
       price={prix?.montant}
+      asavoir={asavoirEn('pause', { nom: en.nom, seed: produit.id, prix: produit.coffrets?.length ? null : prixNombre(prix?.montant), contenu: en.description })}
       priceNote={prix?.note}
       description={en.description}
       sections={sections}
