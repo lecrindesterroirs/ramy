@@ -16,7 +16,7 @@ import { identifierVisiteur } from '../lib/posthog-identify'
  *
  * Parti pris graphique : pas de bulles de messagerie. Tout est posé sur blanc,
  * chaque tour annoncé par un filet et une étiquette, comme une page du site. */
-const EXCLUS = ['/devis', '/panier', '/commande-confirmee']
+const EXCLUS = ['/devis', '/panier', '/commande-confirmee', '/calculateur-quantites/embed', '/en/calculateur-quantites/embed']
 
 /* Deux langues, tout au même endroit. On ne devine rien d'après le navigateur :
  * la langue de départ est celle de la page (une page /en ouvre le chat en

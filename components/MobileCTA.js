@@ -56,6 +56,8 @@ export default function MobileCTA() {
 
   // Masqué sur la page devis, la nav est intégrée dans le formulaire
   if (pathname === '/devis') return null
+  // Calculateur intégré chez un tiers (iframe) : pas de barre L'Écrin par-dessus
+  if (pathname && pathname.endsWith('/calculateur-quantites/embed')) return null
 
   return (
     <>

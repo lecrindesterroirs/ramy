@@ -128,6 +128,7 @@ export default function Footer() {
                 { label: 'Nos Engagements', labelEn: 'Our commitments', href: '/univers/nos-engagements' },
                 { label: 'Cas clients', labelEn: 'Case studies', href: '/univers/cas-clients' },
                 { label: 'Par métier', labelEn: 'By profession', href: '/metiers' },
+                { label: 'Calculateur de quantités', labelEn: 'Quantity calculator', href: '/calculateur-quantites' },
                 { label: 'Notre méthode', labelEn: 'Our method', href: '/univers/notre-methode' },
                 { label: 'Le Journal', labelEn: 'The Journal', href: '/journal' },
               ]},

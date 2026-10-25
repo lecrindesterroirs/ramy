@@ -49,6 +49,17 @@ const securityHeaders = [
   { key: 'Content-Security-Policy', value: csp },
 ]
 
+// Calculateur de quantités intégrable (25/10/2026) : sa version /embed se met dans une iframe chez
+// un tiers. Mêmes en-têtes, sauf frame-ancestors ouvert. Next applique la DERNIÈRE valeur quand deux
+// règles posent la même clé : cette règle vient donc après celle de toutes les routes. X-Frame-Options
+// n'a pas de valeur « autoriser tout le monde » ; ALLOWALL est ignorée des navigateurs, et
+// frame-ancestors l'emporte de toute façon sur X-Frame-Options.
+const cspEmbed = csp.replace(`frame-ancestors 'self' ${POSTHOG_UI}`, 'frame-ancestors *')
+const embedHeaders = [
+  { key: 'X-Frame-Options', value: 'ALLOWALL' },
+  { key: 'Content-Security-Policy', value: cspEmbed },
+]
+
 const nextConfig = {
   poweredByHeader: false,
   images: {
@@ -126,6 +137,9 @@ const nextConfig = {
         source: '/:path*',
         headers: securityHeaders,
       },
+      // Calculateur intégrable : cadre autorisé depuis n'importe quel site (voir embedHeaders)
+      { source: '/calculateur-quantites/embed', headers: embedHeaders },
+      { source: '/en/calculateur-quantites/embed', headers: embedHeaders },
       // Cache long et immuable sur les polices (noms de fichiers stables)
       {
         source: '/fonts/:path*',

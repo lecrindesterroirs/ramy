@@ -40,7 +40,7 @@ function Table({ head, rows }) {
   )
 }
 
-export default function InfoPage({ lang = 'fr', eyebrow, title, intro, cta, sections = [], faq = [], faqTitle, jsonLd, breadcrumb }) {
+export default function InfoPage({ lang = 'fr', eyebrow, title, intro, cta, sections = [], faq = [], faqTitle, jsonLd, breadcrumb, children }) {
   const ctaLabel = cta || (lang === 'en' ? 'Request a quote →' : 'Demander un devis →')
   return (
     <>
@@ -63,6 +63,8 @@ export default function InfoPage({ lang = 'fr', eyebrow, title, intro, cta, sect
         <ProofBar lang={lang} />
 
         <section style={{ maxWidth: '860px', margin: '0 auto', padding: '24px 24px 100px' }}>
+          {/* Bloc interactif optionnel (ex. calculateur de quantités), avant les sections */}
+          {children && <div style={{ margin: '40px 0 16px' }}>{children}</div>}
           {sections.map((s, i) => (
             <div key={i}>
               {s.h2 && <h2 style={h2}>{s.h2}</h2>}
