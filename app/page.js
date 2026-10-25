@@ -11,6 +11,7 @@ import ArtisansMapSection from '../components/ArtisansMapSection'
 import MadeleinesSection from '../components/MadeleinesSection'
 import TestimonialsSection from '../components/TestimonialsSection'
 import FAQSection from '../components/FAQSection'
+import PiliersAccueil from '../components/PiliersAccueil'
 import VillesSection from '../components/VillesSection'
 import DevisRapide from '../components/DevisRapide'
 import Footer from '../components/Footer'
@@ -37,6 +38,7 @@ export default function Home() {
         <ManifestoSection />
         <DetailSection />
         <TestimonialsSection />
+        <PiliersAccueil />
         <FAQSection />
         <VillesSection />
         {/* Fin de page sur le formulaire court (audit du 22/10/2026), à la place du bloc jaune */}

@@ -11,6 +11,7 @@ import ManifestoSection from '../../components/ManifestoSection'
 import DetailSection from '../../components/DetailSection'
 import TestimonialsSection from '../../components/TestimonialsSection'
 import FAQSection from '../../components/FAQSection'
+import PiliersAccueil from '../../components/PiliersAccueil'
 import VillesSection from '../../components/VillesSection'
 import DevisRapide from '../../components/DevisRapide'
 import Footer from '../../components/Footer'
@@ -58,6 +59,7 @@ export default function HomeEn() {
         <ManifestoSection lang="en" />
         <DetailSection lang="en" />
         <TestimonialsSection lang="en" />
+        <PiliersAccueil lang="en" />
         <FAQSection lang="en" />
         <VillesSection lang="en" />
         {/* Fin de page sur le formulaire court (audit du 22/10/2026), à la place du bloc jaune */}
