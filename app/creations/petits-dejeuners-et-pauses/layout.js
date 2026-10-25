@@ -4,7 +4,7 @@ import { ogImages } from '../../../lib/og'
 import { PDJ_LEGER, euroFr } from '../../../lib/prixEntree'
 
 /* La FAQ (affichée et balisée) est portée par la page (ProductsPageTemplate), plus par ce layout. */
-const TITLE = `Livraison petit-déjeuner entreprise Paris dès ${euroFr(PDJ_LEGER)} HT (6h30)`
+const TITLE = `Petit-déjeuner d'entreprise à Paris dès ${euroFr(PDJ_LEGER)} HT, livré dès 6h30`
 const DESCRIPTION = `Traiteur petit-déjeuner d'entreprise à Paris : viennoiseries et café dès ${euroFr(PDJ_LEGER)} HT par personne, livrés dès 6h30. 5,0/5 sur Google, devis sous 24h.`
 
 export const metadata = {

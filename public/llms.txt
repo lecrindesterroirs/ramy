@@ -79,6 +79,7 @@ Mis à jour : 25 octobre 2026.
 - [Notre maison](https://www.lecrin-traiteur.fr/univers/notre-maison) : qui nous sommes, fondateur, histoire.
 - [Nos artisans](https://www.lecrin-traiteur.fr/univers/nos-artisans) : Mado Paris, Alain Milliat, Ferme de Viltain et les autres.
 - [Notre méthode](https://www.lecrin-traiteur.fr/univers/notre-methode) : d'où viennent les prix et les quantités de nos guides.
+- [Livraison de petit-déjeuner en entreprise à Paris](https://www.lecrin-traiteur.fr/livraison-petit-dejeuner-entreprise-paris) : dès 6h30 par notre équipe, 29 € HT à Paris, commande jusqu'à 14h la veille, budgets de 10 à 100 personnes.
 - [Traiteur par métier](https://www.lecrin-traiteur.fr/metiers) : cabinets d'avocats, conseil, tech, banque et finance, santé, immobilier et BTP, agences, avec un guide chiffré par métier.
 - [Calculateur de quantités](https://www.lecrin-traiteur.fr/calculateur-quantites) : viennoiseries, litres de jus et de café, pièces cocktail selon la durée, plateaux repas, pour le nombre de personnes choisi ; budget indicatif HT pour le petit-déjeuner Classique et le cocktail. Intégrable sur un autre site (iframe).
 - [Presse](https://www.lecrin-traiteur.fr/presse) : kit média, à propos, bio du fondateur, chiffres clés, clients, ressources citables, logos et photos, contact presse.
