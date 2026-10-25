@@ -185,9 +185,14 @@ function DatePicker({ value, onChange, accent = '#E0A126' }) {
 
 function ProgressBar({ step }) {
   const total = 3
+  const langue = useLangue()
   return (
     <div className="devis-progress-bar" style={{ position: 'relative', display: 'flex', alignItems: 'center', padding: '26px 48px', width: '100%', boxSizing: 'border-box' }}>
-      <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '34px', width: 'auto' }} />
+      {/* Logo cliquable vers l'accueil : des visiteurs cliquaient dessus à
+          répétition sans effet (PostHog, 25/10/2026). */}
+      <a href={langue === 'en' ? '/en' : '/'} aria-label={langue === 'en' ? "L'Écrin Traiteur, home" : "L'Écrin Traiteur, accueil"} style={{ display: 'flex', lineHeight: 0 }}>
+        <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '34px', width: 'auto' }} />
+      </a>
       <span style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12.5px', fontWeight: 400, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,17,17,0.38)', whiteSpace: 'nowrap' }}>
         Étape {step} sur {total}
       </span>

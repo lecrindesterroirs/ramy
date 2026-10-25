@@ -93,6 +93,19 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const closeTimer = useRef(null)
+  // Clic sur un intitulé du menu (Petit-déjeuner, Déjeuner, Cocktail, L'Univers,
+  // Le Journal) : il menait nulle part, le menu ne s'ouvrait qu'au survol
+  // (clics sans effet relevés par PostHog, 25/10/2026). Le clic mène désormais
+  // à la page principale de la rubrique. Au doigt (tablette), le premier
+  // toucher ouvre le menu, le second suit le lien.
+  const pointeur = useRef({ type: 'mouse', ouvert: false })
+  const clicRubrique = (cle, href) => ({
+    onPointerDown: e => { pointeur.current = { type: e.pointerType, ouvert: activeDropdown === cle } },
+    onClick: () => {
+      if (pointeur.current.type === 'touch' && !pointeur.current.ouvert) { setActiveDropdown(cle); return }
+      window.location.href = lien(href)
+    },
+  })
 
   useEffect(() => {
     if (alwaysScrolled) return
@@ -194,6 +207,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               <button
                 key={moment.key}
                 className="nav-moment-item"
+                {...clicRubrique(moment.key, moment.cards[0].href)}
                 onMouseEnter={() => { clearTimeout(closeTimer.current); setActiveDropdown(moment.key) }}
                 style={{
                   fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
@@ -345,6 +359,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
           >
             <button
+              {...clicRubrique('univers', '/univers/notre-maison')}
               className="nav-util-btn"
               style={{
                 fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
@@ -419,6 +434,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
           >
             <button
+              {...clicRubrique('journal', '/journal')}
               className="nav-util-btn"
               style={{
                 fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
