@@ -1,6 +1,7 @@
 import InfoPage from '../../components/InfoPage'
 import { businessNode, BUSINESS_ID } from '../../lib/site'
 import { LIV_RECUP_PROCHE, RECUP, euroFr } from '../../lib/prixEntree'
+import { JOURNEES, exemple } from '../../lib/seminaireJournee'
 
 // Page Tarifs (modèle « Tarifs vidéo B2B 2026 » de Biux) : tous les prix viennent de la
 // carte et des guides déjà publiés. Un prix change : le corriger ici aussi.
@@ -26,7 +27,7 @@ export default function Tarifs() {
         url: `${BASE}/tarifs`,
         name: "Tarifs traiteur d'entreprise 2026",
         inLanguage: 'fr',
-        dateModified: '2026-10-17',
+        dateModified: '2026-10-25',
         about: { '@id': BUSINESS_ID },
       },
       businessNode(),
@@ -85,8 +86,10 @@ export default function Tarifs() {
               ['Goûter pour 10 personnes (20 madeleines, 1 litre de jus, livraison)', '87,50 €'],
               ['Déjeuner de 20 plateaux repas végétariens, livraison comprise', '607,00 €'],
               ['Cocktail La Réception pour 50 personnes (12 pièces), hors boissons et livraison', '2 045 €'],
+              [`Journée de séminaire pour 50 personnes (accueil Classique, deux pauses, plateaux repas), deux livraisons comprises`, `à partir de ${euroFr(exemple(50).plateaux)}`],
             ],
           },
+          after: [`Séminaire : une journée complète coûte à partir de ${euroFr(JOURNEES.plateaux)} HT de produits par personne avec plateaux repas. Déroulé, quantités et exemples pour 20, 50 et 100 personnes sur notre page ${a('/occasions/seminaire-entreprise', 'traiteur pour séminaire : la journée complète')}.`],
         },
         {
           h2: 'Boissons et produits à l\'unité',

@@ -11,6 +11,7 @@ import {
   occasionPour, prixDesOccasion, exemplesOccasion, produitsOccasion, villesOccasion, evenementsOccasion,
   faqDerniereMinute, prixHT, LIV, MINIMUM, BASE, CHEMIN,
 } from '../../lib/occasionsVue'
+import { journeeSeminaire, offresSeminaire } from '../../lib/seminaireJournee'
 
 /*
   Page d'une occasion (/occasions/<slug> et /en/occasions/<slug>), rendue côté
@@ -83,10 +84,12 @@ export default function OccasionView({ slug, en = false }) {
   const villes = villesOccasion(o)
   const evts = evenementsOccasion(slug, en)
   const img = o.heroImg || '/creations-featured.webp'
+  // Séminaire : bloc « journée complète » (déroulé, budget, exemples, logistique) et FAQ calculés (lib/seminaireJournee.js).
+  const journee = slug === 'seminaire-entreprise' ? journeeSeminaire(en) : null
 
   // Une seule question de budget : celle des données si elle existe, sinon la nôtre, calculée.
   const aBudget = o.faqData.some(f => /co[uû]te|budget|cost/i.test(f.q))
-  const faq = [
+  const faq = journee ? journee.faq : [
     !aBudget && ex0 && { q: L.qBudget(o.cta), a: L.aBudget(ex0, liv, min) },
     ...o.faqData,
     faqDerniereMinute(en),
@@ -120,6 +123,15 @@ export default function OccasionView({ slug, en = false }) {
           priceSpecification: { '@type': 'UnitPriceSpecification', price: prixDesOccasion(slug).toFixed(2), priceCurrency: 'EUR', valueAddedTaxIncluded: false, unitText: en ? 'per person' : 'par personne' },
           ...productOfferPolicy(),
         },
+        ...(journee && {
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog', name: o.heroTitle,
+            itemListElement: offresSeminaire(en).map(x => ({
+              '@type': 'Offer', name: x.name, price: x.price.toFixed(2), priceCurrency: 'EUR', areaServed: 'Île-de-France',
+              priceSpecification: { '@type': 'UnitPriceSpecification', minPrice: x.price.toFixed(2), priceCurrency: 'EUR', valueAddedTaxIncluded: false, unitText: en ? 'per person' : 'par personne' },
+            })),
+          },
+        }),
       },
       {
         '@type': 'ItemList', '@id': `${url}#selection`, name: L.selection(o.cta),
@@ -160,8 +172,12 @@ export default function OccasionView({ slug, en = false }) {
 
         <section className="ev-bloc ev-etroit">
           <h2 className="ev-h2">{L.brefTitre}</h2>
-          <p className="ev-texte">{L.bref(o.court, des, ex0, liv, min)}</p>
+          <p className="ev-texte">{journee ? journee.bref : L.bref(o.court, des, ex0, liv, min)}</p>
         </section>
+
+        {journee && (
+          <article id="journee" className="ev-bloc ev-etroit occ-article occ-journee" dangerouslySetInnerHTML={{ __html: journee.html }} />
+        )}
 
         <section id="selection" className="ev-bloc">
           <h2 className="ev-h2">{L.selection(o.cta)}</h2>
@@ -180,7 +196,7 @@ export default function OccasionView({ slug, en = false }) {
           </div>
         </section>
 
-        {exemples.length > 0 && (
+        {!journee && exemples.length > 0 && (
           <section className="ev-bloc ev-etroit">
             <h2 className="ev-h2">{L.combien}</h2>
             <div className="ev-table-wrap">

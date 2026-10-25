@@ -751,6 +751,11 @@ a:hover .article-card-img { transform: scale(1.04); }
 .occ-article th { text-align: left; font-size: 12px; font-weight: 500; color: var(--text-secondary); padding: 10px 12px 10px 0; border-bottom: 1px solid rgba(17,17,17,0.18); vertical-align: bottom; }
 .occ-article td { padding: 12px 12px 12px 0; border-bottom: 1px solid rgba(17,17,17,0.08); vertical-align: top; }
 .occ-devis { margin-bottom: 0; }
+/* Séminaire : bloc « journée complète » (lib/seminaireJournee.js), 25/10/2026 */
+.occ-journee > h2.ev-h2 { margin: 56px 0 18px; }
+.occ-journee > h2.ev-h2:first-child { margin-top: 0; }
+.occ-journee h3.ev-h3 { margin: 28px 0 10px; }
+.occ-journee .ev-table-wrap { margin: 8px 0 14px; }
 @media (max-width: 900px) { .occ-cartes { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .occ-article p, .occ-article ul { font-size: 15px; } }
 

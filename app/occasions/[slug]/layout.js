@@ -13,7 +13,6 @@ export function generateStaticParams() {
 
 /* Descriptions raccourcies (<= 155 car.) quand seoDescription de lib/occasionsData.js est trop longue. */
 const DESCRIPTIONS_COURTES = {
-  'seminaire-entreprise': "Traiteur séminaire d'entreprise à Paris : petit-déjeuner d'accueil, pauses et déjeuner en une seule commande. De 20 à 500 participants, devis sous 24h.",
   'journee-formation': "Pauses café matin et après-midi pour vos journées de formation : viennoiseries, fruits, snacks artisanaux livrés à Paris et en IDF dès 6h30.",
 }
 
