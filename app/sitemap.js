@@ -165,6 +165,8 @@ LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en
 
 // Calculateur de quantités créé le 25/10/2026 (les versions /embed sont en noindex, hors sitemap)
 ;['/calculateur-quantites', '/en/calculateur-quantites'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
+// Page presse (kit média) créée le 25/10/2026
+;['/presse', '/en/presse'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)
@@ -211,6 +213,7 @@ export default function sitemap() {
     url('/tarifs',                                        0.80, 'monthly'),
     url('/metiers',                                       0.78, 'monthly'),
     url('/calculateur-quantites',                         0.78, 'monthly'),
+    url('/presse',                                        0.50, 'monthly'),
 
     // À propos
 
@@ -353,6 +356,7 @@ export default function sitemap() {
     url('/en/devis', 0.70, 'monthly'),
     url('/en/journal', 0.76, 'weekly'),
     url('/en/calculateur-quantites', 0.72, 'monthly'),
+    url('/en/presse', 0.45, 'monthly'),
     ...enSlugs().map(slug => url(`/en/journal/${slug}`, 0.70, 'monthly')),
   ]
 
