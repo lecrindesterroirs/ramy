@@ -7,8 +7,13 @@
 // Props : titre, items [{ label, text }], cta { before, link, after },
 //         more { label, href }, paddingBottom.
 
-export default function FicheAsavoir({ titre, items = [], cta, more, paddingBottom = '8px' }) {
+export default function FicheAsavoir({ titre, items = [], cta, more, budget, faq = [], liens = [], paddingBottom = '8px' }) {
   if (!items.length) return null
+  const faqLd = faq.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  } : null
 
   return (
     <section
@@ -50,6 +55,51 @@ export default function FicheAsavoir({ titre, items = [], cta, more, paddingBott
           {more && '.'}
         </p>
       )}
+
+      {/* Enrichissement (25/10/2026) : budget par effectif, questions fréquentes, pages qui complètent le produit.
+          Classes globales .ev-* de globals.css, donc même rendu que les pages cocktails et événements. */}
+      {budget && (
+        <div style={{ marginTop: '44px' }}>
+          <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(19px, 2vw, 24px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '14px' }}>{budget.titre}</h3>
+          <div className="ev-table-wrap">
+            <table className="ev-table" style={{ minWidth: 0 }}>
+              <thead><tr>{budget.head.map(h => <th key={h}>{h}</th>)}</tr></thead>
+              <tbody>
+                {budget.rows.map((r, i) => (
+                  <tr key={i}>{r.map((c, k) => <td key={k}>{k === 0 ? <strong>{c}</strong> : c}</td>)}</tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {budget.note && <p className="ev-note">{budget.note}</p>}
+        </div>
+      )}
+
+      {faq.length > 0 && (
+        <div style={{ marginTop: '44px' }}>
+          <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(19px, 2vw, 24px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '8px' }}>Questions fréquentes</h3>
+          <div className="ev-faq">
+            {faq.map(f => (
+              <details key={f.q}>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {liens.length > 0 && (
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.9, color: 'var(--text-secondary)', marginTop: '28px' }}>
+          Pour compléter votre commande :{' '}
+          {liens.map((l, i) => (
+            <span key={l.href}>{i > 0 && ' · '}<a href={l.href} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{l.label}</a></span>
+          ))}
+          .
+        </p>
+      )}
+
+      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 1100px) and (min-width: 769px) { .fiche-asavoir { padding-left: 40px !important; padding-right: 40px !important; } }
