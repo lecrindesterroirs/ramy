@@ -163,8 +163,8 @@ LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en
   .forEach(p => { LASTMOD_PAGES[p] = '2026-10-24'; LASTMOD_PAGES[`/en${p}`] = '2026-10-24' })
 ;['/en/tarifs', '/en/creations/petits-dejeuners-et-pauses', '/metiers', '/en/metiers', '/univers/nos-engagements', '/en/univers/nos-engagements'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-24' })
 
-// Calculateur de quantités et guide ramadan anglais créés le 25/10/2026 (les versions /embed sont en noindex, hors sitemap)
-;['/calculateur-quantites', '/en/calculateur-quantites', '/en/journal/ramadan-inclusion-alimentaire-bureau-guide'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
+// Calculateur de quantités créé le 25/10/2026 (les versions /embed sont en noindex, hors sitemap)
+;['/calculateur-quantites', '/en/calculateur-quantites'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)
