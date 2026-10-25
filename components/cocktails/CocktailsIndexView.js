@@ -10,6 +10,7 @@ import CategoryJsonLd from '../CategoryJsonLd'
 import {
   formules, totalLivre, EFFECTIFS, guidesCocktail, lignesPratiques, faqCatalogue, prixHT, CHEMIN, MINIMUM, LIV, BASE,
 } from '../../lib/cocktailsVue'
+import { PRIX as PRIX_AFW, PIECES_PAR_PERSONNE as PIECES_AFW, MIN_PERSONNES as MIN_AFW, CHEMIN as CHEMIN_AFW } from '../../lib/afterworkFiche'
 
 /*
   Page Cocktails, FR et /en, rendue côté serveur (refonte du 22/10/2026 sur le
@@ -56,6 +57,9 @@ export default function CocktailsIndexView({ en = false }) {
       ['The day before, by 2 pm', 'The last headcount adjustment. After that, the order goes into production.'],
       ['On the day', 'Delivery at the agreed time, plated and ready to set out. Set-up on request.'],
     ],
+    afwTitre: 'A simpler, more generous afterwork',
+    afwTexte: `The sharing afterwork brings a halal charcuterie board, a cheese board and ${PIECES_AFW} mini sandwiches per person, from ${MIN_AFW} people, at ${ht(PRIX_AFW)} per person.`,
+    afwLien: 'See the sharing afterwork',
     brefTitre: 'At a glance',
     bref: `At L'Écrin Traiteur, a corporate cocktail reception is counted in pieces per person: ${I.pieces} pieces for drinks of an hour and a half (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pieces to replace a lunch (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pieces for a standing dinner (${C.label}, ${ht(C.prixNum)}). The price per person does not change with the headcount. For 50 guests on ${R.label}, L'Écrin Traiteur charges ${ht(totalLivre(50, R.prixNum))} delivery included, drinks extra.`,
     formulesTitre: 'The three menus',
@@ -98,6 +102,9 @@ export default function CocktailsIndexView({ en = false }) {
       ['La veille avant 14h', "Le dernier ajustement d'effectif. Au-delà, la commande est lancée en production."],
       ['Le jour J', "Livraison à l'heure fixée, dressage prêt à disposer. Installation sur demande."],
     ],
+    afwTitre: 'Un afterwork plus simple et plus généreux',
+    afwTexte: `L'afterwork à partager réunit une planche de charcuteries halal, une planche de fromages et ${PIECES_AFW} mini-sandwichs par personne, dès ${MIN_AFW} personnes, à ${ht(PRIX_AFW)} par personne.`,
+    afwLien: "Voir l'afterwork à partager",
     brefTitre: "L'essentiel",
     bref: `Chez L'Écrin Traiteur, un cocktail d'entreprise se compte en pièces par personne : ${I.pieces} pièces pour un pot d'une heure et demie (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pièces pour remplacer un déjeuner (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pièces pour un dîner debout (${C.label}, ${ht(C.prixNum)}). Le prix par personne ne change pas avec l'effectif. Pour 50 personnes en ${R.label}, L'Écrin Traiteur facture ${ht(totalLivre(50, R.prixNum))} livraison comprise, boissons en plus.`,
     formulesTitre: 'Les trois formules',
@@ -168,6 +175,11 @@ export default function CocktailsIndexView({ en = false }) {
               </a>
             ))}
           </div>
+        </section>
+
+        <section className="ev-bloc ev-etroit">
+          <h2 className="ev-h2">{T.afwTitre}</h2>
+          <p className="ev-texte">{T.afwTexte} <a href={`${pre}${CHEMIN_AFW}`}>{T.afwLien}</a>.</p>
         </section>
 
         <section className="ev-bloc ev-etroit">
