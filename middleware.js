@@ -31,7 +31,20 @@ const REDIRECT_MAP = {
   '/post/traiteur-codir-paris-petit-dejeuner-dirigeants': '/journal/petit-dejeuner-entreprise-conseils',
 }
 
+/* Outils de copie intégrale de site (aspirateurs, « mirror ») : refusés d'emblée.
+   C'est un garde-fou simple, qui ne retient que les copieurs qui ne cachent pas leur nom : un
+   copieur qui se fait passer pour un navigateur passe, ce qui se traite dans le pare-feu
+   de Vercel (limite de débit par adresse). Googlebot, Bingbot, les robots des IA (GPTBot,
+   ClaudeBot…) et les outils SEO ne sont pas concernés ; curl et les clients HTTP génériques
+   non plus, car les outils internes (OS, vérifications) s'en servent. */
+const COPIEURS = /(httrack|webcopier|webzip|sitesucker|teleport ?pro|offline explorer|websitedownloader|webreaper|blackwidow|cyotek|scrapy|wget)/i
+
 export function middleware(request) {
+  const agent = request.headers.get('user-agent') || ''
+  if (COPIEURS.test(agent)) {
+    return new NextResponse('Accès refusé', { status: 403 })
+  }
+
   const host = request.headers.get('host') || ''
 
   // Domaine principal (ou tout autre hôte) : on ne touche à rien.
