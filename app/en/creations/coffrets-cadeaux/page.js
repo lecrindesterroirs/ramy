@@ -1,6 +1,6 @@
-/* Même vue serveur que la page française, en anglais (app/creations/coffrets-cadeaux/Vue.js). */
-import VueCoffrets from '../../../creations/coffrets-cadeaux/Vue'
+import Ancienne from '../../../creations/coffrets-cadeaux/Ancienne'
+import BlocsSeoBas from '../../../../components/BlocsSeoBas'
 
-export default function PageEn() {
-  return <VueCoffrets en />
+export default function Page() {
+  return <Ancienne bas={<BlocsSeoBas categorie="coffrets" lang="en" />} />
 }

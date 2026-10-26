@@ -1,5 +1,4 @@
-/* ============================================
-   L'ÉCRIN TRAITEUR, Design System Global CSS
+/* =====================================   L'ÉCRIN TRAITEUR, Design System Global CSS
    ============================================ */
 
 /* Font Faces */
@@ -585,8 +584,7 @@ a:hover .article-card-img { transform: scale(1.04); }
   .pd-main .products-grid { grid-template-columns: repeat(3, 1fr) !important; padding: 48px 40px 100px !important; gap: 48px 24px !important; }
 }
 
-/* ============================================
-   Événements saisonniers (components/evenements/*)
+/* =====================================   Événements saisonniers (components/evenements/*)
    Rendu serveur : toutes les règles ici, pas de <style> en fin de page (CLS).
    Codes repris des pages occasions, halal, fiches produit et accueil :
    un seul surtitre en majuscules (héros), titres en Baskerville, cartes
@@ -758,6 +756,9 @@ a:hover .article-card-img { transform: scale(1.04); }
 .occ-journee .ev-table-wrap { margin: 8px 0 14px; }
 @media (max-width: 900px) { .occ-cartes { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .occ-article p, .occ-article ul { font-size: 15px; } }
+/* Occasions : ligne « Dans l'année » vers les événements saisonniers */
+@media (max-width: 1024px) and (min-width: 769px) { .occ-evenements { padding: 40px 40px 0 !important; } }
+@media (max-width: 768px) { .occ-evenements { padding: 32px 24px 0 !important; } }
 
 /* Bloc « Comment ça se passe » (components/CategoryClosing.js), remplace les cartes d'icônes le 22/10/2026 */
 .csp { background: var(--bg-secondary); border-top: 1px solid rgba(17,17,17,0.07); }
@@ -797,21 +798,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 .rsm-devis { margin-bottom: 96px; }
 @media (max-width: 900px) { .rsm-cartes { grid-template-columns: repeat(2, 1fr); } }
 
-/* Pages de la carte (components/ProductsPageTemplate.js, components/categorie/ProductsGrid.js), 23/10/2026 */
-.cat-formules { list-style: none; padding: 0; margin: 0 0 8px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.cat-formule { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 22px 22px 20px; background: var(--bg-secondary); text-decoration: none; transition: background 0.2s ease; }
-a.cat-formule:hover { background: #EFE9DD; }
-a.cat-formule:hover .cat-formule-nom { color: var(--accent-deep); }
-.cat-formule-nom { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 20px; line-height: 1.2; color: var(--text-primary); transition: color 0.25s ease; }
-.cat-formule-prix { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; font-weight: 500; color: var(--text-primary); }
-.cat-formule-detail { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; line-height: 1.55; color: var(--text-secondary); }
-.cat-tableau { max-width: 860px; margin-top: 36px; }
-.cat-tableau .ev-h3 { margin-bottom: 12px; }
-.cat-carte { max-width: 1440px; margin: 0 auto; padding: 64px 0 0; }
-.cat-devis { margin-top: 72px; }
-.cat-faq-bloc { padding-bottom: 72px; }
-#formules, #carte { scroll-margin-top: calc(var(--banner-h) + var(--nav-h) + 8px); }
-
+/* « Bien choisir » : texte SEO replié en bas des pages de la carte (repris de la version du 23/10/2026) */
 .cat-choisir { max-width: 860px; margin: 0 auto; padding: 56px 40px 0; }
 .cat-choisir-details { border-top: 1px solid rgba(17,17,17,0.1); border-bottom: 1px solid rgba(17,17,17,0.1); }
 .cat-choisir-details > summary { list-style: none; cursor: pointer; padding: 22px 36px 22px 0; position: relative; font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(20px, 2vw, 24px); line-height: 1.25; color: var(--text-primary); }
@@ -820,43 +807,4 @@ a.cat-formule:hover .cat-formule-nom { color: var(--accent-deep); }
 .cat-choisir-details[open] > summary::after { transform: rotate(45deg); }
 .cat-choisir-details .cat-seo-body { padding: 4px 0 28px; }
 .cat-choisir-details .cat-seo-body h2 { font-size: 22px; margin: 28px 0 10px; }
-
-.pgr-barre { position: sticky; top: calc(var(--banner-h) + var(--nav-h)); z-index: 30; background: #FFFFFF; }
-.pgr-filtres { max-width: 1440px; margin: 0 auto; padding: 12px 72px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid rgba(17,17,17,0.08); }
-.pgr-filtres::-webkit-scrollbar { display: none; }
-.pgr-filtres button { flex-shrink: 0; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; color: var(--text-primary); background: #FFFFFF; border: 1px solid rgba(17,17,17,0.16); padding: 7px 14px; cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease; }
-.pgr-filtres button:hover { border-color: var(--text-primary); }
-.pgr-filtres button.actif { background: #111111; border-color: #111111; color: #FFFFFF; }
-.pgr-sections { padding: 0 72px; }
-.pgr-section { padding-top: 48px; }
-.pgr-section-tete { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
-.pgr-compte { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
-.pgr-rangee, .pgr-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px 24px; }
-.pgr-grille { padding: 48px 72px 0; }
-.pgr-sans-photo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 18px; line-height: 1.25; color: var(--text-secondary); border: 1px solid rgba(17,17,17,0.08); }
-@media (max-width: 1024px) and (min-width: 769px) {
-  .pgr-filtres { padding: 12px 40px; }
-  .pgr-sections { padding: 0 40px; }
-  .pgr-grille { padding: 40px 40px 0; }
-  .pgr-rangee, .pgr-grille { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 768px) {
-  .cat-carte { padding-top: 40px; }
-  .cat-devis { margin-top: 48px; }
-  .cat-choisir { padding: 40px 16px 0; }
-  .pgr-filtres { padding: 10px 16px; }
-  .pgr-sections { padding: 0; }
-  .pgr-section { padding-top: 32px; }
-  .pgr-section-tete { padding: 0 16px; margin-bottom: 12px; }
-  /* Une section = une rangée qui défile à l'horizontale */
-  .pgr-rangee { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 16px 6px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .pgr-rangee::-webkit-scrollbar { display: none; }
-  .pgr-rangee .pgr-carte { flex: 0 0 44%; scroll-snap-align: start; }
-  .pgr-grille { grid-template-columns: repeat(2, 1fr); gap: 28px 12px; padding: 32px 16px 0; }
-  .pgr-carte .ev-carte-img { margin-bottom: 10px; }
-  .pgr-carte .ev-carte-nom { font-size: 16px; }
-  .cat-formules { grid-template-columns: 1fr; gap: 8px; }
-  .cat-formule { padding: 16px 16px 14px; }
-}
-.cat-tableau .ev-table { min-width: 0; }
-@media (max-width: 768px) { .cat-tableau .ev-table { font-size: 13px; } }
+@media (max-width: 768px) { .cat-choisir { padding: 40px 16px 0; } }

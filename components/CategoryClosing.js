@@ -53,7 +53,7 @@ const TEXTES = {
   },
 }
 
-export default function CategoryClosing({ seoArticle, lang = 'fr', titreChoisir, avantGuides = null }) {
+export default function CategoryClosing({ seoArticle, lang = 'fr', titreChoisir, avantGuides = null, bas = null }) {
   const en = lang === 'en'
   const T = TEXTES[en ? 'en' : 'fr']
   const lignes = T.lignes(en ? euroEn(LIV) : euroFr(LIV), en ? euroEn(MINIMUM) : euroFr(MINIMUM))
@@ -80,6 +80,9 @@ export default function CategoryClosing({ seoArticle, lang = 'fr', titreChoisir,
           </div>
         </div>
       </section>
+
+      {/* Blocs SEO ajoutés en bas de page (L'essentiel, formules, budget), repliés : components/BlocsSeoBas.js */}
+      {bas}
 
       {/* ── Article SEO catégorie, replié dans « Bien choisir » (23/10/2026) :
           le texte reste dans le HTML (details natif), la page ne s'étire plus. ── */}

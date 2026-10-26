@@ -1,6 +1,7 @@
-/* Même vue serveur que la page française, en anglais (app/creations/a-partager/Vue.js). */
-import VuePartage from '../../../creations/a-partager/Vue'
+import Ancienne from '../../../creations/a-partager/Ancienne'
+import BlocsSeoBas from '../../../../components/BlocsSeoBas'
+import { BUFFET_EN } from '../../../../lib/blocBuffet'
 
-export default function PageEn() {
-  return <VuePartage en />
+export default function Page() {
+  return <Ancienne bas={<BlocsSeoBas categorie="partage" lang="en" extraTitre="Which corporate buffet should you choose, and what does it cost?" extraHtml={BUFFET_EN} />} />
 }
