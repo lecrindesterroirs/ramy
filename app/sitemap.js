@@ -218,6 +218,7 @@ export default function sitemap() {
     url('/tarifs',                                        0.80, 'monthly'),
     url('/metiers',                                       0.78, 'monthly'),
     url('/livraison-petit-dejeuner-entreprise-paris',     0.85, 'monthly'),
+    url('/livraison-gouter-entreprise-paris',             0.82, 'monthly'),
     url('/calculateur-quantites',                         0.78, 'monthly'),
     url('/presse',                                        0.50, 'monthly'),
 

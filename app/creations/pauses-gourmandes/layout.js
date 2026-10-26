@@ -4,7 +4,7 @@ import { ogImages } from '../../../lib/og'
 import { PAUSE_DES, euroFr } from '../../../lib/prixEntree'
 
 /* La FAQ (affichée et balisée) est portée par la page (ProductsPageTemplate), plus par ce layout. */
-const TITLE = `Livraison goûter d'entreprise à Paris dès ${euroFr(PAUSE_DES)} HT`
+const TITLE = `Goûter d'entreprise à Paris : pauses gourmandes dès ${euroFr(PAUSE_DES)} HT`
 const DESCRIPTION = `Goûter d'entreprise à Paris dès ${euroFr(PAUSE_DES)} HT par personne : madeleines, macarons, cakes, tartelettes et fruits, livrés à l'heure de la pause. Devis sous 24h.`
 
 export const metadata = {
