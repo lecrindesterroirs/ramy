@@ -104,6 +104,34 @@ export const FORMULES = [
       'Tartelette aux Myrtilles',
     ],
   },
+    {
+      key: 'afterwork',
+      occasion: 'Afterwork',
+      seoTitle: `Cocktail L'Afterwork : 12 pièces généreuses pour vos afterworks d'entreprise à Paris`,
+      seoHtml: `<p>La formule L'Afterwork, c'est douze pièces par personne comme La Réception, mais des pièces qui nourrissent : mini burgers, clubs et mini wraps roulés plutôt que des bouchées, et le plateau de douceurs en dessert. Neuf pièces salées, trois sucrées, à ${virgule(PX.afterwork.prix)} € HT par personne.</p><h2>Pourquoi c'est la meilleure valeur à la pièce</h2><p>À ${virgule(PX.afterwork.prix / PX.afterwork.pieces)} € la pièce, c'est le prix le plus bas de notre gamme cocktail, là où les formules de bouchées tiennent entre ${virgule(PX.celebration.prix / PX.celebration.pieces)} et ${virgule(PX.invitation.prix / PX.invitation.pieces)} €. La raison est simple : une pièce de plateau contient du pain, elle rassasie davantage et elle coûte moins cher à produire qu'une bouchée montée à la main.</p><h2>Pour quel moment</h2><p>Un afterwork, un pot de départ, une fin de journée d'équipe : les moments où l'on veut que les gens mangent vraiment, debout, sans passer au dîner. Si vous cherchez un format à partager au centre de la table plutôt qu'un nombre de pièces par personne, voyez notre <a href="/creations/cocktails/afterwork-partage">afterwork à partager</a>.</p>` + ORGANISER,
+      label: "L'Afterwork",
+      pieces: PX.afterwork.pieces,
+      prix: virgule(PX.afterwork.prix),
+      prixNum: PX.afterwork.prix,
+      accroche: 'Douze pièces qui nourrissent : burgers, clubs et wraps, douceurs en dessert.',
+      featured: false,
+      img: '/plateau-burgers.webp',
+      sale: [
+        'Mini Burger Hamburger',
+        'Mini Burger Cheeseburger',
+        'Mini Burger au Steak Végétal (sur demande)',
+        'Club Saumon Fumé & Cream Cheese',
+        'Club Blanc de Poulet',
+        'Mini Wrap Roulé Saumon Fumé & Cream Cheese',
+        'Mini Wrap Roulé Blanc de Poulet',
+      ],
+      sucre: [
+        'Choux à la Crème',
+        'Macarons',
+        'Brownies',
+        'Mini Muffins',
+      ],
+    },
 ]
 
 // Questions du catalogue : rendues visibles dans la page ET servies en FAQPage (layout.js).
@@ -124,7 +152,7 @@ export const FAQ_CATALOGUE = [
   },
   {
     name: 'Peut-on adapter une formule aux régimes alimentaires ?',
-    answer: "Toute la carte salée est halal et sans porc, et sans alcool. Les options végétariennes, vegan et sans gluten se précisent au devis, avec le nombre de personnes concernées. La composition des trois formules est fixe : pour une demande particulière, demandez un devis avant la commande.",
+    answer: "Toute la carte salée est halal et sans porc, et sans alcool. Les options végétariennes, vegan et sans gluten se précisent au devis, avec le nombre de personnes concernées. La composition des formules est fixe : pour une demande particulière, demandez un devis avant la commande.",
   },
   {
     name: "Jusqu'à quand peut-on commander ?",
