@@ -77,6 +77,12 @@ export default function DeferredPostHog() {
           },
           // Ville, région et code postal d'après Vercel, joints à chaque événement.
           loaded: instance => {
+            // Événements émis avant le chargement (voir capturerPostHog).
+            const file = window.__phFile
+            if (accord && Array.isArray(file) && file.length) {
+              window.__phFile = []
+              file.forEach(([nom, proprietes]) => { try { instance.capture(nom, proprietes) } catch (e) {} })
+            }
             if (!accord) return
             fetch('/api/geo')
               .then(r => (r.ok ? r.json() : null))

@@ -9,7 +9,7 @@ import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
-import { identifierVisiteur, suivreEtapeDevis } from '../../lib/posthog-identify'
+import { identifierVisiteur, suivreEtapeDevis, suivreChampDevis } from '../../lib/posthog-identify'
 import { estAnglais } from '../../lib/i18nBase'
 import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
 
@@ -20,7 +20,7 @@ function useLangue() {
   return estAnglais(chemin) ? 'en' : 'fr'
 }
 import { lireChemin, lireParcours, occasionPour } from '../../lib/parcours'
-import { trackPhoneClick } from '../../lib/tracking'
+import { trackPhoneClick, trackWhatsappClick } from '../../lib/tracking'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -442,9 +442,7 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
           </div>
         </div>
         <div>
-          <label style={labelStyle}>{T('form.details')} {isMobile
-            ? <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span>
-            : <span style={{ color: accent }}>*</span>}</label>
+          <label style={labelStyle}>{T('form.details')} <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '9px', letterSpacing: '0.08em', color: 'rgba(17,17,17,0.35)', textTransform: 'none', fontWeight: 400 }}>(facultatif)</span></label>
           {parcours.length > 0 && (
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
               <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'var(--text-secondary)' }}>{T('devis.vousAvezRegarde')}</span>
@@ -469,9 +467,8 @@ function Step2({ data, setData, showErrors, accent = '#E0A126', parcours = [] })
             onChange={e => set('message', e.target.value)}
             placeholder={isMobile ? "Décrivez votre événement, vos contraintes alimentaires ou toute information utile…" : "Décrivez votre événement, vos contraintes alimentaires ou toute information utile…\nPlus nous en savons, plus notre proposition sera adaptée à vos besoins."}
             rows={isMobile ? 4 : 6}
-            style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: !isMobile && err('message') ? 'rgba(192,57,43,0.5)' : 'rgba(17,17,17,0.1)' }}
+            style={{ ...fieldStyle, height: 'auto', resize: 'none', lineHeight: 1.7, borderColor: 'rgba(17,17,17,0.1)' }}
           />
-          {!isMobile && err('message') && <p className="step2-error" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', color: '#c0392b', marginTop: '4px' }}>{T('form.requis')}</p>}
         </div>
       </div>
     </div>
@@ -596,6 +593,26 @@ function Step3({ data, setData, onEdit, onEditPrestation, accent = '#E0A126' }) 
   )
 }
 
+// ── Rappel visible aux étapes 2 et 3 ──────────────────────────────────────────
+// Seule l'étape 1 portait le téléphone et « sous 24 h ». Aux étapes 2 et 3 (là où
+// l'on s'arrête) il n'y avait aucune alternative à la saisie.
+const WHATSAPP_DEVIS = 'https://wa.me/33760169620?text=' + encodeURIComponent('Bonjour, je souhaiterais un devis pour ')
+const WHATSAPP_DEVIS_EN = 'https://wa.me/33760169620?text=' + encodeURIComponent('Hello, I would like a quote for ')
+
+function RappelContact({ etape }) {
+  const langue = useLangue()
+  const en = langue === 'en'
+  const lien = { color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid rgba(17,17,17,0.25)' }
+  return (
+    <p className="devis-rappel" style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12.5px', color: 'var(--text-secondary)', textAlign: 'center', margin: '28px 0 0', lineHeight: 1.7 }}>
+      {en ? 'Quote within 24 h · ' : 'Devis sous 24 h · '}
+      <a href="tel:+33174542310" data-emplacement={`devis_etape${etape}`} onClick={trackPhoneClick} style={lien}>01 74 54 23 10</a>
+      {' · '}
+      <a href={en ? WHATSAPP_DEVIS_EN : WHATSAPP_DEVIS} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsappClick(`devis_etape${etape}`)} style={lien}>WhatsApp</a>
+    </p>
+  )
+}
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function Contact() {
@@ -614,36 +631,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState('idle') // idle | loading | success | error
   const [showStep2Errors, setShowStep2Errors] = useState(false)
   const [bottomNavHidden, setBottomNavHidden] = useState(false)
-  const [showLogo, setShowLogo] = useState(true)
-  const [showExitModal, setShowExitModal] = useState(false)
   const logosRef = useRef(null)
-  const stepForExitRef = useRef(step)
-  useEffect(() => { stepForExitRef.current = step }, [step])
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowLogo(false), 600)
-    return () => clearTimeout(timer)
-  }, [])
-
-  // Intercepte le retour arrière : au lieu de quitter, on affiche
-  // un rappel du nombre d'étapes restantes avant le devis.
-  useEffect(() => {
-    window.history.pushState({ devisGuard: true }, '', window.location.href)
-    const onPopState = () => {
-      if (submitStatus === 'success') return
-      window.history.pushState({ devisGuard: true }, '', window.location.href)
-      setShowExitModal(true)
-    }
-    window.addEventListener('popstate', onPopState)
-    return () => window.removeEventListener('popstate', onPopState)
-  }, [submitStatus])
-
-  function exitMessage() {
-    const s = stepForExitRef.current
-    if (s >= 3) return t('devis.presque', langue)
-    if (s === 2) return t('devis.resteUne', langue)
-    return t('devis.resteDeux', langue)
-  }
 
   useEffect(() => {
     const onScroll = () => {
@@ -660,6 +648,17 @@ export default function Contact() {
     prestation: '', date: '', convives: '', ville: '', budget: '', message: '',
     nom: '', societe: '', email: '', telephone: '',
   })
+
+  // Premier remplissage de chaque champ (nom du champ seulement, jamais la valeur) : sans cela
+  // on ne sait pas où le visiteur s'arrête.
+  const champsVusRef = useRef(new Set())
+  useEffect(() => {
+    for (const [champ, valeur] of Object.entries(data)) {
+      if (champ === 'prestation' || !String(valeur || '').trim() || champsVusRef.current.has(champ)) continue
+      champsVusRef.current.add(champ)
+      suivreChampDevis(champ, step)
+    }
+  }, [data, step])
 
   // Lu au changement d'étape pour la mesure, sans relancer l'effet à chaque frappe.
   const dataRef = useRef(data)
@@ -721,11 +720,9 @@ export default function Contact() {
     return () => window.removeEventListener('beforeunload', handleUnload)
   }, [data, submitStatus])
 
-  // Détails : obligatoires sur ordinateur, facultatifs sur téléphone (long à taper au pouce).
-  const step2Valid = () => {
-    const mobile = typeof window !== 'undefined' && window.innerWidth <= 768
-    return !!(data.convives?.trim() && data.ville?.trim() && (mobile || data.message?.trim()))
-  }
+  // Détails facultatifs partout (obligatoires sur ordinateur jusqu'au 26/10/2026 : 4 sessions
+  // sur 65 ont eu des clics de rage sur ce champ, et 52 % des sessions ordinateur n'écrivent rien).
+  const step2Valid = () => !!(data.convives?.trim() && data.ville?.trim())
 
   const canNext = () => {
     if (step === 1) return !!data.prestation
@@ -818,30 +815,8 @@ export default function Contact() {
           {t('devis.h1', langue)}
         </h1>
 
-        {/* Logo splash screen */}
-        {showLogo && (
-          <div style={{
-            position: 'fixed', inset: 0, background: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000,
-            animation: `fadeInOut 0.6s ease-in-out forwards`,
-          }}>
-            <style>{`
-              @keyframes fadeInOut {
-                0% { opacity: 1 }
-                60% { opacity: 1 }
-                100% { opacity: 0 }
-              }
-            `}</style>
-            <div style={{ textAlign: 'center' }}>
-              <img src="/logo-footer.svg" alt="L'Écrin Traiteur" style={{ height: '72px', width: 'auto', display: 'block', margin: '0 auto 20px' }} />
-              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', letterSpacing: '0.1em', color: '#9B9590' }}>
-                Vos équipes vont adorer.
-              </p>
-            </div>
-          </div>
-        )}
-
         {/* Form content avec fade in */}
-        <div style={{ opacity: showLogo ? 0 : 1, transition: 'opacity 0.5s ease-in 0.3s', pointerEvents: showLogo ? 'none' : 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
 
         {submitStatus === 'success' ? (
           /* ── Success screen ── */
@@ -874,6 +849,7 @@ export default function Contact() {
                 {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} isOctobreRose={isOctobreRose} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} parcours={parcours} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} accent={accent} />}
+                {step > 1 && <RappelContact etape={step} />}
               </div>
             </div>
 
@@ -996,32 +972,6 @@ export default function Contact() {
         )}
         </div>
 
-        {/* Pop-up de confirmation avant de quitter */}
-        {showExitModal && (
-          <div style={{ position: 'fixed', inset: 0, background: 'rgba(17,17,17,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '24px' }}>
-            <div style={{ background: '#FFFFFF', maxWidth: '380px', width: '100%', padding: '32px 28px', textAlign: 'center', borderRadius: '4px' }}>
-              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.2 }}>
-                {t('devis.attendez', langue)}
-              </p>
-              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13.5px', color: 'rgba(17,17,17,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
-                {exitMessage()}
-              </p>
-              <button
-                type="button"
-                onClick={() => setShowExitModal(false)}
-                style={{ width: '100%', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: accent, border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
-              >
-                {t('devis.continuer', langue)}
-              </button>
-              <a
-                href="/"
-                style={{ display: 'block', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11.5px', color: 'rgba(17,17,17,0.45)', textDecoration: 'underline', padding: '4px' }}
-              >
-                {t('devis.quitter', langue)}
-              </a>
-            </div>
-          </div>
-        )}
       </main>
 
       <div className="devis-preuves">
