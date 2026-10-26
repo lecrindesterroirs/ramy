@@ -2,8 +2,8 @@ import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   alternates: alternatesPour('/creations/a-partager', { en: true }),
-  title: "Buffet à partager traiteur Paris",
-  description: "Menus à partager pour vos déjeuners d'équipe à Paris : salades, planches et pièces cocktail dressés pour 8 à 12 personnes. Livraison en Île-de-France.",
+  title: { absolute: "Buffet d'entreprise à Paris : menus à partager dès 34,90 € HT | L'Écrin Traiteur" },
+  description: "Buffet d'entreprise à Paris, livré dès 6h30 : 3 menus à partager (méditerranéen, parisien, végétarien) dès 34,90 € HT par personne, et le budget de chaque format de buffet. Devis sous 24 h.",
   openGraph: {
     images: ogImages('/hero-a-partager.webp'),
     title: "Buffet à Partager Traiteur Paris | L'Écrin Traiteur",

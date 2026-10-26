@@ -2,8 +2,8 @@ import { alternatesPourEn } from '../../../../lib/i18n'
 import { ogImages } from '../../../../lib/og'
 
 export const metadata = {
-  title: { absolute: "Sharing menus for team lunches | L'Écrin Traiteur" },
-  description: 'Sharing buffets for company lunches in Paris: salads, gourmet boards and canapés from €34.90 excl. VAT per person, delivered plated and ready to serve.',
+  title: { absolute: "Corporate Buffet Catering in Paris from €34.90 excl. VAT | L'Écrin Traiteur" },
+  description: 'Corporate buffet catering in Paris, delivered from 6:30 am: sharing menus from €34.90 excl. VAT per person, and the budget of each buffet format. Quote within 24 hours.',
   alternates: alternatesPourEn('/creations/a-partager'),
   openGraph: {
     images: ogImages('/hero-a-partager.webp'),
