@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import { trackPhoneClick, trackWhatsappClick } from '../lib/tracking'
-import { capturerPostHog } from '../lib/posthog-identify'
+import { suivreOuvertureFeuille } from '../lib/posthog-identify'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 import { prestationRapidePour } from '../lib/parcours'
 import { estAnglais } from '../lib/i18nBase'
@@ -83,7 +83,7 @@ export default function MobileCTA() {
           </svg>
         </a>
         <a className="mobile-cta-devis" href={en ? '/en/devis' : '/devis'} aria-label={T.devisAria} style={devisAccent ? { background: devisAccent } : undefined}
-          onClick={e => { e.preventDefault(); capturerPostHog('feuille_devis_ouverte', { page: pathname }); setSheet(true) }}>
+          onClick={e => { e.preventDefault(); suivreOuvertureFeuille(pathname); setSheet(true) }}>
           {T.devis}
         </a>
       </div>
