@@ -118,6 +118,11 @@ export default function ProductsPageTemplate({
           </div>
         </section>
 
+        <section className="cat-carte" aria-label={en ? 'The menu' : 'La carte'}>
+          <ProductsGrid produits={cartes} sections={sections} lang={lang} />
+        </section>
+
+        {/* Le haut de page mène directement aux produits (demande de Ramy, 26/10/2026) : l'essentiel, les formules et le tableau de budget passent sous la grille. */}
         {essentiel ? (
           <section className="ev-bloc ev-etroit cat-essentiel">
             <h2 className="ev-h2">{essentielTitre || (en ? 'At a glance' : "L'essentiel")}</h2>
@@ -165,10 +170,6 @@ export default function ProductsPageTemplate({
             )}
           </section>
         )}
-
-        <section className="cat-carte" aria-label={en ? 'The menu' : 'La carte'}>
-          <ProductsGrid produits={cartes} sections={sections} lang={lang} />
-        </section>
 
         <section id="devis" className="ev-devis cat-devis">
           <div className="ev-devis-inner">
