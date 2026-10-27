@@ -221,7 +221,7 @@ function PlateauxRepasInner({ bas }) {
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
         {/* ── Hero, contenu + immersif, aligné sur petit-déjeuner ── */}
-        <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 72px 0' }}>
+        <div className="pr-hero-wrapper" style={{ maxWidth: '1440px', margin: '0 auto', padding: '40px 0 0' }}>
           <header className="pr-hero" style={{ position: 'relative', width: '100%', height: '58vh', minHeight: '440px', overflow: 'hidden' }}>
             <ParallaxImage priority sizes="100vw" key={`hero-img-${col.key}`}
               src={col.hero}
@@ -233,7 +233,7 @@ function PlateauxRepasInner({ bas }) {
 
             {/* Texte overlay, aligné à gauche, centré verticalement, fade-up au montage, rejoué à chaque changement de collection */}
             <Reveal key={`hero-text-${col.key}`} mode="mount" y={16}>
-              <div className="pr-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '600px' }}>
+              <div className="pr-hero-text" style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 var(--retrait)', maxWidth: '600px' }}>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: '16px' }}>
                   {COLLECTIONS.length > 1 ? `Collection ${col.label}` : 'Déjeuner · Paris & Île-de-France'}
                 </p>

@@ -124,7 +124,7 @@ export default function Hero({ lang = 'fr' }) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           textAlign: 'left',
-          padding: '0 80px 0 clamp(80px, 11vw, 180px)',
+          padding: '0 var(--retrait)',
           maxWidth: '820px',
         }}
       >

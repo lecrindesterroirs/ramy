@@ -65,6 +65,24 @@
 
 /* CSS Variables */
 :root {
+  /* Grille horizontale du site (28/10/2026). Avant, six conteneurs posaient
+     six retraits différents — le H1 commençait à 72 px sur les pages cocktail,
+     144 sur les pages produit, 158 sur l'accueil, 160 dans .container — et
+     l'œil enregistrait que les repères bougeaient d'une page à l'autre.
+     Tout passe désormais par ces deux variables. */
+  /* 1600 et non 1280 : jusqu'à 1600 px de large, le contenu commence à 80 px
+     du bord — la photo garde 320 px de plus qu'avec un conteneur à 1280, et
+     l'alignement ne bouge pas. Au-delà, la page se recentre au lieu de
+     s'étirer. La longueur des lignes est bridée sur les blocs de texte
+     (.ev-etroit et consorts), pas sur la page. */
+  --contenu-max: 1600px;
+  --gouttiere: 80px;
+  /* Retrait réel du contenu depuis le bord de la fenêtre. Un conteneur limité
+     à --contenu-max avec --gouttiere de padding y aboutit tout seul ; les
+     éléments pleine largeur (navbar, héros photo) doivent l'appliquer
+     explicitement pour tomber sur la même verticale. */
+  --retrait: max(var(--gouttiere), calc((100vw - var(--contenu-max)) / 2 + var(--gouttiere)));
+
   --bg-primary: #FFFFFF;
   --bg-secondary: #F8F5EF;
   --white: #FFFFFF;
@@ -161,18 +179,14 @@ img {
 
 /* ===== CONTAINER ===== */
 .container {
-  max-width: 1280px;
+  max-width: var(--contenu-max);
   margin: 0 auto;
-  padding: 0 80px;
+  padding: 0 var(--gouttiere);
 }
 
-@media (max-width: 1024px) {
-  .container { padding: 0 48px; }
-}
+@media (max-width: 1024px) { :root { --gouttiere: 48px; } }
+@media (max-width: 768px)  { :root { --gouttiere: 24px; } }
 
-@media (max-width: 768px) {
-  .container { padding: 0 24px; }
-}
 
 /* ===== TYPOGRAPHY ===== */
 .hero-title {
@@ -593,7 +607,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ev-main { background: #FFFFFF; min-height: 100vh; padding-top: calc(var(--banner-h) + var(--nav-h)); }
 .ev-main a { color: inherit; }
 
-.ev-hero { max-width: 1440px; margin: 0 auto; padding: 32px 72px 0; display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: center; }
+.ev-hero { max-width: var(--contenu-max); margin: 0 auto; padding: 32px var(--gouttiere) 0; display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: center; }
 .ev-hero-texte { max-width: 560px; }
 .ev-surtitre { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 18px; }
 .ev-h1 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(32px, 4vw, 54px); font-weight: 400; line-height: 1.06; letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 20px; }
@@ -606,7 +620,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ev-btn-filet:hover { background: rgba(224, 161, 38, 0.08); }
 .ev-hero-img { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-secondary); }
 
-.ev-bloc { max-width: 1280px; margin: 0 auto; padding: 72px 72px 0; }
+.ev-bloc { max-width: var(--contenu-max); margin: 0 auto; padding: 72px var(--gouttiere) 0; }
 .ev-etroit { max-width: 860px; }
 .ev-h2 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 400; line-height: 1.15; color: var(--text-primary); margin-bottom: 18px; }
 .ev-h3 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(20px, 2vw, 24px); font-weight: 400; line-height: 1.2; color: var(--text-primary); margin: 0 0 10px; }
@@ -632,7 +646,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ev-surdemande li { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.6; color: var(--text-primary); padding: 8px 0; border-bottom: 1px solid rgba(17,17,17,0.06); }
 
 /* Rangée éditoriale photo + texte */
-.ev-signature { max-width: 1280px; margin: 0 auto; padding: 88px 72px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.ev-signature { max-width: var(--contenu-max); margin: 0 auto; padding: 88px var(--gouttiere) 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .ev-signature-img { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-secondary); }
 .ev-signature-texte { max-width: 520px; }
 .sais-titre-lien { transition: color 0.25s ease; }
@@ -657,7 +671,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ev-guide-titre { font-size: clamp(26px, 3vw, 40px); margin-bottom: 36px; }
 .ev-guide-section { margin-bottom: 36px; }
 .ev-guide-img { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-secondary); margin-top: 18px; }
-.ev-halal { max-width: 860px; margin: 0 auto; padding: 8px 72px 0; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
+.ev-halal { max-width: 860px; margin: 0 auto; padding: 8px var(--gouttiere) 0; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.7; color: var(--text-secondary); }
 
 /* FAQ en <details> natif : réponses dans le HTML, rien côté client */
 .ev-faq details { border-top: 1px solid rgba(17,17,17,0.08); }

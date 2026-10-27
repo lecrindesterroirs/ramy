@@ -71,7 +71,7 @@ export default function Personnalisation() {
           <ParallaxImage priority sizes="100vw" src="/perso-chocolats-bouygues.webp" alt={en ? E.heroAlt : "Personnalisation L'Écrin Traiteur"} strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(16,12,9,0.82) 0%, rgba(16,12,9,0.62) 38%, rgba(16,12,9,0.2) 64%, rgba(16,12,9,0) 82%)' }} />
           <Reveal mode="mount" y={16}>
-            <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '620px' }}>
+            <div className="pz-hero-text" style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 var(--retrait)', maxWidth: '620px' }}>
               <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.4vw, 62px)', fontWeight: 400, lineHeight: 1.04, letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: '20px' }}>
                 {en ? <>{E.h1a}<br /><em style={{ fontStyle: 'italic' }}>{E.h1b}</em></> : <>Personnalisez<br /><em style={{ fontStyle: 'italic' }}>vos événements.</em></>}
               </h1>

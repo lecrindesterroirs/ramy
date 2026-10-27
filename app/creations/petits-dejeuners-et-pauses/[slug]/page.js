@@ -248,7 +248,7 @@ export default function ProductPage() {
             <div className="mad-hero" style={{ position: 'relative', width: '100%', height: 'clamp(360px, 42vw, 520px)', overflow: 'hidden' }}>
               <ParallaxImage priority sizes="100vw" src="/madeleine-home.webp" alt="Les madeleines signature, L'Écrin Traiteur" strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center right' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(248,245,239,0.94) 0%, rgba(248,245,239,0.86) 26%, rgba(248,245,239,0.35) 52%, rgba(248,245,239,0) 72%)' }} />
-              <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px', maxWidth: '640px' }}>
+              <div className="mad-hero-text" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 var(--retrait)', maxWidth: '640px' }}>
                 <h1 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(34px, 4.2vw, 60px)', fontWeight: 400, lineHeight: 1.02, color: 'var(--text-primary)', letterSpacing: '-0.01em', marginBottom: '18px' }}>
                   {MD.titre}<br /><em style={{ fontStyle: 'italic' }}>{motCoffret(coffretMot).toLowerCase()}</em>
                 </h1>
