@@ -91,14 +91,22 @@ export default function Hero({ lang = 'fr' }) {
         className="hero-media"
         style={{
           position: 'absolute',
-          inset: '-15% 0',
+          // inset: '-15% 0' avant le 28/10/2026 : le débord servait au parallax,
+          // mais il agrandissait l'image de 30 % et rognait 491 px sur les côtés,
+          // coupant le maître d'hôtel. Ramy veut la photo entière à l'écran.
+          inset: 0,
           willChange: 'transform',
         }}
       >
-        <Image fill priority sizes="100vw" src="/hero-bg2.webp"
-          alt="Petit-déjeuner et plateaux d'entreprise L'Écrin Traiteur livrés à Paris et en Île-de-France"
+        {/* hero-bg4 depuis le 28/10/2026 : vraie prestation, petit-déjeuner
+            dressé dans un salon haussmannien avec le maître d'hôtel. Photo
+            panoramique (1,65) dans un cadre à 1,60 : rognage négligeable. */}
+        <Image fill priority sizes="100vw" src="/hero-bg4.webp"
+          alt="Petit-déjeuner d'entreprise servi par L'Écrin Traiteur dans un salon parisien : table dressée, viennoiseries, cafetières et maître d'hôtel"
           style={{
             objectFit: 'cover',
+            // Photo panoramique (ratio 1,65) dans un cadre à 1,60 : le rognage est
+            // négligeable, on voit la table entière et le maître d'hôtel en pied.
             objectPosition: 'center center',
           }}
         />
