@@ -10,16 +10,16 @@ import { t } from '../lib/en/interface'
 
 const MOMENTS = {
   petitDej: {
-    label: 'Petit-déjeuner & Pauses', labelEn: 'Breakfast & Breaks',
+    label: 'Petits-déjeuners & Pauses', labelEn: 'Breakfast & Breaks',
     key: 'petitDej',
     cards: [
       { title: 'Petit-déjeuner', titleEn: 'Office breakfast', href: '/creations/petits-dejeuners-et-pauses', img: '/hero-petitdej.webp' },
       { title: 'Pause Goûter', titleEn: 'Afternoon break', href: '/creations/pauses-gourmandes', img: '/hero-pauses-gourmandes.webp' },
-      { title: 'Personnalisation', titleEn: 'Personalisation', href: '/creations/personnalisation', img: '/prod-cookie-personnalisation.webp' },
+      { title: 'Boissons', titleEn: 'Drinks', href: '/creations/boissons', img: '/bois-jus-orange.webp' },
     ],
   },
   dejeuner: {
-    label: 'Déjeuner', labelEn: 'Lunch',
+    label: 'Déjeuners', labelEn: 'Lunch',
     key: 'dejeuner',
     cards: [
       { title: 'Plateaux repas', titleEn: 'Lunch trays', href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.webp' },
@@ -28,18 +28,14 @@ const MOMENTS = {
     ],
   },
   cocktail: {
-    label: 'Cocktail', labelEn: 'Cocktail',
+    label: 'Cocktails', labelEn: 'Cocktails',
     key: 'cocktail',
     cards: [
       { title: 'Cocktails', titleEn: 'Cocktail receptions', href: '/creations/cocktails', img: '/hero-cocktail.webp' },
       { title: 'Plateaux Apéritifs', titleEn: 'Canapé platters', href: '/creations/plateaux-aperitifs', img: '/plateau-wraps.webp' },
       { title: 'Animations Culinaires', titleEn: 'Live food stations', href: '/creations/animations-culinaires', img: '/hero-animations.webp' },
+      { title: 'Boissons', titleEn: 'Drinks', href: '/creations/boissons', img: '/bois-jus-orange.webp' },
     ],
-  },
-  boissons: {
-    label: 'Boissons', labelEn: 'Drinks',
-    key: 'boissons',
-    href: '/creations/boissons',
   },
 }
 
@@ -161,10 +157,15 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           right: 0,
           zIndex: 100,
           background: scrolled ? 'var(--bg-primary)' : 'transparent',
-          padding: scrolled ? '16px 80px' : '26px 80px',
-          display: 'flex',
+          padding: scrolled ? '16px var(--retrait)' : '26px var(--retrait)',
+          display: 'grid',
+          // Logo au centre, avec exactement le même espace de chaque côté
+          // (28/10/2026). Les deux colonnes latérales valent 1fr, donc la
+          // colonne du logo tombe sur l'axe ; columnGap fixe l'écart des deux
+          // côtés. C'était impossible tant que « Contact » occupait la droite.
+          gridTemplateColumns: '1fr auto 1fr',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          columnGap: '88px',
           transition: 'background 0.6s ease, padding 0.4s ease',
           borderBottom: scrolled ? '1px solid rgba(17,17,17,0.06)' : 'none',
         }}
@@ -172,7 +173,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         {/* LEFT NAV, Moments */}
         <div
           className="nav-left"
-          style={{ display: 'flex', alignItems: 'center', gap: '36px', position: 'relative' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '36px', position: 'relative', justifySelf: 'end' }}
           onMouseLeave={() => { closeTimer.current = setTimeout(() => setActiveDropdown(null), 180) }}
         >
           {Object.values(MOMENTS).map(moment => {
@@ -252,7 +253,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   boxShadow: '0 24px 70px rgba(17,17,17,0.10), 0 8px 28px rgba(17,17,17,0.05)',
                   zIndex: 99,
                   width: `${moment.cards.length * 320 + (moment.cards.length - 1) * 18 + 44}px`,
-                  maxWidth: 'calc(100vw - 48px)',
+                  maxWidth: 'calc(100vw - 260px)',   // 166 px d'ancrage à gauche + la gouttière de droite
                   opacity: active ? 1 : 0,
                   visibility: active ? 'visible' : 'hidden',
                   pointerEvents: active ? 'auto' : 'none',
@@ -260,7 +261,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
                   transition: 'opacity 0.22s ease, transform 0.22s ease, visibility 0.22s',
                 }}
               >
-                <div className="nav-mega-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, 320px)`, gap: '18px' }}>
+                <div className="nav-mega-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${moment.cards.length}, minmax(0, 1fr))`, gap: '18px' }}>
                   {moment.cards.map(card => (
                     <a
                       key={mot(card, 'title')}
@@ -308,19 +309,17 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           })}
         </div>
 
-        {/* LOGO CENTER */}
+        {/* LOGO — au centre de la barre, deuxième colonne de la grille. */}
         <a
           href={lien('/')}
           className={scrolled ? 'nav-logo' : 'nav-logo nav-logo-hero'}
           style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             gap: '2px',
             textDecoration: 'none',
+            flexShrink: 0,
           }}
           onMouseEnter={e => { e.currentTarget.querySelectorAll('span').forEach(s => s.style.color = 'var(--accent)') }}
           onMouseLeave={e => { e.currentTarget.querySelectorAll('span').forEach(s => s.style.color = '#111111') }}
@@ -350,7 +349,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
         </a>
 
         {/* RIGHT NAV, L'Univers, Le Journal, Contact, CTA */}
-        <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '36px' }}>
+        <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
 
           {/* L'Univers */}
           <div
@@ -576,58 +576,35 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
               </div>
           </div>
 
-          {/* Contact */}
-          <a
-            href={lien('/contact')}
-            className="nav-contact-link"
-            style={{
-              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
-              fontSize: '12px',
-              fontWeight: 400,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              padding: '9px 18px',
-              border: '1px solid rgba(17,17,17,0.2)',
-              color: 'rgba(17,17,17,0.65)',
-              background: 'transparent',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '7px',
-              textDecoration: 'none',
-              transition: 'border-color 0.3s ease, color 0.3s ease',
-              whiteSpace: 'nowrap',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.5)'; e.currentTarget.style.color = '#111111' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,17,17,0.2)'; e.currentTarget.style.color = 'rgba(17,17,17,0.65)' }}
-          >{t('nav.contact', langue)} <span>→</span>
-          </a>
+        </div>
 
-          {/* CTA Devis */}
-          <a
-            href={lien('/devis')}
-            className="nav-cta-link"
-            style={{
-              fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
-              fontSize: '12px',
-              fontWeight: 400,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: '#1A1A18',
-              background: devisAccent,
-              border: `1px solid ${devisAccent}`,
-              padding: '9px 18px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '7px',
-              transition: 'opacity 0.35s ease',
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-          >
-            {t('nav.devis', langue)} <span>→</span>
-          </a>
+        {/* CTA Devis — même colonne que L'Écrin / Journal, poussé à droite */}
+        <a
+          href={lien('/devis')}
+          className="nav-cta-link"
+          style={{
+            justifySelf: 'end',
+            fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
+            fontSize: '12px',
+            fontWeight: 400,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: '#1A1A18',
+            background: devisAccent,
+            border: `1px solid ${devisAccent}`,
+            padding: '9px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '7px',
+            transition: 'opacity 0.35s ease',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+          }}
+          onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+          onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+        >
+          {t('nav.devis', langue)} <span>→</span>
+        </a>
         </div>
 
         {/* Hamburger, mobile only */}

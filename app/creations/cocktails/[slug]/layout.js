@@ -5,7 +5,9 @@ import { FORMULES } from '../data'
 
 /* Métadonnées SEO par formule : prix, pièces et photo lus dans data.js
    (eux-mêmes calculés depuis lib/calculsPrix.js). */
-const KW = { classique: 'apéritif', signature: 'déjeunatoire', prestige: 'dînatoire' }
+// Mot de format repris dans le <title>. L'entrée afterwork manquait depuis
+// l'ajout de la 4e formule le 26/10/2026 : le titre affichait « undefined ».
+const KW = { classique: 'apéritif', signature: 'déjeunatoire', prestige: 'dînatoire', afterwork: 'généreux' }
 
 export const SLUGS = FORMULES.map(f => f.key)
 
