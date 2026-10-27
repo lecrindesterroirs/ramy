@@ -4,9 +4,9 @@ import { PriceSchema } from "@/components/PriceSchema"
 import { ogImages } from '../../../lib/og'
 
 import { FORMULES } from "./data"
-const [I, R, C] = FORMULES
+const [I, R, C, A] = FORMULES
 const TITLE = `Traiteur cocktail entreprise Paris : formules dès ${I.prix} € HT`
-const DESCRIPTION = `Formules ${I.label} (${I.pieces} pièces), ${R.label} (${R.pieces}) et ${C.label} (${C.pieces}) dès ${I.prix} € HT par personne. Livraison à Paris et en IDF, devis sous 24h.`
+const DESCRIPTION = `Quatre formules : ${I.label} (${I.pieces} pièces), ${R.label} (${R.pieces}), ${C.label} (${C.pieces}) et ${A.label} (${A.pieces}) dès ${I.prix} € HT par personne. Livraison à Paris et en IDF, devis sous 24h.`
 
 export const metadata = {
   title: { absolute: TITLE },

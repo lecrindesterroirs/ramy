@@ -22,7 +22,7 @@ import { PRIX as PRIX_AFW, PIECES_PAR_PERSONNE as PIECES_AFW, MIN_PERSONNES as M
 export default function CocktailsIndexView({ en = false }) {
   const F = formules(en)
   const des = Math.min(...F.map(f => f.prixNum))
-  const [I, R, C] = F
+  const [I, R, C, A] = F
   const guides = guidesCocktail(en)
   const lignes = lignesPratiques(en)
   const faq = faqCatalogue(en)
@@ -33,21 +33,21 @@ export default function CocktailsIndexView({ en = false }) {
   const T = en ? {
     accueil: 'Home', fil: 'Cocktails', surtitre: 'Corporate cocktail reception',
     h1: 'Corporate cocktail catering delivered in Paris',
-    chapo: `Three menus of ${liste(F.map(f => f.pieces))} savoury and sweet pieces per person, delivered arranged to your venue, across Paris and Île-de-France.`,
+    chapo: `Four menus, from ${Math.min(...F.map(f => f.pieces))} to ${Math.max(...F.map(f => f.pieces))} savoury and sweet pieces per person, delivered arranged to your venue, across Paris and Île-de-France.`,
     faits: `From ${ht(des)} per person · delivery ${ht(LIV)} · order by 2 pm the day before · minimum ${ht(MINIMUM)}`,
     devis: 'Ask for a quote', voir: 'See the menus',
     alt: "Board of savoury canapés for a corporate cocktail reception by L'Écrin Traiteur",
     occasionTitre: 'Which menu for which occasion?',
     occasions: [
       ['Product launch, welcome before an event', `${I.label} if the reception lasts under two hours, ${R.label} if you are hosting clients or partners.`],
-      ['Leaving party, welcome drinks, afterwork', `${I.label}, with a large cake to share.`],
+      ['Leaving party, welcome drinks, afterwork', `${I.label} for drinks, ${A.label} if you want people to actually eat.`],
       ['Opening, partner evening, new-year greetings', `${R.label}, or ${C.label} if the cocktail replaces dinner.`],
       ['Offsite or convention', 'A closing cocktail at the end of the day, on top of the breaks and lunch.'],
     ],
     dureeTitre: 'How long does a corporate cocktail last?',
     dureeIntro: 'Duration follows from the number of pieces, not the other way round: eight pieces last one to two hours, sixteen replace dinner.',
     dureeCols: ['Menu', 'Pieces per person', 'How long it lasts'],
-    durees: ['1 to 2 h, as drinks', '1.5 to 2 h, as a standing lunch', '2.5 to 3 h, the cocktail replaces dinner'],
+    durees: ['1 to 2 h, as drinks', '1.5 to 2 h, as a standing lunch', '2.5 to 3 h, the cocktail replaces dinner', '2 to 3 h, pieces substantial enough to count as a meal'],
     planTitre: 'How do you organise a corporate cocktail?',
     planCols: ['When', 'What is decided'],
     plan: [
@@ -61,8 +61,8 @@ export default function CocktailsIndexView({ en = false }) {
     afwTexte: `The sharing afterwork brings a halal charcuterie board, a cheese board and ${PIECES_AFW} mini sandwiches per person, from ${MIN_AFW} people, at ${ht(PRIX_AFW)} per person.`,
     afwLien: 'See the sharing afterwork',
     brefTitre: 'At a glance',
-    bref: `At L'Écrin Traiteur, a corporate cocktail reception is counted in pieces per person: ${I.pieces} pieces for drinks of an hour and a half (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pieces to replace a lunch (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pieces for a standing dinner (${C.label}, ${ht(C.prixNum)}). The price per person does not change with the headcount. For 50 guests on ${R.label}, L'Écrin Traiteur charges ${ht(totalLivre(50, R.prixNum))} delivery included, drinks extra.`,
-    formulesTitre: 'The three menus',
+    bref: `At L'Écrin Traiteur, a corporate cocktail reception is counted in pieces per person: ${I.pieces} pieces for drinks of an hour and a half (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pieces to replace a lunch (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pieces for a standing dinner (${C.label}, ${ht(C.prixNum)}). ${A.label} keeps the ${A.pieces} pieces of ${R.label} but swaps canapés for burgers, rolls and wraps, at ${ht(A.prixNum)}. The price per person does not change with the headcount. For 50 guests on ${R.label}, L'Écrin Traiteur charges ${ht(totalLivre(50, R.prixNum))} delivery included, drinks extra.`,
+    formulesTitre: 'The four menus',
     formulesIntro: 'Each menu links to its page: the pieces one by one, the price and the quantities.',
     carte: (f) => `${f.label} cocktail menu`,
     carteMeta: (f) => `${ht(f.prixNum)} per person · ${f.pieces} pieces`,
@@ -78,21 +78,21 @@ export default function CocktailsIndexView({ en = false }) {
   } : {
     accueil: 'Accueil', fil: 'Cocktails', surtitre: "Cocktail d'entreprise",
     h1: "Cocktail d'entreprise livré à Paris",
-    chapo: `Trois formules de ${liste(F.map(f => f.pieces))} pièces salées et sucrées par personne, livrées dressées sur votre lieu de réception, à Paris et en Île-de-France.`,
+    chapo: `Quatre formules, de ${Math.min(...F.map(f => f.pieces))} à ${Math.max(...F.map(f => f.pieces))} pièces salées et sucrées par personne, livrées dressées sur votre lieu de réception, à Paris et en Île-de-France.`,
     faits: `Dès ${ht(des)} par personne · livraison ${ht(LIV)} · commande jusqu'à la veille 14h · minimum ${ht(MINIMUM)}`,
     devis: 'Demander un devis', voir: 'Voir les formules',
     alt: "Planche de bouchées salées pour un cocktail d'entreprise L'Écrin Traiteur",
     occasionTitre: 'Quelle formule pour quelle occasion ?',
     occasions: [
       ['Lancement de produit, accueil avant un événement', `${I.label} si le cocktail dure moins de deux heures, ${R.label} si vous recevez des clients ou des partenaires.`],
-      ['Pot de départ, pot de bienvenue, afterwork', `${I.label}, avec un gâteau à partager.`],
+      ['Pot de départ, pot de bienvenue, afterwork', `${I.label} pour un apéritif, ${A.label} si vous voulez que les gens mangent vraiment.`],
       ['Inauguration, soirée partenaires, vœux', `${R.label}, ou ${C.label} si le cocktail remplace le dîner.`],
       ['Séminaire ou convention', 'Un cocktail de clôture en fin de journée, en complément des pauses et du déjeuner.'],
     ],
     dureeTitre: "Combien de temps dure un cocktail d'entreprise ?",
     dureeIntro: "La durée se déduit du nombre de pièces, pas l'inverse : huit pièces tiennent une à deux heures, seize remplacent un dîner.",
     dureeCols: ['Formule', 'Pièces par personne', 'Durée tenue'],
-    durees: ['1 à 2 h, en apéritif', '1h30 à 2h, en déjeunatoire', '2h30 à 3h, le cocktail remplace le dîner'],
+    durees: ['1 à 2 h, en apéritif', '1h30 à 2h, en déjeunatoire', '2h30 à 3h, le cocktail remplace le dîner', '2h à 3h, des pièces assez nourrissantes pour tenir lieu de repas'],
     planTitre: "Comment organiser un cocktail d'entreprise ?",
     planCols: ['Quand', 'Ce qui se décide'],
     plan: [
@@ -106,8 +106,8 @@ export default function CocktailsIndexView({ en = false }) {
     afwTexte: `L'afterwork à partager réunit une planche de charcuteries halal, une planche de fromages et ${PIECES_AFW} mini-sandwichs par personne, dès ${MIN_AFW} personnes, à ${ht(PRIX_AFW)} par personne.`,
     afwLien: "Voir l'afterwork à partager",
     brefTitre: "L'essentiel",
-    bref: `Chez L'Écrin Traiteur, un cocktail d'entreprise se compte en pièces par personne : ${I.pieces} pièces pour un pot d'une heure et demie (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pièces pour remplacer un déjeuner (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pièces pour un dîner debout (${C.label}, ${ht(C.prixNum)}). Le prix par personne ne change pas avec l'effectif. Pour 50 personnes en ${R.label}, L'Écrin Traiteur facture ${ht(totalLivre(50, R.prixNum))} livraison comprise, boissons en plus.`,
-    formulesTitre: 'Les trois formules',
+    bref: `Chez L'Écrin Traiteur, un cocktail d'entreprise se compte en pièces par personne : ${I.pieces} pièces pour un pot d'une heure et demie (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pièces pour remplacer un déjeuner (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pièces pour un dîner debout (${C.label}, ${ht(C.prixNum)}). ${A.label} garde les ${A.pieces} pièces de ${R.label} mais remplace les bouchées par des burgers, des navettes, des clubs et des wraps, à ${ht(A.prixNum)}. Le prix par personne ne change pas avec l'effectif. Pour 50 personnes en ${R.label}, L'Écrin Traiteur facture ${ht(totalLivre(50, R.prixNum))} livraison comprise, boissons en plus.`,
+    formulesTitre: 'Les quatre formules',
     formulesIntro: 'Chaque formule renvoie à sa fiche : composition pièce par pièce, prix et quantités.',
     carte: (f) => `Cocktail ${f.label}`,
     carteMeta: (f) => `${ht(f.prixNum)} par personne · ${f.pieces} pièces`,
@@ -163,7 +163,7 @@ export default function CocktailsIndexView({ en = false }) {
         <section id="formules" className="ev-bloc">
           <h2 className="ev-h2">{T.formulesTitre}</h2>
           <p className="ev-intro">{T.formulesIntro}</p>
-          <div className="ev-cartes">
+          <div className={`ev-cartes${F.length === 4 ? " ev-cartes-4" : ""}`}>
             {F.map(f => (
               <a key={f.key} href={`${pre}${CHEMIN}/${f.key}`} className="ev-carte">
                 <span className="ev-carte-img">
