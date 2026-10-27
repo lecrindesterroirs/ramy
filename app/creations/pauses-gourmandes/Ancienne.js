@@ -162,9 +162,11 @@ const ANSWER_BLOCK = (
 
 export default function PausesGourmandes({ bas }) {
   const [sortLabel, setSortLabel] = useState('En vedette')
+  // `horsCarte` : fiche encore en ligne mais retirée de la liste (offre terminée).
+  const enCarte = PAUSES.filter(p => !p.horsCarte)
   const pausesAffichees = sortLabel === GATEAUX_LABEL
-    ? PAUSES.filter(p => p.section === 'gateaux-a-partager')
-    : sortItems(PAUSES, sortLabel, p => priceFromLabel(p.prix))
+    ? enCarte.filter(p => p.section === 'gateaux-a-partager')
+    : sortItems(enCarte, sortLabel, p => priceFromLabel(p.prix))
   return (
     <>
       <Navbar showBanner={true} />
@@ -279,7 +281,7 @@ export default function PausesGourmandes({ bas }) {
         name="Pause Goûter"
         path="/creations/pauses-gourmandes"
         includeFaq={false}
-        items={PAUSES.map(p => ({ name: p.nom, url: `/creations/pauses-gourmandes/${p.id}` }))}
+        items={enCarte.map(p => ({ name: p.nom, url: `/creations/pauses-gourmandes/${p.id}` }))}
       />
       <Footer />
     </>

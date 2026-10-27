@@ -60,7 +60,8 @@ export default function ProductsPageTemplate({
   const sorts = sectionFilterLabel ? [...BASE_SORTS, sectionFilterLabel] : BASE_SORTS
   // Données produits 100% locales (hébergé sur Vercel, pas de WordPress) :
   // fallbackProducts est l'unique source de vérité.
-  const products = sortProducts(fallbackProducts, sortLabel, sectionFilterLabel, sectionFilterKey)
+  // `horsCarte` : fiche encore en ligne mais retirée de la liste (offre terminée).
+  const products = sortProducts(fallbackProducts.filter(p => !p.horsCarte), sortLabel, sectionFilterLabel, sectionFilterKey)
 
   return (
     <>

@@ -15,7 +15,9 @@ export const COFFRETS_MACARONS = [
 ]
 
 export const PAUSES = [
-  { id: 'madeleines-octobre-rose',
+  // Opération terminée le 28/10/2026 : la fiche reste en ligne (page indexée,
+  // liens entrants) mais sort de la liste du goûter. Remettre à false l'an prochain.
+  { id: 'madeleines-octobre-rose', horsCarte: true,
     seoTitle: `Coffret de 10 madeleines Octobre Rose : le goûter solidaire pour votre entreprise à Paris`,
     seoHtml: `<p>Nos madeleines Mado Paris déclinées en édition Octobre Rose : glaçage rose et décor filet, préparées par notre partenaire pâtissier Mado. Pour tout achat de ce coffret, 1 € est reversé à l'association Ruban Rose, en plus de notre engagement général d'1 € par convive servi sur toutes les commandes du mois d'octobre. Voir notre <a href="/creations/evenements-saisonniers/octobre-rose">offre Octobre Rose complète</a>.</p><h2>Commander votre coffret Octobre Rose à Paris</h2><p>Coffret de 10 madeleines, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA.</p>`,
     nom: 'Coffret de 10 madeleines Octobre Rose',   img: '/prod-madeleines-octobre-rose.webp', prix: '29,00 €', description: "Madeleines d'exception glaçage rose, édition Octobre Rose. 1 € reversé à Ruban Rose par coffret vendu." },
