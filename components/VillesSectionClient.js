@@ -88,7 +88,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
         {/* Grille villes */}
         <div className="villes-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '2px',
         }}>
           {villes.map(city => (
@@ -98,7 +98,7 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
               className="ville-card"
               style={{
                 background: '#FFFFFF',
-                padding: '20px 20px',
+                padding: '14px 16px',
                 textDecoration: 'none',
                 display: 'flex',
                 alignItems: 'center',
@@ -174,8 +174,11 @@ export default function VillesSectionClient({ lang = 'fr', villes = [] }) {
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 768px) {
           .villes-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          /* Six cartes au plus sur téléphone : c'est la hauteur de page que
+             l'audit du 22/10/2026 reprochait, pas le nombre de liens. */
+          .villes-grid .ville-card:nth-child(n+7) { display: none !important; }
         }
-        @media (max-width: 1024px) and (min-width: 769px) {
+        @media (max-width: 1280px) and (min-width: 769px) {
           .villes-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
       ` }} />
