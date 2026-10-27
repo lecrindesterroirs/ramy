@@ -117,6 +117,14 @@ export default function MobileCTA() {
             gap: 10px;
             align-items: center;
             box-shadow: 0 -4px 20px rgba(17,17,17,0.08);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+          }
+          /* Menu mobile ouvert : la barre s'efface, son bouton « devis »
+             doublait celui du menu (28/10/2026). */
+          body.menu-ouvert .mobile-cta-bar {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(100%);
           }
           .mobile-cta-tel {
             flex: 0 0 46px;

@@ -110,13 +110,22 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [alwaysScrolled])
 
+  // Menu ouvert : on bloque le défilement, et la classe `menu-ouvert` permet
+  // à la barre d'action du bas de s'effacer. Sans ça, son bouton « Devis en
+  // 30 s » doublait celui du menu, deux boutons dorés l'un sous l'autre
+  // (signalé par Ramy le 28/10/2026).
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = 'hidden'
+      document.body.classList.add('menu-ouvert')
     } else {
       document.body.style.overflow = ''
+      document.body.classList.remove('menu-ouvert')
     }
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.classList.remove('menu-ouvert')
+    }
   }, [mobileOpen])
 
   return (
