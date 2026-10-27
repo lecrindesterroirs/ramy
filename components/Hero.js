@@ -9,6 +9,16 @@ import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobre
 import { PDJ_DES, PLATEAU_DES, euroFr, euroEn } from '../lib/prixEntree'
 import { FORMULES } from '../lib/calculsPrix'
 
+/* Met en gras les noms de maisons cités dans une phrase (Mado Paris, Pierre
+   Morel) : ce sont eux qui portent la promesse de qualité, ils ne doivent pas
+   se fondre dans le reste du texte. */
+function enGras(texte, mots) {
+  const motif = new RegExp(`(${mots.join('|')})`, 'g')
+  return texte.split(motif).map((bout, i) =>
+    mots.includes(bout) ? <strong key={i} style={{ fontWeight: 500, color: '#171310' }}>{bout}</strong> : bout
+  )
+}
+
 /* Textes de l'en-tête, par langue. Le numéro et la note Google sont des
    faits, pas des textes : ils ne changent pas d'une langue à l'autre. */
 const T_HERO = {
@@ -17,6 +27,7 @@ const T_HERO = {
     titre2: 'à Paris.',
     corps1: 'Petits-déjeuners, plateaux repas et cocktails livrés dans vos bureaux,',
     corps2: 'avec les madeleines Mado Paris et les macarons Pierre Morel.',
+    marques: ['Mado Paris', 'Pierre Morel'],
     prix: `Par personne, HT : petit-déjeuner dès ${euroFr(PDJ_DES)}, plateau repas dès ${euroFr(PLATEAU_DES)}, cocktail dès ${euroFr(FORMULES.invitation.prix)}. Livraison dès 6h30, commande jusqu'à 14h la veille.`,
     devis: 'Obtenir un devis',
     catalogue: 'Découvrir notre catalogue',
@@ -27,6 +38,7 @@ const T_HERO = {
     titre2: 'in Paris.',
     corps1: 'Breakfasts, lunch trays and cocktail receptions delivered to your offices,',
     corps2: 'with Mado Paris madeleines and Pierre Morel macarons.',
+    marques: ['Mado Paris', 'Pierre Morel'],
     prix: `Per person, excl. VAT: breakfast from ${euroEn(PDJ_DES)}, lunch tray from ${euroEn(PLATEAU_DES)}, cocktail reception from ${euroEn(FORMULES.invitation.prix)}. Delivery from 6:30 am, order by 2 pm the day before.`,
     devis: 'Get a quote',
     catalogue: 'See our menu',
@@ -168,7 +180,7 @@ export default function Hero({ lang = 'fr' }) {
           }}
         >
           {T.corps1}{' '}<br className="hero-br" />
-          {T.corps2}
+          {enGras(T.corps2, T.marques)}
         </p>
 
         {/* Prix calculés (lib/prixEntree.js, lib/calculsPrix.js), dans le premier écran */}
