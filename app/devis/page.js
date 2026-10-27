@@ -8,7 +8,7 @@ import LogosSection from '../../components/LogosSection'
 import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
-import { isOctobreRoseActive } from '../../lib/campagneOctobreRose'
+import { isHalloweenActive } from '../../lib/campagneSaison'
 import { identifierVisiteur, suivreEtapeDevis, suivreChampDevis } from '../../lib/posthog-identify'
 import { estAnglais } from '../../lib/i18nBase'
 import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
@@ -202,7 +202,7 @@ function ProgressBar({ step }) {
 
 // ── Step 1 ────────────────────────────────────────────────────────────────────
 
-function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = false }) {
+function Step1({ data, setData, onSelect, accent = '#E0A126', isHalloween = false }) {
   const langue = useLangue()
   const T = (cle) => t(cle, langue)
   return (
@@ -222,15 +222,15 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
       <div className="step1-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px' }}>
         {prestations.map(p => {
           const active = data.prestation === p.id
-          const isRoseCard = isOctobreRose && p.id === 'autre'
-          const titre = isRoseCard ? 'Octobre Rose' : p.titre
+          const isSaisonCard = isHalloween && p.id === 'autre'
+          const titre = isSaisonCard ? 'Halloween' : p.titre
           return (
             <div
               key={p.id}
               onClick={() => { setData(d => ({ ...d, prestation: p.id })); onSelect() }}
               style={{
-                background: active ? accent : isRoseCard ? '#F6E4EA' : '#FFFFFF',
-                border: `1px solid ${active ? accent : isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.18)'}`,
+                background: active ? accent : isSaisonCard ? '#FBF1E2' : '#FFFFFF',
+                border: `1px solid ${active ? accent : isSaisonCard ? '#D9A441' : 'rgba(17,17,17,0.18)'}`,
                 padding: '26px',
                 cursor: 'pointer',
                 display: 'flex',
@@ -239,10 +239,10 @@ function Step1({ data, setData, onSelect, accent = '#E0A126', isOctobreRose = fa
                 transition: 'background 0.25s ease, border-color 0.25s ease, transform 0.2s ease',
                 transform: active ? 'translateY(-2px)' : 'translateY(0)',
               }}
-              onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
-              onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = isRoseCard ? '#E27FA0' : 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
+              onMouseEnter={e => { if (!active) { e.currentTarget.style.borderColor = isSaisonCard ? '#D9A441' : 'rgba(17,17,17,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
+              onMouseLeave={e => { if (!active) { e.currentTarget.style.borderColor = isSaisonCard ? '#D9A441' : 'rgba(17,17,17,0.18)'; e.currentTarget.style.transform = 'translateY(0)' } }}
             >
-              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{isRoseCard ? titre : T(p.cle)}</p>
+              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, color: active ? '#1A1A18' : '#111111', lineHeight: 1.2, transition: 'color 0.25s ease', textAlign: 'center' }}>{isSaisonCard ? titre : T(p.cle)}</p>
             </div>
           )
         })}
@@ -617,15 +617,16 @@ function RappelContact({ etape }) {
 
 export default function Contact() {
   const langue = useLangue()
-  // Thème rose Octobre Rose : actif sur TOUTE visite du formulaire pendant la
-  // période de campagne (lib/campagneOctobreRose.js), quel que soit le point
-  // d'entrée — plus besoin du lien ?theme=octobre-rose pour l'obtenir.
-  const [isOctobreRose, setIsOctobreRose] = useState(false)
+  // Carte de saison : pendant la campagne, la case « Autre » du premier écran
+  // prend le nom de l'offre du moment (lib/campagneSaison.js). Octobre Rose
+  // colorait aussi tout le formulaire en rose ; Halloween ne le fait pas, le
+  // formulaire garde l'accent doré du site (demande de Ramy du 28/10/2026).
+  const [isHalloween, setIsHalloween] = useState(false)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    if (isOctobreRoseActive() || params.get('theme') === 'octobre-rose') setIsOctobreRose(true)
+    if (isHalloweenActive() || params.get('theme') === 'halloween') setIsHalloween(true)
   }, [])
-  const accent = isOctobreRose ? '#E27FA0' : '#E0A126'
+  const accent = '#E0A126'
 
   const [step, setStep] = useState(1)
   const [submitStatus, setSubmitStatus] = useState('idle') // idle | loading | success | error
@@ -846,7 +847,7 @@ export default function Contact() {
             {/* Step content : centré, hauteur stable d'une étape à l'autre */}
             <div className="devis-stage" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
               <div className="devis-content" style={{ width: '100%', maxWidth: '900px', margin: '0 auto', minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '24px 40px 96px' }}>
-                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} isOctobreRose={isOctobreRose} />}
+                {step === 1 && <Step1 data={data} setData={setData} onSelect={next} accent={accent} isHalloween={isHalloween} />}
                 {step === 2 && <Step2 data={data} setData={setData} showErrors={showStep2Errors} accent={accent} parcours={parcours} />}
                 {step === 3 && <Step3 data={data} setData={setData} onEdit={() => setStep(2)} onEditPrestation={() => setStep(1)} accent={accent} />}
                 {step > 1 && <RappelContact etape={step} />}

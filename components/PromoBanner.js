@@ -6,7 +6,7 @@ import { estAnglais } from '../lib/i18nBase'
 import { PROMO } from '../lib/promoBanner'
 
 /* ─────────────────────────────────────────────────────────────
-   Bandeau de campagne — Octobre Rose
+   Bandeau de campagne — Halloween
    Pour changer de campagne (ou l'arrêter) : tout se règle ici.
    Hauteur pilotée par --promo-h (globals.css, classe html.promo-on)
    ───────────────────────────────────────────────────────────── */
@@ -14,25 +14,26 @@ const CAMPAGNE = {
   id: PROMO.id,                            // id, dates et pages exclues : lib/promoBanner.js
   debut: PROMO.debut,
   fin: PROMO.fin,
-  href: '/creations/evenements-saisonniers/octobre-rose',
-  texte: "Octobre Rose : 1 € reversé par convive à la recherche contre le cancer du sein",
-  texteMobile: "Octobre Rose : 1 € reversé par convive →",
+  href: '/creations/evenements-saisonniers/halloween',
+  texte: "Halloween au bureau : macaron noir, madeleine citrouille, cookies — commande jusqu'au 30 octobre",
+  texteMobile: "Halloween au bureau : jusqu'au 30 octobre →",
   cta: "Découvrir l'offre",
   /* Anglais : les textes de campagne changent à chaque campagne, ils vivent
      donc ici avec le reste, pas dans lib/en/interface.js. La page de l'offre
      n'existe qu'en français : le lien y mène directement, sans passer par la
      redirection /en. */
-  texteEn: "Pink October: €1 per guest donated to breast cancer research",
-  texteMobileEn: "Pink October: €1 per guest donated →",
+  texteEn: "Halloween at the office: black macaron, pumpkin madeleine, cookies — order by 30 October",
+  texteMobileEn: "Halloween at the office: order by 30 October →",
   ctaEn: 'See the offer',
-  regionEn: 'Pink October campaign',
+  regionEn: 'Halloween campaign',
   fermerEn: 'Close banner',
-  fond: '#EFC6D2',
+  fond: '#F2E3CE',   // crème chaude : pas d'orange criard, le site reste sobre
   encre: '#1A1A18',
 }
 
 /* Pages qui n'ont pas de navbar : pas de bandeau non plus */
 const EXCLUS = PROMO.exclus
+const EXCLUS_EXACTS = PROMO.exclusExacts
 
 /* Pages d'atterrissage Google Ads : sur téléphone, ni ce bandeau ni le défilant
    (« Commandez jusqu'à la veille… ») pour garder le devis dans le premier écran. */
@@ -47,7 +48,7 @@ export default function PromoBanner() {
   // affichage, et le retirer puis le remettre faisait sauter toute la page de 46 px.
   const masquer = useRef(false)
 
-  const exclu = EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
+  const exclu = EXCLUS_EXACTS.includes(pathname) || EXCLUS.some(p => pathname === p || pathname.startsWith(p + '/'))
 
   useEffect(() => {
     const html = document.documentElement
@@ -88,7 +89,7 @@ export default function PromoBanner() {
     <div
       className="promo-banner"
       role="region"
-      aria-label={en ? CAMPAGNE.regionEn : 'Campagne Octobre Rose'}
+      aria-label={en ? CAMPAGNE.regionEn : 'Campagne Halloween'}
       style={{
         position: 'fixed',
         top: 0,
@@ -104,8 +105,6 @@ export default function PromoBanner() {
         padding: '0 48px',
       }}
     >
-      <Ruban color={CAMPAGNE.encre} />
-
       <a
         href={CAMPAGNE.href}
         className="promo-banner-link"
@@ -203,12 +202,4 @@ export default function PromoBanner() {
   )
 }
 
-/* Ruban stylisé maison — pas le logo officiel Ruban Rose (marque déposée) */
-function Ruban({ color }) {
-  return (
-    <svg className="promo-ruban" width="13" height="18" viewBox="0 0 16 21" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <path d="M8 1.8C11.6 5 11.6 8.6 8 11.2L5.6 20" stroke={color} strokeWidth="1.15" strokeLinecap="round" />
-      <path d="M8 1.8C4.4 5 4.4 8.6 8 11.2L10.4 20" stroke={color} strokeWidth="1.15" strokeLinecap="round" />
-    </svg>
-  )
-}
+
