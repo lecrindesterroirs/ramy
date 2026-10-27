@@ -107,13 +107,13 @@ export const FORMULES = [
   {
     key: 'afterwork',
     occasion: 'Afterwork',
-    seoTitle: `Cocktail L'Afterwork : 12 pièces généreuses pour vos afterworks d'entreprise à Paris`,
-    seoHtml: `<p>La formule L'Afterwork, c'est douze pièces par personne comme La Réception, mais des pièces qui nourrissent : mini burgers, navettes, clubs et mini wraps roulés plutôt que des bouchées, et le plateau de douceurs en dessert. Neuf pièces salées, trois sucrées, à ${virgule(PX.afterwork.prix)} € HT par personne.</p><h2>Pourquoi c'est la meilleure valeur à la pièce</h2><p>À ${virgule(PX.afterwork.prix / PX.afterwork.pieces)} € la pièce, c'est le prix le plus bas de notre gamme cocktail, là où les formules de bouchées tiennent entre ${virgule(PX.celebration.prix / PX.celebration.pieces)} et ${virgule(PX.invitation.prix / PX.invitation.pieces)} €. La raison est simple : une pièce de plateau contient du pain, elle rassasie davantage et elle coûte moins cher à produire qu'une bouchée montée à la main.</p><h2>Pour quel moment</h2><p>Un afterwork, un pot de départ, une fin de journée d'équipe : les moments où l'on veut que les gens mangent vraiment, debout, sans passer au dîner. Si vous cherchez un format à partager au centre de la table plutôt qu'un nombre de pièces par personne, voyez notre <a href="/creations/cocktails/afterwork-partage">afterwork à partager</a>.</p>` + ORGANISER,
+    seoTitle: `Cocktail L'Afterwork : 10 pièces et une planche de fromages pour vos afterworks à Paris`,
+    seoHtml: `<p>La formule L'Afterwork est celle où l'on mange vraiment : dix pièces par personne qui ont du pain — mini cheeseburger, navettes, clubs et mini wraps roulés — plus une planche de fromages affinés et des chips à poser au centre de la table. Sept pièces salées, trois sucrées, à ${virgule(PX.afterwork.prix)} € HT par personne.</p><h2>Ce qu'elle a que les autres n'ont pas</h2><p>Les trois autres formules sont faites de bouchées montées à la main, qui se picorent. Celle-ci remplace la moitié par des pièces de plateau et ajoute du fromage : à ${virgule(PX.afterwork.prix)} € contre ${virgule(PX.reception.prix)} € pour La Réception, on cale une équipe en fin de journée pour cinq euros de moins par personne.</p><h2>Pour quel moment</h2><p>Un afterwork, un pot de départ, une fin de journée d'équipe : les moments où l'on veut que les gens mangent, debout, sans passer au dîner. Si vous préférez des planches au centre de la table à un nombre de pièces par personne, voyez notre <a href="/creations/cocktails/afterwork-partage">afterwork à partager</a>, qui ajoute une planche de charcuteries halal.</p>` + ORGANISER,
     label: "L'Afterwork",
     pieces: PX.afterwork.pieces,
     prix: virgule(PX.afterwork.prix),
     prixNum: PX.afterwork.prix,
-    accroche: 'Douze pièces qui nourrissent : burgers, navettes, clubs et wraps, douceurs en dessert.',
+    accroche: 'Dix pièces qui nourrissent, une planche de fromages et des chips à partager.',
     featured: false,
     img: '/plateau-burgers.webp',
     sale: [
@@ -129,7 +129,11 @@ export const FORMULES = [
       'Choux à la Crème',
       'Macarons',
       'Brownies',
-      'Mini Muffins',
+    ],
+    // Posé au centre de la table, en plus des dix pièces par personne.
+    enPlus: [
+      'Planche de fromages affinés, fruits frais et pain artisanal',
+      'Chips à grignoter',
     ],
   },
 ]

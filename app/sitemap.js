@@ -171,6 +171,10 @@ LASTMOD_23_10.forEach(p => { LASTMOD_PAGES[p] = '2026-10-23'; LASTMOD_PAGES[`/en
 ;['/creations/petits-dejeuners-et-pauses', '/creations/cocktails', '/en/creations/cocktails'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
 // Séminaire : bloc « journée complète » (déroulé, budget par personne, exemples 20/50/100, FAQ) ajouté le 25/10/2026, lien depuis les tarifs
 ;['/occasions/seminaire-entreprise', '/en/occasions/seminaire-entreprise', '/tarifs', '/en/tarifs'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-25' })
+// Cocktails : quatrième formule L'Afterwork (10 pièces + planche de fromages),
+// ajoutée aussi sur la page occasion afterwork, le 28/10/2026
+;['/creations/cocktails', '/en/creations/cocktails', '/creations/cocktails/afterwork', '/en/creations/cocktails/afterwork',
+  '/occasions/afterwork-entreprise', '/en/occasions/afterwork-entreprise'].forEach(p => { LASTMOD_PAGES[p] = '2026-10-28' })
 
 function lastmodDe(path) {
   const d = LASTMOD_PAGES[path] || (path === '/en' || path.startsWith('/en/') ? EN_LANCEMENT : null)
