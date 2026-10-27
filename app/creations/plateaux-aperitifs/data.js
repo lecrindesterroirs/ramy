@@ -34,14 +34,14 @@ export const PLATEAUX = [
     seoHtml: `<p>Notre plateau de clubs sandwichs moelleux, découpés en triangles, est un classique de l'apéritif d'entreprise qui ne déçoit jamais. Généreux et facile à partager, il accompagne un afterwork, un déjeuner de travail qui s'étire ou une réception, sans couverts ni logistique compliquée.</p><h2>Des clubs généreux, découpés à partager</h2><p>Deux garnitures : saumon fumé et cream cheese, et blanc de poulet, sur pain brioché moelleux découpé en triangles pour se servir d'une main. On cale les quantités sur votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon le nombre de convives, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
     id: 'sw2', famille: 'sandwichs', nom: 'Clubs Signature', img: '/plateau-clubs.webp', prix: 64.90, pieces: 24,
     description: 'Assortiment de clubs sandwichs moelleux découpés.',
-    recettes: ['Club Saumon Fumé & Cream Cheese', 'Club Blanc de Poulet'],
+    recettes: ['12 clubs Saumon Fumé & Cream Cheese', '12 clubs Blanc de Poulet'],
   },
   {
     seoTitle: `Plateau de mini wraps roulés pour vos afterworks et pauses déjeuner d'entreprise à Paris`,
     seoHtml: `<p>Notre plateau de mini wraps roulés découpés en bouchées apporte de la couleur et de la fraîcheur à un apéritif d'équipe. Roulés serrés, coupés net, les mini wraps se picorent facilement debout et offrent une alternative plus légère aux sandwichs classiques pour un afterwork ou une réunion de l'après-midi.</p><h2>Roulés, coupés, prêts à picorer</h2><p>Deux garnitures : saumon fumé et cream cheese, et blanc de poulet. Roulés serrés puis découpés en bouchées pour se partager sans effort. On ajuste les quantités à votre effectif.</p><h2>Commander votre plateau à Paris et en Île-de-France</h2><p>Format à partager selon l'effectif, commande avant 14h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
     id: 'sw3', famille: 'sandwichs', nom: 'Mini Wraps Roulés', img: '/plateau-wraps.webp', prix: 69.80, pieces: 24,
     description: 'Assortiment de mini wraps roulés, découpés en bouchées.',
-    recettes: ['Mini Wrap Roulé Saumon Fumé & Cream Cheese', 'Mini Wrap Roulé Blanc de Poulet'],
+    recettes: ['12 mini wraps Saumon Fumé & Cream Cheese', '12 mini wraps Blanc de Poulet'],
   },
   {
     seoTitle: `Plateau mini baguettes pour vos afterworks et réceptions d'entreprise à Paris`,
