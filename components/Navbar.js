@@ -808,7 +808,12 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           .nav-mega-dropdown .card-img { height: 150px !important; }
         }
         @media (max-width: 959px) {
+          /* Sous 960 px la barre n'a plus que le logo et le hamburger : la
+             grille à trois colonnes du grand écran (28/10/2026) envoyait le
+             hamburger, quatrième enfant, dans une colonne fantôme hors écran. */
           .nav-bar, .nav-bar-hero {
+            display: flex !important;
+            justify-content: space-between !important;
             padding: 16px 24px !important;
           }
           .nav-left, .nav-right {
@@ -820,10 +825,16 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
           .nav-logo span:last-child {
             font-size: 7px !important;
           }
+          /* Le bouton « devis » est sorti de .nav-right lors de la refonte du
+             28/10/2026 : il n'était donc plus masqué sur téléphone et poussait
+             le hamburger hors de l'écran. La barre fixe du bas porte déjà
+             « Devis en 30 s », celui de la barre haute est redondant. */
+          .nav-cta-link { display: none !important; }
           .nav-hamburger {
             display: flex !important;
             margin-left: auto;
           }
+          .nav-logo { margin-top: 0 !important; }
         }
         @media (min-width: 960px) {
           .nav-hamburger { display: none !important; }

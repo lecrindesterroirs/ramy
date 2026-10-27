@@ -63,6 +63,14 @@ export default function Hero({ lang = 'fr' }) {
     Sur ordinateur on la garde, mais calée sur requestAnimationFrame comme
     ParallaxImage, pour n'écrire qu'une fois par image affichée.
   */
+  // Essai de premier écran mobile (28/10/2026) : ?hero=v2 pose la classe
+  // `hero-v2`, qui fait passer la photo en plein écran avec le texte dessus.
+  // À retirer une fois la version choisie.
+  const [variante, setVariante] = useState('')
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('hero') === 'v2') setVariante(' hero-v2')
+  }, [])
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return
@@ -85,7 +93,7 @@ export default function Hero({ lang = 'fr' }) {
 
   return (
     <section
-      className="hero-section"
+      className={`hero-section${variante}`}
       style={{
         position: 'relative',
         height: '100vh',
@@ -189,7 +197,7 @@ export default function Hero({ lang = 'fr' }) {
         </p>
 
         {/* CTA group */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div className="hero-actions" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
           <a
             href={lang === 'en' ? '/en/devis' : '/devis'}
             style={{
@@ -241,7 +249,7 @@ export default function Hero({ lang = 'fr' }) {
         </div>
 
         {/* Preuve sociale, fiche Google */}
-        <ReviewsBadge variant="onImage" style={{ marginTop: '26px' }} />
+        <div className="hero-avis"><ReviewsBadge variant="onImage" style={{ marginTop: '26px' }} /></div>
       </div>
 
       {/* Phone, bottom right */}
@@ -304,6 +312,23 @@ export default function Hero({ lang = 'fr' }) {
           50%       { opacity: 1;   transform: scaleY(0.6); }
         }
         @media (max-width: 768px) {
+          /* ── Variante v2 : photo plein écran, texte posé dessus ───────── */
+          .hero-section.hero-v2 { height: 100svh !important; min-height: 0 !important; display: flex !important;
+                     flex-direction: column; justify-content: flex-end !important; background: #171310; }
+          .hero-section.hero-v2 .hero-media { position: absolute !important; inset: 0 !important; height: auto !important; }
+          .hero-section.hero-v2 .hero-media img { object-position: 72% center !important; }
+          /* Dégradé : le texte reste lisible sans assombrir la photo entière. */
+          .hero-section.hero-v2 .hero-scrim { display: block !important; position: absolute !important; inset: 0 !important;
+                     background: linear-gradient(to top, rgba(10,8,7,0.82) 0%, rgba(10,8,7,0.58) 26%, rgba(10,8,7,0.12) 52%, rgba(10,8,7,0) 70%) !important; }
+          .hero-section.hero-v2 .hero-content { position: relative; z-index: 3; padding: 0 16px 28px !important; max-width: 100% !important; }
+          .hero-section.hero-v2 .hero-content h1 { color: #FFFFFF !important; text-shadow: none !important; margin-bottom: 12px !important; }
+          .hero-section.hero-v2 .hero-content p { color: rgba(255,255,255,0.90) !important; text-shadow: none !important; }
+          .hero-section.hero-v2 .hero-content strong { color: #FFFFFF !important; }
+          .hero-section.hero-v2 .hero-prix { color: rgba(255,255,255,0.86) !important; margin-bottom: 20px !important; }
+          /* Une seule action dans le premier écran : le reste descend au scroll. */
+          .hero-section.hero-v2 .hero-actions > *:nth-child(2) { display: none !important; }
+          .hero-section.hero-v2 .hero-avis, .hero-section.hero-v2 .hero-scroll { display: none !important; }
+
           /* Sur téléphone : la photo en haut, recadrée sur le coffret, le texte
              dessous sur fond crème (avant, le coffret sortait de l'écran). */
           .hero-section { height: auto !important; min-height: 0 !important; display: block !important; background: #F9F6EF; }
