@@ -627,6 +627,10 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
             minHeight: '44px',
             boxSizing: 'border-box',
             zIndex: 200,
+            // Sur tablette, le hamburger tombait sur le costume noir du maître
+            // d'hôtel et disparaissait (signalé par Ramy le 28/10/2026). Le halo
+            // clair le détoure sur fond sombre et ne se voit pas sur fond clair.
+            filter: 'drop-shadow(0 0 2px rgba(255,255,255,0.95)) drop-shadow(0 1px 3px rgba(255,255,255,0.7))',
           }}
         >
           {mobileOpen ? (

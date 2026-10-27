@@ -9,16 +9,6 @@ import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobre
 import { PDJ_DES, PLATEAU_DES, euroFr, euroEn } from '../lib/prixEntree'
 import { FORMULES } from '../lib/calculsPrix'
 
-/* Met en gras les noms de maisons cités dans une phrase (Mado Paris, Pierre
-   Morel) : ce sont eux qui portent la promesse de qualité, ils ne doivent pas
-   se fondre dans le reste du texte. */
-function enGras(texte, mots) {
-  const motif = new RegExp(`(${mots.join('|')})`, 'g')
-  return texte.split(motif).map((bout, i) =>
-    mots.includes(bout) ? <strong key={i} style={{ fontWeight: 500, color: '#171310' }}>{bout}</strong> : bout
-  )
-}
-
 /* Textes de l'en-tête, par langue. Le numéro et la note Google sont des
    faits, pas des textes : ils ne changent pas d'une langue à l'autre. */
 const T_HERO = {
@@ -26,8 +16,7 @@ const T_HERO = {
     titre1: "Traiteur d'entreprise",
     titre2: 'à Paris.',
     corps1: 'Petits-déjeuners, plateaux repas et cocktails livrés dans vos bureaux,',
-    corps2: 'avec les madeleines Mado Paris et les macarons Pierre Morel.',
-    marques: ['Mado Paris', 'Pierre Morel'],
+    corps2: 'préparés par nos artisans et dressés sur place.',
     prix: `Par personne, HT : petit-déjeuner dès ${euroFr(PDJ_DES)}, plateau repas dès ${euroFr(PLATEAU_DES)}, cocktail dès ${euroFr(FORMULES.invitation.prix)}. Livraison dès 6h30, commande jusqu'à 14h la veille.`,
     devis: 'Obtenir un devis',
     catalogue: 'Découvrir notre catalogue',
@@ -37,8 +26,7 @@ const T_HERO = {
     titre1: 'Corporate catering',
     titre2: 'in Paris.',
     corps1: 'Breakfasts, lunch trays and cocktail receptions delivered to your offices,',
-    corps2: 'with Mado Paris madeleines and Pierre Morel macarons.',
-    marques: ['Mado Paris', 'Pierre Morel'],
+    corps2: 'made by our artisans and set out on site.',
     prix: `Per person, excl. VAT: breakfast from ${euroEn(PDJ_DES)}, lunch tray from ${euroEn(PLATEAU_DES)}, cocktail reception from ${euroEn(FORMULES.invitation.prix)}. Delivery from 6:30 am, order by 2 pm the day before.`,
     devis: 'Get a quote',
     catalogue: 'See our menu',
@@ -118,18 +106,33 @@ export default function Hero({ lang = 'fr' }) {
           willChange: 'transform',
         }}
       >
-        {/* hero-bg4 depuis le 28/10/2026 : vraie prestation, petit-déjeuner
-            dressé dans un salon haussmannien avec le maître d'hôtel. Photo
-            panoramique (1,65) dans un cadre à 1,60 : rognage négligeable. */}
-        <Image fill priority sizes="100vw" src="/hero-bg4.webp"
-          alt="Petit-déjeuner d'entreprise servi par L'Écrin Traiteur dans un salon parisien : table dressée, viennoiseries, cafetières et maître d'hôtel"
-          style={{
-            objectFit: 'cover',
-            // Photo panoramique (ratio 1,65) dans un cadre à 1,60 : le rognage est
-            // négligeable, on voit la table entière et le maître d'hôtel en pied.
-            objectPosition: 'center center',
-          }}
-        />
+        {/* Deux photos, une par taille d'écran (28/10/2026) :
+            — ordinateur : hero-bg4, la vraie prestation en salon haussmannien,
+              panoramique (1,65) dans un cadre à 1,60, rognage négligeable ;
+            — téléphone : hero-bg2, le coffret de madeleines, cadré à 74 %/62 %
+              comme avant. Une photo panoramique sur un écran portrait obligeait
+              à rogner 60 % de l'image.
+            <picture> et non <Image> : le navigateur ne télécharge que le fichier
+            qui le concerne, alors que deux <Image> dont un masqué en CSS se
+            seraient chargés tous les deux. Les deux fichiers sont déjà en webp
+            optimisé, l'optimisation de Next n'apporte rien de plus ici. */}
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/hero-bg2-mobile.webp" />
+          <img
+            src="/hero-bg4.webp"
+            alt="Petit-déjeuner d'entreprise servi par L'Écrin Traiteur dans un salon parisien : table dressée, viennoiseries, cafetières et maître d'hôtel"
+            fetchPriority="high"
+            decoding="async"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center center',
+            }}
+          />
+        </picture>
       </div>
 
       {/* Warm cream scrim, renforcé côté gauche pour la lisibilité */}
@@ -188,7 +191,7 @@ export default function Hero({ lang = 'fr' }) {
           }}
         >
           {T.corps1}{' '}<br className="hero-br" />
-          {enGras(T.corps2, T.marques)}
+          {T.corps2}
         </p>
 
         {/* Prix calculés (lib/prixEntree.js, lib/calculsPrix.js), dans le premier écran */}
@@ -329,13 +332,25 @@ export default function Hero({ lang = 'fr' }) {
           .hero-section.hero-v2 .hero-actions > *:nth-child(2) { display: none !important; }
           .hero-section.hero-v2 .hero-avis, .hero-section.hero-v2 .hero-scroll { display: none !important; }
 
-          /* Sur téléphone : la photo en haut, recadrée sur le coffret, le texte
-             dessous sur fond crème (avant, le coffret sortait de l'écran). */
-          .hero-section { height: auto !important; min-height: 0 !important; display: block !important; background: #F9F6EF; }
-          .hero-media { position: relative !important; inset: auto !important; height: calc(var(--promo-h) + var(--nav-base) + 30vh); transform: none !important; }
-          .hero-media img { object-position: 74% 62% !important; }
-          .hero-scrim { display: none !important; }
-          .hero-content { padding: 22px 16px 36px !important; max-width: 100% !important; }
+          /* Premier écran mobile : on revient à la composition du 27/09/2026,
+             abandonnée le 23/10 (commit dbe68d59) au profit d'un bandeau photo
+             suivi d'un bloc de texte crème. La photo reprend tout l'écran et le
+             texte se pose dessus — pas de rupture entre une zone image et une
+             zone crème. Seule différence : le téléphone reçoit désormais une
+             photo cadrée en portrait, au lieu d'une panoramique rognée à 28 %.
+             L'ordinateur n'est pas touché. */
+          .hero-section { height: 100svh !important; min-height: 0 !important;
+                          display: flex !important; flex-direction: column;
+                          justify-content: center !important; background: #F9F6EF; }
+          .hero-media { position: absolute !important; inset: 0 !important;
+                        height: auto !important; transform: none !important; }
+          .hero-media img { object-position: center 30% !important; }
+          /* Le dégradé diagonal du 27/09, redressé pour un écran portrait : le
+             texte repose sur du clair sans que la photo soit masquée. */
+          .hero-scrim { display: block !important; position: absolute !important; inset: 0 !important;
+                        background: linear-gradient(155deg, rgba(249,246,239,0.95) 0%, rgba(249,246,239,0.88) 32%, rgba(249,246,239,0.55) 58%, rgba(249,246,239,0.10) 100%) !important; }
+          .hero-content { position: relative; z-index: 3;
+                          padding: 0 20px !important; max-width: 100% !important; }
           .hero-content h1 { margin-bottom: 14px !important; }
           .hero-br { display: none; }
           .hero-phone { display: none !important; }
