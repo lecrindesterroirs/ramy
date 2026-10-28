@@ -23,12 +23,14 @@ const args = [
 const T_SELECTION = {
   fr: {
     eyebrow: 'Notre Approche',
+    alt2: "Cocktail La Célébration, 16 pièces par personne, L'Écrin Traiteur",
     t1: "L'art de", t2: 'la sélection.',
     corps: "Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Mariage Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.",
     args,
   },
   en: {
     eyebrow: 'Our approach',
+    alt2: "La Célébration cocktail, 16 pieces per person, L'Écrin Traiteur",
     t1: 'The art of', t2: 'choosing well.',
     corps: 'From Mado Paris madeleines to Alain Milliat juices, from Maison Marques pastries to Mariage Frères tea. Every product is picked for its quality, its consistency, and the fact that people enjoy it.',
     args: [
@@ -71,21 +73,22 @@ export default function SelectionSection({ lang = 'fr' }) {
           }}
         >
 
-          {/* ── Colonne droite : image ── */}
-          <div
-            className="reveal img-zoom selection-img-wrap"
-            style={{ overflow: 'hidden' }}
-          >
-            <img loading="lazy" className="selection-img"
-              src="/prod-macarons.webp"
-              alt="L'art de la sélection, L'Écrin Traiteur"
-              style={{
-                width: '100%',
-                height: '680px',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-            />
+          {/* ── Colonne droite : deux photos (macarons, puis le grand cocktail La Célébration) ── */}
+          <div className="reveal selection-img-wrap selection-duo">
+            <div className="img-zoom" style={{ overflow: 'hidden', minHeight: 0 }}>
+              <img loading="lazy" className="selection-img"
+                src="/prod-macarons.webp"
+                alt="L'art de la sélection, L'Écrin Traiteur"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </div>
+            <div className="img-zoom" style={{ overflow: 'hidden', minHeight: 0 }}>
+              <img loading="lazy" className="selection-img"
+                src="/cocktail-celebration-doux.webp"
+                alt={T.alt2}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 62%', display: 'block' }}
+              />
+            </div>
           </div>
 
           {/* ── Colonne gauche : texte + arguments ── */}
@@ -210,18 +213,19 @@ export default function SelectionSection({ lang = 'fr' }) {
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .selection-args-mobile { display: none; }
+        .selection-duo { display: grid; grid-template-rows: 1.5fr 1fr; gap: 14px; height: 680px; }
         @media (max-width: 768px) {
           .selection-section { padding: 48px 0 8px !important; }
           .selection-section > div { padding: 0 24px !important; }
           .selection-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-          .selection-img { height: 300px !important; }
+          .selection-duo { height: 400px !important; gap: 10px !important; }
           .selection-args-desktop { display: none !important; }
           .selection-args-mobile { display: block !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .selection-section > div { padding: 0 40px !important; }
           .selection-grid { gap: 48px !important; }
-          .selection-img { height: 480px !important; }
+          .selection-duo { height: 500px !important; }
         }
       ` }} />
     </section>
