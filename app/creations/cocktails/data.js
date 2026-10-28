@@ -115,7 +115,7 @@ export const FORMULES = [
     prixNum: PX.afterwork.prix,
     accroche: 'Dix pièces qui nourrissent, une planche de fromages et des chips à partager.',
     featured: false,
-    img: '/plateau-burgers.webp',
+    img: '/plateau-burgers-carte.webp',
     sale: [
       'Mini Burger Cheeseburger',
       'Pain Brioché Pesto Verde & Tomates Séchées',
