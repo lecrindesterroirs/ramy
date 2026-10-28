@@ -188,11 +188,11 @@ export const ANIMATIONS = [
       <p>Prestation sur devis : date, lieu, nombre d'invités et durée. On installe, on présente, on démonte. Idéal pour un cocktail dînatoire, une soirée partenaires ou un afterwork d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
   { id: 'd6', univers: 'dejeuner', nom: 'Atelier Charcuterie Artisanale', img: '/prod-atelier-charcuterie.webp',
-    description: 'Découpe minute de charcuteries halal, sans porc.',
+    description: 'Découpe minute de charcuteries halal.',
     compo: ['Bœuf séché', 'Dinde fumée', 'Poulet fumé', 'Bresaola', 'Viande des Grisons'],
     article: `
-      <h2>Un atelier charcuterie halal, sans porc, pour vos événements d'entreprise à Paris</h2>
-      <p>Toutes nos charcuteries sont halal et sans porc, découpées minute devant vos invités : bœuf séché, dinde fumée, poulet fumé, bresaola et viande des Grisons. Une façon simple de proposer une planche vivante et généreuse sans exclure personne autour de la table. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
+      <h2>Un atelier charcuterie halal pour vos événements d'entreprise à Paris</h2>
+      <p>Toutes nos charcuteries sont halal, découpées minute devant vos invités : bœuf séché, dinde fumée, poulet fumé, bresaola et viande des Grisons. Une façon simple de proposer une planche vivante et généreuse sans exclure personne autour de la table. L'Écrin Traiteur installe cet atelier à Paris et en Île-de-France.</p>
       <h2>Découpe minute, planches généreuses</h2>
       <p>Notre équipe tranche à la demande et dresse au fil du service, avec pains artisanaux, condiments et quelques légumes marinés pour accompagner. Le rythme et les quantités s'adaptent au nombre d'invités et à la durée de votre événement.</p>
       <h2>Réserver votre atelier charcuterie à Paris et en Île-de-France</h2>
