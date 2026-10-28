@@ -17,7 +17,7 @@ const creations = [
   {
     label: 'Cocktails',
     description: 'Gougères au fromage, brochettes de poulet tandoori, mini cheeseburgers : 8, 12 ou 16 pièces par personne.',
-    img: '/cocktail-dinatoire.webp',
+    img: '/cocktail-celebration-doux.webp',
     href: '/creations/cocktails',
   },
   {
