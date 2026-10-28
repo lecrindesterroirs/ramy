@@ -82,6 +82,10 @@ const nextConfig = {
          les redirige plutôt que de les laisser tomber en 404. */
       // Fusion des deux pages anglaises concurrentes (24 oct. 2026) : /en/traiteur garde tout
       // Cocktail d'entreprise : le guide est fusionné dans la carte (décision de Ramy, 24 oct. 2026)
+      /* Mousse au chocolat retirée de la carte le 29/10/2026 (décision de Ramy) :
+         la fiche était indexée, son adresse renvoie vers le goûter. */
+      { source: '/creations/pauses-gourmandes/mousse-chocolat', destination: '/creations/pauses-gourmandes', permanent: true },
+      { source: '/en/creations/pauses-gourmandes/mousse-chocolat', destination: '/en/creations/pauses-gourmandes', permanent: true },
       /* Pièces roses renommées le 28/10/2026 : elles servent Octobre Rose, la
          Saint-Valentin et le 8 mars, leur nom ne pouvait plus dire « Octobre Rose ». */
       { source: '/creations/pauses-gourmandes/cupcakes-octobre-rose', destination: '/creations/pauses-gourmandes/cupcakes-roses', permanent: true },

@@ -65,7 +65,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'paques', nom: 'Pâques', nomEn: 'Easter',
     date: { type: 'paques' },
-    produits: [`${G}mousse-chocolat`, `${G}gateau-praline-noisette-partager`, `${G}brownie`, `${G}babka`, `${P}cake-chocolat`, `${G}cookie`],
+    produits: [`${G}gateau-praline-noisette-partager`, `${G}brownie`, `${G}babka`, `${P}cake-chocolat`, `${G}cookie`, `${G}macarons`],
   },
   {
     slug: 'semaine-qvt', nom: 'Semaine de la QVT', nomEn: 'Workplace Wellbeing Week',
