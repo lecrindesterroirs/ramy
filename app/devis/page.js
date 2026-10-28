@@ -8,6 +8,7 @@ import LogosSection from '../../components/LogosSection'
 import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
+import { formuleDepuisChemin, nettoyerFormule } from '../../lib/formuleDevis'
 import { isHalloweenActive } from '../../lib/campagneSaison'
 import { identifierVisiteur, suivreEtapeDevis, suivreChampDevis, capturerPostHog } from '../../lib/posthog-identify'
 import { estAnglais } from '../../lib/i18nBase'
@@ -633,6 +634,8 @@ export default function Contact() {
   const [showStep2Errors, setShowStep2Errors] = useState(false)
   const [bottomNavHidden, setBottomNavHidden] = useState(false)
   const logosRef = useRef(null)
+  const formuleRef = useRef('')
+  const pageOrigineRef = useRef('')
 
   // Retour arrière : au lieu de quitter d'un coup, un rappel des étapes restantes. Remis le 28/10/2026 à la
   // demande de Ramy : même si la plupart partent, un visiteur qui reste est un devis gagné. « Quitter quand
@@ -724,6 +727,11 @@ export default function Contact() {
       const ref = new URL(document.referrer)
       if (ref.origin === window.location.origin) origine = ref.pathname.replace(/\/$/, '')
     } catch (e) { /* arrivée directe */ }
+    // Formule consultée : paramètre ?formule= du formulaire rapide, sinon la page d'où l'on vient.
+    try {
+      formuleRef.current = nettoyerFormule(new URLSearchParams(window.location.search).get('formule')) || formuleDepuisChemin(origine || '')
+      pageOrigineRef.current = origine || ''
+    } catch (e) { /* sans formule */ }
     const lu = lireChemin(origine)
     const occasion = lu ? occasionPour(lu.categorie) : ''
     if (!occasion) return
@@ -839,11 +847,12 @@ export default function Contact() {
       const res = await fetch('/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, attribution: getAttribution() }),
+        body: JSON.stringify({ ...data, formule: formuleRef.current, page: pageOrigineRef.current, attribution: getAttribution() }),
       })
       if (res.ok) {
         setSubmitStatus('success')
-        window.dataLayer?.push({ event: 'devis_submit', form_location: 'page_devis' })
+        window.dataLayer?.push({ event: 'devis_submit', form_location: 'page_devis', formule: formuleRef.current || 'aucune' })
+        capturerPostHog('devis_formule', { formule: formuleRef.current || null, page: pageOrigineRef.current || null, formulaire: 'page_devis' })
         identifierVisiteur(data, 'page_devis')
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {

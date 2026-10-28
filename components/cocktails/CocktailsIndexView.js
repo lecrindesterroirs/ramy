@@ -204,7 +204,7 @@ export default function CocktailsIndexView({ en = false }) {
                   )}
                   <div className="ckf-liens">
                     <a href={`${pre}${CHEMIN}/${f.key}`} className="ckf-lien">{T.voirFormule}</a>
-                    <a href="#devis" className="ckf-lien ckf-lien-2">{T.devis}</a>
+                    <a href="#devis" className="ckf-lien ckf-lien-2" data-formule={`Cocktail ${f.label}`}>{T.devis}</a>
                   </div>
                 </div>
               </article>

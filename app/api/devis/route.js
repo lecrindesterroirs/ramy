@@ -1,5 +1,6 @@
 import { Resend } from 'resend'
 import { logDemandeToOS } from '@/lib/os-demande'
+import { nettoyerFormule, libelleDemande } from '@/lib/formuleDevis'
 
 const PRESTATIONS = {
   'petit-dejeuner': 'Petit-déjeuner',
@@ -34,7 +35,12 @@ export async function POST(request) {
     }
 
     const nomLabel = nom || 'Prospect (formulaire rapide)'
-    const prestationLabel = PRESTATIONS[prestation] || prestation || 'Non renseigné'
+    const prestationBase = PRESTATIONS[prestation] || prestation || 'Non renseigné'
+    // Formule ou page consultée (« Cocktail La Célébration »…) : elle s'ajoute à la prestation pour que
+    // l'objet du mail, le registre de l'OS et la confirmation disent ce que le client regardait.
+    const formule = nettoyerFormule(body.formule)
+    const pageVue = typeof body.page === 'string' ? body.page.replace(/[\r\n<>]/g, ' ').slice(0, 120) : ''
+    const prestationLabel = libelleDemande(prestationBase, formule)
     const dateLabel = date
       ? new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })
       : 'Non renseigné'
@@ -64,6 +70,7 @@ export async function POST(request) {
 
           <h3 style="font-family: sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin: 0 0 12px;">Détails du projet</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+            ${formule ? `<tr><td style="padding: 8px 0; font-family: sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; width: 160px;">Formule vue</td><td style="padding: 8px 0; font-family: sans-serif; font-size: 14px; color: #1A1A1A;"><strong>${esc(formule)}</strong>${pageVue ? ` <span style="color:#999;">(${esc(pageVue)})</span>` : ''}</td></tr>` : ''}
             <tr><td style="padding: 8px 0; font-family: sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; width: 160px;">Date souhaitée</td><td style="padding: 8px 0; font-family: sans-serif; font-size: 14px; color: #1A1A1A;">${esc(dateLabel)}</td></tr>
             <tr><td style="padding: 8px 0; font-family: sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em;">Nombre de convives</td><td style="padding: 8px 0; font-family: sans-serif; font-size: 14px; color: #1A1A1A;">${esc(convives) || 'Non renseigné'}</td></tr>
             <tr><td style="padding: 8px 0; font-family: sans-serif; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em;">Ville</td><td style="padding: 8px 0; font-family: sans-serif; font-size: 14px; color: #1A1A1A;">${esc(ville) || 'Non renseigné'}</td></tr>

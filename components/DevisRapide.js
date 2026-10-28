@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useId } from 'react'
+import { useState, useEffect, useId } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAttribution } from '../lib/attribution'
-import { identifierVisiteur } from '../lib/posthog-identify'
+import { identifierVisiteur, capturerPostHog } from '../lib/posthog-identify'
+import { formuleDepuisChemin } from '../lib/formuleDevis'
 import { estAnglais } from '../lib/i18nBase'
 
 const PRESTATIONS = [
@@ -57,6 +58,7 @@ const T = {
     envoi: 'Envoi…',
     envoyer: 'Recevoir un devis →',
     detaille: 'Formulaire détaillé →',
+    formule: 'Formule choisie',
     erreur: "Erreur d'envoi. Réessayez ou écrivez-nous à commercial@lecrin-traiteur.fr",
     succes: 'Demande envoyée avec succès.',
     succesDetail: 'Nous vous recontactons sous 24h avec une proposition personnalisée.',
@@ -76,6 +78,7 @@ const T = {
     envoi: 'Sending…',
     envoyer: 'Get a quote →',
     detaille: 'Full form →',
+    formule: 'Selected menu',
     erreur: 'Could not send. Try again, or email us at commercial@lecrin-traiteur.fr',
     succes: 'Request sent.',
     succesDetail: 'We will come back to you within 24 hours with a personalised proposal.',
@@ -119,7 +122,8 @@ const prestationValide = (v) => (PRESTATIONS.includes(v) ? v : ALIAS[v] || '')
 
 export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, titreEn, sousTitreEn, compact = false }) {
   const uid = useId()
-  const en = estAnglais(usePathname() || '/')
+  const pathname = usePathname() || '/'
+  const en = estAnglais(pathname)
   const t = en ? T.en : T.fr
   const motPrestation = (v) => (en && PRESTATIONS_EN[v]) || v
   const motFamille = (v) => (en && FAMILLES_PERSO_EN[v]) || v
@@ -132,6 +136,17 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
     website: '', // honeypot anti-spam (doit rester vide)
   })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
+  // Formule consultée : celle de la page (fiche d'un cocktail…) ou celle d'une carte « Demander un devis »
+  // (lien portant data-formule), pour savoir ce que veut le client.
+  const [formule, setFormule] = useState(formuleDepuisChemin(pathname))
+  useEffect(() => {
+    const surClic = (e) => {
+      const a = e.target?.closest?.('[data-formule]')
+      if (a) setFormule(a.getAttribute('data-formule') || '')
+    }
+    document.addEventListener('click', surClic)
+    return () => document.removeEventListener('click', surClic)
+  }, [])
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
   const handleSubmit = async e => {
@@ -142,11 +157,12 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
       const res = await fetch('/api/devis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'devis-rapide', attribution: getAttribution() }),
+        body: JSON.stringify({ ...form, formule, page: window.location.pathname, source: 'devis-rapide', attribution: getAttribution() }),
       })
       setStatus(res.ok ? 'success' : 'error')
       if (res.ok) {
-        window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide' })
+        window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide', formule: formule || 'aucune' })
+        capturerPostHog('devis_formule', { formule: formule || null, page: window.location.pathname, formulaire: 'devis_rapide' })
         identifierVisiteur(form, 'devis_rapide')
       }
     } catch {
@@ -207,6 +223,13 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
       }}>
         {(en ? sousTitreEn : sousTitre) || t.sousTitre}
       </p>
+
+      {formule && (
+        <p style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 12px', margin: '-12px 0 20px', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif" }}>
+          <span style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>{t.formule}</span>
+          <span style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', color: 'var(--text-primary)' }}>{formule}</span>
+        </p>
+      )}
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
 
@@ -369,7 +392,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
             {status === 'loading' ? t.envoi : t.envoyer}
           </button>
           <a
-            href={en ? '/en/devis' : '/devis'}
+            href={`${en ? '/en/devis' : '/devis'}${formule ? `?formule=${encodeURIComponent(formule)}` : ''}`}
             style={{
               fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif",
               fontSize: '11px',
