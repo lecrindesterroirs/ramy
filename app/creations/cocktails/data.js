@@ -119,7 +119,7 @@ export const FORMULES = [
     sale: [
       'Mini Burger Cheeseburger',
       'Pain Brioché Pesto Verde & Tomates Séchées',
-      'Pain Brioché au Thon',
+      'Pain Brioché au Thon et Herbes Fraîches',
       'Club Saumon Fumé & Cream Cheese',
       'Club Blanc de Poulet',
       'Mini Wrap Roulé Saumon Fumé & Cream Cheese',
