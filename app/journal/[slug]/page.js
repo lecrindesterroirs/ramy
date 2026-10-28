@@ -70,6 +70,10 @@ export default function ArticlePage({ params }) {
   const { slug } = params
   const article = articles.find(a => a.slug === slug)
   if (!article) notFound()
+  // FAQ visible en menu déroulant (même contenu que le FAQPage JSON-LD). Elle n'était jamais affichée par ce gabarit :
+  // seuls les articles qui la portaient dans leur texte la montraient. On n'ajoute rien si le texte contient déjà
+  // une FAQ, comme le fait le gabarit anglais, pour ne jamais la doubler.
+  const showFaq = article.faq?.length > 0 && !/faq-block|<h[23][^>]*>\s*(Questions fréquentes|Questions frequentes|FAQ|Foire aux questions)/i.test(article.contenu)
   // Dernière modification réelle du contenu (isoModified, isoDate ou historique : voir lib/journalLastmod.js)
   const modifie = modifieLe(article)
 
@@ -194,6 +198,17 @@ export default function ArticlePage({ params }) {
             className="article-body"
             dangerouslySetInnerHTML={{ __html: article.contenu }}
           />
+
+          {showFaq && (
+            <div className="article-body">
+              <h2>Questions fréquentes</h2>
+              <div className="faq-block">
+                {article.faq.map(f => (
+                  <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Formulaire court : les articles menaient à /devis par un simple lien */}
           <div style={{ marginTop: '56px' }}>
