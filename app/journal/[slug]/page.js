@@ -12,7 +12,36 @@ import { PRODUCTS } from '../../../lib/productsData'
 import { PAUSES } from '../../creations/pauses-gourmandes/data'
 import ParallaxImage from '../../../components/ParallaxImage'
 import DevisRapide from '../../../components/DevisRapide'
+import ArticleFormules from '../../../components/ArticleFormules'
+import { FORMULES as COCKTAILS } from '../../creations/cocktails/data'
 import { prestationPourArticle } from '../../../lib/parcours'
+
+// Bloc produit en tête d'article, déclaré dans la fiche par
+// « produitsEnTete: { source, ids, surtitre, titre } ». Une seule source
+// branchée pour l'instant : les formules cocktail.
+const blocEnTete = (bloc) => {
+  if (bloc?.source !== 'cocktails') return null
+  const cartes = bloc.ids
+    .map(id => COCKTAILS.find(f => f.key === id))
+    .filter(Boolean)
+    .map(f => ({
+      href: `/creations/cocktails/${f.key}`,
+      img: f.img,
+      nom: f.label,
+      meta: `${f.pieces} pièces · ${f.prix} € HT par personne`,
+      cta: 'Voir la formule →',
+    }))
+  if (!cartes.length) return null
+  return {
+    surtitre: bloc.surtitre || 'Nos formules cocktail',
+    titre: bloc.titre || 'Ces pièces, dans nos formules',
+    cartes,
+    liens: [
+      { href: '/creations/cocktails', label: 'Toutes les formules' },
+      { href: '/devis', label: 'Demander un devis' },
+    ],
+  }
+}
 
 // Résout un id de relatedProducts sur les deux sources possibles (Petits-Déjeuners & Pauses,
 // ou Pauses Gourmandes) et normalise le format (prix numérique + href) pour l'affichage.
@@ -141,6 +170,12 @@ export default function ArticlePage({ params }) {
           }}>
             {article.extrait}
           </p>
+
+          {/* Produits en tête : ce qu'on peut commander, avant le texte */}
+          {(() => {
+            const bloc = blocEnTete(article.produitsEnTete)
+            return bloc ? <ArticleFormules {...bloc} /> : null
+          })()}
 
           {/* En bref : faits chiffrés citables (champ optionnel article.enBref = [phrases]) */}
           {article.enBref?.length > 0 && (

@@ -908,3 +908,36 @@ a:hover .article-card-img { transform: scale(1.04); }
 @media (max-width: 560px) { .ckf-corps { padding: 24px 22px 26px; } }
 .ckv-cartes-3 { grid-template-columns: repeat(3, 1fr); gap: 32px 24px; }
 @media (max-width: 760px) { .ckv-cartes-3 { grid-template-columns: 1fr; } }
+
+/* Bloc formules en tête d'article du journal (components/ArticleFormules.js) :
+   photo, prix et lien de commande juste sous le chapô. Sur téléphone la carte
+   bascule en ligne — vignette carrée à gauche — pour ne pas repousser le texte. */
+.af-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.af-carte { display: flex; flex-direction: column; background: var(--bg-secondary);
+            text-decoration: none; transition: background 0.2s ease; }
+.af-carte:hover { background: #EDE8DE; }
+.af-img { position: relative; display: block; width: 100%; aspect-ratio: 4/3; overflow: hidden; }
+.af-corps { display: block; padding: 16px 18px 20px; }
+.af-nom { display: block; font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif;
+          font-size: 17px; line-height: 1.2; color: var(--text-primary); margin-bottom: 6px; }
+.af-meta { display: block; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+           font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-bottom: 12px; }
+.af-cta { display: block; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+          font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+          color: var(--accent-deep); }
+.af-liens { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+            column-gap: 28px; row-gap: 12px; margin-top: 18px; }
+.af-lien { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11px;
+           font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+           color: var(--accent-deep); border-bottom: 1px solid var(--accent); padding-bottom: 3px;
+           transition: color 0.25s ease, border-color 0.25s ease; }
+.af-lien-2 { color: var(--text-secondary); border-bottom-color: rgba(96,90,79,0.3); }
+.af-lien-2:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
+@media (max-width: 600px) {
+  .af-grille { grid-template-columns: 1fr; }
+  .af-carte { flex-direction: row; }
+  .af-img { flex: 0 0 116px; width: 116px; aspect-ratio: 1/1; }
+  .af-corps { flex: 1; padding: 14px 16px; display: flex; flex-direction: column; justify-content: center; }
+  .af-nom { font-size: 16px; }
+  .af-meta { margin-bottom: 8px; }
+}
