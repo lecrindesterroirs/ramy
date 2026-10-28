@@ -100,7 +100,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'octobre-rose', nom: 'Octobre Rose', nomEn: 'Pink October',
     date: { type: 'periode', debut: '10-01', fin: '10-31' },
-    produits: [`${P}madeleines-octobre-rose`, `${G}macarons-octobre-rose`, `${P}cake-framboise`, `${G}tarte-framboise-grand-format`, `${B}jus-pomme-framboise`, `${B}thermos-the`],
+    produits: [`${P}madeleines-octobre-rose`, `${G}macarons-octobre-rose`, `${B}petillant-vermentino-rose`, `${P}cake-framboise`, `${G}tarte-framboise-grand-format`, `${B}jus-pomme-framboise`],
   },
   {
     slug: 'semaine-du-gout', nom: 'Semaine du goût', nomEn: 'Taste Week',
@@ -125,7 +125,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'noel', nom: 'Noël', nomEn: 'Christmas',
     date: { type: 'periode', debut: '12-01', fin: '12-24', libelle: (o, l) => l === 'en' ? `December ${an(o)}, before the 25th` : `en décembre ${an(o)}, avant le 25` },
-    produits: [`${P}madeleines-noel`, `${G}bonbonniere-noel`, `${G}panettone-artisanal-partager`, `${G}gateau-roule-fraise-partager`, `${B}thermos-chocolat-noel`, `${B}thermos-the-noel`],
+    produits: [`${P}madeleines-noel`, `${G}bonbonniere-noel`, `${G}panettone-artisanal-partager`, `${G}gateau-roule-fraise-partager`, `${B}petillant-vermentino-rose`, `${B}thermos-chocolat-noel`],
   },
 ]
 

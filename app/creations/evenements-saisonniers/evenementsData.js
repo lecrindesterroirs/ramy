@@ -741,7 +741,7 @@ const TEXTES = [
     enBref: "En octobre, L'Écrin Traiteur reverse 1 € par convive servi à la recherche contre le cancer du sein, sur toutes ses commandes, et livre des goûters roses au bureau : madeleines, macarons, cake framboise.",
     prestations: ['pause', 'pdj'],
     exemples: [{ p: 'pause', n: 20 }, { p: 'pdj', n: 40 }],
-    horsCatalogue: ['Emballages avec ruban rose', 'Smoothie fruits rouges', 'Pétillant rosé sans alcool, pour trinquer'],
+    horsCatalogue: ['Emballages avec ruban rose', 'Smoothie fruits rouges'],
     bilan: { annee: 2026, montant: null, beneficiaire: null },
     faq: [
       { q: 'Le don concerne-t-il seulement les goûters roses ?', a: "Non. En octobre, nous reversons 1 € par convive servi sur toutes nos commandes : un petit-déjeuner de 40 personnes, ce sont 40 € de don. Le reçu du don est disponible sur demande." },
@@ -1001,7 +1001,6 @@ const TEXTES = [
       'Cupcakes de Noël, décor sapin et flocons, plateau de 25 : 77,50 € HT',
       'Chocolats de Noël, pralinés et truffes : 0,90 € HT la pièce',
       'Bar à chocolat chaud et ses toppings (chantilly, guimauves, copeaux, cannelle) : 59 € HT',
-      'Pétillant rosé sans alcool, pour trinquer',
       'Décoration de Noël du buffet, chemin de table, pommes de pin et guirlande : 49 € HT',
     ],
     faq: [
