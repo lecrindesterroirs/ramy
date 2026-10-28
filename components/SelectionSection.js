@@ -23,6 +23,7 @@ const args = [
 const T_SELECTION = {
   fr: {
     eyebrow: 'Notre Approche',
+    alt1: "Jus Alain Milliat sélectionnés par L'Écrin Traiteur",
     alt2: "Cocktail La Célébration, 16 pièces par personne, L'Écrin Traiteur",
     t1: "L'art de", t2: 'la sélection.',
     corps: "Des madeleines Mado Paris aux jus Alain Milliat, des viennoiseries Maison Marques au thé Mariage Frères. Chaque produit est choisi pour sa qualité, sa régularité et le plaisir qu'il apporte.",
@@ -30,6 +31,7 @@ const T_SELECTION = {
   },
   en: {
     eyebrow: 'Our approach',
+    alt1: "Alain Milliat juices selected by L'Écrin Traiteur",
     alt2: "La Célébration cocktail, 16 pieces per person, L'Écrin Traiteur",
     t1: 'The art of', t2: 'choosing well.',
     corps: 'From Mado Paris madeleines to Alain Milliat juices, from Maison Marques pastries to Mariage Frères tea. Every product is picked for its quality, its consistency, and the fact that people enjoy it.',
@@ -73,12 +75,12 @@ export default function SelectionSection({ lang = 'fr' }) {
           }}
         >
 
-          {/* ── Colonne droite : deux photos (macarons, puis le grand cocktail La Célébration) ── */}
+          {/* ── Colonne droite : deux photos (la bannière des jus Alain Milliat, puis le grand cocktail La Célébration) ── */}
           <div className="reveal selection-img-wrap selection-duo">
             <div className="img-zoom" style={{ overflow: 'hidden', minHeight: 0 }}>
               <img loading="lazy" className="selection-img"
-                src="/prod-macarons.webp"
-                alt="L'art de la sélection, L'Écrin Traiteur"
+                src="/boissons-hero.webp"
+                alt={T.alt1}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
