@@ -73,6 +73,10 @@ export default function Footer() {
             <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '14px', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.65, maxWidth: '200px' }}>
               {t('pied.signature1', langue)} <br />{t('pied.signature2', langue)}
             </p>
+            {/* Adhésion Paris je t'aime – Office de Tourisme (27/10/2026), logo officiel du kit adhérents */}
+            <a href={langue === 'en' ? '/en/journal/lecrin-traiteur-partenaire-officiel-paris-je-taime' : '/journal/lecrin-traiteur-partenaire-officiel-paris-je-taime'} style={{ display: 'inline-block', marginTop: '20px' }}>
+              <img loading="lazy" src="/partenaires/paris-je-taime-partenaire-officiel-2026.webp" width="160" height="80" alt={langue === 'en' ? "Official partner of Paris je t'aime, Paris Tourist Office, 2026" : "Partenaire officiel Paris je t'aime – Office de Tourisme 2026"} style={{ width: '160px', height: 'auto', display: 'block' }} />
+            </a>
           </div>
 
           {/* Colonnes de liens — plan de site & maillage interne (présent sur toutes les pages) */}
