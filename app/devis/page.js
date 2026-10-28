@@ -9,7 +9,7 @@ import ReviewsBadge from '../../components/ReviewsBadge'
 import { contactPageLd } from '../../lib/site'
 import { getAttribution } from '../../lib/attribution'
 import { isHalloweenActive } from '../../lib/campagneSaison'
-import { identifierVisiteur, suivreEtapeDevis, suivreChampDevis } from '../../lib/posthog-identify'
+import { identifierVisiteur, suivreEtapeDevis, suivreChampDevis, capturerPostHog } from '../../lib/posthog-identify'
 import { estAnglais } from '../../lib/i18nBase'
 import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
 
@@ -634,6 +634,52 @@ export default function Contact() {
   const [bottomNavHidden, setBottomNavHidden] = useState(false)
   const logosRef = useRef(null)
 
+  // Retour arrière : au lieu de quitter d'un coup, un rappel des étapes restantes. Remis le 28/10/2026 à la
+  // demande de Ramy : même si la plupart partent, un visiteur qui reste est un devis gagné. « Quitter quand
+  // même » part en un seul clic, et chaque affichage est mesuré (devis_sortie_rappel / _continue / _quitter).
+  const [showExitModal, setShowExitModal] = useState(false)
+  const stepForExitRef = useRef(step)
+  useEffect(() => { stepForExitRef.current = step }, [step])
+  const garde = useRef(false)
+  const quitteRef = useRef(false)
+
+  useEffect(() => {
+    if (garde.current) return
+    garde.current = true
+    window.history.pushState({ devisGuard: true }, '', window.location.href)
+  }, [])
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (submitStatus === 'success' || quitteRef.current) return
+      window.history.pushState({ devisGuard: true }, '', window.location.href)
+      setShowExitModal(true)
+      capturerPostHog('devis_sortie_rappel', { etape: stepForExitRef.current })
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [submitStatus])
+
+  function exitMessage() {
+    const s = stepForExitRef.current
+    if (s >= 3) return t('devis.presque', langue)
+    if (s === 2) return t('devis.resteUne', langue)
+    return t('devis.resteDeux', langue)
+  }
+
+  function continuerDevis() {
+    setShowExitModal(false)
+    capturerPostHog('devis_sortie_continue', { etape: stepForExitRef.current })
+  }
+
+  function quitterDevis() {
+    quitteRef.current = true
+    capturerPostHog('devis_sortie_quitter', { etape: stepForExitRef.current })
+    window.history.go(-2) // la page d'où l'on vient (la garde compte pour un cran)
+    // Onglet ouvert directement sur le devis : pas de page précédente, on retourne à l'accueil.
+    setTimeout(() => { if (/\/devis\/?$/.test(window.location.pathname)) window.location.href = '/' }, 400)
+  }
+
   useEffect(() => {
     const onScroll = () => {
       const atBottom = document.body.scrollHeight - window.scrollY - window.innerHeight < 80
@@ -973,6 +1019,33 @@ export default function Contact() {
         )}
         </div>
 
+        {/* Rappel avant de quitter (retour arrière) */}
+        {showExitModal && (
+          <div role="dialog" aria-modal="true" aria-label={t('devis.attendez', langue)} style={{ position: 'fixed', inset: 0, background: 'rgba(17,17,17,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '24px' }}>
+            <div style={{ background: '#FFFFFF', maxWidth: '380px', width: '100%', padding: '32px 28px', textAlign: 'center', borderRadius: '4px' }}>
+              <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '22px', fontWeight: 400, color: '#111111', marginBottom: '10px', lineHeight: 1.2 }}>
+                {t('devis.attendez', langue)}
+              </p>
+              <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13.5px', color: 'rgba(17,17,17,0.65)', lineHeight: 1.6, marginBottom: '24px' }}>
+                {exitMessage()}
+              </p>
+              <button
+                type="button"
+                onClick={continuerDevis}
+                style={{ width: '100%', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#1A1A18', background: accent, border: 'none', padding: '14px', cursor: 'pointer', marginBottom: '10px' }}
+              >
+                {t('devis.continuer', langue)}
+              </button>
+              <button
+                type="button"
+                onClick={quitterDevis}
+                style={{ display: 'block', width: '100%', fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11.5px', color: 'rgba(17,17,17,0.45)', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}
+              >
+                {t('devis.quitter', langue)}
+              </button>
+            </div>
+          </div>
+        )}
       </main>
 
       <div className="devis-preuves">
