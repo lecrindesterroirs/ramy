@@ -77,6 +77,10 @@ export default function Footer() {
             <a href={langue === 'en' ? '/en/journal/lecrin-traiteur-partenaire-officiel-paris-je-taime' : '/journal/lecrin-traiteur-partenaire-officiel-paris-je-taime'} style={{ display: 'inline-block', marginTop: '20px' }}>
               <img loading="lazy" src="/partenaires/paris-je-taime-partenaire-officiel-2026.webp" width="160" height="80" alt={langue === 'en' ? "Official partner of Paris je t'aime, Paris Tourist Office, 2026" : "Partenaire officiel Paris je t'aime – Office de Tourisme 2026"} style={{ width: '160px', height: 'auto', display: 'block' }} />
             </a>
+            {/* Partenaires et réseaux (28/10/2026) : le détail est dans la page Presse */}
+            <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'var(--text-secondary)', lineHeight: 1.6, marginTop: '12px', maxWidth: '220px' }}>
+              <a href={langue === 'en' ? '/en/presse' : '/presse'} style={{ color: 'inherit' }}>{langue === 'en' ? 'Partners and networks' : 'Partenaires et réseaux'}</a> : Office Manager Summit 2026, <a href="https://www.tripadvisor.fr/Restaurant_Review-g196560-d34760097-Reviews-L_Ecrin_Traiteur-Boulogne_Billancourt_Hauts_de_Seine_Ile_de_France.html" target="_blank" rel="noopener" style={{ color: 'inherit' }}>Tripadvisor</a>
+            </p>
           </div>
 
           {/* Colonnes de liens — plan de site & maillage interne (présent sur toutes les pages) */}
