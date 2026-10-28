@@ -202,7 +202,10 @@ export default function CocktailsIndexView({ en = false }) {
                   {f.enPlus?.length > 0 && (
                     <p className="ckf-enplus">{T.enPlus} : {f.enPlus.join(' · ')}</p>
                   )}
-                  <a href={`${pre}${CHEMIN}/${f.key}`} className="ckf-lien">{T.voirFormule}</a>
+                  <div className="ckf-liens">
+                    <a href={`${pre}${CHEMIN}/${f.key}`} className="ckf-lien">{T.voirFormule}</a>
+                    <a href="#devis" className="ckf-lien ckf-lien-2">{T.devis}</a>
+                  </div>
                 </div>
               </article>
             ))}
