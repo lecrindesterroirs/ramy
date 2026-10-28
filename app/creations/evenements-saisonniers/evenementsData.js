@@ -304,7 +304,7 @@ const TEXTES = [
     prestations: ['cocktail16', 'cocktail12', 'pdj'],
     exemples: [{ p: 'cocktail16', n: 30 }, { p: 'pdj', n: 20 }],
     halal: true,
-    horsCatalogue: [],
+    horsCatalogue: ['Dattes, posées sur la table pour la rupture du jeûne'],
     faq: [
       { q: "À quelle heure livrez-vous un iftar ?", a: "Un quart d'heure avant l'heure de rupture du jeûne du jour, que vous nous indiquez à la commande. Le buffet est en place avec l'eau et les jus dès la première minute." },
       { q: 'Faut-il commander un menu halal à part ?', a: "Non. Tout notre salé est halal et sans porc, sans alcool, sans supplément. Précisez seulement les autres régimes de l'équipe, végétarien ou sans gluten." },
