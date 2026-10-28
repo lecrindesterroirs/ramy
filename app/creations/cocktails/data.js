@@ -53,7 +53,7 @@ export const FORMULES = [
     prixNum: PX.reception.prix,
     accroche: 'Douze pièces entre terre et mer, de quoi remplacer un déjeuner debout.',
     featured: true,
-    img: '/cocktail-dinatoire.webp',
+    img: '/cocktail-reception-signature.webp',
     sale: [
       'Gougères Soufflées au Fromage',
       'Chou Craquelin à la Tapenade, Tomate & Mozzarella',
