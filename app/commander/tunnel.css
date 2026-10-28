@@ -1,0 +1,186 @@
+/* =============================================================
+   Tunnel de commande — reprise exacte des maquettes validées par
+   Ramy le 29/10/2026 (panier-etape1, livraison-blanc, paiement-etape3).
+
+   Les règles du site, tenues telles quelles :
+   - aucun coin arrondi, aucun aplat de couleur ; on groupe par filets ;
+   - Baskerville Display PT pour les titres, les prix et les heures,
+     Neue Montreal pour tout le reste ;
+   - jetons de app/globals.css, rien de nouveau.
+   ============================================================= */
+
+.cmd {
+  --filet: rgba(17, 17, 17, 0.08);
+  --eteint: #C4BEB4;
+  background: var(--bg-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+  color: var(--text-primary);
+}
+.cmd-sf { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-weight: 400; }
+
+/* ── bandeau du haut ── */
+.cmd-top { display: flex; align-items: center; justify-content: space-between; padding: 30px 54px 26px; gap: 24px; }
+.cmd-logo { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 26px; letter-spacing: 0.17em; line-height: 1; color: var(--text-primary); text-decoration: none; }
+.cmd-logo em { display: block; font-style: normal; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 8px; letter-spacing: 0.44em; color: var(--text-secondary); margin-top: 7px; padding-left: 3px; }
+.cmd-pas { display: flex; align-items: flex-start; }
+.cmd-pas a, .cmd-pas .cmd-p { width: 124px; display: flex; flex-direction: column; align-items: center; gap: 11px; text-decoration: none; }
+.cmd-n { width: 28px; height: 28px; border: 1px solid var(--filet); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--eteint); }
+.cmd-p-fait .cmd-n { border-color: var(--accent); color: var(--accent-deep); }
+.cmd-p-on .cmd-n { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cmd-p span { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--eteint); }
+.cmd-p-on span, .cmd-p-fait span { color: var(--text-primary); }
+.cmd-pas .cmd-ln { width: 72px; height: 1px; background: var(--filet); margin-top: 14px; }
+.cmd-secu { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); white-space: nowrap; }
+.cmd-filet { border: none; border-top: 1px solid var(--filet); margin: 0; }
+
+/* ── corps en deux colonnes ── */
+.cmd-corps { display: grid; grid-template-columns: 1.12fr 0.88fr; flex: 1; }
+.cmd-corps-panier { grid-template-columns: 1.22fr 0.78fr; }
+.cmd-gauche { padding: 44px 56px 38px; min-width: 0; }
+.cmd-droite { padding: 44px 56px 38px; border-left: 1px solid var(--filet); min-width: 0; }
+
+.cmd-surtitre { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 18px; }
+.cmd-h1 { font-size: clamp(28px, 3vw, 40px); line-height: 1.15; margin: 0 0 14px; font-weight: 400; }
+.cmd-h2 { font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; margin: 0 0 24px; font-weight: 400; }
+.cmd-intro { font-size: 14px; line-height: 1.7; color: var(--text-secondary); margin: 0 0 32px; }
+
+/* ── lignes du panier ── */
+.cmd-ligne { display: grid; grid-template-columns: 76px 1fr 128px 104px; gap: 22px; align-items: center; padding: 20px 0; border-top: 1px solid var(--filet); }
+.cmd-vign { width: 76px; height: 76px; background: var(--bg-secondary); position: relative; overflow: hidden; }
+.cmd-vign img { width: 100%; height: 100%; object-fit: cover; }
+.cmd-nom { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 17px; line-height: 1.3; margin: 0 0 5px; }
+.cmd-det { font-size: 13px; color: var(--text-secondary); margin: 0; }
+.cmd-qte { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--filet); height: 40px; padding: 0 4px; background: none; }
+.cmd-qte button { width: 32px; height: 36px; border: none; background: none; font-family: inherit; font-size: 17px; color: var(--accent-deep); cursor: pointer; padding: 0; }
+.cmd-qte button:disabled { color: var(--eteint); cursor: default; }
+.cmd-qte .cmd-q { font-size: 15px; font-weight: 500; min-width: 28px; text-align: center; }
+.cmd-pr { text-align: right; font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 17px; }
+.cmd-sup { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); border: none; border-bottom: 1px solid rgba(96, 90, 79, 0.3); background: none; padding: 0 0 3px; cursor: pointer; display: inline-block; margin-top: 8px; font-family: inherit; }
+
+/* ── bloc conseil / avis ── */
+.cmd-avis { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--filet); display: flex; gap: 14px; align-items: flex-start; }
+.cmd-avis p { font-size: 14px; line-height: 1.6; margin: 0; }
+.cmd-avis p.cmd-b { font-size: 13.5px; color: var(--text-secondary); margin-top: 5px; }
+.cmd-avis svg { flex: 0 0 20px; margin-top: 2px; }
+
+/* ── récapitulatif ── */
+.cmd-r { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--text-secondary); padding: 8px 0; }
+.cmd-r b { font-weight: 400; color: var(--text-primary); white-space: nowrap; }
+.cmd-rt { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 0 0; margin-top: 8px; border-top: 1px solid var(--filet); }
+.cmd-rt .cmd-l { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-secondary); }
+.cmd-rt .cmd-v { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 27px; }
+.cmd-mini { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--filet); }
+.cmd-mini b { color: var(--text-primary); font-weight: 500; }
+
+/* ── champs ── */
+.cmd-lab { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); margin: 0 0 10px; display: block; }
+.cmd-champ, .cmd-liste { width: 100%; background: var(--bg-primary); border: 1px solid var(--filet); height: 52px; padding: 0 16px; font-family: inherit; font-size: 15px; color: var(--text-primary); display: flex; align-items: center; gap: 13px; }
+.cmd-champ::placeholder { color: var(--eteint); }
+.cmd-champ:focus, .cmd-liste:focus { outline: none; border-color: var(--accent); }
+.cmd-liste { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--text-primary) 50%), linear-gradient(135deg, var(--text-primary) 50%, transparent 50%); background-position: calc(100% - 20px) 23px, calc(100% - 15px) 23px; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.cmd-bloc { padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid var(--filet); }
+.cmd-bloc:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.cmd-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cmd-aide { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin: 11px 0 0; }
+.cmd-zone { font-size: 13px; line-height: 1.7; margin: 11px 0 0; color: var(--accent-deep); }
+.cmd-zone-non { color: #8A3A1E; }
+.cmd-texte { height: auto; min-height: 76px; padding: 14px 16px; resize: vertical; line-height: 1.6; display: block; }
+
+/* ── calendrier ── */
+.cmd-mois { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--filet); margin-bottom: 18px; }
+.cmd-mois .cmd-m { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 22px; }
+.cmd-mois button { font-size: 15px; color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 4px 8px; font-family: inherit; }
+.cmd-mois button:disabled { color: var(--eteint); cursor: default; }
+.cmd-sem { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 12px; }
+.cmd-sem i { font-style: normal; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eteint); text-align: center; }
+.cmd-jours { display: grid; grid-template-columns: repeat(7, 1fr); }
+.cmd-c { height: 62px; display: flex; align-items: center; justify-content: center; font-size: 15px; position: relative; cursor: pointer; user-select: none; background: none; border: none; font-family: inherit; color: var(--text-primary); padding: 0; }
+.cmd-c span { position: relative; z-index: 1; line-height: 1; }
+/* le disque or doit être centré sur le chiffre : sans top/left/translate il
+   se posait en haut à gauche de la case (bug vu le 29/10) */
+.cmd-c::before { content: ''; position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; background: var(--accent); transform: translate(-50%, -50%) scale(0.7); opacity: 0; transition: opacity 0.18s ease, transform 0.18s ease; }
+.cmd-c-sel::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.cmd-c-sel span { color: #fff; }
+.cmd-c-off { color: var(--eteint); cursor: default; }
+.cmd-c:not(.cmd-c-off):not(.cmd-c-sel):hover::before { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+
+/* ── créneau retenu ── */
+.cmd-cren { padding: 22px 0 26px; margin-bottom: 26px; border-bottom: 1px solid var(--filet); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cmd-cren .cmd-t { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 7px; }
+.cmd-cren .cmd-v { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 23px; margin: 0; }
+.cmd-cren .cmd-pil { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); border-bottom: 1px solid var(--filet); padding-bottom: 4px; white-space: nowrap; }
+
+/* ── options (largeur du créneau, règlement, parfums) ── */
+.cmd-opt { display: grid; grid-template-columns: 20px 1fr auto; gap: 18px; align-items: start; padding: 20px 0; border-top: 1px solid var(--filet); cursor: pointer; background: none; border-left: none; border-right: none; border-bottom: none; width: 100%; text-align: left; font-family: inherit; color: inherit; }
+.cmd-opt:last-of-type { border-bottom: 1px solid var(--filet); }
+.cmd-coche { width: 18px; height: 18px; border: 1px solid var(--eteint); margin-top: 3px; position: relative; flex: 0 0 18px; }
+.cmd-opt-on .cmd-coche { border-color: var(--accent); }
+.cmd-opt-on .cmd-coche::after { content: ''; position: absolute; inset: 3px; background: var(--accent); }
+.cmd-opt .cmd-t { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 18px; margin: 0 0 6px; }
+.cmd-opt .cmd-s { font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); margin: 0; }
+.cmd-opt .cmd-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-secondary); white-space: nowrap; margin-top: 5px; }
+.cmd-opt-on .cmd-tag { color: var(--accent-deep); }
+
+/* ── parfums d'un coffret Mado ── */
+.cmd-parfums { margin-top: 12px; padding: 16px 0 0; border-top: 1px solid var(--filet); }
+.cmd-parfums-grille { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 20px; margin-top: 10px; }
+.cmd-parfum { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13.5px; }
+.cmd-parfum .cmd-qte { height: 32px; }
+.cmd-parfum .cmd-qte button { height: 30px; width: 26px; font-size: 15px; }
+.cmd-reste { font-size: 12px; letter-spacing: 0.04em; color: var(--accent-deep); margin-top: 10px; }
+
+/* ── livraison, rappel ── */
+.cmd-liv { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--filet); }
+.cmd-liv .cmd-k { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 9px; }
+.cmd-liv p { font-size: 14px; line-height: 1.75; color: var(--text-primary); margin: 0; }
+.cmd-liv p.cmd-g { color: var(--text-secondary); font-size: 13.5px; }
+
+/* ── barre du bas ── */
+.cmd-bas { display: flex; align-items: center; justify-content: space-between; padding: 24px 54px; gap: 20px; border-top: 1px solid var(--filet); }
+.cmd-retour { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); border: none; border-bottom: 1px solid rgba(96, 90, 79, 0.3); background: none; padding: 0 0 3px; cursor: pointer; font-family: inherit; text-decoration: none; }
+.cmd-cont { background: #111111; color: #fff; padding: 15px 30px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; border: none; font-family: inherit; text-decoration: none; transition: opacity 0.3s ease; }
+.cmd-cont:hover { opacity: 0.82; }
+.cmd-cont:disabled { background: var(--eteint); cursor: not-allowed; opacity: 1; }
+.cmd-erreur { font-size: 13px; line-height: 1.6; color: #8A3A1E; margin: 0; flex: 1; }
+
+/* ── vide, confirmation ── */
+.cmd-centre { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 24px 100px; }
+.cmd-centre .cmd-h1 { max-width: 620px; }
+.cmd-centre .cmd-intro { max-width: 520px; }
+
+/* =================== tablette =================== */
+@media (max-width: 1024px) {
+  .cmd-top { padding: 24px 32px 20px; }
+  .cmd-gauche, .cmd-droite { padding: 32px 32px 28px; }
+  .cmd-bas { padding: 20px 32px; }
+  .cmd-pas a, .cmd-pas .cmd-p { width: 96px; }
+  .cmd-pas .cmd-ln { width: 40px; }
+  .cmd-secu { display: none; }
+}
+
+/* =================== téléphone =================== */
+@media (max-width: 760px) {
+  .cmd-top { padding: 18px 20px 14px; flex-direction: column; align-items: stretch; gap: 18px; }
+  .cmd-logo { font-size: 20px; text-align: center; }
+  .cmd-pas { justify-content: center; }
+  .cmd-pas a, .cmd-pas .cmd-p { width: auto; flex: 1; max-width: 108px; }
+  .cmd-pas .cmd-ln { width: 20px; }
+  .cmd-corps, .cmd-corps-panier { grid-template-columns: 1fr; }
+  .cmd-droite { border-left: none; border-top: 1px solid var(--filet); }
+  .cmd-gauche, .cmd-droite { padding: 28px 20px 24px; }
+  .cmd-ligne { grid-template-columns: 56px 1fr; grid-template-areas: 'v n' 'q p'; gap: 14px 14px; }
+  .cmd-vign { width: 56px; height: 56px; grid-area: v; }
+  .cmd-ligne > div:nth-child(2) { grid-area: n; }
+  .cmd-qte { grid-area: q; max-width: 128px; }
+  .cmd-pr { grid-area: p; align-self: center; }
+  .cmd-parfums-grille { grid-template-columns: 1fr; }
+  .cmd-bas { padding: 18px 20px; flex-direction: column-reverse; align-items: stretch; }
+  .cmd-cont { justify-content: center; width: 100%; }
+  .cmd-retour { align-self: center; }
+  .cmd-duo { grid-template-columns: 1fr; }
+  .cmd-c { height: 48px; }
+  .cmd-c::before { width: 38px; height: 38px; }
+}

@@ -945,3 +945,58 @@ a:hover .article-card-img { transform: scale(1.04); }
   .af-nom { font-size: 16px; }
   .af-meta { margin-bottom: 8px; }
 }
+
+/* ============================================================
+   Bouton d'ajout au panier, sur la ligne du prix d'une carte
+   produit (29/10/2026). Jamais sur la photo.
+   Trois états : « + » au repos, une coche une seconde après le
+   clic, puis le réglage « − n + ».
+   ============================================================ */
+.pa { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; flex: 0 0 auto; }
+.pa-rond {
+  width: 30px; height: 30px; border: 1px solid rgba(17, 17, 17, 0.18); background: none;
+  color: var(--accent-deep); font-size: 17px; line-height: 1; cursor: pointer; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: border-color 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+.pa-rond:hover { border-color: var(--accent); background: rgba(224, 161, 38, 0.08); }
+.pa-ok, .pa-ok:hover { border-color: var(--accent); background: var(--accent); color: #FFFFFF; }
+.pa-reglage {
+  display: inline-flex; align-items: center; border: 1px solid rgba(17, 17, 17, 0.18); height: 30px;
+}
+.pa-b {
+  width: 26px; height: 28px; border: none; background: none; color: var(--accent-deep);
+  font-family: inherit; font-size: 16px; line-height: 1; cursor: pointer; padding: 0;
+}
+.pa-n { font-size: 13px; font-weight: 500; min-width: 20px; text-align: center; }
+/* Place réservée pour une référence qui ne se commande pas en ligne : la
+   grille garde ses lignes alignées (voir components/commande/BoutonAjouter). */
+.pa-vide { display: inline-block; width: 30px; height: 30px; }
+
+/* Sur la ligne du prix d'une carte : le prix à gauche, le bouton à droite. */
+.pd-prix-ligne { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+/* Téléphone : pleine largeur sous le prix, hauteur unique de 38 px pour que
+   la dernière ligne d'une grille à deux colonnes reste régulière. */
+@media (max-width: 760px) {
+  .pd-prix-ligne { display: block; }
+  .pa { display: flex; width: 100%; margin-top: 10px; }
+  .pa-rond, .pa-reglage, .pa-vide { width: 100%; height: 38px; justify-content: center; }
+  .pa-reglage { justify-content: space-between; padding: 0 2px; }
+  .pa-b { width: 44px; height: 36px; font-size: 18px; }
+}
+
+/* Le panier dans la navigation : discret, jamais affiché s'il est vide. */
+.nav-panier {
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-deep); text-decoration: none; white-space: nowrap;
+  border-bottom: 1px solid var(--accent); padding-bottom: 3px; margin-left: auto;
+  display: inline-flex; align-items: baseline; gap: 7px;
+  transition: opacity 0.3s ease;
+}
+.nav-panier:hover { opacity: 0.72; }
+.nav-panier span { font-size: 11px; color: var(--text-secondary); }
+@media (max-width: 1024px) { .nav-panier { display: none; } }
+/* Dans le menu déplié du téléphone, où la navigation de droite n'existe pas. */
+.nav-panier-m { display: flex !important; justify-content: center; margin: 28px 0 0; padding: 15px; border: 1px solid var(--accent); }

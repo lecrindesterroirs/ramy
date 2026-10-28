@@ -61,6 +61,8 @@ export default function MobileCTA() {
   if (pathname === '/devis') return null
   // Calculateur intégré chez un tiers (iframe) : pas de barre L'Écrin par-dessus
   if (pathname && pathname.endsWith('/calculateur-quantites/embed')) return null
+  // Tunnel de commande : il a sa propre barre du bas, avec le montant
+  if (pathname && pathname.startsWith('/commander')) return null
 
   return (
     <>
