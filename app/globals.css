@@ -1000,3 +1000,28 @@ a:hover .article-card-img { transform: scale(1.04); }
 @media (max-width: 1024px) { .nav-panier { display: none; } }
 /* Dans le menu déplié du téléphone, où la navigation de droite n'existe pas. */
 .nav-panier-m { display: flex !important; justify-content: center; margin: 28px 0 0; padding: 15px; border: 1px solid var(--accent); }
+
+/* Bouton d'ajout sur une FICHE produit : il y a la place d'un libellé, et
+   l'ajout doit peser autant que « Obtenir un devis ». */
+.pa-fiche { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 14px; flex-wrap: wrap; }
+.pa-large {
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #FFFFFF; background: #111111; border: 1px solid #111111; padding: 12px 30px;
+  cursor: pointer; transition: opacity 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.pa-large:hover { opacity: 0.82; }
+.pa-large-ok { background: var(--accent); border-color: var(--accent); }
+.pa-reglage-fiche { height: 40px; }
+.pa-reglage-fiche .pa-b { width: 34px; height: 38px; font-size: 17px; }
+.pa-reglage-fiche .pa-n { font-size: 15px; min-width: 26px; }
+.pa-voir {
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-deep); text-decoration: none;
+  border-bottom: 1px solid var(--accent); padding-bottom: 3px;
+}
+@media (max-width: 760px) {
+  .pa-fiche .pa { width: auto; margin-top: 0; }
+  .pa-large { width: 100%; }
+}

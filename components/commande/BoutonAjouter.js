@@ -21,7 +21,13 @@ import { useEffect, useRef, useState } from 'react'
 import { ajouterAuPanier, changerQuantite, lirePanier, surChangement, cleLigne, quantiteDe } from '@/lib/panier'
 import { produitCommandable } from '@/lib/catalogueCommande'
 
-export default function BoutonAjouter({ id, compact = false }) {
+/*
+  variante :
+  - 'carte' (défaut) sur une carte de catégorie : le « + » nu sur la ligne du prix ;
+  - 'fiche' sur une page produit, où il y a la place d'un vrai libellé et où
+    l'ajout doit peser autant que « Obtenir un devis ».
+*/
+export default function BoutonAjouter({ id, compact = false, variante = 'carte' }) {
   const p = produitCommandable(id)
   const [qte, setQte] = useState(0)
   const [coche, setCoche] = useState(false)
@@ -43,7 +49,11 @@ export default function BoutonAjouter({ id, compact = false }) {
     sans ce vide la carte voisine remonterait d'une trentaine de pixels. La
     dernière ligne d'une grille à deux colonnes doit rester régulière.
   */
-  if (!p || !pret) return <span className={`pa pa-vide ${compact ? 'pa-compact' : ''}`} aria-hidden="true" />
+  if (!p || !pret) {
+    // Sur une fiche, rien à réserver : la page n'est pas une grille.
+    if (variante === 'fiche') return null
+    return <span className={`pa pa-vide ${compact ? 'pa-compact' : ''}`} aria-hidden="true" />
+  }
 
   const stop = (e) => { e.preventDefault(); e.stopPropagation() }
 
@@ -66,6 +76,27 @@ export default function BoutonAjouter({ id, compact = false }) {
     const l = lignes.find(x => x.id === p.id)
     if (!l) { if (pas > 0) ajoute(e); return }
     changerQuantite(cleLigne(l), l.qte + pas)
+  }
+
+  if (variante === 'fiche') {
+    return (
+      <div className="pa-fiche">
+        {qte > 0 && !coche ? (
+          <>
+            <span className="pa pa-reglage pa-reglage-fiche">
+              <button type="button" className="pa-b" onClick={(e) => bouge(e, -1)} aria-label={`Retirer un ${p.nom}`}>−</button>
+              <span className="pa-n">{qte}</span>
+              <button type="button" className="pa-b" onClick={(e) => bouge(e, +1)} aria-label={`Ajouter un ${p.nom}`}>+</button>
+            </span>
+            <a className="pa-voir" href="/commander/panier">Voir le panier</a>
+          </>
+        ) : (
+          <button type="button" className={`pa-large ${coche ? 'pa-large-ok' : ''}`} onClick={ajoute}>
+            {coche ? 'Ajouté au panier' : 'Ajouter au panier'}
+          </button>
+        )}
+      </div>
+    )
   }
 
   const classe = `pa ${compact ? 'pa-compact' : ''}`

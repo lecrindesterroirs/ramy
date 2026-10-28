@@ -297,6 +297,13 @@ en heure de Paris. C'était le piège.
    plafonne aujourd'hui, et c'est l'anti-objectif du document.
 6. **Qui appelle** quand une première commande dépasse 1 000 € HT, et sous quel délai ?
 
+### Un décalage de catalogue, à réconcilier
+
+Les plateaux apéritifs existent **deux fois**, avec des identifiants qui ne se recoupent
+pas : `app/creations/plateaux-aperitifs/data.js` (`sw2`, `sw3`…) et `lib/productsData.js`
+(`plateau-clubs-signature`, `plateau-mini-wraps`…), aux mêmes prix. Leurs fiches ne portent
+donc pas encore le bouton d'ajout. À réconcilier avant de les ouvrir à la commande.
+
 ### Deux vestiges à supprimer, de l'ancien panier de mai 2026
 
 `app/api/checkout/route.js` (désactivé, répond 503), `app/api/commande-facture/route.js` et
