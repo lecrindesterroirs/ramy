@@ -30,7 +30,7 @@ export const EVENEMENTS_INDEX = [
       type: 'epiphanie', duree: 27, sansConseil: true,
       libelle: (o, l) => l === 'en' ? `January ${an(o)}, from Epiphany` : `en janvier ${an(o)}, à partir de l'Épiphanie`,
     },
-    produits: [`${B}jus-pomme`, `${B}chardonnay-blanc-de-blancs-0`, `${B}thermos-cafe`, `${B}thermos-the`, `${P}viennoiseries-melangees`],
+    produits: [`${G}galette-des-rois-frangipane`, `${G}galette-des-rois-pomme`, `${G}galette-des-rois-noisette`, `${B}jus-pomme`, `${B}thermos-cafe`, `${B}thermos-the`],
   },
   {
     slug: 'dry-january', nom: 'Dry January', nomEn: 'Dry January',

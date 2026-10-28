@@ -132,7 +132,7 @@ export default function PlateauxVillePage({ params }) {
 
         {/* ── Sélection pour la ville : composition réelle des plateaux ── */}
         {selection.length > 0 && (
-          <div className="plv-selection" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 0' }}>
+          <div className="plv-selection" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 80px' }}>
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
               <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '18px' }}>
                 À {city.name}
@@ -221,14 +221,14 @@ export default function PlateauxVillePage({ params }) {
           .plv-hero { min-height: 480px !important; height: 68vh !important; }
           .plv-hero-text { padding: 0 28px !important; max-width: 100% !important; }
           .plv-formules { padding: 40px 24px 0 !important; }
-          .plv-selection { padding: 48px 24px 0 !important; }
+          .plv-selection { padding: 48px 24px 56px !important; }
           .plv-formules-grid, .plv-selection-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .plv-hero-wrapper { padding: 32px 40px 0 !important; }
           .plv-hero-text { padding: 0 40px !important; }
           .plv-formules { padding: 48px 40px 0 !important; }
-          .plv-selection { padding: 56px 40px 0 !important; }
+          .plv-selection { padding: 56px 40px 64px !important; }
         }
       ` }} />
 

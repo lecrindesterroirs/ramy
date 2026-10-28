@@ -193,7 +193,7 @@ export default function TraiteurHalalSousPage() {
         </section>
 
         {/* ── Formules & tarifs ── */}
-        <div className="hls-formules" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 0' }}>
+        <div className="hls-formules" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 80px' }}>
           <div style={{ textAlign: 'center', marginBottom: '44px' }}>
             <p style={eyebrowStyle}>{page.formulesEyebrow}</p>
             <h2 style={{ ...h2Style, fontSize: 'clamp(24px, 2.6vw, 34px)' }}>{page.formulesTitle}</h2>
@@ -219,7 +219,7 @@ export default function TraiteurHalalSousPage() {
 
         {/* ── Plateaux : composition réelle de la carte ── */}
         {selection.length > 0 && (
-          <div className="hls-selection" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 0' }}>
+          <div className="hls-selection" style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 72px 80px' }}>
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
               <p style={eyebrowStyle}>{T.carte}</p>
               <h2 style={{ ...h2Style, fontSize: 'clamp(24px, 2.6vw, 34px)' }}>{T.sixPlateaux}</h2>
@@ -333,16 +333,16 @@ export default function TraiteurHalalSousPage() {
           .hls-hero-wrapper { padding: 20px 20px 0 !important; }
           .hls-hero { min-height: 480px !important; height: 68vh !important; }
           .hls-hero-text { padding: 0 28px !important; max-width: 100% !important; }
-          .hls-formules { padding: 48px 24px 0 !important; }
-          .hls-selection { padding: 48px 24px 0 !important; }
+          .hls-formules { padding: 48px 24px 56px !important; }
+          .hls-selection { padding: 48px 24px 56px !important; }
           .hls-formules-grid, .hls-selection-grid { grid-template-columns: 1fr !important; }
           .hls-faq { padding: 56px 24px 40px !important; }
         }
         @media (max-width: 1024px) and (min-width: 769px) {
           .hls-hero-wrapper { padding: 32px 40px 0 !important; }
           .hls-hero-text { padding: 0 40px !important; }
-          .hls-formules { padding: 56px 40px 0 !important; }
-          .hls-selection { padding: 56px 40px 0 !important; }
+          .hls-formules { padding: 56px 40px 64px !important; }
+          .hls-selection { padding: 56px 40px 64px !important; }
           .hls-selection-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       ` }} />

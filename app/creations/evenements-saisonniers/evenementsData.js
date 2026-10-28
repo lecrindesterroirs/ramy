@@ -65,7 +65,7 @@ const TEXTES = [
     enBref: "L'Écrin Traiteur livre des galettes des rois préparées par nos boulangers partenaires, avec jus de pomme Alain Milliat, café et thé, pour un moment d'équipe en janvier.",
     prestations: ['pdj'],
     exemples: [{ p: 'pdj', n: 20 }, { p: 'pdj', n: 50 }],
-    horsCatalogue: ['Galettes des rois : frangipane, pommes, chocolat noisette ou pistache, fève et couronne comprises'],
+    horsCatalogue: ['Galettes découpées à la livraison, sur demande'],
     faq: [
       { q: 'Combien de galettes prévoir pour une équipe ?', a: "Comptez une galette de 6 parts pour 5 à 6 personnes. Pour 20 personnes, quatre galettes, de deux parfums différents si possible. Nous ajustons le nombre au devis selon votre effectif." },
       { q: 'Les galettes sont-elles faites par L\'Écrin Traiteur ?', a: "Non. Elles sont préparées par nos boulangers partenaires, en pâte feuilletée pur beurre, et livrées par notre équipe avec les boissons. Elles sont proposées sur devis." },

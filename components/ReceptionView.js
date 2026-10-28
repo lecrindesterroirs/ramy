@@ -73,10 +73,10 @@ export default function ReceptionView({ en = false }) {
     ],
     devisTitre: 'An event to organise?', devisSous: 'Answer in 30 seconds, detailed quote within 24 hours.',
     blocs: [
-      { href: '/en/creations/cocktails', img: '/cocktail-classique.webp', nom: 'Cocktail reception', prix: `from ${ht(cocktailDes)} per person`, unite: '8, 12 or 16 pieces per guest' },
+      { href: '/en/creations/cocktails', img: '/cocktail-celebration-doux.webp', nom: 'Cocktail reception', prix: `from ${ht(cocktailDes)} per person`, unite: '8, 12 or 16 pieces per guest' },
       { href: '/en/creations/animations-culinaires', img: '/prod-atelier-crepes.webp', nom: 'Live food stations', prix: `from ${ht(ANIMATION_DES)} per station`, unite: 'crêpes, pasta, sushi, ice cream…' },
       { href: '/en/creations/a-partager', img: '/hero-a-partager.webp', nom: 'Sharing buffet', prix: `from ${ht(PARTAGE_DES)} per person`, unite: 'salads and boards for 8 to 12' },
-      { href: '/en/creations/plateaux-repas', img: '/hero-plateau-signature.webp', nom: 'Lunch trays', prix: `from ${ht(PLATEAU_DES)} per person`, unite: 'starter, main, dessert' },
+      { href: '/en/creations/plateaux-repas', img: '/plateau-mediterraneen.webp', nom: 'Lunch trays', prix: `from ${ht(PLATEAU_DES)} per person`, unite: 'starter, main, dessert' },
     ],
   } : {
     accueil: 'Accueil', fil: 'Événement sur mesure',
@@ -123,10 +123,10 @@ export default function ReceptionView({ en = false }) {
     ],
     devisTitre: 'Un événement à organiser ?', devisSous: 'Répondez en 30 secondes, devis détaillé sous 24h.',
     blocs: [
-      { href: '/creations/cocktails', img: '/cocktail-classique.webp', nom: 'Cocktail', prix: `dès ${ht(cocktailDes)} par personne`, unite: '8, 12 ou 16 pièces par personne' },
+      { href: '/creations/cocktails', img: '/cocktail-celebration-doux.webp', nom: 'Cocktail', prix: `dès ${ht(cocktailDes)} par personne`, unite: '8, 12 ou 16 pièces par personne' },
       { href: '/creations/animations-culinaires', img: '/prod-atelier-crepes.webp', nom: 'Animations culinaires', prix: `dès ${ht(ANIMATION_DES)} par animation`, unite: 'crêpes, pasta, sushi, glaces…' },
       { href: '/creations/a-partager', img: '/hero-a-partager.webp', nom: 'Buffet à partager', prix: `dès ${ht(PARTAGE_DES)} par personne`, unite: 'salades et planches pour 8 à 12' },
-      { href: '/creations/plateaux-repas', img: '/hero-plateau-signature.webp', nom: 'Plateaux repas', prix: `dès ${ht(PLATEAU_DES)} par personne`, unite: 'entrée, plat, dessert' },
+      { href: '/creations/plateaux-repas', img: '/plateau-mediterraneen.webp', nom: 'Plateaux repas', prix: `dès ${ht(PLATEAU_DES)} par personne`, unite: 'entrée, plat, dessert' },
     ],
   }
 

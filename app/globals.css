@@ -621,6 +621,10 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ev-hero-img { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-secondary); }
 
 .ev-bloc { max-width: var(--contenu-max); margin: 0 auto; padding: 72px var(--gouttiere) 0; }
+/* Les blocs n avaient aucun bas de page : une grille de cartes finissait collée
+   au titre suivant (77 px seulement). On ajoute de l air sous chaque bloc. */
+.ev-bloc { padding-bottom: 40px; }
+.ev-cartes { margin-bottom: 8px; }
 .ev-etroit { max-width: 860px; }
 .ev-h2 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 400; line-height: 1.15; color: var(--text-primary); margin-bottom: 18px; }
 .ev-h3 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(20px, 2vw, 24px); font-weight: 400; line-height: 1.2; color: var(--text-primary); margin: 0 0 10px; }
@@ -640,7 +644,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ev-carte:hover .ev-carte-nom { color: var(--accent-deep); }
 .ev-carte-prix { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; color: var(--text-primary); }
 .ev-carte-unite { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
-.ev-surdemande { margin-top: 48px; padding-top: 28px; border-top: 1px solid rgba(17,17,17,0.08); max-width: 720px; }
+.ev-surdemande { margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(17,17,17,0.08); max-width: 720px; }
 .ev-surdemande .ev-intro { margin-bottom: 12px; }
 .ev-surdemande ul, .ev-lignes { list-style: none; padding: 0; margin: 0; }
 .ev-surdemande li { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 15px; line-height: 1.6; color: var(--text-primary); padding: 8px 0; border-bottom: 1px solid rgba(17,17,17,0.06); }
@@ -792,7 +796,7 @@ a:hover .article-card-img { transform: scale(1.04); }
 @media (max-width: 768px) {
   .ev-hero { padding: 16px 16px 0; }
   .ev-rose .ev-hero { padding: 20px 16px 32px; }
-  .ev-bloc { padding: 56px 16px 0; }
+  .ev-bloc { padding: 56px 16px 28px; }
   .ev-signature { padding: 64px 16px 0; }
   .ev-halal { padding: 8px 16px 0; }
   .ev-texte { font-size: 15px; }
