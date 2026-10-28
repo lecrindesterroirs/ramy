@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import RelatedLinks from '../../../components/RelatedLinks'
-import { grappesCommunes, estGuide } from '../../../lib/guidesMaillage'
+import { articlesProches, liensHistoriques } from '../../../lib/journalMaillage'
 import Breadcrumb from '../../../components/Breadcrumb'
 import { articles, articleAuthor } from '../../../lib/journalData'
 import { modifieLe } from '../../../lib/journalLastmod'
@@ -81,11 +81,9 @@ export default function ArticlePage({ params }) {
 
   // Maillage latéral : 3 articles liés (même catégorie en priorité, complété par les plus récents)
   // Grappes thématiques d'abord (lib/guidesMaillage.js), puis même catégorie.
-  const score = (a) => grappesCommunes(article.slug, a.slug) * 2 + (a.categorie === article.categorie ? 1 : 0) + (estGuide(a.slug) ? 1.5 : 0)
-  const related = [...articles]
-    .filter(a => a.slug !== article.slug)
-    .sort((a, b) => score(b) - score(a))
-    .slice(0, 3)
+  const related = liensHistoriques(article, articles)
+  // Trois liens de plus, vers des articles proches par le sujet et peu liés (lib/journalMaillage.js).
+  related.push(...articlesProches(article, articles))
 
   return (
     <>
