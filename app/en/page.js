@@ -33,7 +33,7 @@ import { alternatesPourEn } from '../../lib/i18n'
 
 export const metadata = {
   title: { absolute: "Corporate Catering in Paris | L'Écrin Traiteur" },
-  description: 'Corporate catering in Paris and Île-de-France: breakfasts, lunch trays and cocktail receptions delivered from 6:30 am. Halal and pork-free menu, quote within 24 hours.',
+  description: 'Corporate catering in Paris and Île-de-France: breakfasts, lunch trays and cocktail receptions delivered from 6:30 am. Halal and pork-free savoury food, quote within 24 hours.',
   alternates: alternatesPourEn('/'),
   openGraph: {
     images: ogImages('/hero-bg.webp'),

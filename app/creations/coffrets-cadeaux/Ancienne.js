@@ -260,7 +260,7 @@ export default function CoffretsCadeaux({ bas }) {
         }
       ` }} />
 
-      <CategoryJsonLd name={T.jsonLdName} path={`${en ? '/en' : ''}/creations/coffrets-cadeaux`} />
+      <CategoryJsonLd name={T.jsonLdName} path={`${en ? '/en' : ''}/creations/coffrets-cadeaux`} sucre />
 
       <Footer />
     </>

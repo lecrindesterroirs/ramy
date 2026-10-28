@@ -59,14 +59,14 @@ const FAQ = {
     { q: 'Quel est le budget minimum ?', a: `Le minimum de commande est de ${min}, et la livraison de ${liv} à Paris et dans les communes proches. Une petite équipe commande comme une grande.` },
     { q: 'Peut-on personnaliser les produits aux couleurs de l\'entreprise ?', a: "Oui, sur devis : madeleines, cookies et emballages à votre message ou à vos couleurs. Comptez quelques jours de délai en plus." },
     { q: 'Livrez-vous plusieurs sites le même jour ?', a: "Oui, à Paris et en Île-de-France. Prévenez-nous 48 h avant pour organiser les tournées." },
-    { q: 'Le salé est-il halal ?', a: "Oui. Tout notre salé est halal et sans porc, et toute la carte est sans alcool, sans supplément. Options végétariennes, vegan et sans gluten sur demande." },
+    { q: 'Le salé est-il halal ?', a: "Oui. Tout notre salé est halal et sans porc, sans alcool, sans supplément. Options végétariennes, vegan et sans gluten sur demande." },
   ],
   en: (liv, min) => [
     { q: 'How far ahead should you order?', a: "Until 2 pm the day before for delivery from 6:30 am. From 50 people or across several sites, allow 48 hours; for a live station (crêpes, barista, mocktail bar) or a personalised item, ask for the quote a few days ahead." },
     { q: 'What is the minimum budget?', a: `The minimum order is ${min}, and delivery is ${liv} in Paris and nearby towns. A small team orders just like a large one.` },
     { q: "Can the products be personalised in the company's colours?", a: 'Yes, on quote: madeleines, cookies and packaging with your message or in your colours. Allow a few extra days.' },
     { q: 'Do you deliver to several sites on the same day?', a: 'Yes, across Paris and Île-de-France. Give us 48 hours\' notice to plan the rounds.' },
-    { q: 'Is the savoury food halal?', a: 'Yes. All our savoury food is halal and pork-free, and the whole menu is alcohol-free, at no extra cost. Vegetarian, vegan and gluten-free options on request.' },
+    { q: 'Is the savoury food halal?', a: 'Yes. All our savoury food is halal and pork-free, with no alcohol, at no extra cost. Vegetarian, vegan and gluten-free options on request.' },
   ],
 }
 

@@ -105,7 +105,7 @@ export default function AvisClients() {
             rows: [
               ['Les produits', "Viennoiseries pur beurre, madeleines Mado Paris, jus Alain Milliat, yaourts de la Ferme de Viltain : des artisans nommés."],
               ['La ponctualité', "Livraison dès 6h30, à l'heure exacte demandée, par notre propre équipe."],
-              ['Les régimes', "Toute la carte est halal et sans porc, sans alcool ; végétarien, vegan et sans gluten sur demande."],
+              ['Les régimes', "Le salé est halal et sans porc, sans alcool ; végétarien, vegan et sans gluten sur demande."],
               ['La simplicité', `Commande jusqu'à la veille 14h, devis sous 24 h, ${a('/tarifs', 'prix publiés')}.`],
             ],
           },

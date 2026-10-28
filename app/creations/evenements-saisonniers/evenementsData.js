@@ -81,7 +81,7 @@ const TEXTES = [
         },
         {
           heading: "Quelle quantité prévoir pour votre équipe ?",
-          texte: "Comptez une galette de 6 parts pour 5 à 6 collaborateurs pour que chacun ait une belle part. Pour un petit-déjeuner de 10 à 15 personnes, deux galettes de parfums différents permettent de varier. Côté boissons : jus de pomme Alain Milliat ou Chardonnay 0 %, sans alcool, pour que tout le monde partage le même verre, et un thermos de café. Pour les équipes plus larges, organisez plusieurs moments de 10 à 15 personnes plutôt qu'un seul grand rassemblement.",
+          texte: "Comptez une galette de 6 parts pour 5 à 6 collaborateurs pour que chacun ait une belle part. Pour un petit-déjeuner de 10 à 15 personnes, deux galettes de parfums différents permettent de varier. Côté boissons : jus de pomme Alain Milliat ou Chardonnay 0 %, pour que tout le monde partage le même verre, et un thermos de café. Pour les équipes plus larges, organisez plusieurs moments de 10 à 15 personnes plutôt qu'un seul grand rassemblement.",
         },
         {
           heading: "Quel parfum choisir ?",
@@ -155,7 +155,7 @@ const TEXTES = [
     descCourt: "Plateau de makis, spring rolls, gyozas et yakitori, thé Mariage Frères. Pour fêter la nouvelle année lunaire au bureau.",
     desc: "Le Nouvel An chinois suit le calendrier lunaire : prochaine édition le {{date}}. Au bureau, un plateau de bouchées d'inspiration asiatique, makis, california rolls, spring rolls, gyozas et brochettes yakitori, se picore debout. Thé Mariage Frères en thermos, brochettes de fruits frais pour finir.",
     differentiateur: {
-      label: 'Sans porc, comme toute la carte',
+      label: 'Sans porc, comme tout le salé',
       text: "Gyozas, spring rolls et brochettes yakitori sont sans porc, comme tout notre salé. Tout le monde mange de tout.",
     },
     enBref: "L'Écrin Traiteur livre un plateau de bouchées d'inspiration asiatique, un atelier sushi sur demande et du thé Mariage Frères pour le Nouvel An chinois.",
@@ -868,7 +868,7 @@ const TEXTES = [
       sections: [
         {
           heading: "Halloween en bref",
-          texte: `Le prochain Halloween tombe le {{date}} : fêtez-le le {{conseil}}. Une pause gourmande revient à partir de ${px(PAUSE_DES)} par personne, un cocktail de 8 pièces à ${px(C8)} par personne, livraison de ${LIVR} en plus. Commande jusqu'à la veille à 14h, livraison dès 6h30. Le cocktail salé est halal et sans porc, et toute la carte est sans alcool.`,
+          texte: `Le prochain Halloween tombe le {{date}} : fêtez-le le {{conseil}}. Une pause gourmande revient à partir de ${px(PAUSE_DES)} par personne, un cocktail de 8 pièces à ${px(C8)} par personne, livraison de ${LIVR} en plus. Commande jusqu'à la veille à 14h, livraison dès 6h30. Le cocktail salé est halal et sans porc, sans alcool.`,
         },
         {
           heading: "Le macaron noir, vanille et cœur potiron épicé",

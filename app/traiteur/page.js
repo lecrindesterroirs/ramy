@@ -31,7 +31,7 @@ const TRAITEUR_FAQ = [
   },
   {
     q: 'Proposez-vous du halal et des régimes particuliers ?',
-    a: "Toute la carte est halal et sans porc par défaut. Nous proposons aussi des options végétariennes, vegan et sans gluten, à préciser lors du devis.",
+    a: "Le salé (cocktails, plateaux, buffets) est halal et sans porc par défaut. Nous proposons aussi des options végétariennes, vegan et sans gluten, à préciser lors du devis.",
   },
   {
     q: "Combien coûte un traiteur d'entreprise à Paris ?",
@@ -199,7 +199,7 @@ export default function TraiteurPage() {
               : <>Vous commandez jusqu'à la veille 14h pour une livraison dès 6h30. Le minimum de commande est de <strong style={{ fontWeight: 500 }}>{euroFr(MINIMUM)} HT</strong>, avec un forfait de livraison de <strong style={{ fontWeight: 500 }}>{euroFr(LIV)} HT</strong> à Paris et dans les communes proches. Vous recevez une facture entreprise avec TVA et un devis personnalisé sous 24h.</>}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
-            {en ? E.intro3 : 'Toute la carte est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.'}
+            {en ? E.intro3 : 'Le salé (cocktails, plateaux, buffets) est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.'}
           </p>
                   <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, lineHeight: 1.15, color: 'var(--text-primary)', margin: '48px 0 18px' }}>
             {en ? E.prixTitre : "Combien coûte un traiteur d'entreprise à Paris ?"}
@@ -343,7 +343,7 @@ export default function TraiteurPage() {
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', marginTop: '20px' }}>
             {en
               ? <>{E.etapesNote.a}<a href={L('/traiteur-halal')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{E.etapesNote.halal}</a>{E.etapesNote.b}<a href={L('/traiteur-eco-responsable')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{E.etapesNote.eco}</a>{E.etapesNote.c}</>
-              : <>Toute la carte est <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>halal et sans porc</a> par défaut. Notre démarche sur les contenants, la reprise du matériel et les produits est détaillée sur la page{' '}
+              : <>Le salé (cocktails, plateaux, buffets) est <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>halal et sans porc</a> par défaut. Notre démarche sur les contenants, la reprise du matériel et les produits est détaillée sur la page{' '}
             <a href="/traiteur-eco-responsable" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>traiteur éco-responsable</a>.</>}
           </p>
         </section>
@@ -559,7 +559,7 @@ export default function TraiteurPage() {
               'areaServed': { '@type': 'State', 'name': 'Île-de-France' },
               'url': URL_PAGE,
               'inLanguage': en ? 'en' : 'fr',
-              'description': en ? E.serviceDesc : "Livraison de petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets en entreprise, à Paris et en Île-de-France. Produits d'artisans, halal et sans porc, livraison dès 6h30.",
+              'description': en ? E.serviceDesc : "Livraison de petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets en entreprise, à Paris et en Île-de-France. Produits d'artisans, salé halal et sans porc, livraison dès 6h30.",
             },
             {
               '@type': 'FAQPage',

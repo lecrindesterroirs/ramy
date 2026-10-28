@@ -21,7 +21,7 @@ const fallbackFaqs = [
   },
   {
     question: "Comment gérez-vous les régimes alimentaires spécifiques ?",
-    reponse: "Plusieurs de nos produits sont adaptés à des régimes spécifiques : nos madeleines Mado Paris sont faites avec des ingrédients biologiques et sans huile de palme, nos brochettes de fruits et compotes sont vegan, certains cakes sont disponibles sans gluten. Pour les régimes sans lactose, nous pouvons adapter la sélection selon les produits du jour. Toute la carte est halal et sans porc par défaut, sans supplément. Précisez vos contraintes lors de la commande et nous adaptons.",
+    reponse: "Plusieurs de nos produits sont adaptés à des régimes spécifiques : nos madeleines Mado Paris sont faites avec des ingrédients biologiques et sans huile de palme, nos brochettes de fruits et compotes sont vegan, certains cakes sont disponibles sans gluten. Pour les régimes sans lactose, nous pouvons adapter la sélection selon les produits du jour. Le salé (cocktails, plateaux, buffets) est halal et sans porc par défaut, sans supplément. Précisez vos contraintes lors de la commande et nous adaptons.",
   },
   {
     question: "Fournissez-vous les gobelets et serviettes ?",
@@ -69,7 +69,7 @@ const faqsEn = [
   },
   {
     question: 'How do you handle specific dietary needs?',
-    reponse: 'Several of our products suit specific diets: our Mado Paris madeleines are made with organic ingredients and no palm oil, our fruit skewers and compotes are vegan, and some loaf cakes come gluten-free. For lactose-free, we can adapt the selection to what is available that day. The whole menu is halal and pork-free as standard, at no extra cost. Tell us your constraints when you order and we work around them.',
+    reponse: 'Several of our products suit specific diets: our Mado Paris madeleines are made with organic ingredients and no palm oil, our fruit skewers and compotes are vegan, and some loaf cakes come gluten-free. For lactose-free, we can adapt the selection to what is available that day. Savoury food (cocktail receptions, lunch trays, buffets) is halal and pork-free as standard, at no extra cost. Tell us your constraints when you order and we work around them.',
   },
   {
     question: 'Do you provide cups and napkins?',

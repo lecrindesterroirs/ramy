@@ -8,7 +8,7 @@ import Reveal from './Reveal'
 import CategoryClosing from './CategoryClosing'
 import CategoryJsonLd from './CategoryJsonLd'
 import CategoryTabs from './CategoryTabs'
-import { CATEGORY_FAQ, CATEGORY_FAQ_EN } from '../lib/categoryFaq'
+import { faqCategorie } from '../lib/categoryFaq'
 import Breadcrumb from './Breadcrumb'
 import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
@@ -57,6 +57,8 @@ export default function ProductsPageTemplate({
   sansBandeau = false,
   // false quand les blocs du bas portent déjà leur FAQPage et leur ItemList (animations)
   jsonLdFaq = true,
+  // true sur le sucré et les boissons : FAQ sans halal, sans porc ni sans alcool (29/10/2026)
+  sucre = false,
   jsonLdItems = true,
 }) {
   const en = lang === 'en'
@@ -150,7 +152,7 @@ export default function ProductsPageTemplate({
         <h2 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: 'clamp(24px, 2.6vw, 32px)', fontWeight: 400, color: 'var(--text-primary)', margin: '0 0 28px' }}>
           {en ? 'Frequently asked questions' : 'Questions fréquentes'}
         </h2>
-        {(en ? CATEGORY_FAQ_EN : CATEGORY_FAQ).map((f, i) => (
+        {faqCategorie(en, sucre).map((f, i) => (
           <div key={i} style={{ padding: '22px 0', borderTop: i === 0 ? '1px solid rgba(17,17,17,0.08)' : '1px solid rgba(17,17,17,0.08)' }}>
             <h3 style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '19px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '10px' }}>
               {f.q}
@@ -167,6 +169,7 @@ export default function ProductsPageTemplate({
         path={basePath || '/creations/petits-dejeuners-et-pauses'}
         items={jsonLdItems ? products.map(p => ({ name: p.name, url: `${basePath || '/creations/petits-dejeuners-et-pauses'}/${p.id}` })) : null}
         includeFaq={jsonLdFaq}
+        sucre={sucre}
       />
       <Footer />
     </>

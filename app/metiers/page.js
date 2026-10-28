@@ -69,7 +69,7 @@ export default function Metiers() {
               ['Commande', 'Jusqu\'à la veille à 14h, 48 h à l\'avance à partir de 50 personnes.'],
               ['Devis', 'Sous 24 h, détaillé produit par produit.'],
               ['Facture', 'Facture d\'entreprise avec TVA, numéro de bon de commande sur demande.'],
-              ['Régimes', 'Carte halal et sans porc, sans alcool, sans supplément. Végétarien, vegan et sans gluten sur demande.'],
+              ['Régimes', 'Salé halal et sans porc, sans alcool, sans supplément. Végétarien, vegan et sans gluten sur demande.'],
             ],
           },
           after: [`Tous les prix sont sur la page ${a('/tarifs', 'tarifs 2026')} ; nos engagements de service sont détaillés dans ${a('/univers/nos-engagements', 'nos engagements')}.`],

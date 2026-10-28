@@ -14,7 +14,7 @@ const FAQ = [
   { name: "Y a-t-il un minimum de commande ?", answer: "Oui, 50 € HT de produits. Il n'y a pas de minimum de personnes." },
   { name: "La livraison est-elle comprise ?", answer: `Non, elle s'ajoute : 29 € HT à Paris et dans les communes proches, dès 6h30. Avec la reprise de la vaisselle réutilisable ou du matériel, livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94 ; ailleurs, prix de la zone plus ${euroFr(RECUP)} HT.` },
   { name: "Quand faut-il commander ?", answer: "Jusqu'à la veille 14h. À partir de 50 personnes, prévoyez 48 h. Le devis est envoyé sous 24 h." },
-  { name: "Les prix changent-ils pour le halal ou le végétarien ?", answer: "Non. Toute la carte est halal et sans porc, sans alcool et sans supplément. Les options végétariennes, vegan et sans gluten sont au même prix." },
+  { name: "Les prix changent-ils pour le halal ou le végétarien ?", answer: "Non. Le salé (cocktails, plateaux, buffets) est halal et sans porc, sans alcool et sans supplément. Les options végétariennes, vegan et sans gluten sont au même prix." },
 ]
 
 export default function Tarifs() {
@@ -45,7 +45,7 @@ export default function Tarifs() {
       sections={[
         {
           h2: 'Prix par personne, par prestation',
-          before: ["Chez L'Écrin Traiteur, un repas d'entreprise coûte de <strong>6 € HT</strong> (pause gourmande) à <strong>51,90 € HT par personne</strong> (cocktail de 16 pièces). Toute la carte est halal et sans porc, sans supplément."],
+          before: ["Chez L'Écrin Traiteur, un repas d'entreprise coûte de <strong>6 € HT</strong> (pause gourmande) à <strong>51,90 € HT par personne</strong> (cocktail de 16 pièces). Le salé (cocktails, plateaux, buffets) est halal et sans porc, sans supplément."],
           table: {
             head: ['Prestation', 'Prix HT par personne', 'Ce qui est compris'],
             rows: [

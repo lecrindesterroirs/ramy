@@ -3,7 +3,7 @@ import { alternatesPourEn } from '../../../../lib/i18n'
 
 export const metadata = {
   title: { absolute: "Our House: story & convictions | L'Écrin Traiteur" },
-  description: "Who we are: a corporate caterer in Boulogne-Billancourt, founded in 2025, delivering to offices across Paris and Île-de-France from 6:30 am. Named makers, halal and pork-free menu.",
+  description: "Who we are: a corporate caterer in Boulogne-Billancourt, founded in 2025, delivering to offices across Paris and Île-de-France from 6:30 am. Named makers, halal and pork-free savoury food.",
   alternates: alternatesPourEn('/univers/notre-maison'),
   openGraph: {
     images: ogImages('/hero-bg2.webp'),

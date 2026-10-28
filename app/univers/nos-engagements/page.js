@@ -69,7 +69,7 @@ const ENGAGEMENTS = [
   },
   {
     titre: 'Un halal sans supplément',
-    texte: "servir une carte halal et sans porc, sans alcool, au même prix que le reste. Les options végétariennes, vegan et sans gluten se précisent au devis, sans surcoût.",
+    texte: "servir un salé halal et sans porc, sans alcool, au même prix que le reste. Les options végétariennes, vegan et sans gluten se précisent au devis, sans surcoût.",
   },
 ]
 

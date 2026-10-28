@@ -98,7 +98,7 @@ export function HalalLineEn({ intro = 'Our ', paddingTop = '44px', maxWidth = '8
       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
         {intro}
         <a href={lienEn('/traiteur-halal')} style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-          halal corporate catering is entirely pork-free and alcohol-free
+          halal corporate catering: all the savoury food is pork-free and alcohol-free
         </a>
         .
       </p>

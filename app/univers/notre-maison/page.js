@@ -60,7 +60,7 @@ const FAITS = [
   },
   {
     q: "Quels régimes alimentaires couvrez-vous ?",
-    a: "Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes. Chaque prestation existe en version végétarienne et vegan, et nous l'adaptons en sans gluten sur demande.",
+    a: "Le salé (cocktails, plateaux, buffets) est halal et sans porc par défaut, sans alcool dans les recettes. Chaque prestation existe en version végétarienne et vegan, et nous l'adaptons en sans gluten sur demande.",
   },
   {
     q: "Combien coûte un petit-déjeuner d'entreprise ?",
@@ -68,7 +68,7 @@ const FAITS = [
   },
   {
     q: "Êtes-vous certifiés halal ?",
-    a: "Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes, et sans supplément. Nous ne revendiquons pas de certification délivrée par un organisme : notre offre est halal-friendly, construite avec nos artisans. Si l'origine d'une viande compte pour votre équipe, dites-le au moment du devis, nous vous renseignons sur le sourcing avant de valider la commande.",
+    a: "Le salé (cocktails, plateaux, buffets) est halal et sans porc par défaut, sans alcool dans les recettes, et sans supplément. Nous ne revendiquons pas de certification délivrée par un organisme : notre offre est halal-friendly, construite avec nos artisans. Si l'origine d'une viande compte pour votre équipe, dites-le au moment du devis, nous vous renseignons sur le sourcing avant de valider la commande.",
   },
   {
     q: "Peut-on payer sur facture avec un bon de commande ?",
@@ -111,7 +111,7 @@ const FAITS_EN = [
   },
   {
     q: 'Which dietary needs do you cover?',
-    a: 'The whole menu is halal and pork-free as standard, with no alcohol in any recipe. Every package exists in a vegetarian and a vegan version, and we adapt it to gluten-free on request.',
+    a: 'Savoury food (cocktail receptions, lunch trays, buffets) is halal and pork-free as standard, with no alcohol in any recipe. Every package exists in a vegetarian and a vegan version, and we adapt it to gluten-free on request.',
   },
   {
     q: 'How much does a corporate breakfast cost?',
@@ -119,7 +119,7 @@ const FAITS_EN = [
   },
   {
     q: 'Is your food halal certified?',
-    a: "The whole menu is halal and pork-free by default, with no alcohol in the recipes and no surcharge. We do not claim certification from an accredited body: our offer is halal-friendly, built with our artisans. If the origin of a meat matters to your team, tell us when you ask for a quote and we will look into the sourcing before the order is confirmed.",
+    a: "Savoury food (cocktail receptions, lunch trays, buffets) is halal and pork-free by default, with no alcohol in the recipes and no surcharge. We do not claim certification from an accredited body: our offer is halal-friendly, built with our artisans. If the origin of a meat matters to your team, tell us when you ask for a quote and we will look into the sourcing before the order is confirmed.",
   },
   {
     q: 'Can we pay by invoice with a purchase order?',

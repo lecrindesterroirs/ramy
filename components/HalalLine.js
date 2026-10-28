@@ -13,7 +13,7 @@ export default function HalalLine({ intro = 'Notre offre ', paddingTop = '44px',
       <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '14px', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>
         {intro}
         <a href="/traiteur-halal" style={{ color: 'var(--accent-deep)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-          traiteur halal d'entreprise : tout est sans porc et sans alcool
+          traiteur halal d'entreprise : tout le salé est sans porc et sans alcool
         </a>
         .
       </p>

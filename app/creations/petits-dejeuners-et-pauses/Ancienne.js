@@ -75,7 +75,7 @@ const ANSWER_BLOCK = (
 export default function PetitsDejeuners({ bas }) {
   return (
     <>
-      <ProductsPageTemplate bas={bas}
+      <ProductsPageTemplate bas={bas} sucre
       heroImg="/hero-petitdej.webp"
       heroTitle={"Petit-déjeuner d'entreprise\nà Paris"}
       heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Viennoiseries et café dès 6,50 € HT par personne, commande jusqu'à la veille 14h."

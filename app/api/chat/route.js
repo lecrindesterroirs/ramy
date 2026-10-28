@@ -28,7 +28,7 @@ const REGLES = `
 - Inclus sans supplément : gobelets, serviettes, vaisselle et couverts jetables, présentation dressée, prêt à servir.
 - Modification jusqu'à 14 h la veille. Annulation : écrire à commercial@lecrin-traiteur.fr au plus tôt.
 - Zone : Paris intramuros, La Défense, Neuilly, Boulogne, Versailles, Massy, Saint-Denis et plus de 20 villes du 92, 93, 94 et 78.
-- Régimes : tout est halal et sans porc. Options végétariennes et vegan, certains produits sans gluten. Les madeleines Mado Paris sont faites avec des ingrédients biologiques, sans huile de palme.
+- Régimes : le salé (cocktails, plateaux, buffets) est halal et sans porc ; ne pas mettre en avant halal, sans porc ni sans alcool sur le sucré (petit-déjeuner, goûter, boissons). Options végétariennes et vegan, certains produits sans gluten. Les madeleines Mado Paris sont faites avec des ingrédients biologiques, sans huile de palme.
 - Devis : réponse sous 24 h.
 - Contact : commercial@lecrin-traiteur.fr · 01 74 54 23 10.
 `.trim()

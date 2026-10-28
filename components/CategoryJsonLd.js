@@ -11,12 +11,12 @@
 // nameEn : le nom de la catégorie en anglais, quand l'appelant l'a.
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../lib/i18nBase'
-import { CATEGORY_FAQ, CATEGORY_FAQ_EN } from '../lib/categoryFaq'
+import { faqCategorie } from '../lib/categoryFaq'
 
 const SITE = 'https://www.lecrin-traiteur.fr'
 
 // includeFaq={false} : la page porte déjà son propre FAQPage (layout.js) ; éviter deux FAQPage concurrents.
-export default function CategoryJsonLd({ name, nameEn, path, items, serviceType, includeFaq = true }) {
+export default function CategoryJsonLd({ name, nameEn, path, items, serviceType, includeFaq = true, sucre = false }) {
   const en = estAnglais(usePathname() || '/')
   const racine = en ? `${SITE}/en` : SITE
   // Certaines pages bilingues (coffrets-cadeaux) passent déjà un path préfixé :
@@ -67,7 +67,7 @@ export default function CategoryJsonLd({ name, nameEn, path, items, serviceType,
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
       inLanguage: en ? 'en' : 'fr',
-      mainEntity: (en ? CATEGORY_FAQ_EN : CATEGORY_FAQ).map(f => ({
+      mainEntity: faqCategorie(en, sucre).map(f => ({
         '@type': 'Question',
         name: f.q,
         acceptedAnswer: { '@type': 'Answer', text: f.a },
