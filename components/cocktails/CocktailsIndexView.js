@@ -209,6 +209,12 @@ export default function CocktailsIndexView({ en = false }) {
           </div>
         </section>
 
+        <section id="devis" className="ev-devis">
+          <div className="ev-devis-inner">
+            <DevisRapide defaultPrestation="Cocktail / Buffet" titre={T.devisTitre} titreEn={T.devisTitre} sousTitre={T.devisSous} sousTitreEn={T.devisSous} />
+          </div>
+        </section>
+
         <section className="ev-bloc ev-etroit">
           <h2 className="ev-h2">{T.afwTitre}</h2>
           <p className="ev-texte">{T.afwTexte} <a href={`${pre}${CHEMIN_AFW}`}>{T.afwLien}</a>.</p>
@@ -306,10 +312,8 @@ export default function CocktailsIndexView({ en = false }) {
           </div>
         </section>
 
-        <section id="devis" className="ev-devis">
-          <div className="ev-devis-inner">
-            <DevisRapide defaultPrestation="Cocktail / Buffet" titre={T.devisTitre} titreEn={T.devisTitre} sousTitre={T.devisSous} sousTitreEn={T.devisSous} />
-          </div>
+        <section className="ev-bloc ev-etroit" style={{ textAlign: 'center' }}>
+          <a className="ev-btn" href="#devis">{T.devis}</a>
         </section>
 
         {guides.length > 0 && (
