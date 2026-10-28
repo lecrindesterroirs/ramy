@@ -110,12 +110,12 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'halloween', nom: 'Halloween', nomEn: 'Halloween',
     date: { type: 'fixe', mois: 10, jour: 31 },
-    produits: [`${G}macarons-halloween`, `${G}madeleines-halloween`, `${G}cookie`, `${G}carrot-cake`, `${G}brochettes-fruits`, `${C}classique`],
+    produits: [`${G}macarons-halloween`, `${G}madeleines-halloween`, `${G}cupcakes-halloween`, `${G}cookie`, `${G}brochettes-fruits`, `${C}classique`],
   },
   {
     slug: 'movember', nom: 'Movember', nomEn: 'Movember',
     date: { type: 'periode', debut: '11-01', fin: '11-30' },
-    produits: ['/creations/petits-dejeuners-et-pauses', '/creations/pauses-gourmandes', `${P}madeleines-20`, `${G}brochettes-fruits`, `${P}panier-fruits`, `${G}banana-bread-sans-gluten`],
+    produits: [`${G}cupcakes-movember`, `${P}madeleines-20`, `${G}brochettes-fruits`, `${P}panier-fruits`, `${G}banana-bread-sans-gluten`, `${B}thermos-cafe`],
   },
   {
     slug: 'thanksgiving', nom: 'Thanksgiving', nomEn: 'Thanksgiving',

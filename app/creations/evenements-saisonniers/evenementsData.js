@@ -308,6 +308,10 @@ const TEXTES = [
     faq: [
       { q: "À quelle heure livrez-vous un iftar ?", a: "Un quart d'heure avant l'heure de rupture du jeûne du jour, que vous nous indiquez à la commande. Le buffet est en place avec l'eau et les jus dès la première minute." },
       { q: 'Faut-il commander un menu halal à part ?', a: "Non. Tout notre salé est halal et sans porc, sans alcool, sans supplément. Précisez seulement les autres régimes de l'équipe, végétarien ou sans gluten." },
+      { q: 'Quand tombe le Ramadan en 2027 ?', a: "Autour du 8 février au 9 mars 2027, l'Aïd el-Fitr le 10 mars. Les dates du calendrier lunaire se confirment à la Nuit du doute, la veille : prévoyez votre iftar sur une date fixe et nous ajustons l'heure de livraison à l'heure de rupture du jour." },
+      { q: "Combien de pièces prévoir par personne pour un iftar ?", a: `Seize pièces par personne, le format de notre formule La Célébration à ${px(C16)} HT. Après une journée de jeûne, les douze pièces d'un cocktail déjeunatoire partent en vingt minutes. Pour 30 personnes, comptez ${pour(30, C16)} livraison comprise.` },
+      { q: "Peut-on organiser un iftar pour une équipe où tout le monde ne jeûne pas ?", a: "C'est le cas le plus courant, et c'est l'intérêt du moment. Tout le salé étant halal et sans porc, il n'y a qu'un seul buffet : les jeûneurs rompent le jeûne, les autres dînent. Personne n'a de menu à part, personne n'a à se signaler." },
+      { q: "Quelle différence entre un iftar et un petit-déjeuner de l'Aïd ?", a: `L'iftar se tient en fin de journée pendant le mois de jeûne, à l'heure exacte de la rupture, avec du salé qui rassasie. Le petit-déjeuner de l'Aïd marque la fin du Ramadan, le matin, avec toute l'équipe : il démarre à ${px(PDJ_DES)} par personne contre ${px(C16)} pour un iftar de 16 pièces.` },
     ],
     articles: ['iftar-entreprise-ramadan-organiser', 'traiteur-halal-entreprise-paris', 'petit-dejeuner-halal-entreprise-paris'],
     occasions: ['cocktail-entreprise', 'petit-dejeuner-entreprise'],
@@ -325,6 +329,18 @@ const TEXTES = [
         {
           heading: "Halal et sans porc : rien à demander",
           texte: "Chez L'Écrin Traiteur, tout le salé est halal et sans porc, sans alcool, toute l'année et sans supplément. Vous n'avez pas à commander un menu à part pour les collègues qui jeûnent. Précisez seulement les autres régimes de l'équipe et l'heure de rupture du jeûne le jour de votre iftar : nous calons la livraison un quart d'heure avant.",
+        },
+        {
+          heading: "Les dates à retenir, et pourquoi elles bougent",
+          texte: "Le Ramadan avance d'environ onze jours chaque année, parce qu'il suit le calendrier lunaire et non le calendrier grégorien. En 2027, il court autour du 8 février au 9 mars, et l'Aïd el-Fitr tombe le 10 mars. Ces dates se confirment à la Nuit du doute, la veille du premier jour : réservez votre iftar sur une date fixe de votre choix dans le mois, c'est l'heure de rupture du jour qui s'ajuste, pas la date de votre événement.",
+        },
+        {
+          heading: "Quel format selon la taille de l'équipe",
+          texte: `En dessous de vingt personnes, un cocktail de 16 pièces par personne suffit et se pose sur une table : ${px(C16)} par personne. Entre vingt et cinquante, un buffet à partager comme Le Méditerranéen — taboulé, falafels, caviar d'aubergine, fromages — tient mieux la durée, parce que chacun se sert à son rythme à mesure que les collègues arrivent. Au-delà, l'atelier libanais prépare chawarma, falafels et houmous devant les invités : c'est le seul format où la file avance sans qu'on ait à relancer le buffet.`,
+        },
+        {
+          heading: "Ce qu'il faut avoir sur la table à l'heure exacte",
+          texte: "La rupture du jeûne commence par de l'eau et quelque chose de sucré, avant le salé. Prévoyez de l'eau et des jus en libre-service dès la première minute, posés à portée de main et non au fond de la salle : les premières gorgées se prennent debout, souvent en silence, et personne ne traverse la pièce pour se servir. Le salé vient juste après, quand l'équipe s'assoit.",
         },
         {
           heading: "Le petit-déjeuner de l'Aïd",
