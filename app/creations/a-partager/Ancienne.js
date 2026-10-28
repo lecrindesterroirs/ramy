@@ -11,6 +11,7 @@ import CategoryTabs from '../../../components/CategoryTabs'
 import CategoryJsonLd from '../../../components/CategoryJsonLd'
 import ParallaxImage from '../../../components/ParallaxImage'
 import Breadcrumb from '../../../components/Breadcrumb'
+import DevisRapide from '../../../components/DevisRapide'
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../../../lib/i18nBase'
 import { enMenu, prixMenuEn } from '../../../lib/en/produits/aPartager'
@@ -33,6 +34,8 @@ const T_PARTAGER = {
     recettes: (sa, su) => `${sa} recettes salées · ${su} sucrées`,
     sale: 'Salé', sucre: 'Sucré',
     devis: 'Obtenir un devis →',
+    devisTitre: 'Un buffet à organiser ?',
+    devisSous: "Répondez en 30 secondes, devis détaillé sous 24h, livraison dans toute l'Île-de-France.",
     closeEyebrow: 'Pensé pour les moments collectifs',
     closeTitre: 'Des menus généreux.\nPensés pour rassembler.',
     closeBody: "Un menu au centre de la table vaut mieux qu'un long discours d'équipe. Salades, planches, pièces cocktail et douceurs : des formats à faire circuler, livrés prêts à servir pour vos déjeuners partagés.",
@@ -48,6 +51,8 @@ const T_PARTAGER = {
     recettes: (sa, su) => `${sa} savoury recipes · ${su} sweet`,
     sale: 'Savoury', sucre: 'Sweet',
     devis: 'Get a quote →',
+    devisTitre: 'A buffet to organise?',
+    devisSous: 'Answer in 30 seconds, a detailed quote within 24 hours, delivery across the Paris region.',
     closeEyebrow: 'Made for collective moments',
     closeTitre: 'Generous menus.\nMade to bring people together.',
     closeBody: 'A menu in the middle of the table says more than a long team speech. Salads, boards, canapés and sweet bites: formats made to be passed around, eaten standing or seated.',
@@ -96,7 +101,6 @@ const HERO = {
    dressé en salades ou en verrines. Photos = visuels maison L'Écrin. */
 import { MENUS, SALADES, FILTRES } from './data'
 import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
-import EncartDevisMobile from '../../../components/EncartDevisMobile'
 export { MENUS, SALADES, FILTRES }
 
 /* ─── Liste de recettes (Salé / Sucré) ───────────────────────────── */
@@ -286,7 +290,6 @@ export default function APartager({ bas }) {
         <div className="ap-shell ap-cards" style={{ maxWidth: '1180px', margin: '0 auto', padding: '48px 72px 110px', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px', alignItems: 'stretch' }}>
           {MENUS.map((m, i) => {
             const centered = i === MENUS.length - 1 && MENUS.length % 2 === 1
-            const encart = i === Math.min(3, MENUS.length - 1) && <EncartDevisMobile key="encart-devis" />
             return [centered ? (
               <div key={m.key} className="ap-center">
                 <Reveal delay={(i % 2) * 90}>
@@ -297,9 +300,16 @@ export default function APartager({ bas }) {
               <Reveal key={m.key} delay={(i % 2) * 90}>
                 <MenuCard m={m} T={T} en={en} />
               </Reveal>
-            ), encart]
+            )]
           })}
         </div>
+
+        {/* Formulaire rapide juste sous les menus (28/10/2026) : le visiteur vient de choisir, il demande le devis tout de suite. */}
+        <section id="devis" className="ev-devis" style={{ marginTop: 0 }}>
+          <div className="ev-devis-inner">
+            <DevisRapide defaultPrestation="Cocktail / Buffet" titre={T.devisTitre} titreEn={T.devisTitre} sousTitre={T.devisSous} sousTitreEn={T.devisSous} />
+          </div>
+        </section>
 
       </main>
 
