@@ -39,7 +39,7 @@ const SERVICES = [
 
 // FAQ commune à tous les quartiers (universalFaq du français)
 const UNIVERSAL_FAQ = [
-  { q: 'Do you take last-minute orders?', a: 'Yes. We take orders until 10 am the same morning from the day\'s available selection: pastry platters, madeleines, fruit skewers. For the full catalogue, and to be sure of getting what you want, order before 2 pm the day before.' },
+  { q: 'Do you take last-minute orders?', a: 'Yes. We take orders until 10 am the same morning from the day\'s available selection: pastry platters, madeleines, fruit skewers. For the full catalogue, and to be sure of getting what you want, order before 10 am the day before.' },
   { q: 'What are your delivery hours?', a: 'We deliver from 6:30 am until 10 am, depending on available slots. Tell us your preferred time when you order.' },
 ]
 

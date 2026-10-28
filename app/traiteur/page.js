@@ -27,7 +27,7 @@ const TRAITEUR_FAQ = [
   },
   {
     q: 'Quel délai faut-il pour commander ?',
-    a: "Commande jusqu'à la veille 14h pour une livraison le lendemain matin. Pour une demande de dernière minute, appelez-nous : nous faisons au mieux selon la disponibilité des artisans.",
+    a: "Commande jusqu'à la veille 10h pour une livraison le lendemain matin. Pour une demande de dernière minute, appelez-nous : nous faisons au mieux selon la disponibilité des artisans.",
   },
   {
     q: 'Proposez-vous du halal et des régimes particuliers ?',
@@ -39,11 +39,11 @@ const TRAITEUR_FAQ = [
   },
   {
     q: "Quel est le meilleur traiteur pour une entreprise à Paris ?",
-    a: "Cela dépend du besoin, et cinq critères permettent de comparer : un créneau de livraison précis plutôt qu'une plage horaire, des produits d'artisans nommés, une livraison par une équipe interne plutôt qu'en sous-traitance, de la souplesse sur les effectifs et les délais, et une facturation entreprise avec TVA. Chez L'Écrin Traiteur : livraison dès 6h30 par notre propre équipe, produits d'artisans identifiés, commande jusqu'à la veille 14h.",
+    a: "Cela dépend du besoin, et cinq critères permettent de comparer : un créneau de livraison précis plutôt qu'une plage horaire, des produits d'artisans nommés, une livraison par une équipe interne plutôt qu'en sous-traitance, de la souplesse sur les effectifs et les délais, et une facturation entreprise avec TVA. Chez L'Écrin Traiteur : livraison dès 6h30 par notre propre équipe, produits d'artisans identifiés, commande jusqu'à la veille 10h.",
   },
   {
     q: "Livrez-vous un petit-déjeuner d'entreprise à Paris ?",
-    a: "Oui, du lundi au vendredi, dès 6h30, à Paris et en Île-de-France : viennoiseries, fruits frais, jus et boissons chaudes, à partir de 8 € HT par personne en formule Classique. Commande jusqu'à la veille 14h.",
+    a: "Oui, du lundi au vendredi, dès 6h30, à Paris et en Île-de-France : viennoiseries, fruits frais, jus et boissons chaudes, à partir de 8 € HT par personne en formule Classique. Commande jusqu'à la veille 10h.",
   },
   {
     q: "Comment obtenir un devis pour un buffet ou un cocktail de 80 personnes ?",
@@ -83,7 +83,7 @@ const MOMENTS = [
 
 const ETAPES = [
   { titre: 'Demandez un devis', texte: "Effectif, date, adresse et prestation : vous recevez un devis personnalisé sous 24h." },
-  { titre: "Commandez jusqu'à la veille 14h", texte: "À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48h avant." },
+  { titre: "Commandez jusqu'à la veille 10h", texte: "À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48h avant." },
   { titre: 'Nous livrons dès 6h30', texte: "Notre équipe livre à l'heure fixée, du lundi au vendredi, et met en place sur demande." },
   { titre: 'Vous recevez une facture entreprise', texte: "Facture avec TVA. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches." },
 ]
@@ -173,7 +173,7 @@ export default function TraiteurPage() {
             {en ? <>{E.h1a}{' '}<br />{E.h1b}</> : <>Traiteur entreprise Paris{' '}<br />& Île-de-France</>}
           </h1>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', lineHeight: 1.8, color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 44px' }}>
-            {en ? E.heroDesc(nVilles) : `L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans ${nVilles} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 14h la veille.`}
+            {en ? E.heroDesc(nVilles) : `L'Écrin Traiteur livre vos événements d'entreprise, petits-déjeuners, plateaux repas, cocktails et réceptions, dans ${nVilles} villes d'Île-de-France. Artisans sélectionnés, livraison dès 6h30, commande avant 10h la veille.`}
           </p>
 
           {/* Ligne sobre, points clés séparés par des puces dorées */}
@@ -196,7 +196,7 @@ export default function TraiteurPage() {
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginBottom: '22px' }}>
             {en ? <>{E.intro2a}<strong style={{ fontWeight: 500 }}>{E.intro2mini}</strong>{E.intro2b}<strong style={{ fontWeight: 500 }}>{E.intro2liv}</strong>{E.intro2c}</>
-              : <>Vous commandez jusqu'à la veille 14h pour une livraison dès 6h30. Le minimum de commande est de <strong style={{ fontWeight: 500 }}>{euroFr(MINIMUM)} HT</strong>, avec un forfait de livraison de <strong style={{ fontWeight: 500 }}>{euroFr(LIV)} HT</strong> à Paris et dans les communes proches. Vous recevez une facture entreprise avec TVA et un devis personnalisé sous 24h.</>}
+              : <>Vous commandez jusqu'à la veille 10h pour une livraison dès 6h30. Le minimum de commande est de <strong style={{ fontWeight: 500 }}>{euroFr(MINIMUM)} HT</strong>, avec un forfait de livraison de <strong style={{ fontWeight: 500 }}>{euroFr(LIV)} HT</strong> à Paris et dans les communes proches. Vous recevez une facture entreprise avec TVA et un devis personnalisé sous 24h.</>}
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
             {en ? E.intro3 : 'Le salé (cocktails, plateaux, buffets) est halal et sans porc par défaut, avec des options végétariennes, vegan et sans gluten sur demande.'}

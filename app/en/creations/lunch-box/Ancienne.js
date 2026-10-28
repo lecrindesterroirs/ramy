@@ -23,7 +23,7 @@ const SEO_ARTICLE = `
   <h2>Sandwiches made the same morning</h2>
   <p>Our bread comes from our partner baker, in baguette or brioche, and the boxes are filled the morning of the delivery rather than the day before. It is the difference you taste at one o'clock.</p>
   <h2>Ordering your lunch boxes in Paris</h2>
-  <p>Order until <strong>2 pm the day before</strong>, delivered from <strong>6:30 am</strong>. Any headcount, dietary needs catered for, the whole range halal and pork-free. Company invoice showing VAT, personalised quote within 24 hours.</p>
+  <p>Order until <strong>10 am the day before</strong>, delivered from <strong>6:30 am</strong>. Any headcount, dietary needs catered for, the whole range halal and pork-free. Company invoice showing VAT, personalised quote within 24 hours.</p>
 `
 
 export default function LunchBoxEn({ bas }) {

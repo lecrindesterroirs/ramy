@@ -64,8 +64,8 @@ const ENGAGEMENTS = [
     texte: "répondre à chaque demande sous 24 h, avec le détail produit par produit et le total, pour que vous puissiez arbitrer. La facture est une facture d'entreprise avec TVA, et le numéro de bon de commande y figure si vous en avez un.",
   },
   {
-    titre: 'Une commande jusqu\'à la veille 14h',
-    texte: "prendre les commandes jusqu'à la veille à 14h, et 48 h à l'avance à partir de 50 personnes, pour livrer à l'heure que vous fixez.",
+    titre: 'Une commande jusqu\'à la veille 10h',
+    texte: "prendre les commandes jusqu'à la veille à 10h, et 48 h à l'avance à partir de 50 personnes, pour livrer à l'heure que vous fixez.",
   },
   {
     titre: 'Un halal sans supplément',

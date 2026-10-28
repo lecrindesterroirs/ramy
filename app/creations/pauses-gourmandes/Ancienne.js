@@ -17,7 +17,7 @@ import BlocReponse, { CadreBlocReponse } from '../../../components/BlocReponse'
 
 const SEO_ARTICLE = `
   <h2>Livraison de goûter d'entreprise à Paris : comment ça marche</h2>
-  <p>Vous choisissez les douceurs, le nombre de personnes et l'heure de votre pause : nous livrons du lundi au vendredi, à Paris et en Île-de-France, à 15h30, 16h ou plus tard dans l'après-midi. Commande jusqu'à <strong>14h la veille</strong>, minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches, facturation entreprise avec TVA, devis sous 24h. Pour les séminaires et les commandes régulières, un devis personnalisé est possible. Notre page <a href="/occasions/gouter-entreprise">goûter d'entreprise</a> détaille les formats et les produits les plus choisis, et la page <a href="/traiteur">traiteur entreprise Paris et Île-de-France</a> liste les villes desservies.</p>
+  <p>Vous choisissez les douceurs, le nombre de personnes et l'heure de votre pause : nous livrons du lundi au vendredi, à Paris et en Île-de-France, à 15h30, 16h ou plus tard dans l'après-midi. Commande jusqu'à <strong>10h la veille</strong>, minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches, facturation entreprise avec TVA, devis sous 24h. Pour les séminaires et les commandes régulières, un devis personnalisé est possible. Notre page <a href="/occasions/gouter-entreprise">goûter d'entreprise</a> détaille les formats et les produits les plus choisis, et la page <a href="/traiteur">traiteur entreprise Paris et Île-de-France</a> liste les villes desservies.</p>
 
   <h2>Traiteur pause gourmande et goûter d'entreprise à Paris</h2>
   <p>La <strong>pause gourmande d'entreprise</strong> est le moment le plus attendu de l'après-midi : entre deux sessions de séminaire, à la fin d'une formation ou pour célébrer une bonne nouvelle d'équipe. L'Écrin Traiteur livre vos goûters partout à Paris et en Île-de-France, avec des douceurs artisanales préparées le jour même.</p>
@@ -47,7 +47,7 @@ const SEO_ARTICLE = `
   <p>Certaines occasions méritent une sélection pensée pour elles : voir notre guide <a href="/journal/gouter-anniversaire-entreprise-paris">goûter d'anniversaire en entreprise</a> pour fêter un collaborateur, ou <a href="/journal/gouter-entreprise-bureau">goûter d'entreprise au bureau</a> pour transformer une pause ordinaire en vrai moment d'équipe.</p>
 
   <h2>Commander votre goûter d'entreprise à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong> et recevez votre pause gourmande à l'heure exacte de votre programme. Conditionnement prêt à servir, facturation entreprise avec TVA. Pour les séminaires multi-jours ou les commandes récurrentes, demandez un devis personnalisé, réponse sous 24h.</p>
+  <p>Commandez avant <strong>10h la veille</strong> et recevez votre pause gourmande à l'heure exacte de votre programme. Conditionnement prêt à servir, facturation entreprise avec TVA. Pour les séminaires multi-jours ou les commandes récurrentes, demandez un devis personnalisé, réponse sous 24h.</p>
 
   <p>En octobre, découvrez aussi notre sélection dédiée pour <a href="/journal/octobre-rose-entreprise-paris">Octobre Rose en entreprise</a> : macarons et madeleines aux teintes roses pour marquer le mois de sensibilisation.</p>
 `
@@ -156,7 +156,7 @@ const ANSWER_BLOCK = (
     plusTitre="Quantités à prévoir, livraison et minimum de commande"
     plus={<>Comptez 1,5 à 2 pièces sucrées par personne pour une pause de 20 à 30 minutes, soit 6 à 15 € HT par personne selon les produits. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour comparer les formats, voir notre page <a href="/occasions/gouter-entreprise">goûter d'entreprise</a>.</>}
   >
-    Une pâtisserie artisanale et une boisson, livrées du lundi au vendredi à l'heure de votre pause : 15h30, 16h ou plus tard. Commande avant <strong>14h la veille</strong>, à Paris et en Île-de-France.
+    Une pâtisserie artisanale et une boisson, livrées du lundi au vendredi à l'heure de votre pause : 15h30, 16h ou plus tard. Commande avant <strong>10h la veille</strong>, à Paris et en Île-de-France.
   </BlocReponse>
 )
 

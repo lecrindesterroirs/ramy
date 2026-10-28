@@ -26,7 +26,7 @@ export const PRODUITS = [
       <h2>Un classique bien fait, préparé le jour même</h2>
       <p>Une salade de tomates anciennes au basilic frais, un filet de poulet et des pommes de terre rôties à l'huile d'olive, un muffin aux pépites de chocolat. Dressé en plateau individuel et monté le matin de la livraison.</p>
       <h2>Commander La Romaine à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dans vos bureaux dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous <strong>24h</strong>.</p>
+      <p>Commande avant 10h la veille, livraison dans vos bureaux dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de tomates anciennes & basilic',
     plat: 'Filet de poulet & pommes de terre rôties',
@@ -40,7 +40,7 @@ export const PRODUITS = [
       <h2>Un menu végétarien complet et généreux</h2>
       <p>Houmous, huile d'olive et pain grillé, puis quinoa aux falafels et tahini, et un cookie pour finir. Des recettes de saison préparées le matin même, dressées en plateau individuel. Parfait pour un déjeuner d'équipe qui mélange les régimes.</p>
       <h2>Commander La Solaire à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
+      <p>Commande avant 10h la veille, livraison dès 6h30 dans vos bureaux. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Houmous, huile d\'olive & pain grillé',
     plat: 'Quinoa gourmand, falafels & sauce tahini',
@@ -54,7 +54,7 @@ export const PRODUITS = [
       <h2>Le sud dans un plateau individuel</h2>
       <p>Salade fraîcheur, pâtes au pesto avec mozzarella et tomates confites, panna cotta fruits rouges. Des recettes parfumées, dressées avec soin et montées le jour de la livraison.</p>
       <h2>Commander La Provençale à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
+      <p>Commande avant 10h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade fraîcheur : tomates, concombre, oignon rouge & huile d\'olive',
     plat: 'Pâtes au pesto, mozzarella & tomates confites',
@@ -68,7 +68,7 @@ export const PRODUITS = [
       <h2>Léger, frais et rassasiant</h2>
       <p>Salade de concombre au yaourt et ciboulette, émincé de poulet et riz basmati, salade de fruits frais. Des recettes de saison préparées le matin même, dressées en plateau individuel, pour bien déjeuner sans se sentir lourd l'après-midi.</p>
       <h2>Commander La Champêtre à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30 dans vos locaux. On adapte aux effectifs et aux régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
+      <p>Commande avant 10h la veille, livraison dès 6h30 dans vos locaux. On adapte aux effectifs et aux régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de concombre au yaourt & ciboulette',
     plat: 'Émincé de poulet & riz',
@@ -82,7 +82,7 @@ export const PRODUITS = [
       <h2>Un plateau autour du saumon</h2>
       <p>Céleri rémoulade, pommes de terre sautées et dés de saumon poêlés, compote pomme-fraise. Des recettes de saison préparées le matin même et dressées en plateau individuel.</p>
       <h2>Commander La Boréale à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
+      <p>Commande avant 10h la veille, livraison dès 6h30. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Céleri rémoulade',
     plat: 'Pommes de terre sautées & dés de saumon poêlés',
@@ -96,7 +96,7 @@ export const PRODUITS = [
       <h2>Le végétal qui rassasie</h2>
       <p>Salade de lentilles et feta, tarte aux légumes du soleil, fromage blanc et granola. Des recettes de saison préparées le matin même et dressées en plateau individuel. Une option végétarienne qui tient au corps.</p>
       <h2>Commander La Potagère à Paris et en Île-de-France</h2>
-      <p>Commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. On gère effectifs et régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
+      <p>Commande avant 10h la veille, livraison dès 6h30 dans vos bureaux. On gère effectifs et régimes, facturation entreprise avec TVA. Devis sous <strong>24h</strong>.</p>
     `,
     entree: 'Salade de lentilles & feta',
     plat: 'Tarte aux légumes du soleil',

@@ -175,7 +175,7 @@ export default function EnArticlePage({ params }) {
                   ))}
                 </div>
                 <p style={{ fontFamily: SANS, fontSize: '12px', color: 'var(--text-secondary)', marginTop: '16px', lineHeight: 1.6 }}>
-                  Prices exclude VAT. Delivery €29 excl. VAT in Paris and nearby towns; order until 2 pm the day before. <a href="/en/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>Ask for a quote</a>.
+                  Prices exclude VAT. Delivery €29 excl. VAT in Paris and nearby towns; order until 10 am the day before. <a href="/en/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>Ask for a quote</a>.
                 </p>
               </div>
             )

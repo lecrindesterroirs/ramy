@@ -715,7 +715,7 @@ function ProductInfo({ product, M }) {
       </a>
 
       <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
+        {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 10h la veille', 'Facturation entreprise disponible'].map(t => (
           <p key={t} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.5)', letterSpacing: '0.02em' }}>{t}</p>
         ))}
       </div>

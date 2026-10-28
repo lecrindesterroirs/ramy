@@ -12,7 +12,7 @@ const SEO_HTML = `
   <h2>Des produits sourcés, une préparation le matin même</h2>
   <p>Chez L'Écrin, chaque plateau associe une entrée, un plat et un dessert préparés le jour de la livraison avec des <strong>produits de saison</strong> issus d'artisans et de producteurs identifiés. Rien d'industriel : des recettes fraîches, un dressage maîtrisé et un vrai équilibre nutritionnel, du menu végétarien au menu signature.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
-  <p>Commandez avant 14h la veille et recevez vos plateaux directement dans vos bureaux. Facturation entreprise, régimes alimentaires, effectifs variables : nous adaptons chaque prestation et vous adressons un devis personnalisé sous 24h.</p>
+  <p>Commandez avant 10h la veille et recevez vos plateaux directement dans vos bureaux. Facturation entreprise, régimes alimentaires, effectifs variables : nous adaptons chaque prestation et vous adressons un devis personnalisé sous 24h.</p>
 `
 
 function PlateauDetailInner() {

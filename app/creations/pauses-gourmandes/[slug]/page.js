@@ -22,7 +22,7 @@ const SEO_HTML = `
   <h2>Des pièces préparées par nos artisans pâtissiers</h2>
   <p>Madeleines, macarons, tartelettes, choux, cakes, cookies ou brownies : chaque pièce est façonnée à la main et cuite au plus près de la livraison. Nous complétons volontiers l'assortiment de fruits frais découpés et de desserts individuels pour un équilibre entre gourmandise et fraîcheur.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
-  <p>Effectif, format, allergènes : nous composons la sélection idéale pour votre pause et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe dans vos bureaux.</p>
+  <p>Effectif, format, allergènes : nous composons la sélection idéale pour votre pause et vous adressons un devis personnalisé sous 24h. Commandez avant 10h la veille, livraison directe dans vos bureaux.</p>
 `
 
 /* ── Fiche coffret, même logique que les Madeleines sur Petit-déjeuner :
@@ -118,7 +118,7 @@ function CoffretDetail({ produit }) {
           </a>
 
           <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 14h la veille', 'Facturation entreprise disponible'].map(t => (
+            {['Livraison dès 6h30, Paris & Île-de-France', 'Commandez avant 10h la veille', 'Facturation entreprise disponible'].map(t => (
               <p key={t} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'rgba(17,17,17,0.45)', letterSpacing: '0.02em' }}>{t}</p>
             ))}
           </div>

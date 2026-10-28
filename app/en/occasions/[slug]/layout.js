@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
   return {
     title: { absolute: `${en.heroTitle} | L'Écrin Traiteur` },
     description: fit([
-      `${en.heroDescription} Order until 2 pm the day before, quote within 24 hours.`,
+      `${en.heroDescription} Order until 10 am the day before, quote within 24 hours.`,
       en.heroDescription,
       `${en.name} catering delivered from 6:30 am across Paris and Île-de-France. Quote within 24 hours.`,
     ], 165),

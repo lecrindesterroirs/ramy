@@ -25,7 +25,7 @@ const SEO_ARTICLE = `
   <p>Comptez <strong>4 à 6 pièces par personne et par heure</strong> pour un apéritif de fin de journée. Pour un afterwork qui se prolonge au-delà de deux heures ou qui remplace le dîner, passez à 10-12 pièces en ajoutant des bouchées plus consistantes. Pensez aux boissons : jus Alain Milliat et eaux pétillantes complètent naturellement la commande.</p>
 
   <h2>Commander vos plateaux apéritifs à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong> en indiquant l'heure exacte de livraison, vos plateaux arrivent prêts à servir, présentation soignée. Facturation entreprise avec TVA. Pour un événement plus ambitieux, notre équipe compose des formats sur mesure sur devis, réponse sous 24h.</p>
+  <p>Commandez avant <strong>10h la veille</strong> en indiquant l'heure exacte de livraison, vos plateaux arrivent prêts à servir, présentation soignée. Facturation entreprise avec TVA. Pour un événement plus ambitieux, notre équipe compose des formats sur mesure sur devis, réponse sous 24h.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
@@ -269,7 +269,7 @@ const ANSWER_BLOCK = (
     plusTitre="Formats, quantités et livraison"
     plus={<>Les navettes se commandent par plateaux de 20 (63,90 € HT) ou de 40 (124,90 € HT). Comptez 8 pièces par personne pour un pot d'une heure. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
   >
-    Nos plateaux apéritifs démarrent <strong>à partir de 63,90 € HT le plateau</strong> : navettes, pains briochés salés, clubs, mini baguettes, mini wraps roulés, mini burgers, fromages affinés. Chaque plateau se partage entre plusieurs convives. Commande avant <strong>14h la veille</strong>, livraison à Paris et en Île-de-France.
+    Nos plateaux apéritifs démarrent <strong>à partir de 63,90 € HT le plateau</strong> : navettes, pains briochés salés, clubs, mini baguettes, mini wraps roulés, mini burgers, fromages affinés. Chaque plateau se partage entre plusieurs convives. Commande avant <strong>10h la veille</strong>, livraison à Paris et en Île-de-France.
   </BlocReponse>
 )
 

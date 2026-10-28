@@ -27,7 +27,7 @@ const META_OVERRIDES = {
   'rueil-malmaison': { title: "Traiteur Rueil-Malmaison : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Rueil-Malmaison : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
   'paris': { title: "Traiteur Paris par arrondissement : livraison dès 6h30" },
   'saint-denis': { title: "Traiteur Saint-Denis (93) : petit déjeuner dès 6,50 € HT", description: "Traiteur d'entreprise à Saint-Denis (93) : petit déjeuner entreprise dès 6,50 € HT, plateaux repas entreprise dès 28,90 € HT, livrés dès 6h30." },
-  "clichy": { description: "Traiteur d'entreprise à Clichy (92) : petits-déjeuners, plateaux repas et buffets cocktail livrés dès 6h30. Commande avant 14h la veille, devis sous 24h." },
+  "clichy": { description: "Traiteur d'entreprise à Clichy (92) : petits-déjeuners, plateaux repas et buffets cocktail livrés dès 6h30. Commande avant 10h la veille, devis sous 24h." },
 }
 
 export async function generateMetadata({ params }) {

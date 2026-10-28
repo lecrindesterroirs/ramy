@@ -29,7 +29,7 @@ const T_COFFRETS = {
     description: "Des coffrets gourmands prêts à offrir · madeleines Mado Paris, macarons Pierre Morel, cookies Laura Todd, cakes maison. Idéal pour remercier un client ou marquer un moment d'équipe.",
     decouvrir: 'Découvrir',
     ht: 'HT',
-    reponse: "Nos coffrets démarrent <strong>à partir de 17,90 € HT</strong> et vont jusqu'à 64 € HT selon le contenu : madeleines d'exception, macarons, assortiments à offrir. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.",
+    reponse: "Nos coffrets démarrent <strong>à partir de 17,90 € HT</strong> et vont jusqu'à 64 € HT selon le contenu : madeleines d'exception, macarons, assortiments à offrir. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>10h la veille</strong>.",
     closeEyebrow: 'Pensé pour remercier',
     closeTitle: 'Un cadeau qui a du goût.\nUne attention qui reste.',
     closeBody: "Remercier un client, féliciter une équipe, marquer une fin d'année : nos coffrets gourmands portent les noms de nos artisans et peuvent être entièrement personnalisés à votre image, jusqu'au ruban.",
@@ -48,7 +48,7 @@ const T_COFFRETS = {
     description: 'Gourmet boxes ready to give · Mado Paris madeleines, Pierre Morel macarons, Laura Todd cookies, homemade loaf cakes. Right for thanking a client or marking a team moment.',
     decouvrir: 'Discover',
     ht: 'excl. VAT',
-    reponse: 'Our gift boxes start <strong>from €17.90 excl. VAT</strong> and go up to €64 excl. VAT depending on what is inside: exceptional madeleines, macarons, assortments to give. Delivered Monday to Friday in Paris and the Paris region, ordered before <strong>2 pm the day before</strong>.',
+    reponse: 'Our gift boxes start <strong>from €17.90 excl. VAT</strong> and go up to €64 excl. VAT depending on what is inside: exceptional madeleines, macarons, assortments to give. Delivered Monday to Friday in Paris and the Paris region, ordered before <strong>10 am the day before</strong>.',
     closeEyebrow: 'Made for saying thank you',
     closeTitle: 'A gift with taste.\nAn attention that stays.',
     closeBody: "Thanking a client, congratulating a team, marking the end of a year: our gourmet boxes carry the names of our artisans and can be personalised entirely in your image.",
@@ -72,7 +72,7 @@ const SEO_EN = `
   <p>An L'Écrin box contains no anonymous products: <strong>Mado Paris</strong> madeleines, with a reputation as the best in Paris, <strong>Pierre Morel</strong> macarons, <strong>Laura Todd</strong> cookies, artisan chocolates. Names that mean something to people who know, and give the gift a story to tell, well beyond the generic box of chocolates.</p>
 
   <h2>Giving a gourmet box to your clients or your teams</h2>
-  <p>Order before <strong>2 pm the day before</strong> for delivery to the address of your choice. For multiple shipments (end-of-year client gifts, multi-site distribution), our team organises the whole logistics on quote, with an answer within 24 hours and a company invoice with VAT.</p>
+  <p>Order before <strong>10 am the day before</strong> for delivery to the address of your choice. For multiple shipments (end-of-year client gifts, multi-site distribution), our team organises the whole logistics on quote, with an answer within 24 hours and a company invoice with VAT.</p>
 `
 
 const SEO_ARTICLE = `
@@ -86,7 +86,7 @@ const SEO_ARTICLE = `
   <p>Un coffret L'Écrin ne contient pas de produits anonymes : madeleines <strong>Mado Paris</strong>, réputées comme les meilleures de Paris, macarons <strong>Pierre Morel</strong>, cookies <strong>Laura Todd</strong>, chocolats artisanaux. Des noms qui parlent aux connaisseurs et donnent au cadeau une histoire à raconter, bien au-delà de la boîte de chocolats générique.</p>
 
   <h2>Offrir un coffret gourmand à ses clients ou ses équipes</h2>
-  <p>Commandez avant <strong>14h la veille</strong> pour une livraison à l'adresse de votre choix. Pour les envois multiples (cadeaux clients de fin d'année, distribution multi-sites), notre équipe organise la logistique complète sur devis, réponse sous 24h, facturation entreprise avec TVA.</p>
+  <p>Commandez avant <strong>10h la veille</strong> pour une livraison à l'adresse de votre choix. Pour les envois multiples (cadeaux clients de fin d'année, distribution multi-sites), notre équipe organise la logistique complète sur devis, réponse sous 24h, facturation entreprise avec TVA.</p>
 `
 
 const HERO = {
@@ -167,7 +167,7 @@ const ANSWER_BLOCK = (
     plusTitre="Personnalisation, volumes et livraison"
     plus={<>Ruban, carte et message sont personnalisables, et nous livrons en une fois sur votre site ou en plusieurs adresses pour vos équipes à distance. Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. <a href="/devis">Demandez un devis sous 24h</a>.</>}
   >
-    Nos coffrets démarrent <strong>à partir de 17,90 € HT</strong> et vont jusqu'à 64 € HT selon le contenu : madeleines d'exception, macarons, assortiments à offrir. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Nos coffrets démarrent <strong>à partir de 17,90 € HT</strong> et vont jusqu'à 64 € HT selon le contenu : madeleines d'exception, macarons, assortiments à offrir. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>10h la veille</strong>.
   </BlocReponse>
 )
 
@@ -177,7 +177,7 @@ const ANSWER_BLOCK_EN = (
     plusTitre="Personalisation, volumes and delivery"
     plus={<>Ribbon, card and message can all be personalised, and we deliver either in one go to your site or to several addresses for your remote teams. Delivery €29 excl. VAT in Paris and the nearby towns, €50 excl. VAT minimum order. <a href="/en/devis">Ask for a quote within 24 hours</a>.</>}
   >
-    Our gift boxes start <strong>from €17.90 excl. VAT</strong> and go up to €64 excl. VAT depending on what is inside: exceptional madeleines, macarons, assortments to give. Delivered Monday to Friday in Paris and the Paris region, ordered before <strong>2 pm the day before</strong>.
+    Our gift boxes start <strong>from €17.90 excl. VAT</strong> and go up to €64 excl. VAT depending on what is inside: exceptional madeleines, macarons, assortments to give. Delivered Monday to Friday in Paris and the Paris region, ordered before <strong>10 am the day before</strong>.
   </BlocReponse>
 )
 

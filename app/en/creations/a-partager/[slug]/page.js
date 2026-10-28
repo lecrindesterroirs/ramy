@@ -24,7 +24,7 @@ export default function MenuDetailEn({ params }) {
     <p><strong>Savoury:</strong> ${en.salees.join('; ')}.</p>
     <p><strong>Sweet:</strong> ${en.sucrees.join('; ')}.</p>
     <h2>Ordering and delivery</h2>
-    <p>${prix ? `The menu is €${prix} excl. VAT per person. ` : ''}Order until <strong>2 pm the day before</strong>, delivery from <strong>6:30 am</strong> in Paris and the Île-de-France, laid out and ready to set on the table. Minimum order €50 excl. VAT, delivery €29 excl. VAT, company invoicing with VAT. The whole savoury menu is halal and pork-free.</p>
+    <p>${prix ? `The menu is €${prix} excl. VAT per person. ` : ''}Order until <strong>10 am the day before</strong>, delivery from <strong>6:30 am</strong> in Paris and the Île-de-France, laid out and ready to set on the table. Minimum order €50 excl. VAT, delivery €29 excl. VAT, company invoicing with VAT. The whole savoury menu is halal and pork-free.</p>
   `
 
   return (

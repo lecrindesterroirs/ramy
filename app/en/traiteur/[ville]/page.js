@@ -184,7 +184,7 @@ export default async function EnCityPage({ params }) {
 
                 {/* Badges */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
-                  {[t('info.livraison', 'en'), 'Order by 2 pm the day before', 'Selected artisans'].map(badge => (
+                  {[t('info.livraison', 'en'), 'Order by 10 am the day before', 'Selected artisans'].map(badge => (
                     <span key={badge} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
                       {badge}
                     </span>

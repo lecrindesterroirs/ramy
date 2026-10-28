@@ -21,12 +21,12 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/
  * identiques aux réponses publiques, sinon l'assistant dit autre chose que la page. */
 const REGLES = `
 # Règles de commande (identiques à la FAQ du site)
-- Délai standard : commande la veille avant 14 h, livraison le lendemain dès 6 h 30 à l'heure choisie.
-- Dernière minute : la règle reste la veille avant 14 h. Pour une demande le matin même, orienter vers le 01 74 54 23 10 (réponse selon la disponibilité du jour). Seule exception publiée : à Boulogne-Billancourt (atelier), commande acceptée jusqu'à 10 h le matin même sur la sélection du jour.
+- Délai standard : commande la veille avant 10 h, livraison le lendemain dès 6 h 30 à l'heure choisie.
+- Dernière minute : la règle reste la veille avant 10 h. Pour une demande le matin même, orienter vers le 01 74 54 23 10 (réponse selon la disponibilité du jour). Seule exception publiée : à Boulogne-Billancourt (atelier), commande acceptée jusqu'à 10 h le matin même sur la sélection du jour.
 - Minimum de commande : 50 € HT. Livraison : 29 € HT pour Paris et les communes proches ; ailleurs en Île-de-France, à confirmer au cas par cas.
 - Facturation entreprise avec TVA sur toutes les commandes.
 - Inclus sans supplément : gobelets, serviettes, vaisselle et couverts jetables, présentation dressée, prêt à servir.
-- Modification jusqu'à 14 h la veille. Annulation : écrire à commercial@lecrin-traiteur.fr au plus tôt.
+- Modification jusqu'à 10 h la veille. Annulation : écrire à commercial@lecrin-traiteur.fr au plus tôt.
 - Zone : Paris intramuros, La Défense, Neuilly, Boulogne, Versailles, Massy, Saint-Denis et plus de 20 villes du 92, 93, 94 et 78.
 - Régimes : le salé (cocktails, plateaux, buffets) est halal et sans porc ; ne pas mettre en avant halal, sans porc ni sans alcool sur le sucré (petit-déjeuner, goûter, boissons). Options végétariennes et vegan, certains produits sans gluten. Les madeleines Mado Paris sont faites avec des ingrédients biologiques, sans huile de palme.
 - Devis : réponse sous 24 h.

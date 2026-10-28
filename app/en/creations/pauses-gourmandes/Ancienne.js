@@ -35,7 +35,7 @@ const SEO_ARTICLE = `
   <h2>Large cakes to share, for birthdays and team moments</h2>
   <p>For a birthday, a leaving party or an onboarding worth marking, we also make <strong>large cakes to share</strong>: raspberry tart, hazelnut praline cake, fraisier, lemon meringue tart, strawberry roulade, panettone. Cut in front of everyone, which is the point.</p>
   <h2>Ordering your afternoon break in Paris</h2>
-  <p>Order until <strong>2 pm the day before</strong>, delivered from <strong>6:30 am</strong> Monday to Friday. Minimum order €50 excl. VAT, delivery €29 excl. VAT in Paris and nearby towns. Company invoice showing VAT, quote within 24 hours.</p>
+  <p>Order until <strong>10 am the day before</strong>, delivered from <strong>6:30 am</strong> Monday to Friday. Minimum order €50 excl. VAT, delivery €29 excl. VAT in Paris and nearby towns. Company invoice showing VAT, quote within 24 hours.</p>
 `
 
 export default function PausesEn({ bas }) {

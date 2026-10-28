@@ -211,7 +211,7 @@ ${exemplesHalalFr()}
 
     <h2>Livraison halal à Paris et en Île-de-France</h2>
     <p>Réunion matinale, séminaire, petit-déjeuner d'équipe ou pot de départ : nous livrons et installons dès 6h30, du lundi au vendredi, de 10 à 300 personnes, avec notre propre équipe. Nous desservons notamment <a href="/traiteur/paris">Paris</a>, <a href="/traiteur/la-defense">La Défense</a>, <a href="/traiteur/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/neuilly-sur-seine">Neuilly-sur-Seine</a>, <a href="/traiteur/levallois-perret">Levallois-Perret</a>, <a href="/traiteur/nanterre">Nanterre</a> et <a href="/traiteur/versailles">Versailles</a>, soit <a href="/traiteur">toutes les villes d'Île-de-France</a> de notre zone de livraison. Les produits sont préparés le matin même, pour la fraîcheur, et notés 5/5 par nos clients sur Google.</p>
-    <p>Commande jusqu'à la veille 14h pour une livraison le lendemain ; à partir de 50 personnes, prévenez au moins 48h avant. <a href="/devis">Demandez votre devis gratuit</a> et composez un menu qui régale toute votre équipe.</p>
+    <p>Commande jusqu'à la veille 10h pour une livraison le lendemain ; à partir de 50 personnes, prévenez au moins 48h avant. <a href="/devis">Demandez votre devis gratuit</a> et composez un menu qui régale toute votre équipe.</p>
   `
 
   return (
@@ -283,7 +283,7 @@ ${exemplesHalalFr()}
             Oui. Toute la carte de L'Écrin Traiteur est halal et sans porc par défaut, sans alcool dans les recettes : petits-déjeuners, plateaux repas, pauses gourmandes, cocktails et buffets. Vous n'avez rien à préciser à la commande. Nous ne revendiquons pas de certification halal : c'est une offre halal-friendly, construite avec nos artisans.
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)' }}>
-            Des versions végétariennes et vegan existent sur chaque prestation, et nous adaptons en sans gluten sur demande. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 14h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
+            Des versions végétariennes et vegan existent sur chaque prestation, et nous adaptons en sans gluten sur demande. Livraison dès 6h30 à Paris et en Île-de-France, commande jusqu'à la veille 10h, minimum <strong style={{ fontWeight: 500 }}>50 € HT</strong>, devis sous 24h.
           </p>
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: 'clamp(16px, 1.4vw, 18px)', lineHeight: 1.85, color: 'var(--text-primary)', marginTop: '22px' }}>
             Repères de prix, tout en halal et sans porc : petit-déjeuner dès <strong style={{ fontWeight: 500 }}>8 € HT</strong> par personne, plateau repas dès <strong style={{ fontWeight: 500 }}>28,90 € HT</strong>, cocktail de <strong style={{ fontWeight: 500 }}>29,90 à 51,90 € HT</strong> selon la formule. La livraison est à 29 € HT à Paris et dans les communes proches.

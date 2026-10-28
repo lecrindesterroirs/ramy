@@ -26,14 +26,14 @@ const BASE = 'https://www.lecrin-traiteur.fr'
 const ARGS_EN = [
   { icon: 'quality',  titre: 'Halal and pork-free',  desc: 'The whole menu, by default, with no alcohol in the recipes and at no extra cost. No halal certification is claimed.' },
   { icon: 'custom',   titre: 'Options on request',   desc: 'Vegetarian, vegan and gluten-free are set when ordering, with the number of guests concerned.' },
-  { icon: 'delivery', titre: 'Delivery from 6:30 am', desc: 'Monday to Friday, in Paris and across the Paris region. Order until 2 pm the day before.' },
+  { icon: 'delivery', titre: 'Delivery from 6:30 am', desc: 'Monday to Friday, in Paris and across the Paris region. Order until 10 am the day before.' },
   { icon: 'support',  titre: 'Quote within 24 hours', desc: 'Company invoice with VAT, purchase orders accepted, €50 excl. VAT minimum order.' },
 ]
 
 const ARGS = [
   { icon: 'quality',  titre: 'Halal et sans porc',   desc: "Toute la carte, par défaut, sans alcool dans les recettes et sans supplément. Aucune certification halal n'est revendiquée." },
   { icon: 'custom',   titre: 'Options sur demande',  desc: "Végétarien, vegan et sans gluten se précisent à la commande, avec le nombre de personnes concernées." },
-  { icon: 'delivery', titre: 'Livraison dès 6h30',   desc: "Du lundi au vendredi, à Paris et en Île-de-France. Commande jusqu'à la veille 14h." },
+  { icon: 'delivery', titre: 'Livraison dès 6h30',   desc: "Du lundi au vendredi, à Paris et en Île-de-France. Commande jusqu'à la veille 10h." },
   { icon: 'support',  titre: 'Devis sous 24h',       desc: "Facture entreprise avec TVA, bon de commande accepté, minimum de commande de 50 € HT." },
 ]
 

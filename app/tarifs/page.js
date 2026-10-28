@@ -13,7 +13,7 @@ const FAQ = [
   { name: "Les prix sont-ils HT ou TTC ?", answer: "Tous nos prix sont HT. Vous recevez une facture d'entreprise avec la TVA." },
   { name: "Y a-t-il un minimum de commande ?", answer: "Oui, 50 € HT de produits. Il n'y a pas de minimum de personnes." },
   { name: "La livraison est-elle comprise ?", answer: `Non, elle s'ajoute : 29 € HT à Paris et dans les communes proches, dès 6h30. Avec la reprise de la vaisselle réutilisable ou du matériel, livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94 ; ailleurs, prix de la zone plus ${euroFr(RECUP)} HT.` },
-  { name: "Quand faut-il commander ?", answer: "Jusqu'à la veille 14h. À partir de 50 personnes, prévoyez 48 h. Le devis est envoyé sous 24 h." },
+  { name: "Quand faut-il commander ?", answer: "Jusqu'à la veille 10h. À partir de 50 personnes, prévoyez 48 h. Le devis est envoyé sous 24 h." },
   { name: "Les prix changent-ils pour le halal ou le végétarien ?", answer: "Non. Le salé (cocktails, plateaux, buffets) est halal et sans porc, sans alcool et sans supplément. Les options végétariennes, vegan et sans gluten sont au même prix." },
 ]
 
@@ -109,7 +109,7 @@ export default function Tarifs() {
           before: [
             "<strong>Livraison :</strong> 29 € HT à Paris et dans les communes proches, dès 6h30, à l'heure exacte demandée, par notre propre équipe.",
             "<strong>Minimum :</strong> 50 € HT de produits, sans minimum de personnes.",
-            "<strong>Délais :</strong> commande jusqu'à la veille 14h ; 48 h à partir de 50 personnes. Devis sous 24 h, facture d'entreprise avec TVA.",
+            "<strong>Délais :</strong> commande jusqu'à la veille 10h ; 48 h à partir de 50 personnes. Devis sous 24 h, facture d'entreprise avec TVA.",
             `<strong>Matériel :</strong> livraison et reprise de la vaisselle réutilisable ou du matériel, ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94 ; ailleurs, prix de la zone plus ${euroFr(RECUP)} HT.`,
           ],
         },

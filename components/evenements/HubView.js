@@ -26,7 +26,7 @@ const H = {
     calendrier: "Voir le calendrier",
     alt: "Petit-déjeuner d'entreprise dressé par L'Écrin Traiteur dans un salon, avec un maître d'hôtel",
     reponseTitre: "Quels événements fêter en entreprise dans l'année ?",
-    reponse: (liste, liv, min) => `Chez L'Écrin Traiteur, les prochains rendez-vous de l'année sont ${liste}. La livraison est de ${liv} à Paris et dans les communes proches, le minimum de commande de ${min}, et la commande se passe jusqu'à la veille 14h.`,
+    reponse: (liste, liv, min) => `Chez L'Écrin Traiteur, les prochains rendez-vous de l'année sont ${liste}. La livraison est de ${liv} à Paris et dans les communes proches, le minimum de commande de ${min}, et la commande se passe jusqu'à la veille 10h.`,
     calTitre: "Le calendrier de l'année",
     tableTitre: 'Les dates et les prix, en un tableau',
     entetes: ['Date', 'Événement', 'Format conseillé', 'Prix du format (HT par personne)'],
@@ -42,7 +42,7 @@ const H = {
     calendrier: 'See the calendar',
     alt: "A corporate breakfast laid out by L'Écrin Traiteur in a reception room, with a waiter",
     reponseTitre: 'Which events should a company mark during the year?',
-    reponse: (liste, liv, min) => `At L'Écrin Traiteur, the next dates in the year are ${liste}. Delivery is ${liv} in Paris and nearby towns, the minimum order is ${min}, and you can order until 2 pm the day before.`,
+    reponse: (liste, liv, min) => `At L'Écrin Traiteur, the next dates in the year are ${liste}. Delivery is ${liv} in Paris and nearby towns, the minimum order is ${min}, and you can order until 10 am the day before.`,
     calTitre: 'The calendar for the year',
     tableTitre: 'Dates and prices in one table',
     entetes: ['Date', 'Event', 'Recommended format', 'Format price (excl. VAT per person)'],
@@ -55,14 +55,14 @@ const H = {
 
 const FAQ = {
   fr: (liv, min) => [
-    { q: 'Combien de temps à l\'avance faut-il commander ?', a: "Jusqu'à la veille 14h pour une livraison dès 6h30. À partir de 50 personnes ou pour plusieurs sites, prévoyez 48 h ; pour une animation (atelier crêpes, barista, bar à mocktails) ou une pièce personnalisée, demandez le devis quelques jours avant." },
+    { q: 'Combien de temps à l\'avance faut-il commander ?', a: "Jusqu'à la veille 10h pour une livraison dès 6h30. À partir de 50 personnes ou pour plusieurs sites, prévoyez 48 h ; pour une animation (atelier crêpes, barista, bar à mocktails) ou une pièce personnalisée, demandez le devis quelques jours avant." },
     { q: 'Quel est le budget minimum ?', a: `Le minimum de commande est de ${min}, et la livraison de ${liv} à Paris et dans les communes proches. Une petite équipe commande comme une grande.` },
     { q: 'Peut-on personnaliser les produits aux couleurs de l\'entreprise ?', a: "Oui, sur devis : madeleines, cookies et emballages à votre message ou à vos couleurs. Comptez quelques jours de délai en plus." },
     { q: 'Livrez-vous plusieurs sites le même jour ?', a: "Oui, à Paris et en Île-de-France. Prévenez-nous 48 h avant pour organiser les tournées." },
     { q: 'Le salé est-il halal ?', a: "Oui. Tout notre salé est halal et sans porc, sans alcool, sans supplément. Options végétariennes, vegan et sans gluten sur demande." },
   ],
   en: (liv, min) => [
-    { q: 'How far ahead should you order?', a: "Until 2 pm the day before for delivery from 6:30 am. From 50 people or across several sites, allow 48 hours; for a live station (crêpes, barista, mocktail bar) or a personalised item, ask for the quote a few days ahead." },
+    { q: 'How far ahead should you order?', a: "Until 10 am the day before for delivery from 6:30 am. From 50 people or across several sites, allow 48 hours; for a live station (crêpes, barista, mocktail bar) or a personalised item, ask for the quote a few days ahead." },
     { q: 'What is the minimum budget?', a: `The minimum order is ${min}, and delivery is ${liv} in Paris and nearby towns. A small team orders just like a large one.` },
     { q: "Can the products be personalised in the company's colours?", a: 'Yes, on quote: madeleines, cookies and packaging with your message or in your colours. Allow a few extra days.' },
     { q: 'Do you deliver to several sites on the same day?', a: 'Yes, across Paris and Île-de-France. Give us 48 hours\' notice to plan the rounds.' },

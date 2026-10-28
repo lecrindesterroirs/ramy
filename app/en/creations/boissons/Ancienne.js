@@ -23,7 +23,7 @@ const SEO_ARTICLE = `
   <h2>Cold and hot, from the morning to the afternoon</h2>
   <p>For a <strong>breakfast</strong>: cold juices plus a flask of coffee or tea. For an <strong>afternoon break</strong>: cold drinks, organic infusions, seasonal juices. For a <strong>cocktail reception</strong>: Alain Milliat nectars plus sparkling waters. Our flasks hold their heat for several hours after delivery, which matters on a full-day offsite.</p>
   <h2>Ordering your drinks in Paris</h2>
-  <p>Order until <strong>2 pm the day before</strong>. Delivered from <strong>6:30 am</strong>, Monday to Friday. Juices and cold drinks arrive <strong>with cups</strong>, so there is nothing for you to arrange. Drinks are easy to add to an existing pastry or dessert order, one delivery, everything together. Company invoice showing VAT.</p>
+  <p>Order until <strong>10 am the day before</strong>. Delivered from <strong>6:30 am</strong>, Monday to Friday. Juices and cold drinks arrive <strong>with cups</strong>, so there is nothing for you to arrange. Drinks are easy to add to an existing pastry or dessert order, one delivery, everything together. Company invoice showing VAT.</p>
 `
 
 export default function BoissonsEn({ bas }) {

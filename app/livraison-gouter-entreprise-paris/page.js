@@ -19,7 +19,7 @@ const GOUTER_10 = 49 + 9.5 + LIV // coffret de 20 madeleines + 1 L de jus + livr
 const FAQ = [
   { name: "À quelle heure livrez-vous un goûter d'entreprise ?", answer: "À l'heure de votre pause, 15h30 ou 16h par exemple : vous nous donnez l'heure exacte, nous livrons juste avant. Le jour même comme la veille, la livraison se fait du lundi au vendredi, dès 6h30, par notre équipe." },
   { name: "Quel est le prix de la livraison de goûter à Paris ?", answer: `${euroFr(LIV)} HT à Paris et dans les communes proches, par commande. Avec la reprise de la vaisselle réutilisable, livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94. Les autres zones sont chiffrées au devis.` },
-  { name: "Quel délai pour commander ?", answer: "Jusqu'à 14h la veille. À partir de 50 personnes, ou pour plusieurs sites, prévenez 48 h à l'avance. Le devis arrive sous 24 h." },
+  { name: "Quel délai pour commander ?", answer: "Jusqu'à 10h la veille. À partir de 50 personnes, ou pour plusieurs sites, prévenez 48 h à l'avance. Le devis arrive sous 24 h." },
   { name: "Combien coûte un goûter livré pour 20 personnes ?", answer: `La pause gourmande démarre à ${euroFr(PAUSE_DES)} HT par personne : ${euroFr(budget(20))} HT pour 20 personnes livraison comprise (${euroFr(20 * PAUSE_DES)} HT de produits et ${euroFr(LIV)} HT de livraison), soit ${euroFr(Math.round(budget(20) / 20 * 100) / 100)} HT par personne.` },
   { name: "Quelle quantité prévoir par personne ?", answer: "Comptez 1,5 à 2 pièces sucrées par personne pour une pause de 20 à 30 minutes. Le sucré monte avec la durée : 2 à 3 pièces en dessert de buffet, 4 en cocktail dînatoire." },
   { name: "Que contient un goûter livré ?", answer: "Madeleines, cookies, macarons, cakes, tartelettes ou brochettes de fruits frais, selon la formule, avec une boisson. Les coffrets sont livrés dressés, prêts à poser sur la table ; gobelets et serviettes sont fournis, et la vaisselle réutilisable se demande au devis." },
@@ -56,7 +56,7 @@ export default function LivraisonGouter() {
     <InfoPage
       eyebrow="Livraison · Paris & Île-de-France"
       title="Livraison de goûter en entreprise à Paris, à l'heure de votre pause"
-      intro={`Horaires, zones, délais et prix : tout ce qu'il faut savoir pour se faire livrer un goûter au bureau. Pause gourmande dès ${euroFr(PAUSE_DES)} HT par personne, livrée par notre équipe à l'heure que vous fixez, ${euroFr(LIV)} HT de livraison à Paris, commande jusqu'à 14h la veille.`}
+      intro={`Horaires, zones, délais et prix : tout ce qu'il faut savoir pour se faire livrer un goûter au bureau. Pause gourmande dès ${euroFr(PAUSE_DES)} HT par personne, livrée par notre équipe à l'heure que vous fixez, ${euroFr(LIV)} HT de livraison à Paris, commande jusqu'à 10h la veille.`}
       jsonLd={jsonLd}
       faq={FAQ}
       breadcrumb={[{ name: 'Accueil', path: '' }, { name: "Goûter d'entreprise", path: '/creations/pauses-gourmandes' }, { name: 'Livraison', path: '/livraison-gouter-entreprise-paris' }]}
@@ -71,7 +71,7 @@ export default function LivraisonGouter() {
               ['Qui livre', 'Notre équipe, formée à nos standards. Jamais de sous-traitance.'],
               ['Prix de la livraison', `${euroFr(LIV)} HT à Paris et dans les communes proches, par commande.`],
               ['Avec reprise du matériel', `${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94.`],
-              ['Commande', "Jusqu'à 14h la veille ; 48 h à l'avance à partir de 50 personnes ou pour plusieurs sites."],
+              ['Commande', "Jusqu'à 10h la veille ; 48 h à l'avance à partir de 50 personnes ou pour plusieurs sites."],
               ['Minimum', `${euroFr(MINIMUM)} HT de produits, sans minimum de personnes.`],
               ['Facture', "Facture d'entreprise avec TVA, bon de commande accepté."],
             ],
@@ -89,7 +89,7 @@ export default function LivraisonGouter() {
         {
           h2: 'Comment se passe une livraison',
           before: [
-            `<strong>La veille avant 14h :</strong> vous commandez, ou vous demandez un devis (réponse sous 24 h).`,
+            `<strong>La veille avant 10h :</strong> vous commandez, ou vous demandez un devis (réponse sous 24 h).`,
             `<strong>Le jour J, à l'heure de la pause :</strong> notre équipe dépose le goûter dressé là où il sera servi, avec gobelets et serviettes. La mise en place est possible sur demande.`,
             `<strong>Après la pause :</strong> si vous avez choisi la vaisselle réutilisable, nous la reprenons ; livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT à Paris, dans le 92 et le 94.`,
           ],

@@ -5,11 +5,11 @@ import { useState } from 'react'
 const fallbackFaqs = [
   {
     question: "Combien de temps à l'avance faut-il commander ?",
-    reponse: "Pour une commande standard, le délai est la veille avant 14h. Votre commande est livrée le lendemain matin dès 6h30 à l'heure que vous choisissez.",
+    reponse: "Pour une commande standard, le délai est la veille avant 10h. Votre commande est livrée le lendemain matin dès 6h30 à l'heure que vous choisissez.",
   },
   {
     question: "Acceptez-vous les commandes de dernière minute ?",
-    reponse: "La règle reste la commande avant 14h la veille, pour une livraison dès 6h30. Pour une demande le matin même, appelez le 01 74 54 23 10 : la réponse dépend de la disponibilité du jour. À Boulogne-Billancourt, où se trouve notre atelier, les commandes sont acceptées jusqu'à 10h sur la sélection du jour.",
+    reponse: "La règle reste la commande avant 10h la veille, pour une livraison dès 6h30. Pour une demande le matin même, appelez le 01 74 54 23 10 : la réponse dépend de la disponibilité du jour. À Boulogne-Billancourt, où se trouve notre atelier, les commandes sont acceptées jusqu'à 10h sur la sélection du jour.",
   },
   {
     question: "Y a-t-il un minimum de commande et des frais de livraison ?",
@@ -29,7 +29,7 @@ const fallbackFaqs = [
   },
   {
     question: "Peut-on modifier ou annuler une commande ?",
-    reponse: "Les modifications sont acceptées jusqu'à 14h la veille de la livraison. Pour les annulations, contactez-nous dès que possible à commercial@lecrin-traiteur.fr, nous faisons notre possible pour trouver une solution selon le délai restant.",
+    reponse: "Les modifications sont acceptées jusqu'à 10h la veille de la livraison. Pour les annulations, contactez-nous dès que possible à commercial@lecrin-traiteur.fr, nous faisons notre possible pour trouver une solution selon le délai restant.",
   },
   {
     question: "Les prestations arrivent-elles prêtes à servir ?",
@@ -46,18 +46,18 @@ const fallbackFaqs = [
 ]
 
 /*
-  Mêmes dix questions, mêmes faits, en anglais. Les chiffres — veille 14h,
+  Mêmes dix questions, mêmes faits, en anglais. Les chiffres — veille 10h,
   6h30, 50 € HT, 29 € HT, 01 74 54 23 10 — sont identiques des deux côtés :
   un écart entre les deux langues serait une contradiction lue par les IA.
 */
 const faqsEn = [
   {
     question: 'How far ahead do we need to order?',
-    reponse: 'For a standard order, the deadline is 2 pm the day before. Your order is delivered the next morning from 6:30 am, at the time you choose.',
+    reponse: 'For a standard order, the deadline is 10 am the day before. Your order is delivered the next morning from 6:30 am, at the time you choose.',
   },
   {
     question: 'Do you take last-minute orders?',
-    reponse: 'The rule is still 2 pm the day before, for delivery from 6:30 am. For a same-morning request, call 01 74 54 23 10: the answer depends on what is available that day. In Boulogne-Billancourt, where our kitchen is, we take orders until 10 am from that day\'s selection.',
+    reponse: 'The rule is still 10 am the day before, for delivery from 6:30 am. For a same-morning request, call 01 74 54 23 10: the answer depends on what is available that day. In Boulogne-Billancourt, where our kitchen is, we take orders until 10 am from that day\'s selection.',
   },
   {
     question: 'Is there a minimum order, and a delivery charge?',
@@ -77,7 +77,7 @@ const faqsEn = [
   },
   {
     question: 'Can an order be changed or cancelled?',
-    reponse: 'Changes are accepted until 2 pm the day before delivery. For cancellations, contact us as soon as you can at commercial@lecrin-traiteur.fr; we do what we can depending on how much notice is left.',
+    reponse: 'Changes are accepted until 10 am the day before delivery. For cancellations, contact us as soon as you can at commercial@lecrin-traiteur.fr; we do what we can depending on how much notice is left.',
   },
   {
     question: 'Does everything arrive ready to serve?',

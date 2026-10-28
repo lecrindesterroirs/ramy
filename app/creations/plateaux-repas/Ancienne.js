@@ -28,7 +28,7 @@ const SEO_ARTICLE = `
   <p>Végétarien, vegan, sans gluten, allergies spécifiques : indiquez les contraintes de vos convives à la commande et nous composons des plateaux équivalents en qualité et en générosité. Notre carte est par ailleurs pensée sans porc et halal, pour être partagée par toutes vos équipes. Personne ne doit se contenter d'une salade par défaut pendant que les autres déjeunent bien, c'est un principe non négociable de notre carte. Le détail de notre approche est dans notre guide <a href="/journal/traiteur-vegan-vegetarien-entreprise-paris">traiteur végan et végétarien en entreprise</a>.</p>
 
   <h2>Commander vos plateaux repas pour une réunion à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong> en précisant l'adresse, l'heure de livraison et la répartition des menus. Les plateaux arrivent prêts à poser sur table, avec couverts et serviettes. Facturation entreprise avec TVA, devis personnalisé sous 24h pour les volumes importants ou les commandes récurrentes.</p>
+  <p>Commandez avant <strong>10h la veille</strong> en précisant l'adresse, l'heure de livraison et la répartition des menus. Les plateaux arrivent prêts à poser sur table, avec couverts et serviettes. Facturation entreprise avec TVA, devis personnalisé sous 24h pour les volumes importants ou les commandes récurrentes.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
@@ -414,7 +414,7 @@ const ANSWER_BLOCK = (
     plusTitre="Livraison, minimum de commande et régimes"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Recettes végétariennes, poulet ou poisson au choix, toutes sans porc. Dites-nous vos contraintes alimentaires et nous adaptons la sélection : <a href="/devis">devis sous 24h</a>.</>}
   >
-    Un plateau repas complet (entrée, plat et dessert) démarre à <strong>28,90 € HT par personne</strong> : 29,90 € en poulet, 30,90 € en poisson, couverts et serviette inclus. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Un plateau repas complet (entrée, plat et dessert) démarre à <strong>28,90 € HT par personne</strong> : 29,90 € en poulet, 30,90 € en poisson, couverts et serviette inclus. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>10h la veille</strong>.
   </BlocReponse>
 )
 

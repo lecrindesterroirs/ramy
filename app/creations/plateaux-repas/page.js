@@ -14,7 +14,7 @@ const ZONES = [
 
 const ZONES_HTML = `
   <h2>Plateaux repas d'entreprise près de chez vous</h2>
-  <p>Nos plateaux repas sont livrés par notre propre équipe à Paris et dans toute l'Île-de-France : Paris intramuros, La Défense, Neuilly, Boulogne, Versailles, Massy, Saint-Denis et plus de 20 villes du 92, 93, 94 et 78, sur commande jusqu'à 14 h la veille. Une page détaille la livraison, les délais et les prix pour cinq zones :</p>
+  <p>Nos plateaux repas sont livrés par notre propre équipe à Paris et dans toute l'Île-de-France : Paris intramuros, La Défense, Neuilly, Boulogne, Versailles, Massy, Saint-Denis et plus de 20 villes du 92, 93, 94 et 78, sur commande jusqu'à 10 h la veille. Une page détaille la livraison, les délais et les prix pour cinq zones :</p>
   <ul>${ZONES.map(z => `<li><a href="${z.href}">Plateaux repas d'entreprise à ${z.nom}</a></li>`).join('')}</ul>
 `
 

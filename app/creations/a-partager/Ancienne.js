@@ -70,7 +70,7 @@ const SEO_EN = `
   <p>Allow one menu for 8 to 12 people, topping it up according to appetite and the hour. Le Méditerranéen, Le Parisien or Le Jardin (100% vegetarian): our team helps you compose and size the order.</p>
 
   <h2>Ordering your sharing menus in Paris</h2>
-  <p>Order before <strong>2 pm the day before</strong>, delivered at the time you choose anywhere in Paris and the Paris region. The menus arrive plated, ready to set down. Company invoice with VAT.</p>
+  <p>Order before <strong>10 am the day before</strong>, delivered at the time you choose anywhere in Paris and the Paris region. The menus arrive plated, ready to set down. Company invoice with VAT.</p>
   <p>For a larger format with several stations, our <a href="/journal/buffet-entreprise-guide-complet-paris">complete guide to the company buffet</a> covers budget, presentation and choosing a caterer.</p>
 `
 
@@ -85,7 +85,7 @@ const SEO_ARTICLE = `
   <p>Comptez un menu pour 8 à 12 personnes en le complétant selon l'appétit et l'horaire. Méditerranéen, Parisien ou Jardin (100 % végétarien) : nos équipes vous aident à composer et à dimensionner selon le nombre de convives.</p>
 
   <h2>Commander vos menus à partager à Paris</h2>
-  <p>Commande avant <strong>14h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA, et pour les moments récurrents, un devis cadre simplifie tout.</p>
+  <p>Commande avant <strong>10h la veille</strong>, livraison à l'heure choisie partout à Paris et en Île-de-France. Les menus arrivent dressés, prêts à poser sur table. Facturation entreprise avec TVA, et pour les moments récurrents, un devis cadre simplifie tout.</p>
   <p>Pour un format plus large avec plusieurs stands, notre <a href="/journal/buffet-entreprise-guide-complet-paris">guide complet du buffet d'entreprise</a> détaille budget, dressage et choix du traiteur.</p>
 `
 
@@ -224,7 +224,7 @@ const ANSWER_BLOCK = (en) => en ? (
     plusTitre="Delivery, minimum order and presentation"
     plus={<>Delivery €29 excl. VAT in Paris and nearby towns, minimum order €50 excl. VAT. Served on wooden boards with reusable tableware, nothing disposable, collected after your event. <a href="/en/devis">Ask for a quote within 24 hours</a>.</>}
   >
-    A sharing buffet starts at <strong>€34.90 excl. VAT per person</strong> and goes up to €37.90 depending on the menu: several cold dishes set down in the middle of the table for everyone to help themselves. Delivered Monday to Friday across Paris and Île-de-France, ordered by <strong>2 pm the day before</strong>.
+    A sharing buffet starts at <strong>€34.90 excl. VAT per person</strong> and goes up to €37.90 depending on the menu: several cold dishes set down in the middle of the table for everyone to help themselves. Delivered Monday to Friday across Paris and Île-de-France, ordered by <strong>10 am the day before</strong>.
   </BlocReponse>
 ) : (
   <BlocReponse
@@ -232,7 +232,7 @@ const ANSWER_BLOCK = (en) => en ? (
     plusTitre="Livraison, minimum de commande et présentation"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Présentation sur planches de bois et vaisselle réutilisable, sans jetable, récupérée après votre événement. <a href="/devis">Demandez un devis sous 24h</a>.</>}
   >
-    Un buffet à partager démarre à <strong>34,90 € HT par personne</strong> et monte à 37,90 € selon le menu : plusieurs plats froids posés au centre de la table, que chacun se sert. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Un buffet à partager démarre à <strong>34,90 € HT par personne</strong> et monte à 37,90 € selon le menu : plusieurs plats froids posés au centre de la table, que chacun se sert. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>10h la veille</strong>.
   </BlocReponse>
 )
 

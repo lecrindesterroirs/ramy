@@ -22,7 +22,7 @@ export const CATEGORIE_COLORS = {
 export const BOXES = [
   {
     seoTitle: `La Parisienne : la lunch box poulet mayonnaise pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `<p>La Parisienne est notre lunch box la plus classique : un sandwich au poulet mayonnaise, simple et sûr, qui plaît à tout le monde. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Le grand classique du déjeuner</h2><p>Sandwich poulet mayonnaise, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La Parisienne est notre lunch box la plus classique : un sandwich au poulet mayonnaise, simple et sûr, qui plaît à tout le monde. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Le grand classique du déjeuner</h2><p>Sandwich poulet mayonnaise, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 10h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: "lb1",
     categorie: "poulet",
     nom: "La Parisienne",
@@ -37,7 +37,7 @@ export const BOXES = [
   },
   {
     seoTitle: `L'Épicée : la lunch box poulet curry pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `<p>L'Épicée réveille le déjeuner avec un sandwich au poulet curry, parfumé et généreux. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Du poulet, un peu d'épices</h2><p>Sandwich poulet curry, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>L'Épicée réveille le déjeuner avec un sandwich au poulet curry, parfumé et généreux. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Du poulet, un peu d'épices</h2><p>Sandwich poulet curry, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 10h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: "lb2",
     categorie: "poulet",
     nom: "L'Épicée",
@@ -52,7 +52,7 @@ export const BOXES = [
   },
   {
     seoTitle: `La Fermière : la lunch box œuf & emmental pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `<p>La Fermière est notre lunch box végétarienne : un sandwich œuf et emmental, simple, rassasiant et sans viande. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>L'option végétarienne</h2><p>Sandwich œuf & emmental, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La Fermière est notre lunch box végétarienne : un sandwich œuf et emmental, simple, rassasiant et sans viande. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>L'option végétarienne</h2><p>Sandwich œuf & emmental, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 10h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: "lb3",
     categorie: "vegetarien",
     nom: "La Fermière",
@@ -67,7 +67,7 @@ export const BOXES = [
   },
   {
     seoTitle: `La Nordique : la lunch box saumon & avocat pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `<p>La Nordique apporte une touche plus fine : un sandwich au saumon et à l'avocat, frais et léger. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Saumon et avocat, frais et léger</h2><p>Sandwich saumon & avocat, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>La Nordique apporte une touche plus fine : un sandwich au saumon et à l'avocat, frais et léger. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Saumon et avocat, frais et léger</h2><p>Sandwich saumon & avocat, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 10h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: "lb4",
     categorie: "poisson",
     nom: "La Nordique",
@@ -82,7 +82,7 @@ export const BOXES = [
   },
   {
     seoTitle: `L'Océane : la lunch box thon mayonnaise pour vos déjeuners d'entreprise à Paris`,
-    seoHtml: `<p>L'Océane joue la valeur sûre : un sandwich au thon mayonnaise, rassasiant et sans surprise. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Le thon mayonnaise, valeur sûre</h2><p>Sandwich thon mayonnaise, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 14h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
+    seoHtml: `<p>L'Océane joue la valeur sûre : un sandwich au thon mayonnaise, rassasiant et sans surprise. Le sandwich est préparé en baguette de notre boulanger partenaire ou en pain viennois, au choix, avec une salade de concombre à la ciboulette ou de tomate et mozzarella en entrée, et une part de cake ou une madeleine en dessert.</p><h2>Le thon mayonnaise, valeur sûre</h2><p>Sandwich thon mayonnaise, entrée et dessert au choix, serviette et couverts inclus. Préparée le matin même, prête à emporter en réunion ou à servir en salle.</p><h2>Commander vos lunch box à Paris et en Île-de-France</h2><p>Commande avant 10h la veille, livraison dès 6h30 sur site. Effectifs variables, régimes particuliers, facturation entreprise avec TVA. Devis personnalisé sous 24h.</p>`,
     id: "lb9",
     categorie: "poisson",
     nom: "L'Océane",

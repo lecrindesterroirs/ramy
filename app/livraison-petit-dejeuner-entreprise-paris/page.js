@@ -19,7 +19,7 @@ const budget = (n) => n * PDJ_DES + LIV
 const FAQ = [
   { name: "À partir de quelle heure livrez-vous un petit-déjeuner d'entreprise ?", answer: "Dès 6h30, du lundi au vendredi, à l'heure que vous fixez : 7h30 pour une réunion de 8h30, par exemple. La livraison est faite par notre équipe, jamais sous-traitée." },
   { name: "Quel est le prix de la livraison de petit-déjeuner à Paris ?", answer: `${euroFr(LIV)} HT à Paris et dans les communes proches, par commande. Avec la reprise de la vaisselle réutilisable, livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94. Les autres zones sont chiffrées au devis.` },
-  { name: "Quel délai pour commander ?", answer: "Jusqu'à 14h la veille pour une livraison le lendemain dès 6h30. À partir de 50 personnes, ou pour plusieurs sites, prévenez 48 h à l'avance. Le devis arrive sous 24 h." },
+  { name: "Quel délai pour commander ?", answer: "Jusqu'à 10h la veille pour une livraison le lendemain dès 6h30. À partir de 50 personnes, ou pour plusieurs sites, prévenez 48 h à l'avance. Le devis arrive sous 24 h." },
   { name: "Y a-t-il un minimum de commande ?", answer: `Oui, ${euroFr(MINIMUM)} HT de produits, sans minimum de personnes. Une équipe de 6 personnes peut commander.` },
   { name: "Combien coûte un petit-déjeuner livré pour 20 personnes ?", answer: `Formule Classique : ${euroFr(budget(20))} HT livraison comprise (${euroFr(20 * PDJ_DES)} HT de produits et ${euroFr(LIV)} HT de livraison), soit ${euroFr(budget(20) / 20)} HT par personne. Viennoiseries et café seuls : dès ${euroFr(PDJ_LEGER)} HT par personne pour 30 personnes, hors livraison. Le petit-déjeuner complet est sur devis.` },
   { name: "Que contient la livraison ?", answer: "Viennoiseries pur beurre, jus Alain Milliat, café ou thé en thermos et fruits frais en formule Classique, avec gobelets, serviettes, sucre et touillettes. La mise en place est possible sur demande, et la vaisselle réutilisable ou les plateaux de bois se demandent au devis." },
@@ -57,7 +57,7 @@ export default function LivraisonPetitDejeuner() {
     <InfoPage
       eyebrow="Livraison · Paris & Île-de-France"
       title="Livraison de petit-déjeuner en entreprise à Paris, dès 6h30"
-      intro={`Zones, horaires, délais et prix : tout ce qu'il faut savoir pour se faire livrer un petit-déjeuner au bureau. Livraison par notre équipe dès 6h30, ${euroFr(LIV)} HT à Paris et dans les communes proches, commande jusqu'à 14h la veille.`}
+      intro={`Zones, horaires, délais et prix : tout ce qu'il faut savoir pour se faire livrer un petit-déjeuner au bureau. Livraison par notre équipe dès 6h30, ${euroFr(LIV)} HT à Paris et dans les communes proches, commande jusqu'à 10h la veille.`}
       jsonLd={jsonLd}
       faq={FAQ}
       breadcrumb={[{ name: 'Accueil', path: '' }, { name: "Petit-déjeuner d'entreprise", path: '/creations/petits-dejeuners-et-pauses' }, { name: 'Livraison', path: '/livraison-petit-dejeuner-entreprise-paris' }]}
@@ -72,7 +72,7 @@ export default function LivraisonPetitDejeuner() {
               ['Qui livre', 'Notre équipe, formée à nos standards. Jamais de sous-traitance.'],
               ['Prix de la livraison', `${euroFr(LIV)} HT à Paris et dans les communes proches, par commande.`],
               ['Avec reprise du matériel', `${euroFr(LIV_RECUP_PROCHE)} HT en une ligne à Paris, dans le 92 et le 94.`],
-              ['Commande', 'Jusqu\'à 14h la veille ; 48 h à l\'avance à partir de 50 personnes ou pour plusieurs sites.'],
+              ['Commande', 'Jusqu\'à 10h la veille ; 48 h à l\'avance à partir de 50 personnes ou pour plusieurs sites.'],
               ['Minimum', `${euroFr(MINIMUM)} HT de produits, sans minimum de personnes.`],
               ['Facture', 'Facture d\'entreprise avec TVA, bon de commande accepté.'],
             ],
@@ -90,7 +90,7 @@ export default function LivraisonPetitDejeuner() {
         {
           h2: 'Comment se passe une livraison',
           before: [
-            `<strong>La veille avant 14h :</strong> vous commandez, ou vous demandez un devis (réponse sous 24 h).`,
+            `<strong>La veille avant 10h :</strong> vous commandez, ou vous demandez un devis (réponse sous 24 h).`,
             `<strong>Le jour J, à l'heure fixée :</strong> notre équipe dépose le petit-déjeuner dressé là où il sera servi, avec gobelets, serviettes, sucre et touillettes. La mise en place est possible sur demande.`,
             `<strong>Après l'événement :</strong> si vous avez choisi la vaisselle réutilisable ou les plateaux de bois, nous les reprenons ; livraison et reprise font ${euroFr(LIV_RECUP_PROCHE)} HT à Paris, dans le 92 et le 94.`,
           ],

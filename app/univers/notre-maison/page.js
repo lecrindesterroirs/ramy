@@ -56,7 +56,7 @@ const FAITS = [
   },
   {
     q: "Comment se passe une commande ?",
-    a: "Vous commandez jusqu'à la veille 14h, nous livrons dès 6h30 avec notre propre équipe, jamais en sous-traitance. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches. Devis sous 24h, facture entreprise avec TVA.",
+    a: "Vous commandez jusqu'à la veille 10h, nous livrons dès 6h30 avec notre propre équipe, jamais en sous-traitance. Minimum de commande 50 € HT, livraison 29 € HT à Paris et dans les communes proches. Devis sous 24h, facture entreprise avec TVA.",
   },
   {
     q: "Quels régimes alimentaires couvrez-vous ?",
@@ -81,7 +81,7 @@ const FAITS = [
 ]
 
 /*
-  Textes anglais. Les faits — 2025, Boulogne-Billancourt, veille 14h, 6h30,
+  Textes anglais. Les faits — 2025, Boulogne-Billancourt, veille 10h, 6h30,
   50 € HT, 29 € HT, 5,0 sur Google — sont exactement les mêmes des deux
   côtés : un écart entre les deux langues serait une contradiction lue par
   les IA. Les chiffres de confiance restent ceux que Ramy a arrêtés.
@@ -107,7 +107,7 @@ const FAITS_EN = [
   },
   {
     q: 'How does ordering work?',
-    a: 'You order until 2 pm the day before, and we deliver from 6:30 am with our own team, never subcontracted. Minimum order €50 excl. VAT, delivery €29 excl. VAT in Paris and nearby towns. Quote within 24 hours, company invoice showing VAT.',
+    a: 'You order until 10 am the day before, and we deliver from 6:30 am with our own team, never subcontracted. Minimum order €50 excl. VAT, delivery €29 excl. VAT in Paris and nearby towns. Quote within 24 hours, company invoice showing VAT.',
   },
   {
     q: 'Which dietary needs do you cover?',

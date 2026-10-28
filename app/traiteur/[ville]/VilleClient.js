@@ -98,7 +98,7 @@ export default function VilleClient({ city, neighbors, pdjPage, plateauxPage, oc
   const CITY_ARGS = [
     { icon: 'delivery', titre: `Livraison dès 6h30 à ${city.name}`, desc: `Nos livreurs desservent ${city.name} et les communes limitrophes, chaque matin en semaine.` },
     { icon: 'quality', titre: 'Artisans sélectionnés', desc: "Boulangers, pâtissiers et épiciers fins choisis pour leur savoir-faire, pas pour leur prix." },
-    { icon: 'custom', titre: 'Commande avant 14h', desc: "Passez commande la veille avant 14h pour une livraison le lendemain matin dès 6h30." },
+    { icon: 'custom', titre: 'Commande avant 10h', desc: "Passez commande la veille avant 10h pour une livraison le lendemain matin dès 6h30." },
     { icon: 'support', titre: 'Facturation entreprise', desc: "Facture avec TVA et interlocuteur dédié pour vos commandes récurrentes ou volumes importants." },
   ]
 
@@ -153,7 +153,7 @@ export default function VilleClient({ city, neighbors, pdjPage, plateauxPage, oc
 
                 {/* Badges */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '9px' }}>
-                  {['Livraison dès 6h30', 'Commande avant 14h la veille', 'Artisans sélectionnés'].map(badge => (
+                  {['Livraison dès 6h30', 'Commande avant 10h la veille', 'Artisans sélectionnés'].map(badge => (
                     <span key={badge} style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.28)', padding: '6px 12px' }}>
                       {badge}
                     </span>

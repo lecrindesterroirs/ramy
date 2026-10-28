@@ -23,7 +23,7 @@ export default function MenuDetail({ params }) {
     <p><strong>Salé :</strong> ${m.salees.join(' ; ')}.</p>
     <p><strong>Sucré :</strong> ${m.sucrees.join(' ; ')}.</p>
     <h2>Commande et livraison</h2>
-    <p>${prix ? `Le menu est à ${prix} € HT par personne. ` : ''}Commande avant <strong>14h la veille</strong>, livraison dès <strong>6h30</strong> à Paris et en Île-de-France, dressé et prêt à poser sur la table. Minimum de commande 50 € HT, livraison 29 € HT, facturation entreprise avec TVA. Toute la carte salée est halal et sans porc.</p>
+    <p>${prix ? `Le menu est à ${prix} € HT par personne. ` : ''}Commande avant <strong>10h la veille</strong>, livraison dès <strong>6h30</strong> à Paris et en Île-de-France, dressé et prêt à poser sur la table. Minimum de commande 50 € HT, livraison 29 € HT, facturation entreprise avec TVA. Toute la carte salée est halal et sans porc.</p>
   `
 
   return (

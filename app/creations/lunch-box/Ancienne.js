@@ -25,7 +25,7 @@ const SEO_ARTICLE = `
   <p>La lunch box brille là où le plateau repas est trop formel et le buffet impossible : horaires serrés, salles sans office, groupes qui se déplacent entre deux sites. Distribution en quelques minutes, zéro vaisselle, tri des emballages simplifié. Indiquez les régimes spécifiques (végétarien, sans gluten) à la commande : chacun reçoit une boîte équivalente.</p>
 
   <h2>Commander vos lunch box pour votre événement à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong> en précisant le nombre de convives et la répartition des menus. Livraison à l'heure souhaitée, dès 6h30 si votre journée démarre tôt. Facturation entreprise avec TVA, devis sous 24h pour les gros volumes.</p>
+  <p>Commandez avant <strong>10h la veille</strong> en précisant le nombre de convives et la répartition des menus. Livraison à l'heure souhaitée, dès 6h30 si votre journée démarre tôt. Facturation entreprise avec TVA, devis sous 24h pour les gros volumes.</p>
 `
 
 /* ─── Données ───────────────────────────────────────────────────── */
@@ -338,7 +338,7 @@ const ANSWER_BLOCK = (
     plusTitre="Livraison, minimum de commande et régimes"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Les garnitures s'adaptent aux régimes de votre équipe : végétarien, sans porc, sans gluten sur demande. <a href="/devis">Demandez un devis sous 24h</a>.</>}
   >
-    Une lunch box (entrée, sandwich et dessert) va de <strong>18,90 à 21,90 € HT par personne</strong>, serviette et couverts inclus, boisson en option. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Une lunch box (entrée, sandwich et dessert) va de <strong>18,90 à 21,90 € HT par personne</strong>, serviette et couverts inclus, boisson en option. Livraison du lundi au vendredi à Paris et en Île-de-France, sur commande avant <strong>10h la veille</strong>.
   </BlocReponse>
 )
 

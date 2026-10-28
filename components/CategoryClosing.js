@@ -22,7 +22,7 @@ const TEXTES = {
   fr: {
     titre: 'Comment ça se passe',
     lignes: (liv, min) => [
-      ['Commande', "jusqu'à 14h la veille ; à partir de 50 personnes ou pour plusieurs sites, 48 h de préavis recommandées."],
+      ['Commande', "jusqu'à 10h la veille ; à partir de 50 personnes ou pour plusieurs sites, 48 h de préavis recommandées."],
       ['Livraison', `dès 6h30, du lundi au vendredi, à Paris et en Île-de-France ; ${liv} HT à Paris et dans les communes proches.`],
       ['Minimum', `${min} HT de commande.`],
       ['Facture', 'facture entreprise avec TVA, bon de commande accepté.'],
@@ -38,7 +38,7 @@ const TEXTES = {
   en: {
     titre: 'How it works',
     lignes: (liv, min) => [
-      ['Ordering', "until 2 pm the day before; from 50 people or across several sites, 48 hours' notice recommended."],
+      ['Ordering', "until 10 am the day before; from 50 people or across several sites, 48 hours' notice recommended."],
       ['Delivery', `from 6:30 am, Monday to Friday, across Paris and Île-de-France; ${liv} excl. VAT in Paris and nearby towns.`],
       ['Minimum', `${min} excl. VAT per order.`],
       ['Invoice', 'company invoice showing VAT, purchase orders accepted.'],

@@ -101,7 +101,7 @@ export default function TermsOfSale() {
       <div style={sectionStyle}>
         <h2 style={h2Style}>Article 3, How to order</h2>
         <p style={p16}>
-          Orders may be placed by telephone on +33 1 74 54 23 10 or by email at commercial@lecrin-traiteur.fr. Every order must be confirmed before <strong style={gras}>2 pm on the day before</strong> the requested delivery.
+          Orders may be placed by telephone on +33 1 74 54 23 10 or by email at commercial@lecrin-traiteur.fr. Every order must be confirmed before <strong style={gras}>10 am on the day before</strong> the requested delivery.
         </p>
         <p style={pStyle}>
           The minimum order is <strong style={gras}>€50 excl. VAT</strong>. Any order confirmed by the client constitutes acceptance of these terms and of the prices in force.

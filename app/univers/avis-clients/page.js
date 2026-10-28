@@ -78,7 +78,7 @@ export default function AvisClients() {
           h2: T_AVIS.releventH2,
           table: {
             head: T_AVIS.tableHead,
-            rows: T_AVIS.tableRows.map(([k, v], i) => [k, i === 3 ? `Order until 2 pm the day before, quote within 24 hours, ${a('/en/tarifs', 'prices published')}.` : v]),
+            rows: T_AVIS.tableRows.map(([k, v], i) => [k, i === 3 ? `Order until 10 am the day before, quote within 24 hours, ${a('/en/tarifs', 'prices published')}.` : v]),
           },
         },
       ] : [
@@ -106,7 +106,7 @@ export default function AvisClients() {
               ['Les produits', "Viennoiseries pur beurre, madeleines Mado Paris, jus Alain Milliat, yaourts de la Ferme de Viltain : des artisans nommés."],
               ['La ponctualité', "Livraison dès 6h30, à l'heure exacte demandée, par notre propre équipe."],
               ['Les régimes', "Le salé est halal et sans porc, sans alcool ; végétarien, vegan et sans gluten sur demande."],
-              ['La simplicité', `Commande jusqu'à la veille 14h, devis sous 24 h, ${a('/tarifs', 'prix publiés')}.`],
+              ['La simplicité', `Commande jusqu'à la veille 10h, devis sous 24 h, ${a('/tarifs', 'prix publiés')}.`],
             ],
           },
         },

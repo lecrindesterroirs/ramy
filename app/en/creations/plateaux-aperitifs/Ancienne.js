@@ -24,7 +24,7 @@ const SEO_ARTICLE = `
   <h2>Halal and pork-free as standard</h2>
   <p>Our charcuterie board is <strong>halal and pork-free</strong>: air-dried beef, bresaola, Grisons beef, smoked turkey and smoked chicken. It means a mixed room can all reach for the same board, which is the whole reason we built it that way.</p>
   <h2>Delivered across Paris and Île-de-France from 6:30 am</h2>
-  <p>Headcount, formats, dietary needs: we put together the right selection and send you a personalised quote within 24 hours. Order until 2 pm the day before, delivered straight to your venue.</p>
+  <p>Headcount, formats, dietary needs: we put together the right selection and send you a personalised quote within 24 hours. Order until 10 am the day before, delivered straight to your venue.</p>
 `
 
 export default function PlateauxAperitifsEn({ bas }) {

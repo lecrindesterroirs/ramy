@@ -12,7 +12,7 @@ const SEO_HTML = `
   <h2>Des assortiments artisanaux, à composer selon l'occasion</h2>
   <p>Chaque plateau réunit une sélection de bouchées façonnées avec des <strong>produits sourcés</strong> : mini baguettes, clubs, mini wraps roulés, focaccias, fromages affinés, charcuteries italiennes, mezzé ou plateaux du monde. On mixe salé et fraîcheur pour un buffet équilibré et généreux.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
-  <p>Nombre de convives, formats, régimes alimentaires : nous composons la sélection idéale et vous adressons un devis personnalisé sous 24h. Commandez avant 14h la veille, livraison directe sur votre lieu de réception.</p>
+  <p>Nombre de convives, formats, régimes alimentaires : nous composons la sélection idéale et vous adressons un devis personnalisé sous 24h. Commandez avant 10h la veille, livraison directe sur votre lieu de réception.</p>
 `
 
 function PlateauAperitifDetailInner() {

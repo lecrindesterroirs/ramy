@@ -11,7 +11,7 @@ const args = [
   },
   {
     num: '02.',
-    title: 'Commande jusqu\'à 14h la veille',
+    title: 'Commande jusqu\'à 10h la veille',
     body: 'Devis sous 24h, facture entreprise avec TVA, bon de commande accepté. Les plateaux arrivent dressés, prêts à poser.',
   },
   {
@@ -44,7 +44,7 @@ const T_DETAIL = {
       },
       {
         num: '02.',
-        title: 'Order by 2 pm the day before',
+        title: 'Order by 10 am the day before',
         body: 'Quote within 24 hours, company invoice showing VAT, purchase orders accepted. Platters arrive arranged, ready to put down.',
       },
       {

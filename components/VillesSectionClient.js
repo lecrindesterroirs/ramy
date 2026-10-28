@@ -9,13 +9,13 @@ const T_VILLES = {
     eyebrow: 'Livraison Paris & Île-de-France',
     t1: 'Nous livrons dès 6h30', t2: "dans toute l'IDF",
     toutes: 'Voir toutes les zones desservies',
-    points: ['Commandez avant 14h la veille', 'Livraison dès 6h30', 'Adresse exacte au bureau'],
+    points: ['Commandez avant 10h la veille', 'Livraison dès 6h30', 'Adresse exacte au bureau'],
   },
   en: {
     eyebrow: 'Delivery across Paris & Île-de-France',
     t1: 'Delivered from 6:30 am', t2: 'anywhere in Île-de-France',
     toutes: 'See every area we serve',
-    points: ['Order until 2 pm the day before', 'Delivered from 6:30 am', 'To the exact office address'],
+    points: ['Order until 10 am the day before', 'Delivered from 6:30 am', 'To the exact office address'],
   },
 }
 

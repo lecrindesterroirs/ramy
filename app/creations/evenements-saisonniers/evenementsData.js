@@ -41,7 +41,7 @@ const C12 = FORMULES.reception.prix
 const C16 = FORMULES.celebration.prix
 const LIVR = px(LIV)
 const MINI = px(MINIMUM)
-const REGLE = `Commande jusqu'à la veille 14h, livraison dès 6h30 à Paris et en Île-de-France ; à partir de 50 personnes ou pour plusieurs sites, un préavis de 48 h est recommandé.`
+const REGLE = `Commande jusqu'à la veille 10h, livraison dès 6h30 à Paris et en Île-de-France ; à partir de 50 personnes ou pour plusieurs sites, un préavis de 48 h est recommandé.`
 
 const MAJ = '2026-10-22'
 
@@ -625,7 +625,7 @@ const TEXTES = [
         },
         {
           heading: "Les équipes réduites",
-          texte: `Pour cinq à huit personnes restées au bureau, la lunch box est le format le plus simple : un sandwich, une entrée et un dessert par personne, dès ${px(LUNCHBOX_DES)}. Pour huit personnes, comptez ${pour(8, LUNCHBOX_DES)} livraison comprise. Le minimum de commande est de ${MINI}, et la règle reste la même toute l'année : commande jusqu'à la veille 14h, livraison dès 6h30.`,
+          texte: `Pour cinq à huit personnes restées au bureau, la lunch box est le format le plus simple : un sandwich, une entrée et un dessert par personne, dès ${px(LUNCHBOX_DES)}. Pour huit personnes, comptez ${pour(8, LUNCHBOX_DES)} livraison comprise. Le minimum de commande est de ${MINI}, et la règle reste la même toute l'année : commande jusqu'à la veille 10h, livraison dès 6h30.`,
         },
         {
           heading: "Le pot avant les congés",
@@ -868,7 +868,7 @@ const TEXTES = [
       sections: [
         {
           heading: "Halloween en bref",
-          texte: `Le prochain Halloween tombe le {{date}} : fêtez-le le {{conseil}}. Une pause gourmande revient à partir de ${px(PAUSE_DES)} par personne, un cocktail de 8 pièces à ${px(C8)} par personne, livraison de ${LIVR} en plus. Commande jusqu'à la veille à 14h, livraison dès 6h30. Le cocktail salé est halal et sans porc, sans alcool.`,
+          texte: `Le prochain Halloween tombe le {{date}} : fêtez-le le {{conseil}}. Une pause gourmande revient à partir de ${px(PAUSE_DES)} par personne, un cocktail de 8 pièces à ${px(C8)} par personne, livraison de ${LIVR} en plus. Commande jusqu'à la veille à 10h, livraison dès 6h30. Le cocktail salé est halal et sans porc, sans alcool.`,
         },
         {
           heading: "Le macaron noir, vanille et cœur potiron épicé",
@@ -1020,7 +1020,7 @@ const TEXTES = [
       'Décoration de Noël du buffet, chemin de table, pommes de pin et guirlande : 49 € HT',
     ],
     faq: [
-      { q: 'Quand commander le repas de Noël de l\'entreprise ?', a: "La commande reste possible jusqu'à la veille 14h, mais les dates de décembre se remplissent vite : validez le budget, l'effectif et l'adresse dès novembre, surtout au-delà de 50 personnes." },
+      { q: 'Quand commander le repas de Noël de l\'entreprise ?', a: "La commande reste possible jusqu'à la veille 10h, mais les dates de décembre se remplissent vite : validez le budget, l'effectif et l'adresse dès novembre, surtout au-delà de 50 personnes." },
     ],
     articles: ['menu-noel-livre-entreprise-paris', 'budget-repas-noel-entreprise', 'soiree-fin-annee-entreprise-paris', 'petit-dejeuner-noel-bureau-entreprise', 'arbre-de-noel-entreprise-cse-paris', 'bonbonniere-noel-entreprise-paris'],
     occasions: ['cocktail-entreprise', 'afterwork-entreprise'],

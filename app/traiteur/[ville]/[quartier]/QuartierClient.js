@@ -35,7 +35,7 @@ const SERVICES = [
 export default function QuartierClient({ city, q }) {
   // FAQ universelle + FAQ spécifique au quartier
   const universalFaq = [
-    { q: 'Acceptez-vous les commandes de dernière minute ?', a: 'Oui. Nous acceptons les commandes jusqu\'à 10h le matin même sur notre sélection disponible du jour : plateaux de viennoiseries, madeleines, brochettes de fruits. Pour votre catalogue complet et garantir votre choix, commandez avant 14h la veille.' },
+    { q: 'Acceptez-vous les commandes de dernière minute ?', a: 'Oui. Nous acceptons les commandes jusqu\'à 10h le matin même sur notre sélection disponible du jour : plateaux de viennoiseries, madeleines, brochettes de fruits. Pour votre catalogue complet et garantir votre choix, commandez avant 10h la veille.' },
     { q: 'Quels sont vos horaires de livraison ?', a: 'Nous livrons dès 6h30 jusqu\'à 10h selon les créneaux disponibles. Précisez votre heure souhaitée lors de la commande.' },
   ]
   const allFaq = [...(q.faq || []), ...universalFaq]
@@ -85,7 +85,7 @@ export default function QuartierClient({ city, q }) {
   const QUARTIER_ARGS = [
     { icon: 'delivery', titre: `Livraison dès 6h30 à ${q.name}`, desc: `Nos livreurs desservent ${q.name} et ses environs, chaque matin en semaine.` },
     { icon: 'quality', titre: 'Artisans sélectionnés', desc: "Boulangers, pâtissiers et épiciers fins choisis pour leur savoir-faire, pas pour leur prix." },
-    { icon: 'custom', titre: 'Commande avant 14h', desc: "Passez commande la veille avant 14h pour une livraison le lendemain matin dès 6h30." },
+    { icon: 'custom', titre: 'Commande avant 10h', desc: "Passez commande la veille avant 10h pour une livraison le lendemain matin dès 6h30." },
     { icon: 'support', titre: 'Facturation entreprise', desc: "Facture avec TVA et interlocuteur dédié pour vos commandes récurrentes ou volumes importants." },
   ]
 

@@ -288,7 +288,7 @@ export default function ArticlePage({ params }) {
                   ))}
                 </div>
                 <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginTop: '16px', lineHeight: 1.6 }}>
-                  Prix hors taxes, livraison de 29 € HT à Paris et dans les communes proches, commande jusqu'à la veille 14h. <a href="/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>Demander un devis</a>.
+                  Prix hors taxes, livraison de 29 € HT à Paris et dans les communes proches, commande jusqu'à la veille 10h. <a href="/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>Demander un devis</a>.
                 </p>
               </div>
             )

@@ -65,7 +65,7 @@ export default function ReceptionView({ en = false }) {
     casLien: 'More client cases',
     faqTitre: 'Frequently asked questions',
     faq: [
-      { q: 'How far ahead should you book a bespoke event?', a: 'For a live station or waiting staff, ask for the quote at least a week ahead so we can check access, water and power. For food only, until 2 pm the day before, 48 hours from 50 guests.' },
+      { q: 'How far ahead should you book a bespoke event?', a: 'For a live station or waiting staff, ask for the quote at least a week ahead so we can check access, water and power. For food only, until 10 am the day before, 48 hours from 50 guests.' },
       { q: 'How much does a live food station cost?', a: `From ${ht(ANIMATION_DES)} per station, set-up and portions included; the quote depends on headcount and length.` },
       { q: 'Do you provide waiting staff?', a: 'Yes, on request: a waiter or maître d’hôtel sets up, serves and clears away. Priced in the quote by the length of the service.' },
       { q: 'Do you deliver outside Paris?', a: `Yes, across Île-de-France. Delivery is ${ht(LIV)} in Paris and nearby towns; further out it depends on the zone and is shown in the quote.` },
@@ -115,7 +115,7 @@ export default function ReceptionView({ en = false }) {
     casLien: 'Voir nos cas clients',
     faqTitre: 'Questions fréquentes',
     faq: [
-      { q: "Combien de temps à l'avance réserver un événement sur mesure ?", a: "Pour une animation ou un maître d'hôtel, demandez le devis au moins une semaine avant : nous vérifions l'accès, le point d'eau et l'électricité. Pour la seule nourriture, jusqu'à 14h la veille, 48 h à partir de 50 personnes." },
+      { q: "Combien de temps à l'avance réserver un événement sur mesure ?", a: "Pour une animation ou un maître d'hôtel, demandez le devis au moins une semaine avant : nous vérifions l'accès, le point d'eau et l'électricité. Pour la seule nourriture, jusqu'à 10h la veille, 48 h à partir de 50 personnes." },
       { q: 'Combien coûte une animation culinaire ?', a: `Dès ${ht(ANIMATION_DES)} par animation, mise en place et portions comprises ; le devis suit l'effectif et la durée.` },
       { q: "Fournissez-vous des maîtres d'hôtel ?", a: "Oui, sur demande : un maître d'hôtel installe, sert et débarrasse. Chiffré au devis selon la durée du service." },
       { q: 'Livrez-vous hors de Paris ?', a: `Oui, dans toute l'Île-de-France. Livraison ${ht(LIV)} à Paris et dans les communes proches ; au-delà, le tarif dépend de la zone et figure au devis.` },

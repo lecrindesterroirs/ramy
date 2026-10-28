@@ -24,10 +24,10 @@ import { journeeSeminaire, offresSeminaire } from '../../lib/seminaireJournee'
 const T = {
   fr: {
     accueil: 'Accueil', fil: 'Occasions', surtitre: "Traiteur d'entreprise",
-    faits: (des) => `Dès ${des} par personne · commande jusqu'à la veille 14h · livraison dès 6h30 à Paris et en Île-de-France`,
+    faits: (des) => `Dès ${des} par personne · commande jusqu'à la veille 10h · livraison dès 6h30 à Paris et en Île-de-France`,
     devis: 'Demander un devis', voir: 'Voir la sélection',
     brefTitre: "L'essentiel",
-    bref: (court, des, ex, liv, min) => `${court} Dès ${des} par personne${ex ? ` ; ${ex.libelle.charAt(0).toLowerCase() + ex.libelle.slice(1)}, ${ex.totalTexte} livraison comprise` : ''}. Commande jusqu'à la veille 14h, livraison dès 6h30, ${liv} à Paris et dans les communes proches, minimum ${min}.`,
+    bref: (court, des, ex, liv, min) => `${court} Dès ${des} par personne${ex ? ` ; ${ex.libelle.charAt(0).toLowerCase() + ex.libelle.slice(1)}, ${ex.totalTexte} livraison comprise` : ''}. Commande jusqu'à la veille 10h, livraison dès 6h30, ${liv} à Paris et dans les communes proches, minimum ${min}.`,
     selection: (cta) => `Notre sélection pour ${cta}`,
     selectionIntro: 'Chaque produit renvoie à sa fiche, avec sa composition et son prix.',
     combien: 'Combien prévoir',
@@ -46,10 +46,10 @@ const T = {
   },
   en: {
     accueil: 'Home', fil: 'Occasions', surtitre: 'Corporate catering',
-    faits: (des) => `From ${des} per person · order by 2 pm the day before · delivered from 6:30 am across Paris and Île-de-France`,
+    faits: (des) => `From ${des} per person · order by 10 am the day before · delivered from 6:30 am across Paris and Île-de-France`,
     devis: 'Ask for a quote', voir: 'See the selection',
     brefTitre: 'At a glance',
-    bref: (court, des, ex, liv, min) => `${court} From ${des} per person${ex ? `; ${ex.libelle.charAt(0).toLowerCase() + ex.libelle.slice(1)}, ${ex.totalTexte} delivery included` : ''}. Order until 2 pm the day before, delivered from 6:30 am, ${liv} in Paris and nearby towns, minimum order ${min}.`,
+    bref: (court, des, ex, liv, min) => `${court} From ${des} per person${ex ? `; ${ex.libelle.charAt(0).toLowerCase() + ex.libelle.slice(1)}, ${ex.totalTexte} delivery included` : ''}. Order until 10 am the day before, delivered from 6:30 am, ${liv} in Paris and nearby towns, minimum order ${min}.`,
     selection: (cta) => `What we recommend for ${cta}`,
     selectionIntro: 'Each product links to its page, with what it contains and its price.',
     combien: 'How much to allow',

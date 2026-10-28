@@ -12,7 +12,7 @@ const SEO_HTML = `
   <h2>Des sandwichs de boulangerie, une entrée et un dessert au choix</h2>
   <p>Nos box associent un sandwich en baguette ou pain viennois, une entrée et un dessert au choix, serviette et couverts inclus. On adapte les garnitures aux régimes de votre équipe.</p>
   <h2>Livraison à Paris et en Île-de-France dès 6h30</h2>
-  <p>Commandez avant 14h la veille et recevez vos lunch box directement sur site. Effectifs, régimes alimentaires, facturation entreprise : nous adaptons la sélection et vous adressons un devis personnalisé sous 24h.</p>
+  <p>Commandez avant 10h la veille et recevez vos lunch box directement sur site. Effectifs, régimes alimentaires, facturation entreprise : nous adaptons la sélection et vous adressons un devis personnalisé sous 24h.</p>
 `
 
 function LunchBoxDetailInner() {

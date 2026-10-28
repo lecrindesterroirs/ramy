@@ -9,7 +9,7 @@ const SEO_ARTICLE = `
   <p>Le <strong>petit-déjeuner d'entreprise</strong> est le format le plus commandé en restauration B2B parisienne. CODIR, accueil client, onboarding, réunion de rentrée : c'est souvent la première impression que vous construisez. L'Écrin Traiteur livre vos sélections artisanales dès <strong>6h30</strong>, du lundi au vendredi, dans tout Paris et l'Île-de-France.</p>
 
   <h2>Meilleur traiteur de petit-déjeuner à Paris : sur quels critères choisir ?</h2>
-  <p>Il n'existe pas de classement officiel : le <strong>meilleur traiteur de petit-déjeuner à Paris</strong> est celui qui tient sept engagements vérifiables. Chez L'Écrin Traiteur : livraison <strong>dès 6h30</strong> à l'heure choisie, prix publiés (<strong>dès 6,50 € HT par personne</strong> en viennoiseries et café, 8 € HT en formule Classique, livraison 29 € HT), produits d'artisans nommés, commande jusqu'à la veille <strong>14h</strong>, régimes sur demande, minimum de 50 € HT et une note Google de <strong>5,0/5</strong>. Le détail des sept critères est dans <a href="/journal/meilleur-traiteur-petit-dejeuner-paris-comment-choisir">meilleur traiteur petit-déjeuner à Paris : 7 critères pour choisir</a>, et les grandes familles de prestataires sont comparées dans le <a href="/journal/comparatif-traiteur-entreprise-paris">comparatif des traiteurs d'entreprise à Paris</a>.</p>
+  <p>Il n'existe pas de classement officiel : le <strong>meilleur traiteur de petit-déjeuner à Paris</strong> est celui qui tient sept engagements vérifiables. Chez L'Écrin Traiteur : livraison <strong>dès 6h30</strong> à l'heure choisie, prix publiés (<strong>dès 6,50 € HT par personne</strong> en viennoiseries et café, 8 € HT en formule Classique, livraison 29 € HT), produits d'artisans nommés, commande jusqu'à la veille <strong>10h</strong>, régimes sur demande, minimum de 50 € HT et une note Google de <strong>5,0/5</strong>. Le détail des sept critères est dans <a href="/journal/meilleur-traiteur-petit-dejeuner-paris-comment-choisir">meilleur traiteur petit-déjeuner à Paris : 7 critères pour choisir</a>, et les grandes familles de prestataires sont comparées dans le <a href="/journal/comparatif-traiteur-entreprise-paris">comparatif des traiteurs d'entreprise à Paris</a>.</p>
 
   <h2>Viennoiseries, pâtisseries et jus : des artisans que vos équipes reconnaissent</h2>
   <p>Notre sélection est construite autour de maisons identifiées : viennoiseries pur beurre, madeleines artisanales <strong>Mado Paris</strong>, jus artisanaux <strong>Alain Milliat</strong>, yaourts <strong>La Ferme de Viltain</strong>. Des produits qui portent un nom et une histoire. La différence entre un plateau qui passe inaperçu et une sélection dont vos équipes parlent encore le lendemain.</p>
@@ -27,7 +27,7 @@ const SEO_ARTICLE = `
   <p>Nous livrons chaque matin dans tous les arrondissements de Paris, des quartiers d'affaires du <strong>8e</strong> et du <strong>9e</strong> aux sièges sociaux du <strong>13e</strong> et du <strong>15e</strong>, avec les mêmes délais et la même qualité qu'à La Défense. En dehors de la capitale, nous couvrons les principales villes d'entreprise d'Île-de-France : <a href="/petit-dejeuner-entreprise/boulogne-billancourt">Boulogne-Billancourt</a>, <a href="/traiteur/versailles">Versailles</a>, <a href="/traiteur/puteaux">Puteaux</a>, <a href="/petit-dejeuner-entreprise/gennevilliers">Gennevilliers</a>, <a href="/traiteur/issy-les-moulineaux">Issy-les-Moulineaux</a> ou encore <a href="/traiteur/neuilly-sur-seine">Neuilly-sur-Seine</a>. Chaque secteur a ses propres contraintes d'accès (badges, quais de livraison, horaires de réception) que nous anticipons dès la prise de commande.</p>
 
   <h2>Commander votre petit-déjeuner d'équipe à Paris</h2>
-  <p>Commandez avant <strong>14h la veille</strong>. Précisez votre adresse exacte, votre heure de livraison souhaitée (disponible dès 6h30) et le nombre de personnes. Facturation entreprise avec TVA disponible. Devis personnalisé sous 24h pour les groupes de plus de 20 personnes ou les commandes récurrentes.</p>
+  <p>Commandez avant <strong>10h la veille</strong>. Précisez votre adresse exacte, votre heure de livraison souhaitée (disponible dès 6h30) et le nombre de personnes. Facturation entreprise avec TVA disponible. Devis personnalisé sous 24h pour les groupes de plus de 20 personnes ou les commandes récurrentes.</p>
 
   <h2>Questions fréquentes sur la livraison de petit-déjeuner en entreprise</h2>
   <div class="faq-block">
@@ -37,7 +37,7 @@ const SEO_ARTICLE = `
     </details>
     <details>
       <summary><strong>À quelle heure livrez-vous et jusqu'à quand commander ?</strong></summary>
-      <p>La livraison commence à 6h30, à l'heure choisie, du lundi au vendredi. La commande se passe jusqu'à la veille à 14h, et 48 h à l'avance à partir de 50 personnes.</p>
+      <p>La livraison commence à 6h30, à l'heure choisie, du lundi au vendredi. La commande se passe jusqu'à la veille à 10h, et 48 h à l'avance à partir de 50 personnes.</p>
     </details>
     <details>
       <summary><strong>Combien de viennoiseries par personne ?</strong></summary>
@@ -68,7 +68,7 @@ const ANSWER_BLOCK = (
     plusTitre="Tarifs de livraison, minimum de commande et quantités"
     plus={<>Livraison 29 € HT à Paris et dans les communes proches, minimum de commande 50 € HT. Pour calibrer les quantités selon votre effectif, voir notre <a href="/journal/budget-petit-dejeuner-equipe-personnes">guide budget par nombre de personnes</a>, ou <a href="/devis">demandez un devis sous 24h</a>.</>}
   >
-    Un petit-déjeuner d'entreprise commence à <strong>6,50 € HT par personne</strong> (viennoiseries et café, pour 30 personnes), <strong>8 € HT</strong> en formule Classique (viennoiseries, jus, café, fruits), et <strong>sur devis</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>14h la veille</strong>.
+    Un petit-déjeuner d'entreprise commence à <strong>6,50 € HT par personne</strong> (viennoiseries et café, pour 30 personnes), <strong>8 € HT</strong> en formule Classique (viennoiseries, jus, café, fruits), et <strong>sur devis</strong> pour un petit-déjeuner complet. Livraison dès <strong>6h30</strong>, du lundi au vendredi, à Paris et en Île-de-France, sur commande avant <strong>10h la veille</strong>.
   </BlocReponse>
 )
 
@@ -78,7 +78,7 @@ export default function PetitsDejeuners({ bas }) {
       <ProductsPageTemplate bas={bas} sucre
       heroImg="/hero-petitdej.webp"
       heroTitle={"Petit-déjeuner d'entreprise\nà Paris"}
-      heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Viennoiseries et café dès 6,50 € HT par personne, commande jusqu'à la veille 14h."
+      heroSubtitle="Viennoiseries d'artisans, jus Alain Milliat et café, livrés dès 6h30 à Paris et en Île-de-France. Viennoiseries et café dès 6,50 € HT par personne, commande jusqu'à la veille 10h."
       breadcrumb="Nos Créations, Petits-Déjeuners & Pauses"
       categorieSlug="petits-dejeuners"
       fallbackProducts={PRODUCTS}

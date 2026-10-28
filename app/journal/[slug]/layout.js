@@ -107,7 +107,7 @@ const DESCRIPTIONS_COURTES = {
   'cocktail-dinatoire-80-personnes-entreprise-paris': "Pour 80 personnes, un cocktail dînatoire livré au bureau revient à 55,60 € HT par personne chez L'Écrin, boissons et livraison comprises.",
   'cocktail-noel-entreprise-paris': "Cocktail de Noël pour 30, 50 ou 100 personnes : pièces, boissons sans alcool et budget livré. 2 245,50 € HT pour 50 personnes en 12 pièces.",
   'prix-plateau-repas-entreprise-paris-comparatif': "Combien coûte un plateau repas d'entreprise à Paris ? Prix, minimum et délai relevés le 24/10/2026 chez 8 traiteurs, et un exemple pour 20 personnes.",
-  'petit-dejeuner-entreprise-paris-demain-matin': "Un petit-déjeuner pour demain matin ? Commande jusqu'à la veille 14h, livraison dès 6h30. Quantités pour 30 personnes, 269 € HT en Classique livrée.",
+  'petit-dejeuner-entreprise-paris-demain-matin': "Un petit-déjeuner pour demain matin ? Commande jusqu'à la veille 10h, livraison dès 6h30. Quantités pour 30 personnes, 269 € HT en Classique livrée.",
   'quel-traiteur-inauguration-bureaux-paris': "Choisir son traiteur pour inaugurer des bureaux à Paris : les critères et le budget livré pour 50, 100 et 150 invités, dès 29,90 € HT par personne.",
   'quel-traiteur-cocktail-noel-entreprise-paris': "Choisir son traiteur de Noël à Paris : les critères, les dates de décembre 2026 et les délais de commande, dès 29,90 € HT par personne.",
   'idees-evenement-entreprise-100-personnes-traiteur': "Six idées de restauration pour un événement de 100 personnes à Paris, du petit-déjeuner d'accueil au cocktail dînatoire, avec le budget livré.",

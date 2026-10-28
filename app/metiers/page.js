@@ -23,7 +23,7 @@ const FAQ = [
   { name: "Mon métier n'est pas dans la liste, pouvez-vous nous livrer ?", answer: "Oui. Les prestations, les prix et les délais sont les mêmes pour toutes les entreprises : décrivez votre besoin dans la demande de devis, nous répondons sous 24 h." },
   { name: "Les prix changent-ils selon le métier ?", answer: `Non. Tous nos prix sont HT et publiés sur la page tarifs : petit-déjeuner Classique ${euroFr(PDJ_DES)}, lunch box dès ${euroFr(LUNCHBOX_DES)}, plateau repas de ${euroFr(PLATEAU_DES)} à ${euroFr(PLATEAU_MAX)} par personne.` },
   { name: "Peut-on indiquer un numéro de bon de commande ?", answer: "Oui. Indiquez-le dans la demande de devis : il figure sur la facture, qui est une facture d'entreprise avec TVA." },
-  { name: "Peut-on commander la même chose chaque semaine ?", answer: "Oui : même horaire et mêmes quantités, sans tout redemander. Il suffit de confirmer l'effectif avant la veille à 14h." },
+  { name: "Peut-on commander la même chose chaque semaine ?", answer: "Oui : même horaire et mêmes quantités, sans tout redemander. Il suffit de confirmer l'effectif avant la veille à 10h." },
 ]
 
 export default function Metiers() {
@@ -66,7 +66,7 @@ export default function Metiers() {
             rows: [
               ['Livraison', 'Dès 6h30, par notre équipe, à l\'heure que vous fixez. 29 € HT à Paris et dans les communes proches.'],
               ['Minimum', `${euroFr(MINIMUM)} HT de produits, sans minimum de personnes.`],
-              ['Commande', 'Jusqu\'à la veille à 14h, 48 h à l\'avance à partir de 50 personnes.'],
+              ['Commande', 'Jusqu\'à la veille à 10h, 48 h à l\'avance à partir de 50 personnes.'],
               ['Devis', 'Sous 24 h, détaillé produit par produit.'],
               ['Facture', 'Facture d\'entreprise avec TVA, numéro de bon de commande sur demande.'],
               ['Régimes', 'Salé halal et sans porc, sans alcool, sans supplément. Végétarien, vegan et sans gluten sur demande.'],

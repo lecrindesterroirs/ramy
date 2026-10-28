@@ -8,7 +8,7 @@ export const FAQ_PAUSES = [
   },
   {
     name: "Livrez-vous le goûter à l'heure de la pause ?",
-    answer: "Oui, du lundi au vendredi, à Paris et en Île-de-France. Vous choisissez l'heure : 15h30, 16h ou plus tard dans l'après-midi. La commande se fait jusqu'à la veille 14h ; la livraison est possible dès 6h30 pour une pause du matin.",
+    answer: "Oui, du lundi au vendredi, à Paris et en Île-de-France. Vous choisissez l'heure : 15h30, 16h ou plus tard dans l'après-midi. La commande se fait jusqu'à la veille 10h ; la livraison est possible dès 6h30 pour une pause du matin.",
   },
   {
     name: "Quelle quantité prévoir pour une pause d'équipe ?",

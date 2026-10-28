@@ -76,7 +76,7 @@ export const OCCASIONS_EN = {
 export const argsLieuEn = (lieu, environs) => [
   { icon: 'delivery', titre: `Delivery from 6:30 am in ${lieu}`, desc: `Our drivers cover ${lieu} and ${environs}, every weekday morning.` },
   { icon: 'quality', titre: 'Selected artisans', desc: 'Bakers, pastry chefs and fine grocers chosen for their craft, not their price.' },
-  { icon: 'custom', titre: 'Order before 2 pm', desc: 'Order before 2 pm the day before for delivery the next morning from 6:30 am.' },
+  { icon: 'custom', titre: 'Order before 10 am', desc: 'Order before 10 am the day before for delivery the next morning from 6:30 am.' },
   { icon: 'support', titre: 'Company invoicing', desc: 'VAT invoice and a dedicated contact for recurring orders or large volumes.' },
 ]
 

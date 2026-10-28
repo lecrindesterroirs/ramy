@@ -14,7 +14,7 @@ const milliers = (x) => {
   const ent = e.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0')
   return d ? `${ent},${d}` : ent
 }
-const ORGANISER = `<h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Le prix par personne ne change pas avec l'effectif. Livraison ${LIV} € HT à Paris et dans les communes proches, minimum de commande ${MINIMUM} € HT, facture entreprise avec TVA. Commande jusqu'à 14h la veille, 48 h de préavis à partir de 50 personnes. Devis détaillé sous 24h.</p>`
+const ORGANISER = `<h2>Organiser votre cocktail à Paris et en Île-de-France</h2><p>Le prix par personne ne change pas avec l'effectif. Livraison ${LIV} € HT à Paris et dans les communes proches, minimum de commande ${MINIMUM} € HT, facture entreprise avec TVA. Commande jusqu'à 10h la veille, 48 h de préavis à partir de 50 personnes. Devis détaillé sous 24h.</p>`
 
 export const FORMULES = [
   {
@@ -160,7 +160,7 @@ export const FAQ_CATALOGUE = [
   },
   {
     name: "Jusqu'à quand peut-on commander ?",
-    answer: "Jusqu'à la veille 14h pour une livraison le lendemain. À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48 h avant. Le devis est envoyé sous 24h.",
+    answer: "Jusqu'à la veille 10h pour une livraison le lendemain. À partir de 50 personnes ou pour plusieurs sites, prévenez au moins 48 h avant. Le devis est envoyé sous 24h.",
   },
   {
     name: 'Les boissons sont-elles comprises ?',
