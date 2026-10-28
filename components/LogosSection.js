@@ -22,7 +22,7 @@ const logos = [
   { name: 'Carglass',         src: '/logos/carglass.svg', height: '36px' },
   { name: 'Chanel',           src: '/logos/chanel.svg', height: '22px', maxWidth: '140px' },
   { name: 'TotalEnergies',    src: '/logos/totalenergies.png', height: '45px', fonce: true },
-  { name: 'Talan',            src: '/logos/talan.png', height: '35px' },
+  { name: "L'Oréal",          src: '/logos/loreal.png', height: '28px', fonce: true },
   { name: 'SIA',              src: '/logos/sia-v3.svg', height: '36px', fonce: true },
   { name: 'Ringover',         src: '/logos/ringover-v3.svg', height: '30px', fonce: true },
   { name: 'DS Automobiles',   src: '/logos/ds-v2.svg', height: '62px' },
