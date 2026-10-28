@@ -1,8 +1,7 @@
 /*
-  Photos (23/10/2026) : les images générées où l'on lisait « L'ÉCRIN TRAITEURS »
-  sur le tablier ou le chevalet sont retirées. Quand une photo de Ramy montre
-  la même chose (plateau de saumon, de fromages, burgers…), elle la remplace ;
-  sinon img vaut null et la carte s'affiche sans photo.
+  Photos : le 23/10/2026, les images générées où l'on lisait « L'ÉCRIN TRAITEURS »
+  (au pluriel) sur le tablier ou le chevalet avaient été retirées. Remises le
+  28/10/2026 à la demande de Ramy. Atelier crêpes en tête de liste (demande de Ramy, 28/10/2026).
 */
 // Données animations culinaires, module plat (importable serveur + client)
 import { ANIMATION_DES } from '../../../lib/prixEntree'
@@ -43,6 +42,17 @@ export const slugAnim = (nom) =>
    fiche produit. Photos placeholder. */
 export const ANIMATIONS = [
   // ── Petit-déjeuner & Brunch ──
+  { id: 'b6', univers: 'brunch', nom: 'Atelier Crêpes & Pancakes', img: '/prod-atelier-crepes.webp',
+    description: 'Crêpes et pancakes préparés et dressés à la demande.',
+    compo: ['Sirop d\'érable', 'Chocolat', 'Caramel beurre salé', 'Citron', 'Sucre', 'Fruits frais', 'Chantilly', 'Pistaches'],
+    article: `
+      <h2>Un atelier crêpes et pancakes pour vos pauses et événements d'entreprise à Paris</h2>
+      <p>Rien ne rassemble une équipe comme l'odeur d'une crêpe qui cuit. Notre crêpier prépare crêpes et pancakes à la demande, garnis sous vos yeux, du petit-déjeuner d'accueil au goûter de l'après-midi. Un format simple qui met tout le monde de bonne humeur. L'Écrin Traiteur installe cette animation dans vos locaux ou votre lieu d'événement, à Paris et en Île-de-France.</p>
+      <h2>Sucré, chaud, servi minute</h2>
+      <p>Chaque crêpe est cuite et garnie au moment où l'invité la commande, jamais empilée à l'avance. Large choix de garnitures : caramel beurre salé, chocolat, sirop d'érable, citron, fruits frais, chantilly et pistaches. On prévoit aussi des versions plus légères pour équilibrer, et on ajuste le rythme au nombre d'invités.</p>
+      <h2>Réserver votre atelier crêpes à Paris et en Île-de-France</h2>
+      <p>Prestation sur devis selon la date, le lieu, l'effectif et la durée souhaitée. Installation et démontage compris, vous n'avez rien à gérer. Parfait pour la Chandeleur, une matinée d'intégration ou une semaine QVT. Devis détaillé sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
+    ` },
   { id: 'b1', univers: 'brunch', nom: 'Barista', img: '/prod-cafe.webp',
     description: 'Préparation de cafés de spécialité à la demande.',
     compo: ['Espresso', 'Cappuccino', 'Latte', 'Flat White', 'Chocolat chaud', 'Thés Mariage Frères'],
@@ -98,17 +108,6 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier œufs à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès (électricité, espace). Installation et démontage inclus. Idéal pour un petit-déjeuner d'accueil ou une matinée de séminaire. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'b6', univers: 'brunch', nom: 'Atelier Crêpes & Pancakes', img: '/prod-atelier-crepes.webp',
-    description: 'Crêpes et pancakes préparés et dressés à la demande.',
-    compo: ['Sirop d\'érable', 'Chocolat', 'Caramel beurre salé', 'Citron', 'Sucre', 'Fruits frais', 'Chantilly', 'Pistaches'],
-    article: `
-      <h2>Un atelier crêpes et pancakes pour vos pauses et événements d'entreprise à Paris</h2>
-      <p>Rien ne rassemble une équipe comme l'odeur d'une crêpe qui cuit. Notre crêpier prépare crêpes et pancakes à la demande, garnis sous vos yeux, du petit-déjeuner d'accueil au goûter de l'après-midi. Un format simple qui met tout le monde de bonne humeur. L'Écrin Traiteur installe cette animation dans vos locaux ou votre lieu d'événement, à Paris et en Île-de-France.</p>
-      <h2>Sucré, chaud, servi minute</h2>
-      <p>Chaque crêpe est cuite et garnie au moment où l'invité la commande, jamais empilée à l'avance. Large choix de garnitures : caramel beurre salé, chocolat, sirop d'érable, citron, fruits frais, chantilly et pistaches. On prévoit aussi des versions plus légères pour équilibrer, et on ajuste le rythme au nombre d'invités.</p>
-      <h2>Réserver votre atelier crêpes à Paris et en Île-de-France</h2>
-      <p>Prestation sur devis selon la date, le lieu, l'effectif et la durée souhaitée. Installation et démontage compris, vous n'avez rien à gérer. Parfait pour la Chandeleur, une matinée d'intégration ou une semaine QVT. Devis détaillé sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
-    ` },
   { id: 'b7', univers: 'brunch', nom: 'Atelier Gaufres Belges', img: '/prod-atelier-gaufres.webp',
     description: 'Gaufres servies chaudes avec un large choix de toppings.',
     compo: [],
@@ -155,7 +154,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier pâtes à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès (électricité, espace). Installation et démontage inclus. Idéal pour un déjeuner d'équipe ou une journée séminaire. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'd2', univers: 'dejeuner', nom: 'Atelier Focaccia & Burrata', img: null,
+  { id: 'd2', univers: 'dejeuner', nom: 'Atelier Focaccia & Burrata', img: '/prod-atelier-focaccia.webp',
     description: 'Focaccias artisanales et burrata crémeuse dressées devant les invités.',
     compo: ['Focaccia', 'Burrata crémeuse', 'Bresaola', 'Dinde fumée', 'Tomates anciennes', 'Légumes grillés', 'Pesto', 'Basilic', 'Huile d\'olive'],
     article: `
@@ -166,7 +165,7 @@ export const ANIMATIONS = [
       <h2>Organiser votre atelier focaccia à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail déjeunatoire, une soirée partenaires ou un afterwork. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'd3', univers: 'dejeuner', nom: 'Découpe de saumon frais', img: '/plateau-saumon.webp',
+  { id: 'd3', univers: 'dejeuner', nom: 'Découpe de saumon frais', img: '/prod-atelier-saumon.webp',
     description: 'Découpe et dressage de saumon fumé & gravlax.',
     compo: ['Blinis', 'Crème citron-aneth', 'Câpres', 'Oignons rouges'],
     article: `
@@ -177,7 +176,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier saumon à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail, une inauguration ou une soirée partenaires. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/plateau-fromages.webp',
+  { id: 'd5', univers: 'dejeuner', nom: 'Atelier Fromages Affinés', img: '/prod-atelier-fromages.webp',
     description: 'Découpe et présentation de fromages affinés, pains artisanaux et fruits frais.',
     compo: [],
     article: `
@@ -188,7 +187,7 @@ export const ANIMATIONS = [
       <h2>Organiser votre atelier fromages à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, nombre d'invités et durée. On installe, on présente, on démonte. Idéal pour un cocktail dînatoire, une soirée partenaires ou un afterwork d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'd6', univers: 'dejeuner', nom: 'Atelier Charcuterie Artisanale', img: '/plateau-charcuterie-halal.webp',
+  { id: 'd6', univers: 'dejeuner', nom: 'Atelier Charcuterie Artisanale', img: '/prod-atelier-charcuterie.webp',
     description: 'Découpe minute de charcuteries halal, sans porc.',
     compo: ['Bœuf séché', 'Dinde fumée', 'Poulet fumé', 'Bresaola', 'Viande des Grisons'],
     article: `
@@ -199,7 +198,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier charcuterie à Paris et en Île-de-France</h2>
       <p>Prestation sur devis selon date, lieu, effectif et accès sur place. Installation et démontage inclus. Parfait pour un cocktail, une inauguration ou une réception qui mélange les profils et les régimes. Devis sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'd7', univers: 'dejeuner', nom: 'Atelier Sushi & Maki', img: '/plateau-asiatique.webp',
+  { id: 'd7', univers: 'dejeuner', nom: 'Atelier Sushi & Maki', img: '/prod-atelier-sushi.webp',
     description: 'Préparation ou dressage de bouchées japonaises.',
     compo: ['Makis', 'California Rolls', 'Nigiris', 'Gyozas'],
     article: `
@@ -212,7 +211,7 @@ export const ANIMATIONS = [
     ` },
 
   // ── Street food ──
-  { id: 's2', univers: 'streetfood', nom: 'Atelier Lobster Roll', img: null,
+  { id: 's2', univers: 'streetfood', nom: 'Atelier Lobster Roll', img: '/prod-atelier-lobster.webp',
     description: 'Le grand classique new-yorkais, servi dans un pain brioché toasté.',
     compo: ['Homard', 'Crevettes', 'Crabe', 'Saumon fumé'],
     article: `
@@ -223,7 +222,7 @@ export const ANIMATIONS = [
       <h2>Organiser votre atelier lobster roll à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un lancement, une soirée partenaires ou un cocktail de fin d'année. Devis sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/plateau-burgers.webp',
+  { id: 's3', univers: 'streetfood', nom: 'Atelier Mini Burgers', img: '/prod-atelier-burgers.webp',
     description: 'Montage minute de mini burgers.',
     compo: ['Hamburger', 'Cheeseburger', 'Burger au steak végétal (sur demande)'],
     article: `
@@ -234,7 +233,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier mini burgers à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 's5', univers: 'streetfood', nom: 'Atelier Mini Baguettes', img: '/plateau-baguettes.webp',
+  { id: 's5', univers: 'streetfood', nom: 'Atelier Mini Baguettes', img: '/prod-atelier-baguettes.webp',
     description: 'Découpe et dressage de mini baguettes artisanales.',
     compo: ['Jambon de Dinde', 'Poulet César', 'Thon Ciboulette', 'Burrata', 'Pastrami'],
     article: `
@@ -245,7 +244,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier mini baguettes à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un déjeuner de réunion, une pause ou un cocktail. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 's6', univers: 'streetfood', nom: 'Atelier Tacos Gourmet', img: null,
+  { id: 's6', univers: 'streetfood', nom: 'Atelier Tacos Gourmet', img: '/prod-atelier-tacos.webp',
     description: 'Mini tacos dressés à la minute.',
     compo: ['Poulet mariné', 'Bœuf effiloché', 'Crevettes', 'Falafel'],
     article: `
@@ -256,7 +255,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier tacos à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 's7', univers: 'streetfood', nom: 'Atelier Libanais Wrap & Pita', img: null,
+  { id: 's7', univers: 'streetfood', nom: 'Atelier Libanais Wrap & Pita', img: '/prod-atelier-libanais.webp',
     description: 'Wraps et pains pita libanais garnis à la minute.',
     compo: ['Chawarma poulet', 'Chawarma bœuf', 'Falafel', 'Houmous', 'Taboulé'],
     article: `
@@ -267,7 +266,7 @@ export const ANIMATIONS = [
       <h2>Réserver votre atelier libanais à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un déjeuner d'équipe, un afterwork ou un cocktail. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 's9', univers: 'streetfood', nom: 'Atelier Loaded Fries', img: null,
+  { id: 's9', univers: 'streetfood', nom: 'Atelier Loaded Fries', img: '/prod-atelier-loaded-fries.webp',
     description: 'Pommes de terre croustillantes garnies.',
     compo: ['Cheddar & Jambon de Dinde', 'Bœuf Effiloché', 'Chicken Crispy', 'Truffe & Parmesan'],
     article: `
@@ -280,7 +279,7 @@ export const ANIMATIONS = [
     ` },
 
   // ── Douceurs ──
-  { id: 'do1', univers: 'douceurs', nom: 'Bar à Glaces Artisanales', img: null,
+  { id: 'do1', univers: 'douceurs', nom: 'Bar à Glaces Artisanales', img: '/prod-bar-glaces.webp',
     description: 'Une animation parfaite pour l\'été · parfums et toppings au choix.',
     compo: ['Vanille', 'Chocolat', 'Pistache', 'Fraise', 'Citron', 'Café', 'Toppings : coulis, caramel beurre salé, fruits rouges, pistaches, cookies émiettés, chantilly'],
     article: `
@@ -291,7 +290,7 @@ export const ANIMATIONS = [
       <h2>Installer un bar à glaces à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour un pot d'été, une fête des collaborateurs ou une journée portes ouvertes. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'do2', univers: 'douceurs', nom: 'Atelier Desserts', img: '/plateau-douceurs.webp',
+  { id: 'do2', univers: 'douceurs', nom: 'Atelier Desserts', img: '/prod-atelier-desserts.webp',
     description: 'Dressage de pâtisseries individuelles et mignardises.',
     compo: ['Tartelettes', 'Choux', 'Financiers', 'Madeleines', 'Mini desserts Signature'],
     article: `
@@ -302,7 +301,7 @@ export const ANIMATIONS = [
       <h2>Organiser votre atelier desserts à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et démontage compris. Idéal pour un cocktail, une pause gourmande ou une soirée partenaires. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'do4', univers: 'douceurs', nom: 'Bar à Fruits Frais', img: '/plateau-brochettes-fruits-v2.webp',
+  { id: 'do4', univers: 'douceurs', nom: 'Bar à Fruits Frais', img: '/prod-bar-fruits.webp',
     description: 'Découpe et dressage de fruits de saison.', compo: [],
     article: `
       <h2>Un bar à fruits frais pour vos pauses et événements d'entreprise à Paris</h2>
@@ -312,7 +311,7 @@ export const ANIMATIONS = [
       <h2>Installer un bar à fruits à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif et durée. Installation et reprise du matériel compris. Idéal pour une pause QVT, un petit-déjeuner ou une journée collaborateurs. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'do5', univers: 'douceurs', nom: 'Fontaine au Chocolat', img: null,
+  { id: 'do5', univers: 'douceurs', nom: 'Fontaine au Chocolat', img: '/prod-fontaine-chocolat.webp',
     description: 'Fontaine de chocolat chaud et fruits à tremper.', compo: [],
     article: `
       <h2>Une fontaine au chocolat pour vos événements d'entreprise à Paris</h2>
@@ -324,7 +323,7 @@ export const ANIMATIONS = [
     ` },
 
   // ── Bars & Boissons (100 % sans alcool) ──
-  { id: 'ba1', univers: 'bars', nom: 'Bar à Mocktails', img: null,
+  { id: 'ba1', univers: 'bars', nom: 'Bar à Mocktails', img: '/prod-bar-mocktails.webp',
     description: 'Cocktails sans alcool préparés à la minute.', compo: [],
     article: `
       <h2>Un bar à mocktails sans alcool pour vos événements d'entreprise à Paris</h2>
@@ -334,7 +333,7 @@ export const ANIMATIONS = [
       <h2>Installer un bar à mocktails à Paris et en Île-de-France</h2>
       <p>Prestation sur devis : date, lieu, effectif, durée et accès. Installation et démontage compris. Idéal pour un afterwork, un lancement ou une soirée d'équipe. Réponse sous <strong>24h</strong>, facturation entreprise avec TVA.</p>
     ` },
-  { id: 'ba3', univers: 'bars', nom: 'Eaux Infusées', img: '/bois-infusion-gingembre-10l.webp',
+  { id: 'ba3', univers: 'bars', nom: 'Eaux Infusées', img: '/prod-eaux-infusees.webp',
     description: 'Eaux infusées aux fruits et herbes fraîches.', compo: [],
     article: `
       <h2>Un bar à eaux infusées pour vos réunions et événements d'entreprise à Paris</h2>
