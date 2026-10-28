@@ -142,7 +142,7 @@ export const PAUSES = [
   { id: 'mousse-chocolat',
     seoTitle: `Mousse au chocolat pour vos pauses et déjeuners d'entreprise à Paris`,
     seoHtml: `<p>Une mousse au chocolat signée notre chef pâtissier, faite maison. Une verrine individuelle par personne, servie à la cuillère, sans découpe ni service compliqué. Texture aérienne et chocolat qui a du caractère : un dessert qui clôt un déjeuner d'équipe ou ponctue une pause gourmande avec élégance.</p><h2>Commander vos mousses au chocolat à Paris et en Île-de-France</h2><p>Nombre de verrines selon l'effectif, commande avant 10h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis sous 24h.</p>`,
-    nom: 'Véritable mousse au chocolat',           img: '/prod-mousse-chocolat.webp', prix: '6 pièces, 18,90 €', description: 'Mousse au chocolat signée notre chef pâtissier, faite maison, texture aérienne.' },
+    nom: 'Véritable mousse au chocolat',           img: '/prod-mousse-chocolat-v2.webp', prix: '6 pièces, 18,90 €', description: 'Mousse au chocolat signée notre chef pâtissier, faite maison, texture aérienne.' },
   { id: 'panna-cotta',
     seoTitle: `Panna cotta pour vos pauses et déjeuners d'entreprise à Paris`,
     seoHtml: `<p>Une panna cotta signée notre chef pâtissier, faite maison à la crème fleurette entière et aux fruits rouges frais. Une verrine individuelle par personne, prête à servir. Douce, crémeuse et légère, elle finit un déjeuner d'équipe sans lourdeur et se déguste à la cuillère, debout ou assis.</p><h2>Commander vos panna cottas à Paris et en Île-de-France</h2><p>Nombre de verrines selon l'effectif, commande avant 10h la veille, livraison dès 6h30. Facturation entreprise avec TVA, devis personnalisé sous 24h.</p>`,
