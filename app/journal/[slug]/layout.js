@@ -39,6 +39,19 @@ const DESCRIPTIONS_COURTES = {
   'cocktail-inauguration-entreprise': "Inauguration de bureaux, lancement, emménagement : quel format de cocktail, comment dérouler la soirée, quel budget pour 40, 80 ou 150 invités.",
   // « Mado » ne figure ni dans un titre ni dans une meta.
   'meilleures-madeleines-paris': "Notre sélection des meilleures madeleines de Paris, de Gilles Marchal au Ritz, et celle que nous servons chez L'Écrin.",
+  // 28/10/2026 : descriptions des articles les plus vus ramenées sous 155 caractères (elles étaient coupées dans Google)
+  'animation-culinaire-entreprise-paris': "10 idées d'animations culinaires pour un événement d'entreprise : barista, crêpes minute, découpe de saumon, mini burgers, mocktails, et leur budget.",
+  'meilleurs-plateaux-repas-entreprise-paris': "Ce qui fait un bon plateau repas d'entreprise à Paris : fraîcheur, chaîne du froid, allergènes, prix. Nos six plateaux et le budget pour 10 à 50 personnes.",
+  'combien-prevoir-par-personne-traiteur-entreprise': "Quantités par personne et prix HT en un tableau : petit-déjeuner, plateaux repas, cocktail, buffet froid, desserts, boissons. De 8 à 51,90 € HT.",
+  'meilleurs-fromagers-charcuterie-halal-aperitif-entreprise-paris': "Charcuterie de bœuf halal, fromages affinés : les fromagers MOF de Paris, bien choisir sa charcuterie, et le budget d'un apéritif de 10 à 50 personnes.",
+  'devis-traiteur-ce-qui-est-inclus': "Livraison, vaisselle, nappes, service, reprise : ce qui est compris ou facturé à part dans un devis de traiteur, et les lignes à vérifier avant de signer.",
+  'location-materiel-reception-entreprise-quantites-prix': "Mange-debout, tables, nappes, vaisselle, verres : combien en louer pour 50 ou 100 invités, les prix en Île-de-France et ce qu'il faut vérifier au devis.",
+  'meilleurs-plateaux-repas-vegetariens-vegan-entreprise-paris': "La Solaire, La Provençale, La Potagère : nos trois plateaux végétariens, ce qui change pour un convive vegan, combien en prévoir et le budget de 10 à 50.",
+  'mini-burgers-afterwork-cocktail-entreprise-paris': "Mini burgers en afterwork ou en cocktail d'entreprise : ce qui fait un bon mini burger, combien en prévoir par personne, et le budget de 10 à 50 personnes.",
+  'combien-temps-avance-commander-traiteur': "La veille pour un petit-déjeuner ou des plateaux, 48 heures dès 50 personnes, davantage avec service et matériel : les délais de commande d'un traiteur.",
+  'plateau-repas-halal-paris-reunion-entreprise': "Halal, sans porc, sans alcool, sans supplément : ce qu'il faut demander à un traiteur avant de commander des plateaux repas halal, et le budget de 10 à 50.",
+  'alcool-pot-entreprise-code-du-travail': "Vin, bière, champagne : ce que le Code du travail autorise au travail, la responsabilité de l'employeur, les conseils de l'INRS, et un pot sans alcool.",
+  'meilleur-buffet-mediterraneen-mezze-entreprise-paris': "Les adresses de mezze reconnues à Paris, notre buffet Le Méditerranéen à 37,50 € HT par personne, et le budget pour 10, 20 ou 50 personnes.",
 }
 
 export async function generateMetadata({ params }) {
