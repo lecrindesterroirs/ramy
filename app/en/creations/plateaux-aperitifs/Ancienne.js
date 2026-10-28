@@ -29,7 +29,7 @@ const SEO_ARTICLE = `
 
 export default function PlateauxAperitifsEn({ bas }) {
   return (
-    <ProductsPageTemplate bas={bas}
+    <ProductsPageTemplate sansBandeau bas={bas}
       lang="en"
       heroImg="/hero-plateaux-aperitifs-full.webp"
       heroTitle="Aperitif platters"

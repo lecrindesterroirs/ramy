@@ -30,7 +30,7 @@ const ANSWER_BLOCK = (
 
 export default function Boissons({ bas }) {
   return (
-    <ProductsPageTemplate bas={bas}
+    <ProductsPageTemplate sansBandeau bas={bas}
       heroImg="/boissons-hero.webp"
       heroTitle={"Boissons"}
       heroSubtitle="Jus Alain Milliat, thés Mariage Frères, cafés et eaux. Des boissons choisies pour leur qualité."

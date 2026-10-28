@@ -28,7 +28,7 @@ const SEO_ARTICLE = `
 
 export default function LunchBoxEn({ bas }) {
   return (
-    <ProductsPageTemplate bas={bas}
+    <ProductsPageTemplate sansBandeau bas={bas}
       lang="en"
       heroImg="/hero-lunch-box.webp"
       heroTitle="Lunch boxes"

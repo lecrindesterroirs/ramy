@@ -28,7 +28,7 @@ const SEO_ARTICLE = `
 
 export default function BoissonsEn({ bas }) {
   return (
-    <ProductsPageTemplate bas={bas}
+    <ProductsPageTemplate sansBandeau bas={bas}
       lang="en"
       heroImg="/boissons-hero.webp"
       heroTitle="Drinks"

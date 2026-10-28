@@ -54,6 +54,7 @@ export default function ProductsPageTemplate({
   answerBlock,
   bas = null,
   lang = 'fr',
+  sansBandeau = false,
 }) {
   const en = lang === 'en'
   const [sortLabel, setSortLabel]   = useState('En vedette')
@@ -65,7 +66,7 @@ export default function ProductsPageTemplate({
 
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar showBanner={!sansBandeau} sansBandeau={sansBandeau} />
 
       <main className="pd-main" style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
