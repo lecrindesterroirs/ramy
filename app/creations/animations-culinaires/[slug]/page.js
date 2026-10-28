@@ -90,7 +90,7 @@ function AnimationDetailInner() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <BusinessJsonLd />
-      <Navbar showBanner={true} />
+      <Navbar sansBandeau />
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
         {/* ── Breadcrumb ── */}

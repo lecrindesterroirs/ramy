@@ -237,7 +237,7 @@ export default function APartager({ bas }) {
   const T = en ? T_PARTAGER.en : T_PARTAGER.fr
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar sansBandeau />
 
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

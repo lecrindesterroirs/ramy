@@ -186,7 +186,7 @@ export default function CoffretsCadeaux({ bas }) {
   const T = en ? T_COFFRETS.en : T_COFFRETS.fr
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar sansBandeau />
 
       <main style={{ background: '#FDFCFA', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 

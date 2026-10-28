@@ -56,7 +56,7 @@ export default function PlateauxVillePage({ params }) {
 
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar sansBandeau />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />

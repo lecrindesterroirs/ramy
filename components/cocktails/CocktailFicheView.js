@@ -106,7 +106,7 @@ export default function CocktailFicheView({ slug, en = false }) {
 
   return (
     <>
-      <Navbar showBanner />
+      <Navbar sansBandeau />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <main className="ev-main">

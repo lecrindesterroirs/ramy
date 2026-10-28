@@ -148,7 +148,7 @@ export default function ReceptionView({ en = false }) {
 
   return (
     <>
-      <Navbar showBanner />
+      <Navbar sansBandeau />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <main className="ev-main">
         <Breadcrumb items={fil} jsonLd={false} maxWidth="1440px" />

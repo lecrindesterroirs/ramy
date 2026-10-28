@@ -71,7 +71,7 @@ const JOURNAL_ITEMS = {
   ],
 }
 
-export default function Navbar({ showBanner = false, forceScrolled = false }) {
+export default function Navbar({ showBanner = false, forceScrolled = false, sansBandeau = false }) {
   const pathname = usePathname()
   /* Langue de la page courante. Les libellés basculent en anglais, et chaque
      lien part vers sa version anglaise quand elle existe — sinon il reste en
@@ -130,6 +130,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false }) {
 
   return (
     <>
+      {/* Pages sans bandeau : le contenu se cale sur la nav seule (--banner-h à 0 dès le rendu serveur, sans décalage) */}
+      {sansBandeau && <style>{'html{--banner-h:0px !important}'}</style>}
       {/* ── Bandeau défilant (page produit uniquement) ── */}
       {showBanner && <div style={{
         position: 'fixed',

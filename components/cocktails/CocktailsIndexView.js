@@ -140,7 +140,7 @@ export default function CocktailsIndexView({ en = false }) {
 
   return (
     <>
-      <Navbar showBanner />
+      <Navbar sansBandeau />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <main className="ev-main">
         <Breadcrumb maxWidth="1440px" items={[{ label: T.accueil, href: en ? '/en' : '/' }, { label: T.fil }]} jsonLd={false} />

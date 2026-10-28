@@ -62,7 +62,7 @@ export default function Personnalisation() {
   const SEO_ARTICLE = en ? reecrireLiensEnDans(cheminsEn, E.seoArticle, slugsEn) : SEO_ARTICLE_FR
   return (
     <>
-      <Navbar showBanner={true} />
+      <Navbar sansBandeau />
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh', paddingTop: 'calc(var(--banner-h) + var(--nav-h))' }}>
 
