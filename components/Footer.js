@@ -104,7 +104,8 @@ export default function Footer() {
               { title: 'Occasions', titleEn: 'Occasions', links: [
                 { label: "Petit-déjeuner d'entreprise", labelEn: 'Corporate breakfast', href: '/occasions/petit-dejeuner-entreprise' },
                 { label: 'Séminaire & réunion', labelEn: 'Offsites & meetings', href: '/occasions/seminaire-entreprise' },
-                { label: 'CODIR & COMEX', labelEn: 'Board & exec meetings', href: '/occasions/petit-dejeuner-codir' },
+                { label: 'Déjeuner CODIR & COMEX', labelEn: 'Board & exec lunches', href: '/occasions/plateau-repas-codir' },
+                { label: 'Petit-déjeuner CODIR', labelEn: 'Board & exec breakfasts', href: '/occasions/petit-dejeuner-codir' },
                 { label: "Déjeuner d'entreprise", labelEn: 'Corporate lunch', href: '/occasions/dejeuner-entreprise' },
                 { label: 'Traiteur halal', labelEn: 'Halal catering', href: '/traiteur-halal' },
                 { label: 'Traiteur halal Paris', labelEn: 'Halal catering in Paris', href: '/traiteur-halal/paris' },
