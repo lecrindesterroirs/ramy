@@ -6,6 +6,9 @@ import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import BreadcrumbJsonLd from '../../../components/BreadcrumbJsonLd'
 import BusinessJsonLd from '../../../components/BusinessJsonLd'
+import { FAQSchema } from '../../../components/FAQSchema'
+import { PDJ_DES, PLATEAU_DES, MINIMUM, euroFr, euroEn } from '../../../lib/prixEntree'
+import { FORMULES, LIV } from '../../../lib/calculsPrix'
 
 /* Fond papier (grain léger) pour l'effet parchemin. */
 const GRAIN_SVG = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>
@@ -45,7 +48,7 @@ const MANIFESTE = [
 const FAITS = [
   {
     q: "Qu'est-ce que L'Écrin Traiteur ?",
-    a: "L'Écrin Traiteur est un traiteur d'entreprise basé à Boulogne-Billancourt, fondé en 2025 par Ramy Abdelaty. Nous livrons petits-déjeuners, plateaux repas, lunch box, pauses gourmandes, cocktails et animations culinaires dans les bureaux de Paris et d'Île-de-France. La société s'appelle L'Écrin des Terroirs, L'Écrin Traiteur est son nom commercial. Plus de 100 entreprises nous ont déjà confié leurs réunions, séminaires et réceptions, de 10 à 300 personnes.",
+    a: "L'Écrin Traiteur est un traiteur d'entreprise basé à Boulogne-Billancourt, fondé en 2025 par Ramy Abdelaty. Nous livrons petits-déjeuners, plateaux repas, lunch box, pauses gourmandes, cocktails et animations culinaires dans les bureaux de Paris et d'Île-de-France. La société s'appelle L'Écrin des Terroirs, L'Écrin Traiteur est son nom commercial. Plus de 100 entreprises et plus de 10 000 personnes servies : réunions, séminaires et réceptions, de 10 à 300 personnes.",
   },
   {
     q: "D'où viennent les produits ?",
@@ -58,6 +61,18 @@ const FAITS = [
   {
     q: "Quels régimes alimentaires couvrez-vous ?",
     a: "Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes. Chaque prestation existe en version végétarienne et vegan, et nous l'adaptons en sans gluten sur demande.",
+  },
+  {
+    q: "Combien coûte un petit-déjeuner d'entreprise ?",
+    a: `Le petit-déjeuner commence à ${euroFr(PDJ_DES)} HT par personne, le plateau repas à ${euroFr(PLATEAU_DES)} et le cocktail à ${euroFr(FORMULES.invitation.prix)}. La livraison s'ajoute : ${euroFr(LIV)} HT à Paris et dans les communes proches, avec un minimum de commande de ${euroFr(MINIMUM)} HT. Le prix par personne ne change pas avec l'effectif, et le devis arrive sous 24 h.`,
+  },
+  {
+    q: "Êtes-vous certifiés halal ?",
+    a: "Toute la carte est halal et sans porc par défaut, sans alcool dans les recettes, et sans supplément. Nous ne revendiquons pas de certification délivrée par un organisme : notre offre est halal-friendly, construite avec nos artisans. Si l'origine d'une viande compte pour votre équipe, dites-le au moment du devis, nous vous renseignons sur le sourcing avant de valider la commande.",
+  },
+  {
+    q: "Peut-on payer sur facture avec un bon de commande ?",
+    a: "Oui. La facture est une facture d'entreprise avec TVA ; si votre société fonctionne avec des bons de commande, indiquez le numéro dans la demande de devis, il figurera sur la facture.",
   },
   {
     q: "Où livrez-vous ?",
@@ -84,7 +99,7 @@ const MANIFESTE_EN = [
 const FAITS_EN = [
   {
     q: "What is L'Écrin Traiteur?",
-    a: "L'Écrin Traiteur is a corporate caterer based in Boulogne-Billancourt, founded in 2025 by Ramy Abdelaty. We deliver breakfasts, lunch trays, lunch boxes, afternoon breaks, cocktail receptions and live food stations to offices across Paris and Île-de-France. The registered company is L'Écrin des Terroirs; L'Écrin Traiteur is its trading name. More than 100 companies have already trusted us with their meetings, offsites and receptions, from 10 to 300 people.",
+    a: "L'Écrin Traiteur is a corporate caterer based in Boulogne-Billancourt, founded in 2025 by Ramy Abdelaty. We deliver breakfasts, lunch trays, lunch boxes, afternoon breaks, cocktail receptions and live food stations to offices across Paris and Île-de-France. The registered company is L'Écrin des Terroirs; L'Écrin Traiteur is its trading name. More than 100 companies and over 10,000 people served: meetings, offsites and receptions, from 10 to 300 people.",
   },
   {
     q: 'Where does the food come from?',
@@ -97,6 +112,18 @@ const FAITS_EN = [
   {
     q: 'Which dietary needs do you cover?',
     a: 'The whole menu is halal and pork-free as standard, with no alcohol in any recipe. Every package exists in a vegetarian and a vegan version, and we adapt it to gluten-free on request.',
+  },
+  {
+    q: 'How much does a corporate breakfast cost?',
+    a: `Breakfast starts at ${euroEn(PDJ_DES)} excl. VAT per person, lunch trays at ${euroEn(PLATEAU_DES)} and cocktail receptions at ${euroEn(FORMULES.invitation.prix)}. Delivery is ${euroEn(LIV)} excl. VAT in Paris and the nearby towns, with a ${euroEn(MINIMUM)} excl. VAT minimum order. The price per person does not change with the headcount, and quotes come within 24 hours.`,
+  },
+  {
+    q: 'Is your food halal certified?',
+    a: "The whole menu is halal and pork-free by default, with no alcohol in the recipes and no surcharge. We do not claim certification from an accredited body: our offer is halal-friendly, built with our artisans. If the origin of a meat matters to your team, tell us when you ask for a quote and we will look into the sourcing before the order is confirmed.",
+  },
+  {
+    q: 'Can we pay by invoice with a purchase order?',
+    a: 'Yes. The invoice is a company invoice showing VAT; if your company works with purchase orders, give us the number when you request a quote and it will appear on the invoice.',
   },
   {
     q: 'Where do you deliver?',
@@ -241,6 +268,11 @@ export default function NotreMaison() {
         }
       ` }} />
 
+      {/* Les cinq questions étaient en H2 avec leur réponse dessous, mais rien
+          ne le disait aux machines : pas de FAQPage. Les moteurs de réponses
+          s'appuient dessus pour citer une réponse hors de son contexte.
+          Zéro mot ajouté à la page (28/10/2026). */}
+      <FAQSchema pageTitle={T.titre} faqs={T.faits.map(f => ({ name: f.q, answer: f.a }))} />
       <BusinessJsonLd />
       <BreadcrumbJsonLd items={[
         { name: T.fil[0], path: en ? '/en' : '' },

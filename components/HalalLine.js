@@ -4,7 +4,7 @@
 //
 // Props : intro (début de phrase, finit par un espace), paddingTop, maxWidth.
 
-export default function HalalLine({ intro = 'Notre offre ', paddingTop = '44px', maxWidth = '800px', paddingBottom = '0px' }) {
+export default function HalalLine({ intro = 'Notre offre ', paddingTop = '44px', maxWidth = '800px', paddingBottom = '44px' }) {
   return (
     <div
       className="halal-line"

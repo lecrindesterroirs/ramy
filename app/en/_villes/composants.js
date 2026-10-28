@@ -88,7 +88,7 @@ export const ARGS_DEFAUT_EN = [
 ]
 
 /* ── Ligne de maillage halal (HalalLine, en anglais) ── */
-export function HalalLineEn({ intro = 'Our ', paddingTop = '44px', maxWidth = '800px', paddingBottom = '0px' }) {
+export function HalalLineEn({ intro = 'Our ', paddingTop = '44px', maxWidth = '800px', paddingBottom = '44px' }) {
   return (
     <div
       className="halal-line"
