@@ -886,14 +886,13 @@ a:hover .article-card-img { transform: scale(1.04); }
 .ckv-menu-liste li { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 16px; line-height: 1.55; color: var(--text-primary); padding: 6px 0; }
 @media (max-width: 600px) { .ckv-menu { padding: 44px 24px 40px; } }
 
-/* Cartes des formules (page Cocktails) : contenu aligné à gauche, puces dorées, plus d'air ;
+/* Cartes des formules (page Cocktails) : contenu aligné à gauche, plus d'air ;
    « Les autres formules » des fiches sur une seule ligne de trois (28/10/2026) */
 .ckf-carte { text-align: left; }
 .ckf-corps { padding: 32px 36px 34px; }
 .ckf-compo { gap: 32px; margin-bottom: 24px; }
 .ckf-compo-titre { padding-bottom: 9px; margin-bottom: 12px; border-bottom: 1px solid rgba(224,161,38,0.5); }
-.ckf-compo li { position: relative; padding: 4px 0 4px 16px; line-height: 1.5; }
-.ckf-compo li::before { content: ''; position: absolute; left: 0; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.ckf-compo li { padding: 4px 0; line-height: 1.5; }
 .ckf-enplus { padding-top: 4px; }
 @media (max-width: 560px) { .ckf-corps { padding: 24px 22px 26px; } }
 .ckv-cartes-3 { grid-template-columns: repeat(3, 1fr); gap: 32px 24px; }
