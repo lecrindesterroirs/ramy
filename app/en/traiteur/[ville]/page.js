@@ -34,7 +34,7 @@ const SERVICES = [
     label: 'Lunch trays',
     desc: 'Complete trays for your working lunches.',
     href: '/creations/plateaux-repas',
-    img: '/creations-4.webp',
+    img: '/plateau-mediterraneen.webp',
   },
   {
     label: 'Cocktails & Buffets',

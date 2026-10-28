@@ -21,7 +21,7 @@ const SERVICES = [
     label: 'Plateaux Repas',
     desc: 'Des plateaux composés pour vos déjeuners de travail.',
     href: '/creations/plateaux-repas',
-    img: '/creations-4.webp',
+    img: '/plateau-mediterraneen.webp',
   },
   {
     label: 'Cocktails & Buffets',

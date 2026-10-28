@@ -47,7 +47,7 @@ const PRESTATIONS = [
     label: 'Plateaux Repas',
     desc: 'Menus individuels complets pour vos déjeuners de travail, halal et sans porc.',
     href: '/creations/plateaux-repas',
-    img: '/creations-4.webp',
+    img: '/plateau-mediterraneen.webp',
   },
   {
     label: 'Cocktails & Buffets',
