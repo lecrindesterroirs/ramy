@@ -873,3 +873,15 @@ a:hover .article-card-img { transform: scale(1.04); }
 .cat-choisir-details .cat-seo-body { padding: 4px 0 28px; }
 .cat-choisir-details .cat-seo-body h2 { font-size: 22px; margin: 28px 0 10px; }
 @media (max-width: 768px) { .cat-choisir { padding: 40px 16px 0; } }
+
+/* Fiche cocktail : la composition en carte « menu » encadrée, centrée */
+.ckv-menu { position: relative; max-width: 620px; margin: 0 auto; padding: 56px 44px 52px; background: var(--bg-secondary); border: 1px solid rgba(17,17,17,0.14); text-align: center; }
+.ckv-menu::before { content: ''; position: absolute; inset: 9px; border: 1px solid var(--accent); pointer-events: none; }
+.ckv-menu-surtitre { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 14px; }
+.ckv-menu-titre { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(28px, 3.4vw, 40px); font-weight: 400; line-height: 1.15; color: var(--text-primary); margin: 0 0 24px; }
+.ckv-menu-orn { display: block; width: 56px; height: 1px; background: var(--accent); margin: 0 auto 28px; }
+.ckv-menu-h3 { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: clamp(20px, 2vw, 24px); font-weight: 400; line-height: 1.2; color: var(--text-primary); margin: 0 0 14px; }
+.ckv-menu-liste { list-style: none; padding: 0; margin: 0 0 28px; }
+.ckv-menu-liste:last-child { margin-bottom: 0; }
+.ckv-menu-liste li { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 16px; line-height: 1.55; color: var(--text-primary); padding: 6px 0; }
+@media (max-width: 600px) { .ckv-menu { padding: 44px 24px 40px; } }

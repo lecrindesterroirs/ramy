@@ -38,7 +38,7 @@ export default function CocktailFicheView({ slug, en = false }) {
     devis: 'Ask for a quote', compo: 'See what is in it',
     brefTitre: 'At a glance',
     bref: `The ${f.label} cocktail menu costs ${prixHT(f.prixNum, true)} per person for ${f.pieces} pieces (${f.sale.length} savoury, ${f.sucre.length} sweet), delivered arranged across Paris and Île-de-France. For 20 guests that is ${prixHT(ex[0].total, true)} with delivery. Order until 2 pm the day before.`,
-    compoTitre: `${f.pieces} pieces per person`, sale: 'Savoury', sucre: 'Sweet', enPlus: 'To share, on top',
+    menuSurtitre: 'The menu', compoTitre: `${f.pieces} pieces per person`, sale: 'Savoury', sucre: 'Sweet', enPlus: 'To share, on top',
     combien: 'How much to allow', entetes: ['Guests', 'Pieces delivered', 'Total excl. VAT, delivered', 'Per person'],
     pers: (n) => `${n} guests`,
     note: 'Delivery included, drinks not included. The price per person does not change with headcount.',
@@ -53,7 +53,7 @@ export default function CocktailFicheView({ slug, en = false }) {
     devis: 'Demander un devis', compo: 'Voir la composition',
     brefTitre: "L'essentiel",
     bref: `Le cocktail ${f.label} coûte ${prixHT(f.prixNum)} par personne pour ${f.pieces} pièces (${f.sale.length} salées, ${f.sucre.length} sucrées), livrées dressées à Paris et en Île-de-France. Pour 20 personnes, comptez ${prixHT(ex[0].total)} livraison comprise. Commande jusqu'à la veille 14h.`,
-    compoTitre: `${f.pieces} pièces par personne`, sale: 'Salé', sucre: 'Sucré', enPlus: 'À partager, en plus',
+    menuSurtitre: 'Le menu', compoTitre: `${f.pieces} pièces par personne`, sale: 'Salé', sucre: 'Sucré', enPlus: 'À partager, en plus',
     combien: 'Combien prévoir', entetes: ['Effectif', 'Pièces livrées', 'Total HT livré', 'Par personne HT'],
     pers: (n) => `${n} personnes`,
     note: "Livraison comprise, boissons non comprises. Le prix par personne ne change pas avec l'effectif.",
@@ -136,23 +136,23 @@ export default function CocktailFicheView({ slug, en = false }) {
         </section>
 
         <section id="composition" className="ev-bloc ev-etroit">
-          <h2 className="ev-h2">{T.compoTitre}</h2>
-          <div className="ckv-compo">
-            <div>
-              <h3 className="ev-h3">{T.sale} · {f.sale.length}</h3>
-              <ul className="ev-lignes">{f.sale.map(p => <li key={p}>{p}</li>)}</ul>
-            </div>
-            <div>
-              <h3 className="ev-h3">{T.sucre} · {f.sucre.length}</h3>
-              <ul className="ev-lignes">{f.sucre.map(p => <li key={p}>{p}</li>)}</ul>
-            </div>
+          <div className="ckv-menu">
+            <p className="ckv-menu-surtitre">{T.menuSurtitre}</p>
+            <h2 className="ckv-menu-titre">{T.compoTitre}</h2>
+            <span className="ckv-menu-orn" aria-hidden="true" />
+            <h3 className="ckv-menu-h3">{T.sale} · {f.sale.length}</h3>
+            <ul className="ckv-menu-liste">{f.sale.map(p => <li key={p}>{p}</li>)}</ul>
+            <span className="ckv-menu-orn" aria-hidden="true" />
+            <h3 className="ckv-menu-h3">{T.sucre} · {f.sucre.length}</h3>
+            <ul className="ckv-menu-liste">{f.sucre.map(p => <li key={p}>{p}</li>)}</ul>
+            {f.enPlus?.length > 0 && (
+              <>
+                <span className="ckv-menu-orn" aria-hidden="true" />
+                <h3 className="ckv-menu-h3">{T.enPlus}</h3>
+                <ul className="ckv-menu-liste">{f.enPlus.map(p => <li key={p}>{p}</li>)}</ul>
+              </>
+            )}
           </div>
-          {f.enPlus?.length > 0 && (
-            <div className="ev-surdemande">
-              <h3 className="ev-h3">{T.enPlus}</h3>
-              <ul className="ev-lignes">{f.enPlus.map(p => <li key={p}>{p}</li>)}</ul>
-            </div>
-          )}
         </section>
 
         <section className="ev-bloc ev-etroit">
