@@ -273,7 +273,7 @@ export default function GalleryFiche({
 
             {/* Bloc action centré : prix + CTA */}
             <div style={{ textAlign: 'center' }}>
-              {price && (
+              {Number(price) > 0 && (
                 <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
                   {price} €
                   <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>{priceNote}</span>

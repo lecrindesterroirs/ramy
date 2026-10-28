@@ -39,3 +39,6 @@ Thumbs.db
 /catalogue*.pdf
 /catalogue2-*.pdf
 /catalogue/
+
+# Maquettes de brainstorming (locales, jamais déployées)
+.superpowers/

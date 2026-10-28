@@ -526,7 +526,7 @@ function GalleryFiche({ product, M }) {
 
         {/* Bloc action centré : prix + CTA */}
         <div style={{ textAlign: 'center' }}>
-          {product.price && (
+          {product.price > 0 && (
             <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '24px', fontWeight: 400, color: 'var(--text-primary)', lineHeight: 1, marginBottom: '16px' }}>
               {M.en ? `€${product.price.toFixed(2)}` : `${product.price.toFixed(2).replace('.', ',')} €`}
               <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>{M.ht}</span>
@@ -639,7 +639,7 @@ function EditorialHero({ product, breadcrumb, M }) {
               )}
 
               {/* Prix */}
-              {product.price && (
+              {product.price > 0 && (
                 <>
                   <div style={{ width: '34px', height: '1px', background: GOLD, margin: '4px auto 12px', opacity: 0.7 }} />
                   <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '8.5px', fontWeight: 600, letterSpacing: '0.24em', textTransform: 'uppercase', color: GOLD, marginBottom: '5px' }}>Tarif</p>

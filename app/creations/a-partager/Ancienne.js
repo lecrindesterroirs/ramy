@@ -178,7 +178,7 @@ function MenuCard({ m, T, en }) {
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', lineHeight: 1.55, color: '#6E675F', maxWidth: '340px', margin: '0 auto 6px' }}>
             {accroche}
           </p>
-          {m.prix && (
+          {m.prix > 0 && (
             <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '15px', fontWeight: 500, color: '#111111', margin: '10px 0 0' }}>
               {prix}
             </p>
