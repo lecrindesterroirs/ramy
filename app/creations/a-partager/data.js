@@ -52,15 +52,15 @@ export const MENUS = [
     featured: false,
     salees: [
       'Salade de lentilles, feta & légumes rôtis',
-      'Houmous méditerranéen & navette de légumes grillés',
+      'Houmous & pains grillés',
       'Mini baguette œuf & emmental',
       'Salade de tomates & mozzarella au basilic',
       'Pain brioché pesto verde & tomates séchées',
       'Plateau de fromages affinés',
     ],
     sucrees: [
-      'Madeleines artisanales',
-      'Fruits frais de saison',
+      'Choux à la crème',
+      'Panna cotta fruits rouges',
     ],
   },
 ]
