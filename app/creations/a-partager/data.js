@@ -12,7 +12,7 @@ export const MENUS = [
     featured: false,
     salees: [
       'Salade grecque',
-      'Taboulé aux herbes fraîches & citron',
+      'Salade de tomates & mozzarella au basilic',
       'Falafels en brochette & crème tahini citronnée',
       'Navette saumon & cream cheese',
       "Caviar d'aubergine & pains grillés",
@@ -55,7 +55,7 @@ export const MENUS = [
       'Houmous méditerranéen & navette de légumes grillés',
       'Mini baguette œuf & emmental',
       'Salade de tomates & mozzarella au basilic',
-      'Falafels & crème tahini citronnée',
+      'Pain brioché pesto verde & tomates séchées',
       'Plateau de fromages affinés',
     ],
     sucrees: [
