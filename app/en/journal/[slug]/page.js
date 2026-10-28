@@ -3,11 +3,14 @@ import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import ParallaxImage from '../../../../components/ParallaxImage'
 import DevisRapide from '../../../../components/DevisRapide'
+import RelatedLinks from '../../../../components/RelatedLinks'
 import { prestationPourArticle } from '../../../../lib/parcours'
 import { founderNode } from '../../../../lib/site'
 import { ogImages } from '../../../../lib/og'
 import { enArticle, enSlugs, dateEn } from '../../../../lib/en/journal'
 import { reecrireLiensEn } from '../../../../lib/i18n'
+import { articles } from '../../../../lib/journalData'
+import { articlesProches, liensHistoriques } from '../../../../lib/journalMaillage'
 
 /*
   Guides du Journal en anglais (/en/journal/<slug FR>). Texte : surcouches
@@ -63,6 +66,17 @@ export default function EnArticlePage({ params }) {
   const url = `${BASE}/en/journal/${a.slug}`
   const img = a.img?.startsWith('http') ? a.img : `${BASE}${a.img}`
   const showFaq = a.faq.length > 0 && !/faq-block|Frequently asked questions/i.test(a.contenu)
+  // « Keep reading » : les mêmes liens que la page française (3 historiques + 3 par proximité de sujet),
+  // limités aux guides qui existent en anglais.
+  const articleFr = articles.find(x => x.slug === a.slug)
+  const enDispo = new Set(enSlugs())
+  const relatedEn = articleFr
+    ? [...liensHistoriques(articleFr, articles), ...articlesProches(articleFr, articles)]
+        .filter(x => enDispo.has(x.slug))
+        .map(x => enArticle(x.slug))
+        .filter(Boolean)
+        .map(x => ({ href: `/en/journal/${x.slug}`, title: x.titre, meta: x.categorie }))
+    : []
 
   return (
     <>
@@ -135,6 +149,10 @@ export default function EnArticlePage({ params }) {
             <a href="/en/journal" style={{ color: 'inherit' }}>← All guides in English</a> · <a href={`/journal/${a.slug}`} hrefLang="fr" style={{ color: 'inherit' }}>Lire en français</a>
           </p>
         </div>
+
+        {relatedEn.length > 0 && (
+          <RelatedLinks eyebrow="Keep reading" title="More guides" items={relatedEn} />
+        )}
       </main>
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
