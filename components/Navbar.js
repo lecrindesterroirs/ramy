@@ -830,7 +830,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false, sans
              hamburger, quatrième enfant, dans une colonne fantôme hors écran. */
           .nav-bar, .nav-bar-hero {
             display: flex !important;
-            justify-content: space-between !important;
+            justify-content: flex-end !important;
             padding: 16px 24px !important;
           }
           .nav-left, .nav-right {
@@ -851,7 +851,15 @@ export default function Navbar({ showBanner = false, forceScrolled = false, sans
             display: flex !important;
             margin-left: auto;
           }
-          .nav-logo { margin-top: 0 !important; }
+          /* Logo au centre exact de la barre, comme sur grand écran : posé en
+             absolu sur l'axe, il ne dépend plus de la largeur du hamburger
+             (demande de Ramy, 29/10/2026). Le hamburger reste à droite. */
+          .nav-logo {
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            margin-top: 0 !important;
+          }
         }
         @media (min-width: 960px) {
           .nav-hamburger { display: none !important; }
