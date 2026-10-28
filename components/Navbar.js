@@ -32,7 +32,7 @@ const MOMENTS = {
     key: 'cocktail',
     cards: [
       { title: 'Cocktails', titleEn: 'Cocktail receptions', href: '/creations/cocktails', img: '/hero-cocktail-reception.webp' },
-      { title: 'Plateaux Apéritifs', titleEn: 'Canapé platters', href: '/creations/plateaux-aperitifs', img: '/plateau-wraps.webp' },
+      { title: 'Plateaux Apéritifs', titleEn: 'Canapé platters', href: '/creations/plateaux-aperitifs', img: '/plateau-burgers-menu.webp' },
       { title: 'Animations Culinaires', titleEn: 'Live food stations', href: '/creations/animations-culinaires', img: '/hero-animations.webp' },
       { title: 'Boissons', titleEn: 'Drinks', href: '/creations/boissons', img: '/bois-jus-orange.webp' },
     ],
