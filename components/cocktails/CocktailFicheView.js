@@ -202,7 +202,7 @@ export default function CocktailFicheView({ slug, en = false }) {
 
         <section className="ev-bloc">
           <h2 className="ev-h2">{T.autres}</h2>
-          <div className="ev-cartes ckv-cartes-2">
+          <div className="ev-cartes ckv-cartes-3">
             {autres.map(x => (
               <a key={x.key} href={`${pre}${CHEMIN}/${x.key}`} className="ev-carte">
                 <span className="ev-carte-img">
