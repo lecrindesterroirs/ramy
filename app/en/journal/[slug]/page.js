@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import ParallaxImage from '../../../../components/ParallaxImage'
@@ -8,7 +9,8 @@ import { prestationPourArticle } from '../../../../lib/parcours'
 import { founderNode } from '../../../../lib/site'
 import { ogImages } from '../../../../lib/og'
 import { enArticle, enSlugs, dateEn } from '../../../../lib/en/journal'
-import { reecrireLiensEn } from '../../../../lib/i18n'
+import { reecrireLiensEn, lienLocalise } from '../../../../lib/i18n'
+import { cartesFinArticle } from '../../../../lib/articleProduits'
 import { articles } from '../../../../lib/journalData'
 import { articlesProches, liensHistoriques } from '../../../../lib/journalMaillage'
 
@@ -145,6 +147,40 @@ export default function EnArticlePage({ params }) {
             />
           </div>
 
+          {/* Cartes produit de la famille de l'article (même logique que la page française, textes anglais ;
+              le lien part vers la fiche anglaise quand elle existe, sinon vers la française). */}
+          {(() => {
+            const fin = cartesFinArticle(a, 'en')
+            if (!fin) return null
+            const dispo = enSlugs()
+            return (
+              <div style={{ marginTop: '56px', paddingTop: '48px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
+                <p style={{ fontFamily: SANS, fontSize: '10px', fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--accent-deep)', marginBottom: '8px' }}>Our products</p>
+                <p style={{ fontFamily: SERIF, fontSize: 'clamp(18px, 2.2vw, 26px)', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '28px', lineHeight: 1.2 }}>{fin.titre}</p>
+                <div className="article-products-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(fin.cartes.length, 3)}, 1fr)`, gap: '2px' }}>
+                  {fin.cartes.map(c => (
+                    <a key={c.id} href={lienLocalise(c.href, 'en', dispo)} className="article-product-card" style={{ background: 'var(--bg-secondary)', textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
+                      {c.img && (
+                        <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
+                          <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={c.img} alt={c.nom} style={{ objectFit: 'cover' }} />
+                        </div>
+                      )}
+                      <div style={{ padding: '16px 18px 20px' }}>
+                        <p style={{ fontFamily: SERIF, fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>{c.nom}</p>
+                        <p style={{ fontFamily: SANS, fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: c.detail ? '4px' : '12px' }}>{c.prix}</p>
+                        {c.detail && <p style={{ fontFamily: SANS, fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '12px', lineHeight: 1.4 }}>{c.detail}</p>}
+                        <span style={{ fontFamily: SANS, fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>{c.cta} →</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+                <p style={{ fontFamily: SANS, fontSize: '12px', color: 'var(--text-secondary)', marginTop: '16px', lineHeight: 1.6 }}>
+                  Prices exclude VAT. Delivery €29 excl. VAT in Paris and nearby towns; order until 2 pm the day before. <a href="/en/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>Ask for a quote</a>.
+                </p>
+              </div>
+            )
+          })()}
+
           <p style={{ fontFamily: SANS, fontSize: '12px', color: 'var(--text-secondary)', marginTop: '32px' }}>
             <a href="/en/journal" style={{ color: 'inherit' }}>← All guides in English</a> · <a href={`/journal/${a.slug}`} hrefLang="fr" style={{ color: 'inherit' }}>Lire en français</a>
           </p>
@@ -174,11 +210,16 @@ export default function EnArticlePage({ params }) {
         .article-body .faq-block summary::after { content: '+'; font-size: 18px; color: var(--accent); flex-shrink: 0; margin-left: 12px; }
         .article-body .faq-block details[open] summary::after { content: '−'; }
         .article-body .faq-block details p { margin-top: 10px; margin-bottom: 0; font-size: 14px; line-height: 1.7; }
+        .article-products-grid a { transition: background 0.2s ease; }
         @media (max-width: 768px) {
+          .article-products-grid { grid-template-columns: 1fr !important; }
           .article-page-content { padding: 48px 24px 80px !important; }
           .article-hero { height: 240px !important; }
           .article-body table { font-size: 12px; }
           .article-body th, .article-body td { padding: 10px 10px; }
+        }
+        @media (max-width: 600px) {
+          .article-products-grid { grid-template-columns: 1fr 1fr !important; }
         }
       ` }} />
 
