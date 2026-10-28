@@ -50,7 +50,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'saint-valentin', nom: 'Saint-Valentin', nomEn: "Valentine's Day",
     date: { type: 'fixe', mois: 2, jour: 14 },
-    produits: [`${G}fraisier-grand-format`, `${G}tarte-framboise-grand-format`, `${G}macarons`, `${P}cake-framboise`, `${B}jus-pomme-framboise`, '/creations/personnalisation'],
+    produits: [`${G}cupcakes-roses`, `${G}choux-roses`, `${G}fraisier-grand-format`, `${G}tarte-framboise-grand-format`, `${P}cake-framboise`, `${B}jus-pomme-framboise`],
   },
   {
     slug: 'ramadan-aid', nom: 'Ramadan et Aïd', nomEn: 'Ramadan and Eid',
@@ -60,12 +60,12 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'journee-des-femmes', nom: 'Journée des droits des femmes', nomEn: "International Women's Day",
     date: { type: 'fixe', mois: 3, jour: 8 },
-    produits: [`${P}madeleines-20`, `${G}macarons`, `${G}tartes-fines`, `${B}jus-pomme-framboise`, `${B}thermos-the`, '/creations/personnalisation'],
+    produits: [`${G}cupcakes-roses`, `${G}choux-roses`, `${P}madeleines-20`, `${G}macarons`, `${G}tartes-fines`, `${B}jus-pomme-framboise`],
   },
   {
     slug: 'paques', nom: 'Pâques', nomEn: 'Easter',
     date: { type: 'paques' },
-    produits: [`${G}mousse-chocolat`, `${P}cake-chocolat`, `${G}macarons`, `${P}viennoiseries-melangees`, `${B}jus-orange`, `${B}thermos-the`],
+    produits: [`${G}mousse-chocolat`, `${G}gateau-praline-noisette-partager`, `${G}brownie`, `${G}babka`, `${P}cake-chocolat`, `${G}cookie`],
   },
   {
     slug: 'semaine-qvt', nom: 'Semaine de la QVT', nomEn: 'Workplace Wellbeing Week',
@@ -100,7 +100,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'octobre-rose', nom: 'Octobre Rose', nomEn: 'Pink October',
     date: { type: 'periode', debut: '10-01', fin: '10-31' },
-    produits: [`${P}madeleines-octobre-rose`, `${G}macarons-octobre-rose`, `${G}cupcakes-octobre-rose`, `${G}choux-octobre-rose`, `${B}petillant-vermentino-rose`, `${P}cake-framboise`],
+    produits: [`${P}madeleines-octobre-rose`, `${G}macarons-octobre-rose`, `${G}cupcakes-roses`, `${G}choux-roses`, `${B}petillant-vermentino-rose`, `${P}cake-framboise`],
   },
   {
     slug: 'semaine-du-gout', nom: 'Semaine du goût', nomEn: 'Taste Week',
