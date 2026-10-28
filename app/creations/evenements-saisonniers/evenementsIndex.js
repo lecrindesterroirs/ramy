@@ -100,7 +100,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'octobre-rose', nom: 'Octobre Rose', nomEn: 'Pink October',
     date: { type: 'periode', debut: '10-01', fin: '10-31' },
-    produits: [`${P}madeleines-octobre-rose`, `${G}macarons-octobre-rose`, `${B}petillant-vermentino-rose`, `${P}cake-framboise`, `${G}tarte-framboise-grand-format`, `${B}jus-pomme-framboise`],
+    produits: [`${P}madeleines-octobre-rose`, `${G}macarons-octobre-rose`, `${G}cupcakes-octobre-rose`, `${B}petillant-vermentino-rose`, `${P}cake-framboise`, `${G}tarte-framboise-grand-format`],
   },
   {
     slug: 'semaine-du-gout', nom: 'Semaine du goût', nomEn: 'Taste Week',
