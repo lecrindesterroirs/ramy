@@ -62,6 +62,11 @@ export default function CocktailsIndexView({ en = false }) {
     afwLien: 'See the sharing afterwork',
     brefTitre: 'At a glance',
     bref: `At L'Écrin Traiteur, a corporate cocktail reception is counted in pieces per person: ${I.pieces} pieces for drinks of an hour and a half (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pieces to replace a lunch (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pieces for a standing dinner (${C.label}, ${ht(C.prixNum)}). ${A.label} keeps the ${A.pieces} pieces of ${R.label} but swaps canapés for burgers, rolls and wraps, at ${ht(A.prixNum)}. The price per person does not change with the headcount. For 50 guests on ${R.label}, L'Écrin Traiteur charges ${ht(totalLivre(50, R.prixNum))} delivery included, drinks extra.`,
+    carteSurtitre: 'Cocktail menu',
+    sale: 'Savoury',
+    sucre: 'Sweet',
+    enPlus: 'To share, on top',
+    voirFormule: 'See the menu',
     formulesTitre: 'The four menus',
     formulesIntro: 'Each menu links to its page: the pieces one by one, the price and the quantities.',
     carte: (f) => `${f.label} cocktail menu`,
@@ -107,6 +112,11 @@ export default function CocktailsIndexView({ en = false }) {
     afwLien: "Voir l'afterwork à partager",
     brefTitre: "L'essentiel",
     bref: `Chez L'Écrin Traiteur, un cocktail d'entreprise se compte en pièces par personne : ${I.pieces} pièces pour un pot d'une heure et demie (${I.label}, ${ht(I.prixNum)}), ${R.pieces} pièces pour remplacer un déjeuner (${R.label}, ${ht(R.prixNum)}), ${C.pieces} pièces pour un dîner debout (${C.label}, ${ht(C.prixNum)}). ${A.label} garde les ${A.pieces} pièces de ${R.label} mais remplace les bouchées par des burgers, des pains briochés, des clubs et des wraps, à ${ht(A.prixNum)}. Le prix par personne ne change pas avec l'effectif. Pour 50 personnes en ${R.label}, L'Écrin Traiteur facture ${ht(totalLivre(50, R.prixNum))} livraison comprise, boissons en plus.`,
+    carteSurtitre: 'Formule cocktail',
+    sale: 'Salé',
+    sucre: 'Sucré',
+    enPlus: 'À partager, en plus',
+    voirFormule: 'Voir la formule',
     formulesTitre: 'Les quatre formules',
     formulesIntro: 'Chaque formule renvoie à sa fiche : composition pièce par pièce, prix et quantités.',
     carte: (f) => `Cocktail ${f.label}`,
@@ -155,24 +165,46 @@ export default function CocktailsIndexView({ en = false }) {
 
         <CategoryTabs lang={en ? 'en' : 'fr'} />
 
-        <section className="ev-bloc ev-etroit">
-          <h2 className="ev-h2">{T.brefTitre}</h2>
-          <p className="ev-texte">{T.bref}</p>
-        </section>
-
+        {/* Les formules passent devant le texte (28/10/2026) : priorité au
+            visuel en haut, le SEO descend. Même forme que les menus à partager
+            — grandes cartes sur deux colonnes, composition visible. */}
         <section id="formules" className="ev-bloc">
           <h2 className="ev-h2">{T.formulesTitre}</h2>
           <p className="ev-intro">{T.formulesIntro}</p>
-          <div className={`ev-cartes${F.length === 4 ? " ev-cartes-4" : ""}`}>
+          <div className="ckf-cartes">
             {F.map(f => (
-              <a key={f.key} href={`${pre}${CHEMIN}/${f.key}`} className="ev-carte">
-                <span className="ev-carte-img">
-                  <Image fill sizes="(max-width: 768px) 100vw, 33vw" src={f.img} alt={T.carte(f)} style={{ objectFit: 'cover' }} />
-                </span>
-                <span className="ev-carte-nom">{T.carte(f)}</span>
-                <span className="ev-carte-prix">{T.carteMeta(f)}</span>
-                <span className="ev-carte-unite">{f.accroche}</span>
-              </a>
+              <article key={f.key} className="ckf-carte">
+                <a href={`${pre}${CHEMIN}/${f.key}`} className="ckf-photo">
+                  <Image fill sizes="(max-width: 860px) 100vw, 50vw" src={f.img} alt={T.carte(f)}
+                    style={{ objectFit: 'cover' }} />
+                </a>
+                <div className="ckf-corps">
+                  <p className="ckf-surtitre">{T.carteSurtitre}</p>
+                  <h3 className="ckf-nom">{f.label}</h3>
+                  <p className="ckf-prix">{T.carteMeta(f)}</p>
+                  <p className="ckf-accroche">{f.accroche}</p>
+                  {(f.sale?.length > 0 || f.sucre?.length > 0) && (
+                    <div className="ckf-compo">
+                      {f.sale?.length > 0 && (
+                        <div>
+                          <p className="ckf-compo-titre">{T.sale} · {f.sale.length}</p>
+                          <ul>{f.sale.map(x => <li key={x}>{x}</li>)}</ul>
+                        </div>
+                      )}
+                      {f.sucre?.length > 0 && (
+                        <div>
+                          <p className="ckf-compo-titre">{T.sucre} · {f.sucre.length}</p>
+                          <ul>{f.sucre.map(x => <li key={x}>{x}</li>)}</ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {f.enPlus?.length > 0 && (
+                    <p className="ckf-enplus">{T.enPlus} : {f.enPlus.join(' · ')}</p>
+                  )}
+                  <a href={`${pre}${CHEMIN}/${f.key}`} className="ckf-lien">{T.voirFormule}</a>
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -211,6 +243,11 @@ export default function CocktailsIndexView({ en = false }) {
             {lignes.map(([label, texte]) => <li key={label}><strong>{label}&nbsp;:</strong> {texte}</li>)}
           </ul>
           <p className="ev-texte ckv-liens-occ">{T.occ}</p>
+        </section>
+
+        <section className="ev-bloc ev-etroit">
+          <h2 className="ev-h2">{T.brefTitre}</h2>
+          <p className="ev-texte">{T.bref}</p>
         </section>
 
         <section className="ev-bloc ev-etroit">
