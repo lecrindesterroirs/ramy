@@ -110,7 +110,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'halloween', nom: 'Halloween', nomEn: 'Halloween',
     date: { type: 'fixe', mois: 10, jour: 31 },
-    produits: [`${G}cookie`, `${G}carrot-cake`, `${G}brochettes-fruits`, `${P}cake-marbre`, `${C}classique`, `${B}jus-orange`],
+    produits: [`${G}macarons-halloween`, `${G}madeleines-halloween`, `${G}cookie`, `${G}carrot-cake`, `${G}brochettes-fruits`, `${C}classique`],
   },
   {
     slug: 'movember', nom: 'Movember', nomEn: 'Movember',
@@ -125,7 +125,7 @@ export const EVENEMENTS_INDEX = [
   {
     slug: 'noel', nom: 'Noël', nomEn: 'Christmas',
     date: { type: 'periode', debut: '12-01', fin: '12-24', libelle: (o, l) => l === 'en' ? `December ${an(o)}, before the 25th` : `en décembre ${an(o)}, avant le 25` },
-    produits: [`${AP}go4`, `${C}signature`, `${G}panettone-artisanal-partager`, `${G}gateau-roule-fraise-partager`, `${P}viennoiseries-melangees`, `${B}chardonnay-blanc-de-blancs-0`],
+    produits: [`${P}madeleines-noel`, `${G}bonbonniere-noel`, `${G}panettone-artisanal-partager`, `${G}gateau-roule-fraise-partager`, `${B}thermos-chocolat-noel`, `${B}thermos-the-noel`],
   },
 ]
 

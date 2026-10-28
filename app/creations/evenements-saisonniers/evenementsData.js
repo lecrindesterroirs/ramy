@@ -741,7 +741,7 @@ const TEXTES = [
     enBref: "En octobre, L'Écrin Traiteur reverse 1 € par convive servi à la recherche contre le cancer du sein, sur toutes ses commandes, et livre des goûters roses au bureau : madeleines, macarons, cake framboise.",
     prestations: ['pause', 'pdj'],
     exemples: [{ p: 'pause', n: 20 }, { p: 'pdj', n: 40 }],
-    horsCatalogue: ['Emballages avec ruban rose', 'Smoothie fruits rouges'],
+    horsCatalogue: ['Emballages avec ruban rose', 'Smoothie fruits rouges', 'Pétillant rosé sans alcool, pour trinquer'],
     bilan: { annee: 2026, montant: null, beneficiaire: null },
     faq: [
       { q: 'Le don concerne-t-il seulement les goûters roses ?', a: "Non. En octobre, nous reversons 1 € par convive servi sur toutes nos commandes : un petit-déjeuner de 40 personnes, ce sont 40 € de don. Le reçu du don est disponible sur demande." },
@@ -841,7 +841,7 @@ const TEXTES = [
     enBref: "L'Écrin Traiteur livre des goûters d'Halloween au bureau, avec le macaron noir au potiron et la madeleine citrouille, et des afterworks orange et noir sans alcool.",
     prestations: ['pause', 'cocktail8'],
     exemples: [{ p: 'pause', n: 20 }, { p: 'cocktail8', n: 30 }],
-    horsCatalogue: ['Macaron noir vanille, cœur potiron épicé, signé Pierre Morel', 'Madeleine citrouille, chocolat blanc et orange'],
+    horsCatalogue: ['Décoration de table Halloween, 49 € HT'],
     faq: [
       { q: 'Faut-il obliger les déguisements ?', a: "Non. Proposez-les comme une option, jamais comme une obligation. Un petit concours avec un prix crée de l'animation sans forcer personne." },
     ],
@@ -994,7 +994,16 @@ const TEXTES = [
     prestations: ['cocktail8', 'cocktail12', 'cocktail16', 'pause', 'plateau'],
     exemples: [{ p: 'cocktail12', n: 30 }, { p: 'pause', n: 40 }],
     halal: true,
-    horsCatalogue: ['Foie gras et toasts', 'Bûche de Noël artisanale', 'Chocolats de Noël'],
+    horsCatalogue: [
+      'Bûche roulée de Noël à partager, biscuit chocolat et praliné, 8 à 10 parts : 54,90 € HT',
+      'Macarons de Noël, framboise et épices : 2,65 € HT la pièce',
+      'Sablés de Noël décorés, pain d\'épices et glaçage royal : 1,60 € HT la pièce',
+      'Cupcakes de Noël, décor sapin et flocons, plateau de 25 : 77,50 € HT',
+      'Chocolats de Noël, pralinés et truffes : 0,90 € HT la pièce',
+      'Bar à chocolat chaud et ses toppings (chantilly, guimauves, copeaux, cannelle) : 59 € HT',
+      'Pétillant rosé sans alcool, pour trinquer',
+      'Décoration de Noël du buffet, chemin de table, pommes de pin et guirlande : 49 € HT',
+    ],
     faq: [
       { q: 'Quand commander le repas de Noël de l\'entreprise ?', a: "La commande reste possible jusqu'à la veille 14h, mais les dates de décembre se remplissent vite : validez le budget, l'effectif et l'adresse dès novembre, surtout au-delà de 50 personnes." },
     ],

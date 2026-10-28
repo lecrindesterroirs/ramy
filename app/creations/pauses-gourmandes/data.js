@@ -23,6 +23,20 @@ export const PAUSES = [
     nom: 'Coffret de 10 madeleines Octobre Rose',   img: '/prod-madeleines-octobre-rose.webp', prix: '29,00 €', description: "Madeleines d'exception glaçage rose, édition Octobre Rose. 1 € reversé à Ruban Rose par coffret vendu." },
   // Même logique que les madeleines : hors carte le reste de l'année, mais
   // affichée sur la page Octobre Rose, qui ne montrait que les macarons classiques.
+  { id: 'bonbonniere-noel', horsCarte: true,
+    seoTitle: `Bonbonnière de Noël pour votre entreprise à Paris`,
+    seoHtml: `<p>Une grande bonbonnière garnie de cannes en sucre d'orge et de bonbons de Noël, posée au centre de la table ou à l'accueil. Elle tient toute la journée, se sert sans couverts et habille un buffet à elle seule. Voir notre <a href="/creations/evenements-saisonniers/noel">offre de Noël complète</a>.</p><h2>Commander votre bonbonnière de Noël à Paris</h2><p>Commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA.</p>`,
+    nom: 'Bonbonnière de Noël',   img: '/bonbonniere-noel.webp', prix: '69,00 €', description: "Grande bonbonnière garnie de cannes en sucre d'orge et de bonbons de Noël." },
+  // Halloween 2026 : les deux pièces de la saison deviennent des fiches, mais
+  // hors carte — elles ne sortent que sur la page Halloween (demande du 28/10).
+  { id: 'macarons-halloween', horsCarte: true,
+    seoTitle: `Macarons noirs d'Halloween pour votre entreprise à Paris`,
+    seoHtml: `<p>Le macaron de la saison, signé Pierre Morel : une coque au cacao presque noire, une ganache à la vanille, et au centre un cœur de potiron relevé à la cannelle. Le potiron arrondit la vanille, l'épice réveille l'ensemble. Il se sert tel quel sur un plateau de goûter, ou en fin de cocktail. Voir notre <a href="/creations/evenements-saisonniers/halloween">offre Halloween complète</a>.</p><h2>Commander vos macarons d'Halloween à Paris</h2><p>Coffret de 24 macarons, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA.</p>`,
+    nom: "Macarons noirs d'Halloween",   img: '/halloween-macaron-potiron.webp', prix: '24 pièces, 64,00 €', description: 'Coque au cacao, ganache vanille, cœur de potiron à la cannelle. Signé Pierre Morel.' },
+  { id: 'madeleines-halloween', horsCarte: true,
+    seoTitle: `Madeleines citrouille d'Halloween pour votre entreprise à Paris`,
+    seoHtml: `<p>Une madeleine moelleuse au chocolat blanc relevée d'une touche d'orange, moulée en citrouille et dessinée au chocolat noir. Elle se tient d'une main, se partage sans couverts, et fait son effet sur une table de goûter sans qu'on ait à décorer la salle. Elle arrive prête, ne fond pas, et attend l'heure de la pause. Voir notre <a href="/creations/evenements-saisonniers/halloween">offre Halloween complète</a>.</p><h2>Commander vos madeleines citrouille à Paris</h2><p>Coffret de 10 madeleines, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA.</p>`,
+    nom: "Madeleines citrouille d'Halloween",   img: '/halloween-madeleine-potiron.webp', prix: '29,00 €', description: 'Madeleine au chocolat blanc et orange, moulée en citrouille, visage au chocolat noir.' },
   { id: 'macarons-octobre-rose', horsCarte: true,
     seoTitle: `Coffret de 24 macarons Octobre Rose pour votre entreprise à Paris`,
     seoHtml: `<p>Nos macarons déclinés en édition Octobre Rose : coque rose et ganache framboise, un parfum unique au lieu de l'assortiment habituel. Posés sur la table d'un petit-déjeuner ou d'un goûter, ils donnent la couleur du mois sans discours. Pendant tout le mois d'octobre, 1 € par convive servi est reversé à la recherche contre le cancer du sein, sur toutes les commandes. Voir notre <a href="/creations/evenements-saisonniers/octobre-rose">offre Octobre Rose complète</a>.</p><h2>Commander vos macarons Octobre Rose à Paris</h2><p>Coffret de 24 macarons, commande avant 14h la veille, livraison dès 6h30 dans vos bureaux. Facturation entreprise avec TVA.</p>`,
