@@ -43,6 +43,7 @@ const UNIVERS_ITEMS = [
   { label: 'Notre Maison', labelEn: 'Our story', href: '/univers/notre-maison' },
   { label: 'Nos Artisans', labelEn: 'Our makers', href: '/univers/nos-artisans' },
   { label: 'Nos Engagements', labelEn: 'Our commitments', href: '/univers/nos-engagements' },
+  { label: 'Nous contacter', labelEn: 'Contact us', href: '/contact' },
 ]
 
 const JOURNAL_ITEMS = {
@@ -725,7 +726,7 @@ export default function Navbar({ showBanner = false, forceScrolled = false, sans
             </button>
             {mobileExpanded === 'univers' && (
               <div style={{ paddingBottom: '14px' }}>
-                {UNIVERS_ITEMS.map(item => (
+                {UNIVERS_ITEMS.filter(item => item.href !== '/contact').map(item => (
                   <a
                     key={mot(item)}
                     href={lien(item.href)}
