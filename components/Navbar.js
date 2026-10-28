@@ -57,7 +57,8 @@ const JOURNAL_ITEMS = {
     { label: 'Inspirations', labelEn: 'Inspiration', href: '/journal?categorie=Inspirations' },
   ],
   occasions: [
-    { label: 'CODIR & COMEX', labelEn: 'Board & exec meetings', href: '/occasions/petit-dejeuner-codir' },
+    { label: 'Déjeuner CODIR & COMEX', labelEn: 'Board & exec lunches', href: '/occasions/plateau-repas-codir' },
+    { label: 'Petit-déjeuner CODIR', labelEn: 'Board & exec breakfasts', href: '/occasions/petit-dejeuner-codir' },
     { label: 'Séminaires d\'entreprise', labelEn: 'Company offsites', href: '/occasions/seminaire-entreprise' },
     { label: 'Accueil & Réception client', labelEn: 'Client welcome', href: '/occasions/accueil-client' },
     { label: 'Journées de formation', labelEn: 'Training days', href: '/occasions/journee-formation' },

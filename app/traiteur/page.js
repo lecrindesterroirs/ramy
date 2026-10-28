@@ -68,7 +68,7 @@ const MOMENTS = [
   ] },
   { moment: 'Le midi', texte: "Une réunion qui déborde, une formation, un CODIR : un plateau individuel complet par personne, livré en salle à l'heure fixée.", liens: [
     { href: '/occasions/dejeuner-entreprise', label: "déjeuner d'entreprise" },
-    { href: '/occasions/petit-dejeuner-codir', label: 'plateau repas CODIR et COMEX' },
+    { href: '/occasions/plateau-repas-codir', label: 'plateau repas CODIR et COMEX' },
     { href: '/occasions/journee-formation', label: 'journée de formation' },
   ] },
   { moment: "L'après-midi", texte: "La pause de 16h : madeleines, cookies, gâteaux à partager et fruits frais, pour une équipe de cinq comme de cinq cents.", liens: [

@@ -59,7 +59,8 @@ export const nombreEn = (x) => String(x ?? '').replace(',', '.')
 
 /* Libellés anglais des occasions : ceux du menu et du pied de page (Navbar.js, Footer.js). */
 export const OCCASIONS_EN = {
-  'petit-dejeuner-codir': 'Board & exec meetings',
+  'petit-dejeuner-codir': 'Board & exec breakfasts',
+  'plateau-repas-codir': 'Board & exec lunches',
   'seminaire-entreprise': 'Company offsites',
   'accueil-client': 'Client welcome',
   'journee-formation': 'Training days',
