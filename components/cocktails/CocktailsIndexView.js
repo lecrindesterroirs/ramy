@@ -158,7 +158,7 @@ export default function CocktailsIndexView({ en = false }) {
             <ReviewsBadge showCount />
           </div>
           <div className="ev-hero-img">
-            <ParallaxImage priority sizes="(max-width: 900px) 100vw, 55vw" src="/hero-cocktail.webp" alt={T.alt}
+            <ParallaxImage priority sizes="(max-width: 900px) 100vw, 55vw" src="/hero-cocktail-reception.webp" alt={T.alt}
               strength={0.05} style={{ position: 'absolute', inset: 0 }} imgStyle={{ objectPosition: 'center' }} />
           </div>
         </section>

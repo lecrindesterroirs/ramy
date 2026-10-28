@@ -82,7 +82,7 @@ export const FORMULES = [
     prixNum: PX.celebration.prix,
     accroche: 'Seize pièces par personne, de quoi tenir lieu de dîner debout.',
     featured: false,
-    img: '/cocktail-celebration.webp',
+    img: '/hero-cocktail-reception.webp',
     sale: [
       'Gougères Soufflées au Fromage',
       'Chou Craquelin à la Tapenade, Tomate & Mozzarella',
