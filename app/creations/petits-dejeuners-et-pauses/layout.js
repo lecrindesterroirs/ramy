@@ -9,7 +9,7 @@ import { LIV } from '../../../lib/calculsPrix'
 const ht = (x) => `${euroFr(x)} HT`
 const livre = (n, p) => n * p + LIV
 
-const TITLE = `Petit-déjeuner d'entreprise à Paris dès ${euroFr(PDJ_LEGER)} HT, livré dès 6h30`
+const TITLE = `Petit-déjeuner d'entreprise à Paris dès ${euroFr(PDJ_LEGER)} HT`
 const DESCRIPTION = `Traiteur petit-déjeuner d'entreprise à Paris : viennoiseries et café dès ${euroFr(PDJ_LEGER)} HT par personne, livrés dès 6h30. 5,0/5 sur Google, devis sous 24h.`
 
 export const metadata = {

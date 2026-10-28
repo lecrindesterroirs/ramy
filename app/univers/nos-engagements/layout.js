@@ -2,7 +2,7 @@ import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   title: "Nos Engagements, artisans & qualité",
-  description: "Les engagements de L'Écrin Traiteur : artisans sélectionnés, produits sans huile de palme, prix annoncés, devis sous 24 h, commande jusqu'à la veille 14h, halal sans supplément.",
+  description: "Nos engagements : artisans sélectionnés, prix annoncés, devis sous 24 h, commande jusqu'à la veille 14h, tout le salé halal et sans porc, sans supplément.",
   openGraph: {
     images: ogImages('/cocktail-dinatoire.webp'),
     title: "Nos Engagements | L'Écrin Traiteur",

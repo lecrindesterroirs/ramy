@@ -25,7 +25,7 @@ export const metadata = {
     default: "Traiteur d'entreprise à Paris : petits-déjeuners, cocktails",
     template: "%s | L'Écrin Traiteur",
   },
-  description: `Traiteur d'entreprise à Paris & Île-de-France : petits-déjeuners, plateaux repas et cocktails livrés dès 6h30. Plus de 100 entreprises clientes, ${GBP_RATING_LABEL}/5 sur Google, tarifs publiés. Devis sous 24h.`,
+  description: `Traiteur d'entreprise à Paris et Île-de-France : petits-déjeuners, plateaux repas et cocktails livrés dès 6h30. ${GBP_RATING_LABEL}/5 Google, tarifs publiés, devis 24h.`,
   keywords: ["traiteur Paris", "traiteur entreprise Paris", "traiteur événementiel Paris", "cocktail entreprise Paris", "plateau repas entreprise", "buffet entreprise Paris", "livraison petit déjeuner Paris", "séminaire traiteur Paris", "traiteur RSE Paris", "réception entreprise Île-de-France"],
   authors: [{ name: "L'Écrin Traiteur" }],
   creator: "L'Écrin Traiteur",

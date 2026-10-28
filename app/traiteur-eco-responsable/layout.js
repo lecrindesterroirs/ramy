@@ -2,7 +2,7 @@ import { ogImages } from '../../lib/og'
 import { alternatesPour } from '../../lib/i18n'
 export const metadata = {
   title: { absolute: "Traiteur éco-responsable en entreprise à Paris et IDF" },
-  description: "Traiteur d'entreprise éco-responsable : plateaux en bois, vaisselle réutilisable reprise après l'événement, zéro jetable sur demande. Livré dès 6h30 à Paris.",
+  description: "Traiteur d'entreprise éco-responsable : plateaux en bois, vaisselle réutilisable reprise après l'événement, zéro jetable sur demande. Livré dès 6h30.",
   openGraph: {
     images: ogImages('/cocktail-dinatoire.webp'),
     title: "Traiteur Éco-Responsable Entreprise | L'Écrin Traiteur",

@@ -3,8 +3,8 @@ import { ogImages } from '../../lib/og'
 import { PDJ_DES } from '../../lib/prixEntree'
 
 export const metadata = {
-  title: { absolute: `Livraison de petit-déjeuner en entreprise à Paris dès 6h30 | L'Écrin Traiteur` },
-  description: `Livraison de petit-déjeuner d'entreprise à Paris et en Île-de-France : dès 6h30, par notre équipe, formule Classique ${PDJ_DES} € HT par personne. Commande jusqu'à 14h la veille, devis sous 24 h.`,
+  title: { absolute: `Livraison petit-déjeuner entreprise Paris dès 6h30 | L'Écrin` },
+  description: `Livraison de petit-déjeuner d'entreprise à Paris et en IDF dès 6h30 par notre équipe : Classique ${PDJ_DES} € HT par personne. Commande jusqu'à 14h la veille.`,
   alternates: alternatesPour('/livraison-petit-dejeuner-entreprise-paris'),
   openGraph: {
     images: ogImages('/hero-petitdej.webp'),

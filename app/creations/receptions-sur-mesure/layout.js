@@ -2,7 +2,7 @@ import { alternatesPour } from '../../../lib/i18n'
 import { ogImages } from '../../../lib/og'
 export const metadata = {
   title: { absolute: "Événement d'entreprise sur mesure à Paris | L'Écrin Traiteur" },
-  description: "Inauguration, séminaire, soirée d'entreprise : cocktail, animations culinaires et maîtres d'hôtel, chiffrés poste par poste. Paris et Île-de-France, devis sous 24h.",
+  description: "Inauguration, séminaire, soirée d'entreprise : cocktail, animations et maîtres d'hôtel chiffrés poste par poste. Paris et Île-de-France, devis sous 24h.",
   alternates: alternatesPour('/creations/receptions-sur-mesure', { en: true }),
   openGraph: {
     images: ogImages('/cocktail-dinatoire.webp'),

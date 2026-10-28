@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
   if (!f) return { title: "Cocktail introuvable | L'Écrin Traiteur" }
   return {
     title: { absolute: `Cocktail ${f.label}, ${KW[slug]} Paris | L'Écrin Traiteur` },
-    description: `${f.accroche} ${f.pieces} pièces par personne, ${f.prix} € HT. Livraison à Paris et en IDF, devis sous 24h.`,
+    description: `${f.accroche} ${f.pieces} pièces par personne, ${f.prix} € HT. Livré à Paris et en IDF, devis sous 24h.`,
     openGraph: {
       title: `Cocktail ${f.label} | L'Écrin Traiteur`,
       description: f.accroche,
