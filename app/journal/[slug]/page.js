@@ -13,6 +13,7 @@ import { PAUSES } from '../../creations/pauses-gourmandes/data'
 import ParallaxImage from '../../../components/ParallaxImage'
 import DevisRapide from '../../../components/DevisRapide'
 import ArticleFormules from '../../../components/ArticleFormules'
+import { cartesFinArticle } from '../../../lib/articleProduits'
 import { FORMULES as COCKTAILS } from '../../creations/cocktails/data'
 import { prestationPourArticle } from '../../../lib/parcours'
 
@@ -47,11 +48,12 @@ const blocEnTete = (bloc) => {
 // ou Pauses Gourmandes) et normalise le format (prix numérique + href) pour l'affichage.
 const resolveRelatedProduct = (id) => {
   const p = PRODUCTS.find(x => x.id === id)
-  if (p) return { id: p.id, name: p.name, img: p.img, price: p.price, href: `/creations/petits-dejeuners-et-pauses/${p.id}` }
+  if (p) return { id: p.id, name: p.name, img: p.img, price: p.price, detail: p.qty || '', href: `/creations/petits-dejeuners-et-pauses/${p.id}` }
   const pause = PAUSES.find(x => x.id === id)
   if (pause) {
     const priceNum = (String(pause.prix || '').match(/(\d+,\d{2})/) || [])[1]
-    return { id: pause.id, name: pause.nom, img: pause.img, price: priceNum ? parseFloat(priceNum.replace(',', '.')) : null, href: `/creations/pauses-gourmandes/${pause.id}` }
+    const conditionnement = (String(pause.prix || '').match(/^(.*?),?\s*\d+,\d{2}/) || [])[1] || ''
+    return { id: pause.id, name: pause.nom, img: pause.img, price: priceNum ? parseFloat(priceNum.replace(',', '.')) : null, detail: conditionnement.trim(), href: `/creations/pauses-gourmandes/${pause.id}` }
   }
   return null
 }
@@ -218,10 +220,18 @@ export default function ArticlePage({ params }) {
             />
           </div>
 
-          {/* Produits recommandés */}
-          {article.relatedProducts?.length > 0 && (() => {
-            const prods = article.relatedProducts.map(resolveRelatedProduct).filter(Boolean)
-            if (!prods.length) return null
+          {/* Produits recommandés : cartes de la famille de l'article (lib/articleProduits.js), sinon ses relatedProducts.
+              Chaque carte dit ce que le prix couvre (« € HT par personne », « € HT · 16 pièces »). */}
+          {(() => {
+            const fin = cartesFinArticle(article)
+            const cartes = fin
+              ? fin.cartes
+              : (article.relatedProducts || []).map(resolveRelatedProduct).filter(Boolean).map(p => ({
+                  id: p.id, href: p.href, img: p.img, nom: p.name,
+                  prix: p.price != null ? `${p.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} € HT` : '',
+                  detail: p.detail, cta: 'Commander',
+                }))
+            if (!cartes.length) return null
             return (
               <div style={{ marginTop: '56px', paddingTop: '48px', borderTop: '1px solid rgba(17,17,17,0.08)' }}>
                 <p style={{
@@ -243,10 +253,10 @@ export default function ArticlePage({ params }) {
                   marginBottom: '28px',
                   lineHeight: 1.2,
                 }}>
-                  Commandez directement
+                  {fin ? fin.titre : 'Commandez directement'}
                 </p>
-                <div className="article-products-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(prods.length, 3)}, 1fr)`, gap: '2px' }}>
-                  {prods.map(product => (
+                <div className="article-products-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(cartes.length, 3)}, 1fr)`, gap: '2px' }}>
+                  {cartes.map(product => (
                     <a
                       key={product.id}
                       href={product.href}
@@ -255,23 +265,31 @@ export default function ArticlePage({ params }) {
                     >
                       {product.img && (
                         <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }}>
-                          <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={product.img} alt={product.name} style={{ objectFit: 'cover' }} />
+                          <Image fill sizes="(max-width: 768px) 50vw, 25vw" src={product.img} alt={product.nom} style={{ objectFit: 'cover' }} />
                         </div>
                       )}
                       <div style={{ padding: '16px 18px 20px' }}>
                         <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '16px', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: 1.2 }}>
-                          {product.name}
+                          {product.nom}
                         </p>
-                        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', fontWeight: 500, color: 'var(--text-secondary)', marginBottom: '12px' }}>
-                          {product.price?.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 500, color: 'var(--text-primary)', marginBottom: product.detail ? '4px' : '12px' }}>
+                          {product.prix}
                         </p>
+                        {product.detail && (
+                          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '12px', lineHeight: 1.4 }}>
+                            {product.detail}
+                          </p>
+                        )}
                         <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '10px', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent-deep)' }}>
-                          Commander →
+                          {product.cta} →
                         </span>
                       </div>
                     </a>
                   ))}
                 </div>
+                <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '12px', color: 'var(--text-secondary)', marginTop: '16px', lineHeight: 1.6 }}>
+                  Prix hors taxes, livraison de 29 € HT à Paris et dans les communes proches, commande jusqu'à la veille 14h. <a href="/devis" style={{ color: 'inherit', textDecoration: 'underline' }}>Demander un devis</a>.
+                </p>
               </div>
             )
           })()}
