@@ -7,6 +7,8 @@ import GalleryFiche from '../../../../../components/GalleryFiche'
 import { ANIMATIONS, slugAnim, prixDesAnimation } from '../../../../creations/animations-culinaires/data'
 import { euroEn } from '../../../../../lib/prixEntree'
 import { enAnimation, UNIVERS_EN } from '../../../../../lib/en/produits/animations'
+import AnimationPratique from '../../../../../components/AnimationPratique'
+import { pratiqueAnimation } from '../../../../../lib/animationsPratique'
 
 /*
   Fiche animation culinaire en anglais. L'URL garde le slug français, dérivé
@@ -59,6 +61,7 @@ function FicheEn() {
       backLabel="Back to live stations"
       seoEyebrow="Live food station · Corporate catering"
       seoHtml={en.article}
+      apresArticle={<AnimationPratique {...pratiqueAnimation(anim, 'en')} lang="en" />}
       devisPrestation="Événement sur mesure"
       devisTitre="A live station for your event?"
       devisSousTitre="Answer in 30 seconds, personalised quote within 24 hours."

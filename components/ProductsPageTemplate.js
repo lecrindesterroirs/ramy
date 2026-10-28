@@ -55,6 +55,9 @@ export default function ProductsPageTemplate({
   bas = null,
   lang = 'fr',
   sansBandeau = false,
+  // false quand les blocs du bas portent déjà leur FAQPage et leur ItemList (animations)
+  jsonLdFaq = true,
+  jsonLdItems = true,
 }) {
   const en = lang === 'en'
   const [sortLabel, setSortLabel]   = useState('En vedette')
@@ -162,7 +165,8 @@ export default function ProductsPageTemplate({
       <CategoryJsonLd
         name={heroTitle}
         path={basePath || '/creations/petits-dejeuners-et-pauses'}
-        items={products.map(p => ({ name: p.name, url: `${basePath || '/creations/petits-dejeuners-et-pauses'}/${p.id}` }))}
+        items={jsonLdItems ? products.map(p => ({ name: p.name, url: `${basePath || '/creations/petits-dejeuners-et-pauses'}/${p.id}` })) : null}
+        includeFaq={jsonLdFaq}
       />
       <Footer />
     </>

@@ -82,6 +82,7 @@ const TEXTES = {
    - seoEyebrow, seoTitle, seoHtml, devisPrestation, devisTitre, devisSousTitre
    - asavoir               { titre, items, cta, more }  optionnel, bloc « À savoir »
                            (lib/ficheAsavoir.js), rendu côté serveur sous la fiche
+   - apresArticle          nœud React optionnel, rendu sous l'article SEO, avant le devis
    - imgRatio              '4 / 3' par défaut. Le cadre recadre en `cover`, donc une
                            photo au format très différent se fait rogner : une image
                            panoramique perd ses bords (le sandwich sortait du cadre).
@@ -104,6 +105,7 @@ export default function GalleryFiche({
   imgRatio = '4 / 3',
   lang = 'fr',
   complements: complementsProp,
+  apresArticle = null,
 }) {
   const T = TEXTES[lang] || TEXTES.fr
   listLabel = listLabel || T.composition
@@ -328,6 +330,7 @@ export default function GalleryFiche({
               </h2>
             )}
             {seoHtml && <div className="gf-article-body" dangerouslySetInnerHTML={{ __html: seoHtml }} />}
+            {apresArticle}
 
             <DevisRapide defaultPrestation={devisPrestation} titre={devisTitre} sousTitre={devisSousTitre} titreEn={devisTitre} sousTitreEn={devisSousTitre} />
 

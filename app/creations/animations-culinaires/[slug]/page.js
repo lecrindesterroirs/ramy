@@ -11,6 +11,8 @@ import RelatedLinks from '../../../../components/RelatedLinks'
 import BusinessJsonLd from '../../../../components/BusinessJsonLd'
 import FicheAsavoir from '../../../../components/FicheAsavoir'
 import { asavoirAnimation } from '../../../../lib/ficheAsavoir'
+import AnimationPratique from '../../../../components/AnimationPratique'
+import { pratiqueAnimation } from '../../../../lib/animationsPratique'
 import { ANIMATIONS, UNIVERS, UNIVERS_LABEL, slugAnim, prixDesAnimation } from '../data'
 import { euroFr } from '../../../../lib/prixEntree'
 import { productOfferPolicy } from '../../../../lib/site'
@@ -132,6 +134,8 @@ function AnimationDetailInner() {
             {anim.nom}, animation traiteur à Paris
           </h2>
           <div className="fiche-article-body" dangerouslySetInnerHTML={{ __html: seoArticle }} />
+          {/* « En pratique » + questions fréquentes (FAQPage), calculés depuis la fiche (29/10/2026) */}
+          <AnimationPratique {...pratiqueAnimation(anim, 'fr')} lang="fr" />
           <DevisRapide
             defaultPrestation="Événement sur mesure"
             titre="Une animation pour votre événement d'entreprise ?"

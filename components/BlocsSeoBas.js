@@ -18,6 +18,7 @@ const CONSTRUCTEURS = {
   animations: categorieAnimations, coffrets: categorieCoffrets,
 }
 
+const SITE = 'https://www.lecrin-traiteur.fr'
 const SANS = "'Neue Montreal', 'Neue Montreal Fallback', sans-serif"
 const SERIF = "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif"
 
@@ -26,6 +27,25 @@ export default function BlocsSeoBas({ categorie, lang = 'fr', extraHtml = null, 
   const c = CONSTRUCTEURS[categorie]?.(en)
   if (!c) return null
   const f = c.formules
+  const g = c.animations
+  /* Une seule FAQPage et une seule ItemList sur la page : les pages animations
+     ne les demandent plus à CategoryJsonLd (includeFaq et items retirés). */
+  const ld = g ? {
+    '@context': 'https://schema.org',
+    '@graph': [
+      ...(g.faq?.length ? [{
+        '@type': 'FAQPage',
+        inLanguage: en ? 'en' : 'fr',
+        mainEntity: g.faq.map(x => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })),
+      }] : []),
+      ...(g.itemList?.length ? [{
+        '@type': 'ItemList',
+        name: en ? 'Live food stations' : 'Animations culinaires',
+        numberOfItems: g.itemList.length,
+        itemListElement: g.itemList.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.name, url: `${SITE}${x.url}` })),
+      }] : []),
+    ],
+  } : null
   return (
     <section className="bas-seo" aria-label={en ? 'Prices and quantities' : 'Prix et quantités'}>
       <div className="bas-seo-inner">
@@ -70,6 +90,56 @@ export default function BlocsSeoBas({ categorie, lang = 'fr', extraHtml = null, 
           </details>
         )}
 
+        {/* Animations (29/10/2026) : occasion, coût par personne, questions fréquentes. */}
+        {g?.occasions && (
+          <details>
+            <summary>{g.occasions.titre}</summary>
+            <div className="bas-seo-table">
+              <table>
+                <thead><tr>{g.occasions.entetes.map(h => <th key={h}>{h}</th>)}</tr></thead>
+                <tbody>
+                  {g.occasions.lignes.map(l => (
+                    <tr key={l.occasion}>
+                      <td><strong>{l.occasion}</strong></td>
+                      <td>{l.animations.map((a, i) => <span key={a.href}>{i > 0 && ', '}<a href={a.href}>{a.nom}</a></span>)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {g.guide && <p className="bas-seo-note">{en ? 'To compare them, see our guide ' : 'Pour les comparer, lisez notre guide '}<a href={g.guide.href}>{g.guide.label}</a>.</p>}
+          </details>
+        )}
+
+        {g?.cout && (
+          <details>
+            <summary>{g.cout.titre}</summary>
+            <div className="bas-seo-table">
+              <table>
+                <thead><tr>{g.cout.entetes.map(h => <th key={h}>{h}</th>)}</tr></thead>
+                <tbody>
+                  {g.cout.lignes.map(l => (
+                    <tr key={l[0]}>{l.map((x, i) => (i === 0 ? <td key={i}><strong>{x}</strong></td> : <td key={i}>{x}</td>))}</tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {g.cout.note && <p className="bas-seo-note">{g.cout.note}</p>}
+          </details>
+        )}
+
+        {g?.faq?.length > 0 && (
+          <details>
+            <summary>{en ? 'Frequently asked questions' : 'Questions fréquentes'}</summary>
+            {g.faq.map(f => (
+              <div key={f.q} className="bas-seo-qr">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </div>
+            ))}
+          </details>
+        )}
+
         {extraHtml && (
           <details>
             <summary>{extraTitre}</summary>
@@ -77,6 +147,8 @@ export default function BlocsSeoBas({ categorie, lang = 'fr', extraHtml = null, 
           </details>
         )}
       </div>
+
+      {ld && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />}
 
       <style suppressHydrationWarning dangerouslySetInnerHTML={{ __html: `
         .bas-seo { background: #FFFFFF; border-top: 1px solid rgba(17,17,17,0.07); }
@@ -98,6 +170,9 @@ export default function BlocsSeoBas({ categorie, lang = 'fr', extraHtml = null, 
         .bas-seo td { padding: 11px 12px 11px 0; border-bottom: 1px solid rgba(17,17,17,0.07); }
         .bas-seo td strong { font-weight: 500; color: var(--text-primary); }
         .bas-seo-note { font-size: 13px !important; }
+        .bas-seo-note a, .bas-seo td a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; }
+        .bas-seo-qr h3 { font-family: ${SANS}; font-size: 15px; font-weight: 500; color: var(--text-primary); margin: 4px 0 6px; }
+        .bas-seo-qr p { margin: 0 0 16px; }
         .bas-seo-extra h2 { font-family: ${SERIF}; font-size: 22px; font-weight: 400; color: var(--text-primary); margin: 8px 0 12px; }
         .bas-seo-extra ul { padding-left: 20px; margin: 0 0 18px; }
         .bas-seo-extra a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 3px; }

@@ -300,8 +300,9 @@ function AnimationsCulinairesInner({ bas }) {
       <CategoryJsonLd
         name="Animations culinaires"
         path="/creations/animations-culinaires"
-        items={ANIMATIONS.map(a => ({ name: a.nom, url: `/creations/animations-culinaires/${slugAnim(a.nom)}` }))}
+        includeFaq={false}
       />
+      {/* FAQPage et ItemList : portées par les blocs du bas (BlocsSeoBas, 29/10/2026), une seule de chaque sur la page. */}
       <Footer />
     </>
   )

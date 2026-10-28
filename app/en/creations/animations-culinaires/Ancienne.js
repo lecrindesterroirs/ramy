@@ -29,7 +29,7 @@ const SEO_ARTICLE = `
 
 export default function AnimationsEn({ bas }) {
   return (
-    <ProductsPageTemplate sansBandeau bas={bas}
+    <ProductsPageTemplate sansBandeau bas={bas} jsonLdFaq={false} jsonLdItems={false}
       lang="en"
       heroImg="/hero-animations.webp"
       heroTitle="Live food stations"
