@@ -67,8 +67,8 @@ export default function CocktailsIndexView({ en = false }) {
     sucre: 'Sweet',
     enPlus: 'To share, on top',
     voirFormule: 'See the menu',
-    formulesTitre: 'The four menus',
-    formulesIntro: 'Each menu links to its page: the pieces one by one, the price and the quantities.',
+    formulesTitre: 'Four cocktail menus, four ways to host',
+    formulesIntro: 'From a leaving party to a partner evening: you choose the number of pieces per person, we set everything out on site.',
     carte: (f) => `${f.label} cocktail menu`,
     carteMeta: (f) => `${ht(f.prixNum)} per person · ${f.pieces} pieces`,
     combien: 'How much to allow',
@@ -117,8 +117,8 @@ export default function CocktailsIndexView({ en = false }) {
     sucre: 'Sucré',
     enPlus: 'À partager, en plus',
     voirFormule: 'Voir la formule',
-    formulesTitre: 'Les quatre formules',
-    formulesIntro: 'Chaque formule renvoie à sa fiche : composition pièce par pièce, prix et quantités.',
+    formulesTitre: 'Quatre cocktails, quatre façons de recevoir',
+    formulesIntro: "Du pot de départ à la soirée partenaires : vous choisissez le nombre de pièces par personne, nous dressons tout sur place.",
     carte: (f) => `Cocktail ${f.label}`,
     carteMeta: (f) => `${ht(f.prixNum)} par personne · ${f.pieces} pièces`,
     combien: 'Combien prévoir',
@@ -168,7 +168,7 @@ export default function CocktailsIndexView({ en = false }) {
         {/* Les formules passent devant le texte (28/10/2026) : priorité au
             visuel en haut, le SEO descend. Même forme que les menus à partager
             — grandes cartes sur deux colonnes, composition visible. */}
-        <section id="formules" className="ev-bloc">
+        <section id="formules" className="ev-bloc ckf-section">
           <h2 className="ev-h2">{T.formulesTitre}</h2>
           <p className="ev-intro">{T.formulesIntro}</p>
           <div className="ckf-cartes">

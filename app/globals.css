@@ -732,6 +732,11 @@ a:hover .article-card-img { transform: scale(1.04); }
    Même forme que les menus à partager : deux colonnes, grand format, photo
    16/9 et composition visible. Le visiteur voit ce qu'il achète sans ouvrir
    la fiche ; le texte SEO est descendu sous ces cartes. */
+/* Titre et intro centrés sur l axe des cartes, pas sur toute la largeur du
+   bloc : sinon le titre part à gauche et les cartes flottent au milieu. */
+.ckf-section { text-align: center; }
+.ckf-section .ev-intro { max-width: 620px; margin-left: auto; margin-right: auto; }
+
 /* Largeur calée sur les menus à partager : 1036 px de grille, soit des cartes
    de ~504 px. Dans .ev-bloc seul, elles faisaient 626 px — trop larges. */
 .ckf-cartes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; align-items: stretch;
