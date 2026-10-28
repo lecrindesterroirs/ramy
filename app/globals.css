@@ -774,16 +774,13 @@ a:hover .article-card-img { transform: scale(1.04); }
 /* Deux liens côte à côte en pied de carte, même filet, même ligne de base :
    « Voir la formule » en accent, « Demander un devis » en retrait. */
 .ckf-liens { margin-top: auto; display: flex; flex-wrap: wrap; align-items: baseline;
-             column-gap: 28px; row-gap: 12px; }
+             justify-content: space-between; column-gap: 28px; row-gap: 12px; }
 .ckf-lien { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
              font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
              color: var(--accent-deep); border-bottom: 1px solid var(--accent);
              padding-bottom: 3px; transition: color 0.25s ease, border-color 0.25s ease; }
 .ckf-lien-2 { color: var(--text-secondary); border-bottom-color: rgba(96,90,79,0.3); }
 .ckf-lien-2:hover { color: var(--accent-deep); border-bottom-color: var(--accent); }
-/* Sur grand écran le devis file au bord droit de la carte ; sur téléphone et
-   tablette portrait les deux restent collés avec l espace du milieu. */
-@media (min-width: 900px) { .ckf-liens { justify-content: space-between; } }
 @media (max-width: 1100px) { .ckf-compo { grid-template-columns: 1fr; gap: 14px; } }
 @media (max-width: 860px)  { .ckf-cartes { grid-template-columns: 1fr; gap: 32px; }
                              .ckf-compo { grid-template-columns: 1fr 1fr; } }
