@@ -67,6 +67,7 @@ export async function POST(request) {
     cp: texte(body.cp, 5),
     date: texte(body.date, 10),
     heure: texte(body.heure, 5),
+    heureFin: texte(body.heureFin, 5),
     societe: texte(body.societe, 120),
     adresse: texte(body.adresse, 200),
     ville: texte(body.ville, 80),
@@ -91,7 +92,7 @@ export async function POST(request) {
   }
 
   const t = totaux(lignes, b)
-  const creneau = libelleCreneau(b.heure)
+  const creneau = libelleCreneau(b.heure, b.heureFin)
   const reference = referenceCommande(b.date)
   const modif = limiteModification(b.date)
 

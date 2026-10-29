@@ -146,17 +146,19 @@ Champs : heure, adresse, **étage / code / accès**, **contact sur place avec po
 société et email de facturation. Ces quatre derniers sont ceux qui provoquent les appels
 aujourd'hui.
 
-**Le créneau, tranché par Ramy le 29/10/2026, simplifié le 30 :** la livraison s'annonce
-dans un **créneau de 30 minutes**, et c'est tout. Pas d'option à choisir, pas de supplément :
-le client prend son créneau dans une liste où il le lit déjà en clair, « 14h00 – 14h30 ».
-Une première version proposait trois largeurs (une heure, trente minutes, heure fixe à
-15 € HT) ; elle a été retirée, elle faisait réfléchir le client sur une chose qui ne le
-regarde pas.
+**Le créneau, arrêté par Ramy le 30/10/2026 :** le client le pose lui-même, avec quatre
+menus — heure et minutes du début, un tiret, heure et minutes de la fin, les minutes par
+quarts d'heure. Choisir un début propose une fin trente minutes plus tard, qu'il peut
+élargir. **Trente minutes au minimum**, c'est ce que nous tenons ; plus large nous arrange
+et ne coûte rien.
+
+Deux versions ont été écartées avant celle-là : une liste de créneaux tout faits (trop
+rigide), et trois largeurs à cocher dont une heure fixe à 15 € HT (elle faisait réfléchir
+le client sur une chose qui ne le regarde pas).
 
 Vérification faite : **aucun texte du site n'est à réécrire**. Les pages disent « un créneau
-précis plutôt qu'une plage de deux heures », ce qu'un créneau de 30 minutes est, et la
-charte de service (`lib/journalService.js`) annonce déjà « tolérance de 30 minutes sur le
-créneau convenu ».
+précis plutôt qu'une plage de deux heures », et la charte de service
+(`lib/journalService.js`) annonce déjà « tolérance de 30 minutes sur le créneau convenu ».
 
 ### Étape 3 — Paiement
 

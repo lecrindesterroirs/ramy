@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation'
 import { lirePanier, surChangement } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
 import { problemes, totaux } from '@/lib/totauxCommande'
-import { CRENEAUX, libelleCreneau, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
+import { HEURES, MINUTES, libelleCreneau, finParDefaut, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
 import Calendrier from './Calendrier'
@@ -29,13 +29,23 @@ import Calendrier from './Calendrier'
 */
 const MANQUES = {
   date: 'la date',
-  heure: "l'heure d'arrivée",
+  heure: 'le créneau de livraison',
   societe: 'la société',
   adresse: "l'adresse",
   ville: 'la ville',
   contactNom: 'le nom du contact sur place',
   contactTel: 'un portable joignable',
   email: 'votre email',
+}
+
+/* « 30 min », « 1 h », « 1 h 30 » */
+function dureeLisible(debut, fin) {
+  const [hd, md] = debut.split(':').map(Number)
+  const [hf, mf] = fin.split(':').map(Number)
+  const n = (hf * 60 + mf) - (hd * 60 + md)
+  if (n < 60) return `${n} min`
+  const h = Math.floor(n / 60), r = n % 60
+  return r ? `${h} h ${r}` : `${h} h`
 }
 
 /* « l'heure, la ville et un portable joignable » */
@@ -84,7 +94,10 @@ export default function LivraisonEcran() {
   const cl = (champ, base = 'cmd-champ') =>
     `${base}${tente && err(champ) ? ` ${base}-manque` : ''}`
 
+  // Une saisie fautive se lit telle quelle ; les champs vides se résument.
+  const explicite = miens.find(p => p.explicite)
   const listeManques = miens
+    .filter(p => !p.explicite)
     .map(p => MANQUES[p.champ])
     .filter((v, i, t) => v && t.indexOf(v) === i)
 
@@ -138,24 +151,83 @@ export default function LivraisonEcran() {
           <h2 className="cmd-h2 cmd-sf">Votre créneau de livraison</h2>
 
           <div className="cmd-bloc">
-            <label className="cmd-lab" htmlFor="cmd-heure">Créneau de livraison</label>
-            <select
-              id="cmd-heure"
-              data-champ="heure"
-              className={cl('heure', 'cmd-liste')}
-              value={b.heure}
-              onChange={(e) => maj({ heure: e.target.value })}
-            >
-              <option value="">Choisir…</option>
-              {CRENEAUX.map(c => (
-                <optgroup key={c.id} label={c.label}>
-                  {c.heures.map(h => <option key={h} value={h}>{libelleCreneau(h)}</option>)}
-                </optgroup>
-              ))}
-            </select>
+            {/* Quatre menus : heure et minutes de chaque bout du créneau.
+                Choisir le début propose une fin trente minutes plus tard,
+                que le client peut élargir — une plage large nous arrange. */}
+            <div className="cmd-creneau">
+              <div>
+                <span className="cmd-lab">Début du créneau</span>
+                <div className="cmd-deux">
+                  <select
+                    className={cl('heure', 'cmd-liste')}
+                    data-champ="heure"
+                    aria-label="Heure de début"
+                    value={b.heure.split(':')[0] || ''}
+                    onChange={(e) => {
+                      const debut = `${e.target.value}:${b.heure.split(':')[1] || '00'}`
+                      maj({ heure: debut, heureFin: b.heureFin || finParDefaut(debut) })
+                    }}
+                  >
+                    <option value="">—</option>
+                    {HEURES.map(h => <option key={h} value={h}>{h}h</option>)}
+                  </select>
+                  <select
+                    className="cmd-liste"
+                    aria-label="Minutes de début"
+                    value={b.heure.split(':')[1] || ''}
+                    disabled={!b.heure.split(':')[0]}
+                    onChange={(e) => {
+                      const debut = `${b.heure.split(':')[0]}:${e.target.value}`
+                      maj({ heure: debut, heureFin: finParDefaut(debut) })
+                    }}
+                  >
+                    <option value="">—</option>
+                    {MINUTES.map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              <div className="cmd-tiret" aria-hidden="true">—</div>
+
+              <div>
+                <span className="cmd-lab">Fin du créneau</span>
+                <div className="cmd-deux">
+                  <select
+                    className="cmd-liste"
+                    aria-label="Heure de fin"
+                    value={b.heureFin.split(':')[0] || ''}
+                    onChange={(e) => maj({ heureFin: `${e.target.value}:${b.heureFin.split(':')[1] || '00'}` })}
+                  >
+                    <option value="">—</option>
+                    {HEURES.map(h => <option key={h} value={h}>{h}h</option>)}
+                  </select>
+                  <select
+                    className="cmd-liste"
+                    aria-label="Minutes de fin"
+                    value={b.heureFin.split(':')[1] || ''}
+                    disabled={!b.heureFin.split(':')[0]}
+                    onChange={(e) => maj({ heureFin: `${b.heureFin.split(':')[0]}:${e.target.value}` })}
+                  >
+                    <option value="">—</option>
+                    {MINUTES.map(m => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {b.heure && b.heureFin && !err('heure') && (
+              <div className="cmd-cren">
+                <div>
+                  <p className="cmd-t">Créneau retenu</p>
+                  <p className="cmd-v">{libelleCreneau(b.heure, b.heureFin)}</p>
+                </div>
+                <span className="cmd-pil">{dureeLisible(b.heure, b.heureFin)}</span>
+              </div>
+            )}
+
             <p className="cmd-aide">
-              Nous arrivons dans la demi-heure annoncée. Choisissez le moment où le plateau
-              doit être posé, pas celui de la réunion.
+              Donnez le moment où le plateau doit être posé, pas celui de la réunion.
+              Trente minutes au minimum ; plus large nous arrange.
             </p>
           </div>
 
@@ -202,7 +274,9 @@ export default function LivraisonEcran() {
       <BasTunnel
         retour="/commander/panier"
         retourLabel="Retour au panier"
-        manque={tente && listeManques.length > 0 ? (
+        manque={tente && explicite ? (
+          <p className="cmd-manque">{explicite.texte}</p>
+        ) : tente && listeManques.length > 0 ? (
           <p className="cmd-manque">
             {listeManques.length <= 3
               ? <>Pour passer au règlement, il manque <b>{enumere(listeManques)}</b>.</>

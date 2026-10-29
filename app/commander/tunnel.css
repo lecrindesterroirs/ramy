@@ -149,6 +149,12 @@
 .cmd-c-off { color: var(--eteint); cursor: default; }
 .cmd-c:not(.cmd-c-off):not(.cmd-c-sel):hover::before { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
 
+/* ── les quatre menus du créneau ── */
+.cmd-creneau { display: grid; grid-template-columns: 1fr 36px 1fr; align-items: end; }
+.cmd-deux { display: flex; gap: 10px; }
+.cmd-deux .cmd-liste { flex: 1; min-width: 0; padding-right: 34px; background-position: calc(100% - 20px) 23px, calc(100% - 15px) 23px; }
+.cmd-tiret { display: flex; align-items: center; justify-content: center; height: 52px; color: var(--eteint); }
+
 /* ── créneau retenu ── */
 .cmd-cren { padding: 22px 0 26px; margin-bottom: 26px; border-bottom: 1px solid var(--filet); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .cmd-cren .cmd-t { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 7px; }
@@ -240,6 +246,10 @@
   .cmd-cont { justify-content: center; width: 100%; }
   .cmd-retour { align-self: center; }
   .cmd-duo { grid-template-columns: 1fr; }
+  /* Quatre menus sur 375 px : les deux bouts l'un sous l'autre, le tiret
+     devient une ligne à part entière. */
+  .cmd-creneau { grid-template-columns: 1fr; gap: 14px; }
+  .cmd-tiret { height: auto; }
   .cmd-c { height: 48px; }
   .cmd-c::before { width: 38px; height: 38px; }
 }
