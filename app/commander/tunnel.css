@@ -36,6 +36,22 @@
 .cmd-secu { display: flex; align-items: center; gap: 9px; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); white-space: nowrap; }
 .cmd-filet { border: none; border-top: 1px solid var(--filet); margin: 0; }
 
+/*
+  Écran à hauteur de fenêtre (étape 2) : le calendrier ne doit pas bouger
+  pendant qu'on remplit l'adresse. La colonne de droite défile seule, la
+  gauche garde un défilement de secours si l'écran est vraiment court.
+*/
+.cmd-fixe { height: 100vh; height: 100dvh; overflow: hidden; }
+.cmd-fixe .cmd-corps { min-height: 0; overflow: hidden; }
+.cmd-fixe .cmd-gauche { overflow-y: auto; padding-top: 32px; padding-bottom: 24px; }
+.cmd-fixe .cmd-droite { padding-top: 32px; }
+.cmd-fixe .cmd-h1 { font-size: clamp(26px, 2.5vw, 34px); margin-bottom: 10px; }
+.cmd-fixe .cmd-surtitre { margin-bottom: 12px; }
+.cmd-fixe .cmd-gauche .cmd-intro { margin-bottom: 22px; }
+.cmd-fixe .cmd-droite { overflow-y: auto; }
+.cmd-fixe .cmd-top { flex: 0 0 auto; }
+.cmd-fixe .cmd-bas { flex: 0 0 auto; }
+
 /* ── corps en deux colonnes ── */
 .cmd-corps { display: grid; grid-template-columns: 1.12fr 0.88fr; flex: 1; }
 .cmd-corps-panier { grid-template-columns: 1.22fr 0.78fr; }
@@ -61,7 +77,7 @@
 .cmd-sup { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); border: none; border-bottom: 1px solid rgba(96, 90, 79, 0.3); background: none; padding: 0 0 3px; cursor: pointer; display: inline-block; margin-top: 8px; font-family: inherit; }
 
 /* ── bloc conseil / avis ── */
-.cmd-avis { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--filet); display: flex; gap: 14px; align-items: flex-start; }
+.cmd-avis { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--filet); display: flex; gap: 14px; align-items: flex-start; }
 .cmd-avis p { font-size: 14px; line-height: 1.6; margin: 0; }
 .cmd-avis p.cmd-b { font-size: 13.5px; color: var(--text-secondary); margin-top: 5px; }
 .cmd-avis svg { flex: 0 0 20px; margin-top: 2px; }
@@ -90,18 +106,18 @@
 .cmd-texte { height: auto; min-height: 76px; padding: 14px 16px; resize: vertical; line-height: 1.6; display: block; }
 
 /* ── calendrier ── */
-.cmd-mois { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--filet); margin-bottom: 18px; }
+.cmd-mois { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--filet); margin-bottom: 14px; }
 .cmd-mois .cmd-m { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 22px; }
 .cmd-mois button { font-size: 15px; color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 4px 8px; font-family: inherit; }
 .cmd-mois button:disabled { color: var(--eteint); cursor: default; }
-.cmd-sem { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 12px; }
+.cmd-sem { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 8px; }
 .cmd-sem i { font-style: normal; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eteint); text-align: center; }
 .cmd-jours { display: grid; grid-template-columns: repeat(7, 1fr); }
-.cmd-c { height: 62px; display: flex; align-items: center; justify-content: center; font-size: 15px; position: relative; cursor: pointer; user-select: none; background: none; border: none; font-family: inherit; color: var(--text-primary); padding: 0; }
+.cmd-c { height: clamp(40px, 5.2vh, 56px); display: flex; align-items: center; justify-content: center; font-size: 15px; position: relative; cursor: pointer; user-select: none; background: none; border: none; font-family: inherit; color: var(--text-primary); padding: 0; }
 .cmd-c span { position: relative; z-index: 1; line-height: 1; }
 /* le disque or doit être centré sur le chiffre : sans top/left/translate il
    se posait en haut à gauche de la case (bug vu le 29/10) */
-.cmd-c::before { content: ''; position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; background: var(--accent); transform: translate(-50%, -50%) scale(0.7); opacity: 0; transition: opacity 0.18s ease, transform 0.18s ease; }
+.cmd-c::before { content: ''; position: absolute; top: 50%; left: 50%; width: clamp(34px, 4.4vh, 46px); height: clamp(34px, 4.4vh, 46px); background: var(--accent); transform: translate(-50%, -50%) scale(0.7); opacity: 0; transition: opacity 0.18s ease, transform 0.18s ease; }
 .cmd-c-sel::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .cmd-c-sel span { color: #fff; }
 .cmd-c-off { color: var(--eteint); cursor: default; }
@@ -144,6 +160,17 @@
 .cmd-cont { background: #111111; color: #fff; padding: 15px 30px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; border: none; font-family: inherit; text-decoration: none; transition: opacity 0.3s ease; }
 .cmd-cont:hover { opacity: 0.82; }
 .cmd-cont:disabled { background: var(--eteint); cursor: not-allowed; opacity: 1; }
+/* Bloqué mais cliquable : un bouton gris qui ne répond pas laisse le client
+   chercher tout seul ce qui coince. Celui-ci dit ce qui manque. */
+.cmd-cont-bloque { background: var(--eteint); }
+.cmd-cont-bloque:hover { opacity: 1; background: #B5AFA4; }
+.cmd-manque { font-size: 13px; line-height: 1.6; color: #8A3A1E; margin: 0; flex: 1; }
+.cmd-manque b { font-weight: 500; }
+/* Champ montré du doigt une fois le bouton pressé. */
+.cmd-champ-manque, .cmd-liste-manque { border-color: #C06A4A !important; }
+/* Le calendrier n'est pas un champ : on l'encadre d'un filet de la même
+   couleur plutôt que de le colorer. */
+.cmd-cal-manque { outline: 1px solid #C06A4A; outline-offset: 10px; }
 .cmd-erreur { font-size: 13px; line-height: 1.6; color: #8A3A1E; margin: 0; flex: 1; }
 
 /* ── vide, confirmation ── */
@@ -163,6 +190,13 @@
 
 /* =================== téléphone =================== */
 @media (max-width: 760px) {
+  /* Au téléphone les deux colonnes sont empilées : enfermer le tout dans la
+     hauteur de la fenêtre donnerait deux zones de défilement imbriquées. La
+     page redevient une page qui défile. */
+  .cmd-fixe { height: auto; overflow: visible; }
+  .cmd-fixe .cmd-corps { overflow: visible; }
+  .cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite { overflow: visible; }
+
   .cmd-top { padding: 18px 20px 14px; flex-direction: column; align-items: stretch; gap: 18px; }
   .cmd-logo { font-size: 20px; text-align: center; }
   .cmd-pas { justify-content: center; }

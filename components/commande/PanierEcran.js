@@ -143,11 +143,17 @@ export default function PanierEcran() {
       </div>
 
       <BasTunnel retour="/creations/petits-dejeuners-et-pauses" retourLabel="Continuer mes achats" erreur={ennuis[0]?.texte}>
+        {/* Bloqué mais cliquable, comme à l'étape 2 : le bouton amène au
+            point qui coince plutôt que de rester muet. */}
         <button
           type="button"
-          className="cmd-cont"
-          disabled={ennuis.length > 0}
-          onClick={() => router.push('/commander/livraison')}
+          className={`cmd-cont ${ennuis.length > 0 ? 'cmd-cont-bloque' : ''}`}
+          aria-disabled={ennuis.length > 0}
+          onClick={() => {
+            if (ennuis.length === 0) { router.push('/commander/livraison'); return }
+            if (ennuis[0].champ === 'cp') document.getElementById('cmd-cp')?.focus()
+            else document.querySelector('.cmd-reste, .cmd-mini')?.scrollIntoView({ block: 'center', behavior: 'smooth' })
+          }}
         >
           Choisir la date <Fleche />
         </button>

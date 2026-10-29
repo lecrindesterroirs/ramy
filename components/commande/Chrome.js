@@ -71,8 +71,13 @@ export function EnteteTunnel({ etape, atteintes = etape }) {
   )
 }
 
-/* La barre du bas : un retour à gauche, le bouton d'action à droite. */
-export function BasTunnel({ retour, retourLabel, children, erreur }) {
+/*
+  La barre du bas : un retour à gauche, le bouton d'action à droite, et entre
+  les deux ce qui empêche d'avancer. `manque` est réservé à l'explication qui
+  s'affiche quand le client appuie sur un bouton bloqué — un bouton gris qui
+  ne répond pas le laisserait chercher tout seul.
+*/
+export function BasTunnel({ retour, retourLabel, children, erreur, manque }) {
   return (
     <>
       <hr className="cmd-filet" />
@@ -80,7 +85,7 @@ export function BasTunnel({ retour, retourLabel, children, erreur }) {
         {retour
           ? <a className="cmd-retour" href={retour}>← {retourLabel}</a>
           : <span />}
-        {erreur ? <p className="cmd-erreur">{erreur}</p> : null}
+        {manque || (erreur ? <p className="cmd-erreur">{erreur}</p> : null)}
         {children}
       </div>
     </>
