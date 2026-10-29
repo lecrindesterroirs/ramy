@@ -1,15 +1,22 @@
 'use client'
 
 /*
-  L'écran d'après. Il dit trois choses, dans cet ordre : c'est enregistré,
-  voilà la référence et le créneau, voilà ce qui se passe maintenant.
+  L'écran d'après.
 
-  Il lit sessionStorage, pas l'URL : une référence de commande dans une URL se
+  Première version refusée par Ramy : « ça fait brouillon, c'est pas aéré ».
+  Elle entassait la date, le créneau et deux montants dans une seule phrase
+  qui se cassait en trois lignes, puis collait le bouton dessous.
+
+  Celle-ci dit une chose à la fois : ce qui est enregistré, puis les trois
+  faits de la commande posés en colonne avec leur filet, puis ce qui se passe
+  ensuite, puis le bouton. De l'air entre chaque, et une largeur de lecture
+  qui ne dépasse pas la ligne confortable.
+
+  Il lit sessionStorage, pas l'URL : un numéro de commande dans une URL se
   retrouve dans les historiques, les en-têtes Referer et les outils de mesure.
 */
 
 import { useEffect, useState } from 'react'
-import { suiteDuPaiement } from '@/lib/paiement'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, Fleche } from './Chrome'
 
@@ -46,32 +53,58 @@ export default function ConfirmationEcran() {
     )
   }
 
+  const modif = c.limiteModification
+
   return (
     <div className="cmd">
       <EnteteTunnel etape={3} atteintes={0} />
-      <div className="cmd-centre">
-        <p className="cmd-surtitre">Commande {c.reference}</p>
-        <h1 className="cmd-h1 cmd-sf">
-          {c.aAppeler ? 'C\'est noté, nous vous appelons.' : 'C\'est noté, c\'est parti en production.'}
+
+      <div className="cmd-fin">
+        <p className="cmd-fin-num">Commande n° {c.reference}</p>
+        <h1 className="cmd-fin-titre cmd-sf">
+          {c.aAppeler ? <>C&apos;est noté.<br />Nous vous appelons.</> : <>C&apos;est noté.<br />C&apos;est parti en production.</>}
         </h1>
-        <p className="cmd-intro">
-          Livraison le <strong style={{ color: 'var(--text-primary)' }}>{LONG(c.date)}</strong>,
-          créneau <strong style={{ color: 'var(--text-primary)' }}>{c.creneau}</strong>.
-          {' '}{c.ttc ? `${euroFr(c.ht)} HT, ${euroFr(c.ttc)} TTC.` : ''}
-        </p>
-        <p className="cmd-intro" style={{ marginTop: '-18px' }}>
+
+        <dl className="cmd-fin-faits">
+          <div>
+            <dt>Livraison</dt>
+            <dd className="cmd-sf">{LONG(c.date)}</dd>
+            <dd className="cmd-fin-gris">Créneau {c.creneau}</dd>
+          </div>
+          <div>
+            <dt>Montant</dt>
+            <dd className="cmd-sf">{euroFr(c.ttc)} TTC</dd>
+            <dd className="cmd-fin-gris">{euroFr(c.ht)} HT, livraison comprise</dd>
+          </div>
+          <div>
+            <dt>Règlement</dt>
+            <dd className="cmd-sf">{c.reglement === 'facture' ? 'Sur facture' : 'Par carte'}</dd>
+            <dd className="cmd-fin-gris">
+              {c.aAppeler
+                ? 'Après notre appel de confirmation'
+                : c.reglement === 'facture' ? 'À 30 jours après la livraison' : 'Débit le jour de la livraison'}
+            </dd>
+          </div>
+        </dl>
+
+        {/* La colonne « Règlement » dit déjà quand le débit intervient :
+            cette phrase ne le répète pas, elle dit ce qui se passe ensuite. */}
+        <p className="cmd-fin-suite">
           {c.aAppeler
-            ? 'Notre équipe vous appelle pour valider cette première commande. Votre créneau est réservé en attendant.'
-            : suiteDuPaiement(c.reglement)}
+            ? 'Votre créneau est réservé. Nous vous appelons pour valider cette première commande avant de lancer la production.'
+            : c.reglement === 'facture'
+              ? 'Nous préparons votre commande. Vous n\'avez rien d\'autre à faire.'
+              : 'Le lien de paiement part avec votre email de confirmation.'}
         </p>
-        <p className="cmd-mini" style={{ maxWidth: '460px', borderTop: 'none' }}>
-          Un email de confirmation vous attend.
-          {c.limiteModification
-            ? <> Modifiable jusqu&apos;au <b>{LONG(c.limiteModification.date)} à {c.limiteModification.heure}h</b> :
-              écrivez-nous ou appelez le 07 60 16 96 20.</>
-            : null}
-        </p>
-        <a className="cmd-cont" href="/">Revenir à l&apos;accueil <Fleche /></a>
+
+        {modif && (
+          <p className="cmd-fin-note">
+            Un email de confirmation vous attend.<br />
+            Modifiable jusqu&apos;au <b>{LONG(modif.date)} à {modif.heure}h</b> : écrivez-nous ou appelez le 07 60 16 96 20.
+          </p>
+        )}
+
+        <a className="cmd-cont cmd-fin-btn" href="/">Revenir à l&apos;accueil <Fleche /></a>
       </div>
     </div>
   )

@@ -18,7 +18,17 @@ export default function SmoothScroll() {
   const lenisRef = useRef(null)
   const pathname = usePathname()
 
+  /*
+    Le tunnel de commande garde le défilement natif. Ses écrans tiennent dans
+    la hauteur de la fenêtre et leurs colonnes défilent chacune pour elle :
+    Lenis, qui détourne la molette au niveau de la page, les laissait figées
+    (data-lenis-prevent n'y suffit pas). Et sur un formulaire, l'inertie
+    n'apporte rien.
+  */
+  const dansLeTunnel = (pathname || '').startsWith('/commander')
+
   useEffect(() => {
+    if (dansLeTunnel) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const lenis = new Lenis({
@@ -44,7 +54,7 @@ export default function SmoothScroll() {
       lenis.destroy()
       lenisRef.current = null
     }
-  }, [])
+  }, [dansLeTunnel])
 
   // Coupe l'inertie en cours au changement de page, pour ne pas lutter
   // contre la remise à zéro du scroll effectuée par Next.

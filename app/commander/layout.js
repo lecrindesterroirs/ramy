@@ -22,7 +22,17 @@ export default function LayoutCommande({ children }) {
         /* L'assistant reste joignable, mais il ne doit pas se poser sur le
            bouton qui fait avancer la commande : on le remonte au-dessus de
            la barre du bas. */
-        .chat-launcher { bottom: 96px !important }
+        .chat-launcher { bottom: 136px !important }
+
+        /*
+          Le site pose overflow-x: hidden sur html ET sur body (globals.css
+          l.126 et l.135). Un ancêtre qui « cache » le débordement devient une
+          boîte de défilement, et une colonne en position collante à
+          l'intérieur n'a plus rien à quoi s'accrocher : le calendrier
+          repartait avec la page. « clip » coupe pareil horizontalement sans
+          créer cette boîte, donc la colonne colle de nouveau.
+        */
+        html, body { overflow-x: clip !important; overflow-y: visible !important }
       `}</style>
       {children}
     </>

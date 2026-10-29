@@ -106,7 +106,7 @@ export default function LivraisonEcran() {
       <EnteteTunnel etape={2} />
 
       <div className="cmd-corps">
-        <div className="cmd-gauche">
+        <div className="cmd-gauche cmd-colle">
           <p className="cmd-surtitre">Livraison</p>
           <h1 className="cmd-h1 cmd-sf">Quelle date souhaitez-vous ?</h1>
           <p className="cmd-intro">Livraison du lundi au vendredi, dès 6h30.</p>

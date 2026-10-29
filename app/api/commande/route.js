@@ -60,7 +60,7 @@ export async function POST(request) {
   }
 
   // Honeypot, comme le formulaire de devis.
-  if (body.website) return Response.json({ ok: true, reference: 'C-000000-0000' })
+  if (body.website) return Response.json({ ok: true, reference: '0000' })
 
   const lignes = reconstruire(body.lignes)
   const b = {
@@ -114,7 +114,7 @@ export async function POST(request) {
   })
 
   const message = [
-    `COMMANDE EN LIGNE ${reference}`,
+    `COMMANDE EN LIGNE N° ${reference}`,
     `Livraison ${b.date} · ${creneau}${b.largeur === 'fixe' ? ' (heure fixe, +15 € HT)' : ''}`,
     `${b.societe} — ${b.adresse}, ${b.cp} ${b.ville}`,
     b.acces ? `Accès : ${b.acces}` : null,
@@ -164,9 +164,9 @@ export async function POST(request) {
       from: "L'Écrin Traiteur <commercial@lecrin-traiteur.fr>",
       to: ['commercial@lecrin-traiteur.fr'],
       replyTo: b.email,
-      subject: `${aAppeler ? 'À VALIDER · ' : ''}Commande en ligne ${reference} · ${b.societe} · ${b.date}`,
+      subject: `${aAppeler ? 'À VALIDER · ' : ''}Commande en ligne n° ${reference} · ${b.societe} · ${b.date}`,
       html: `<div style="font-family:Georgia,serif;max-width:620px;margin:0 auto;padding:32px;background:#FDFBF7;">
-        <h2 style="font-weight:400;color:#1A1A1A;border-bottom:1px solid #E8DFD0;padding-bottom:16px;">Commande en ligne ${esc(reference)}</h2>
+        <h2 style="font-weight:400;color:#1A1A1A;border-bottom:1px solid #E8DFD0;padding-bottom:16px;">Commande en ligne n° ${esc(reference)}</h2>
         <pre style="font-family:Georgia,serif;font-size:14px;white-space:pre-wrap;color:#1A1A1A;">${esc(message)}</pre>
       </div>`,
     })
@@ -174,10 +174,10 @@ export async function POST(request) {
     await resend.emails.send({
       from: "L'Écrin Traiteur <commercial@lecrin-traiteur.fr>",
       to: [b.email],
-      subject: `Votre commande ${reference} — livraison le ${b.date}`,
+      subject: `Votre commande n° ${reference} — livraison le ${b.date}`,
       html: `<div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;padding:32px;background:#FDFBF7;">
         <h2 style="font-weight:400;color:#1A1A1A;">Merci, c'est noté.</h2>
-        <p style="font-size:15px;color:#1A1A1A;">Votre commande <strong>${esc(reference)}</strong> est enregistrée pour le <strong>${esc(b.date)}</strong>, créneau <strong>${esc(creneau)}</strong>.</p>
+        <p style="font-size:15px;color:#1A1A1A;">Votre commande <strong>n° ${esc(reference)}</strong> est enregistrée pour le <strong>${esc(b.date)}</strong>, créneau <strong>${esc(creneau)}</strong>.</p>
         ${aAppeler ? `<p style="font-size:15px;color:#1A1A1A;">Notre équipe vous appelle pour valider cette première commande.</p>` : ''}
         <table style="width:100%;border-collapse:collapse;margin:20px 0;">${tableau}</table>
         <p style="font-size:15px;color:#1A1A1A;">Total : <strong>${eur(t.ht)} HT</strong> · ${eur(t.ttc)} TTC, livraison comprise.</p>
