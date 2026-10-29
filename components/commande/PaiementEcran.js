@@ -106,6 +106,17 @@ export default function PaiementEcran() {
     if (pret && !fini && avant.length) router.replace(avant[0].etape === 1 ? '/commander/panier' : '/commander/livraison')
   }, [pret, fini, avant, router])
 
+  /*
+    Retour de la banque : la carte est débitée, il ne reste qu'à confirmer.
+    Ce hook, comme tous les autres, doit être déclaré AVANT le retour
+    anticipé ci-dessous — React exige le même nombre de hooks à chaque
+    rendu, et le placer plus bas cassait la page.
+  */
+  useEffect(() => {
+    if (pret && redirect && carte?.jeton) paye()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pret, redirect, carte])
+
   if (!pret) return <div className="cmd"><EnteteTunnel etape={3} /><div className="cmd-centre" /></div>
 
   const factureOuverte = compte.connu || !compte.su
@@ -126,12 +137,6 @@ export default function PaiementEcran() {
     viderBrouillon()
     router.push('/commander/confirmation')
   }
-
-  // Retour de la banque : la carte est débitée, il ne reste qu'à confirmer.
-  useEffect(() => {
-    if (redirect && carte?.jeton) paye()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [redirect, carte])
 
   const envoyer = async () => {
     setEnvoi(true)
