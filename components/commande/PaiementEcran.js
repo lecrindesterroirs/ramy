@@ -212,9 +212,6 @@ export default function PaiementEcran() {
             </div>
           ))}
           <div className="cmd-r"><span>Livraison {t.zone.nom}</span><b>{euroFr(t.livraison)}</b></div>
-          {t.supplement > 0 && (
-            <div className="cmd-r"><span>Heure fixe</span><b>{euroFr(t.supplement)}</b></div>
-          )}
           <div className="cmd-rt"><span className="cmd-l">Total HT</span><span className="cmd-v">{euroFr(t.ht)}</span></div>
           <div className="cmd-r" style={{ paddingTop: '12px' }}><span>TVA 10 %</span><b>{euroFr(t.tva)}</b></div>
           <div className="cmd-rt" style={{ border: 'none', margin: 0, paddingTop: '4px' }}>
@@ -223,7 +220,7 @@ export default function PaiementEcran() {
 
           <div className="cmd-liv">
             <p className="cmd-k">Livraison</p>
-            <p>{LONG(b.date)}, {libelleCreneau(b.heure, b.largeur)}</p>
+            <p>{LONG(b.date)}, {libelleCreneau(b.heure)}</p>
             <p className="cmd-g">{b.adresse}, {b.cp} {b.ville}{b.acces ? ` · ${b.acces}` : ''}</p>
             <p className="cmd-g">{b.contactNom} · {b.contactTel}</p>
           </div>

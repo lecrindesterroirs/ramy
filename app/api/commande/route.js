@@ -17,7 +17,7 @@ import { Resend } from 'resend'
 import { logDemandeToOS } from '@/lib/os-demande'
 import { produitCommandable } from '@/lib/catalogueCommande'
 import { totaux, problemes, parfumsManquants } from '@/lib/totauxCommande'
-import { libelleCreneau, largeurDe, regimeDuPanier, limiteModification } from '@/lib/reglesCommande'
+import { libelleCreneau, regimeDuPanier, limiteModification } from '@/lib/reglesCommande'
 import { referenceCommande } from '@/lib/referenceCommande'
 import { PARFUMS } from '@/lib/catalogueCommande'
 
@@ -67,7 +67,6 @@ export async function POST(request) {
     cp: texte(body.cp, 5),
     date: texte(body.date, 10),
     heure: texte(body.heure, 5),
-    largeur: ['souple', 'standard', 'fixe'].includes(body.largeur) ? body.largeur : 'standard',
     societe: texte(body.societe, 120),
     adresse: texte(body.adresse, 200),
     ville: texte(body.ville, 80),
@@ -92,7 +91,7 @@ export async function POST(request) {
   }
 
   const t = totaux(lignes, b)
-  const creneau = libelleCreneau(b.heure, b.largeur)
+  const creneau = libelleCreneau(b.heure)
   const reference = referenceCommande(b.date)
   const modif = limiteModification(b.date)
 
@@ -115,14 +114,13 @@ export async function POST(request) {
 
   const message = [
     `COMMANDE EN LIGNE N° ${reference}`,
-    `Livraison ${b.date} · ${creneau}${b.largeur === 'fixe' ? ' (heure fixe, +15 € HT)' : ''}`,
+    `Livraison ${b.date} · ${creneau}`,
     `${b.societe} — ${b.adresse}, ${b.cp} ${b.ville}`,
     b.acces ? `Accès : ${b.acces}` : null,
     `Sur place : ${b.contactNom} · ${b.contactTel}`,
     '',
     ...recap,
     `Livraison — ${eur(t.livraison)}`,
-    b.largeur === 'fixe' ? `Heure fixe — ${eur(t.supplement)}` : null,
     `TOTAL ${eur(t.ht)} HT · ${eur(t.ttc)} TTC`,
     '',
     `Règlement : ${b.reglement === 'facture' ? 'sur facture à 30 jours' : 'par carte, débit le jour de la livraison'}`,
@@ -147,7 +145,6 @@ export async function POST(request) {
     raw: {
       reference, lignes, livraison: b, totaux: t, creneau,
       regime: regimeDuPanier(lignes),
-      largeur: largeurDe(b.largeur).id,
       a_appeler: aAppeler,
       accepte_auto: !aAppeler,
       limite_modification: modif,

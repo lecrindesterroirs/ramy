@@ -146,16 +146,12 @@ Champs : heure, adresse, **étage / code / accès**, **contact sur place avec po
 société et email de facturation. Ces quatre derniers sont ceux qui provoquent les appels
 aujourd'hui.
 
-**Le créneau, tranché par Ramy le 29/10/2026 au soir :**
-
-| Choix du client | Ce que nous annonçons | Prix |
-|---|---|---|
-| Souple | créneau d'une heure | inclus |
-| **Standard** | **créneau de 30 minutes** | **inclus** |
-| Heure fixe | l'heure exacte, à la minute | **+ 15 € HT** |
-
-Le client choisit son heure d'arrivée, puis la largeur du créneau. Plus il nous laisse de
-marge, mieux la tournée se monte ; celui qui veut une heure à la minute la paie.
+**Le créneau, tranché par Ramy le 29/10/2026, simplifié le 30 :** la livraison s'annonce
+dans un **créneau de 30 minutes**, et c'est tout. Pas d'option à choisir, pas de supplément :
+le client prend son créneau dans une liste où il le lit déjà en clair, « 14h00 – 14h30 ».
+Une première version proposait trois largeurs (une heure, trente minutes, heure fixe à
+15 € HT) ; elle a été retirée, elle faisait réfléchir le client sur une chose qui ne le
+regarde pas.
 
 Vérification faite : **aucun texte du site n'est à réécrire**. Les pages disent « un créneau
 précis plutôt qu'une plage de deux heures », ce qu'un créneau de 30 minutes est, et la
@@ -237,7 +233,7 @@ Tout est **en local, rien n'est poussé en production**.
 
 | Fichier | Rôle |
 |---|---|
-| `lib/reglesCommande.js` | veille 10h / 48 h, jours ouvrés, jours fériés calculés, créneaux, largeur du créneau |
+| `lib/reglesCommande.js` | veille 10h / 48 h, jours ouvrés, jours fériés calculés, créneaux de 30 min |
 | `lib/zonesLivraison.js` | code postal → zone et frais |
 | `lib/catalogueCommande.js` | **liste explicite** des 50 références ouvertes à la commande |
 | `lib/panier.js`, `lib/brouillonCommande.js` | panier et commande en cours, en localStorage |

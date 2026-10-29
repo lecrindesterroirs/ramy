@@ -67,7 +67,7 @@ export default function PanierEcran() {
       <EnteteTunnel etape={1} />
 
       <div className="cmd-corps cmd-corps-panier">
-        <div className="cmd-gauche">
+        <div className="cmd-gauche cmd-defile">
           <p className="cmd-surtitre">Panier</p>
           <h1 className="cmd-h1 cmd-sf">Votre commande</h1>
           <p className="cmd-intro">
@@ -89,7 +89,7 @@ export default function PanierEcran() {
           ))}
         </div>
 
-        <div className="cmd-droite cmd-colle">
+        <div className="cmd-droite">
           <h2 className="cmd-h2 cmd-sf">Récapitulatif</h2>
 
           <div className="cmd-bloc">

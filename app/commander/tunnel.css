@@ -37,29 +37,41 @@
 .cmd-filet { border: none; border-top: 1px solid var(--filet); margin: 0; }
 
 /*
-  Colonne qui reste en place (panier et livraison).
+  Écran tenu à la hauteur de la fenêtre, avec UNE colonne qui défile.
 
-  Première tentative : enfermer l'écran dans 100vh et faire défiler chaque
-  colonne. Mauvaise idée — la molette ne prenait pas dans la colonne, et le
-  défilement global du site (Lenis) ne pouvait pas en être la seule cause.
+  À l'étape livraison, c'est la colonne de droite (le formulaire) : le
+  calendrier de gauche ne doit pas bouger pendant qu'on remplit l'adresse.
+  Au panier, c'est l'inverse : la longueur est à gauche (les lignes) et le
+  récapitulatif de droite reste en vue.
 
-  Deuxième approche, celle-ci : la page défile normalement, d'un bout à
-  l'autre, et c'est la colonne courte qui COLLE. Le calendrier ne bouge donc
-  pas pendant qu'on remplit l'adresse, la molette marche partout, et il n'y a
-  aucune zone de défilement imbriquée. La barre du bas colle aussi, pour que
-  le bouton et le montant restent sous les yeux.
+  Deux choses empêchaient la molette de prendre dans la colonne, et il
+  fallait les deux pour que ça marche :
+  - le défilement global du site (Lenis) détournait la molette au niveau de
+    la page — il est désormais coupé dans le tunnel (components/SmoothScroll) ;
+  - html et body portent overflow-x: hidden, ce qui en fait des boîtes de
+    défilement parasites — remplacé par « clip » dans app/commander/layout.
 */
-.cmd-fixe .cmd-corps { align-items: start; }
-.cmd-fixe .cmd-colle {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  max-height: 100vh;
+.cmd-fixe { height: 100vh; height: 100dvh; overflow: hidden; }
+.cmd-fixe .cmd-corps { min-height: 0; overflow: hidden; }
+.cmd-fixe .cmd-top, .cmd-fixe .cmd-bas { flex: 0 0 auto; }
+.cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite { overflow: hidden; }
+
+/* La colonne qui défile. Sa barre reste visible : une zone qui défile sans
+   le dire ne se devine pas. */
+.cmd-fixe .cmd-defile {
   overflow-y: auto;
-  scrollbar-width: none;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 17, 17, 0.22) transparent;
 }
-.cmd-fixe .cmd-colle::-webkit-scrollbar { display: none; }
-.cmd-fixe .cmd-bas { position: sticky; bottom: 0; background: var(--bg-primary); z-index: 2; }
+.cmd-fixe .cmd-defile::-webkit-scrollbar { width: 8px; }
+.cmd-fixe .cmd-defile::-webkit-scrollbar-thumb { background: rgba(17, 17, 17, 0.24); }
+.cmd-fixe .cmd-defile::-webkit-scrollbar-thumb:hover { background: var(--accent-deep); }
+.cmd-fixe .cmd-defile::-webkit-scrollbar-track { background: rgba(17, 17, 17, 0.04); }
+/* La barre mange de la place à droite : on la compense pour que le contenu
+   reste aligné sur la colonne voisine. */
+.cmd-fixe .cmd-defile { padding-right: 48px; }
+
 .cmd-fixe .cmd-gauche { padding-top: 32px; padding-bottom: 24px; }
 .cmd-fixe .cmd-droite { padding-top: 32px; }
 .cmd-fixe .cmd-h1 { font-size: clamp(26px, 2.5vw, 34px); margin-bottom: 10px; }
@@ -203,10 +215,12 @@
 
 /* =================== téléphone =================== */
 @media (max-width: 760px) {
-  /* Au téléphone les colonnes sont empilées : rien ne colle, sinon la
-     première recouvrirait la seconde. */
-  .cmd-fixe .cmd-colle { position: static; max-height: none; overflow: visible; }
-  .cmd-fixe .cmd-bas { position: static; }
+  /* Au téléphone les colonnes sont empilées : enfermer le tout dans la
+     hauteur de la fenêtre donnerait une zone de défilement dans une autre.
+     La page redevient une page qui défile. */
+  .cmd-fixe { height: auto; overflow: visible; }
+  .cmd-fixe .cmd-corps { overflow: visible; }
+  .cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite, .cmd-fixe .cmd-defile { overflow: visible; }
 
   .cmd-top { padding: 18px 20px 14px; flex-direction: column; align-items: stretch; gap: 18px; }
   .cmd-logo { font-size: 20px; text-align: center; }

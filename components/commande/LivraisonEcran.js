@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation'
 import { lirePanier, surChangement } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
 import { problemes, totaux } from '@/lib/totauxCommande'
-import { CRENEAUX, LARGEURS, libelleCreneau, largeurDe, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
+import { CRENEAUX, libelleCreneau, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
 import Calendrier from './Calendrier'
@@ -106,7 +106,7 @@ export default function LivraisonEcran() {
       <EnteteTunnel etape={2} />
 
       <div className="cmd-corps">
-        <div className="cmd-gauche cmd-colle">
+        <div className="cmd-gauche">
           <p className="cmd-surtitre">Livraison</p>
           <h1 className="cmd-h1 cmd-sf">Quelle date souhaitez-vous ?</h1>
           <p className="cmd-intro">Livraison du lundi au vendredi, dès 6h30.</p>
@@ -134,11 +134,11 @@ export default function LivraisonEcran() {
           </div>
         </div>
 
-        <div className="cmd-droite">
+        <div className="cmd-droite cmd-defile">
           <h2 className="cmd-h2 cmd-sf">Votre créneau de livraison</h2>
 
           <div className="cmd-bloc">
-            <label className="cmd-lab" htmlFor="cmd-heure">Heure d&apos;arrivée</label>
+            <label className="cmd-lab" htmlFor="cmd-heure">Créneau de livraison</label>
             <select
               id="cmd-heure"
               data-champ="heure"
@@ -149,46 +149,15 @@ export default function LivraisonEcran() {
               <option value="">Choisir…</option>
               {CRENEAUX.map(c => (
                 <optgroup key={c.id} label={c.label}>
-                  {c.heures.map(h => <option key={h} value={h}>{h.replace(':', 'h')}</option>)}
+                  {c.heures.map(h => <option key={h} value={h}>{libelleCreneau(h)}</option>)}
                 </optgroup>
               ))}
             </select>
             <p className="cmd-aide">
-              Choisissez l&apos;heure à laquelle le plateau doit être posé, pas celle de la réunion.
+              Nous arrivons dans la demi-heure annoncée. Choisissez le moment où le plateau
+              doit être posé, pas celui de la réunion.
             </p>
           </div>
-
-          {LARGEURS.map(l => (
-            <button
-              type="button"
-              key={l.id}
-              className={`cmd-opt ${b.largeur === l.id ? 'cmd-opt-on' : ''}`}
-              onClick={() => maj({ largeur: l.id })}
-            >
-              <span className="cmd-coche" />
-              <span>
-                <span className="cmd-t" style={{ display: 'block' }}>{l.label}</span>
-                <span className="cmd-s">
-                  {l.id === 'souple' && 'Vous nous laissez une heure de marge. C\'est ce qui nous aide le plus.'}
-                  {l.id === 'standard' && 'Nous arrivons dans la demi-heure annoncée. C\'est notre engagement habituel.'}
-                  {l.id === 'fixe' && 'Nous bloquons l\'heure exacte sur la tournée, à la minute convenue.'}
-                </span>
-              </span>
-              <span className="cmd-tag">{l.prix ? `+ ${euroFr(l.prix)} HT` : 'Inclus'}</span>
-            </button>
-          ))}
-
-          {b.heure && (
-            <div className="cmd-cren" style={{ marginTop: '26px' }}>
-              <div>
-                <p className="cmd-t">Créneau retenu</p>
-                <p className="cmd-v">{libelleCreneau(b.heure, b.largeur)}</p>
-              </div>
-              <span className="cmd-pil">
-                {largeurDe(b.largeur).minutes ? `${largeurDe(b.largeur).minutes} min` : 'Heure fixe'}
-              </span>
-            </div>
-          )}
 
           <div className="cmd-bloc">
             <span className="cmd-lab">Adresse de livraison</span>
