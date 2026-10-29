@@ -282,3 +282,11 @@
   .cmd-fin-faits > div + div { border-left: none; border-top: 1px solid var(--filet); }
   .cmd-fin-btn { width: 100%; justify-content: center; }
 }
+
+/* ── le formulaire de carte, dans la page ── */
+/* Les champs appartiennent à Stripe et vivent dans une iframe : leur
+   habillage se règle dans le composant (objet APPARENCE), pas ici. */
+.cmd-carte { margin-top: 8px; }
+
+/* Le bouton « payer », sous les champs de carte. */
+.cmd-payer { margin-top: 24px; width: 100%; justify-content: center; }

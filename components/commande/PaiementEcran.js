@@ -28,6 +28,7 @@ import { MODES } from '@/lib/paiement'
 import { PARFUMS } from '@/lib/catalogueCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
+import CarteStripe, { retenirPaiement, relirePaiement, oublierPaiement } from './CarteStripe'
 
 const SEUIL_APPEL = 1000
 const NOMS = new Map(PARFUMS.map(p => [p.id, p.label]))
@@ -43,6 +44,10 @@ export default function PaiementEcran() {
   const [compte, setCompte] = useState({ connu: false, su: false })
   const [envoi, setEnvoi] = useState(false)
   const [erreur, setErreur] = useState(null)
+  // Quand le serveur a ouvert un paiement Stripe, le formulaire de carte
+  // prend la place du bouton de commande : c'est lui qui porte le « payer ».
+  const [carte, setCarte] = useState(null)
+  const [redirect, setRedirect] = useState(null)
   // Une fois la commande partie, le panier est vidé : sans ce drapeau, le
   // garde-fou ci-dessous verrait un panier vide et renverrait le client à
   // l'étape 1 au lieu de la confirmation.
@@ -55,6 +60,26 @@ export default function PaiementEcran() {
     setPret(true)
     return surChangement(setLignes)
   }, [])
+
+  /*
+    Retour d'une authentification qui a dû passer par le site de la banque :
+    Stripe renvoie sur cette page avec le paiement en paramètre. On reprend
+    le dossier gardé de côté et on va le faire confirmer, sans réafficher le
+    formulaire — la carte est déjà débitée.
+  */
+  useEffect(() => {
+    if (!pret) return
+    const p = new URLSearchParams(window.location.search)
+    const intention = p.get('payment_intent')
+    if (!intention) return
+    const garde = relirePaiement()
+    if (!garde?.jeton) {
+      setErreur('Nous avons perdu le fil de ce paiement. Appelez-nous au 07 60 16 96 20.')
+      return
+    }
+    setCarte(garde)
+    setRedirect(intention)
+  }, [pret])
 
   // Le client est-il déjà des nôtres ? Question posée une fois, sur l'email.
   useEffect(() => {
@@ -87,6 +112,27 @@ export default function PaiementEcran() {
   const aAppeler = t.ht > SEUIL_APPEL && !compte.connu
   const modif = limiteModification(b.date)
 
+  /* Commande aboutie : on garde le strict nécessaire pour l'écran suivant,
+     puis on vide — sans ça, un rafraîchissement renverrait la même commande. */
+  const terminer = (d) => {
+    try {
+      sessionStorage.setItem('lecrin-commande-faite', JSON.stringify({
+        ...d, reglement: d.reglement || b.reglement, date: d.date || b.date, creneau: d.creneau,
+      }))
+    } catch {}
+    oublierPaiement()
+    setFini(true)
+    viderPanier()
+    viderBrouillon()
+    router.push('/commander/confirmation')
+  }
+
+  // Retour de la banque : la carte est débitée, il ne reste qu'à confirmer.
+  useEffect(() => {
+    if (redirect && carte?.jeton) paye()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [redirect, carte])
+
   const envoyer = async () => {
     setEnvoi(true)
     setErreur(null)
@@ -106,17 +152,44 @@ export default function PaiementEcran() {
         setEnvoi(false)
         return
       }
-      // On garde le strict nécessaire pour l'écran de confirmation, puis on
-      // vide : sans ça, un rafraîchissement renverrait la même commande.
-      try {
-        sessionStorage.setItem('lecrin-commande-faite', JSON.stringify({ ...d, reglement: b.reglement, date: b.date, creneau: d.creneau }))
-      } catch {}
-      setFini(true)
-      viderPanier()
-      viderBrouillon()
-      router.push('/commander/confirmation')
+      // Paiement par carte : rien n'est enregistré tant que Stripe n'a pas
+      // encaissé. On affiche le formulaire et on attend.
+      if (d.paiement === 'carte') {
+        const garde = { jeton: d.jeton, clientSecret: d.clientSecret, clePublique: d.clePublique, ttc: d.ttc }
+        retenirPaiement(garde)
+        setCarte(garde)
+        setEnvoi(false)
+        return
+      }
+      terminer(d)
     } catch {
       setErreur('Connexion interrompue. Votre commande n\'a pas été envoyée.')
+      setEnvoi(false)
+    }
+  }
+
+  const retourUrl = typeof window === 'undefined'
+    ? ''
+    : `${window.location.origin}/commander/paiement`
+
+  const paye = async () => {
+    setEnvoi(true)
+    setErreur(null)
+    try {
+      const r = await fetch('/api/commande/confirmer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jeton: carte.jeton }),
+      })
+      const d = await r.json()
+      if (!r.ok) {
+        setErreur(d.erreur || "Le paiement n'a pas pu être confirmé.")
+        setEnvoi(false)
+        return
+      }
+      terminer(d)
+    } catch {
+      setErreur('Connexion interrompue pendant la confirmation. Appelez-nous au 07 60 16 96 20.')
       setEnvoi(false)
     }
   }
@@ -128,14 +201,32 @@ export default function PaiementEcran() {
       <div className="cmd-corps">
         <div className="cmd-gauche">
           <p className="cmd-surtitre">Paiement</p>
-          <h1 className="cmd-h1 cmd-sf">Comment souhaitez-vous régler ?</h1>
+          <h1 className="cmd-h1 cmd-sf">
+            {carte ? 'Votre carte bancaire' : 'Comment souhaitez-vous régler ?'}
+          </h1>
           <p className="cmd-intro">
-            {compte.connu
-              ? 'Vous commandez déjà chez nous : les deux options vous sont ouvertes.'
-              : 'Première commande chez nous. Le règlement par carte permet de partir tout de suite.'}
+            {carte
+              ? `${euroFr(t.ttc)} TTC seront débités à la validation. Vos coordonnées bancaires ne passent ni par nous ni par notre serveur.`
+              : compte.connu
+                ? 'Vous commandez déjà chez nous : les deux options vous sont ouvertes.'
+                : 'Première commande chez nous. Le règlement par carte permet de partir tout de suite.'}
           </p>
 
-          {factureOuverte && (
+          {carte && !redirect && (
+            <CarteStripe
+              clientSecret={carte.clientSecret}
+              clePublique={carte.clePublique}
+              montantTtc={carte.ttc ?? t.ttc}
+              retourUrl={retourUrl}
+              onPaye={paye}
+              onErreur={(m) => { setErreur(m); setEnvoi(false) }}
+            />
+          )}
+          {carte && redirect && !erreur && (
+            <p className="cmd-aide">Votre paiement est accepté, nous enregistrons la commande…</p>
+          )}
+
+          {!carte && factureOuverte && (
             <button
               type="button"
               className={`cmd-opt ${b.reglement === 'facture' ? 'cmd-opt-on' : ''}`}
@@ -150,7 +241,7 @@ export default function PaiementEcran() {
             </button>
           )}
 
-          <button
+          {!carte && <button
             type="button"
             className={`cmd-opt ${b.reglement === 'carte' ? 'cmd-opt-on' : ''}`}
             onClick={() => maj({ reglement: 'carte' })}
@@ -161,9 +252,9 @@ export default function PaiementEcran() {
               <span className="cmd-s">{MODES.carte.detail}</span>
             </span>
             <span className="cmd-tag">{MODES.carte.tag}</span>
-          </button>
+          </button>}
 
-          {!factureOuverte && (
+          {!carte && !factureOuverte && (
             <p className="cmd-aide" style={{ marginTop: '18px' }}>
               Vous souhaitez être facturé à 30 jours ?{' '}
               <a href="/contact" style={{ color: 'var(--accent-deep)' }}>Écrivez-nous</a>, nous ouvrons le compte.
@@ -231,10 +322,24 @@ export default function PaiementEcran() {
         </div>
       </div>
 
-      <BasTunnel retour="/commander/livraison" retourLabel="Retour à la livraison" erreur={erreur}>
-        <button type="button" className="cmd-cont" onClick={envoyer} disabled={envoi}>
-          {envoi ? 'Envoi…' : <>Commander · {euroFr(t.ttc)} TTC <Fleche /></>}
-        </button>
+      <BasTunnel
+        retour={carte ? undefined : '/commander/livraison'}
+        retourLabel="Retour à la livraison"
+        erreur={erreur}
+      >
+        {carte ? (
+          <button
+            type="button"
+            className="cmd-retour"
+            onClick={() => { oublierPaiement(); setCarte(null); setRedirect(null); setErreur(null) }}
+          >
+            Changer de mode de règlement
+          </button>
+        ) : (
+          <button type="button" className="cmd-cont" onClick={envoyer} disabled={envoi}>
+            {envoi ? 'Envoi…' : <>Commander · {euroFr(t.ttc)} TTC <Fleche /></>}
+          </button>
+        )}
       </BasTunnel>
     </div>
   )

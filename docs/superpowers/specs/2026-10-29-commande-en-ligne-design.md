@@ -204,10 +204,7 @@ Les maquettes validées sont dans `.superpowers/brainstorm/` (non versionné) :
 
 ## 7. Ce qui est laissé au constructeur
 
-- **Le prestataire de paiement.** Stripe a été abandonné le 11/10/2026 ; les liens de
-  paiement passent aujourd'hui par Pennylane (Adyen, 0,9 à 2,4 % TTC, déjà rapprochés en
-  compta). À choisir entre une intégration carte dans le tunnel et un lien Pennylane
-  généré à la validation. **Contrainte ferme : débit le jour de la livraison.**
+- ~~Le prestataire de paiement~~ — **tranché le 30/10/2026, voir la section 10.**
 - La reprise du panier archivé de mai 2026 (`2c6a3773`) est **déconseillée** : il date
   d'avant toutes les refontes.
 - Le rapprochement « client connu » : l'email peut correspondre à un contact secondaire
@@ -313,3 +310,68 @@ Une erreur d'hydratation React (« Text content does not match server-rendered H
 produit sur **toutes** les pages du site, y compris celles qui n'ont rien à voir avec la
 commande. Elle n'a pas été introduite ici, mais elle fait basculer la page entière en rendu
 client : elle mérite une session à elle seule.
+
+
+---
+
+## 10. Le paiement par carte — décidé le 30 octobre 2026
+
+**Ce que Ramy a arrêté :** on paie **par carte, directement sur le site**, et le **débit
+intervient au clic**. La contrainte « débit le jour de la livraison » du 29/10 est
+abandonnée : elle imposait de garder la carte et de la représenter le matin J, avec le
+risque qu'elle soit refusée après la production.
+
+### Prestataire : Stripe
+
+Trois ont été comparés, chiffres relevés sur leurs pages officielles :
+
+| | Carte grand public (EEE) | Carte d'entreprise | Ouverture du compte | 3-D Secure |
+|---|---|---|---|---|
+| **Stripe** | 1,50 % + 0,25 € | 2,80 % + 0,25 € | immédiate | **dans la page** |
+| Mollie | 1,20 % (CB) / 1,80 % | 2,90 % + 0,25 € | ~24 h | **redirige vers la banque** |
+| Adyen | interchange ++ et 0,11 € | idem | processus commercial, plusieurs semaines | dans la page |
+
+Mollie est moins cher sur la carte bancaire grand public, mais **son composant renvoie le
+client sur une page externe pour l'authentification**, ce qui défait exactement ce qui est
+demandé. Et sur les cartes d'entreprise — celles des clients de L'Écrin — l'écart avec
+Stripe est nul. Adyen ne s'ouvre pas en libre-service, ne publie pas son minimum mensuel et
+demande des semaines de démarches : hors de proportion pour une centaine de commandes par
+mois.
+
+**Le rapprochement Pennylane**, qui avait fait abandonner Stripe le 11/10/2026, reste à
+faire : un compte bancaire dédié « Stripe » dans Pennylane, où les encaissements bruts
+entrent un par un ; le virement vers la banque devient un transfert interne et les frais
+une ligne de charge.
+
+### Comment ça marche
+
+1. Le client valide : le serveur revérifie tout, calcule le montant et ouvre un paiement
+   chez Stripe. **Rien n'est encore enregistré.** Il rend au navigateur le secret du
+   paiement et un **jeton signé** contenant la commande validée et l'identifiant du
+   paiement.
+2. Les champs de carte s'affichent dans la page (Stripe Payment Element, dans une iframe :
+   aucune donnée de carte ne passe par notre code ni par notre serveur). Le 3-D Secure
+   s'ouvre en fenêtre superposée.
+3. Le paiement passé, le navigateur rappelle `/api/commande/confirmer` avec le jeton. Le
+   serveur rouvre le jeton, **interroge Stripe** — jamais le navigateur — vérifie que le
+   statut est `succeeded` et que **le montant encaissé est celui qu'il vient de
+   recalculer**, puis seulement alors écrit la commande dans l'OS et envoie les emails.
+4. Si la banque impose malgré tout une redirection, Stripe revient sur la page de paiement
+   avec le paiement en paramètre : l'écran reprend le dossier gardé de côté et confirme.
+
+### Le verrou, et pourquoi il existe
+
+Des clés Stripe **live** traînent dans l'environnement depuis l'intégration abandonnée du
+11/10, sur le poste comme sur Vercel. Sans garde-fou, la carte se serait allumée toute
+seule au premier déploiement du tunnel. La carte ne s'ouvre donc que si
+**`PAIEMENT_CARTE_EN_LIGNE=1`** ; sinon elle retombe sur le lien de paiement et aucune
+requête ne part chez Stripe.
+
+### Ce qui n'a PAS pu être essayé
+
+Les seules clés disponibles sont des clés **live** : je n'ai pas fait un seul paiement
+réel. Ont été vérifiés : le repli sans prestataire, le refus d'un jeton falsifié, périmé ou
+vide, et l'existence de chaque paramètre envoyé à Stripe dans leur référence d'API. **Reste
+à faire avec des clés de test** (Dashboard → Developers → API keys, mode test) : un
+paiement avec la carte `4242 4242 4242 4242`, un refus avec `4000 0000 0000 0002`, et une
+authentification 3-D Secure avec `4000 0027 6000 3184`.
