@@ -13,7 +13,7 @@ export const MENUS = [
     salees: [
       'Salade grecque',
       'Salade de tomates & mozzarella au basilic',
-      'Falafels en brochette & crème tahini citronnée',
+      'Pain brioché pesto verde & tomates séchées',
       'Navette saumon & cream cheese',
       "Caviar d'aubergine & pains grillés",
       'Plateau de fromages affinés',
