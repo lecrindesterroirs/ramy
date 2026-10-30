@@ -17,7 +17,6 @@ import { asavoirProduit, asavoirEn, personnes as personnesProduit } from '../../
 import { usePathname } from 'next/navigation'
 import { estAnglais } from '../../../../lib/i18nBase'
 import { produitLocalise } from '../../../../lib/en/produits/petitsDejeuners'
-import BoutonAjouter from '@/components/commande/BoutonAjouter'
 
 const COFFRETS = [
   { id: 'madeleines-10', titre: 'Coffret Découverte', pieces: 10, price: 24.90, desc: 'Idéal pour une attention, un cadeau ou une réunion intime.', img: '/coffret-madeleines-10-cut.webp' },
@@ -536,11 +535,6 @@ function GalleryFiche({ product, M }) {
               )}
             </p>
           )}
-
-          {/* La commande en ligne passe devant, le devis reste pour tout ce
-              qui se chiffre à la main. Rien ne s'affiche si la référence
-              n'est pas ouverte à la commande (lib/catalogueCommande.js). */}
-          {!M.en && <BoutonAjouter id={product.id} variante="fiche" />}
 
           <a
             href={M.en ? '/en/devis' : '/devis'}

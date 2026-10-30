@@ -14,7 +14,6 @@ import { PRODUCTS, DIETARY_COLORS } from '../lib/productsData'
 import ParallaxImage from './ParallaxImage'
 import CrossSellBanner from './CrossSellBanner'
 import EncartDevisMobile from './EncartDevisMobile'
-import BoutonAjouter from './commande/BoutonAjouter'
 
 const BASE_SORTS = ['En vedette', 'Nouveautés', 'Prix croissant', 'Prix décroissant']
 
@@ -247,14 +246,10 @@ function ProductCard({ product, basePath, lang = 'fr' }) {
         <p style={{ fontFamily: "'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif", fontSize: '17px', fontWeight: 400, letterSpacing: '0.01em', lineHeight: 1.25, color: hovered ? 'var(--accent)' : 'var(--text-primary)', marginBottom: '9px', transition: 'color 0.25s ease' }}>
           {product.name}
         </p>
-        {/* La ligne du prix porte le bouton d'ajout : jamais la photo. */}
-        <div className="pd-prix-ligne" style={{ marginBottom: hasPieces ? '9px' : '0' }}>
-          <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', margin: 0 }}>
-            {priceClean}
-            {isAmount && <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>{lang === 'en' ? 'excl. VAT' : 'HT'}</span>}
-          </p>
-          {lang !== 'en' && <BoutonAjouter id={product.id} compact />}
-        </div>
+        <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '13px', fontWeight: 400, letterSpacing: '0.02em', color: 'var(--text-primary)', marginBottom: hasPieces ? '9px' : '0' }}>
+          {priceClean}
+          {isAmount && <span style={{ color: 'rgba(17,17,17,0.28)', fontSize: '11px', marginLeft: '4px' }}>{lang === 'en' ? 'excl. VAT' : 'HT'}</span>}
+        </p>
         {hasPieces && (
           <p style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', fontWeight: 400, letterSpacing: '0.04em', color: 'rgba(17,17,17,0.4)' }}>
             {pieces}

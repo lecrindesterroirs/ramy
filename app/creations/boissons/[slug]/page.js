@@ -15,7 +15,6 @@ export default function BoissonPage() {
 
   return (
     <GalleryFiche
-      produitId={product.id}
       title={product.name}
       related={related}
       relatedTitle="D'autres boissons"

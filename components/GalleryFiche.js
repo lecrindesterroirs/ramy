@@ -12,7 +12,6 @@ import { productOfferPolicy, BUSINESS_ID } from '../lib/site'
 import BusinessJsonLd from './BusinessJsonLd'
 import FicheAsavoir from './FicheAsavoir'
 import { evenementsPourProduit } from '../app/creations/evenements-saisonniers/evenementsIndex'
-import BoutonAjouter from './commande/BoutonAjouter'
 
 // Cross-sell « À servir avec » : sélection de boissons complémentaires, montrée sur
 // toutes les fiches SAUF les fiches boissons elles-mêmes. Sélection curée, repli sur
@@ -107,20 +106,14 @@ export default function GalleryFiche({
   lang = 'fr',
   complements: complementsProp,
   apresArticle = null,
-  // Identifiant catalogue : s'il est ouvert à la commande en ligne, la fiche
-  // porte « Ajouter au panier » devant « Obtenir un devis ». Sinon, rien.
-  produitId = null,
 }) {
   const T = TEXTES[lang] || TEXTES.fr
-  /*
-    Les appelants passent le prix tantôt en nombre (9.5), tantôt déjà formaté
-    à la française (« 9,50 »). Number('9,50') vaut NaN : le prix ne s'affichait
-    donc jamais sur les fiches boissons. On accepte les deux.
-  */
+  listLabel = listLabel || T.composition
+  // Le prix arrive tantôt en nombre (9.5), tantôt déjà formaté à la française (« 9,50 ») :
+  // Number('9,50') vaut NaN, et le prix disparaissait des fiches (29/10/2026). On lit les deux.
   const montantAffichable = typeof price === 'number'
     ? price
     : parseFloat(String(price ?? '').replace(/\s/g, '').replace(',', '.'))
-  listLabel = listLabel || T.composition
   // Même règle que DevisRapide : en anglais, un libellé français passé en
   // prop ne doit pas écraser le texte anglais.
   devisTitre = (lang === 'en' ? devisTitreEn : devisTitre) || T.devisTitre
@@ -291,8 +284,6 @@ export default function GalleryFiche({
                   <span style={{ fontFamily: "'Neue Montreal', 'Neue Montreal Fallback', sans-serif", fontSize: '11px', color: 'rgba(17,17,17,0.3)', marginLeft: '6px' }}>{priceNote}</span>
                 </p>
               )}
-
-              {produitId && lang !== 'en' && <BoutonAjouter id={produitId} variante="fiche" />}
 
               <a
                 href="/devis"
