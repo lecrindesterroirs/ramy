@@ -312,12 +312,12 @@
    Écran de confirmation. Une chose à la fois, de l'air entre
    chaque, et une largeur de lecture qui ne s'étale pas.
    ============================================================ */
-.cmd-fin { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(56px, 9vh, 104px) 24px clamp(64px, 10vh, 112px); }
-.cmd-fin-num { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 clamp(24px, 3.5vh, 38px); }
-.cmd-fin-titre { font-size: clamp(30px, 3.6vw, 46px); font-weight: 400; line-height: 1.22; margin: 0 0 clamp(44px, 6vh, 68px); max-width: 26ch; }
+.cmd-fin { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(32px, 5.5vh, 72px) 24px clamp(36px, 6.5vh, 80px); }
+.cmd-fin-num { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-deep); margin: 0 0 clamp(18px, 2.8vh, 32px); }
+.cmd-fin-titre { font-size: clamp(30px, 3.6vw, 46px); font-weight: 400; line-height: 1.22; margin: 0 0 clamp(30px, 4.5vh, 56px); max-width: 26ch; }
 
 /* Les trois faits, en colonnes séparées par des filets. */
-.cmd-fin-faits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 clamp(40px, 5.5vh, 60px); width: 100%; max-width: 780px; border-top: 1px solid var(--filet); border-bottom: 1px solid var(--filet); }
+.cmd-fin-faits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 clamp(28px, 4vh, 48px); width: 100%; max-width: 780px; border-top: 1px solid var(--filet); border-bottom: 1px solid var(--filet); }
 .cmd-fin-faits > div { padding: 28px 24px; text-align: left; }
 .cmd-fin-faits > div + div { border-left: 1px solid var(--filet); }
 .cmd-fin-faits dt { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 11px; }
@@ -325,7 +325,7 @@
 .cmd-fin-faits dd.cmd-fin-gris { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin-top: 7px; }
 
 .cmd-fin-suite { font-size: 15px; line-height: 1.75; color: var(--text-primary); max-width: 46ch; margin: 0 0 clamp(28px, 4vh, 40px); }
-.cmd-fin-note { font-size: 13px; line-height: 1.8; color: var(--text-secondary); max-width: 46ch; margin: 0 0 clamp(40px, 5.5vh, 56px); }
+.cmd-fin-note { font-size: 13px; line-height: 1.8; color: var(--text-secondary); max-width: 46ch; margin: 0 0 clamp(28px, 4vh, 44px); }
 .cmd-fin-note b { color: var(--text-primary); font-weight: 500; }
 .cmd-fin-btn { align-self: center; }
 
@@ -369,3 +369,14 @@
   border-bottom: 1px solid var(--accent);
 }
 .cmd-crayon:hover { opacity: 0.75; }
+
+/* Les écrans d'un seul bloc — confirmation, panier vide — tiennent aussi dans
+   la fenêtre. Ils défilent seulement si leur contenu ne rentre pas. */
+.cmd-fixe .cmd-fin, .cmd-fixe .cmd-centre {
+  flex: 1; min-height: 0; overflow-y: auto; justify-content: center;
+  overscroll-behavior: contain; scrollbar-width: thin;
+  scrollbar-color: rgba(17, 17, 17, 0.22) transparent;
+}
+@media (max-width: 760px) {
+  .cmd-fixe .cmd-fin, .cmd-fixe .cmd-centre { overflow: visible; }
+}

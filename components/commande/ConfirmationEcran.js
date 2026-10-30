@@ -40,7 +40,7 @@ export default function ConfirmationEcran() {
 
   if (!c) {
     return (
-      <div className="cmd">
+      <div className="cmd cmd-fixe">
         <EnteteTunnel etape={3} atteintes={1} />
         <div className="cmd-centre">
           <h1 className="cmd-h1 cmd-sf">Rien à afficher ici.</h1>
@@ -56,7 +56,8 @@ export default function ConfirmationEcran() {
   const modif = c.limiteModification
 
   return (
-    <div className="cmd">
+    // cmd-fixe : rien à faire défiler sur un écran qui tient d'un coup d'œil.
+    <div className="cmd cmd-fixe">
       <EnteteTunnel etape={3} atteintes={0} />
 
       <div className="cmd-fin">

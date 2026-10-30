@@ -53,7 +53,7 @@ export default function PanierEcran() {
 
   if (lignes.length === 0) {
     return (
-      <div className="cmd">
+      <div className="cmd cmd-fixe">
         <EnteteTunnel etape={1} />
         <div className="cmd-centre">
           <p className="cmd-surtitre">Panier</p>
