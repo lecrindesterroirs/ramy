@@ -1,4 +1,4 @@
-import { reinitialiser } from '@/lib/compteOS'
+import { reinitialiser, ipDe } from '@/lib/compteOS'
 
 export async function POST(request) {
   let b
@@ -7,7 +7,7 @@ export async function POST(request) {
   if (motDePasse.length < 8) {
     return Response.json({ erreur: 'Votre mot de passe doit faire au moins 8 caractères.' }, { status: 400 })
   }
-  const r = await reinitialiser({ jeton: String(b.jeton ?? ''), motDePasse })
+  const r = await reinitialiser({ jeton: String(b.jeton ?? ''), motDePasse }, ipDe(request))
   if (!r?.ok) return Response.json({ erreur: 'Ce lien n\'est plus valable. Redemandez-en un.' }, { status: 400 })
   return Response.json({ ok: true })
 }

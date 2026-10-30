@@ -5,7 +5,7 @@
   La réponse est TOUJOURS la même, que l'adresse ait déjà un compte ou non.
   Sinon ce formulaire devient un moyen de savoir qui est client de L'Écrin.
 */
-import { inscrire } from '@/lib/compteOS'
+import { inscrire, ipDe, osPret } from '@/lib/compteOS'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 const texte = (v, n) => String(v ?? '').replace(/[\r\n]+/g, ' ').trim().slice(0, n)
@@ -27,6 +27,14 @@ export async function POST(request) {
     nom: texte(b.nom, 80),
     societe: texte(b.societe, 120),
     telephone: texte(b.telephone, 30),
-  })
-  return Response.json({ ok: true })
+  }, ipDe(request))
+  /*
+    Le compte n'est PAS encore ouvert : il attend le clic sur le lien envoyé à
+    cette adresse. On ne connecte donc personne ici, et la page le dit.
+
+    Sauf en développement sans l'OS : le bouchon n'envoie aucun mail, et un
+    écran qui demande de relever une boîte vide empêcherait d'essayer le
+    parcours en local. Le compte y est utilisable tout de suite.
+  */
+  return Response.json({ ok: true, confirmation: osPret() })
 }

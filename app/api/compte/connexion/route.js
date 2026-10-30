@@ -6,10 +6,18 @@
   ou mot de passe faux. Distinguer les deux dirait à un inconnu quelles
   adresses ont un compte.
 */
-import { connecter } from '@/lib/compteOS'
+import { connecter, ipDe } from '@/lib/compteOS'
 import { poserSession } from '@/lib/sessionCompte'
 
-const ECHEC = 'Adresse ou mot de passe incorrect.'
+/*
+  Un seul message, quelle que soit la cause — adresse inconnue, mot de passe
+  faux, adresse pas encore confirmée, ou compte fermé après plusieurs essais.
+  Distinguer le compte fermé, comme je l'avais fait d'abord, suffisait à
+  savoir si une adresse a un compte : huit essais faux, et la réponse
+  changeait. D'où la seconde phrase, dite à tout le monde.
+*/
+const ECHEC = "Adresse ou mot de passe incorrect. Après plusieurs essais, patientez un quart d'heure."
+
 
 export async function POST(request) {
   let b
@@ -19,7 +27,7 @@ export async function POST(request) {
   const motDePasse = String(b.motDePasse ?? '')
   if (!email || !motDePasse) return Response.json({ erreur: ECHEC }, { status: 401 })
 
-  const r = await connecter({ email, motDePasse })
+  const r = await connecter({ email, motDePasse }, ipDe(request))
   if (!r?.ok || !r.jeton) return Response.json({ erreur: ECHEC }, { status: 401 })
 
   poserSession(r.jeton)

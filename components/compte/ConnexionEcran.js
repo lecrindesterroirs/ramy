@@ -55,7 +55,19 @@ export default function ConnexionEcran() {
         })
         const d = await r.json()
         if (!r.ok) { setErreur(d.erreur || 'Création impossible.'); setEnvoi(false); return }
-        // On enchaîne sur la connexion : le client ne doit pas retaper.
+        /*
+          Le compte n'est pas encore ouvert : il attend le clic sur le lien
+          envoyé à cette adresse. On ne connecte donc personne ici. C'est la
+          barrière qui empêche quelqu'un de s'inscrire avec l'adresse d'un
+          vrai client pour voir ses commandes.
+        */
+        if (d.confirmation) {
+          setFait(`Un lien vient de partir vers ${c.email}. Ouvrez-le pour activer votre compte : il est valable 24 heures.`)
+          setEnvoi(false)
+          return
+        }
+        // Sans l'OS (développement), le compte est utilisable tout de suite :
+        // on enchaîne sur la connexion, le client ne doit pas retaper.
       }
       const r = await fetch('/api/compte/connexion', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -80,7 +92,7 @@ export default function ConnexionEcran() {
         <h1 className="cmd-h1 cmd-sf">{M.titre}</h1>
         <p className="cmd-intro">
           {mode === 'connexion' && 'Retrouvez vos commandes et recommandez en deux clics.'}
-          {mode === 'creation' && 'Vos informations seront reprises à chaque commande. Vous ne les retaperez plus.'}
+          {mode === 'creation' && 'Vos informations seront reprises à chaque commande. Vous ne les retaperez plus. Nous vous envoyons un lien pour confirmer votre adresse.'}
           {mode === 'oubli' && 'Indiquez votre adresse : nous vous envoyons un lien pour en choisir un nouveau.'}
         </p>
 
