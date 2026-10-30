@@ -83,7 +83,8 @@ export default function ConfirmationEcran() {
             <dd className="cmd-fin-gris">
               {c.aAppeler
                 ? 'Après notre appel de confirmation'
-                : c.reglement === 'facture' ? 'À 30 jours après la livraison' : 'Débit le jour de la livraison'}
+                : c.reglement === 'facture' ? 'À 30 jours après la livraison'
+                  : c.paiement === 'carte' ? 'Débitée à l\'instant' : 'Débit le jour de la livraison'}
             </dd>
           </div>
         </dl>
@@ -95,7 +96,15 @@ export default function ConfirmationEcran() {
             ? 'Votre créneau est réservé. Nous vous appelons pour valider cette première commande avant de lancer la production.'
             : c.reglement === 'facture'
               ? 'Nous préparons votre commande. Vous n\'avez rien d\'autre à faire.'
-              : 'Le lien de paiement part avec votre email de confirmation.'}
+              /*
+                Deux cas sous « par carte » : la carte a été débitée dans la
+                page (Stripe actif), ou le tunnel est retombé sur l'envoi d'un
+                lien de paiement faute de clés. Annoncer un lien à quelqu'un
+                qui vient de payer le ferait payer deux fois.
+              */
+              : c.paiement === 'carte'
+                ? 'Votre carte est débitée. Le reçu vous arrive par email.'
+                : 'Le lien de paiement part avec votre email de confirmation.'}
         </p>
 
         {modif && (

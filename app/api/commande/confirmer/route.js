@@ -78,7 +78,9 @@ export async function POST(request) {
       montant_ttc: dossier.t.ttc,
       paye_le: new Date().toISOString(),
     })
-    return Response.json(r)
+    // `paiement` dit à l'écran de confirmation ce qui s'est passé : ici la
+    // carte est déjà débitée, il ne doit pas annoncer un lien de paiement.
+    return Response.json({ ...r, paiement: 'carte' })
   } catch (e) {
     console.error('commande/confirmer: PAIEMENT ENCAISSÉ MAIS COMMANDE NON ENREGISTRÉE', jeton.reference, e)
     return Response.json({

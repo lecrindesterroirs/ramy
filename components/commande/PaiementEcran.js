@@ -234,12 +234,22 @@ export default function PaiementEcran() {
               montantTtc={carte.ttc ?? t.ttc}
               retourUrl={retourUrl}
               facturation={{
-                name: b.factMeme ? b.contactNom : (b.factEntite || b.contactNom),
-                email: b.emailFacturation || b.email,
-                phone: enE164(b.contactTel),
+                /* Même règle que pour l'adresse : jamais `undefined`, la
+                   chaîne vide quand on n'a rien. */
+                name: (b.factMeme ? b.contactNom : (b.factEntite || b.contactNom)) || '',
+                email: b.emailFacturation || b.email || '',
+                phone: enE164(b.contactTel) || '',
+                /*
+                  L'adresse doit être COMPLÈTE, les champs vides compris.
+                  Dès qu'on dit « never » pour billing_details, Stripe exige
+                  les six champs à la confirmation : il manquait `state`, et
+                  il refusait tout le paiement — « Le paiement n'a pas pu être
+                  envoyé », sans rien dire de plus au client. En France il n'y
+                  a pas d'État : on envoie la chaîne vide, pas rien.
+                */
                 address: b.factMeme
-                  ? { line1: b.adresse, postal_code: b.cp, city: b.ville, country: 'FR' }
-                  : { line1: b.factAdresse, postal_code: b.factCp, city: b.factVille, country: b.factPays || 'FR' },
+                  ? { line1: b.adresse, line2: '', postal_code: b.cp, city: b.ville, state: '', country: 'FR' }
+                  : { line1: b.factAdresse, line2: '', postal_code: b.factCp, city: b.factVille, state: '', country: b.factPays || 'FR' },
               }}
               onPaye={paye}
               onErreur={(m) => { setErreur(m); setEnvoi(false) }}
