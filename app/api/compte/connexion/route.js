@@ -7,7 +7,7 @@
   adresses ont un compte.
 */
 import { connecter, ipDe } from '@/lib/compteOS'
-import { poserSession } from '@/lib/sessionCompte'
+import { poserSession, poserBonjour } from '@/lib/sessionCompte'
 
 /*
   Un seul message, quelle que soit la cause — adresse inconnue, mot de passe
@@ -31,5 +31,6 @@ export async function POST(request) {
   if (!r?.ok || !r.jeton) return Response.json({ erreur: ECHEC }, { status: 401 })
 
   poserSession(r.jeton)
+  poserBonjour(r.profil)   // pour le « Bonjour Prénom » de la navigation
   return Response.json({ ok: true, profil: r.profil || null })
 }

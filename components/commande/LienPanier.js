@@ -5,8 +5,10 @@
   Un panier vide affiché en permanence transforme un site de traiteur en
   boutique, et ce n'est pas ce que Ramy vend. Tant qu'il est vide, rien.
 
-  Volontairement discret : pas de pastille rouge, pas d'icône de caddie. Le
-  mot, le nombre, un filet — le motif des liens secondaires du site.
+  Depuis le 31/10/2026, une icône et le nombre, à côté de la silhouette du
+  compte : le mot « Panier » et son filet prenaient trop de large dans une
+  barre qui porte déjà cinq menus et le bouton devis (demande de Ramy). Reste
+  la règle d'avant : pas de pastille rouge, un trait fin, rien qui clignote.
 */
 
 import { useEffect, useState } from 'react'
@@ -22,14 +24,36 @@ export default function LienPanier({ langue = 'fr', mobile = false, onNavigation
 
   if (n === 0 || langue === 'en') return null
 
+  if (mobile) {
+    return (
+      <a
+        href="/commander/panier"
+        className="nav-panier nav-panier-m"
+        onClick={onNavigation}
+        aria-label={`Votre panier, ${n} article${n > 1 ? 's' : ''}`}
+      >
+        <Cabas /> Panier <span>{n}</span>
+      </a>
+    )
+  }
+
   return (
     <a
       href="/commander/panier"
-      className={mobile ? 'nav-panier nav-panier-m' : 'nav-panier'}
+      className="nav-panier"
       onClick={onNavigation}
       aria-label={`Votre panier, ${n} article${n > 1 ? 's' : ''}`}
     >
-      Panier <span>{n}</span>
+      <Cabas />
+      <span>{n}</span>
     </a>
   )
 }
+
+/* Un cabas d'un trait, à la graisse de la silhouette du compte. */
+const Cabas = ({ taille = 17 }) => (
+  <svg width={taille} height={taille} viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M4.1 6.6h11.8l-.9 10.1a1 1 0 0 1-1 .9H6a1 1 0 0 1-1-.9L4.1 6.6Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" />
+    <path d="M7.3 8.4V5.6a2.7 2.7 0 0 1 5.4 0v2.8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+  </svg>
+)

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { isOctobreRoseActive, OCTOBRE_ROSE_ACCENT } from '../lib/campagneOctobreRose'
 import SelecteurLangue from './SelecteurLangue'
 import LienPanier from './commande/LienPanier'
+import LienCompte from './compte/LienCompte'
 import { estAnglais, lienLocaliseDans } from '../lib/i18nBase'
 import { useEnSlugs, useEnChemins } from './EnSlugsProvider'
 import { t } from '../lib/en/interface'
@@ -595,6 +596,10 @@ export default function Navbar({ showBanner = false, forceScrolled = false, sans
         {/* Le panier, s'il contient quelque chose. Rien sinon. */}
         <LienPanier langue={langue} />
 
+        {/* Le compte : une silhouette pour qui passe, « Bonjour Prénom » pour
+            qui est connecté. */}
+        <LienCompte langue={langue} />
+
         {/* CTA Devis — même colonne que L'Écrin / Journal, poussé à droite */}
         <a
           href={lien('/devis')}
@@ -781,6 +786,8 @@ export default function Navbar({ showBanner = false, forceScrolled = false, sans
 
           {/* Le panier, seulement s'il contient quelque chose */}
           <LienPanier langue={langue} mobile onNavigation={() => setMobileOpen(false)} />
+
+          <LienCompte langue={langue} mobile onNavigation={() => setMobileOpen(false)} />
 
           <a
             href={lien('/devis')}

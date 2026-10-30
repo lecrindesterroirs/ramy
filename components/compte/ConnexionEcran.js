@@ -12,7 +12,7 @@
   également. C'est la règle du brief, et elle se voit dans les textes.
 */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { EnteteSimple, Fleche } from '../commande/Chrome'
 
@@ -35,6 +35,14 @@ export default function ConnexionEcran() {
 
   const maj = (champs) => setC(v => ({ ...v, ...champs }))
   const M = MODES[mode]
+
+  /*
+    Arriver ici, c'est ne pas être connecté : la session a pu expirer de son
+    côté sans que personne ne clique sur « se déconnecter ». On efface le
+    prénom que la navigation garde en cookie, sinon la barre continuerait de
+    dire bonjour à quelqu'un qui est devant un écran de connexion.
+  */
+  useEffect(() => { document.cookie = 'lecrin_bonjour=; path=/; max-age=0' }, [])
 
   const envoyer = async (e) => {
     e.preventDefault()
