@@ -47,7 +47,7 @@ export default function ConfirmationEcran() {
           <p className="cmd-intro">
             Cette page montre la confirmation d&apos;une commande qui vient d&apos;être passée.
           </p>
-          <a className="cmd-cont" href="/creations/petits-dejeuners-et-pauses">Voir la carte <Fleche /></a>
+          <a className="cmd-cont cmd-cont-doux" href="/creations/petits-dejeuners-et-pauses">Voir la carte <Fleche /></a>
         </div>
       </div>
     )
@@ -104,7 +104,7 @@ export default function ConfirmationEcran() {
           </p>
         )}
 
-        <a className="cmd-cont cmd-fin-btn" href="/">Revenir à l&apos;accueil <Fleche /></a>
+        <a className="cmd-cont cmd-cont-doux cmd-fin-btn" href="/">Revenir à l&apos;accueil <Fleche /></a>
       </div>
     </div>
   )

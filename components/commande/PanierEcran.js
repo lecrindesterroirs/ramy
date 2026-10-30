@@ -56,7 +56,7 @@ export default function PanierEcran() {
             Ajoutez des viennoiseries, des madeleines ou un thermos depuis la carte :
             le bouton « + » se trouve à côté du prix.
           </p>
-          <a className="cmd-cont" href="/creations/petits-dejeuners-et-pauses">Voir la carte <Fleche /></a>
+          <a className="cmd-cont cmd-cont-doux" href="/creations/petits-dejeuners-et-pauses">Voir la carte <Fleche /></a>
         </div>
       </div>
     )

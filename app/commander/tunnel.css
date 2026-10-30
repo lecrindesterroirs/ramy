@@ -225,6 +225,22 @@
 .cmd-cont { background: #111111; color: #fff; padding: 15px 30px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; border: none; font-family: inherit; text-decoration: none; transition: opacity 0.3s ease; }
 .cmd-cont:hover { opacity: 0.82; }
 .cmd-cont:disabled { background: var(--eteint); cursor: not-allowed; opacity: 1; }
+
+/*
+  Variante douce, pour les boutons qui n'engagent pas d'argent : « Voir la
+  carte » quand le panier est vide, « Revenir à l'accueil » après la
+  commande. Le noir reste réservé à ce qui paie — sinon le client ne
+  distingue plus « je regarde » de « je règle ». C'est l'or cerclé du site,
+  celui d'« Obtenir un devis ».
+*/
+.cmd-cont-doux {
+  background: transparent;
+  color: var(--accent-deep);
+  border: 1px solid var(--accent);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.cmd-cont-doux:hover { background: var(--accent); color: var(--text-primary); opacity: 1; }
+.cmd-cont-doux svg { stroke: currentColor; }
 /*
   Bouton gris tant qu'il manque quelque chose : le client voit d'un coup d'œil
   qu'il n'a pas fini. Il reste cliquable, et dire ce qui manque est justement

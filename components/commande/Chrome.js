@@ -21,8 +21,10 @@ export function Cadenas() {
 }
 
 export function Fleche() {
+  // currentColor : la flèche suit la couleur du bouton, blanche sur noir,
+  // dorée sur la variante douce.
   return (
-    <svg width="18" height="11" viewBox="0 0 22 14" fill="none" stroke="#fff" strokeWidth="1.5" aria-hidden="true">
+    <svg width="18" height="11" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
       <path d="M1 7h19M14.5 1.5L20.5 7l-6 5.5" />
     </svg>
   )
