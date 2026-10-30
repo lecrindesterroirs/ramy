@@ -52,24 +52,25 @@ clients de passage, et ceux-là paient comptant.
 
 ## 3. Ce qu'il faut trancher avant d'écrire une ligne
 
-### 3.1 Comment on se connecte
+### 3.1 Comment on se connecte — TRANCHÉ
 
-**Recommandation : un lien de connexion envoyé par email, pas de mot de passe.**
+**Décision de Ramy, 30/10/2026 : email et mot de passe, avec « mot de passe
+oublié ».** Les navigateurs et les gestionnaires de mots de passe le retiennent,
+et c'est ce que les clients attendent d'un compte.
 
-Le client saisit son adresse, reçoit un lien valable vingt minutes, et il est
-connecté. Pourquoi :
+J'avais recommandé un lien de connexion sans mot de passe ; la décision est prise
+autrement, et elle se tient : le mot de passe évite d'attendre un email à chaque
+connexion sur un nouveau poste.
 
-- aucun mot de passe à créer, à retenir, à réinitialiser — c'est le premier motif
-  d'abandon sur un compte B2B utilisé six fois par an ;
-- rien à stocker qui puisse fuiter : pas de base de mots de passe ;
-- l'adresse professionnelle est déjà le pivot de tout le reste (devis, facture,
-  OS), et elle est vérifiée par construction.
+Ce que cela impose, et qui n'est pas négociable :
 
-Le coût : un email à recevoir à chaque connexion sur un nouvel appareil. Acceptable
-pour un service commandé depuis un poste de bureau, avec une session qui dure.
-
-L'alternative — mot de passe classique — n'apporte ici aucun avantage et ajoute une
-base de secrets à protéger.
+- les mots de passe sont **hachés** (bcrypt ou argon2), jamais stockés en clair,
+  jamais récupérables — « mot de passe oublié » envoie un lien de réinitialisation
+  à usage unique, pas le mot de passe ;
+- une **limite de tentatives** par adresse et par IP, sinon le formulaire devient
+  un outil pour deviner les mots de passe ;
+- le formulaire répond **la même chose** que l'adresse existe ou non : sinon il
+  révèle qui est client de L'Écrin.
 
 ### 3.2 Où vivent les comptes
 
@@ -101,10 +102,14 @@ historique et son adresse de livraison, mais la facturation, l'encours et les
 tarifs négociés appartiennent à l'entreprise. C'est déjà la structure de l'OS
 (`clients.contacts`), il suffit de la respecter.
 
-À trancher : **un nouveau venu chez un client existant voit-il les commandes de ses
-collègues ?** Utile pour reprendre une commande récurrente, gênant si les montants
-ne le regardent pas. Proposition : il voit les commandes **de l'entreprise**, car
-elles ont toutes été livrées au même endroit et payées par la même entité.
+**Tranché par Ramy le 30/10 : chacun ne voit QUE ses propres commandes**, pas
+celles de ses collègues. C'est le choix prudent — les montants d'un collègue ne
+regardent personne, et un assistant qui commande pour son directeur n'a pas à voir
+le reste. La facturation et l'encours restent au niveau de l'entreprise.
+
+Conséquence à accepter : si la personne qui commandait part, son successeur repart
+d'une page blanche. Ramy garde l'historique complet dans l'OS et peut le lui
+rappeler.
 
 ### 3.4 Ce qu'on ne fait pas
 
@@ -120,9 +125,10 @@ elles ont toutes été livrées au même endroit et payées par la même entité
 ## 4. Les écrans, dans l'ordre où ils servent
 
 1. **Se connecter** — une adresse email, un bouton. Rien d'autre sur la page.
-2. **Mes commandes** — la liste, la plus récente en haut : date de livraison,
-   montant, statut, et un bouton **« Recommander »** qui remplit le panier à
-   l'identique. C'est l'écran qui justifie le projet.
+2. **Mes commandes** — *mes* commandes, pas celles de l'entreprise : la liste, la
+   plus récente en haut, avec date de livraison, montant, statut, et un bouton
+   **« Recommander »** qui remplit le panier à l'identique. C'est l'écran qui
+   justifie le projet.
 3. **Une commande** — le détail, l'adresse, le créneau, et sa facture à télécharger.
 4. **Mes informations** — adresses de livraison et de facturation, contacts sur
    place, bon de commande par défaut. Ce que le tunnel ira chercher tout seul.
@@ -137,7 +143,8 @@ Retrouvez vos informations », et tout le reste se pré-remplit.
 Ce n'est pas une après-midi. En ordre de grandeur, et à condition que 3.2 soit
 tranché :
 
-- la connexion par lien email, les sessions, la déconnexion : **deux à trois jours** ;
+- la connexion par mot de passe, les sessions, la déconnexion, la réinitialisation
+  et la limite de tentatives : **trois à quatre jours** ;
 - les routes de l'OS et leur authentification : **deux jours, dans le dépôt de l'OS** ;
 - les quatre écrans : **trois à quatre jours** ;
 - « Recommander » : **un jour**, le panier existe déjà ;
