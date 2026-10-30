@@ -215,7 +215,11 @@ export default function PaiementEcran() {
               ? `${euroFr(t.ttc)} TTC seront débités à la validation. Vos coordonnées bancaires ne passent ni par nous ni par notre serveur.`
               : compte.connu
                 ? 'Vous commandez déjà chez nous : les deux options vous sont ouvertes.'
-                : 'Première commande chez nous. Le règlement par carte permet de partir tout de suite.'}
+                : compte.su
+                  /* Reconnaissance active et fiche introuvable : c'est bien une première. */
+                  ? 'Première commande chez nous. Le règlement par carte permet de partir tout de suite.'
+                  /* Reconnaissance éteinte : on ne sait pas, donc on n'affirme pas. */
+                  : 'Par carte, vous partez tout de suite. Sur facture, si votre compte est déjà ouvert chez nous.'}
           </p>
 
           {carte && !redirect && (
@@ -249,9 +253,9 @@ export default function PaiementEcran() {
               <span className="cmd-coche" />
               <span>
                 <span className="cmd-t" style={{ display: 'block' }}>{MODES.facture.titre}</span>
-                <span className="cmd-s">{MODES.facture.detail}</span>
+                <span className="cmd-s">{compte.connu ? MODES.facture.detail : MODES.facture.detailAVerifier}</span>
               </span>
-              <span className="cmd-tag">{compte.connu ? MODES.facture.tag : 'À vérifier'}</span>
+              <span className="cmd-tag">{compte.connu ? MODES.facture.tag : MODES.facture.tagAVerifier}</span>
             </button>
           )}
 
@@ -279,7 +283,7 @@ export default function PaiementEcran() {
             <div className="cmd-avis">
               <Pastille />
               <div>
-                <p>Notre équipe vous appelle pour valider cette première commande.</p>
+                <p>Notre équipe vous appelle pour valider {compte.su ? 'cette première commande' : 'cette commande'}.</p>
                 <p className="cmd-b">
                   Au-delà de {SEUIL_APPEL} € HT, nous confirmons de vive voix avant de lancer la production.
                   Votre créneau est réservé en attendant.
