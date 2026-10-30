@@ -206,7 +206,9 @@ export default function PaiementEcran() {
   }
 
   return (
-    <div className="cmd">
+    // cmd-fixe : écran tenu à la hauteur de la fenêtre, chaque colonne
+    // défilant pour elle — comme le panier et la livraison.
+    <div className="cmd cmd-fixe">
       <EnteteTunnel etape={3} />
 
       <div className="cmd-corps">
