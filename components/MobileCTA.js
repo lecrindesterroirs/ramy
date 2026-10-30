@@ -61,8 +61,10 @@ export default function MobileCTA() {
   if (pathname === '/devis') return null
   // Calculateur intégré chez un tiers (iframe) : pas de barre L'Écrin par-dessus
   if (pathname && pathname.endsWith('/calculateur-quantites/embed')) return null
-  // Tunnel de commande : il a sa propre barre du bas, avec le montant
-  if (pathname && pathname.startsWith('/commander')) return null
+  // Tunnel de commande et espace client : ces pages ont leur propre
+  // navigation, et une barre « devis » par-dessus un formulaire de compte
+  // propose exactement ce que le client est en train de faire autrement.
+  if (pathname && (pathname.startsWith('/commander') || pathname.startsWith('/compte'))) return null
 
   return (
     <>

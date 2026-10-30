@@ -49,6 +49,24 @@ export function Crayon() {
   )
 }
 
+/*
+  Le bandeau sans fil d'étapes, pour les pages qui n'en ont pas : la connexion
+  à l'espace client, par exemple. Le fil des trois étapes n'a de sens que dans
+  le tunnel ; l'afficher ailleurs annoncerait une commande qui n'existe pas.
+*/
+export function EnteteSimple({ lien = '/' }) {
+  return (
+    <>
+      <div className="cmd-top">
+        <a className="cmd-logo" href={lien}>L&apos;ÉCRIN<em>TRAITEUR</em></a>
+        <span />
+        <div className="cmd-secu"><Cadenas /> Connexion sécurisée</div>
+      </div>
+      <hr className="cmd-filet" />
+    </>
+  )
+}
+
 /* etape : 1, 2 ou 3. atteintes : jusqu'où le client a le droit de revenir. */
 export function EnteteTunnel({ etape, atteintes = etape }) {
   return (

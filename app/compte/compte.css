@@ -1,0 +1,32 @@
+/* ============================================================
+   Espace client. Reprend tout de tunnel.css ; ce fichier
+   n'ajoute que ce qui lui est propre.
+   ============================================================ */
+
+.cpt-bandeau { display: flex; align-items: center; justify-content: space-between; padding: 30px 54px 26px; gap: 24px; border-bottom: 1px solid var(--filet); }
+.cpt-liens { display: flex; align-items: center; gap: 28px; }
+.cpt-lien { font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid transparent; }
+.cpt-lien-actif { color: var(--text-primary); border-bottom-color: var(--accent); }
+.cpt-lien:hover { color: var(--accent-deep); }
+
+.cpt-corps { max-width: 980px; margin: 0 auto; padding: 48px 54px 80px; width: 100%; }
+.cpt-etroit { max-width: 440px; }
+
+/* ── une commande dans la liste ── */
+.cpt-cmd { display: grid; grid-template-columns: 1fr auto auto; gap: 24px; align-items: center; padding: 22px 0; border-top: 1px solid var(--filet); }
+.cpt-cmd:last-child { border-bottom: 1px solid var(--filet); }
+.cpt-cmd-date { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 18px; margin: 0 0 5px; }
+.cpt-cmd-detail { font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+.cpt-cmd-montant { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 17px; white-space: nowrap; }
+.cpt-statut { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-deep); margin-top: 6px; }
+
+/* ── vide ── */
+.cpt-vide { text-align: center; padding: 64px 0 48px; }
+
+@media (max-width: 760px) {
+  .cpt-bandeau { flex-direction: column; align-items: stretch; gap: 16px; padding: 18px 20px 14px; }
+  .cpt-liens { justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .cpt-corps { padding: 32px 20px 56px; }
+  .cpt-cmd { grid-template-columns: 1fr auto; gap: 14px; }
+  .cpt-cmd > :last-child { grid-column: 1 / -1; }
+}
