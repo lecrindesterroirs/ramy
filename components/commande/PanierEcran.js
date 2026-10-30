@@ -20,6 +20,7 @@ import { lirePanier, surChangement, changerQuantite, retirerDuPanier, ajouterAuP
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
 import { totaux, problemes } from '@/lib/totauxCommande'
 import { conseilsPanier } from '@/lib/conseilsPanier'
+import { composerPetitDejeuner, EFFECTIF_MIN, EFFECTIF_MAX } from '@/lib/composerCommande'
 import { nettoieCp } from '@/lib/zonesLivraison'
 import { completer, retenirClient } from '@/lib/souvenirClient'
 import { produitCommandable } from '@/lib/catalogueCommande'
@@ -31,6 +32,7 @@ export default function PanierEcran() {
   const [lignes, setLignes] = useState([])
   const [b, setB] = useState(VIDE)   // identique au rendu serveur : localStorage n'est lu qu'après le montage
   const [pret, setPret] = useState(false)
+  const [effectif, setEffectif] = useState('')
 
   useEffect(() => {
     setLignes(lirePanier())
@@ -58,12 +60,50 @@ export default function PanierEcran() {
         <EnteteTunnel etape={1} />
         <div className="cmd-centre">
           <p className="cmd-surtitre">Panier</p>
-          <h1 className="cmd-h1 cmd-sf">Votre panier est vide.</h1>
+          <h1 className="cmd-h1 cmd-sf">Dites-nous combien vous êtes.</h1>
           <p className="cmd-intro">
-            Ajoutez des viennoiseries, des madeleines ou un thermos depuis la carte :
-            le bouton « + » se trouve à côté du prix.
+            Nous composons le petit-déjeuner avec les quantités que nous servons
+            d&apos;habitude. Vous ajustez tout ensuite, rien n&apos;est figé.
           </p>
-          <a className="cmd-cont cmd-cont-doux" href="/creations/petits-dejeuners-et-pauses">Voir la carte <Fleche /></a>
+
+          {/* Le configurateur reprend la recette qui sert à monter les devis
+              dans l'OS : mêmes quantités, mêmes produits. */}
+          <form
+            className="cmd-composer"
+            onSubmit={(e) => {
+              e.preventDefault()
+              const n = Number(effectif)
+              if (!(n >= EFFECTIF_MIN)) return
+              const { effectif: retenu, lignes: composees } = composerPetitDejeuner(n)
+              for (const l of composees) ajouterAuPanier(l, l.qte)
+              setB(ecrireBrouillon({ composePour: retenu }))
+            }}
+          >
+            <label className="cmd-lab" htmlFor="cmd-effectif">Nombre de personnes</label>
+            <div className="cmd-composer-ligne">
+              <input
+                id="cmd-effectif"
+                className="cmd-champ cmd-composer-nb"
+                inputMode="numeric"
+                placeholder="25"
+                min={EFFECTIF_MIN}
+                max={EFFECTIF_MAX}
+                value={effectif}
+                onChange={(e) => setEffectif(e.target.value.replace(/\D/g, '').slice(0, 3))}
+              />
+              <button type="submit" className="cmd-cont" disabled={!(Number(effectif) >= EFFECTIF_MIN)}>
+                Composer <Fleche />
+              </button>
+            </div>
+            <p className="cmd-aide">
+              À partir de {EFFECTIF_MIN} personnes. Pour un cocktail ou des plateaux repas,
+              passez plutôt par la carte.
+            </p>
+          </form>
+
+          <a className="cmd-retour" href="/creations/petits-dejeuners-et-pauses" style={{ marginTop: '28px' }}>
+            Ou parcourir la carte
+          </a>
         </div>
       </div>
     )
@@ -78,7 +118,9 @@ export default function PanierEcran() {
           <p className="cmd-surtitre">Panier</p>
           <h1 className="cmd-h1 cmd-sf">Votre commande</h1>
           <p className="cmd-intro">
-            {lignes.length} référence{lignes.length > 1 ? 's' : ''}, livraison du lundi au vendredi dès 6h30.
+            {b.composePour > 0
+              ? `Composé pour ${b.composePour} personnes — ajustez librement, retirez ce qui ne vous va pas.`
+              : `${lignes.length} référence${lignes.length > 1 ? 's' : ''}, livraison du lundi au vendredi dès 6h30.`}
           </p>
 
           {lignes.map(l => (

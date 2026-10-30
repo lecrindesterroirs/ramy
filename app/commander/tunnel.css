@@ -413,3 +413,15 @@
   .cmd-conseil { grid-template-columns: 20px 1fr; }
   .cmd-conseil-ajout { grid-column: 2; align-items: flex-start; text-align: left; margin-top: 8px; }
 }
+
+/* ── Le configurateur, sur un panier vide ── */
+.cmd-composer { width: 100%; max-width: 420px; margin-top: 8px; text-align: left; }
+.cmd-composer .cmd-lab { text-align: left; }
+.cmd-composer-ligne { display: flex; gap: 12px; align-items: stretch; }
+.cmd-composer-nb { flex: 0 0 110px; text-align: center; font-size: 17px; }
+.cmd-composer .cmd-cont { flex: 1; justify-content: center; }
+.cmd-composer .cmd-aide { text-align: left; }
+@media (max-width: 760px) {
+  .cmd-composer-ligne { flex-direction: column; }
+  .cmd-composer-nb { flex: 0 0 auto; }
+}
