@@ -118,7 +118,12 @@ export default function PaiementEcran() {
 
   if (!pret) return <div className="cmd"><EnteteTunnel etape={3} /><div className="cmd-centre" /></div>
 
-  const factureOuverte = compte.connu || !compte.su
+  /*
+    La facture à 30 jours est proposée à tout le monde (arbitrage de Ramy du
+    30/10/2026) : c'est l'étiquette qui change, pas l'offre. « Votre
+    habitude » pour qui a déjà commandé, « À vérifier » pour les autres —
+    rien ne part en production avant que Ramy ait regardé le compte.
+  */
   const aAppeler = t.ht > SEUIL_APPEL && !compte.connu
   const modif = limiteModification(b.date)
 
@@ -244,7 +249,7 @@ export default function PaiementEcran() {
             <p className="cmd-aide">Votre paiement est accepté, nous enregistrons la commande…</p>
           )}
 
-          {!carte && factureOuverte && (
+          {!carte && (
             <button
               type="button"
               className={`cmd-opt ${b.reglement === 'facture' ? 'cmd-opt-on' : ''}`}
@@ -271,13 +276,6 @@ export default function PaiementEcran() {
             </span>
             <span className="cmd-tag">{MODES.carte.tag}</span>
           </button>}
-
-          {!carte && !factureOuverte && (
-            <p className="cmd-aide" style={{ marginTop: '18px' }}>
-              Vous souhaitez être facturé à 30 jours ?{' '}
-              <a href="/contact" style={{ color: 'var(--accent-deep)' }}>Écrivez-nous</a>, nous ouvrons le compte.
-            </p>
-          )}
 
           {aAppeler && (
             <div className="cmd-avis">

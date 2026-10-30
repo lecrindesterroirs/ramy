@@ -1,27 +1,43 @@
 /*
   « Ce client a-t-il déjà commandé chez nous ? » (29/10/2026)
 
-  Sert à n'afficher le règlement sur facture à 30 jours qu'aux clients qui ont
-  déjà un compte. Ne renvoie QUE oui ou non : jamais un nom, jamais une
-  adresse, jamais un encours.
+  Sert à étiqueter le règlement sur facture à 30 jours : « Votre habitude »
+  pour qui a déjà commandé, « À vérifier » pour les autres. L'option est
+  proposée dans les deux cas (arbitrage de Ramy du 30/10/2026). Ne renvoie QUE
+  oui ou non : jamais un nom, jamais une adresse, jamais un encours.
 
-  DÉSACTIVÉE PAR DÉFAUT, ET C'EST VOLONTAIRE. Lire la base de l'OS demande une
-  clé de service, alors que Ramy a fermé l'accès du rôle anon à deux reprises
-  (migrations v35 et v63). Tant que OS_SUPABASE_SERVICE_KEY n'est pas posée
-  dans l'environnement du site, cette route répond « inconnu » pour tout le
-  monde : le tunnel ne propose alors que la carte, ce qui est le comportement
-  le plus prudent. Rien ne change en production sans décision explicite.
+  La lecture directe de la base de l'OS, elle, reste éteinte par défaut : elle
+  demande une clé de service, alors que Ramy a fermé l'accès du rôle anon à
+  deux reprises (migrations v35 et v63). Sans OS_SUPABASE_SERVICE_KEY, un
+  visiteur non connecté est simplement « à vérifier ».
 
-  À SAVOIR AVANT DE L'ACTIVER : l'email seul ne prouve rien. Quiconque connaît
-  l'adresse d'un contact d'un gros client obtiendrait le paiement à 30 jours en
-  son nom. Si on active cette route, il faut un code à usage unique envoyé à
-  cette adresse avant d'ouvrir l'option facture (ce n'est pas un compte à
-  créer, juste quatre chiffres par mail).
+  L'EMAIL SEUL NE PROUVE RIEN. Quiconque connaît l'adresse d'un contact d'un
+  gros client obtiendrait le paiement à 30 jours en son nom. C'est pourquoi on
+  demande d'abord à la SESSION : un client connecté a prouvé son adresse en
+  cliquant le lien de confirmation, et l'OS ne répond alors que pour son
+  compte à lui. La lecture par email ne sert plus qu'au visiteur non connecté,
+  et seulement si la clé de service est posée.
 */
+
+import { commandes } from '@/lib/compteOS'
+import { jetonDeSession } from '@/lib/sessionCompte'
+
+export const dynamic = 'force-dynamic'   // la route lit le cookie de session
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 export async function POST(request) {
+  /*
+    Client connecté : on compte ses commandes passées. Une au moins, c'est
+    un habitué — la facture à 30 jours porte « Votre habitude ». Aucune, il
+    n'a jamais commandé : l'option reste proposée, mais « À vérifier ».
+  */
+  const jeton = jetonDeSession()
+  if (jeton) {
+    const liste = await commandes(jeton)
+    if (liste !== null) return Response.json({ connu: liste.length > 0 })
+  }
+
   let email = ''
   try {
     const body = await request.json()
