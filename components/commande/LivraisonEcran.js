@@ -20,6 +20,7 @@ import { problemes, totaux } from '@/lib/totauxCommande'
 import { HEURES, MINUTES, libelleCreneau, finParDefaut, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
 import { PAYS, nomDuPays } from '@/lib/paysFacturation'
 import { completer, retenirClient } from '@/lib/souvenirClient'
+import { usePreRemplirCompte } from './usePreRemplirCompte'
 import { materielARendre } from '@/lib/conseilsPanier'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille, Crayon } from './Chrome'
@@ -76,18 +77,24 @@ export default function LivraisonEcran() {
   // calendrier pourrait se fermer entre deux rendus, sous le doigt du client.
   const maintenant = useMemo(() => new Date(), [])
 
-  // Au premier affichage, on complète les trous avec ce que le navigateur
-  // sait déjà du client : il a peut-être demandé un devis la semaine passée.
+  /*
+    Au premier affichage, on complète les trous avec ce que le navigateur sait
+    déjà du client : il a peut-être demandé un devis la semaine passée. Puis,
+    s'il est connecté, avec son compte — qui le suit d'un appareil à l'autre.
+    'souvenir' ou 'compte' : la phrase affichée n'est pas la même.
+  */
   const [preRempli, setPreRempli] = useState(false)
 
   useEffect(() => {
     setLignes(lirePanier())
     const { brouillon, complete } = completer(lireBrouillon())
     setB(complete ? ecrireBrouillon(brouillon) : brouillon)
-    setPreRempli(p => p || complete)
+    setPreRempli(p => p || (complete ? 'souvenir' : false))
     setPret(true)
     return surChangement(setLignes)
   }, [])
+
+  usePreRemplirCompte(setB, setPreRempli)
 
   const maj = (champs) => {
     retenirClient(champs)          // on garde pour la prochaine fois
@@ -156,7 +163,8 @@ export default function LivraisonEcran() {
           <h1 className="cmd-h1 cmd-sf">Quelle date souhaitez-vous ?</h1>
           <p className="cmd-intro">
             Livraison du lundi au vendredi, dès 6h30.
-            {preRempli && ' Vos coordonnées sont reprises de votre dernière demande — corrigez-les si besoin.'}
+            {preRempli === 'compte' && ' Vos informations sont reprises de votre compte — corrigez-les si besoin.'}
+            {preRempli === 'souvenir' && ' Vos coordonnées sont reprises de votre dernière demande — corrigez-les si besoin.'}
           </p>
 
           <div data-champ="date" className={tente && err('date') ? 'cmd-cal-manque' : undefined}>

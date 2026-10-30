@@ -23,6 +23,7 @@ import { conseilsPanier } from '@/lib/conseilsPanier'
 import { composerPetitDejeuner, EFFECTIF_MIN, EFFECTIF_MAX } from '@/lib/composerCommande'
 import { nettoieCp } from '@/lib/zonesLivraison'
 import { completer, retenirClient } from '@/lib/souvenirClient'
+import { usePreRemplirCompte } from './usePreRemplirCompte'
 import { produitCommandable } from '@/lib/catalogueCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
@@ -41,6 +42,10 @@ export default function PanierEcran() {
     setPret(true)
     return surChangement(setLignes)
   }, [])
+
+  // Le code postal du client connecté, pour que la zone de livraison et les
+  // frais s'affichent sans qu'il le saisisse.
+  usePreRemplirCompte(setB)
 
   const t = totaux(lignes, b)
   const ennuis = problemes(lignes, b).filter(p => p.etape === 1)
