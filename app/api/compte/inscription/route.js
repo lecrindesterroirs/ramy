@@ -18,8 +18,8 @@ export async function POST(request) {
   const email = texte(b.email, 120).toLowerCase()
   const motDePasse = String(b.motDePasse ?? '')
   if (!EMAIL.test(email)) return Response.json({ erreur: 'Indiquez une adresse email valable.' }, { status: 400 })
-  if (motDePasse.length < 10) {
-    return Response.json({ erreur: 'Votre mot de passe doit faire au moins 10 caractères.' }, { status: 400 })
+  if (motDePasse.length < 8) {
+    return Response.json({ erreur: 'Votre mot de passe doit faire au moins 8 caractères.' }, { status: 400 })
   }
 
   await inscrire({

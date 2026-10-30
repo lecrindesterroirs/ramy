@@ -111,9 +111,9 @@ export default function ConnexionEcran() {
               <div style={{ height: '14px' }} />
               <input className="cmd-champ" type="password" placeholder="Mot de passe" required
                 autoComplete={mode === 'creation' ? 'new-password' : 'current-password'}
-                minLength={mode === 'creation' ? 10 : undefined}
+                minLength={mode === 'creation' ? 8 : undefined}
                 value={c.motDePasse} onChange={(e) => maj({ motDePasse: e.target.value })} />
-              {mode === 'creation' && <p className="cmd-aide">Dix caractères au minimum.</p>}
+              {mode === 'creation' && <p className="cmd-aide">Huit caractères au minimum.</p>}
             </>
           )}
 
