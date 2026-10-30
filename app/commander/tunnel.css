@@ -425,3 +425,9 @@
   .cmd-composer-ligne { flex-direction: column; }
   .cmd-composer-nb { flex: 0 0 auto; }
 }
+
+/* La case « vaisselle réutilisable », dans le récapitulatif du panier. */
+.cmd-case-vaisselle { align-items: flex-start; gap: 14px; padding: 16px 0 18px; margin-bottom: 8px; border-bottom: 1px solid var(--filet); }
+.cmd-case-vaisselle > span:nth-child(2) { flex: 1; }
+.cmd-case-detail { display: block; font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); margin-top: 4px; }
+.cmd-case-prix { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 15px; white-space: nowrap; }

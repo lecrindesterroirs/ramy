@@ -309,7 +309,10 @@ export default function PaiementEcran() {
               <b>{euroFr(l.prix * l.qte)}</b>
             </div>
           ))}
-          <div className="cmd-r"><span>Livraison {t.zone.nom}</span><b>{euroFr(t.livraison)}</b></div>
+          <div className="cmd-r"><span>{t.libelleLivraison} {t.zone.nom}</span><b>{euroFr(t.livraison)}</b></div>
+          {t.optionVaisselle > 0 && (
+            <div className="cmd-r"><span>Vaisselle réutilisable</span><b>{euroFr(t.optionVaisselle)}</b></div>
+          )}
           <div className="cmd-rt"><span className="cmd-l">Total HT</span><span className="cmd-v">{euroFr(t.ht)}</span></div>
           <div className="cmd-r" style={{ paddingTop: '12px' }}><span>TVA 10 %</span><b>{euroFr(t.tva)}</b></div>
           <div className="cmd-rt cmd-rt-ttc" style={{ border: 'none', margin: 0, paddingTop: '2px' }}>

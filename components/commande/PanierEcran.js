@@ -171,7 +171,7 @@ export default function PanierEcran() {
               onChange={(e) => majCp(e.target.value)}
             />
             {t.zone.ok === true && (
-              <p className="cmd-zone">{t.zone.nom} · livraison {euroFr(t.zone.frais)} HT, reprise comprise.</p>
+              <p className="cmd-zone">{t.zone.nom} · {t.libelleLivraison.toLowerCase()} {euroFr(t.livraison)} HT.</p>
             )}
             {t.zone.ok === false && (
               <p className="cmd-zone cmd-zone-non">
@@ -184,9 +184,29 @@ export default function PanierEcran() {
             )}
           </div>
 
+          {/* La vaisselle se coche ici, à l'étape 1 : son prix entre dans le
+              total tout de suite, comme la livraison. Rien ne doit apparaître
+              au dernier écran. */}
+          <button
+            type="button"
+            className={`cmd-case cmd-case-vaisselle ${b.vaisselle ? 'cmd-case-on' : ''}`}
+            onClick={() => setB(ecrireBrouillon({ vaisselle: !b.vaisselle }))}
+            aria-pressed={b.vaisselle}
+          >
+            <span className="cmd-coche" />
+            <span>
+              Vaisselle réutilisable
+              <span className="cmd-case-detail">Assiettes, couverts et verres pour tout le monde, repris avec le reste.</span>
+            </span>
+            <span className="cmd-case-prix">{euroFr(25)}</span>
+          </button>
+
           <div className="cmd-r"><span>Sous-total</span><b>{euroFr(t.sousTotal)}</b></div>
           {t.zone.ok === true && (
-            <div className="cmd-r"><span>Livraison {t.zone.nom}</span><b>{euroFr(t.livraison)}</b></div>
+            <div className="cmd-r"><span>{t.libelleLivraison} {t.zone.nom}</span><b>{euroFr(t.livraison)}</b></div>
+          )}
+          {t.optionVaisselle > 0 && (
+            <div className="cmd-r"><span>Vaisselle réutilisable</span><b>{euroFr(t.optionVaisselle)}</b></div>
           )}
           <div className="cmd-rt">
             <span className="cmd-l">Total HT</span>
