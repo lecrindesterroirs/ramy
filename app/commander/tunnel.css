@@ -129,9 +129,9 @@
 */
 .cmd-rt { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0 0; margin-top: 6px; border-top: 1px solid var(--filet); }
 .cmd-rt .cmd-l { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); }
-.cmd-rt .cmd-v { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 18px; letter-spacing: 0.01em; color: var(--text-primary); }
+.cmd-rt .cmd-v { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 16px; letter-spacing: 0.015em; color: var(--text-primary); }
 /* Le seul montant qui compte vraiment pour le client. */
-.cmd-rt-ttc .cmd-v { font-size: 24px; }
+.cmd-rt-ttc .cmd-v { font-size: 20px; }
 .cmd-rt-ttc .cmd-l { color: var(--text-primary); }
 .cmd-mini { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--filet); }
 .cmd-mini b { color: var(--text-primary); font-weight: 500; }
