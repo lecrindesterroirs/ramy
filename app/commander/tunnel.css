@@ -344,3 +344,28 @@
 
 /* Le bouton « payer », sous les champs de carte. */
 .cmd-payer { margin-top: 24px; width: 100%; justify-content: center; }
+
+/* Case à cocher simple, hors de la liste d'options : « facturer à la même
+   adresse ». Même carré que les options, mais sur une seule ligne. */
+.cmd-case {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  background: none; border: none; padding: 0; cursor: pointer;
+  font-family: inherit; font-size: 14px; color: var(--text-primary);
+}
+.cmd-case .cmd-coche { margin-top: 0; }
+.cmd-case-on .cmd-coche { border-color: var(--accent); }
+.cmd-case-on .cmd-coche::after { content: ''; position: absolute; inset: 3px; background: var(--accent); }
+
+/* L'adresse de facturation recopiée, montrée plutôt que sous-entendue. */
+.cmd-recap { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-top: 14px; padding: 14px 16px; border: 1px solid var(--filet); }
+.cmd-recap-nom { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 16px; margin: 0 0 4px; }
+.cmd-recap-ligne { font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+.cmd-recap-vide { color: var(--eteint); font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 14px; }
+.cmd-crayon {
+  display: inline-flex; align-items: center; gap: 7px; flex: 0 0 auto;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent-deep); background: none; border: none; padding: 2px 0 3px; cursor: pointer;
+  border-bottom: 1px solid var(--accent);
+}
+.cmd-crayon:hover { opacity: 0.75; }

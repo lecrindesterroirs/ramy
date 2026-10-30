@@ -24,20 +24,13 @@ import { lirePanier, surChangement, viderPanier, cleLigne } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon, viderBrouillon } from '@/lib/brouillonCommande'
 import { problemes, totaux } from '@/lib/totauxCommande'
 import { libelleCreneau, limiteModification } from '@/lib/reglesCommande'
+import { enE164 } from '@/lib/telephone'
 import { MODES } from '@/lib/paiement'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
 import CarteStripe, { retenirPaiement, relirePaiement, oublierPaiement } from './CarteStripe'
 
 const SEUIL_APPEL = 1000
-/* « 06 12 34 56 78 » → « +33612345678 », le format attendu par les banques. */
-function enE164(tel) {
-  const n = String(tel || '').replace(/\D/g, '')
-  if (n.startsWith('33')) return `+${n}`
-  if (n.startsWith('0')) return `+33${n.slice(1)}`
-  return n ? `+${n}` : undefined
-}
-
 const LONG = (iso) => iso
   ? new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
   : ''
@@ -232,10 +225,12 @@ export default function PaiementEcran() {
               montantTtc={carte.ttc ?? t.ttc}
               retourUrl={retourUrl}
               facturation={{
-                name: b.contactNom,
+                name: b.factMeme ? b.contactNom : (b.factEntite || b.contactNom),
                 email: b.emailFacturation || b.email,
                 phone: enE164(b.contactTel),
-                address: { line1: b.adresse, postal_code: b.cp, city: b.ville, country: 'FR' },
+                address: b.factMeme
+                  ? { line1: b.adresse, postal_code: b.cp, city: b.ville, country: 'FR' }
+                  : { line1: b.factAdresse, postal_code: b.factCp, city: b.factVille, country: b.factPays || 'FR' },
               }}
               onPaye={paye}
               onErreur={(m) => { setErreur(m); setEnvoi(false) }}

@@ -41,6 +41,14 @@ export function Pastille({ enfant = 'i' }) {
   )
 }
 
+export function Crayon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true">
+      <path d="M16.5 3.5a2.1 2.1 0 013 3L7.5 18.5 3 20l1.5-4.5L16.5 3.5z" />
+    </svg>
+  )
+}
+
 /* etape : 1, 2 ou 3. atteintes : jusqu'où le client a le droit de revenir. */
 export function EnteteTunnel({ etape, atteintes = etape }) {
   return (

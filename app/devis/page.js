@@ -11,6 +11,7 @@ import { getAttribution } from '../../lib/attribution'
 import { formuleDepuisChemin, nettoyerFormule } from '../../lib/formuleDevis'
 import { isHalloweenActive } from '../../lib/campagneSaison'
 import { identifierVisiteur, suivreEtapeDevis, suivreChampDevis, capturerPostHog } from '../../lib/posthog-identify'
+import { retenirDepuisDevis } from '@/lib/souvenirClient'
 import { estAnglais } from '../../lib/i18nBase'
 import { t, moisCalendrier, joursCalendrier, dateLongue } from '../../lib/en/interface'
 
@@ -854,6 +855,7 @@ export default function Contact() {
         window.dataLayer?.push({ event: 'devis_submit', form_location: 'page_devis', formule: formuleRef.current || 'aucune' })
         capturerPostHog('devis_formule', { formule: formuleRef.current || null, page: pageOrigineRef.current || null, formulaire: 'page_devis' })
         identifierVisiteur(data, 'page_devis')
+        retenirDepuisDevis(data)   // pour pré-remplir une commande plus tard
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         setSubmitStatus('error')

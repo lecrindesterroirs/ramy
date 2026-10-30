@@ -20,6 +20,7 @@ import { lirePanier, surChangement, changerQuantite, retirerDuPanier, cleLigne }
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
 import { totaux, problemes, conseils } from '@/lib/totauxCommande'
 import { nettoieCp } from '@/lib/zonesLivraison'
+import { completer, retenirClient } from '@/lib/souvenirClient'
 import { produitCommandable } from '@/lib/catalogueCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
@@ -32,7 +33,8 @@ export default function PanierEcran() {
 
   useEffect(() => {
     setLignes(lirePanier())
-    setB(lireBrouillon())
+    const { brouillon, complete } = completer(lireBrouillon())
+    setB(complete ? ecrireBrouillon(brouillon) : brouillon)
     setPret(true)
     return surChangement(setLignes)
   }, [])
@@ -41,7 +43,11 @@ export default function PanierEcran() {
   const ennuis = problemes(lignes, b).filter(p => p.etape === 1)
   const avis = conseils(lignes)
 
-  const majCp = (v) => setB(ecrireBrouillon({ cp: nettoieCp(v) }))
+  const majCp = (v) => {
+    const cp = nettoieCp(v)
+    retenirClient({ cp })
+    return setB(ecrireBrouillon({ cp }))
+  }
 
   if (!pret) return <div className="cmd"><EnteteTunnel etape={1} /><div className="cmd-centre" /></div>
 

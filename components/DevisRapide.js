@@ -4,6 +4,7 @@ import { useState, useEffect, useId } from 'react'
 import { usePathname } from 'next/navigation'
 import { getAttribution } from '../lib/attribution'
 import { identifierVisiteur, capturerPostHog } from '../lib/posthog-identify'
+import { retenirDepuisDevis } from '@/lib/souvenirClient'
 import { formuleDepuisChemin } from '../lib/formuleDevis'
 import { estAnglais } from '../lib/i18nBase'
 
@@ -164,6 +165,7 @@ export default function DevisRapide({ defaultPrestation = '', titre, sousTitre, 
         window.dataLayer?.push({ event: 'devis_submit', form_location: 'devis_rapide', formule: formule || 'aucune' })
         capturerPostHog('devis_formule', { formule: formule || null, page: window.location.pathname, formulaire: 'devis_rapide' })
         identifierVisiteur(form, 'devis_rapide')
+        retenirDepuisDevis(form)   // pour pré-remplir une commande plus tard
       }
     } catch {
       setStatus('error')

@@ -94,20 +94,16 @@ export default function CarteStripe({ clientSecret, clePublique, montantTtc, ret
 
         const elements = stripe.elements({ clientSecret, appearance: APPARENCE, locale: 'fr' })
         /*
-          Le nom et l'email viennent de l'étape livraison : inutile de les
-          redemander, ils sont fournis à la validation.
-
-          L'adresse de facturation, elle, reste visible et modifiable — elle
-          n'est pas toujours celle de la livraison, et les demandes venues de
-          l'étranger se multiplient (Ramy, 30/10/2026). Elle arrive
-          pré-remplie avec l'adresse de livraison et la France, pour que le
-          client français n'ait rien à faire. Sans ce pré-remplissage, Stripe
-          proposait le pays du navigateur : « Indonésie » depuis Bali.
+          Le client ne tape que sa carte : nom, email, téléphone et adresse de
+          facturation ont tous été saisis à l'étape livraison, où il a pu
+          dissocier facturation et livraison et choisir son pays. Tout est
+          fourni à la validation. Redemander l'adresse ici la ferait saisir
+          deux fois — et, faute de la fournir, Stripe proposait le pays du
+          navigateur : « Indonésie » depuis Bali.
         */
         element = elements.create('payment', {
           layout: 'tabs',
-          fields: { billingDetails: { name: 'never', email: 'never', phone: 'never', address: 'auto' } },
-          defaultValues: { billingDetails: { address: facturation?.address || { country: 'FR' } } },
+          fields: { billingDetails: 'never' },
         })
         element.on('ready', () => { if (vivant) setEtat('pret') })
         element.mount(boite.current)
@@ -146,13 +142,7 @@ export default function CarteStripe({ clientSecret, clePublique, montantTtc, ret
           le bouton restait sur « Paiement en cours… » sans rien dire.
           L'adresse, elle, vient du bloc resté visible.
         */
-        payment_method_data: {
-          billing_details: {
-            name: facturation?.name,
-            email: facturation?.email,
-            phone: facturation?.phone,
-          },
-        },
+        payment_method_data: { billing_details: facturation },
       },
       // On garde le client sur le site : Stripe ne redirige que si la banque
       // l'impose vraiment.

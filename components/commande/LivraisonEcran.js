@@ -18,8 +18,10 @@ import { lirePanier, surChangement } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
 import { problemes, totaux } from '@/lib/totauxCommande'
 import { HEURES, MINUTES, libelleCreneau, finParDefaut, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
+import { PAYS, nomDuPays } from '@/lib/paysFacturation'
+import { completer, retenirClient } from '@/lib/souvenirClient'
 import { euroFr } from '@/lib/prixEntree'
-import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
+import { EnteteTunnel, BasTunnel, Fleche, Pastille, Crayon } from './Chrome'
 import Calendrier from './Calendrier'
 
 /*
@@ -30,6 +32,11 @@ import Calendrier from './Calendrier'
 const MANQUES = {
   date: 'la date',
   heure: 'le créneau de livraison',
+  factEntite: "l'entité à facturer",
+  factAdresse: "l'adresse de facturation",
+  factCp: 'le code postal de facturation',
+  factVille: 'la ville de facturation',
+  factPays: 'le pays de facturation',
   societe: 'la société',
   adresse: "l'adresse",
   ville: 'la ville',
@@ -68,14 +75,23 @@ export default function LivraisonEcran() {
   // calendrier pourrait se fermer entre deux rendus, sous le doigt du client.
   const maintenant = useMemo(() => new Date(), [])
 
+  // Au premier affichage, on complète les trous avec ce que le navigateur
+  // sait déjà du client : il a peut-être demandé un devis la semaine passée.
+  const [preRempli, setPreRempli] = useState(false)
+
   useEffect(() => {
     setLignes(lirePanier())
-    setB(lireBrouillon())
+    const { brouillon, complete } = completer(lireBrouillon())
+    setB(complete ? ecrireBrouillon(brouillon) : brouillon)
+    setPreRempli(p => p || complete)
     setPret(true)
     return surChangement(setLignes)
   }, [])
 
-  const maj = (champs) => setB(ecrireBrouillon(champs))
+  const maj = (champs) => {
+    retenirClient(champs)          // on garde pour la prochaine fois
+    return setB(ecrireBrouillon(champs))
+  }
   const t = totaux(lignes, b)
   const ennuis = problemes(lignes, b, maintenant)
   const bloquantsAvant = ennuis.filter(p => p.etape < 2)
@@ -101,6 +117,20 @@ export default function LivraisonEcran() {
     .map(p => MANQUES[p.champ])
     .filter((v, i, t) => v && t.indexOf(v) === i)
 
+  /*
+    Passer à une facturation distincte en RECOPIANT l'adresse de livraison :
+    le client n'a plus qu'à corriger ce qui diffère, souvent la seule raison
+    sociale. Ouvrir des champs vides l'obligerait à tout retaper.
+  */
+  const dissocier = () => maj({
+    factMeme: false,
+    factEntite: b.factEntite || b.societe,
+    factAdresse: b.factAdresse || b.adresse,
+    factCp: b.factCp || b.cp,
+    factVille: b.factVille || b.ville,
+    factPays: b.factPays || 'FR',
+  })
+
   const essayer = () => {
     if (miens.length === 0) { router.push('/commander/paiement'); return }
     setTente(true)
@@ -122,7 +152,10 @@ export default function LivraisonEcran() {
         <div className="cmd-gauche">
           <p className="cmd-surtitre">Livraison</p>
           <h1 className="cmd-h1 cmd-sf">Quelle date souhaitez-vous ?</h1>
-          <p className="cmd-intro">Livraison du lundi au vendredi, dès 6h30.</p>
+          <p className="cmd-intro">
+            Livraison du lundi au vendredi, dès 6h30.
+            {preRempli && ' Vos coordonnées sont reprises de votre dernière demande — corrigez-les si besoin.'}
+          </p>
 
           <div data-champ="date" className={tente && err('date') ? 'cmd-cal-manque' : undefined}>
             <Calendrier
@@ -259,7 +292,7 @@ export default function LivraisonEcran() {
             <div className="cmd-duo">
               <input className={cl('contactNom')} data-champ="contactNom" placeholder="Prénom et nom" autoComplete="name"
                 value={b.contactNom} onChange={(e) => maj({ contactNom: e.target.value })} />
-              <input className={cl('contactTel')} data-champ="contactTel" placeholder="06 12 34 56 78" inputMode="tel" autoComplete="tel"
+              <input className={cl('contactTel')} data-champ="contactTel" placeholder="06 12 34 56 78 ou +44 7700 900000" inputMode="tel" autoComplete="tel"
                 value={b.contactTel} onChange={(e) => maj({ contactTel: e.target.value })} />
             </div>
             <div style={{ height: '14px' }} />
@@ -267,6 +300,82 @@ export default function LivraisonEcran() {
               value={b.email} onChange={(e) => maj({ email: e.target.value.trim() })} />
             <p className="cmd-aide">
               Le portable sert le matin de la livraison, s&apos;il faut vous joindre à l&apos;accueil.
+              Un numéro étranger s&apos;écrit avec son indicatif.
+            </p>
+          </div>
+
+          <div className="cmd-bloc">
+            <span className="cmd-lab">Facturation</span>
+
+            {/* L'entité qui paie n'est pas toujours celle qui reçoit : un siège
+                règle pour une agence, un cabinet pour son client. Quand c'est la
+                même, la case recopie l'adresse de livraison et le bloc se ferme. */}
+            <button
+              type="button"
+              className={`cmd-case ${b.factMeme ? 'cmd-case-on' : ''}`}
+              onClick={() => (b.factMeme ? dissocier() : maj({ factMeme: true }))}
+              aria-pressed={b.factMeme}
+            >
+              <span className="cmd-coche" />
+              <span>Facturer à la même adresse que la livraison</span>
+            </button>
+
+            {/* L'adresse recopiée reste sous les yeux : le client voit ce qui
+                ira sur sa facture sans avoir à décocher. Le crayon ouvre les
+                champs DÉJÀ remplis avec cette adresse — s'il ne change que la
+                raison sociale, il n'a qu'un mot à taper. */}
+            {b.factMeme && (
+              <div className="cmd-recap">
+                <div>
+                  <p className="cmd-recap-nom">{b.societe || <span className="cmd-recap-vide">Société à renseigner</span>}</p>
+                  <p className="cmd-recap-ligne">
+                    {[b.adresse, [b.cp, b.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ') || '—'}
+                  </p>
+                  <p className="cmd-recap-ligne">France</p>
+                </div>
+                <button type="button" className="cmd-crayon" onClick={dissocier}>
+                  <Crayon /> Modifier
+                </button>
+              </div>
+            )}
+
+            {!b.factMeme && (
+              <div style={{ marginTop: '16px' }}>
+                <input className={cl('factEntite')} data-champ="factEntite" placeholder="Entité à facturer"
+                  autoComplete="organization"
+                  value={b.factEntite} onChange={(e) => maj({ factEntite: e.target.value })} />
+                <div style={{ height: '14px' }} />
+                <input className={cl('factAdresse')} data-champ="factAdresse" placeholder="Numéro et rue"
+                  value={b.factAdresse} onChange={(e) => maj({ factAdresse: e.target.value })} />
+                <div style={{ height: '14px' }} />
+                <div className="cmd-duo">
+                  <input className={cl('factCp')} data-champ="factCp" placeholder="Code postal" inputMode="numeric"
+                    value={b.factCp} onChange={(e) => maj({ factCp: e.target.value })} />
+                  <input className={cl('factVille')} data-champ="factVille" placeholder="Ville"
+                    value={b.factVille} onChange={(e) => maj({ factVille: e.target.value })} />
+                </div>
+                <div style={{ height: '14px' }} />
+                <select className={cl('factPays', 'cmd-liste')} data-champ="factPays" aria-label="Pays de facturation"
+                  value={b.factPays} onChange={(e) => maj({ factPays: e.target.value })}>
+                  {PAYS.map(([code, nom]) => <option key={code} value={code}>{nom}</option>)}
+                </select>
+                <button type="button" className="cmd-sup" style={{ marginTop: '12px' }}
+                  onClick={() => maj({ factMeme: true })}>
+                  Reprendre l&apos;adresse de livraison
+                </button>
+              </div>
+            )}
+
+            <div style={{ height: '14px' }} />
+            <div className="cmd-duo">
+              <input className={cl('emailFacturation')} data-champ="emailFacturation"
+                placeholder="Email de facturation (facultatif)" inputMode="email"
+                value={b.emailFacturation} onChange={(e) => maj({ emailFacturation: e.target.value.trim() })} />
+              <input className="cmd-champ" placeholder="Bon de commande (facultatif)"
+                value={b.factReference} onChange={(e) => maj({ factReference: e.target.value })} />
+            </div>
+            <p className="cmd-aide">
+              Si votre comptabilité exige un numéro de bon de commande, il figurera sur la facture.
             </p>
           </div>
         </div>
