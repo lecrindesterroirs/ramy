@@ -389,3 +389,27 @@
 @media (max-width: 760px) {
   .cmd-fixe .cmd-fin, .cmd-fixe .cmd-centre { overflow: visible; }
 }
+
+/* ── Les conseils du panier ──
+   Sobres : un filet au-dessus, pas d'image, pas de fond. Le bouton d'ajout
+   reprend le lien secondaire du site plutôt qu'un bouton plein, pour que le
+   conseil reste un conseil et non une vitrine. */
+.cmd-conseils { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--filet); }
+.cmd-conseil { display: grid; grid-template-columns: 20px 1fr auto; gap: 14px; align-items: start; padding: 14px 0; }
+.cmd-conseil + .cmd-conseil { border-top: 1px solid var(--filet); }
+.cmd-conseil svg { flex: 0 0 20px; margin-top: 2px; }
+.cmd-conseil-texte p { font-size: 14px; line-height: 1.6; margin: 0; }
+.cmd-conseil-texte p.cmd-b { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.cmd-conseil-ajout {
+  display: inline-flex; flex-direction: column; align-items: flex-end; gap: 3px;
+  font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-deep); background: none; border: none; padding: 2px 0 4px; cursor: pointer;
+  border-bottom: 1px solid var(--accent); white-space: nowrap; text-align: right;
+}
+.cmd-conseil-ajout span { font-size: 12px; letter-spacing: 0.02em; text-transform: none; color: var(--text-primary); }
+.cmd-conseil-ajout:hover { opacity: 0.75; }
+@media (max-width: 760px) {
+  .cmd-conseil { grid-template-columns: 20px 1fr; }
+  .cmd-conseil-ajout { grid-column: 2; align-items: flex-start; text-align: left; margin-top: 8px; }
+}

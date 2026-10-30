@@ -16,9 +16,10 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { lirePanier, surChangement, changerQuantite, retirerDuPanier, cleLigne } from '@/lib/panier'
+import { lirePanier, surChangement, changerQuantite, retirerDuPanier, ajouterAuPanier, cleLigne } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
-import { totaux, problemes, conseils } from '@/lib/totauxCommande'
+import { totaux, problemes } from '@/lib/totauxCommande'
+import { conseilsPanier } from '@/lib/conseilsPanier'
 import { nettoieCp } from '@/lib/zonesLivraison'
 import { completer, retenirClient } from '@/lib/souvenirClient'
 import { produitCommandable } from '@/lib/catalogueCommande'
@@ -41,7 +42,7 @@ export default function PanierEcran() {
 
   const t = totaux(lignes, b)
   const ennuis = problemes(lignes, b).filter(p => p.etape === 1)
-  const avis = conseils(lignes)
+  const avis = conseilsPanier(lignes)
 
   const majCp = (v) => {
     const cp = nettoieCp(v)
@@ -84,15 +85,33 @@ export default function PanierEcran() {
             <LignePanier key={cleLigne(l)} ligne={l} />
           ))}
 
-          {avis.map((a, i) => (
-            <div className="cmd-avis" key={i}>
-              <Pastille />
-              <div>
-                <p>{a.titre}</p>
-                <p className="cmd-b">{a.detail}</p>
-              </div>
+          {/* Ce que Ramy dit au téléphone quand il relit une commande : « trente
+              viennoiseries pour quinze personnes, il vous faut trois thermos ».
+              Deux conseils au maximum, avec de quoi les suivre d'un clic. */}
+          {avis.length > 0 && (
+            <div className="cmd-conseils">
+              <span className="cmd-lab">Nous vous conseillons</span>
+              {avis.map(a => (
+                <div className="cmd-conseil" key={a.cle}>
+                  <Pastille />
+                  <div className="cmd-conseil-texte">
+                    <p>{a.titre}</p>
+                    <p className="cmd-b">{a.detail}</p>
+                  </div>
+                  {a.ajout && (
+                    <button
+                      type="button"
+                      className="cmd-conseil-ajout"
+                      onClick={() => ajouterAuPanier(ligneDepuisCatalogue(a.ajout.id), a.ajout.qte)}
+                    >
+                      Ajouter {a.ajout.qte} × {a.ajout.nom}
+                      <span>{euroFr(a.ajout.prix * a.ajout.qte)}</span>
+                    </button>
+                  )}
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
 
         <div className="cmd-droite">
@@ -166,6 +185,12 @@ export default function PanierEcran() {
       </BasTunnel>
     </div>
   )
+}
+
+/* Une référence du catalogue, prête à entrer dans le panier. */
+function ligneDepuisCatalogue(id) {
+  const p = produitCommandable(id)
+  return { id: p.id, nom: p.nom, prix: p.prix, img: p.img, famille: p.famille, qteTexte: p.qte }
 }
 
 /* Une ligne du panier : vignette, nom, quantité, prix. */
