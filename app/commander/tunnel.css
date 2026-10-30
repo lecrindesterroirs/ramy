@@ -23,8 +23,16 @@
 
 /* ── bandeau du haut ── */
 .cmd-top { display: flex; align-items: center; justify-content: space-between; padding: 30px 54px 26px; gap: 24px; }
-.cmd-logo { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 26px; letter-spacing: 0.17em; line-height: 1; color: var(--text-primary); text-decoration: none; }
-.cmd-logo em { display: block; font-style: normal; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 8px; letter-spacing: 0.44em; color: var(--text-secondary); margin-top: 7px; padding-left: 3px; }
+/*
+  « TRAITEUR » se centre sous « L'ÉCRIN » : il était aligné à gauche dans un
+  bloc à la largeur du nom. Un simple text-align suffit — les deux lignes
+  traînent chacune l'espace que leur interlettrage ajoute après la dernière
+  lettre, et ces deux traînes se compensent presque exactement. Essayé avec
+  des marges négatives pour les reprendre : ça décalait de 2 px au lieu de
+  corriger.
+*/
+.cmd-logo { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 26px; letter-spacing: 0.17em; line-height: 1; color: var(--text-primary); text-decoration: none; text-align: center; }
+.cmd-logo em { display: block; font-style: normal; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 8px; letter-spacing: 0.44em; color: var(--text-secondary); margin-top: 7px; padding-left: 0; }
 .cmd-pas { display: flex; align-items: flex-start; }
 /* color explicite : sans elle, le navigateur colore un lien déjà visité en
    violet, et l'étape franchie virait au mauve. */
