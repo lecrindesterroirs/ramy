@@ -20,6 +20,7 @@ import { problemes, totaux } from '@/lib/totauxCommande'
 import { HEURES, MINUTES, libelleCreneau, finParDefaut, raisonFermeture, regimeDuPanier } from '@/lib/reglesCommande'
 import { PAYS, nomDuPays } from '@/lib/paysFacturation'
 import { completer, retenirClient } from '@/lib/souvenirClient'
+import { materielARendre } from '@/lib/conseilsPanier'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille, Crayon } from './Chrome'
 import Calendrier from './Calendrier'
@@ -97,6 +98,7 @@ export default function LivraisonEcran() {
   const bloquantsAvant = ennuis.filter(p => p.etape < 2)
   const miens = ennuis.filter(p => p.etape === 2)
   const raison = raisonFermeture(lignes, maintenant)
+  const reprise = materielARendre(lignes)
 
   useEffect(() => {
     if (pret && bloquantsAvant.length) router.replace('/commander/panier')
@@ -263,6 +265,21 @@ export default function LivraisonEcran() {
               Donnez le moment où le plateau doit être posé, pas celui de la réunion.
               Trente minutes au minimum : un créneau plus large nous aide à tenir l&apos;heure.
             </p>
+
+            {/* « On les laisse où, les thermos ? » — la question revient à chaque
+                fois au téléphone. Elle est répondue avant d'être posée. */}
+            {reprise && (
+              <div className="cmd-avis" style={{ marginTop: '18px', paddingTop: '16px' }}>
+                <Pastille />
+                <div>
+                  <p>Reprise du matériel comprise.</p>
+                  <p className="cmd-b">
+                    {reprise.texte} Laissez-les sur place, nous repassons : notre créneau
+                    de retour vous est confirmé par email, vous n&apos;avez rien à organiser.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="cmd-bloc">
