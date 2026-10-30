@@ -12,6 +12,37 @@
 .cpt-corps { max-width: 980px; margin: 0 auto; padding: 48px 54px 80px; width: 100%; }
 .cpt-etroit { max-width: 440px; }
 
+/*
+  L'écran de connexion tient dans la fenêtre (31/10/2026, Ramy : « cette page
+  rend la 100vh »). Les règles : jamais rogné, et ça s'adapte à toutes les
+  tailles. D'où des hauteurs en clamp() plutôt que fixes — sur un écran bas,
+  les cales et les champs se resserrent avant que quoi que ce soit déborde ;
+  si ça ne rentre toujours pas, le corps défile tout seul.
+*/
+.cpt-ecran { height: 100vh; height: 100svh; overflow: hidden; }
+.cpt-centre {
+  flex: 1; min-height: 0; display: flex; flex-direction: column;
+  justify-content: center;
+  /* « safe » : quand le contenu dépasse, un centrage ordinaire coupe le HAUT
+     sans qu'on puisse y remonter. Là, il repart du début. */
+  justify-content: safe center;
+  overflow-y: auto; overscroll-behavior: contain;
+  padding-top: clamp(10px, 3vh, 44px); padding-bottom: clamp(10px, 3vh, 44px);
+}
+.cpt-centre .cmd-surtitre { margin-bottom: clamp(8px, 1.4vh, 18px); }
+.cpt-centre .cmd-h1 { font-size: clamp(25px, 3vw, 38px); margin-bottom: clamp(8px, 1.4vh, 14px); }
+.cpt-centre .cmd-intro { margin-bottom: clamp(16px, 3vh, 32px); }
+.cpt-cale { height: clamp(5px, 1vh, 14px); }
+.cpt-form .cmd-champ { height: clamp(40px, 6vh, 52px); }
+.cpt-form .cmd-aide { margin-top: clamp(6px, 1vh, 11px); }
+.cpt-valider { width: 100%; justify-content: center; margin-top: clamp(12px, 2.6vh, 24px); }
+/* Les trois bascules sur une ligne : en colonne, elles coûtaient 90 px de
+   haut pour trois mots. */
+.cpt-bascules {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px;
+  margin-top: clamp(12px, 3vh, 28px);
+}
+
 /* ── une commande dans la liste ── */
 .cpt-cmd { display: grid; grid-template-columns: 1fr auto auto; gap: 24px; align-items: center; padding: 22px 0; border-top: 1px solid var(--filet); }
 .cpt-cmd:last-child { border-bottom: 1px solid var(--filet); }
@@ -24,6 +55,10 @@
 .cpt-vide { text-align: center; padding: 64px 0 48px; }
 
 @media (max-width: 760px) {
+  /* Sur un téléphone, on laisse la page défiler comme d'habitude : une
+     fenêtre bloquée en hauteur se dérobe dès que le clavier s'ouvre. */
+  .cpt-ecran { height: auto; min-height: 100svh; overflow: visible; }
+  .cpt-centre { overflow: visible; padding-top: 28px; padding-bottom: 40px; }
   .cpt-bandeau { flex-direction: column; align-items: stretch; gap: 16px; padding: 18px 20px 14px; }
   .cpt-liens { justify-content: center; gap: 20px; flex-wrap: wrap; }
   .cpt-corps { padding: 32px 20px 56px; }

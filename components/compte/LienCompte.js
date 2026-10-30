@@ -21,6 +21,7 @@
   clignote.
 */
 
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 const lireBonjour = () => {
@@ -79,22 +80,22 @@ export default function LienCompte({ langue = 'fr', mobile = false, onNavigation
     return prenom ? (
       <div className="nav-compte-m">
         <span className="nav-compte-bonjour">Bonjour {prenom}</span>
-        <a href="/compte" onClick={onNavigation}>Mes commandes</a>
-        <a href="/compte/informations" onClick={onNavigation}>Mes informations</a>
+        <Link href="/compte" onClick={onNavigation}>Mes commandes</Link>
+        <Link href="/compte/informations" onClick={onNavigation}>Mes informations</Link>
         <button type="button" onClick={sortir}>Se déconnecter</button>
       </div>
     ) : (
-      <a href="/compte/connexion" className="nav-compte-m nav-compte-m-seul" onClick={onNavigation}>
+      <Link href="/compte/connexion" className="nav-compte-m nav-compte-m-seul" onClick={onNavigation}>
         <Silhouette taille={16} /> Mon compte
-      </a>
+      </Link>
     )
   }
 
   if (!prenom) {
     return (
-      <a href="/compte/connexion" className="nav-compte" aria-label="Votre compte">
+      <Link href="/compte/connexion" className="nav-compte" aria-label="Votre compte">
         <Silhouette />
-      </a>
+      </Link>
     )
   }
 
@@ -113,8 +114,8 @@ export default function LienCompte({ langue = 'fr', mobile = false, onNavigation
       {ouvert && (
         <div className="nav-compte-menu">
           <span className="nav-compte-salut">Bonjour {prenom}</span>
-          <a href="/compte">Mes commandes</a>
-          <a href="/compte/informations">Mes informations</a>
+          <Link href="/compte">Mes commandes</Link>
+          <Link href="/compte/informations">Mes informations</Link>
           <button type="button" onClick={sortir}>Se déconnecter</button>
         </div>
       )}

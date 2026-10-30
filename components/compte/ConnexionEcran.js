@@ -92,30 +92,30 @@ export default function ConnexionEcran() {
   }
 
   return (
-    <div className="cmd">
+    <div className="cmd cpt-ecran">
       <EnteteSimple />
 
-      <div className="cpt-corps cpt-etroit">
+      <div className="cpt-corps cpt-etroit cpt-centre">
         <p className="cmd-surtitre">Espace client</p>
         <h1 className="cmd-h1 cmd-sf">{M.titre}</h1>
         <p className="cmd-intro">
           {mode === 'connexion' && 'Retrouvez vos commandes et recommandez en deux clics.'}
-          {mode === 'creation' && 'Vos informations seront reprises à chaque commande. Vous ne les retaperez plus. Nous vous envoyons un lien pour confirmer votre adresse.'}
+          {mode === 'creation' && 'Vos informations seront reprises à chaque commande. Nous vous envoyons un lien pour confirmer votre adresse.'}
           {mode === 'oubli' && 'Indiquez votre adresse : nous vous envoyons un lien pour en choisir un nouveau.'}
         </p>
 
-        <form onSubmit={envoyer}>
+        <form onSubmit={envoyer} className="cpt-form">
           {mode === 'creation' && (
             <>
               <input className="cmd-champ" placeholder="Prénom et nom" autoComplete="name"
                 value={c.nom} onChange={(e) => maj({ nom: e.target.value })} />
-              <div style={{ height: '14px' }} />
+              <div className="cpt-cale" />
               <input className="cmd-champ" placeholder="Société" autoComplete="organization"
                 value={c.societe} onChange={(e) => maj({ societe: e.target.value })} />
-              <div style={{ height: '14px' }} />
+              <div className="cpt-cale" />
               <input className="cmd-champ" placeholder="Téléphone" inputMode="tel" autoComplete="tel"
                 value={c.telephone} onChange={(e) => maj({ telephone: e.target.value })} />
-              <div style={{ height: '14px' }} />
+              <div className="cpt-cale" />
               {/* Piège à robots : un humain ne le voit pas. */}
               <input tabIndex={-1} autoComplete="off" aria-hidden="true"
                 style={{ position: 'absolute', left: '-9999px' }}
@@ -128,7 +128,7 @@ export default function ConnexionEcran() {
 
           {mode !== 'oubli' && (
             <>
-              <div style={{ height: '14px' }} />
+              <div className="cpt-cale" />
               <input className="cmd-champ" type="password" placeholder="Mot de passe" required
                 autoComplete={mode === 'creation' ? 'new-password' : 'current-password'}
                 minLength={mode === 'creation' ? 8 : undefined}
@@ -140,12 +140,12 @@ export default function ConnexionEcran() {
           {erreur && <p className="cmd-erreur" style={{ marginTop: '16px' }}>{erreur}</p>}
           {fait && <p className="cmd-aide" style={{ marginTop: '16px', color: 'var(--accent-deep)' }}>{fait}</p>}
 
-          <button type="submit" className="cmd-cont" disabled={envoi} style={{ marginTop: '24px', width: '100%', justifyContent: 'center' }}>
+          <button type="submit" className="cmd-cont cpt-valider" disabled={envoi}>
             {envoi ? 'Un instant…' : <>{M.bouton} <Fleche /></>}
           </button>
         </form>
 
-        <div style={{ marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+        <div className="cpt-bascules">
           {mode !== 'connexion' && (
             <button type="button" className="cmd-retour" onClick={() => { setMode('connexion'); setErreur(null); setFait(null) }}>
               J&apos;ai déjà un compte

@@ -11,6 +11,7 @@
   la règle d'avant : pas de pastille rouge, un trait fin, rien qui clignote.
 */
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { nombreArticles, surChangement } from '@/lib/panier'
 
@@ -24,21 +25,28 @@ export default function LienPanier({ langue = 'fr', mobile = false, onNavigation
 
   if (n === 0 || langue === 'en') return null
 
+  /*
+    `Link` et pas `<a>` : le tunnel est la seule partie du site où l'on
+    enchaîne les écrans, et un rechargement complet du document ajoutait un
+    écran blanc à chaque clic (Ramy, 31/10/2026 : « ça charge trop longtemps »).
+    Next précharge la route dès que le lien est visible, et le passage se fait
+    sans repartir de zéro.
+  */
   if (mobile) {
     return (
-      <a
+      <Link
         href="/commander/panier"
         className="nav-panier nav-panier-m"
         onClick={onNavigation}
         aria-label={`Votre panier, ${n} article${n > 1 ? 's' : ''}`}
       >
         <Cabas /> Panier <span>{n}</span>
-      </a>
+      </Link>
     )
   }
 
   return (
-    <a
+    <Link
       href="/commander/panier"
       className="nav-panier"
       onClick={onNavigation}
@@ -46,7 +54,7 @@ export default function LienPanier({ langue = 'fr', mobile = false, onNavigation
     >
       <Cabas />
       <span>{n}</span>
-    </a>
+    </Link>
   )
 }
 
