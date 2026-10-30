@@ -25,13 +25,11 @@ import { VIDE, lireBrouillon, ecrireBrouillon, viderBrouillon } from '@/lib/brou
 import { problemes, totaux } from '@/lib/totauxCommande'
 import { libelleCreneau, limiteModification } from '@/lib/reglesCommande'
 import { MODES } from '@/lib/paiement'
-import { PARFUMS } from '@/lib/catalogueCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
 import CarteStripe, { retenirPaiement, relirePaiement, oublierPaiement } from './CarteStripe'
 
 const SEUIL_APPEL = 1000
-const NOMS = new Map(PARFUMS.map(p => [p.id, p.label]))
 /* « 06 12 34 56 78 » → « +33612345678 », le format attendu par les banques. */
 function enE164(tel) {
   const n = String(tel || '').replace(/\D/g, '')
@@ -310,21 +308,14 @@ export default function PaiementEcran() {
 
           {lignes.map(l => (
             <div className="cmd-r" key={cleLigne(l)}>
-              <span>
-                {l.qte} × {l.nom}
-                {l.options?.parfums?.length ? (
-                  <span style={{ display: 'block', fontSize: '12.5px', color: 'var(--eteint)' }}>
-                    {l.options.parfums.map(o => `${o.qte} ${NOMS.get(o.id)}`).join(', ')}
-                  </span>
-                ) : null}
-              </span>
+              <span>{l.qte} × {l.nom}</span>
               <b>{euroFr(l.prix * l.qte)}</b>
             </div>
           ))}
           <div className="cmd-r"><span>Livraison {t.zone.nom}</span><b>{euroFr(t.livraison)}</b></div>
           <div className="cmd-rt"><span className="cmd-l">Total HT</span><span className="cmd-v">{euroFr(t.ht)}</span></div>
           <div className="cmd-r" style={{ paddingTop: '12px' }}><span>TVA 10 %</span><b>{euroFr(t.tva)}</b></div>
-          <div className="cmd-rt" style={{ border: 'none', margin: 0, paddingTop: '4px' }}>
+          <div className="cmd-rt cmd-rt-ttc" style={{ border: 'none', margin: 0, paddingTop: '2px' }}>
             <span className="cmd-l">Total TTC</span><span className="cmd-v">{euroFr(t.ttc)}</span>
           </div>
 

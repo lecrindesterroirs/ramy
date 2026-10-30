@@ -57,14 +57,11 @@ export default function BoutonAjouter({ id, compact = false, variante = 'carte' 
 
   const stop = (e) => { e.preventDefault(); e.stopPropagation() }
 
-  const ligneDe = (n) => {
-    const base = { id: p.id, nom: p.nom, prix: p.prix, img: p.img, famille: p.famille, qteTexte: p.qte }
-    return p.parfums ? { ...base, options: { parfums: [] } } : base
-  }
+  const ligneDe = () => ({ id: p.id, nom: p.nom, prix: p.prix, img: p.img, famille: p.famille, qteTexte: p.qte })
 
   const ajoute = (e) => {
     stop(e)
-    ajouterAuPanier(ligneDe(1), 1)
+    ajouterAuPanier(ligneDe(), 1)
     setCoche(true)
     if (minuteur.current) clearTimeout(minuteur.current)
     minuteur.current = setTimeout(() => setCoche(false), 1100)

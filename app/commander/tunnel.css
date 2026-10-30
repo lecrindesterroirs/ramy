@@ -26,10 +26,13 @@
 .cmd-logo { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 26px; letter-spacing: 0.17em; line-height: 1; color: var(--text-primary); text-decoration: none; }
 .cmd-logo em { display: block; font-style: normal; font-family: 'Neue Montreal', 'Neue Montreal Fallback', sans-serif; font-size: 8px; letter-spacing: 0.44em; color: var(--text-secondary); margin-top: 7px; padding-left: 3px; }
 .cmd-pas { display: flex; align-items: flex-start; }
-.cmd-pas a, .cmd-pas .cmd-p { width: 124px; display: flex; flex-direction: column; align-items: center; gap: 11px; text-decoration: none; }
+/* color explicite : sans elle, le navigateur colore un lien déjà visité en
+   violet, et l'étape franchie virait au mauve. */
+.cmd-pas a, .cmd-pas .cmd-p { width: 124px; display: flex; flex-direction: column; align-items: center; gap: 11px; text-decoration: none; color: var(--text-primary); }
+.cmd-pas a:visited { color: var(--text-primary); }
 .cmd-n { width: 28px; height: 28px; border: 1px solid var(--filet); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--eteint); }
 .cmd-p-fait .cmd-n { border-color: var(--accent); color: var(--accent-deep); }
-.cmd-p-on .cmd-n { background: var(--accent); border-color: var(--accent); color: #fff; }
+.cmd-p-on .cmd-n { background: var(--accent); border-color: var(--accent-deep); color: var(--text-primary); font-weight: 500; }
 .cmd-p span { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--eteint); }
 .cmd-p-on span, .cmd-p-fait span { color: var(--text-primary); }
 .cmd-pas .cmd-ln { width: 72px; height: 1px; background: var(--filet); margin-top: 14px; }
@@ -54,23 +57,30 @@
 .cmd-fixe { height: 100vh; height: 100dvh; overflow: hidden; }
 .cmd-fixe .cmd-corps { min-height: 0; overflow: hidden; }
 .cmd-fixe .cmd-top, .cmd-fixe .cmd-bas { flex: 0 0 auto; }
-.cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite { overflow: hidden; }
 
-/* La colonne qui défile. Sa barre reste visible : une zone qui défile sans
-   le dire ne se devine pas. */
-.cmd-fixe .cmd-defile {
+/*
+  LES DEUX colonnes défilent, chacune pour elle. Une seule le faisait, et
+  l'autre se faisait couper dès que la fenêtre rétrécissait : le bas du
+  récapitulatif disparaissait sans que rien ne le dise. Quelle que soit la
+  hauteur de la fenêtre, plus rien n'est tronqué.
+*/
+.cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite {
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: rgba(17, 17, 17, 0.22) transparent;
 }
-.cmd-fixe .cmd-defile::-webkit-scrollbar { width: 8px; }
-.cmd-fixe .cmd-defile::-webkit-scrollbar-thumb { background: rgba(17, 17, 17, 0.24); }
-.cmd-fixe .cmd-defile::-webkit-scrollbar-thumb:hover { background: var(--accent-deep); }
-.cmd-fixe .cmd-defile::-webkit-scrollbar-track { background: rgba(17, 17, 17, 0.04); }
+.cmd-fixe .cmd-gauche::-webkit-scrollbar,
+.cmd-fixe .cmd-droite::-webkit-scrollbar { width: 8px; }
+.cmd-fixe .cmd-gauche::-webkit-scrollbar-thumb,
+.cmd-fixe .cmd-droite::-webkit-scrollbar-thumb { background: rgba(17, 17, 17, 0.24); }
+.cmd-fixe .cmd-gauche::-webkit-scrollbar-thumb:hover,
+.cmd-fixe .cmd-droite::-webkit-scrollbar-thumb:hover { background: var(--accent-deep); }
+.cmd-fixe .cmd-gauche::-webkit-scrollbar-track,
+.cmd-fixe .cmd-droite::-webkit-scrollbar-track { background: rgba(17, 17, 17, 0.04); }
 /* La barre mange de la place à droite : on la compense pour que le contenu
-   reste aligné sur la colonne voisine. */
-.cmd-fixe .cmd-defile { padding-right: 48px; }
+   garde sa marge. */
+.cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite { padding-right: 48px; }
 
 .cmd-fixe .cmd-gauche { padding-top: 32px; padding-bottom: 24px; }
 .cmd-fixe .cmd-droite { padding-top: 32px; }
@@ -111,9 +121,18 @@
 /* ── récapitulatif ── */
 .cmd-r { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--text-secondary); padding: 8px 0; }
 .cmd-r b { font-weight: 400; color: var(--text-primary); white-space: nowrap; }
-.cmd-rt { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 0 0; margin-top: 8px; border-top: 1px solid var(--filet); }
-.cmd-rt .cmd-l { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-secondary); }
-.cmd-rt .cmd-v { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 27px; }
+/*
+  Les totaux. Première version : deux montants en 27 px, qui écrasaient tout
+  le récapitulatif. Un seul accent suffit — le TTC, ce que le client paie —
+  et le HT reste une ligne de lecture. Les chiffres se posent sur la même
+  colonne de droite que les autres montants.
+*/
+.cmd-rt { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0 0; margin-top: 6px; border-top: 1px solid var(--filet); }
+.cmd-rt .cmd-l { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); }
+.cmd-rt .cmd-v { font-family: 'Baskerville Display PT', 'Baskerville Fallback', Georgia, serif; font-size: 18px; letter-spacing: 0.01em; color: var(--text-primary); }
+/* Le seul montant qui compte vraiment pour le client. */
+.cmd-rt-ttc .cmd-v { font-size: 24px; }
+.cmd-rt-ttc .cmd-l { color: var(--text-primary); }
 .cmd-mini { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--filet); }
 .cmd-mini b { color: var(--text-primary); font-weight: 500; }
 
@@ -144,8 +163,14 @@
 /* le disque or doit être centré sur le chiffre : sans top/left/translate il
    se posait en haut à gauche de la case (bug vu le 29/10) */
 .cmd-c::before { content: ''; position: absolute; top: 50%; left: 50%; width: clamp(34px, 4.4vh, 46px); height: clamp(34px, 4.4vh, 46px); background: var(--accent); transform: translate(-50%, -50%) scale(0.7); opacity: 0; transition: opacity 0.18s ease, transform 0.18s ease; }
-.cmd-c-sel::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-.cmd-c-sel span { color: #fff; }
+/*
+  Le jour retenu : carré or, chiffre SOMBRE, et un filet plus foncé.
+  Le chiffre était blanc : si le fond or ne se peignait pas — feuille de
+  style à moitié chargée, impression, contraste forcé — la date retenue
+  devenait invisible. En sombre, elle se lit avec ou sans le fond.
+*/
+.cmd-c-sel::before { opacity: 1; transform: translate(-50%, -50%) scale(1); box-shadow: inset 0 0 0 1px var(--accent-deep); }
+.cmd-c-sel span { color: var(--text-primary); font-weight: 500; }
 .cmd-c-off { color: var(--eteint); cursor: default; }
 .cmd-c:not(.cmd-c-off):not(.cmd-c-sel):hover::before { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
 
@@ -192,9 +217,14 @@
 .cmd-cont { background: #111111; color: #fff; padding: 15px 30px; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; border: none; font-family: inherit; text-decoration: none; transition: opacity 0.3s ease; }
 .cmd-cont:hover { opacity: 0.82; }
 .cmd-cont:disabled { background: var(--eteint); cursor: not-allowed; opacity: 1; }
-/* Le bouton garde son noir même quand la commande est incomplète : il est
-   cliquable, et il explique alors ce qui manque. Un bouton grisé dit « ne
-   cliquez pas », et le client appelle au lieu de finir sa commande. */
+/*
+  Bouton gris tant qu'il manque quelque chose : le client voit d'un coup d'œil
+  qu'il n'a pas fini. Il reste cliquable, et dire ce qui manque est justement
+  son rôle — un bouton grisé qui ne répond pas laisserait chercher tout seul.
+  (Arbitrage de Ramy : le noir, essayé le 30/10, cachait l'état incomplet.)
+*/
+.cmd-cont-bloque { background: var(--eteint); }
+.cmd-cont-bloque:hover { opacity: 1; background: #B5AFA4; }
 .cmd-manque { font-size: 13px; line-height: 1.6; color: #8A3A1E; margin: 0; flex: 1; }
 .cmd-manque b { font-weight: 500; }
 /* Champ montré du doigt une fois le bouton pressé. */
@@ -226,7 +256,7 @@
      La page redevient une page qui défile. */
   .cmd-fixe { height: auto; overflow: visible; }
   .cmd-fixe .cmd-corps { overflow: visible; }
-  .cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite, .cmd-fixe .cmd-defile { overflow: visible; }
+  .cmd-fixe .cmd-gauche, .cmd-fixe .cmd-droite { overflow: visible; padding-right: 20px; }
 
   .cmd-top { padding: 18px 20px 14px; flex-direction: column; align-items: stretch; gap: 18px; }
   .cmd-logo { font-size: 20px; text-align: center; }

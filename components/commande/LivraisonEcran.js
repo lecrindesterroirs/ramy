@@ -147,13 +147,14 @@ export default function LivraisonEcran() {
           </div>
         </div>
 
-        <div className="cmd-droite cmd-defile">
+        <div className="cmd-droite">
           <h2 className="cmd-h2 cmd-sf">Votre créneau de livraison</h2>
 
           <div className="cmd-bloc">
             {/* Quatre menus : heure et minutes de chaque bout du créneau.
                 Choisir le début propose une fin trente minutes plus tard,
-                que le client peut élargir — une plage large nous arrange. */}
+                que le client peut élargir : un créneau plus large nous aide à tenir
+                l'heure. */}
             <div className="cmd-creneau">
               <div>
                 <span className="cmd-lab">Début du créneau</span>
@@ -227,7 +228,7 @@ export default function LivraisonEcran() {
 
             <p className="cmd-aide">
               Donnez le moment où le plateau doit être posé, pas celui de la réunion.
-              Trente minutes au minimum ; plus large nous arrange.
+              Trente minutes au minimum : un créneau plus large nous aide à tenir l&apos;heure.
             </p>
           </div>
 

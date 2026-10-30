@@ -16,11 +16,11 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { lirePanier, surChangement, changerQuantite, retirerDuPanier, changerOptions, cleLigne } from '@/lib/panier'
+import { lirePanier, surChangement, changerQuantite, retirerDuPanier, cleLigne } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
-import { totaux, problemes, conseils, parfumsManquants } from '@/lib/totauxCommande'
+import { totaux, problemes, conseils } from '@/lib/totauxCommande'
 import { nettoieCp } from '@/lib/zonesLivraison'
-import { produitCommandable, PARFUMS } from '@/lib/catalogueCommande'
+import { produitCommandable } from '@/lib/catalogueCommande'
 import { euroFr } from '@/lib/prixEntree'
 import { EnteteTunnel, BasTunnel, Fleche, Pastille } from './Chrome'
 
@@ -67,7 +67,7 @@ export default function PanierEcran() {
       <EnteteTunnel etape={1} />
 
       <div className="cmd-corps cmd-corps-panier">
-        <div className="cmd-gauche cmd-defile">
+        <div className="cmd-gauche">
           <p className="cmd-surtitre">Panier</p>
           <h1 className="cmd-h1 cmd-sf">Votre commande</h1>
           <p className="cmd-intro">
@@ -128,7 +128,7 @@ export default function PanierEcran() {
           <div className="cmd-r" style={{ paddingTop: '12px' }}>
             <span>TVA 10 %</span><b>{euroFr(t.tva)}</b>
           </div>
-          <div className="cmd-rt" style={{ border: 'none', margin: 0, paddingTop: '4px' }}>
+          <div className="cmd-rt cmd-rt-ttc" style={{ border: 'none', margin: 0, paddingTop: '2px' }}>
             <span className="cmd-l">Total TTC</span>
             <span className="cmd-v">{euroFr(t.ttc)}</span>
           </div>
@@ -162,24 +162,10 @@ export default function PanierEcran() {
   )
 }
 
-/* Une ligne, avec son réglage de quantité et, pour un coffret Mado, ses parfums. */
+/* Une ligne du panier : vignette, nom, quantité, prix. */
 function LignePanier({ ligne }) {
   const cle = cleLigne(ligne)
   const p = produitCommandable(ligne.id)
-  const reste = parfumsManquants(ligne)
-  const parfums = ligne.options?.parfums || []
-
-  const bougeParfum = (id, pas) => {
-    const actuels = parfums.filter(o => o.qte > 0)
-    const i = actuels.findIndex(o => o.id === id)
-    const qte = (i >= 0 ? actuels[i].qte : 0) + pas
-    if (qte < 0) return
-    if (pas > 0 && reste <= 0) return
-    const suivants = i >= 0
-      ? actuels.map(o => (o.id === id ? { ...o, qte } : o)).filter(o => o.qte > 0)
-      : [...actuels, { id, qte }]
-    changerOptions(cle, { parfums: suivants })
-  }
 
   return (
     <div className="cmd-ligne">
@@ -194,30 +180,6 @@ function LignePanier({ ligne }) {
           {euroFr(ligne.prix)} l&apos;unité
         </p>
         <button type="button" className="cmd-sup" onClick={() => retirerDuPanier(cle)}>Retirer</button>
-
-        {p?.parfums ? (
-          <div className="cmd-parfums">
-            <span className="cmd-lab">
-              Parfums · {p.parfums} madeleines à répartir
-            </span>
-            <div className="cmd-parfums-grille">
-              {PARFUMS.map(f => {
-                const q = parfums.find(o => o.id === f.id)?.qte || 0
-                return (
-                  <div className="cmd-parfum" key={f.id}>
-                    <span>{f.label}</span>
-                    <span className="cmd-qte">
-                      <button type="button" onClick={() => bougeParfum(f.id, -1)} disabled={q === 0} aria-label={`Moins de ${f.label}`}>−</button>
-                      <span className="cmd-q">{q}</span>
-                      <button type="button" onClick={() => bougeParfum(f.id, +1)} disabled={reste <= 0} aria-label={`Plus de ${f.label}`}>+</button>
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
-            {reste > 0 && <p className="cmd-reste">Reste {reste} madeleine{reste > 1 ? 's' : ''} à choisir.</p>}
-          </div>
-        ) : null}
       </div>
       <span className="cmd-qte">
         <button type="button" onClick={() => changerQuantite(cle, ligne.qte - 1)} aria-label="Retirer un">−</button>

@@ -149,7 +149,8 @@ aujourd'hui.
 **Le créneau, arrêté par Ramy le 30/10/2026 :** le client le pose lui-même, avec quatre
 menus — heure et minutes du début, un tiret, heure et minutes de la fin, les minutes par
 quarts d'heure. Choisir un début propose une fin trente minutes plus tard, qu'il peut
-élargir. **Trente minutes au minimum**, c'est ce que nous tenons ; plus large nous arrange
+élargir. **Trente minutes au minimum**, c'est ce que nous tenons ; un créneau plus large nous aide
+à tenir l'heure
 et ne coûte rien.
 
 Deux versions ont été écartées avant celle-là : une liste de créneaux tout faits (trop

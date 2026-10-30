@@ -19,10 +19,12 @@ export default function LayoutCommande({ children }) {
       <style>{`
         .promo-banner { display: none !important }
         :root { --banner-h: 0px }
-        /* L'assistant reste joignable, mais il ne doit pas se poser sur le
-           bouton qui fait avancer la commande : on le remonte au-dessus de
-           la barre du bas. */
-        .chat-launcher { bottom: 136px !important }
+        /* L'assistant disparaît pendant la commande. Dans un écran à deux
+           colonnes tenu à la hauteur de la fenêtre, sa pastille finit
+           toujours par se poser sur un montant ou sur le bouton. Le numéro
+           de téléphone figure sur tous les messages d'erreur et sur l'écran
+           de confirmation. */
+        .chat-launcher, .chat-launcher-txt { display: none !important }
 
         /*
           Le site pose overflow-x: hidden sur html ET sur body (globals.css
