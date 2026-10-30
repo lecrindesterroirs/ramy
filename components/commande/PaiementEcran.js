@@ -32,6 +32,14 @@ import CarteStripe, { retenirPaiement, relirePaiement, oublierPaiement } from '.
 
 const SEUIL_APPEL = 1000
 const NOMS = new Map(PARFUMS.map(p => [p.id, p.label]))
+/* « 06 12 34 56 78 » → « +33612345678 », le format attendu par les banques. */
+function enE164(tel) {
+  const n = String(tel || '').replace(/\D/g, '')
+  if (n.startsWith('33')) return `+${n}`
+  if (n.startsWith('0')) return `+33${n.slice(1)}`
+  return n ? `+${n}` : undefined
+}
+
 const LONG = (iso) => iso
   ? new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
   : ''
@@ -223,6 +231,12 @@ export default function PaiementEcran() {
               clePublique={carte.clePublique}
               montantTtc={carte.ttc ?? t.ttc}
               retourUrl={retourUrl}
+              facturation={{
+                name: b.contactNom,
+                email: b.emailFacturation || b.email,
+                phone: enE164(b.contactTel),
+                address: { line1: b.adresse, postal_code: b.cp, city: b.ville, country: 'FR' },
+              }}
               onPaye={paye}
               onErreur={(m) => { setErreur(m); setEnvoi(false) }}
             />
@@ -316,13 +330,13 @@ export default function PaiementEcran() {
 
           <div className="cmd-liv">
             <p className="cmd-k">Livraison</p>
-            <p>{LONG(b.date)}, {libelleCreneau(b.heure)}</p>
+            <p>{LONG(b.date)}, {libelleCreneau(b.heure, b.heureFin)}</p>
             <p className="cmd-g">{b.adresse}, {b.cp} {b.ville}{b.acces ? ` · ${b.acces}` : ''}</p>
             <p className="cmd-g">{b.contactNom} · {b.contactTel}</p>
           </div>
 
           <p className="cmd-mini">
-            Modifiable jusqu&apos;au <b>{LONG(modif?.date)} à {modif?.heure}h</b>. Au-delà, un appel suffit.
+            Modifiable jusqu&apos;au <b>{LONG(modif?.date)} à {modif?.heure}h</b>. Au-delà, un appel est nécessaire.
           </p>
         </div>
       </div>

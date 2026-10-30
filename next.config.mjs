@@ -23,16 +23,24 @@ const LEADS = 'https://*.lfeeder.com https://*.leadfeeder.com https://cdn.ldnfrp
 // Calendly (prise de rendez-vous /contact/rendez-vous) : widget.js depuis assets.calendly.com,
 // styles injectés depuis assets.calendly.com, iframe de réservation depuis calendly.com, avatars/images *.calendly.com
 const CALENDLY = 'https://assets.calendly.com https://*.calendly.com'
+// Paiement par carte dans le tunnel de commande (lib/stripe.js) : le script
+// vient de js.stripe.com, les champs de carte et l'authentification 3-D Secure
+// s'affichent dans des cadres servis par js.stripe.com et hooks.stripe.com, et
+// le navigateur parle à api.stripe.com. Sans ces quatre entrées, le formulaire
+// reste bloqué sur « Chargement du paiement sécurisé… ».
+const STRIPE_SCRIPT = 'https://js.stripe.com'
+const STRIPE_CADRES = 'https://js.stripe.com https://hooks.stripe.com'
+const STRIPE_APPELS = 'https://api.stripe.com'
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${GA_GTM} ${ADS} ${POSTHOG} ${LEADS}`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://assets.calendly.com https://lecrin-analytics.vercel.app ${STRIPE_SCRIPT} ${GA_GTM} ${ADS} ${POSTHOG} ${LEADS}`,
   "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
-  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${GA_GTM} ${ADS} ${LEADS}`,
+  `img-src 'self' data: blob: https://images.unsplash.com https://*.googleusercontent.com ${CALENDLY} ${STRIPE_SCRIPT} ${GA_GTM} ${ADS} ${LEADS}`,
   "font-src 'self' data:",
-  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${GA_GTM} ${ADS} ${POSTHOG} ${POSTHOG_UI} ${LEADS}`,
+  `connect-src 'self' https://vitals.vercel-insights.com https://lecrin-analytics.vercel.app ${CALENDLY} ${STRIPE_APPELS} ${GA_GTM} ${ADS} ${POSTHOG} ${POSTHOG_UI} ${LEADS}`,
   // L'enregistrement de sessions PostHog compresse dans un worker créé depuis un blob.
   "worker-src 'self' blob:",
-  `frame-src https://calendly.com https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
+  `frame-src https://calendly.com ${STRIPE_CADRES} https://www.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://www.google.com`,
   `frame-ancestors 'self' ${POSTHOG_UI}`,
   "base-uri 'self'",
   "form-action 'self'",

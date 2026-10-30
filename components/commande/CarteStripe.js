@@ -59,15 +59,28 @@ const APPARENCE = {
   },
 }
 
-export default function CarteStripe({ clientSecret, clePublique, montantTtc, retourUrl, onPaye, onErreur }) {
+export default function CarteStripe({ clientSecret, clePublique, montantTtc, retourUrl, facturation, onPaye, onErreur }) {
   const boite = useRef(null)
-  const monte = useRef(false)
   const refs = useRef({ stripe: null, elements: null })
   const [etat, setEtat] = useState('chargement')
 
+  /*
+    Les deux fonctions de rappel arrivent écrites sur place par l'écran
+    parent : elles changent d'identité à chaque rendu. Mises en dépendance de
+    l'effet, elles le feraient recommencer sans fin. On les garde dans une
+    référence, toujours à jour, et l'effet ne dépend que du paiement.
+  */
+  const rappels = useRef({ onPaye, onErreur })
+  rappels.current = { onPaye, onErreur }
+
+  /*
+    Pas de garde « déjà monté » : en développement React monte le composant,
+    le démonte, puis le remonte pour débusquer les effets mal nettoyés. Un
+    drapeau posé au premier passage bloquait le second, et le formulaire
+    restait sur « Chargement du paiement sécurisé… ». C'est le nettoyage qui
+    doit faire le travail, pas un verrou.
+  */
   useEffect(() => {
-    if (monte.current) return
-    monte.current = true
     let vivant = true
     let element = null
 
@@ -75,18 +88,35 @@ export default function CarteStripe({ clientSecret, clePublique, montantTtc, ret
       try {
         const { loadStripe } = await import('@stripe/stripe-js')
         const stripe = await loadStripe(clePublique)
-        if (!vivant || !stripe) throw new Error('Stripe indisponible')
+        // Le composant a été démonté entre-temps : on s'arrête sans bruit.
+        if (!vivant) return
+        if (!stripe) throw new Error('Stripe.js ne s\'est pas chargé')
 
         const elements = stripe.elements({ clientSecret, appearance: APPARENCE, locale: 'fr' })
-        element = elements.create('payment', { layout: 'tabs' })
+        /*
+          Le nom et l'email viennent de l'étape livraison : inutile de les
+          redemander, ils sont fournis à la validation.
+
+          L'adresse de facturation, elle, reste visible et modifiable — elle
+          n'est pas toujours celle de la livraison, et les demandes venues de
+          l'étranger se multiplient (Ramy, 30/10/2026). Elle arrive
+          pré-remplie avec l'adresse de livraison et la France, pour que le
+          client français n'ait rien à faire. Sans ce pré-remplissage, Stripe
+          proposait le pays du navigateur : « Indonésie » depuis Bali.
+        */
+        element = elements.create('payment', {
+          layout: 'tabs',
+          fields: { billingDetails: { name: 'never', email: 'never', phone: 'never', address: 'auto' } },
+          defaultValues: { billingDetails: { address: facturation?.address || { country: 'FR' } } },
+        })
+        element.on('ready', () => { if (vivant) setEtat('pret') })
         element.mount(boite.current)
         refs.current = { stripe, elements }
-        element.on('ready', () => vivant && setEtat('pret'))
       } catch (e) {
         console.error('Stripe: chargement impossible', e)
         if (vivant) {
           setEtat('panne')
-          onErreur?.("Le formulaire de paiement n'a pas pu se charger. Appelez-nous au 07 60 16 96 20.")
+          rappels.current.onErreur?.("Le formulaire de paiement n'a pas pu se charger. Appelez-nous au 07 60 16 96 20.")
         }
       }
     })()
@@ -95,31 +125,58 @@ export default function CarteStripe({ clientSecret, clePublique, montantTtc, ret
       vivant = false
       try { element?.unmount?.() } catch {}
     }
-  }, [clientSecret, clePublique, onErreur])
+  }, [clientSecret, clePublique])   // facturation ne sert qu'au premier rendu
 
   const payer = async () => {
     const { stripe, elements } = refs.current
     if (!stripe || !elements) return
     setEtat('envoi')
-    onErreur?.(null)
-    const { error, paymentIntent } = await stripe.confirmPayment({
+    rappels.current.onErreur?.(null)
+    let error, paymentIntent
+    try {
+      ;({ error, paymentIntent } = await stripe.confirmPayment({
       elements,
-      confirmParams: { return_url: retourUrl },
+      confirmParams: {
+        return_url: retourUrl,
+        // Les coordonnées de facturation, masquées dans le formulaire,
+        // doivent être fournies ici : la banque les attend.
+        /*
+          Tout ce qui est masqué dans le formulaire doit être fourni ici —
+          Stripe refuse autrement, et son erreur arrive de façon asynchrone :
+          le bouton restait sur « Paiement en cours… » sans rien dire.
+          L'adresse, elle, vient du bloc resté visible.
+        */
+        payment_method_data: {
+          billing_details: {
+            name: facturation?.name,
+            email: facturation?.email,
+            phone: facturation?.phone,
+          },
+        },
+      },
       // On garde le client sur le site : Stripe ne redirige que si la banque
       // l'impose vraiment.
       redirect: 'if_required',
-    })
+      }))
+    } catch (e) {
+      // Erreur d'intégration ou coupure réseau : on rend la main plutôt que
+      // de laisser le bouton tourner indéfiniment.
+      console.error('Stripe: confirmation impossible', e)
+      setEtat('pret')
+      rappels.current.onErreur?.("Le paiement n'a pas pu être envoyé. Réessayez, ou appelez-nous au 07 60 16 96 20.")
+      return
+    }
     if (error) {
       setEtat('pret')
-      onErreur?.(messageDe(error))
+      rappels.current.onErreur?.(messageDe(error))
       return
     }
     if (paymentIntent?.status === 'succeeded' || paymentIntent?.status === 'processing') {
-      onPaye?.({ paymentIntentId: paymentIntent.id })
+      rappels.current.onPaye?.({ paymentIntentId: paymentIntent.id })
       return
     }
     setEtat('pret')
-    onErreur?.("Le paiement n'a pas abouti. Rien n'a été débité.")
+    rappels.current.onErreur?.("Le paiement n'a pas abouti. Rien n'a été débité.")
   }
 
   return (
