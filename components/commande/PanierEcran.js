@@ -19,7 +19,7 @@ import { useRouter } from 'next/navigation'
 import { lirePanier, surChangement, changerQuantite, retirerDuPanier, ajouterAuPanier, cleLigne } from '@/lib/panier'
 import { VIDE, lireBrouillon, ecrireBrouillon } from '@/lib/brouillonCommande'
 import { totaux, problemes } from '@/lib/totauxCommande'
-import { conseilsPanier } from '@/lib/conseilsPanier'
+import { conseilsPanier, phraseJetable } from '@/lib/conseilsPanier'
 import { composerPetitDejeuner, EFFECTIF_MIN, EFFECTIF_MAX } from '@/lib/composerCommande'
 import { nettoieCp } from '@/lib/zonesLivraison'
 import { completer, retenirClient } from '@/lib/souvenirClient'
@@ -187,6 +187,18 @@ export default function PanierEcran() {
             {t.zone.ok === null && (
               <p className="cmd-aide">Le total affiche la livraison dès que le code postal est complet.</p>
             )}
+          </div>
+
+          {/* Ce qui part déjà avec la commande, avant de proposer d'ajouter.
+              Sans cette ligne, le client voit « 25 € » et croit qu'au-dessous
+              il n'y a rien. La liste suit son panier (lib/conseilsPanier.js). */}
+          <div className="cmd-case cmd-case-vaisselle cmd-case-inclus">
+            <span className="cmd-coche cmd-coche-inclus" aria-hidden="true">✓</span>
+            <span>
+              Vaisselle jetable
+              <span className="cmd-case-detail">{phraseJetable(lignes)}</span>
+            </span>
+            <span className="cmd-case-prix">Inclus</span>
           </div>
 
           {/* La vaisselle se coche ici, à l'étape 1 : son prix entre dans le
